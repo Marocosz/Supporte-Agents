@@ -1,0 +1,248 @@
+/* =========================================
+   1. ESTRUTURA DO MODAL (Overlay & Container)
+   ========================================= */
+
+.mm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.mm-content {
+  width: 90%;
+  max-width: 1100px;
+  height: 85%;
+  background: var(--surface-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================
+   2. CABEÇALHO (Header)
+   ========================================= */
+
+.mm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.mm-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+
+.mm-close {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.mm-close:hover {
+  color: var(--text-primary);
+}
+
+/* =========================================
+   3. CORPO (Layout de Colunas)
+   ========================================= */
+
+.mm-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.mm-editor {
+  width: 45%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-color);
+}
+
+.mm-editor label,
+.mm-preview label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  display: block;
+}
+
+.mm-editor textarea {
+  flex: 1;
+  resize: none;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 1rem;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.mm-editor textarea:focus {
+  border-color: var(--accent-blue);
+}
+
+.mm-preview {
+  width: 55%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.mm-preview-area {
+  flex: 1;
+  background: var(--background-dark); 
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* =========================================
+   4. MERMAID & SVG
+   ========================================= */
+
+.mm-preview-area > div {
+  overflow: visible !important;
+}
+
+.mm-svg-container {
+  width: 100%;
+  height: 100%;
+  display: flex;           
+  align-items: center;
+  justify-content: center;
+}
+
+.mm-svg-container svg {
+  max-width: none !important;
+  height: auto !important;
+}
+
+/* --- CORREÇÃO DO TEXTO E ALINHAMENTO (ATUALIZADO) --- */
+
+/* Garante que o container do texto não corte nada */
+.mm-svg-container svg .node foreignObject {
+  overflow: visible !important;
+}
+
+/* Regras para o DIV que contém o texto dentro do nó */
+.mm-svg-container svg .node foreignObject div {
+  /* Removemos o white-space: normal para o Mermaid calcular a largura certa */
+  /* white-space: normal !important; */ 
+  
+  /* --- CENTRALIZAÇÃO PERFEITA --- */
+  text-align: center !important; 
+  
+  /* Força o conteúdo a ocupar todo o espaço e centralizar */
+  width: 100% !important;
+  height: 100% !important;
+  
+  /* Flexbox para garantir o centro vertical e horizontal */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  
+  /* Garante que o texto quebre se for forçado por <br> */
+  line-height: 1.2 !important; 
+}
+
+/* Garante que os "labels" (rótulos nas linhas) também fiquem visíveis e com a fonte certa */
+.mm-svg-container svg .label {
+  font-family: inherit !important;
+  color: inherit !important;
+  text-align: center !important;
+}
+
+/* =========================================
+   5. MENSAGEM DE ERRO
+   ========================================= */
+
+.mm-error {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  right: 2rem;
+  background: rgba(180, 0, 0, 0.9);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* =========================================
+   6. RODAPÉ
+   ========================================= */
+
+.mm-footer {
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 1.5rem;
+  text-align: right;
+}
+
+.mm-download-btn {
+  background: var(--accent-blue);
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: opacity 0.2s;
+}
+
+.mm-download-btn:hover {
+  opacity: 0.9;
+}
+
+.mm-download-btn:disabled {
+  background: #444;
+  color: #888;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+/* ===== SCROLLBAR PERSONALIZADA (Editor) ===== */
+.mm-editor textarea::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.mm-editor textarea::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.mm-editor textarea::-webkit-scrollbar-thumb {
+  background-color: var(--border-color); /* Cor sutil baseada no tema */
+  border-radius: 4px;
+  border: 2px solid var(--input-bg); /* Cria um espaço (padding) visual */
+}
+
+.mm-editor textarea::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text-secondary); /* Destaque ao passar o mouse */
+}

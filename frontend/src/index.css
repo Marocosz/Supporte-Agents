@@ -1,0 +1,43 @@
+/* 1. Define as variáveis da nossa paleta de cores escura */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --background-dark: #121212;
+  --surface-dark: #1e1e1e;
+  --border-color: #333333;
+  --input-bg: #2a2a2a;
+  
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0e0; /* Um pouco mais de cor */
+  
+  --accent-blue: #3a86ff;
+  --accent-blue-dark: #0056b3;
+  --accent-red: #ff4d4d;
+  --accent-green: #2ecc71;
+}
+
+/* 2. Aplica o tema global */
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--background-dark);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* --- MUDANÇA: Garante que o body ocupe a tela inteira --- */
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Impede o scroll da página inteira */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* 3. O #root agora ocupa a tela inteira e não tem padding */
+#root {
+  width: 100%;
+  height: 100%;
+  padding: 0; /* Remove o padding que estava centralizando tudo */
+}

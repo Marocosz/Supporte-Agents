@@ -1,0 +1,96 @@
+=========================================================================
+ROTEIRO DE TESTE DE HOMOLOGAÇÃO - AI AGENT Qualidade SUPPORTE
+Cenário: Criação de um Procedimento de Logística Reversa (PGP)
+=========================================================================
+
+--- PASSO 0: INICIALIZAÇÃO (No Frontend) ---
+Preencha os campos iniciais da sessão:
+- Título: Procedimento de Logística Reversa de Modems
+- Código: PGP-LOG-009
+- Tipo: Procedimento Operacional Padrão
+
+-------------------------------------------------------------------------
+
+--- PASSO 1: O PRIMEIRO PROMPT (Para o Agente 1 - Planner) ---
+Objetivo: Ver se ele cria as seções padrão da ISO (Objetivo, Aplicação) + seções específicas.
+
+COPIE E COLE NO CHAT:
+"Preciso de um documento para formalizar o processo de devolução de modems e roteadores recolhidos dos clientes.
+O fluxo começa quando o motorista recolhe o equipamento na casa do cliente.
+O equipamento deve ser trazido para o armazém central e colocado na área de 'Quarentena'.
+A equipe de TI deve testar o equipamento em até 3 dias úteis.
+Se funcionar: vai para o estoque de 'Disponível'.
+Se não funcionar: vai para o estoque de 'Descarte/Sucata'.
+O documento deve seguir as normas da ISO 9001 da Supporte."
+
+-------------------------------------------------------------------------
+
+--- PASSO 2: VALIDAÇÃO DO SUMÁRIO (Resposta do Agente 1) ---
+O Agente deve sugerir seções como: Objetivo, Aplicação, Definições, Fluxograma, Descrição do Processo, Registros.
+
+AÇÃO:
+Clique no botão "Aprovar e Continuar" (ou "Approve").
+
+*Observação de Engenharia: Verifique no log se o campo 'raciocinio' foi gerado corretamente.*
+
+-------------------------------------------------------------------------
+
+--- PASSO 3: REVISÃO DO RASCUNHO (Interação com Agente 2 e 3) ---
+O Agente 2 vai gerar o textão. Leia a seção "Descrição do Processo".
+
+AÇÃO (Teste do Reviser):
+Não aprove de primeira. Vamos testar a "preservação de dados".
+Clique em "Revisar Rascunho" (ou Reject) e digite o seguinte feedback:
+
+COPIE E COLE:
+"O prazo de teste da equipe de TI está errado no texto. Por favor, altere de 3 dias úteis para 24 horas corridas. Mantenha o resto do documento inalterado."
+
+*O que esperar: O Agente 3 deve devolver o mesmo JSON, mudando APENAS a frase do prazo.*
+
+-------------------------------------------------------------------------
+
+--- PASSO 4: VALIDAÇÃO PÓS-REVISÃO ---
+Agora que o prazo foi corrigido.
+
+AÇÃO:
+Clique em "Aprovar e Continuar para QA".
+
+-------------------------------------------------------------------------
+
+--- PASSO 5: ACEITE DE ATIVOS VISUAIS (Agente 4 - Critic) ---
+O sistema deve sugerir ativos. Esperamos pelo menos um Gráfico Mermaid (pelo fluxo de 'Se funcionar / Se não funcionar').
+
+AÇÃO 1 (Se aparecer sugestão de Mermaid):
+Clique em "Aceitar Ativo".
+*Verifique se o código começa com 'graph TD' ou similar.*
+
+AÇÃO 2 (Se aparecer sugestão de Tabela ou Imagem):
+Clique em "Aceitar Ativo" para testar a montagem multimídia.
+
+-------------------------------------------------------------------------
+
+--- PASSO 6: PERGUNTAS DE ENRIQUECIMENTO (Agente 4 - Perguntas) ---
+O sistema pode perguntar algo como "Quem é o responsável pelo descarte?".
+
+AÇÃO:
+Responda no chat:
+"O responsável pelo descarte é o Coordenador de Sustentabilidade."
+
+*O que esperar: O Agente 3 será chamado internamente para injetar essa frase no texto.*
+
+-------------------------------------------------------------------------
+
+--- PASSO 7: FINALIZAÇÃO ---
+O sistema perguntará se você quer fazer uma última revisão.
+
+AÇÃO:
+Clique em "Não, Gerar Documento Final".
+
+-------------------------------------------------------------------------
+
+--- RESULTADO ESPERADO (Arquivo .docx) ---
+Abra o arquivo baixado e verifique:
+1. Cabeçalho com o logo e código PGP-LOG-009.
+2. Se o prazo está "24 horas corridas" (sucesso do Agente 3).
+3. Se o Fluxograma Mermaid foi renderizado ou inserido como código (dependendo do seu docx_generator).
+4. Se a frase do "Coordenador de Sustentabilidade" aparece no texto.

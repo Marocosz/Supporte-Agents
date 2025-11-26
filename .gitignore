@@ -1,0 +1,124 @@
+
+--- GERAL ---
+
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+
+--- SEGURANÇA (CRÍTICO) ---
+
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+--- PYTHON (Backends) ---
+
+pycache/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+--- AMBIENTES VIRTUAIS (Venvas) ---
+
+venv/
+.venv/
+env/
+.env/
+venvdocqualidade/
+venvdocrobos/
+
+--- NODE / FRONTEND ---
+
+node_modules/
+jspm_packages/
+.npm
+.eslintcache
+.node_repl_history
+build/
+dist/
+
+--- ARQUIVOS TEMPORÁRIOS DOS PROJETOS ---
+
+Doc Robos
+
+backend-doc-robos/uploads/*
+backend-doc-robos/docs_gerados/*
+!backend-doc-robos/uploads/.gitkeep
+!backend-doc-robos/docs_gerados/.gitkeep
+
+Doc Qualidade
+
+backend-doc-qualidade/outputs/*
+backend-doc-qualidade/model_cache/
+backend-doc-qualidade/hf_cache/
+backend-doc-qualidade/core/faiss_index/
+
+
+### Passo 2: Inicializar o Git Localmente
+
+Abra o terminal na raiz `supporte-agents` e execute:
+
+1.  **Inicializar o repositório:**
+    ```powershell
+    git init
+    ```
+
+2.  **Verificar o que será enviado (Opcional, mas recomendado):**
+    Rode `git status`.
+    * **Olhe com atenção:** Se você ver pastas `venv`, `node_modules` ou arquivos `.env` na lista vermelha, **PARE**. Algo está errado no `.gitignore`.
+    * Se estiver vendo apenas as pastas de código (`frontend/`, `backend-doc-qualidade/`, etc), prossiga.
+
+3.  **Adicionar arquivos:**
+    ```powershell
+    git add .
+    ```
+
+4.  **Commit Inicial:**
+    ```powershell
+    git commit -m "Initial commit: Monorepo Setup (Frontend + 2 Backends)"
+    ```
+
+5.  **Renomear branch para main (padrão atual):**
+    ```powershell
+    git branch -M main
+    ```
+
+### Passo 3: Criar no GitHub e Enviar
+
+1.  Acesse [github.com/new](https://github.com/new).
+2.  Nomeie o repositório (ex: `intec-support-platform`).
+3.  **Não** marque "Add a README", "Add .gitignore" ou "Choose a license" (pois já temos tudo localmente).
+4.  Clique em **Create repository**.
+5.  Copie o link HTTPS do repositório (ex: `https://github.com/seu-usuario/intec-support-platform.git`).
+
+6.  Volte ao seu terminal e rode:
+
+```powershell
+# Linka seu projeto local com o GitHub
+git remote add origin https://github.com/SEU_USUARIO/NOME_DO_REPO.git
+
+# Envia os arquivos
+git push -u origin main

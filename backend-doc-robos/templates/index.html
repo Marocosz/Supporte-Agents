@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Documentação com IA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div id="form-container">
+            <h1>Gerador de Documentação com IA - Supporte</h1>
+            <form id="doc-form" action="/gerar" method="post" enctype="multipart/form-data">
+                <label for="arquivos">Selecione os arquivos (.py ou .pas):</label>
+                <input type="file" id="arquivos" name="arquivos" multiple required>
+
+                <label for="contexto">Contexto Adicional (Opcional):</label>
+                <textarea id="contexto" name="contexto"
+                    placeholder="Ex: Este sistema faz parte de um projeto de ERP..."></textarea>
+
+                <button type="submit" id="submit-button">Gerar Documentação</button>
+            </form>
+        </div>
+
+        <div id="loading-container" style="display: none;">
+            <h2>Gerando documentação, por favor aguarde...</h2>
+            <p>Este processo pode levar alguns segundos dependendo do tamanho dos arquivos.</p>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <script>
+        const docForm = document.getElementById('doc-form');
+        const submitButton = document.getElementById('submit-button');
+        const formContainer = document.getElementById('form-container');
+        const loadingContainer = document.getElementById('loading-container');
+
+        docForm.addEventListener('submit', function () {
+            submitButton.disabled = true;
+            submitButton.innerText = 'Gerando...';
+            formContainer.style.display = 'none';
+            loadingContainer.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>

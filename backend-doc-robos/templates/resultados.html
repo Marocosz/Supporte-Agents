@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados da Geração</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Resultados da Geração</h1>
+
+        {% if sucessos %}
+        <h2>Documentos Gerados com Sucesso:</h2>
+        <ul>
+            {% for nome_arquivo in sucessos %}
+            <li class="result-item success">
+                <span>{{ nome_arquivo }}</span>
+                <a href="{{ url_for('download_file', filename=nome_arquivo) }}">
+                    Baixar
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if erros %}
+        <h2>Ocorreram Erros:</h2>
+        <ul>
+            {% for erro in erros %}
+             <li class="result-item error">{{ erro }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <a href="{{ url_for('index') }}" class="back-link">&larr; Voltar e Gerar Nova Documentação</a>
+    </div>
+</body>
+
+</html>
