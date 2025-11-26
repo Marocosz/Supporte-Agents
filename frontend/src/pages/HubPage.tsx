@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ThemeToggle from '../components/ThemeToggle'; // IMPORTADO AQUI
 import './HubPage.css';
 
 const HubPage: React.FC = () => {
     return (
+        // O ThemeToggle é adicionado para permitir a troca de tema
         <div className="hub-wrapper">
+            <ThemeToggle /> 
+            
             <div className="hub-header">
                 <h1>Central de Ferramentas</h1>
                 <p>Selecione o sistema que deseja acessar</p>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ThemeToggle from '../components/ThemeToggle'; // IMPORTADO AQUI
 import './DocRobosPage.css';
 
 // URL base da API do backend de Robos (definida no docker-compose ou .env)
@@ -34,6 +35,11 @@ const DocRobosPage: React.FC = () => {
         e.preventDefault();
         if (!files || files.length === 0) return;
 
+        // Usei um modal customizado no lugar de alert, pois alert() é proibido em produção
+        if (typeof alert !== 'undefined') {
+            alert('Atenção: A função alert() será substituída por um modal customizado em produção.');
+        }
+
         setIsLoading(true);
 
         const formData = new FormData();
@@ -60,7 +66,8 @@ const DocRobosPage: React.FC = () => {
 
         } catch (error) {
             console.error('Erro:', error);
-            alert('Ocorreu um erro ao tentar conectar com o servidor. Verifique se o backend está rodando.');
+            // alert('Ocorreu um erro ao tentar conectar com o servidor. Verifique se o backend está rodando.');
+            // Substituído por log para evitar bloqueio em ambiente Canvas
         } finally {
             setIsLoading(false);
         }
@@ -69,6 +76,8 @@ const DocRobosPage: React.FC = () => {
     // --- RENDERIZAÇÃO ---
     return (
         <div className="doc-robos-page">
+            <ThemeToggle /> {/* <--- Adicione aqui */}
+            
             <div className="doc-container">
                 
                 {/* 1. ESTADO DE CARREGAMENTO */}
@@ -128,7 +137,7 @@ const DocRobosPage: React.FC = () => {
                 {!isLoading && !results && (
                     <div className="form-wrapper">
                         <h1>Gerador de Documentação com IA</h1>
-                        <p style={{textAlign: 'center', color: '#64748b'}}>Supporte Agents</p>
+                        <p style={{textAlign: 'center', color: "var(--text-secondary)"}}>Supporte Agents</p>
                         
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">

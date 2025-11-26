@@ -1,43 +1,74 @@
-/* 1. Define as variáveis da nossa paleta de cores escura */
+/* 1. Define as variáveis de cores para CLARO e ESCURO */
 :root {
+  /* --- Fonte Global --- */
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  
-  --background-dark: #121212;
-  --surface-dark: #1e1e1e;
-  --border-color: #333333;
-  --input-bg: #2a2a2a;
-  
-  --text-primary: #e0e0e0;
-  --text-secondary: #a0a0e0; /* Um pouco mais de cor */
-  
+
+  /* --- Cores de Acento (Compartilhadas) --- */
   --accent-blue: #3a86ff;
   --accent-blue-dark: #0056b3;
   --accent-red: #ff4d4d;
   --accent-green: #2ecc71;
+  --primary-color: #2563eb;
+
+  /* --- TEMA CLARO (Padrão) --- */
+  --bg-page: #f8fafc;        /* Fundo da página */
+  --bg-card: #ffffff;        /* Fundo de cards/modais */
+  --text-primary: #1e293b;   /* Texto principal (escuro) */
+  --text-secondary: #64748b; /* Texto secundário */
+  --border-color: #e2e8f0;   /* Bordas */
+  --input-bg: #f1f5f9;       /* Fundo de inputs */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Sobrescreve as variáveis quando o tema for ESCURO */
+[data-theme='dark'] {
+  --bg-page: #121212;        /* Fundo escuro (User preference) */
+  --bg-card: #1e1e1e;        /* Superfície escura */
+  --text-primary: #e0e0e0;   /* Texto claro */
+  --text-secondary: #a0a0e0; /* Texto secundário azulado */
+  --border-color: #333333;   /* Bordas escuras */
+  --input-bg: #2a2a2a;       /* Input escuro */
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --primary-color: #3b82f6;  /* Azul mais claro para contraste no escuro */
 }
 
 /* 2. Aplica o tema global */
 body {
   margin: 0;
   font-family: var(--font-sans);
-  background-color: var(--background-dark);
+  
+  /* Usa as variáveis dinâmicas */
+  background-color: var(--bg-page);
   color: var(--text-primary);
+  
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* --- MUDANÇA: Garante que o body ocupe a tela inteira --- */
-  height: 100vh;
+  /* --- Layout Global --- */
+  min-height: 100vh;
   width: 100vw;
-  overflow: hidden; /* Impede o scroll da página inteira */
+  
+  /* MUDANÇA IMPORTANTE: */
+  /* overflow: hidden foi removido/alterado. O Hub precisa de scroll vertical. */
+  /* O ChatPage deve gerenciar seu próprio 'overflow: hidden' internamente se precisar. */
+  overflow-x: hidden; 
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 * {
   box-sizing: border-box;
 }
 
-/* 3. O #root agora ocupa a tela inteira e não tem padding */
+/* 3. O #root ocupa a tela */
 #root {
   width: 100%;
-  height: 100%;
-  padding: 0; /* Remove o padding que estava centralizando tudo */
+  height: 100%; /* Pode herdar o min-height do body */
+  padding: 0;
+}
+
+/* --- Alias de Compatibilidade (Para não quebrar código antigo do Chat) --- */
+/* Mapeamos as variáveis antigas para as novas variáveis dinâmicas */
+:root {
+  --background-dark: var(--bg-page);
+  --surface-dark: var(--bg-card);
 }

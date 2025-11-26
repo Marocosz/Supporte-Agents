@@ -1,21 +1,21 @@
 /* src/pages/HubPage.css */
 
-/* Variáveis locais para o Hub */
+/* Removemos as variáveis locais fixas do Hub. Ele usará as variáveis globais do index.css */
+
 .hub-wrapper {
-    --hub-primary: #2563eb;
-    --hub-surface: #ffffff;
-    --hub-bg: #f8fafc;
-    --hub-text-main: #1e293b;
-    --hub-text-sec: #64748b;
-    
     font-family: 'Inter', sans-serif;
-    background-color: var(--hub-bg);
+    /* Usando variáveis globais */
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
+    position: relative; /* CRÍTICO: Para o ThemeToggle (posição absoluta) funcionar */
+    transition: background-color 0.3s ease;
 }
 
 .hub-header {
@@ -24,14 +24,14 @@
 }
 
 .hub-header h1 {
-    color: var(--hub-text-main);
+    color: var(--text-primary); /* Variável global */
     font-size: 2.5rem;
     margin: 0 0 10px 0;
     letter-spacing: -1px;
 }
 
 .hub-header p {
-    color: var(--hub-text-sec);
+    color: var(--text-secondary); /* Variável global */
 }
 
 .hub-grid {
@@ -43,14 +43,14 @@
 }
 
 .hub-card {
-    background: var(--hub-surface);
+    background: var(--bg-card); /* Variável global */
     padding: 30px;
     border-radius: 16px;
     text-decoration: none;
-    color: inherit;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    color: var(--text-primary); /* Garante que o texto se adapte */
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
     transition: all 0.3s;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color); /* Variável global */
     display: flex;
     flex-direction: column;
     position: relative;
@@ -65,13 +65,13 @@
     left: 0;
     width: 100%;
     height: 4px;
-    background: var(--hub-primary);
+    background: var(--primary-color); /* Variável global */
     opacity: 0.5;
 }
 
 .hub-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 25px -5px var(--shadow-color);
 }
 
 .hub-card-icon {
@@ -81,13 +81,13 @@
 
 .hub-card h2 {
     margin: 0 0 10px 0;
-    color: var(--hub-text-main);
+    color: var(--text-primary); /* Variável global */
     font-size: 1.25rem;
 }
 
 .hub-card p {
     margin: 0 0 20px 0;
-    color: var(--hub-text-sec);
+    color: var(--text-secondary); /* Variável global */
     line-height: 1.5;
     flex-grow: 1;
 }
@@ -100,7 +100,8 @@
     border-radius: 9999px;
     font-size: 0.875rem;
     font-weight: 600;
-    background-color: #dcfce7;
+    /* Manter cores fixas para status de badge */
+    background-color: #dcfce7; 
     color: #166534;
     align-self: flex-start;
 }
@@ -108,11 +109,11 @@
 .hub-status-dot {
     width: 8px;
     height: 8px;
-    background-color: #22c55e;
+    background-color: var(--accent-green); /* Usando variável de acento */
     border-radius: 50%;
     display: inline-block;
 }
 
-/* Cores específicas */
-.hub-card.quali::before { background: #3b82f6; }
-.hub-card.robo::before { background: #10b981; }
+/* Cores específicas de acento dos cards */
+.hub-card.quali::before { background: var(--accent-blue); }
+.hub-card.robo::before { background: var(--accent-green); }

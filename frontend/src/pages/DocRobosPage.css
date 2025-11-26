@@ -6,21 +6,25 @@
     font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     padding: 40px 20px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    color: #333;
+    /* Substitui o gradiente fixo e usa as variáveis dinâmicas */
+    background: var(--bg-page);
+    color: var(--text-primary);
+    
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    position: relative; /* CRÍTICO: Para o ThemeToggle (posição absoluta) funcionar */
+    transition: background-color 0.3s ease;
 }
 
 .doc-container {
     width: 100%;
     max-width: 800px;
-    background-color: #ffffff;
+    background-color: var(--bg-card); /* Variável */
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-    border: 1px solid #e7e7e7;
+    box-shadow: 0 8px 30px var(--shadow-color); /* Variável */
+    border: 1px solid var(--border-color); /* Variável */
     animation: fadeIn 0.5s ease-in-out;
 }
 
@@ -30,8 +34,8 @@
 }
 
 /* Tipografia */
-.doc-container h1 {
-    color: #2c3e50;
+.doc-container h1, .doc-container h2 {
+    color: var(--text-primary); /* Variável */
     text-align: center;
     font-weight: 700;
     font-size: 2.2em;
@@ -40,11 +44,10 @@
 }
 
 .doc-container h2 {
-    color: #2c3e50;
     font-size: 1.8em;
     margin-top: 40px;
     margin-bottom: 20px;
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 2px solid var(--border-color); /* Variável */
     padding-bottom: 10px;
 }
 
@@ -57,7 +60,7 @@
     display: block;
     margin-top: 25px;
     font-weight: 500;
-    color: #34495e;
+    color: var(--text-primary); /* Variável */
     margin-bottom: 8px;
 }
 
@@ -66,19 +69,29 @@
     width: 100%;
     padding: 12px;
     margin-top: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color); /* Variável */
     border-radius: 8px;
     box-sizing: border-box;
     transition: border-color 0.3s, box-shadow 0.3s;
-    background-color: #f8f9fa;
+    background-color: var(--input-bg); /* Variável */
+    color: var(--text-primary); /* Variável */
     font-family: inherit;
 }
 
 .form-input-file:focus,
 .form-textarea:focus {
     outline: none;
-    border-color: #4A90E2;
+    border-color: var(--accent-blue); /* Variável */
     box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+}
+
+.form-input-file::file-selector-button {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.form-input-file:focus::file-selector-button:hover {
+    background: var(--accent-blue-dark);
 }
 
 .form-textarea {
@@ -91,7 +104,8 @@
     width: 100%;
     padding: 15px;
     margin-top: 40px;
-    background: linear-gradient(45deg, #4A90E2, #50E3C2);
+    /* Manter o gradiente bonito */
+    background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
     color: white;
     border: none;
     border-radius: 8px;
@@ -121,8 +135,8 @@
 }
 
 .spinner {
-    border: 8px solid #e0e0e0;
-    border-top: 8px solid #4A90E2;
+    border: 8px solid var(--border-color); /* Variável */
+    border-top: 8px solid var(--accent-blue); /* Variável */
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -141,15 +155,7 @@
     padding: 0;
 }
 
-.result-item {
-    padding: 15px 20px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
+/* Os itens de sucesso/erro mantêm cores fixas para contraste */
 .result-item.success {
     background-color: #e8f5e9;
     border: 1px solid #a5d6a7;
@@ -164,13 +170,9 @@
 }
 
 .download-link {
+    /* Mantém cores fixas para contraste */
+    background-color: #a5d6a7; 
     color: #1b5e20;
-    text-decoration: none;
-    font-weight: 500;
-    background-color: #a5d6a7;
-    padding: 8px 15px;
-    border-radius: 6px;
-    transition: background-color 0.3s;
 }
 
 .download-link:hover {
@@ -180,7 +182,7 @@
 .btn-back {
     display: inline-block;
     margin-top: 30px;
-    color: #4A90E2;
+    color: var(--accent-blue); /* Variável */
     background: none;
     border: none;
     font-size: 16px;
@@ -191,6 +193,6 @@
 }
 
 .btn-back:hover {
-    color: #2c3e50;
+    color: var(--text-primary); /* Variável */
     text-decoration: underline;
 }

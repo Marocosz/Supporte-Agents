@@ -4,30 +4,16 @@ import { useChatSocket } from "../hooks/useChatSocket";
 import type { ISessionStartRequest, IWsMessage } from "../types/chat.types";
 import ReactMarkdown from 'react-markdown';
 import TextareaAutosize from 'react-textarea-autosize';
-// --- INÍCIO DA MUDANÇA ---
-import MermaidModal from "../components/MermaidModal"; // Importa o novo modal
-// --- FIM DA MUDANÇA ---
 
-// --- ÍCONES SVG GLOBAIS (Usados por ambos) ---
-const SunIcon: React.FC = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="5" />
-        <line x1="12" y1="1" x2="12" y2="3" />
-        <line x1="12" y1="21" x2="12" y2="23" />
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-        <line x1="1" y1="12" x2="3" y2="12" />
-        <line x1="21" y1="12" x2="23" y2="12" />
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-    </svg>
-);
+// --- INÍCIO DA ALTERAÇÃO ---
+import { useTheme } from "../contexts/ThemeContext"; // 1. NOVO: Importa o hook do Contexto Global
+import ThemeToggle from "../components/ThemeToggle"; // NOVO: Importa o componente de botão
+import MermaidModal from "../components/MermaidModal"; // Modal existente
+// --- FIM DA ALTERAÇÃO ---
 
-const MoonIcon: React.FC = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-    </svg>
-);
+// --- ÍCONES SVG GLOBAIS (Não mais necessários no ChatPage, mas mantidos se forem usados em outro lugar) ---
+// NOTA: Os ícones SunIcon e MoonIcon foram removidos daqui, pois são agora responsabilidade do ThemeToggle.tsx
+// Se eles não forem usados em mais nenhum lugar, podem ser excluídos, mas vamos mantê-los por enquanto.
 
 const ArrowLeftIcon: React.FC = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -47,31 +33,28 @@ const BotIcon: React.FC = () => (
     </svg>
 );
 
-// --- INÍCIO DA MUDANÇA: Novo Ícone Mermaid ---
 const MermaidIcon: React.FC = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7" />
         <path d="M17 5.1a2 2 0 0 0-3.16.83l-3.34 6.35-3.34-6.35A2 2 0 0 0 3.96 5.1" />
     </svg>
 );
-// --- FIM DA MUDANÇA ---
+// --- FIM DOS ÍCONES SVG ---
 
 
 /**
  * Interface para as props que os filhos precisam
+ * REMOVIDA: ThemeProps não é mais necessário, pois usamos o hook useTheme()
  */
-interface ThemeProps {
-    theme: "dark" | "light";
-    toggleTheme: () => void;
-    onMermaidOpen: () => void; // Função para abrir o modal
-}
 
 /**
  * Componente: O formulário para iniciar uma nova sessão.
  */
-// Alteração pontual no componente StartSessionForm
-const StartSessionForm: React.FC<ThemeProps> = ({ theme, toggleTheme, onMermaidOpen }) => {
+// StartSessionForm não recebe mais props de tema
+const StartSessionForm: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) => {
     const { startSession, status, error } = useSession();
+    // REMOVIDO: const { theme } = useTheme(); // Variável 'theme' não é mais extraída ou usada
+
     const [formData, setFormData] = useState<ISessionStartRequest>({
         tipo_documento: "",
         codificacao: "",
@@ -91,15 +74,14 @@ const StartSessionForm: React.FC<ThemeProps> = ({ theme, toggleTheme, onMermaidO
 
     return (
         <div className="start-form">
-            {/* --- ALTERAÇÃO AQUI: Mudamos a classe para 'start-header-actions' --- */}
-            {/* Isso vai alinhar com o novo CSS (flexbox, canto superior direito) */}
+            
+            {/* --- ALTERAÇÃO AQUI: ThemeToggle e Mermaid Button --- */}
             <div className="start-header-actions">
                 <button className="icon-button" onClick={onMermaidOpen} title="Abrir Editor Mermaid">
                     <MermaidIcon />
                 </button>
-                <button className="icon-button" onClick={toggleTheme} title={theme === 'dark' ? "Mudar para Tema Claro" : "Mudar para Tema Escuro"}>
-                    {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-                </button>
+                {/* NOVO: Usa o ThemeToggle.tsx componente */}
+                <ThemeToggle /> 
             </div>
             {/* --- FIM DA ALTERAÇÃO --- */}
 
@@ -157,7 +139,10 @@ const StartSessionForm: React.FC<ThemeProps> = ({ theme, toggleTheme, onMermaidO
 /**
  * Componente: A janela principal do chat.
  */
-const ChatWindow: React.FC<ThemeProps> = ({ theme, toggleTheme, onMermaidOpen }) => {
+// ChatWindow não recebe mais props de tema
+const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) => {
+    // REMOVIDO: const { theme } = useTheme(); // Variável 'theme' não é mais extraída ou usada
+
     const {
         messages,
         setMessages,
@@ -171,8 +156,9 @@ const ChatWindow: React.FC<ThemeProps> = ({ theme, toggleTheme, onMermaidOpen })
     const [userMessage, setUserMessage] = useState("");
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
+    // MUDANÇA: handleGoHome agora volta para o Hub (URL /) em vez de recarregar a página
     const handleGoHome = () => {
-        window.location.reload();
+        window.location.href = '/'; 
     };
 
     const isFinal = messages.length > 0 && messages[messages.length - 1].type === "final";
@@ -268,21 +254,20 @@ const ChatWindow: React.FC<ThemeProps> = ({ theme, toggleTheme, onMermaidOpen })
                     <button
                         className="icon-button header-back-button"
                         onClick={handleGoHome}
-                        title="Voltar ao Início"
+                        title="Voltar ao Hub"
                     >
                         <ArrowLeftIcon />
                     </button>
 
                     <h2>Chat de Geração de Documento</h2>
 
-                    {/* --- INÍCIO DA MUDANÇA: Botão Mermaid adicionado --- */}
+                    {/* --- INÍCIO DA MUDANÇA: Botões de Ação --- */}
                     <div className="header-actions">
                         <button className="icon-button" onClick={onMermaidOpen} title="Abrir Editor Mermaid">
                             <MermaidIcon />
                         </button>
-                        <button className="icon-button" onClick={toggleTheme} title={theme === 'dark' ? "Mudar para Tema Claro" : "Mudar para Tema Escuro"}>
-                            {theme === "dark" ? <SunIcon /> : <MoonIcon />}
-                        </button>
+                        {/* NOVO: Usa o ThemeToggle.tsx componente */}
+                        <ThemeToggle />
                     </div>
                     {/* --- FIM DA MUDANÇA --- */}
 
@@ -398,53 +383,24 @@ const ChatWindow: React.FC<ThemeProps> = ({ theme, toggleTheme, onMermaidOpen })
 
 /**
  * Página principal que decide qual componente mostrar
- * (Agora controla o estado do tema)
  */
 const ChatPage: React.FC = () => {
     const { sessionId, status } = useSession();
+    // NOVO: Pega o tema do contexto global
+    const { theme } = useTheme(); 
 
-    // --- LÓGICA DE TEMA (Centralizada no Pai) ---
-    const [theme, setTheme] = useState<"dark" | "light">("dark");
+    // REMOVIDO: Toda a lógica de tema (useState, useEffects e toggleTheme) foi movida para ThemeContext.tsx
 
-    // --- INÍCIO DA MUDANÇA: Estado do Modal ---
+    // --- ESTADO DO MODAL MERMAID ---
     const [isMermaidModalOpen, setIsMermaidModalOpen] = useState(false);
-    // --- FIM DA MUDANÇA ---
-
-    useEffect(() => {
-        // Aplica o tema salvo no carregamento inicial
-        const savedTheme = (localStorage.getItem("chatTheme") as "dark" | "light") || "dark";
-        setTheme(savedTheme);
-        if (savedTheme === "light") {
-            document.body.classList.add("light-theme");
-        } else {
-            document.body.classList.remove("light-theme");
-        }
-    }, []); // Executa apenas uma vez no carregamento
-
-    useEffect(() => {
-        // Atualiza o body e o localStorage QUANDO o tema mudar
-        if (theme === "light") {
-            document.body.classList.add("light-theme");
-        } else {
-            document.body.classList.remove("light-theme");
-        }
-        localStorage.setItem("chatTheme", theme);
-    }, [theme]); // Executa sempre que 'theme' mudar
-
-    const toggleTheme = () => {
-        setTheme(theme === "dark" ? "light" : "dark");
-    };
-    // --- FIM DA LÓGICA DE TEMA ---
-
+    
     return (
         <>
             {/* Lógica de renderização existente */}
             {sessionId && status === "connected" ? (
-                // Passa o tema e a função para o ChatWindow
+                // Passa a função onMermaidOpen para o ChatWindow
                 <ChatWindow
-                    theme={theme}
-                    toggleTheme={toggleTheme}
-                    onMermaidOpen={() => setIsMermaidModalOpen(true)} // Passa a função
+                    onMermaidOpen={() => setIsMermaidModalOpen(true)} 
                 />
             ) : (
                 // --- NOVO LAYOUT DA PÁGINA INICIAL ---
@@ -470,11 +426,9 @@ const ChatPage: React.FC = () => {
                     <div className="vertical-divider"></div>
 
                     <div className="start-page-right">
-                        {/* Passa o tema e a função para o StartSessionForm */}
+                        {/* Passa a função onMermaidOpen para o StartSessionForm */}
                         <StartSessionForm
-                            theme={theme}
-                            toggleTheme={toggleTheme}
-                            onMermaidOpen={() => setIsMermaidModalOpen(true)} // Passa a função
+                            onMermaidOpen={() => setIsMermaidModalOpen(true)} 
                         />
                     </div>
 
@@ -482,14 +436,14 @@ const ChatPage: React.FC = () => {
                 // --- FIM DO NOVO LAYOUT ---
             )}
 
-            {/* --- INÍCIO DA MUDANÇA: Renderiza o Modal globalmente --- */}
+            {/* --- Renderiza o Modal globalmente --- */}
             {isMermaidModalOpen && (
                 <MermaidModal
+                    // NOVO: Passa o tema pego do Contexto
                     theme={theme}
                     onClose={() => setIsMermaidModalOpen(false)}
                 />
             )}
-            {/* --- FIM DA MUDANÇA --- */}
         </>
     );
 };
