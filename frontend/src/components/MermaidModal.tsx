@@ -8,9 +8,22 @@ interface MermaidModalProps {
     theme: "light" | "dark";
 }
 
+// --- CONFIGURAÇÃO GLOBAL DO MERMAID ---
+// Isso roda assim que o arquivo é importado, protegendo a aplicação inteira.
+
 mermaid.initialize({
-    startOnLoad: false,
+    startOnLoad: false, // Impede que o Mermaid tente renderizar automaticamente o chat
+    securityLevel: 'loose',
+    fontFamily: "sans-serif",
 });
+
+// CORREÇÃO CRÍTICA: Sobrescreve a função de erro global.
+// Isso impede que o Mermaid injete aquele HTML de "Syntax Error" (bomba) no final da página
+// quando encontra código incompleto no chat ou no editor.
+mermaid.parseError = (err) => {
+    // Apenas loga no console (silencioso), não altera o DOM visível
+    console.debug("Mermaid Parse Error (Silenciado):", err);
+};
 
 const MermaidModal: React.FC<MermaidModalProps> = ({ onClose, theme }) => {
     const [code, setCode] = useState(
@@ -29,7 +42,7 @@ C --> D[Visualizar com Zoom];`
     // --- LÓGICA UX: Evitar fechar ao arrastar para fora ---
     const mouseDownTarget = useRef<EventTarget | null>(null);
 
-    // 1. Debounce
+    // 1. Debounce: Aguarda usuário parar de digitar
     useEffect(() => {
         const t = setTimeout(() => setDebouncedCode(code), 400);
         return () => clearTimeout(t);
@@ -37,6 +50,7 @@ C --> D[Visualizar com Zoom];`
 
     // 2. Renderização do Mermaid
     useEffect(() => {
+        // Reinicializa com o tema correto quando ele muda
         mermaid.initialize({
             startOnLoad: false,
             theme: theme === "dark" ? "dark" : "default",
@@ -45,8 +59,10 @@ C --> D[Visualizar com Zoom];`
         });
 
         const render = async () => {
+            // Se a referência sumiu, não faz nada
             if (!svgRef.current) return;
 
+            // Se o código estiver vazio, limpa o preview
             if (!debouncedCode.trim()) {
                 svgRef.current.innerHTML = "";
                 setError("");
@@ -54,14 +70,29 @@ C --> D[Visualizar com Zoom];`
             }
 
             try {
+                // Tenta fazer o parse (validação de sintaxe)
+                // Se falhar aqui, ele cai no catch e NÃO executa o render()
+                // O parseError global (definido acima) impede a bomba de aparecer.
+                await mermaid.parse(debouncedCode);
+
+                // Se o parse passou, renderiza o SVG
                 const id = "m-" + Math.floor(Math.random() * 999999);
                 const { svg } = await mermaid.render(id, debouncedCode);
 
-                svgRef.current.innerHTML = svg;
-                setError("");
+                if (svgRef.current) {
+                    svgRef.current.innerHTML = svg;
+                }
+                setError(""); // Limpa erros anteriores
             } catch (err: any) {
-                console.error("Mermaid Error:", err);
+                console.error("Mermaid Render Error:", err);
+                
+                // Define o erro no estado local para mostrar a mensagem amigável no Modal
                 setError("Erro na sintaxe do código. Verifique se o padrão Mermaid está correto.");
+                
+                // Limpa o SVG anterior para evitar confusão visual
+                if (svgRef.current) {
+                    svgRef.current.innerHTML = "";
+                }
             }
         };
 
@@ -70,7 +101,7 @@ C --> D[Visualizar com Zoom];`
 
     // --- LÓGICA UX: Handler do clique no overlay ---
     const handleOverlayClick = (e: React.MouseEvent) => {
-        // Só fecha se o clique COMEÇOU e TERMINOU no overlay
+        // Só fecha se o clique COMEÇOU e TERMINOU no overlay (fundo escuro)
         if (mouseDownTarget.current === e.currentTarget && e.target === e.currentTarget) {
             onClose();
         }
@@ -80,9 +111,7 @@ C --> D[Visualizar com Zoom];`
     return (
         <div
             className="mm-overlay"
-            // Captura onde o clique começou
             onMouseDown={(e) => mouseDownTarget.current = e.target}
-            // Usa o handler inteligente
             onClick={handleOverlayClick}
         >
             <div className="mm-content" onClick={(e) => e.stopPropagation()}>
@@ -135,12 +164,11 @@ C --> D[Visualizar com Zoom];`
                                 </TransformComponent>
                             </TransformWrapper>
 
+                            {/* Exibe erro amigável se houver */}
                             {error && <div className="mm-error">{error}</div>}
                         </div>
                     </div>
                 </div>
-
-                {/* Footer removido */}
             </div>
         </div>
     );

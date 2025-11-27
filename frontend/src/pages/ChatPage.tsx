@@ -11,10 +11,7 @@ import ThemeToggle from "../components/ThemeToggle"; // NOVO: Importa o componen
 import MermaidModal from "../components/MermaidModal"; // Modal existente
 // --- FIM DA ALTERAÇÃO ---
 
-// --- ÍCONES SVG GLOBAIS (Não mais necessários no ChatPage, mas mantidos se forem usados em outro lugar) ---
-// NOTA: Os ícones SunIcon e MoonIcon foram removidos daqui, pois são agora responsabilidade do ThemeToggle.tsx
-// Se eles não forem usados em mais nenhum lugar, podem ser excluídos, mas vamos mantê-los por enquanto.
-
+// --- ÍCONES SVG GLOBAIS ---
 const ArrowLeftIcon: React.FC = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <line x1="19" y1="12" x2="5" y2="12" />
@@ -41,19 +38,45 @@ const MermaidIcon: React.FC = () => (
 );
 // --- FIM DOS ÍCONES SVG ---
 
-
 /**
- * Interface para as props que os filhos precisam
- * REMOVIDA: ThemeProps não é mais necessário, pois usamos o hook useTheme()
+ * Componente auxiliar para renderizar blocos de código de forma segura.
+ * Impede que o Mermaid tente renderizar automaticamente no chat.
  */
+const SafeCodeBlock = (props: any) => {
+    const { children, className, node, ...rest } = props;
+    const isMermaid = /mermaid/i.test(className || '');
+
+    if (isMermaid) {
+        return (
+            <div style={{
+                border: '1px dashed var(--border-color)',
+                padding: '10px',
+                borderRadius: '5px',
+                background: 'rgba(0,0,0,0.05)',
+                margin: '10px 0'
+            }}>
+                <div style={{ fontSize: '0.8em', color: 'var(--text-secondary)', marginBottom: '5px', fontStyle: 'italic' }}>
+                    Código Mermaid (Utilize o botão acima para visualizar)
+                </div>
+                {/* Removemos o className para o Mermaid não encontrar este bloco */}
+                <code {...rest} style={{ whiteSpace: 'pre-wrap', fontSize: '0.9em', display: 'block', fontFamily: 'monospace' }}>
+                    {children}
+                </code>
+            </div>
+        );
+    }
+
+    // Remove qualquer traço de mermaid do className por segurança
+    const safeClassName = className ? className.replace(/mermaid/gi, '') : '';
+    return <code {...rest} className={safeClassName}>{children}</code>;
+};
+
 
 /**
  * Componente: O formulário para iniciar uma nova sessão.
  */
-// StartSessionForm não recebe mais props de tema
 const StartSessionForm: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) => {
     const { startSession, status, error } = useSession();
-    // REMOVIDO: const { theme } = useTheme(); // Variável 'theme' não é mais extraída ou usada
 
     const [formData, setFormData] = useState<ISessionStartRequest>({
         tipo_documento: "",
@@ -139,10 +162,7 @@ const StartSessionForm: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOp
 /**
  * Componente: A janela principal do chat.
  */
-// ChatWindow não recebe mais props de tema
 const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) => {
-    // REMOVIDO: const { theme } = useTheme(); // Variável 'theme' não é mais extraída ou usada
-
     const {
         messages,
         setMessages,
@@ -280,7 +300,10 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
                     {messages.map((msg, index) => (
                         msg.type === 'user' ? (
                             <div key={index} className="message-bubble type-user">
-                                <ReactMarkdown>{msg.content}</ReactMarkdown>
+                                {/* CORREÇÃO APLICADA: Usando o SafeCodeBlock também na mensagem do usuário */}
+                                <ReactMarkdown components={{ code: SafeCodeBlock }}>
+                                    {msg.content}
+                                </ReactMarkdown>
                             </div>
                         ) : msg.type === 'processing' ? (
                             <div key={index} className="agent-message-block">
@@ -290,7 +313,12 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
                             <div key={index} className="agent-message-block">
                                 <AgentPersona />
                                 <div className={`message-bubble type-${msg.type}`}>
-                                    <ReactMarkdown>{msg.content}</ReactMarkdown>
+                                    
+                                    {/* CORREÇÃO APLICADA: Usando o componente SafeCodeBlock extraído */}
+                                    <ReactMarkdown components={{ code: SafeCodeBlock }}>
+                                        {msg.content}
+                                    </ReactMarkdown>
+
                                     {msg.actions && msg.actions.length > 0 && (
                                         <div className="action-buttons">
                                             {msg.actions.map(action => {
@@ -317,7 +345,7 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
                                     )}
                                     {msg.type === 'final' && msg.file_path && (
                                         <a
-                                            href={`${import.meta.env.VITE_API_URL || "http://127.0.0.1:8000"}/v1/download/${msg.file_path}`}
+                                            href={`${import.meta.env.VITE_API_QUALITY_URL || "http://127.0.0.1:8000"}/v1/download/${msg.file_path}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="download-chip"
@@ -388,8 +416,6 @@ const ChatPage: React.FC = () => {
     const { sessionId, status } = useSession();
     // NOVO: Pega o tema do contexto global
     const { theme } = useTheme(); 
-
-    // REMOVIDO: Toda a lógica de tema (useState, useEffects e toggleTheme) foi movida para ThemeContext.tsx
 
     // --- ESTADO DO MODAL MERMAID ---
     const [isMermaidModalOpen, setIsMermaidModalOpen] = useState(false);
