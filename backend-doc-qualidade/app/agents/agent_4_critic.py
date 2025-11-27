@@ -80,6 +80,7 @@ class AnaliseQA(BaseModel):
 
 # --- 2. PROMPT ENGINEERING (AUDITOR MULTIMÍDIA) ---
 
+# CORREÇÃO AQUI: Escapamos as chaves em {{Decisão}} para o LangChain não confundir com variável.
 PROMPT_TEMPLATE = """
 Você é o **Auditor de Qualidade (QA) e Designer de Informação** da Supporte Logística.
 Sua tarefa é transformar um documento de texto denso em um material rico e visual.
@@ -89,7 +90,14 @@ Analise cada seção e sugira ativos visuais onde o texto for complexo demais.
 
 **TIPOS DE ATIVOS ACEITOS:**
 1.  **`mermaid_graph`**: Para fluxos de processo, tomadas de decisão ou ciclos.
-    * *Regra:* Use sintaxe `graph TD`. IDs dos nós SEM espaços e SEM caracteres especiais (apenas letras/números). Rótulos entre aspas.
+    * *Regra de Sintaxe:* Use `graph TD;`. (Obrigatório ponto e vírgula após TD)
+    * *CRÍTICO (Formatação):* **OBRIGATÓRIO usar quebras de linha** para cada conexão. **NUNCA** coloque o gráfico todo em uma linha só. Use ENTER (\n) entre cada definição.
+    * *Exemplo Correto:*
+      graph TD;
+      A[Início] --> B{{Decisão}}
+      B -->|Sim| C[Ação 1]
+      B -->|Não| D[Ação 2]
+    * *Regra de IDs:* IDs dos nós (A, B, Node1) SEM espaços e SEM caracteres especiais. Rótulos visíveis devem estar entre aspas ou colchetes `["Texto"]`.
 2.  **`image_placeholder`**: Para telas de sistema (software), fotos de equipamentos, EPIs ou locais físicos.
     * *Conteúdo:* Descrição exata da imagem (ex: "Captura de tela do menu 'Configurações' no sistema SAP").
 3.  **`table_data`**: Quando o texto apresentar listas comparativas, de para, ou muitos números.
@@ -141,7 +149,16 @@ class Agent4Critic:
         # Remove blocos ```[linguagem] ... ```
         clean = re.sub(r"```\w*\n", "", code)
         clean = clean.replace("```", "")
-        return clean.strip()
+        clean = clean.strip()
+        
+        # --- ALTERAÇÃO DE SEGURANÇA EXTRA ---
+        # Se o código vier todo em uma linha (sem \n), tentamos forçar a quebra.
+        # Isso ajuda caso o LLM ignore o prompt, mas o ideal é o prompt resolver.
+        if "\n" not in clean and ";" in clean:
+             # Se vier achatado com ponto e vírgula (graph TD; A-->B;), trocamos por quebra de linha
+             clean = clean.replace(";", ";\n")
+        
+        return clean
 
     def _sanitize_table(self, content: str) -> str:
         """Garante que tabelas Markdown não tenham caracteres de escape estranhos."""
