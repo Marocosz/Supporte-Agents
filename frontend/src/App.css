@@ -18,27 +18,17 @@
 /* Tema Claro */
 .light-theme {
   --background-dark: #f4f5f7;
-  /* Fundo claro */
   --surface-dark: #ffffff;
-  /* Bolhas brancas */
   --border-color: #e0e0e0;
-  /* Bordas claras */
   --input-bg: #f0f0f0;
-  /* Input claro */
   --text-primary: #121212;
-  /* Texto escuro */
   --text-secondary: #555555;
-  /* Texto secundário escuro */
 
-  /* Cores de acento podem ser as mesmas ou ajustadas */
   --accent-blue: #3a86ff;
   --accent-blue-dark: #0056b3;
   --accent-green: #2a9d8f;
   --accent-red: #e76f51;
 }
-
-/* --- Fim das Definições de Tema --- */
-
 
 /* --- 0. Animações Globais --- */
 @keyframes fadeIn {
@@ -62,9 +52,6 @@
     transform: rotate(360deg);
   }
 }
-
-/* --- Fim das Animações --- */
-
 
 /* --- 1. Container Principal (Layout 67/33) --- */
 .start-page-layout {
@@ -219,7 +206,6 @@
   cursor: not-allowed;
 }
 
-
 /* --- 3. Layout da Janela de Chat (Tela Inteira) --- */
 .chat-window {
   display: flex;
@@ -242,7 +228,6 @@
 
 .chat-header-content {
   width: 100%;
-  /* max-width: 800px; <-- Removido para alinhamento total */
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -255,7 +240,6 @@
   text-align: center;
   grid-column: 2;
 }
-
 
 .message-list {
   flex-grow: 1;
@@ -275,7 +259,6 @@
   margin: 0 auto;
 }
 
-/* ... (Estilos de Scrollbar) ... */
 .message-list::-webkit-scrollbar {
   width: 8px;
 }
@@ -295,9 +278,7 @@
   background-color: #777;
 }
 
-
 /* --- 4. Bolhas de Mensagem e Persona --- */
-/* ... (sem mudanças) ... */
 .agent-message-block {
   animation: fadeIn 0.3s ease-out;
 }
@@ -376,7 +357,6 @@
 }
 
 /* --- 5. Botões de Ação (Aceitar/Recusar) --- */
-/* ... (sem mudanças) ... */
 .action-buttons {
   margin-top: 12px;
   display: flex;
@@ -429,7 +409,6 @@
 }
 
 /* --- 6. Indicador de "Digitando" --- */
-/* ... (sem mudanças) ... */
 .typing-indicator {
   display: flex;
   align-items: center;
@@ -482,42 +461,28 @@
   padding: 5px;
   background-color: var(--surface-dark);
   border-radius: 28px;
-
-  /* --- MUDANÇA: Alinha o botão ao fundo --- */
   align-items: flex-end;
 }
 
-/* --- MUDANÇA: Substituído .chat-input input por .chat-input textarea --- */
 .chat-input textarea {
   flex-grow: 1;
   background-color: transparent;
   border: none;
   color: var(--text-primary);
   border-radius: 20px;
-  /* (Isso não será visível) */
   padding: 12px 18px;
   font-size: 1rem;
   margin-right: 10px;
-
-  /* --- NOVAS PROPRIEDADES --- */
   resize: none;
-  /* Esconde o "puxador" de redimensionamento */
   font-family: inherit;
-  /* Garante que a fonte seja a mesma do resto do app */
   line-height: 1.5;
-  /* Melhora a leitura em múltiplas linhas */
   max-height: 150px;
-  /* (Corresponde ao maxRows={5} aprox.) */
   overflow-y: auto;
-  /* Adiciona scroll se passar de 5 linhas */
 }
 
 .chat-input textarea:focus {
   outline: none;
 }
-
-/* --- FIM DA MUDANÇA --- */
-
 
 .chat-input button {
   padding: 12px 20px;
@@ -529,8 +494,6 @@
   font-size: 1rem;
   font-weight: 500;
   transition: all 0.2s ease;
-
-  /* --- MUDANÇA: Pequeno ajuste para alinhar com o padding do textarea --- */
   margin-bottom: 5px;
 }
 
@@ -544,7 +507,6 @@
 }
 
 /* --- 8. Download Chip --- */
-/* ... (sem mudanças) ... */
 .download-chip {
   display: inline-flex;
   align-items: center;
@@ -574,7 +536,6 @@
 }
 
 /* --- 9. Estilos do ReactMarkdown --- */
-/* ... (sem mudanças) ... */
 .message-bubble p {
   margin-top: 0;
   margin-bottom: 0;
@@ -636,24 +597,22 @@
 }
 
 /* --- 11. AÇÕES DO CANTO SUPERIOR (TELA INICIAL) --- */
-/* Container para agrupar botões (Tema, Mermaid, etc) lado a lado */
 .start-header-actions {
   position: absolute;
-  top: 0.8rem;   /* Bem próximo do topo */
-  right: 0.8rem; /* Bem no canto direito */
+  top: 0.8rem;
+  right: 0.8rem;
   display: flex;
   align-items: center;
-  gap: 10px;     /* Espaço entre os botões */
+  gap: 10px;
   z-index: 20;
 }
 
-/* Estilo uniforme para os botões deste grupo (redondos) */
 .start-header-actions button {
-  background: transparent; /* Ou var(--surface-dark) se preferir fundo */
+  background: transparent;
   border: 1px solid var(--border-color);
   color: var(--text-secondary);
   border-radius: 50%;
-  width: 38px;   /* Tamanho compacto */
+  width: 38px;
   height: 38px;
   display: flex;
   align-items: center;
@@ -673,6 +632,7 @@
   width: 18px;
   height: 18px;
 }
+
 /* --- 12. BOTÃO "CRIAR NOVO DOCUMENTO" (FIM DO CHAT) --- */
 .new-document-button-wrapper {
   display: flex;
@@ -706,7 +666,6 @@
   height: 20px;
 }
 
-/* --- Scrollbar Personalizada para o Input do Chat --- */
 .chat-input textarea::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -718,12 +677,19 @@
 }
 
 .chat-input textarea::-webkit-scrollbar-thumb {
-  background-color: var(--border-color); 
+  background-color: var(--border-color);
   border-radius: 4px;
-  /* Aqui usamos a cor do container (.chat-input) para criar o espaço visual */
-  border: 2px solid var(--surface-dark); 
+  border: 2px solid var(--surface-dark);
 }
 
 .chat-input textarea::-webkit-scrollbar-thumb:hover {
-  background-color: var(--text-secondary); 
+  background-color: var(--text-secondary);
+}
+
+/* --- NOVO: Classe para posicionar o ThemeToggle flutuante (Hub e Docs) --- */
+.floating-toggle-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
 }

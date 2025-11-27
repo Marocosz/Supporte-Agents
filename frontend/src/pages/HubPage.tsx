@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ThemeToggle from '../components/ThemeToggle'; // IMPORTADO AQUI
+import ThemeToggle from '../components/ThemeToggle';
 import './HubPage.css';
 
 const HubPage: React.FC = () => {
     return (
-        // O ThemeToggle é adicionado para permitir a troca de tema
         <div className="hub-wrapper">
-            <ThemeToggle /> 
+            {/* Wrapper adicionado para posicionar no canto */}
+            <div className="floating-toggle-wrapper">
+                <ThemeToggle /> 
+            </div>
             
             <div className="hub-header">
                 <h1>Central de Ferramentas</h1>
@@ -15,7 +17,7 @@ const HubPage: React.FC = () => {
             </div>
 
             <div className="hub-grid">
-                {/* Card 1: Agente de Qualidade (Linka para a rota existente) */}
+                {/* Card 1 */}
                 <Link to="/agentqualidade" className="hub-card quali">
                     <div className="hub-card-icon">🧠</div>
                     <h2>Agente de Qualidade AI</h2>
@@ -25,7 +27,7 @@ const HubPage: React.FC = () => {
                     </div>
                 </Link>
 
-                {/* Card 2: Doc Robos (Linka para a nova rota que faremos depois) */}
+                {/* Card 2 */}
                 <Link to="/agentdocrobos" className="hub-card robo">
                     <div className="hub-card-icon">🤖</div>
                     <h2>Gerador Docs Robôs</h2>

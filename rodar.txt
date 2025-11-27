@@ -1,0 +1,8 @@
+doc qualidade
+python -m uvicorn app.main:app --reload --port 8000 --reload-dir app
+
+doc robo
+python main.py
+
+front
+npm run dev

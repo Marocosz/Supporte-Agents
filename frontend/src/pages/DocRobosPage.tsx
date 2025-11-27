@@ -76,7 +76,10 @@ const DocRobosPage: React.FC = () => {
     // --- RENDERIZAÇÃO ---
     return (
         <div className="doc-robos-page">
-            <ThemeToggle /> {/* <--- Adicione aqui */}
+            {/* Wrapper adicionado para posicionar no canto, resolvendo o problema de layout */}
+            <div className="floating-toggle-wrapper">
+                <ThemeToggle />
+            </div>
             
             <div className="doc-container">
                 
