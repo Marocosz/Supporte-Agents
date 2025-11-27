@@ -80,7 +80,7 @@ class AnaliseQA(BaseModel):
 
 # --- 2. PROMPT ENGINEERING (AUDITOR MULTIMÍDIA) ---
 
-# CORREÇÃO AQUI: Escapamos as chaves em {{Decisão}} para o LangChain não confundir com variável.
+# ALTERAÇÃO: Instruções explícitas sobre formatação multilinha (Tabela e Mermaid)
 PROMPT_TEMPLATE = """
 Você é o **Auditor de Qualidade (QA) e Designer de Informação** da Supporte Logística.
 Sua tarefa é transformar um documento de texto denso em um material rico e visual.
@@ -88,26 +88,32 @@ Sua tarefa é transformar um documento de texto denso em um material rico e visu
 ### 1. IDENTIFICAÇÃO DE ATIVOS VISUAIS (Seja Criativo e Preciso)
 Analise cada seção e sugira ativos visuais onde o texto for complexo demais.
 
-**TIPOS DE ATIVOS ACEITOS:**
+**TIPOS DE ATIVOS ACEITOS E REGRAS DE FORMATAÇÃO ESTRITAS:**
+
 1.  **`mermaid_graph`**: Para fluxos de processo, tomadas de decisão ou ciclos.
     * *Regra de Sintaxe:* Use `graph TD;`. (Obrigatório ponto e vírgula após TD)
     * *CRÍTICO (Formatação):* **OBRIGATÓRIO usar quebras de linha** para cada conexão. **NUNCA** coloque o gráfico todo em uma linha só. Use ENTER (\n) entre cada definição.
     * *Exemplo Correto:*
       graph TD;
-      A[Início] --> B{{Decisão}}
-      B -->|Sim| C[Ação 1]
-      B -->|Não| D[Ação 2]
-    * *Regra de IDs:* IDs dos nós (A, B, Node1) SEM espaços e SEM caracteres especiais. Rótulos visíveis devem estar entre aspas ou colchetes `["Texto"]`.
-2.  **`image_placeholder`**: Para telas de sistema (software), fotos de equipamentos, EPIs ou locais físicos.
-    * *Conteúdo:* Descrição exata da imagem (ex: "Captura de tela do menu 'Configurações' no sistema SAP").
-3.  **`table_data`**: Quando o texto apresentar listas comparativas, de para, ou muitos números.
+      A[Início] --> B{{Decisão}};
+      B -->|Sim| C[Fim];
+
+2.  **`table_data`**: Quando o texto apresentar listas comparativas, de para, ou muitos números.
     * *Conteúdo:* Formate os dados em Markdown Table simples.
-4.  **`chart_placeholder`**: Quando o texto citar estatísticas ou proporções (ex: "30% dos erros são no recebimento").
-    * *Conteúdo:* Descrição do gráfico (ex: "Gráfico de Pizza mostrando a distribuição de erros").
+    * *CRÍTICO (Formatação):* **OBRIGATÓRIO** usar quebras de linha reais (`\\n`) ao final de CADA linha da tabela. Jamais entregue a tabela em uma linha única.
+    * *Exemplo:*
+      | Coluna 1 | Coluna 2 |
+      | --- | --- |
+      | Valor A | Valor B |
+
+3.  **`image_placeholder`**:
+    * Descrição da imagem (ex: "Print do sistema SAP tela de login").
+
+4.  **`chart_placeholder`**:
+    * Descrição do gráfico (ex: "Pizza: 30% Erro, 70% Sucesso").
 
 ### 2. IDENTIFICAÇÃO DE LACUNAS (Perguntas ao Usuário)
-Faça perguntas APENAS se houver ambiguidade crítica (ex: "O texto diz 'enviar para o responsável', mas não diz quem é o responsável").
-* **NÃO** pergunte sobre formatação.
+Faça perguntas APENAS se houver ambiguidade crítica. NÃO pergunte sobre formatação.
 
 ### RASCUNHO PARA ANÁLISE
 {rascunho_formatado}
@@ -153,16 +159,36 @@ class Agent4Critic:
         
         # --- ALTERAÇÃO DE SEGURANÇA EXTRA ---
         # Se o código vier todo em uma linha (sem \n), tentamos forçar a quebra.
-        # Isso ajuda caso o LLM ignore o prompt, mas o ideal é o prompt resolver.
         if "\n" not in clean and ";" in clean:
-             # Se vier achatado com ponto e vírgula (graph TD; A-->B;), trocamos por quebra de linha
+             # Se vier achatado com ponto e vírgula, trocamos por quebra de linha
              clean = clean.replace(";", ";\n")
         
         return clean
 
     def _sanitize_table(self, content: str) -> str:
-        """Garante que tabelas Markdown não tenham caracteres de escape estranhos."""
-        return content.strip()
+        """
+        Garante que tabelas Markdown tenham quebras de linha corretas.
+        Se o LLM gerar '... | | ...', forçamos a quebra para renderizar corretamente.
+        """
+        clean = content.strip()
+        
+        # Estratégia de correção de tabelas achatadas (flat tables)
+        # O LLM às vezes gera: | A | B | | - | - | | C | D |
+        # Precisamos transformar em:
+        # | A | B |
+        # | - | - |
+        # | C | D |
+        
+        # 1. Detecta separador de cabeçalho achatado (Ex: | Header | | --- |)
+        # Procura por pipe, espaços opcionais, pipe, espaços opcionais, hífen ou dois pontos
+        clean = re.sub(r'\|\s*\|\s*([-:])', r'|\n|\1', clean)
+        
+        # 2. Detecta separador de linhas de dados achatadas (Ex: | Data | | Data |)
+        # Procura por pipe, espaços opcionais, pipe, E garante que não quebrou linha ainda
+        # O lookahead (?![-\n]) evita quebrar de novo se já tiver o hífen (tratado acima) ou se já tiver newline
+        clean = re.sub(r'\|\s*\|\s*(?![-:\n])', r'|\n|', clean)
+            
+        return clean
 
     async def get_qa_analysis(self, rascunho_aprovado: Dict[str, str]) -> Dict[str, List[Dict[str, Any]]]:
         """

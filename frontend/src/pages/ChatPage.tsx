@@ -3,13 +3,12 @@ import { useSession } from "../contexts/SessionContext";
 import { useChatSocket } from "../hooks/useChatSocket";
 import type { ISessionStartRequest, IWsMessage } from "../types/chat.types";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm'; 
 import TextareaAutosize from 'react-textarea-autosize';
 
-// --- INÍCIO DA ALTERAÇÃO ---
-import { useTheme } from "../contexts/ThemeContext"; // 1. NOVO: Importa o hook do Contexto Global
-import ThemeToggle from "../components/ThemeToggle"; // NOVO: Importa o componente de botão
-import MermaidModal from "../components/MermaidModal"; // Modal existente
-// --- FIM DA ALTERAÇÃO ---
+import { useTheme } from "../contexts/ThemeContext";
+import ThemeToggle from "../components/ThemeToggle";
+import MermaidModal from "../components/MermaidModal";
 
 // --- ÍCONES SVG GLOBAIS ---
 const ArrowLeftIcon: React.FC = () => (
@@ -38,9 +37,28 @@ const MermaidIcon: React.FC = () => (
 );
 // --- FIM DOS ÍCONES SVG ---
 
+// --- FUNÇÃO DE LIMPEZA NO FRONTEND (CORREÇÃO DE TABELA E MERMAID) ---
+const formatMessageContent = (content: string) => {
+    if (!content) return "";
+
+    let fixed = content;
+
+    // 1. CORREÇÃO DE TABELAS ACHATADAS
+    // Procura por padrões onde uma linha de tabela termina e outra começa na mesma linha.
+    // Ex: "| Col A | Col B | | Val 1 | Val 2 |" -> Vira -> "| Col A | Col B |\n| Val 1 | Val 2 |"
+    
+    // Caso 1: Separador de cabeçalho (Ex: | Título | | --- |)
+    fixed = fixed.replace(/\|\s*\|\s*([-:]{3,})/g, "|\n|$1");
+
+    // Caso 2: Linhas de dados (Ex: | Valor | | Valor |)
+    // O Regex procura: Pipe + Espaços + Pipe + Espaços + (Qualquer caractere que não seja quebra de linha)
+    fixed = fixed.replace(/\|\s*\|\s*(?=[^\|\n])/g, "|\n|");
+
+    return fixed;
+};
+
 /**
  * Componente auxiliar para renderizar blocos de código de forma segura.
- * Impede que o Mermaid tente renderizar automaticamente no chat.
  */
 const SafeCodeBlock = (props: any) => {
     const { children, className, node, ...rest } = props;
@@ -58,7 +76,6 @@ const SafeCodeBlock = (props: any) => {
                 <div style={{ fontSize: '0.8em', color: 'var(--text-secondary)', marginBottom: '5px', fontStyle: 'italic' }}>
                     Código Mermaid (Utilize o botão acima para visualizar)
                 </div>
-                {/* Removemos o className para o Mermaid não encontrar este bloco */}
                 <code {...rest} style={{ whiteSpace: 'pre-wrap', fontSize: '0.9em', display: 'block', fontFamily: 'monospace' }}>
                     {children}
                 </code>
@@ -66,7 +83,6 @@ const SafeCodeBlock = (props: any) => {
         );
     }
 
-    // Remove qualquer traço de mermaid do className por segurança
     const safeClassName = className ? className.replace(/mermaid/gi, '') : '';
     return <code {...rest} className={safeClassName}>{children}</code>;
 };
@@ -97,20 +113,15 @@ const StartSessionForm: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOp
 
     return (
         <div className="start-form">
-            
-            {/* --- ALTERAÇÃO AQUI: ThemeToggle e Mermaid Button --- */}
             <div className="start-header-actions">
                 <button className="icon-button" onClick={onMermaidOpen} title="Abrir Editor Mermaid">
                     <MermaidIcon />
                 </button>
-                {/* NOVO: Usa o ThemeToggle.tsx componente */}
                 <ThemeToggle /> 
             </div>
-            {/* --- FIM DA ALTERAÇÃO --- */}
 
             <h2>Iniciar Novo Documento</h2>
             <form onSubmit={handleSubmit}>
-                {/* ... (inputs do formulário sem mudanças) ... */}
                 <div>
                     <label htmlFor="codificacao">Codificação</label>
                     <input
@@ -176,7 +187,6 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
     const [userMessage, setUserMessage] = useState("");
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
-    // MUDANÇA: handleGoHome agora volta para o Hub (URL /) em vez de recarregar a página
     const handleGoHome = () => {
         window.location.href = '/'; 
     };
@@ -219,7 +229,6 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
         }
     };
 
-    // --- ÍCONES SVG (Apenas os específicos do Chat) ---
     const AgentPersona: React.FC = () => (
         <div className="agent-persona">
             <div className="agent-persona-icon">DC</div>
@@ -263,46 +272,35 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
             <line x1="5" y1="12" x2="19" y2="12" />
         </svg>
     );
-    // --- FIM DOS ÍCONES SVG ---
 
     return (
         <div className="chat-window">
-            {/* --- CABEÇALHO ATUALIZADO (com botões de volta e tema) --- */}
             <div className="chat-header">
                 <div className="chat-header-content">
-
-                    <button
-                        className="icon-button header-back-button"
-                        onClick={handleGoHome}
-                        title="Voltar ao Hub"
-                    >
+                    <button className="icon-button header-back-button" onClick={handleGoHome} title="Voltar ao Hub">
                         <ArrowLeftIcon />
                     </button>
-
                     <h2>Chat de Geração de Documento</h2>
-
-                    {/* --- INÍCIO DA MUDANÇA: Botões de Ação --- */}
                     <div className="header-actions">
                         <button className="icon-button" onClick={onMermaidOpen} title="Abrir Editor Mermaid">
                             <MermaidIcon />
                         </button>
-                        {/* NOVO: Usa o ThemeToggle.tsx componente */}
                         <ThemeToggle />
                     </div>
-                    {/* --- FIM DA MUDANÇA --- */}
-
                 </div>
             </div>
-            {/* --- FIM DO CABEÇALHO --- */}
 
             <div className="message-list">
                 <div className="message-list-content">
                     {messages.map((msg, index) => (
                         msg.type === 'user' ? (
                             <div key={index} className="message-bubble type-user">
-                                {/* CORREÇÃO APLICADA: Usando o SafeCodeBlock também na mensagem do usuário */}
-                                <ReactMarkdown components={{ code: SafeCodeBlock }}>
-                                    {msg.content}
+                                {/* CORREÇÃO: Aplica formatMessageContent antes de renderizar */}
+                                <ReactMarkdown 
+                                    remarkPlugins={[remarkGfm]}
+                                    components={{ code: SafeCodeBlock }}
+                                >
+                                    {formatMessageContent(msg.content)}
                                 </ReactMarkdown>
                             </div>
                         ) : msg.type === 'processing' ? (
@@ -313,10 +311,12 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
                             <div key={index} className="agent-message-block">
                                 <AgentPersona />
                                 <div className={`message-bubble type-${msg.type}`}>
-                                    
-                                    {/* CORREÇÃO APLICADA: Usando o componente SafeCodeBlock extraído */}
-                                    <ReactMarkdown components={{ code: SafeCodeBlock }}>
-                                        {msg.content}
+                                    {/* CORREÇÃO: Aplica formatMessageContent aqui também */}
+                                    <ReactMarkdown 
+                                        remarkPlugins={[remarkGfm]}
+                                        components={{ code: SafeCodeBlock }}
+                                    >
+                                        {formatMessageContent(msg.content)}
                                     </ReactMarkdown>
 
                                     {msg.actions && msg.actions.length > 0 && (
@@ -324,11 +324,8 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
                                             {msg.actions.map(action => {
                                                 const isSelected = msg.selectedActionValue === action.value;
                                                 const isOtherActionClicked = msg.selectedActionValue && !isSelected;
-
                                                 let buttonClass = action.value.startsWith("reject") || action.value.startsWith("skip") ? "reject" : "";
-                                                if (isOtherActionClicked) {
-                                                    buttonClass += " inactive";
-                                                }
+                                                if (isOtherActionClicked) buttonClass += " inactive";
 
                                                 return (
                                                     <button
@@ -359,30 +356,15 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
                         )
                     ))}
 
-                    {isAgentResponding && (
-                        <div className="agent-message-block">
-                            <TypingIndicator />
-                        </div>
-                    )}
-
-                    {error && (
-                        <div className="agent-message-block">
-                            <AgentPersona />
-                            <div className="message-bubble type-error">
-                                <p>{error}</p>
-                            </div>
-                        </div>
-                    )}
-
+                    {isAgentResponding && (<div className="agent-message-block"><TypingIndicator /></div>)}
+                    {error && (<div className="agent-message-block"><AgentPersona /><div className="message-bubble type-error"><p>{error}</p></div></div>)}
                     {isFinal && (
                         <div className="new-document-button-wrapper">
                             <button className="new-document-button" onClick={handleGoHome}>
-                                <PlusIcon />
-                                <span>Criar Novo Documento</span>
+                                <PlusIcon /><span>Criar Novo Documento</span>
                             </button>
                         </div>
                     )}
-
                     <div ref={messagesEndRef} />
                 </div>
             </div>
@@ -393,14 +375,12 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
                         <TextareaAutosize
                             value={userMessage}
                             onChange={(e) => setUserMessage(e.target.value)}
-                            onKeyPress={handleKeyPress} // Usa a nova função
+                            onKeyPress={handleKeyPress}
                             placeholder={isConnected ? "Digite sua resposta aqui... (Shift+Enter para nova linha)" : (isConnecting ? "Conectando ao chat..." : "Desconectado")}
                             disabled={!isConnected}
                             maxRows={5}
                         />
-                        <button onClick={handleSend} disabled={!isConnected}>
-                            Enviar
-                        </button>
+                        <button onClick={handleSend} disabled={!isConnected}>Enviar</button>
                     </div>
                 </div>
             </div>
@@ -414,61 +394,33 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
  */
 const ChatPage: React.FC = () => {
     const { sessionId, status } = useSession();
-    // NOVO: Pega o tema do contexto global
     const { theme } = useTheme(); 
-
-    // --- ESTADO DO MODAL MERMAID ---
     const [isMermaidModalOpen, setIsMermaidModalOpen] = useState(false);
     
     return (
         <>
-            {/* Lógica de renderização existente */}
             {sessionId && status === "connected" ? (
-                // Passa a função onMermaidOpen para o ChatWindow
-                <ChatWindow
-                    onMermaidOpen={() => setIsMermaidModalOpen(true)} 
-                />
+                <ChatWindow onMermaidOpen={() => setIsMermaidModalOpen(true)} />
             ) : (
-                // --- NOVO LAYOUT DA PÁGINA INICIAL ---
                 <div className="start-page-layout">
-
                     <div className="start-page-left">
                         <div className="start-page-promo">
                             <div className="promo-design-line"></div>
-                            <div className="promo-image-container">
-                                <BotIcon />
-                            </div>
+                            <div className="promo-image-container"><BotIcon /></div>
                             <div className="promo-text-container">
                                 <h3>Assistente de Documentação IA</h3>
-                                <p>
-                                    Bem-vindo ao assistente inteligente da Supporte Logística.
-                                    Descreva o documento que você precisa, e nossos agentes de IA
-                                    irão planear, escrever e formatar um rascunho para si.
-                                </p>
+                                <p>Bem-vindo ao assistente inteligente da Supporte Logística...</p>
                             </div>
                         </div>
                     </div>
-
                     <div className="vertical-divider"></div>
-
                     <div className="start-page-right">
-                        {/* Passa a função onMermaidOpen para o StartSessionForm */}
-                        <StartSessionForm
-                            onMermaidOpen={() => setIsMermaidModalOpen(true)} 
-                        />
+                        <StartSessionForm onMermaidOpen={() => setIsMermaidModalOpen(true)} />
                     </div>
-
                 </div>
-                // --- FIM DO NOVO LAYOUT ---
             )}
-
-            {/* --- Renderiza o Modal globalmente --- */}
             {isMermaidModalOpen && (
-                <MermaidModal
-                    // NOVO: Passa o tema pego do Contexto
-                    theme={theme}
-                    onClose={() => setIsMermaidModalOpen(false)}
-                />
+                <MermaidModal theme={theme} onClose={() => setIsMermaidModalOpen(false)} />
             )}
         </>
     );

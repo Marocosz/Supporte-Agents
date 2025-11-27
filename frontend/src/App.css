@@ -693,3 +693,41 @@
   right: 20px;
   z-index: 100;
 }
+
+/* ... Conteúdo anterior do App.css ... */
+
+/* --- 13. ESTILOS PARA TABELAS (Markdown GFM) --- */
+.message-bubble table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  background-color: rgba(255, 255, 255, 0.03); /* Leve destaque no fundo */
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.message-bubble th,
+.message-bubble td {
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.message-bubble th {
+  background-color: rgba(0, 0, 0, 0.2); /* Cabeçalho mais escuro */
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.message-bubble td {
+  color: var(--text-secondary);
+}
+
+/* No tema claro, ajustamos o fundo da tabela */
+.light-theme .message-bubble table {
+  background-color: #ffffff;
+}
+.light-theme .message-bubble th {
+  background-color: #f3f4f6;
+}
