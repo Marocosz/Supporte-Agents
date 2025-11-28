@@ -19,6 +19,15 @@ const CloudUploadIcon = () => (
     </svg>
 );
 
+// --- NOVO: Ícone de Download para o botão ---
+const DownloadIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+    </svg>
+);
+
 const DocRobosPage: React.FC = () => {
     // --- ESTADOS ---
     const [files, setFiles] = useState<FileList | null>(null);
@@ -114,7 +123,7 @@ const DocRobosPage: React.FC = () => {
                                 <ul className="results-list">
                                     {results.sucessos.map((filename, index) => (
                                         <li key={index} className="result-item success">
-                                            <span>{filename}</span>
+                                            <span className="file-name-text">{filename}</span>
                                             {/* Link para endpoint de download que criaremos */}
                                             <a 
                                                 href={`${API_BASE_URL}/download/${filename}`} 
@@ -122,7 +131,8 @@ const DocRobosPage: React.FC = () => {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                             >
-                                                Baixar
+                                                <DownloadIcon />
+                                                Baixar Documento
                                             </a>
                                         </li>
                                     ))}
@@ -162,30 +172,30 @@ const DocRobosPage: React.FC = () => {
                                 {/* --- NOVA ESTRUTURA DE UPLOAD (LABEL + INPUT HIDDEN) --- */}
                                 <div className="file-upload-wrapper">
                                     <input 
-                                        type="file" 
-                                        id="arquivos" 
-                                        className="hidden-input"
-                                        multiple 
-                                        required
-                                        onChange={handleFileChange}
-                                        accept=".py,.pas,.txt" 
+                                            type="file" 
+                                            id="arquivos" 
+                                            className="hidden-input"
+                                            multiple 
+                                            required
+                                            onChange={handleFileChange}
+                                            accept=".py,.pas,.txt" 
                                     />
                                     <label 
-                                        htmlFor="arquivos" 
-                                        className={`custom-file-upload ${files && files.length > 0 ? 'has-files' : ''}`}
+                                            htmlFor="arquivos" 
+                                            className={`custom-file-upload ${files && files.length > 0 ? 'has-files' : ''}`}
                                     >
-                                        <CloudUploadIcon />
-                                        <span className="upload-text">
-                                            {files && files.length > 0 ? "Arquivos Prontos!" : "Clique para Escolher Arquivos"}
-                                        </span>
-                                        <span className="upload-hint">
-                                            {getFileStatusText()}
-                                        </span>
-                                        {files && files.length > 0 && (
-                                            <div className="file-count-badge">
-                                                {files.length} selecionado(s)
-                                            </div>
-                                        )}
+                                            <CloudUploadIcon />
+                                            <span className="upload-text">
+                                                {files && files.length > 0 ? "Arquivos Prontos!" : "Clique para Escolher Arquivos"}
+                                            </span>
+                                            <span className="upload-hint">
+                                                {getFileStatusText()}
+                                            </span>
+                                            {files && files.length > 0 && (
+                                                <div className="file-count-badge">
+                                                    {files.length} selecionado(s)
+                                                </div>
+                                            )}
                                     </label>
                                 </div>
                                 {/* --- FIM DA NOVA ESTRUTURA --- */}

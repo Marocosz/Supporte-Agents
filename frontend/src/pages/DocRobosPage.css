@@ -221,32 +221,72 @@
 .results-list {
     list-style-type: none;
     padding: 0;
+    margin-top: 20px;
 }
 
-/* Os itens de sucesso/erro mantêm cores fixas para contraste */
+/* Item de Sucesso (Estilizado como Flexbox para alinhar botão) */
 .result-item.success {
-    background-color: #e8f5e9;
-    border: 1px solid #a5d6a7;
-    color: #2e7d32;
+    background-color: var(--input-bg);
+    border: 1px solid var(--accent-green);
+    color: var(--text-primary);
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Para telas pequenas */
+    gap: 15px;
+    
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
+.file-name-text {
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+}
+
+/* Item de Erro */
 .result-item.error {
     background-color: #ffebee;
     border: 1px solid #ef9a9a;
     color: #c62828;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
     font-weight: 500;
 }
 
+/* Botão de Download Estilizado */
 .download-link {
-    /* Mantém cores fixas para contraste */
-    background-color: #a5d6a7; 
-    color: #1b5e20;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre ícone e texto */
+    background-color: var(--accent-green); 
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(46, 204, 113, 0.2);
 }
 
 .download-link:hover {
-    background-color: #81c784;
+    background-color: #27ae60; /* Verde um pouco mais escuro */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(46, 204, 113, 0.3);
 }
 
+.download-link:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(46, 204, 113, 0.2);
+}
+
+/* Botão Voltar */
 .btn-back {
     display: inline-block;
     margin-top: 30px;
