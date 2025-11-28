@@ -1,0 +1,61 @@
+services:
+  # --- Backend Qualidade ---
+  backend-qualidade:
+    build: 
+      context: ./backend-doc-qualidade
+      dockerfile: Dockerfile
+    container_name: supporte_qualidade_api
+    restart: always
+    volumes:
+      # Persistência do Banco Vetorial FAISS e Outputs
+      - ./backend-doc-qualidade/app/core/faiss_index:/app/app/core/faiss_index
+      - ./backend-doc-qualidade/app/outputs:/app/app/outputs
+      - ./backend-doc-qualidade/.env:/app/.env # Injeta o .env original
+    networks:
+      - internal-net
+
+  # --- Backend Robos ---
+  backend-robos:
+    build:
+      context: ./backend-doc-robos
+      dockerfile: Dockerfile
+    container_name: supporte_robos_api
+    restart: always
+    volumes:
+      - ./backend-doc-robos/docs_gerados:/app/docs_gerados
+      - ./backend-doc-robos/.env:/app/.env
+    networks:
+      - internal-net
+
+  # --- Frontend React ---
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # AQUI ESTÁ O TRUQUE: O front vai bater no Nginx Gateway, não direto no container
+        - VITE_API_QUALITY_URL=/api/qualidade
+    container_name: supporte_frontend
+    restart: always
+    networks:
+      - internal-net
+
+  # --- Reverse Proxy (Gateway) ---
+  nginx-gateway:
+    image: nginx:alpine
+    container_name: supporte_gateway
+    restart: always
+    ports:
+      - "80:80" # Porta que será exposta para o servidor/internet
+    volumes:
+      - ./nginx-gateway/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
+      - backend-qualidade
+      - backend-robos
+    networks:
+      - internal-net
+
+networks:
+  internal-net:
+    driver: bridge
