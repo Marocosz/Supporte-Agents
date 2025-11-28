@@ -43,15 +43,17 @@ const formatMessageContent = (content: string) => {
 
     let fixed = content;
 
-    // 1. CORREÇÃO DE TABELAS ACHATADAS
-    // Procura por padrões onde uma linha de tabela termina e outra começa na mesma linha.
-    // Ex: "| Col A | Col B | | Val 1 | Val 2 |" -> Vira -> "| Col A | Col B |\n| Val 1 | Val 2 |"
+    // 1. REMOÇÃO DE ARTEFATOS VISUAIS (Lógica de Conjunto)
+    // Remove crases soltas que estejam sozinhas em uma linha (comum em erros de LLM)
+    // A flag 'gm' aplica a regra para cada linha, não só inicio/fim da string total
+    fixed = fixed.replace(/^\s*`\s*$/gm, "");
     
-    // Caso 1: Separador de cabeçalho (Ex: | Título | | --- |)
-    fixed = fixed.replace(/\|\s*\|\s*([-:]{3,})/g, "|\n|$1");
+    // Limpeza de bordas gerais (mantida, mas ajustada)
+    fixed = fixed.replace(/^[\s`]+/, "");
+    fixed = fixed.replace(/[\s`]+$/, "");
 
-    // Caso 2: Linhas de dados (Ex: | Valor | | Valor |)
-    // O Regex procura: Pipe + Espaços + Pipe + Espaços + (Qualquer caractere que não seja quebra de linha)
+    // 2. CORREÇÃO DE TABELAS ACHATADAS
+    fixed = fixed.replace(/\|\s*\|\s*([-:]{3,})/g, "|\n|$1");
     fixed = fixed.replace(/\|\s*\|\s*(?=[^\|\n])/g, "|\n|");
 
     return fixed;
@@ -59,6 +61,7 @@ const formatMessageContent = (content: string) => {
 
 /**
  * Componente auxiliar para renderizar blocos de código de forma segura.
+ * ATUALIZADO: Agora usa variáveis CSS para suportar temas Claro/Escuro.
  */
 const SafeCodeBlock = (props: any) => {
     const { children, className, node, ...rest } = props;
@@ -67,24 +70,94 @@ const SafeCodeBlock = (props: any) => {
     if (isMermaid) {
         return (
             <div style={{
-                border: '1px dashed var(--border-color)',
-                padding: '10px',
-                borderRadius: '5px',
-                background: 'rgba(0,0,0,0.05)',
-                margin: '10px 0'
+                backgroundColor: 'var(--input-bg)', // Adapta ao tema (escuro ou claro)
+                color: 'var(--text-primary)',       // Adapta a cor do texto
+                borderRadius: '6px',
+                padding: '1rem',
+                margin: '1rem 0',
+                border: '1px solid var(--border-color)',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+                fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace'
             }}>
-                <div style={{ fontSize: '0.8em', color: 'var(--text-secondary)', marginBottom: '5px', fontStyle: 'italic' }}>
-                    Código Mermaid (Utilize o botão acima para visualizar)
+                <div style={{ 
+                    borderBottom: '1px solid var(--border-color)', 
+                    paddingBottom: '8px', 
+                    marginBottom: '8px',
+                    fontSize: '0.75rem',
+                    color: 'var(--text-secondary)',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                }}>
+                    <span style={{ fontWeight: 'bold' }}>MERMAID</span>
+                    <span style={{ fontSize: '0.85em', opacity: 0.8 }}>(Código Fonte)</span>
                 </div>
-                <code {...rest} style={{ whiteSpace: 'pre-wrap', fontSize: '0.9em', display: 'block', fontFamily: 'monospace' }}>
+                <code {...rest} style={{ 
+                    whiteSpace: 'pre-wrap', 
+                    fontSize: '0.9em', 
+                    display: 'block', 
+                    lineHeight: '1.5',
+                    color: 'var(--text-primary)'
+                }}>
                     {children}
                 </code>
             </div>
         );
     }
 
-    const safeClassName = className ? className.replace(/mermaid/gi, '') : '';
-    return <code {...rest} className={safeClassName}>{children}</code>;
+    // Estilo padrão para outros códigos que não sejam mermaid (inline codes)
+    return (
+        <code {...rest} className={className} style={{ 
+            background: 'var(--input-bg)', 
+            color: 'var(--accent-red)', // Destaque sutil para código inline
+            padding: '2px 5px', 
+            borderRadius: '4px',
+            border: '1px solid var(--border-color)',
+            fontSize: '0.9em'
+        }}>
+            {children}
+        </code>
+    );
+};
+
+// --- COMPONENTES PERSONALIZADOS PARA RENDERIZAÇÃO DE MARKDOWN (TABELAS) ---
+// ATUALIZADO: Agora usa variáveis CSS para suportar temas Claro/Escuro.
+const MarkdownComponents = {
+    code: SafeCodeBlock,
+    // Força estilos de tabela para garantir visualização correta no chat
+    table: (props: any) => (
+        <div style={{ overflowX: 'auto', margin: '1rem 0' }}>
+            <table {...props} style={{ 
+                borderCollapse: 'collapse', 
+                width: '100%', 
+                fontSize: '0.9rem',
+                color: 'var(--text-primary)' // Garante cor correta do texto
+            }} />
+        </div>
+    ),
+    thead: (props: any) => (
+        <thead {...props} style={{ 
+            backgroundColor: 'var(--input-bg)', // Fundo do cabeçalho adaptativo
+            color: 'var(--text-primary)'
+        }} />
+    ),
+    th: (props: any) => (
+        <th {...props} style={{ 
+            border: '1px solid var(--border-color)', 
+            padding: '10px', 
+            fontWeight: '600',
+            textAlign: 'left',
+            color: 'var(--text-primary)'
+        }} />
+    ),
+    td: (props: any) => (
+        <td {...props} style={{ 
+            border: '1px solid var(--border-color)', 
+            padding: '8px',
+            color: 'var(--text-primary)'
+        }} />
+    ),
+    tr: (props: any) => <tr {...props} />
 };
 
 
@@ -295,10 +368,10 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
                     {messages.map((msg, index) => (
                         msg.type === 'user' ? (
                             <div key={index} className="message-bubble type-user">
-                                {/* CORREÇÃO: Aplica formatMessageContent antes de renderizar */}
+                                {/* CORREÇÃO: Aplica formatMessageContent e usa MarkdownComponents */}
                                 <ReactMarkdown 
                                     remarkPlugins={[remarkGfm]}
-                                    components={{ code: SafeCodeBlock }}
+                                    components={MarkdownComponents}
                                 >
                                     {formatMessageContent(msg.content)}
                                 </ReactMarkdown>
@@ -311,10 +384,10 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
                             <div key={index} className="agent-message-block">
                                 <AgentPersona />
                                 <div className={`message-bubble type-${msg.type}`}>
-                                    {/* CORREÇÃO: Aplica formatMessageContent aqui também */}
+                                    {/* CORREÇÃO: Aplica formatMessageContent e usa MarkdownComponents */}
                                     <ReactMarkdown 
                                         remarkPlugins={[remarkGfm]}
-                                        components={{ code: SafeCodeBlock }}
+                                        components={MarkdownComponents}
                                     >
                                         {formatMessageContent(msg.content)}
                                     </ReactMarkdown>

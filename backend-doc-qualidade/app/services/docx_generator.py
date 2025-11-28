@@ -20,8 +20,8 @@ RESPONSABILIDADES CHAVE:
 2. **Numeração Automática:** Percorre a estrutura `corpo_documento` do JSON,
    aplicando numeração sequencial correta (Seção principal `secao_counter`,
    subseção `subsecao_counter`).
-3. **Estilização:** Aplica formatação consistente (fonte Arial, tamanhos
-   específicos, recuos) aos títulos e ao conteúdo do corpo.
+3. **Estilização e Parsing:** Aplica formatação consistente (fonte Arial). 
+   Agora inclui parsing de **Markdown** para gerar Tabelas reais e Negrito.
 4. **Persistência:** Salva o arquivo `.docx` no diretório de saídas
    configurado (`settings.OUTPUTS_PATH`).
 
@@ -30,6 +30,7 @@ O `ChatOrchestrator` chama a função `create_document` na última etapa
 do fluxo, passando o objeto `DocumentoFinalJSON` completo.
 """
 import logging
+import re
 from docx import Document
 from docx.shared import Pt, Inches, Cm, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -248,6 +249,133 @@ class DocxGenerator:
         table.columns[3].width = Cm(2.75)
         table.columns[4].width = Cm(2.75)
 
+    # --- NOVOS HELPERS DE PARSING (MARKDOWN/RICH TEXT) ---
+
+    def _process_markdown_text(self, paragraph, text):
+        """
+        Processa texto contendo Markdown simples (apenas negrito por enquanto)
+        e adiciona Runs formatados ao parágrafo.
+        Ex: "Texto com **negrito** aqui" -> 3 runs.
+        """
+        # Regex para capturar texto entre ** **
+        parts = re.split(r'(\*\*.*?\*\*)', text)
+        
+        for part in parts:
+            if part.startswith('**') and part.endswith('**') and len(part) > 4:
+                # É negrito
+                clean_text = part[2:-2] # Remove os asteriscos
+                run = paragraph.add_run(clean_text)
+                run.font.bold = True
+            else:
+                # Texto normal
+                run = paragraph.add_run(part)
+                run.font.bold = False
+            
+            # Aplica fonte base em todos os runs
+            run.font.name = self.FONT_NAME
+            run.font.size = self.FONT_SIZE_VALUE
+
+    def _create_table_from_markdown(self, document, lines, indent_cm):
+        """
+        Converte linhas de texto Markdown (tabela) em uma tabela real do Word.
+        """
+        # Filtra linhas vazias
+        rows_data = [line.strip() for line in lines if line.strip()]
+        
+        if not rows_data:
+            return
+
+        # Processa os dados da tabela
+        # Assume formato: | Col 1 | Col 2 |
+        parsed_rows = []
+        for row_str in rows_data:
+            # Remove pipes das pontas e separa pelo pipe interno
+            # Ex: "| A | B |" -> " A | B " -> [" A ", " B "]
+            if row_str.startswith('|'): row_str = row_str[1:]
+            if row_str.endswith('|'): row_str = row_str[:-1]
+            cols = [c.strip() for c in row_str.split('|')]
+            parsed_rows.append(cols)
+            
+        if not parsed_rows:
+            return
+
+        # Identifica se a segunda linha é separador (---|---)
+        has_header = False
+        if len(parsed_rows) > 1:
+            second_row = parsed_rows[1]
+            # Verifica se contém apenas traços, dois pontos ou espaços
+            is_separator = all(re.match(r'^[-:\s]+$', c) for c in second_row)
+            if is_separator:
+                has_header = True
+                parsed_rows.pop(1) # Remove a linha de separador
+
+        # Cria a tabela no Word
+        num_cols = max(len(r) for r in parsed_rows)
+        table = document.add_table(rows=len(parsed_rows), cols=num_cols)
+        table.style = 'Table Grid'
+        
+        # Tenta ajustar a largura (opcional, pode deixar automático)
+        table.autofit = True 
+        
+        # Preenche os dados
+        for i, row_data in enumerate(parsed_rows):
+            row_cells = table.rows[i].cells
+            for j, text in enumerate(row_data):
+                if j < len(row_cells):
+                    cell = row_cells[j]
+                    # Se for cabeçalho (linha 0 e tinha separador), formata diferente
+                    if i == 0 and has_header:
+                         # Cabeçalho Laranja
+                        self._set_cell_text(cell, "", bold=True, align='CENTER')
+                        self._process_markdown_text(cell.paragraphs[0], text)
+                        cell.paragraphs[0].runs[0].font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
+                        self._set_cell_shading(cell, self.COR_LARANJA_CABECALHO)
+                    else:
+                        # Célula Normal
+                        cell.text = "" # Limpa default
+                        p = cell.paragraphs[0]
+                        self._process_markdown_text(p, text)
+
+        # Adiciona um pequeno espaçamento após a tabela
+        document.add_paragraph().paragraph_format.space_after = Pt(6)
+
+    def _render_rich_content(self, document, content, indent_cm):
+        """
+        Analisa o conteúdo string. Se detectar formato de tabela Markdown,
+        renderiza uma tabela Word. Caso contrário, renderiza parágrafos com suporte a negrito.
+        """
+        if not content:
+            return
+
+        lines = content.split('\n')
+        table_buffer = []
+        in_table_mode = False
+
+        for line in lines:
+            stripped = line.strip()
+            # Detecta início ou continuação de tabela (começa e termina com pipe ou é linha interna de tabela)
+            # Regex simples: começa com |
+            if stripped.startswith('|'):
+                in_table_mode = True
+                table_buffer.append(stripped)
+            else:
+                if in_table_mode:
+                    # Fim da tabela detectado. Renderiza o buffer.
+                    self._create_table_from_markdown(document, table_buffer, indent_cm)
+                    table_buffer = []
+                    in_table_mode = False
+                
+                # Renderiza linha normal (se não for vazia, ou se for vazia mas relevante)
+                if stripped or (not stripped and not in_table_mode):
+                    # Cria parágrafo normal
+                    p = document.add_paragraph()
+                    self._process_markdown_text(p, line) # Usa o parser de negrito
+                    p.paragraph_format.left_indent = Cm(indent_cm)
+        
+        # Se sobrou algo no buffer no final do texto
+        if table_buffer:
+            self._create_table_from_markdown(document, table_buffer, indent_cm)
+
     # --- FIM DAS FUNÇÕES HELPER ---
 
     # --- FUNÇÃO PRINCIPAL DO SERVIÇO ---
@@ -277,7 +405,9 @@ class DocxGenerator:
         section.right_margin = Cm(2.54)
         section.top_margin = Cm(2.54)
         section.bottom_margin = Cm(2.54)
-        section.header_distance = Pt(0) # Remove espaço extra do cabeçalho
+        
+        # CORREÇÃO DE ESPAÇAMENTO: Aumentado para evitar colisão nas páginas seguintes
+        section.header_distance = Cm(1.0) 
         
         # 2. Construção do Cabeçalho
         header = section.header
@@ -324,11 +454,11 @@ class DocxGenerator:
         
         # Numeração de Página (célula 1, 4) - Usa a função com campo dinâmico
         p_label, p_value = self._set_cell_label_value(header_table.cell(1, 4), 'Página', '',
-                                               bold_label=False, bold_value=True)
+                                              bold_label=False, bold_value=True)
 
         # Título do Documento (célula 2, 1)
         p_title = self._set_cell_text(header_table.cell(2, 1), data.titulo_documento, 
-                                 bold=True, size=12, align='CENTER')
+                                  bold=True, size=12, align='CENTER')
         header_table.cell(2, 1).vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
         
         # Merge de células no cabeçalho (Lógica de layout complexa)
@@ -379,14 +509,9 @@ class DocxGenerator:
                 p_format.space_before = Pt(12)
             p_format.space_after = Pt(6)
 
-            # --- Conteúdo da Seção (Texto Principal) ---
-            p_text = document.add_paragraph(secao.conteudo)
-            if not secao.conteudo: p_text.text = ""
-            # Adiciona formatação ao texto
-            run_text = p_text.runs[0] if p_text.runs else p_text.add_run("")
-            run_text.font.name = self.FONT_NAME
-            run_text.font.size = self.FONT_SIZE_VALUE
-            p_text.paragraph_format.left_indent = Cm(0.5) # Recua o texto principal (mesmo recuo do título)
+            # --- Conteúdo da Seção (Texto Principal ou Tabela Markdown) ---
+            # Substituído add_paragraph simples por renderizador inteligente
+            self._render_rich_content(document, secao.conteudo, indent_cm=0.5)
 
             # --- Loop de Subseções (Nível 2) ---
             subsecao_counter = 1
@@ -405,14 +530,8 @@ class DocxGenerator:
                 p_sub_format.space_before = Pt(10)
                 p_sub_format.space_after = Pt(4)
                 
-                # Conteúdo da Subseção (Texto)
-                p_sub_text = document.add_paragraph(subsecao.conteudo)
-                if not subsecao.conteudo: p_sub_text.text = ""
-                # Adiciona formatação ao texto da subseção
-                run_sub_text = p_sub_text.runs[0] if p_sub_text.runs else p_sub_text.add_run("")
-                run_sub_text.font.name = self.FONT_NAME
-                run_sub_text.font.size = self.FONT_SIZE_VALUE
-                p_sub_text.paragraph_format.left_indent = Cm(1.0) # Recua o texto (mesmo recuo do título)
+                # Conteúdo da Subseção (Texto ou Tabela Markdown)
+                self._render_rich_content(document, subsecao.conteudo, indent_cm=1.0)
                 
                 subsecao_counter += 1 # Incrementa o contador da subseção
             

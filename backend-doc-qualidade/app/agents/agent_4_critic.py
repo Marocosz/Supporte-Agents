@@ -149,46 +149,45 @@ class Agent4Critic:
 
     def _sanitize_mermaid(self, code: str) -> str:
         """
-        Remove wrappers de código Markdown (```mermaid...```) e espaços
-        extras que frequentemente são gerados pelo LLM e quebram renderizadores.
+        Limpa o código Mermaid e garante que ele seja retornado
+        dentro de um bloco de código Markdown para exibição correta.
         """
-        # Remove blocos ```[linguagem] ... ```
-        clean = re.sub(r"```\w*\n", "", code)
+        # 1. Limpeza inicial (remove crases existentes para não duplicar)
+        clean = re.sub(r"```\w*\n?", "", code)
         clean = clean.replace("```", "")
         clean = clean.strip()
         
-        # --- ALTERAÇÃO DE SEGURANÇA EXTRA ---
-        # Se o código vier todo em uma linha (sem \n), tentamos forçar a quebra.
+        # 2. Correção de segurança (ponto e vírgula)
         if "\n" not in clean and ";" in clean:
-             # Se vier achatado com ponto e vírgula, trocamos por quebra de linha
              clean = clean.replace(";", ";\n")
         
-        return clean
+        # 3. EMPACOTAMENTO FINAL (A mudança chave)
+        # Envolvemos o código limpo nas crases do markdown indicando a linguagem mermaid.
+        # Isso faz o frontend renderizar "o quadrado de md" que você pediu.
+        return f"```mermaid\n{clean}\n```"
+
 
     def _sanitize_table(self, content: str) -> str:
         """
-        Garante que tabelas Markdown tenham quebras de linha corretas.
-        Se o LLM gerar '... | | ...', forçamos a quebra para renderizar corretamente.
+        Garante que tabelas Markdown estejam limpas de artefatos.
         """
+        # Limpeza inicial de espaços para garantir que o regex pegue as bordas
         clean = content.strip()
-        
-        # Estratégia de correção de tabelas achatadas (flat tables)
-        # O LLM às vezes gera: | A | B | | - | - | | C | D |
-        # Precisamos transformar em:
-        # | A | B |
-        # | - | - |
-        # | C | D |
-        
-        # 1. Detecta separador de cabeçalho achatado (Ex: | Header | | --- |)
-        # Procura por pipe, espaços opcionais, pipe, espaços opcionais, hífen ou dois pontos
+
+        # 1. REMOÇÃO DE BLOCOS DE CÓDIGO (MD) OU CRASES SOLTAS
+        # Regex ajustado: Pega ``` ou ` (1 a 3 crases) no início, opcionalmente com palavra (ex: markdown)
+        clean = re.sub(r"^[`]{1,3}\w*\s*", "", clean)
+        # Regex ajustado: Pega ``` ou ` (1 a 3 crases) no final
+        clean = re.sub(r"\s*[`]{1,3}$", "", clean)
+
+        # 2. LIMPEZA "NUCLEAR" DAS PONTAS (Reforço)
+        clean = clean.strip(" \n\r\t`")
+            
+        # 3. Estratégia de correção de tabelas achatadas
         clean = re.sub(r'\|\s*\|\s*([-:])', r'|\n|\1', clean)
-        
-        # 2. Detecta separador de linhas de dados achatadas (Ex: | Data | | Data |)
-        # Procura por pipe, espaços opcionais, pipe, E garante que não quebrou linha ainda
-        # O lookahead (?![-\n]) evita quebrar de novo se já tiver o hífen (tratado acima) ou se já tiver newline
         clean = re.sub(r'\|\s*\|\s*(?![-:\n])', r'|\n|', clean)
             
-        return clean
+        return f"\n\n{clean}\n\n"
 
     async def get_qa_analysis(self, rascunho_aprovado: Dict[str, str]) -> Dict[str, List[Dict[str, Any]]]:
         """
