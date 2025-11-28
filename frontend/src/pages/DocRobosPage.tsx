@@ -44,11 +44,6 @@ const DocRobosPage: React.FC = () => {
         e.preventDefault();
         if (!files || files.length === 0) return;
 
-        // Usei um modal customizado no lugar de alert, pois alert() é proibido em produção
-        if (typeof alert !== 'undefined') {
-            alert('Atenção: A função alert() será substituída por um modal customizado em produção.');
-        }
-
         setIsLoading(true);
 
         const formData = new FormData();

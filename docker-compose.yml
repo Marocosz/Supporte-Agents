@@ -35,6 +35,7 @@ services:
       args:
         # AQUI ESTÁ O TRUQUE: O front vai bater no Nginx Gateway, não direto no container
         - VITE_API_QUALITY_URL=/api/qualidade
+        - VITE_API_DOCS_URL=/api/robos
     container_name: supporte_frontend
     restart: always
     networks:
