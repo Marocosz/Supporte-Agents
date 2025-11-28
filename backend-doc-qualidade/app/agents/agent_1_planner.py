@@ -68,30 +68,27 @@ Sua especialidade é criar estruturas de documentos (Sumários) alinhados à ISO
 
 ### TAREFA
 Analise o [RESUMO DO USUÁRIO] e crie um Sumário (Tabela de Conteúdo) estruturado.
-Utilize o [CONTEXTO RAG] apenas como referência de padrão/nomenclatura.
 
-### FONTES DE INFORMAÇÃO
-1. **[RESUMO DO USUÁRIO]** (Prioridade Máxima): O que o documento DEVE conter.
-2. **[CONTEXTO RAG]** (Prioridade Secundária): Exemplos de PGPs anteriores para manter consistência.
-
-Importante: Todo o sumário deve ser produzido exclusivamente com base no resumo fornecido pelo usuário. O material do RAG é apenas referência de estilo e estrutura, e nunca deve introduzir conteúdo factual que não esteja no resumo.
+### HIERARQUIA DE VERDADE (OBRIGATÓRIO)
+1. **[RESUMO DO USUÁRIO] (A LEI SUPREMA):** O processo descrito aqui deve ser a espinha dorsal da estrutura. Se o usuário mencionou passos específicos (ex: "Área de Quarentena", "Teste TI", "Logística Reversa"), essas etapas DEVEM aparecer explicitamente no sumário.
+2. **[CONTEXTO RAG] (REFERÊNCIA DE ESTILO):** Use apenas para saber se chamamos de "Objetivo" ou "Objetivos", "Definições" ou "Glossário". **NUNCA** use o conteúdo do RAG para substituir ou adicionar etapas que contradigam ou poluam o processo específico do usuário.
 
 ### DIRETRIZES DE RACIOCÍNIO (Chain of Thought - CoT)
-1. **Classifique:** Identifique o tipo de documento (Procedimento, Manual, Política, Fluxo).
-2. **Padronize:** Se for um PGP, inclua obrigatoriamente: 'Objetivo', 'Aplicação', 'Definições'.
-3. **Adapte:** Se o usuário pediu algo específico (ex: "focar em segurança"), crie seções específicas para isso.
+1. **Analise o Processo:** Leia o resumo do usuário. Quais são as etapas chave? (Ex: Se ele falou de "Devolução de Modem", crie seções para "Coleta", "Triagem/Quarentena", "Testes", "Destinação").
+2. **Padronize:** Inclua obrigatoriamente as seções padrão ISO: 'Objetivo', 'Aplicação', 'Definições'.
+3. **Adapte:** O "corpo" do documento deve refletir a história contada pelo usuário, não um modelo genérico.
 4. **Limpe:** Remova numerações (1., 2.) e balas (-).
 
 ### REGRAS DE EXCLUSÃO (Negative Constraints)
 - NÃO invente siglas que não estejam no texto.
 - NÃO inclua "Bibliografia" ou "Anexos" a menos que seja estritamente necessário.
-- NÃO copie seções do RAG que não façam sentido para o Resumo do Usuário.
+- NÃO copie seções do RAG que não façam sentido para o Resumo do Usuário (ex: se o usuário pediu Logística, não inclua tópicos de RH ou Treinamento só porque apareceram no RAG).
 
 ---
-[CONTEXTO RAG (Histórico da Empresa)]
+[CONTEXTO RAG (Apenas para nomes de seções padrão)]
 {contexto_rag}
 ---
-[RESUMO DO USUÁRIO (Solicitação Atual)]
+[RESUMO DO USUÁRIO (O Processo Real a ser Mapeado)]
 {user_summary}
 ---
 
