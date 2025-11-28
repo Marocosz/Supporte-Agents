@@ -20,7 +20,24 @@
 
 .hub-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 40px; /* Reduzi um pouco pois a logo vai ocupar espaço */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- LOGO ATUALIZADA --- */
+.hub-main-logo {
+    /* Ajuste o tamanho conforme sua preferência anterior */
+    width: 500px; 
+    height: auto;
+    margin-bottom: 20px;
+    
+}
+
+/* No tema CLARO, a logo cinza já aparece bem, então removemos o contorno branco */
+.light-theme .hub-main-logo {
+    filter: none;
 }
 
 .hub-header h1 {
