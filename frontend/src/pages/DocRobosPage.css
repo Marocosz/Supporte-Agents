@@ -64,7 +64,88 @@
     margin-bottom: 8px;
 }
 
-.form-input-file,
+/* --- NOVO ESTILO PARA O UPLOAD DE ARQUIVO (MODERNO) --- */
+
+/* Esconde o input original feio do navegador */
+.hidden-input {
+    display: none;
+}
+
+/* O Container do botão customizado (Área de Upload) */
+.custom-file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    margin-top: 5px;
+    background-color: var(--input-bg); /* Usa a variável do tema */
+    border: 2px dashed var(--border-color); /* Borda tracejada moderna */
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+/* Efeito Hover na área de upload */
+.custom-file-upload:hover {
+    border-color: var(--accent-blue);
+    background-color: rgba(58, 134, 255, 0.05); /* Leve tint azul */
+    transform: translateY(-2px);
+}
+
+/* Ícone de Upload SVG */
+.upload-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+    color: var(--accent-blue);
+    opacity: 0.8;
+    transition: transform 0.3s ease;
+}
+
+.custom-file-upload:hover .upload-icon {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Texto Principal do Upload */
+.upload-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+/* Texto Secundário (extensões) */
+.upload-hint {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Estado visual quando arquivos estão selecionados */
+.custom-file-upload.has-files {
+    border-style: solid;
+    border-color: var(--accent-green);
+    background-color: rgba(46, 204, 113, 0.05);
+}
+
+/* Badge indicando quantidade de arquivos */
+.file-count-badge {
+    margin-top: 10px;
+    background-color: var(--accent-blue);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* --- FIM DO NOVO ESTILO DE UPLOAD --- */
+
+
+/* MANTENDO ESTILOS DO TEXTAREA ORIGINAL */
 .form-textarea {
     width: 100%;
     padding: 12px;
@@ -76,27 +157,14 @@
     background-color: var(--input-bg); /* Variável */
     color: var(--text-primary); /* Variável */
     font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
 }
 
-.form-input-file:focus,
 .form-textarea:focus {
     outline: none;
     border-color: var(--accent-blue); /* Variável */
     box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
-}
-
-.form-input-file::file-selector-button {
-    background: var(--accent-blue);
-    color: white;
-}
-
-.form-input-file:focus::file-selector-button:hover {
-    background: var(--accent-blue-dark);
-}
-
-.form-textarea {
-    resize: vertical;
-    min-height: 100px;
 }
 
 .btn-submit {

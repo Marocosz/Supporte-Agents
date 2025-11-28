@@ -10,6 +10,15 @@ interface GeneratedResults {
     erros: string[];
 }
 
+// Ícone SVG para a nova área de upload
+const CloudUploadIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="upload-icon">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="17 8 12 3 7 8" />
+        <line x1="12" y1="3" x2="12" y2="15" />
+    </svg>
+);
+
 const DocRobosPage: React.FC = () => {
     // --- ESTADOS ---
     const [files, setFiles] = useState<FileList | null>(null);
@@ -19,7 +28,7 @@ const DocRobosPage: React.FC = () => {
 
     // --- HANDLERS ---
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files) {
+        if (e.target.files && e.target.files.length > 0) {
             setFiles(e.target.files);
         }
     };
@@ -71,6 +80,13 @@ const DocRobosPage: React.FC = () => {
         } finally {
             setIsLoading(false);
         }
+    };
+
+    // Helper para exibir o texto de status do upload
+    const getFileStatusText = () => {
+        if (!files || files.length === 0) return "Clique para selecionar arquivos";
+        if (files.length === 1) return `1 arquivo selecionado: ${files[0].name}`;
+        return `${files.length} arquivos selecionados`;
     };
 
     // --- RENDERIZAÇÃO ---
@@ -145,17 +161,39 @@ const DocRobosPage: React.FC = () => {
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label className="form-label" htmlFor="arquivos">
-                                    Selecione os arquivos (.py ou .pas):
+                                    Arquivos do Projeto (.py ou .pas):
                                 </label>
-                                <input 
-                                    type="file" 
-                                    id="arquivos" 
-                                    className="form-input-file"
-                                    multiple 
-                                    required
-                                    onChange={handleFileChange}
-                                    accept=".py,.pas,.txt" // Adicione as extensões aceitas
-                                />
+                                
+                                {/* --- NOVA ESTRUTURA DE UPLOAD (LABEL + INPUT HIDDEN) --- */}
+                                <div className="file-upload-wrapper">
+                                    <input 
+                                        type="file" 
+                                        id="arquivos" 
+                                        className="hidden-input"
+                                        multiple 
+                                        required
+                                        onChange={handleFileChange}
+                                        accept=".py,.pas,.txt" 
+                                    />
+                                    <label 
+                                        htmlFor="arquivos" 
+                                        className={`custom-file-upload ${files && files.length > 0 ? 'has-files' : ''}`}
+                                    >
+                                        <CloudUploadIcon />
+                                        <span className="upload-text">
+                                            {files && files.length > 0 ? "Arquivos Prontos!" : "Clique para Escolher Arquivos"}
+                                        </span>
+                                        <span className="upload-hint">
+                                            {getFileStatusText()}
+                                        </span>
+                                        {files && files.length > 0 && (
+                                            <div className="file-count-badge">
+                                                {files.length} selecionado(s)
+                                            </div>
+                                        )}
+                                    </label>
+                                </div>
+                                {/* --- FIM DA NOVA ESTRUTURA --- */}
                             </div>
 
                             <div className="form-group">

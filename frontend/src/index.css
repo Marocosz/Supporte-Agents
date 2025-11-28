@@ -1,35 +1,37 @@
-/* 1. Define as variáveis de cores para CLARO e ESCURO */
+/* ARQUIVO: frontend/src/index.css */
+
+/* 1. Define as variáveis de cores para CLARO (Padrão) */
 :root {
   /* --- Fonte Global --- */
-  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* --- Cores de Acento (Compartilhadas) --- */
   --accent-blue: #3a86ff;
   --accent-blue-dark: #0056b3;
   --accent-red: #ff4d4d;
   --accent-green: #2ecc71;
-  --primary-color: #2563eb;
+  --primary-color: #3a86ff;
 
-  /* --- TEMA CLARO (Padrão) --- */
-  --bg-page: #f8fafc;        /* Fundo da página */
-  --bg-card: #ffffff;        /* Fundo de cards/modais */
-  --text-primary: #1e293b;   /* Texto principal (escuro) */
-  --text-secondary: #64748b; /* Texto secundário */
-  --border-color: #e2e8f0;   /* Bordas */
-  --input-bg: #f1f5f9;       /* Fundo de inputs */
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  /* --- TEMA CLARO (Neutro / Cinza Gelo) --- */
+  --bg-page: #f2f2f2;        /* Cinza neutro, sem azul (tipo cimento bem claro) */
+  --bg-card: #ffffff;        /* Branco puro */
+  --text-primary: #121212;   /* Preto padrão */
+  --text-secondary: #555555; /* Cinza médio */
+  --border-color: #dcdcdc;   /* Cinza neutro */
+  --input-bg: #e8e8e8;       /* Input levemente mais escuro que o fundo */
+  --shadow-color: rgba(0, 0, 0, 0.08); /* Sombra preta suave */
 }
 
 /* Sobrescreve as variáveis quando o tema for ESCURO */
 [data-theme='dark'] {
-  --bg-page: #121212;        /* Fundo escuro (User preference) */
-  --bg-card: #1e1e1e;        /* Superfície escura */
+  --bg-page: #121212;        /* Preto clássico (como estava antes) */
+  --bg-card: #1e1e1e;        /* Superfície cinza escuro padrão */
   --text-primary: #e0e0e0;   /* Texto claro */
-  --text-secondary: #a0a0e0; /* Texto secundário azulado */
+  --text-secondary: #aaaaaa; /* Texto secundário */
   --border-color: #333333;   /* Bordas escuras */
   --input-bg: #2a2a2a;       /* Input escuro */
   --shadow-color: rgba(0, 0, 0, 0.5);
-  --primary-color: #3b82f6;  /* Azul mais claro para contraste no escuro */
+  --primary-color: #3b82f6;  
 }
 
 /* 2. Aplica o tema global */
@@ -48,9 +50,6 @@ body {
   min-height: 100vh;
   width: 100vw;
   
-  /* MUDANÇA IMPORTANTE: */
-  /* overflow: hidden foi removido/alterado. O Hub precisa de scroll vertical. */
-  /* O ChatPage deve gerenciar seu próprio 'overflow: hidden' internamente se precisar. */
   overflow-x: hidden; 
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -62,12 +61,11 @@ body {
 /* 3. O #root ocupa a tela */
 #root {
   width: 100%;
-  height: 100%; /* Pode herdar o min-height do body */
+  height: 100%;
   padding: 0;
 }
 
-/* --- Alias de Compatibilidade (Para não quebrar código antigo do Chat) --- */
-/* Mapeamos as variáveis antigas para as novas variáveis dinâmicas */
+/* --- Alias de Compatibilidade --- */
 :root {
   --background-dark: var(--bg-page);
   --surface-dark: var(--bg-card);
