@@ -21,7 +21,7 @@ RESPONSABILIDADES CHAVE:
    aplicando numeração sequencial correta (Seção principal `secao_counter`,
    subseção `subsecao_counter`).
 3. **Estilização e Parsing:** Aplica formatação consistente (fonte Arial). 
-   Agora inclui parsing de **Markdown** para gerar Tabelas reais e Negrito.
+   Agora inclui parsing de **Markdown** para gerar Tabelas reais, Negrito e Listas.
 4. **Persistência:** Salva o arquivo `.docx` no diretório de saídas
    configurado (`settings.OUTPUTS_PATH`).
 
@@ -341,8 +341,10 @@ class DocxGenerator:
 
     def _render_rich_content(self, document, content, indent_cm):
         """
-        Analisa o conteúdo string. Se detectar formato de tabela Markdown,
-        renderiza uma tabela Word. Caso contrário, renderiza parágrafos com suporte a negrito.
+        Analisa o conteúdo string. 
+        1. Se detectar formato de tabela Markdown, renderiza uma tabela Word.
+        2. Se detectar formato de lista (* Item), renderiza lista com bullets.
+        3. Caso contrário, renderiza parágrafos com suporte a negrito.
         """
         if not content:
             return
@@ -353,8 +355,8 @@ class DocxGenerator:
 
         for line in lines:
             stripped = line.strip()
-            # Detecta início ou continuação de tabela (começa e termina com pipe ou é linha interna de tabela)
-            # Regex simples: começa com |
+            
+            # --- DETECÇÃO DE TABELA ---
             if stripped.startswith('|'):
                 in_table_mode = True
                 table_buffer.append(stripped)
@@ -367,12 +369,26 @@ class DocxGenerator:
                 
                 # Renderiza linha normal (se não for vazia, ou se for vazia mas relevante)
                 if stripped or (not stripped and not in_table_mode):
-                    # Cria parágrafo normal
-                    p = document.add_paragraph()
-                    self._process_markdown_text(p, line) # Usa o parser de negrito
-                    p.paragraph_format.left_indent = Cm(indent_cm)
+                    
+                    # --- DETECÇÃO DE LISTA (NOVO) ---
+                    # Verifica se começa com "* " ou "- " para criar Bullet List
+                    if stripped.startswith('* ') or stripped.startswith('- '):
+                        # Cria parágrafo com estilo de Lista
+                        p = document.add_paragraph(style='List Bullet')
+                        
+                        # Remove o marcador (* ) para não duplicar
+                        texto_limpo = stripped[2:] 
+                        self._process_markdown_text(p, texto_limpo)
+                        
+                        # Mantém a indentação hierárquica solicitada + indentação da lista
+                        p.paragraph_format.left_indent = Cm(indent_cm)
+                    else:
+                        # Texto Normal
+                        p = document.add_paragraph()
+                        self._process_markdown_text(p, line) # Usa o parser de negrito
+                        p.paragraph_format.left_indent = Cm(indent_cm)
         
-        # Se sobrou algo no buffer no final do texto
+        # Se sobrou algo no buffer no final do texto (Tabela no final)
         if table_buffer:
             self._create_table_from_markdown(document, table_buffer, indent_cm)
 
@@ -403,10 +419,16 @@ class DocxGenerator:
         # Margens A4 padrão
         section.left_margin = Cm(2.54)
         section.right_margin = Cm(2.54)
-        section.top_margin = Cm(2.54)
+        
+        # --- ALTERAÇÃO SOLICITADA: ESPAÇO NO CABEÇALHO ---
+        # Aumentamos a margem superior para 4.0cm. Isso garante que o texto do corpo
+        # comece bem abaixo da tabela do cabeçalho em TODAS as páginas, 
+        # criando o efeito de "shift enter" ou espaço em branco solicitado.
+        section.top_margin = Cm(4.0) 
+        
         section.bottom_margin = Cm(2.54)
         
-        # CORREÇÃO DE ESPAÇAMENTO: Aumentado para evitar colisão nas páginas seguintes
+        # Distância do cabeçalho até a borda do papel
         section.header_distance = Cm(1.0) 
         
         # 2. Construção do Cabeçalho
@@ -509,7 +531,7 @@ class DocxGenerator:
                 p_format.space_before = Pt(12)
             p_format.space_after = Pt(6)
 
-            # --- Conteúdo da Seção (Texto Principal ou Tabela Markdown) ---
+            # --- Conteúdo da Seção (Texto, Tabela, LISTAS) ---
             # Substituído add_paragraph simples por renderizador inteligente
             self._render_rich_content(document, secao.conteudo, indent_cm=0.5)
 
@@ -530,7 +552,7 @@ class DocxGenerator:
                 p_sub_format.space_before = Pt(10)
                 p_sub_format.space_after = Pt(4)
                 
-                # Conteúdo da Subseção (Texto ou Tabela Markdown)
+                # Conteúdo da Subseção (Texto, Tabela, LISTAS)
                 self._render_rich_content(document, subsecao.conteudo, indent_cm=1.0)
                 
                 subsecao_counter += 1 # Incrementa o contador da subseção
