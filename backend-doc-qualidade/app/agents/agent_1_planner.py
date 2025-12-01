@@ -140,7 +140,7 @@ class Agent1Planner:
             # Concatena o conteúdo dos documentos e limita a 4000 caracteres
             # (Limite pragmático para manter o contexto relevante e não estourar o contexto do LLM)
             context_text = "\n\n".join([d.page_content for d in docs])
-            return context_text[:4000] 
+            return context_text[:10000] 
         except Exception as e:
             logger.error(f"[RAG] Erro ao buscar contexto: {e}")
             return "Erro ao recuperar contexto histórico."
