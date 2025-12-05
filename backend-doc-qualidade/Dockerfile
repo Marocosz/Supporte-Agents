@@ -14,6 +14,8 @@ RUN pip install --no-cache-dir torch torchvision torchaudio --index-url https://
 COPY requirements.prod.txt .
 RUN pip install --no-cache-dir -r requirements.prod.txt
 
+RUN python -m spacy download pt_core_news_lg
+
 # 3. Copia o código
 COPY . .
 
