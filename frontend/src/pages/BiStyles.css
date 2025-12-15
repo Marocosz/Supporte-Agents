@@ -119,7 +119,7 @@
 
 .bi-kpi-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Aumentado minmax */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1.5rem;
     margin-bottom: 2.5rem;
 }
@@ -189,7 +189,7 @@
 .bi-charts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 2rem; /* Aumentado o gap */
+    gap: 2rem;
     padding-bottom: 2rem;
 }
 
@@ -198,7 +198,7 @@
     padding: 1.5rem;
     border-radius: 12px;
     border: 1px solid var(--border-color);
-    min-height: 400px; /* Garante altura mínima para não apertar */
+    min-height: 400px;
     display: flex;
     flex-direction: column;
 }
@@ -283,7 +283,8 @@
 .bi-message-wrapper {
     display: flex;
     gap: 15px;
-    max-width: 90%; /* Aumentado um pouco para caber gráficos */
+    max-width: 95%;
+    /* Quase toda a largura */
     animation: fadeIn 0.3s ease;
 }
 
@@ -313,13 +314,14 @@
 
 .bi-message-bubble {
     background-color: var(--surface-dark);
-    padding: 15px 20px;
+    padding: 20px;
     border-radius: 18px;
     border-top-left-radius: 4px;
     line-height: 1.5;
     color: var(--text-primary);
     border: 1px solid var(--border-color);
     min-width: 100px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .bi-message-wrapper.user .bi-message-bubble {
@@ -331,21 +333,38 @@
 }
 
 /* --- ESTILOS NOVOS PARA O GRÁFICO NO CHAT --- */
-/* Isso resolve o problema de estar "apertado" */
 .bi-chat-chart-container {
     width: 100%;
-    /* Mínimo confortável para não esmagar as legendas */
-    min-width: 500px; 
-    /* Altura fixa garante que o Recharts renderize corretamente */
-    height: 350px; 
-    margin-bottom: 15px; /* Espaço para não encostar no texto ou botão */
+    min-width: 1200px;
+    /* Largura mínima saudável */
+    height: 400px;
+    /* Altura fixa boa para leitura */
+    margin-bottom: 20px;
+    position: relative;
 }
 
-/* Em telas pequenas, permite diminuir, mas mantendo altura */
+/* Título do Gráfico dentro do Chat */
+.bi-chart-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: block;
+    /* Garante bloco */
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
     .bi-chat-chart-container {
         min-width: 100%;
-        height: 300px;
+        height: 350px;
+    }
+
+    .bi-message-wrapper {
+        max-width: 100%;
     }
 }
 
@@ -366,14 +385,29 @@
 }
 
 @keyframes blink {
-    0% { opacity: 0.2; }
-    20% { opacity: 1; }
-    100% { opacity: 0.2; }
+    0% {
+        opacity: 0.2;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Botões de Query */
@@ -410,7 +444,7 @@
     color: var(--text-secondary);
     border: 1px solid var(--border-color);
     overflow-x: auto;
-    white-space: pre-wrap; /* Quebra linha se a query for longa */
+    white-space: pre-wrap;
 }
 
 /* Scrollbars */

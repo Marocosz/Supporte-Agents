@@ -21,10 +21,10 @@ const BiChatMessage: React.FC<{ message: BiMessageType }> = ({ message }) => {
         {/* Lógica de Renderização do Conteúdo */}
         {content.type === 'chart' ? (
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-                {/* Título do Gráfico (opcional, se vier no JSON) */}
-                {content.title && <strong style={{ marginBottom: '10px', display: 'block', fontSize: '1.1rem' }}>{content.title}</strong>}
+                {/* Título do Gráfico Centralizado */}
+                {content.title && <span className="bi-chart-title">{content.title}</span>}
                 
-                {/* Container dedicado ao gráfico com altura fixa definida no CSS (.bi-chat-chart-container) */}
+                {/* Container dedicado ao gráfico */}
                 <div className="bi-chat-chart-container">
                     <BiChart data={content as any} />
                 </div>
