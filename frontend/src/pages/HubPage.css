@@ -53,9 +53,10 @@
 
 .hub-grid {
     display: grid;
+    /* Alterado: max-width aumentado para 1200px para permitir 3 cards na mesma linha */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    max-width: 800px;
+    max-width: 1200px; 
     width: 90%;
 }
 
@@ -75,6 +76,7 @@
     cursor: pointer;
 }
 
+/* A borda superior colorida é controlada por este ::before */
 .hub-card::before {
     content: '';
     position: absolute;
@@ -82,8 +84,8 @@
     left: 0;
     width: 100%;
     height: 4px;
-    background: var(--primary-color); /* Variável global */
-    opacity: 0.5;
+    background: var(--primary-color); /* Cor padrão fallback */
+    opacity: 0.8;
 }
 
 .hub-card:hover {
@@ -131,6 +133,7 @@
     display: inline-block;
 }
 
-/* Cores específicas de acento dos cards */
+/* Cores específicas de acento das bordas superiores dos cards */
 .hub-card.quali::before { background: var(--accent-blue); }
 .hub-card.robo::before { background: var(--accent-green); }
+.hub-card.bi::before { background: #5e72e4; } /* Cor roxa/azul específica para o BI */

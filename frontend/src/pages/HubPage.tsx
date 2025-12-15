@@ -36,7 +36,7 @@ const HubPage: React.FC = () => {
             </div>
 
             <div className="hub-grid">
-                {/* Card 1 */}
+                {/* Card 1 - Agente Qualidade */}
                 <Link to="/agentqualidade" className="hub-card quali">
                     <div className="hub-card-icon">🧠</div>
                     <h2>Agente de Qualidade IA</h2>
@@ -46,11 +46,22 @@ const HubPage: React.FC = () => {
                     </div>
                 </Link>
 
-                {/* Card 2 */}
+                {/* Card 2 - Gerador Docs Robôs */}
                 <Link to="/agentdocrobos" className="hub-card robo">
                     <div className="hub-card-icon">🤖</div>
                     <h2>Gerador Docs Robôs</h2>
                     <p>Documentação automática de processos RPA.</p>
+                    <div className="hub-status-badge">
+                        <span className="hub-status-dot"></span> Online
+                    </div>
+                </Link>
+
+                {/* Card 3 - NOVO: Supporte BI */}
+                {/* Alterado: Removido style inline, adicionada classe 'bi' para controle via CSS */}
+                <Link to="/agentbi" className="hub-card bi">
+                    <div className="hub-card-icon">📊</div>
+                    <h2>Supporte BI</h2>
+                    <p>Dashboard analítico e chat SQL para dados logísticos.</p>
                     <div className="hub-status-badge">
                         <span className="hub-status-dot"></span> Online
                     </div>

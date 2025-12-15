@@ -1,0 +1,123 @@
+# ====================================================================================
+# ====================================================================================
+#
+#                       ROTEIRO DE TESTES DE VALIDAÇÃO - Supporte BI SQL
+#
+# Propósito do Arquivo:
+#
+# Este arquivo contém um conjunto estruturado de prompts para validar sistematicamente
+# todas as funcionalidades do chatbot. Os testes são organizados em suítes, cada uma
+# focada em uma capacidade específica da arquitetura de IA, adaptada para as regras
+# de negócio da nova tabela única de logística (`tab_situacao_nota_logi`).
+#
+# ====================================================================================
+# ====================================================================================
+
+
+# ====================================================================================
+# Suíte 1: Testes de Roteamento e Saudações
+# ------------------------------------------------------------------------------------
+# Objetivo: Verificar a capacidade do `ROUTER_PROMPT` de classificar corretamente a
+# intenção do usuário. A IA deve responder saudações de forma cordial sem tentar
+# buscar dados no banco (sem gerar SQL).
+# ====================================================================================
+Olá
+Bom dia, tudo bem?
+Obrigado pela ajuda
+Tchau
+Quem é você?
+
+
+# ====================================================================================
+# Suíte 2: Testes de Consultas Simples (Respostas de Texto)
+# ------------------------------------------------------------------------------------
+# Objetivo: Validar a capacidade do bot de buscar dados específicos de uma entidade
+# (Nota Fiscal, Pedido, etc.) e retornar status ou datas.
+# Colunas Foco: NOTA_FISCAL, PEDIDO, STA_NOTA, EMISSAO.
+# ====================================================================================
+# Teste de "caminho infeliz": Número de nota inexistente.
+Qual o status da nota fiscal 99999999?
+
+# Teste de "caminho feliz": Nota existente (verifique um ID real no seu banco).
+Qual o status da nota fiscal 12345?
+
+# Testa a busca por identificador secundário (Pedido).
+Qual a transportadora responsável pelo pedido 'PED-1001'?
+
+# Testa a busca e formatação de datas.
+Quando foi emitida a nota fiscal 5501?
+
+# Testa verificação booleana baseada em colunas de timestamp (EXPEDIDO).
+A nota fiscal 12345 já foi expedida?
+
+
+# ====================================================================================
+# Suíte 3: Testes de Agregação Simples (Cálculos com Resposta de Texto)
+# ------------------------------------------------------------------------------------
+# Objetivo: Testar a habilidade do bot de gerar queries com funções de agregação
+# (`SUM`, `COUNT`, `AVG`) focadas em valores monetários e volumetria.
+# ====================================================================================
+Qual o valor total de todas as notas fiscais cadastradas?
+Quantas notas estão pendentes de expedição no total?
+Qual o peso bruto total de todas as cargas somadas?
+Qual a média de valor dos pedidos da Filial 'MATRIZ'?
+
+
+# ====================================================================================
+# Suíte 4: Testes de Geração de Gráficos (Barras, Linha e Pizza)
+# ------------------------------------------------------------------------------------
+# Objetivo: Verificar se o `FINAL_ANSWER_PROMPT` formata a saída em JSON para gráficos.
+# Agrupamentos: NOME_FILIAL, TRANPORTADORA, STA_NOTA, DATA (EMISSAO/EXPEDIDO).
+# ====================================================================================
+
+# --- Testes de Gráfico de Barras ---
+Me mostre um gráfico com o valor total de notas por Filial.
+Quais as 5 transportadoras com maior volume de carga transportada? Mostre em barras.
+Gere um gráfico com a quantidade de notas por Status.
+
+# --- Testes de Gráfico de Linha ---
+Me mostre um gráfico de linha com a quantidade de notas emitidas por dia nos últimos 30 dias.
+Qual a evolução do valor total expedido por dia? Gere um gráfico de linha.
+Faça uma linha do tempo com o peso total processado por dia.
+
+# --- Testes de Gráfico de Pizza ---
+Gere um gráfico de pizza mostrando a distribuição do valor total por Filial.
+Qual a proporção de notas expedidas vs pendentes? Mostre em um gráfico de pizza.
+Faça um gráfico de pizza com os 5 maiores destinatários por quantidade de notas.
+
+
+# ====================================================================================
+# Suíte 5: Testes de Perguntas Complexas
+# ------------------------------------------------------------------------------------
+# Objetivo: Avaliar a capacidade de filtrar dados com múltiplas condições (`AND`/`OR`),
+# ordenar resultados e limitar a saída.
+# ====================================================================================
+Liste os 5 maiores clientes (destinatários) da filial 'MATRIZ' considerando o valor total.
+Quais notas fiscais têm valor acima de R$ 10.000 e ainda não foram expedidas?
+Qual o separador que processou a maior quantidade de volumes na data de hoje?
+Existem notas emitidas pela 'FILIAL SP' que estejam marcadas como 'CANCELADA' ou com inconsistência?
+
+
+# ====================================================================================
+# Suíte 6: Testes de Conversa com Memória (Contexto)
+# ------------------------------------------------------------------------------------
+# Objetivo: Validar a persistência de sessão. O bot deve entender pronomes e
+# referências à pergunta anterior ("dela", "dele", "disso", "e o valor?").
+# ====================================================================================
+
+# --- Cenário 1: Foco na Filial (Entidade Organizacional) ---
+Qual a filial com o maior valor total de notas emitidas?
+E quantas notas foram emitidas por ela?
+
+# --- Cenário 2: Foco no Cliente (Destinatário) ---
+Qual o destinatário com o maior número de notas fiscais?
+Qual o valor total comprado por esse mesmo cliente?
+
+# --- Cenário 3: Foco no Colaborador (Produtividade) ---
+Quem é o separador com maior quantidade de notas separadas?
+E qual foi o peso total que ele separou?
+
+# --- Cenário 4: Correção de Rota (Rephraser - Correção de Usuário) ---
+# O bot deve entender que a segunda frase corrige um parâmetro da primeira.
+Quantas notas foram expedidas pela transportadora 'Jadlog'?
+Não, eu quis dizer pela transportadora 'Braspress'.

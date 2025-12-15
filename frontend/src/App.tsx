@@ -7,6 +7,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import ChatPage from './pages/ChatPage';       // Agente de Qualidade
 import HubPage from './pages/HubPage';         // Hub Central
 import DocRobosPage from './pages/DocRobosPage'; // Gerador de docs
+import BiAgentPage from './pages/BiAgentPage';   // <--- NOVO: Agente de BI Logístico
 import './App.css';
 
 function App() {
@@ -25,7 +26,10 @@ function App() {
           {/* 3. Rota Robôs (/agentdocrobos): Abre o Formulário do Gerador de Docs */}
           <Route path="/agentdocrobos" element={<DocRobosPage />} />
 
-          {/* 4. Rota Coringa (*): Se o usuário digitar url errada, volta pro Hub */}
+          {/* 4. NOVO: Rota BI (/agentbi): Abre o Supporte BI (Dashboard + Chat) */}
+          <Route path="/agentbi" element={<BiAgentPage />} />
+
+          {/* 5. Rota Coringa (*): Se o usuário digitar url errada, volta pro Hub */}
           <Route path="*" element={<Navigate to="/" replace />} />
 
         </Routes>
