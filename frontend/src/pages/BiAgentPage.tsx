@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiDatabase, FiMessageSquare, FiBarChart2, FiArrowLeft } from 'react-icons/fi';
+import { FiDatabase, FiMessageSquare, FiBarChart2, FiArrowLeft, FiMoon, FiSun } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import BiDashboard from './BiDashboard'; 
 import BiChat from './BiChat';           
@@ -7,7 +7,16 @@ import './BiStyles.css';
 
 const BiAgentPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'dashboard' | 'chat'>('dashboard');
+  // Estado local para controlar o ícone visualmente (assumindo que a lógica global de tema já existe no App)
+  // Se você tiver um Context de tema, substitua isso pelo useTheme()
+  const [isDarkMode, setIsDarkMode] = useState(true); 
   const navigate = useNavigate();
+
+  // Função auxiliar para alternar tema (conecte com sua lógica global se houver)
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    document.body.classList.toggle('light-theme');
+  };
 
   return (
     <div className="bi-module-wrapper">
@@ -22,19 +31,28 @@ const BiAgentPage: React.FC = () => {
           <h1>Supporte BI</h1>
         </div>
         
-        <div className="bi-nav-links">
-          <div 
-            className={`bi-nav-item ${activeTab === 'dashboard' ? 'active' : ''}`}
-            onClick={() => setActiveTab('dashboard')}
-          >
-            <FiBarChart2 /> Dashboard
-          </div>
-          <div 
-            className={`bi-nav-item ${activeTab === 'chat' ? 'active' : ''}`}
-            onClick={() => setActiveTab('chat')}
-          >
-            <FiMessageSquare /> Chatbot
-          </div>
+        <div className="bi-nav-center">
+            <div className="bi-nav-links">
+            <div 
+                className={`bi-nav-item ${activeTab === 'dashboard' ? 'active' : ''}`}
+                onClick={() => setActiveTab('dashboard')}
+            >
+                <FiBarChart2 /> Dashboard
+            </div>
+            <div 
+                className={`bi-nav-item ${activeTab === 'chat' ? 'active' : ''}`}
+                onClick={() => setActiveTab('chat')}
+            >
+                <FiMessageSquare /> Chatbot
+            </div>
+            </div>
+        </div>
+
+        <div className="bi-nav-actions">
+            {/* Botão de Tema */}
+            <button className="bi-theme-btn" onClick={toggleTheme}>
+                {isDarkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+            </button>
         </div>
       </nav>
 

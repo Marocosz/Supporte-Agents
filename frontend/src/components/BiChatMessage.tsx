@@ -8,7 +8,6 @@ const BiChatMessage: React.FC<{ message: BiMessageType }> = ({ message }) => {
   const content = message.content;
   const [showQuery, setShowQuery] = useState(false);
 
-  // Define se a bolha é do usuário ou do bot para CSS
   const wrapperClass = `bi-message-wrapper ${message.sender}`;
   const bubbleClass = `bi-message-bubble ${message.sender}`;
 
@@ -19,20 +18,32 @@ const BiChatMessage: React.FC<{ message: BiMessageType }> = ({ message }) => {
       </div>
       
       <div className={bubbleClass}>
-        {/* Renderização Condicional: Gráfico ou Texto */}
+        {/* Lógica de Renderização do Conteúdo */}
         {content.type === 'chart' ? (
-            <div style={{ width: '100%', minWidth: '400px' }}>
-                <BiChart data={content} />
-                {/* Se tiver texto explicativo junto com o gráfico, mostra abaixo */}
-                {content.content && <p style={{ marginTop: '10px', color: '#e8eaed' }}>{content.content}</p>}
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                {/* Título do Gráfico (opcional, se vier no JSON) */}
+                {content.title && <strong style={{ marginBottom: '10px', display: 'block', fontSize: '1.1rem' }}>{content.title}</strong>}
+                
+                {/* Container dedicado ao gráfico com altura fixa definida no CSS (.bi-chat-chart-container) */}
+                <div className="bi-chat-chart-container">
+                    <BiChart data={content as any} />
+                </div>
+
+                {/* Texto explicativo abaixo do gráfico, se houver */}
+                {content.content && (
+                    <p style={{ marginTop: '10px', color: '#e8eaed', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '10px' }}>
+                        {content.content}
+                    </p>
+                )}
             </div>
         ) : (
+            // Mensagem de texto simples
             <p style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{content.content}</p>
         )}
 
         {/* Rodapé da mensagem do Bot (Tempo + Query) */}
         {isBot && content.generated_sql && (
-            <div style={{ marginTop: '12px', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '8px' }}>
+            <div className="bi-query-section">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     {content.response_time && (
                         <span style={{ fontSize: '0.7rem', color: '#8898aa' }}>
@@ -43,6 +54,7 @@ const BiChatMessage: React.FC<{ message: BiMessageType }> = ({ message }) => {
                     <button 
                         onClick={() => setShowQuery(!showQuery)} 
                         className="bi-query-toggle"
+                        title="Ver SQL gerado"
                     >
                         <FiCode style={{ marginRight: 4 }} /> 
                         {showQuery ? 'Ocultar Query' : 'Ver Query'} 

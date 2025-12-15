@@ -1,13 +1,11 @@
 /* src/pages/BiStyles.css */
 
 /* --- Wrapper do Módulo BI --- */
-/* Agora herda as cores diretamente do :root ou .light-theme do App.css */
 .bi-module-wrapper {
     background-color: var(--background-dark);
     color: var(--text-primary);
     min-height: 100vh;
     font-family: inherit;
-    /* Usa a fonte definida no body */
     display: flex;
     flex-direction: column;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -29,6 +27,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    min-width: 200px;
 }
 
 .bi-navbar-brand h1 {
@@ -50,6 +49,12 @@
 
 .bi-nav-back:hover {
     color: var(--accent-blue);
+}
+
+.bi-nav-center {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .bi-nav-links {
@@ -78,6 +83,32 @@
     border-bottom-color: var(--accent-blue);
 }
 
+.bi-nav-actions {
+    min-width: 200px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.bi-theme-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.bi-theme-btn:hover {
+    background-color: var(--input-bg);
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
+}
+
 /* --- Dashboard Layout --- */
 .bi-dashboard {
     padding: 2rem;
@@ -88,7 +119,7 @@
 
 .bi-kpi-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Aumentado minmax */
     gap: 1.5rem;
     margin-bottom: 2.5rem;
 }
@@ -117,23 +148,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Padrão fallback */
     background-color: var(--input-bg);
     color: var(--text-primary);
 }
 
-/* Cores específicas para KPIs usando as variáveis de acento do App.css */
-/* Usamos opacidade para o fundo simular o estilo "light" */
 .bi-kpi-icon.text-blue {
     color: var(--accent-blue);
     background-color: rgba(58, 134, 255, 0.15);
-    /* Baseado no --accent-blue */
 }
 
 .bi-kpi-icon.text-green {
     color: var(--accent-green);
     background-color: rgba(42, 157, 143, 0.15);
-    /* Baseado no --accent-green */
 }
 
 .bi-kpi-icon.text-orange {
@@ -144,7 +170,6 @@
 .bi-kpi-icon.text-red {
     color: var(--accent-red);
     background-color: rgba(231, 111, 81, 0.15);
-    /* Baseado no --accent-red */
 }
 
 .bi-kpi-text h3 {
@@ -164,7 +189,8 @@
 .bi-charts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem; /* Aumentado o gap */
+    padding-bottom: 2rem;
 }
 
 .bi-chart-section {
@@ -172,11 +198,15 @@
     padding: 1.5rem;
     border-radius: 12px;
     border: 1px solid var(--border-color);
+    min-height: 400px; /* Garante altura mínima para não apertar */
+    display: flex;
+    flex-direction: column;
 }
 
 .bi-chart-section h3 {
     color: var(--text-primary);
     margin-top: 0;
+    margin-bottom: 1.5rem;
 }
 
 /* --- Chat Layout --- */
@@ -194,6 +224,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    scroll-behavior: smooth;
 }
 
 .bi-chat-input-area {
@@ -252,7 +283,7 @@
 .bi-message-wrapper {
     display: flex;
     gap: 15px;
-    max-width: 85%;
+    max-width: 90%; /* Aumentado um pouco para caber gráficos */
     animation: fadeIn 0.3s ease;
 }
 
@@ -276,7 +307,6 @@
 
 .bi-message-wrapper.user .bi-avatar {
     background-color: var(--accent-blue-dark);
-    /* Azul escuro do tema */
     color: white;
     border: none;
 }
@@ -289,6 +319,7 @@
     line-height: 1.5;
     color: var(--text-primary);
     border: 1px solid var(--border-color);
+    min-width: 100px;
 }
 
 .bi-message-wrapper.user .bi-message-bubble {
@@ -297,6 +328,25 @@
     border: none;
     border-radius: 18px;
     border-top-right-radius: 4px;
+}
+
+/* --- ESTILOS NOVOS PARA O GRÁFICO NO CHAT --- */
+/* Isso resolve o problema de estar "apertado" */
+.bi-chat-chart-container {
+    width: 100%;
+    /* Mínimo confortável para não esmagar as legendas */
+    min-width: 500px; 
+    /* Altura fixa garante que o Recharts renderize corretamente */
+    height: 350px; 
+    margin-bottom: 15px; /* Espaço para não encostar no texto ou botão */
+}
+
+/* Em telas pequenas, permite diminuir, mas mantendo altura */
+@media (max-width: 768px) {
+    .bi-chat-chart-container {
+        min-width: 100%;
+        height: 300px;
+    }
 }
 
 /* Loading Dots */
@@ -316,32 +366,23 @@
 }
 
 @keyframes blink {
-    0% {
-        opacity: 0.2;
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0.2;
-    }
+    0% { opacity: 0.2; }
+    20% { opacity: 1; }
+    100% { opacity: 0.2; }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Botões de Query */
+.bi-query-section {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .bi-query-toggle {
     background: none;
     border: none;
@@ -362,7 +403,6 @@
 .bi-query-box {
     margin-top: 10px;
     background-color: var(--input-bg);
-    /* Fundo escuro sutil */
     padding: 10px;
     border-radius: 6px;
     font-family: monospace;
@@ -370,9 +410,10 @@
     color: var(--text-secondary);
     border: 1px solid var(--border-color);
     overflow-x: auto;
+    white-space: pre-wrap; /* Quebra linha se a query for longa */
 }
 
-/* Scrollbar personalizada para tabelas e caixas de código no BI */
+/* Scrollbars */
 .bi-dashboard::-webkit-scrollbar,
 .bi-chat-window::-webkit-scrollbar,
 .bi-query-box::-webkit-scrollbar {
