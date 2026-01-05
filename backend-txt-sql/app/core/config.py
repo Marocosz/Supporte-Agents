@@ -11,6 +11,7 @@
 # evitando erros em outras partes do sistema.
 # =============================================================================
 
+from typing import Optional
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 # --- Definição da Classe de Configurações ---
@@ -29,13 +30,26 @@ class Settings(BaseSettings):
     )
 
     # --- Definição dos Atributos de Configuração ---
+
+    # Seletor de Provedor de IA (padrão: groq)
+    # Opções esperadas: 'groq', 'openai', 'gemini'
+    LLM_PROVIDER: str = "groq"
     
     # Credenciais do Groq
-    GROQ_API_KEY: str
-
+    GROQ_API_KEY: Optional[str] = None
     # Nomes dos modelos Groq (carregados do .env)
-    GROQ_SQL_MODEL: str
-    GROQ_ANSWER_MODEL: str
+    GROQ_SQL_MODEL: str = "llama-3.3-70b-versatile"
+    GROQ_ANSWER_MODEL: str = "llama-3.1-8b-instant"
+
+    # Credenciais da OpenAI (Opcional)
+    OPENAI_API_KEY: Optional[str] = None
+    OPENAI_SQL_MODEL: str = "gpt-4o"
+    OPENAI_ANSWER_MODEL: str = "gpt-3.5-turbo"
+
+    # Credenciais do Google Gemini (Opcional)
+    GOOGLE_API_KEY: Optional[str] = None
+    GEMINI_SQL_MODEL: str = "gemini-3-pro-preview"
+    GEMINI_ANSWER_MODEL: str = "gemini-2.5-flash"
 
     # Credenciais do Banco de Dados
     DB_HOST: str
