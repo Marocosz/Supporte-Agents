@@ -4,5 +4,8 @@ python -m uvicorn app.main:app --reload --port 8000 --reload-dir app
 doc robo
 python main.py
 
+txt-sql
+python -m uvicorn api:app --reload --port 8002
+
 front
 npm run dev

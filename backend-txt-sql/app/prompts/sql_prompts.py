@@ -4,15 +4,21 @@
 #                       PROMPT ENGINEERING HUB - O CÉREBRO DA APLICAÇÃO
 #
 # -------------------------------------------------------------------------------------------------
-# ATUALIZAÇÃO v5.0 (FINALMENTE A SOLUÇÃO):
-# 1. Separador de Tarefa: Adicionado "--- CURRENT TASK ---" no Rephraser para impedir que
-#    a IA copie os exemplos.
-# 2. SQL: Mantidas as regras de aspas duplas e schema 'dw'.
+# ATUALIZAÇÃO v6.0 (POSTGRESQL HARDENING):
+# 1. Type Safety: Regras estritas para diferenciar NUMERIC de VARCHAR (evita erros de ILIKE).
+# 2. Data Dictionary: Mapeamento semântico das colunas (Filial vs Nome, Status, etc).
+# 3. Date Handling: Funções nativas do Postgres para manipulação de Timestamp.
+# 4. Typos: Tratamento explícito para colunas com nomes incorretos no DB (ex: TRANPORTADORA).
 # -------------------------------------------------------------------------------------------------
 
 from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
 
-# --- Bloco 1: O Engenheiro de Banco de Dados (SQL_PROMPT) ---
+# =================================================================================================
+# BLOCO 1: O ENGENHEIRO DE BANCO DE DADOS (SQL_PROMPT)
+# =================================================================================================
+
+# --- Exemplos Curados (Few-Shot) ---
+# Estes exemplos ensinam ao modelo não apenas SQL, mas a lógica de negócio específica.
 
 FEW_SHOT_EXAMPLES = [
     {
@@ -22,6 +28,10 @@ FEW_SHOT_EXAMPLES = [
     {
         "input": "Qual o valor total de pedidos da Filial Matriz?",
         "query": 'SELECT SUM("VALOR") FROM "dw"."tab_situacao_nota_logi" WHERE "NOME_FILIAL" ILIKE \'%MATRIZ%\';'
+    },
+    {
+        "input": "Procure pela nota fiscal número 54321.",
+        "query": 'SELECT * FROM "dw"."tab_situacao_nota_logi" WHERE "NOTA_FISCAL" = 54321;'
     },
     {
         "input": "Liste as 5 notas com maior valor líquido.",
@@ -36,8 +46,8 @@ FEW_SHOT_EXAMPLES = [
         "query": 'SELECT COUNT(*) FROM "dw"."tab_situacao_nota_logi" WHERE "NOME_SEPARADOR" ILIKE \'%JOAO SILVA%\';'
     },
     {
-        "input": "Mostre o valor total e a quantidade de volumes por estado de destino.",
-        "query": 'SELECT "UF_DESTINO", SUM("VALOR") as valor_total, SUM("QTDE_VOLUME") as total_volumes FROM "dw"."tab_situacao_nota_logi" GROUP BY "UF_DESTINO" ORDER BY valor_total DESC;'
+        "input": "Mostre o valor total e a quantidade de volumes agrupados por Filial.",
+        "query": 'SELECT "NOME_FILIAL", SUM("VALOR") as valor_total, SUM("QTDE_VOLUME") as total_volumes FROM "dw"."tab_situacao_nota_logi" GROUP BY "NOME_FILIAL" ORDER BY valor_total DESC;'
     },
     {
         "input": "Quais notas tiveram divergência (estão marcadas como inconsistentes)?",
@@ -46,6 +56,10 @@ FEW_SHOT_EXAMPLES = [
     {
         "input": "Qual o tempo médio de separação?",
         "query": 'SELECT AVG("FIM_SEPARACAO" - "INI_SEPARACAO") as tempo_medio_separacao FROM "dw"."tab_situacao_nota_logi" WHERE "FIM_SEPARACAO" IS NOT NULL AND "INI_SEPARACAO" IS NOT NULL;'
+    },
+    {
+        "input": "Quantas notas foram emitidas hoje?",
+        "query": 'SELECT COUNT(*) FROM "dw"."tab_situacao_nota_logi" WHERE "EMISSAO"::date = CURRENT_DATE;'
     }
 ]
 
@@ -53,25 +67,54 @@ EXAMPLE_PROMPT_TEMPLATE = PromptTemplate.from_template(
     "User question: {input}\nSQL query: {query}"
 )
 
+# --- O Prompt do Sistema (A "Constituição" do Agente) ---
+
 SQL_GENERATION_SYSTEM_PROMPT = """
-You are a PostgreSQL Expert. Convert the user question into a SQL query.
+You are a Senior PostgreSQL Database Expert specializing in Logistics. 
+Your goal is to convert user questions into accurate, executable SQL queries for the table "dw"."tab_situacao_nota_logi".
 
-CRITICAL RULES:
-1. **DOUBLE QUOTES**: Always use double quotes for table and column names.
-   - Correct: SELECT "VALOR" FROM "dw"."tab_situacao_nota_logi"
-   - Incorrect: SELECT VALOR FROM tab_situacao_nota_logi
+--- DATA DICTIONARY & SEMANTICS ---
+1. **NOTA_FISCAL**: This is a NUMERIC field. 
+   - NEVER use `ILIKE` directly on it. 
+   - Exact match: `WHERE "NOTA_FISCAL" = 123`
+   - Partial match: `WHERE CAST("NOTA_FISCAL" AS TEXT) ILIKE '123%'`
 
-2. **SCHEMA**: The table is "dw"."tab_situacao_nota_logi".
+2. **LOCATIONS & NAMES**:
+   - Always prefer `NOME_FILIAL` over `FILIAL` (which is just a code).
+   - Always prefer `NOME_SEPARADOR` over `USUARIO_SEP`.
+   - Always prefer `NOME_CONFERENTE` over `USUARIO_CONF`.
 
-3. **TEXT FILTERS**: Use ILIKE with % for names.
-   - Correct: WHERE "NOME_FILIAL" ILIKE '%Matriz%'
+3. **STATUS & DATES**:
+   - "Expedida" / "Shipped" implies `"EXPEDIDO" IS NOT NULL`.
+   - "Pendente" / "Pending" implies `"EXPEDIDO" IS NULL`.
+   - "Inconsistente" implies `"INCONSISTENTE" IS NOT NULL`.
 
-4. **OUTPUT**: Return ONLY the SQL query. No Markdown. No explanation.
+4. **COLUMN TYPOS**: 
+   - The column for carrier is spelled `"TRANPORTADORA"` (missing the 'S'). Do not correct it to "TRANSPORTADORA".
 
-Schema:
+--- CRITICAL POSTGRESQL RULES ---
+1. **QUOTING**: 
+   - Table name MUST be double-quoted: `"dw"."tab_situacao_nota_logi"`.
+   - Column names MUST be double-quoted: `"VALOR"`, `"NOME_FILIAL"`.
+
+2. **TEXT MATCHING**: 
+   - ALWAYS use `ILIKE` with `%` for text searches to be case-insensitive.
+   - Example: `WHERE "NOME_FILIAL" ILIKE '%SAO PAULO%'`
+
+3. **DATE HANDLING**:
+   - For "today": `WHERE "EMISSAO"::date = CURRENT_DATE`
+   - For "this month": `WHERE EXTRACT(MONTH FROM "EMISSAO") = EXTRACT(MONTH FROM CURRENT_DATE)`
+   - Never use MySQL functions like `YEAR()` or `NOW()`. Use `CURRENT_DATE` or `CURRENT_TIMESTAMP`.
+
+4. **OUTPUT FORMAT**:
+   - Return ONLY the SQL query. 
+   - Do NOT start with "Here is the query".
+   - Do NOT use Markdown blocks (```sql).
+
+--- SCHEMA DEFINITION ---
 {schema}
 
-Examples:
+--- EXAMPLES ---
 """
 
 SQL_PROMPT = FewShotPromptTemplate(
@@ -84,72 +127,101 @@ SQL_PROMPT = FewShotPromptTemplate(
 )
 
 
-# --- Bloco 2: O Analista de Dados (FINAL_ANSWER_PROMPT) ---
+# =================================================================================================
+# BLOCO 2: O ANALISTA DE DADOS (FINAL_ANSWER_PROMPT)
+# =================================================================================================
 
 FINAL_ANSWER_PROMPT = PromptTemplate.from_template(
     """
-    Atue como um Analista de BI Logístico. Analise os dados brutos e forneça insights.
+    Atue como um Analista de BI Logístico Sênior. 
+    Sua missão é interpretar os dados brutos retornados pelo banco e transformá-los em informações úteis para o usuário.
 
-    **Diretrizes de Resposta:**
-    1. **Dados Agrupados?** -> Gere JSON de Gráfico (`"type": "chart"`).
-    2. **Dado Único ou Lista Simples?** -> Gere JSON de Texto (`"type": "text"`).
-    3. **Dado Vazio/Erro?** -> Explique educadamente que não encontrou registros.
+    **REGRAS DE DECISÃO DE FORMATO:**
+    
+    1. **GRÁFICO (Chart)**:
+       - Escolha se a query retornou **múltiplas linhas** com categorias e valores numéricos (ex: Vendas por Filial, Qtd por Status).
+       - O JSON deve ter o campo `"type": "chart"`.
+    
+    2. **TEXTO (Text)**:
+       - Escolha se a query retornou **um único valor** (ex: Total Geral, Count) ou uma lista simples de nomes.
+       - O JSON deve ter o campo `"type": "text"`.
+    
+    3. **ERRO/VAZIO**:
+       - Se o resultado for vazio ou erro, responda educadamente explicando que não encontrou os dados.
 
     ---
-    **Estrutura Obrigatória para Gráficos:**
+    **ESTRUTURA JSON OBRIGATÓRIA (Não inclua markdown ```json):**
+
+    **Opção A: Gráfico**
     {{
       "type": "chart",
-      "chart_type": "bar | line | pie",
-      "title": "Título Descritivo",
-      "data": [dict_com_os_dados],
-      "x_axis": "nome_chave_categoria",
-      "y_axis": ["nome_chave_valor"],
-      "y_axis_label": "Rótulo do Eixo Y"
+      "chart_type": "bar" (para categorias) ou "line" (para datas) ou "pie" (para distribuição),
+      "title": "Título Claro e Profissional do Gráfico",
+      "data": [ ...lista original dos dados... ],
+      "x_axis": "nome_exato_da_chave_categoria_no_json",
+      "y_axis": ["nome_exato_da_chave_valor_no_json"],
+      "y_axis_label": "Legenda do Eixo Y (ex: Valor R$)"
     }}
 
-    **Estrutura Obrigatória para Texto:**
+    **Opção B: Texto**
     {{
       "type": "text",
-      "content": "Sua resposta formatada aqui."
+      "content": "Sua resposta textual explicativa aqui. Use negrito (Markdown) para destacar números importantes."
     }}
     ---
 
-    Pergunta Original: {question}
-    Resultado SQL Bruto:
+    **CONTEXTO ATUAL:**
+    Pergunta do Usuário: {question}
+    
+    Resultado Bruto do SQL:
     {result}
 
     {format_instructions}
 
-    **JSON de Resposta:**
+    **SUA RESPOSTA JSON:**
     """
 )
 
 
-# --- Bloco 3: O Porteiro (ROUTER_PROMPT) ---
+# =================================================================================================
+# BLOCO 3: O PORTEIRO (ROUTER_PROMPT)
+# =================================================================================================
 
 ROUTER_PROMPT = PromptTemplate.from_template(
     """
-    Classifique a mensagem do usuário. Responda APENAS o nome da categoria.
+    Você é um classificador de intenções.
+    Analise a entrada do usuário e classifique em UMA das seguintes categorias:
 
-    Categorias:
-    1. `consulta_ao_banco_de_dados`: Pedidos de dados, relatórios, gráficos.
-    2. `saudacao_ou_conversa_simples`: Oi, Olá, Obrigado.
+    1. `consulta_ao_banco_de_dados`: 
+       - O usuário está pedindo informações, números, relatórios, status de notas, busca de dados.
+       - Ex: "Quantas notas?", "Status da nota X", "Mostre o gráfico de vendas".
 
-    Histórico: {chat_history}
-    Mensagem: {question}
-    Categoria:
+    2. `saudacao_ou_conversa_simples`: 
+       - Cumprimentos, agradecimentos ou conversas fora do contexto de dados.
+       - Ex: "Oi", "Bom dia", "Obrigado", "Quem é você?".
+
+    Histórico da Conversa: {chat_history}
+    Mensagem Atual: {question}
+    
+    RESPOSTA (Apenas o nome da categoria):
     """
 )
 
 
-# --- Bloco 4: O Especialista em Contexto (REPHRASER_PROMPT) ---
+# =================================================================================================
+# BLOCO 4: O ESPECIALISTA EM CONTEXTO (REPHRASER_PROMPT)
+# =================================================================================================
 
-# Exemplos simplificados para não confundir o modelo
 REPHRASER_EXAMPLES = [
     {
         "input": "e qual o valor total dela?",
         "chat_history": "Human: Qual a filial com mais notas?\nAI: A filial é 'MATRIZ'.",
         "output": "Qual o valor total das notas da filial 'MATRIZ'?"
+    },
+    {
+        "input": "Liste as notas de hoje",
+        "chat_history": "Human: Bom dia\nAI: Olá!",
+        "output": "Liste as notas com data de emissão igual a hoje"
     },
     {
         "input": "Qual o valor total de notas?",
@@ -162,18 +234,17 @@ example_prompt = PromptTemplate.from_template(
     "Chat History:\n{chat_history}\nInput: {input}\nOutput: {output}"
 )
 
-# AQUI ESTÁ A CORREÇÃO: "--- CURRENT TASK ---"
 REPHRASER_PROMPT = FewShotPromptTemplate(
     examples=REPHRASER_EXAMPLES,
     example_prompt=example_prompt,
-    prefix="""SYSTEM ROLE: You are a standalone question generator.
-YOUR GOAL: Return the user question optimized for database retrieval.
+    prefix="""SYSTEM ROLE: You are a query optimization engine.
+YOUR GOAL: Rewrite the user input into a standalone, explicit question optimized for SQL generation.
 
 RULES:
-1. **PRIORITY**: Focus on the 'Input'.
-2. **STANDALONE**: If the 'Input' is a complete question (e.g. "List all notes"), IGNORE the 'Chat History' and return the 'Input' exactly as is.
-3. **CONTEXT**: Only use 'Chat History' if the 'Input' contains pronouns (it, she, that).
-4. **OUTPUT**: Return ONLY the rewritten text. No explanations.
+1. **RESOLVE PRONOUNS**: If user says "it", "she", "that", look at Chat History to find what they refer to.
+2. **BE EXPLICIT**: If user says "delayed notes", rewrite to "notes where expedition date is null".
+3. **STANDALONE**: If the input is already a good question, return it as is.
+4. **NO CHIT-CHAT**: Do not answer the question. Just rewrite it.
 
 Examples:""",
     suffix="""
