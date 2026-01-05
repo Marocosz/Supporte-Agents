@@ -48,7 +48,7 @@ class Settings(BaseSettings):
 
     # Credenciais do Google Gemini (Opcional)
     GOOGLE_API_KEY: Optional[str] = None
-    GEMINI_SQL_MODEL: str = "gemini-3-pro-preview"
+    GEMINI_SQL_MODEL: str = "gemini-3-flash-preview"
     GEMINI_ANSWER_MODEL: str = "gemini-2.5-flash"
 
     # Credenciais do Banco de Dados

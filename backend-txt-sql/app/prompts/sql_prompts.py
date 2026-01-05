@@ -4,22 +4,22 @@
 #                       PROMPT ENGINEERING HUB - O CÉREBRO DA APLICAÇÃO
 #
 # -------------------------------------------------------------------------------------------------
-# ATUALIZAÇÃO v6.0 (POSTGRESQL HARDENING):
-# 1. Type Safety: Regras estritas para diferenciar NUMERIC de VARCHAR (evita erros de ILIKE).
-# 2. Data Dictionary: Mapeamento semântico das colunas (Filial vs Nome, Status, etc).
-# 3. Date Handling: Funções nativas do Postgres para manipulação de Timestamp.
-# 4. Typos: Tratamento explícito para colunas com nomes incorretos no DB (ex: TRANPORTADORA).
+# ATUALIZAÇÃO v6.3 (SMART RENDER LOGIC):
+# 1. SQL Generator: Mantida a robustez v6.0.
+# 2. Final Answer:
+#    - Lógica refinada: GROUP BY de 1 linha agora vira TEXTO (ex: "Qual o maior?").
+#    - Gráfico só é gerado se houver comparação (múltiplas linhas) ou pedido explícito.
+#    - Mantidas as restrições estritas de JSON (sem markdown/explicação).
+# 3. Rephraser: Mantido intacto.
 # -------------------------------------------------------------------------------------------------
 
 from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
 
 # =================================================================================================
-# BLOCO 1: O ENGENHEIRO DE BANCO DE DADOS (SQL_PROMPT)
+# BLOCO 1: O ENGENHEIRO DE BANCO DE DADOS (SQL_PROMPT) - VERSÃO ROBUSTA (MANTIDA)
 # =================================================================================================
 
 # --- Exemplos Curados (Few-Shot) ---
-# Estes exemplos ensinam ao modelo não apenas SQL, mas a lógica de negócio específica.
-
 FEW_SHOT_EXAMPLES = [
     {
         "input": "Quantas notas já foram expedidas?",
@@ -68,7 +68,6 @@ EXAMPLE_PROMPT_TEMPLATE = PromptTemplate.from_template(
 )
 
 # --- O Prompt do Sistema (A "Constituição" do Agente) ---
-
 SQL_GENERATION_SYSTEM_PROMPT = """
 You are a Senior PostgreSQL Database Expert specializing in Logistics. 
 Your goal is to convert user questions into accurate, executable SQL queries for the table "dw"."tab_situacao_nota_logi".
@@ -128,57 +127,59 @@ SQL_PROMPT = FewShotPromptTemplate(
 
 
 # =================================================================================================
-# BLOCO 2: O ANALISTA DE DADOS (FINAL_ANSWER_PROMPT)
+# BLOCO 2: O ANALISTA DE DADOS (FINAL_ANSWER_PROMPT) - LÓGICA INTELIGENTE
 # =================================================================================================
 
 FINAL_ANSWER_PROMPT = PromptTemplate.from_template(
     """
-    Atue como um Analista de BI Logístico Sênior. 
-    Sua missão é interpretar os dados brutos retornados pelo banco e transformá-los em informações úteis para o usuário.
+    Atue como um formatador de dados ESTRITO. Sua ÚNICA função é converter os dados brutos abaixo em um JSON válido.
 
-    **REGRAS DE DECISÃO DE FORMATO:**
+    --- LÓGICA DE DECISÃO (IMPORTANTE) ---
     
-    1. **GRÁFICO (Chart)**:
-       - Escolha se a query retornou **múltiplas linhas** com categorias e valores numéricos (ex: Vendas por Filial, Qtd por Status).
-       - O JSON deve ter o campo `"type": "chart"`.
+    A. USE "chart" SE (E SOMENTE SE):
+       1. O usuário PEDIU explicitamente (Ex: "gere um gráfico", "mostre em barras").
+       2. OU se os dados representam uma comparação (Agregação com VÁRIAS linhas).
+          - Ex: Total por Filial (5 filiais), Qtd por Status (3 status).
     
-    2. **TEXTO (Text)**:
-       - Escolha se a query retornou **um único valor** (ex: Total Geral, Count) ou uma lista simples de nomes.
-       - O JSON deve ter o campo `"type": "text"`.
-    
-    3. **ERRO/VAZIO**:
-       - Se o resultado for vazio ou erro, responda educadamente explicando que não encontrou os dados.
+    B. USE "text" PARA TODO O RESTO:
+       1. Resultado é uma ÚNICA linha (Ex: "Qual a filial com maior valor?").
+       2. Resultado é uma lista de identificadores/detalhes (Ex: "Liste as notas fiscais").
+       3. Buscas simples ou valores totais únicos.
 
-    ---
-    **ESTRUTURA JSON OBRIGATÓRIA (Não inclua markdown ```json):**
+    --- REGRAS CRÍTICAS DE SAÍDA ---
+    1. NÃO explique nada.
+    2. NÃO escreva código Python, SQL ou comentários.
+    3. NÃO use Markdown (```json). Apenas comece com {{ e termine com }}.
+    4. Converta objetos 'Decimal' para float ou int.
 
-    **Opção A: Gráfico**
-    {{
-      "type": "chart",
-      "chart_type": "bar" (para categorias) ou "line" (para datas) ou "pie" (para distribuição),
-      "title": "Título Claro e Profissional do Gráfico",
-      "data": [ ...lista original dos dados... ],
-      "x_axis": "nome_exato_da_chave_categoria_no_json",
-      "y_axis": ["nome_exato_da_chave_valor_no_json"],
-      "y_axis_label": "Legenda do Eixo Y (ex: Valor R$)"
-    }}
+    --- ESTRUTURAS DE JSON ---
 
-    **Opção B: Texto**
+    Opção A: TEXTO (Listas, Detalhes, Valores Únicos ou Top 1)
     {{
       "type": "text",
-      "content": "Sua resposta textual explicativa aqui. Use negrito (Markdown) para destacar números importantes."
+      "content": "Resumo textual. Se for lista de notas, use quebras de linha."
     }}
-    ---
 
-    **CONTEXTO ATUAL:**
-    Pergunta do Usuário: {question}
+    Opção B: GRÁFICO (Comparações com múltiplas linhas)
+    {{
+      "type": "chart",
+      "chart_type": "bar" (ou "line" ou "pie"),
+      "title": "Título Descritivo",
+      "data": [ ...lista limpa dos dados... ],
+      "x_axis": "chave_da_categoria",
+      "y_axis": ["chave_do_valor"],
+      "y_axis_label": "Legenda"
+    }}
+
+    --- CONTEXTO ---
+    Pergunta: {question}
     
-    Resultado Bruto do SQL:
+    Dados Brutos do SQL:
     {result}
 
     {format_instructions}
 
-    **SUA RESPOSTA JSON:**
+    SUA RESPOSTA JSON (SEM MARKDOWN):
     """
 )
 

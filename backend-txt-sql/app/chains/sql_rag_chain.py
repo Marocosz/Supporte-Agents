@@ -92,9 +92,9 @@ def create_master_chain() -> Runnable:
         if query_lower.strip().startswith("select") and not has_limit:
             if not is_aggregation or has_group_by:
                 if query.strip().endswith(';'):
-                    query = query.strip()[:-1] + " LIMIT 100;"
+                    query = query.strip()[:-1] + " LIMIT 20;"
                 else:
-                    query = query.strip() + " LIMIT 100;"
+                    query = query.strip() + " LIMIT 20;"
                 logger.warning(f"Query modificada para incluir LIMIT: {query}")
                 
         try:

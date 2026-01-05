@@ -122,3 +122,103 @@ E qual foi o peso total que ele movimentou?
 # --- Cenário 4: Refinamento de Filtro ---
 Mostre as notas pendentes da filial 'MATRIZ'.
 Na verdade, eu quero apenas as que têm valor acima de 10 mil reais.
+
+
+
+Colunas e seus significados
+
+IDENTIFICADOR = id do pedido/nota é a junção dos valores das colunas FILIAL + REFERENCIA (ex: 02_519855)
+FILIAL = identificador da filial (ex: 02)
+NOME_FILIAL = Nome da filial (ex: SUP MAO I) obs: MAO = manaus
+COD_FORNECEDOR = identificador do fornecedor (ex: 007703111000103)
+RAZ_SOCIAL_REDUZ = Razão social reduzida do fornecedor (ex: HARMAN)
+REFERENCIA = Identificador referencia do pedido/nota (ex: 519855)
+PEDIDO = Identificador do pedido (ex: 2401202303)
+NOTA_FISCAL = Identificador da nota fiscal (PEDIDO nao vai existir quando ter o valor dessa coluna) (ex: 17727)
+SERIE = Identificador da série da nota fisca, so vai existir quando NOTA_FISCAL existir (ex: 16)
+VALOR = Valor da nota fiscal(ex: 50562.65)
+VALOR_PEDIDO = Valor do pedido, quando o cliente fornece (ex: 7135.59)
+QTDE_ITEM = Quantidade de itens diferentes diferentes na carga (ex: 12)
+SOMA_ITEM = Quantidade total de itens da carga (ex: 300.000)
+VOLUME_M3 = Tamanho da carga em metros cúbicos (ex: 33.233000)
+QTDE_VOLUME = Quantidade de caixas (ex: 27)
+QTDE_PALETE = Quantidade de paletes (ex: 23)
+PESO_BRUTO = Peso da carga incluindo caixas, paletes etc..., em quilogramas (ex: 7828.556000)
+PESO_LIQUIDO = Peso da carga sem caixas, paletes etc..., em quilogramas (ex: 6254.945000)
+CNPJ_CPF_DES = Cnpj ou cpf do destinatário (ex: 004.402.223/0001-01)
+DESTINATARIO = Nome do destinatário (ex: BIC AMAZONIA S/A)
+EMISSAO = Data em que o documento foi emitido pelo cliente, quando a carga sai do cliente (ex: 2023-02-09 17:57:00.000)
+REC_PEDIDO = Data de recebimento da carga do cliente (ex: 2023-02-09 17:57:00.000)
+REC_XML = Data de recebimento da nota fiscal do cliente (ex: 2023-02-10 15:07:00.000)
+INCONSISTENTE = Data de quando algo fora do normal/acidentes/avarias... acontece com a carga ou processo (ex: 2023-05-10 16:54:00.000)
+ACOLHIDO = Data do momento em que o logix recebe a carga (ex: 2023-05-10 16:58:00.000)
+PLANO_GERADO = Data do momento em que o logix gera o plano de separação (ex: 2023-03-08 16:53:00.000)
+ONDA_GERADA = Data do momento em que a onda de separação é gerada (ex: 2023-03-08 17:04:00.000)
+INI_SEPARACAO = Data do momento em que o armazem começa a separar a carga (ex: 2023-03-09 09:54:00.000)
+FIM_SEPARACAO = Data do momento em que o armazem termina de separar a carga (ex: 2023-03-09 09:55:00.000)
+INI_CONFERENCIA = Data do momento em que começa a conferência da carga (ex: 2023-03-09 09:56:27.000)
+FIM_CONFERENCIA = Data do momento em que a conferência da carga termina (ex: 2023-01-31 19:12:41.000)
+PER_CONF = Por centagem da carga conferida (ex: 100)
+INI_CHECKOUT = Data do inicio do empacotamento da carga em frações menores  (ex: 2023-03-06 15:24:09.000)
+FIM_CHECKOUT = Data do fim do empacotamento da carga em frações menores (ex: 2023-03-06 15:24:10.000)
+USU_CHECKOUT = Usuário logix que fez/validou o empacotamento (ex: 002562 ou RAIN)
+CON_SEPARACAO = Data da confirmação de separação ou checkout da carga, aguardando nota fiscal (ex: 2025-02-03 16:28:00.000)
+EMB_FINALIZADO = Data do momento em que o embarque foi finalizado (ex: 2025-02-05 11:45:00.000)
+EXPEDIDO = Data do momento em que o caminhão com a carga sai passa pela portaria (ex: 2023-09-20 17:14:00.000)
+STA_NOTA = Valor da situação da nota (ex: EXPEDIDO)
+SIT_SOL = Valor em letra da situação da nota (ex: E) Coluna mais importante
+LISTA = Identificador da lista com a relação dos itens a serem separados (ex: 243456)
+CESV = Identificador do Controle de Entrada e Saída de Veículos, ano + sequência (ex: 2025001957)
+CHAVE_NFE = Valor da chafe da nota fiscal eletrônica (ex: 31250203167227000114550000000396021442202660)
+TRANSPORTADORA = Nome da empresa que irá transportar a carga (ex: SUPPLOG ARMAZENS GERAIS E ENT DA ZFM)
+USUARIO_CONF = Usuario logix que fez a conferência da carga (ex: 000609)
+NOME_CONFERENTE = Nome do usuário que fez a conferência da carga (ex: ALEXANDER SILVA FARIA)
+USUARIO_SEP = Usuario logix que fez/validou a separação da carga (ex: BIANCA)
+NOME_SEPARADOR = Nome do usuario que fez a separação da carga (ex: BIANCA RODRIGUES)
+DAT_INCLUSAO = Data de quando o pedido/nota entrou no logix (teoricamente equivalente ao valor de REC_PEDIDO) (ex: 2023-09-30 10:21:13.000)
+id = ID da linha da view (ex: 271512)
+last_updated = Data da última alteração da linha (ex: 2025-02-16 01:00:22.582)
+
+pedido x nota = pedido é quando o cliente solicita uma verificação/alerta para a supporte verificar suas cargas e ai entao depois gerar a nota
+
+fluxo para pedido (sit_sol se altera em cada parte do fluxo de acordo com a situação)
+cliente faz o pedido -> c-acolhido c-rec_pedido c-dat_inclusao c-emissao
+onda gerada -> c-onda_gerada
+plano gerado -> c-plano_gerado, c-lista
+inicio da separação -> c-ini_separacao c-usu_separacao
+fim da separação -> c-fim_separacao
+inicio da conferencia -> c-ini_conferencia c-usu_conferencia
+(aqui no meio terá alterações na coluna per_conf)
+fim da conferencia -> c-fim_conferencia
+confirmação da separação -> c-conf_sep
+(mandamos uma confirmação para o cliente e ele volta com a nf) -> c-emissao, c-rec_xml, c-nota_fiscal, c-serie, c-chave-nfe
+embarque -> c-emb_finalizado
+expedido (baixa no estoque) -> c-sit_sol (E)
+(logix encerra)
+
+fluxo para nota
+acolhido -> c-emissao, c-rec_xml, c-nota_fiscal, c-serie, c-chave-nfe
+onda gerada -> c-onda_gerada
+plano gerado -> c-plano_gerado, c-lista
+inicio da separação -> c-ini_separacao c-usu_separacao
+fim da separação -> c-fim_separacao
+inicio da conferencia -> c-ini_conferencia c-usu_conferencia
+(aqui no meio terá alterações na coluna per_conf)
+fim da conferencia -> c-fim_conferencia
+Nao precisa confirmar separação pois ja existe a nota
+embarque -> c-emb_finalizado
+expedido (baixa no estoque) -> c-sit_sol (E)
+(logix encerra)
+
+
+
+perguntas
+
+qual a situação do pedido ou notas
+qual a previsao de expedição (media do cliente)
+qual foi a ultima vez que o meu cliente comprou x produto?
+
+OBS - tabelas pec_roteirização_logi ou item_logi tem informação dos produtos - Ideia para linkar com a siutação nota para gerar insights para o cliente
+
+roteirização - tab_situacao_nota_logi (coluna filial_sc equivalente a IDENTIFICADOR) (filial + referencia filial_referencia)
+solic_carg (roteirização) = referencia (situacao)
