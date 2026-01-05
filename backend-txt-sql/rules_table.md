@@ -114,7 +114,7 @@ WITH (
 | **EXPEDIDO** | timestamp | Data de saída do caminhão pela portaria. | `2023-09-20 17:14:00` |
 | **STA_NOTA** | varchar(24) | Descrição textual da situação atual da nota. | `EXPEDIDO` |
 | **SIT_SOL** | varchar(1) | Código da situação da solicitação. **'E' = Expedido**. | `E` |
-| **LISTA** | int4 | ID da lista de separação gerada. | `243456` |
+| **LISTA** | int4 | ID da lista de separação gerada com a relação de itens. | `243456` |
 | **CESV** | varchar(10) | ID do Controle de Entrada e Saída de Veículos. | `2025001957` |
 | **CHAVE_NFE** | varchar(255) | Chave de acesso da Nota Fiscal Eletrônica. | `312502...` |
 | **TRANPORTADORA** | varchar(36) | Nome da transportadora responsável. (Obs: Typo no DB). | `SUPPLOG ARMAZENS` |
@@ -148,7 +148,7 @@ A coluna `STA_NOTA` é a descrição legível, enquanto `SIT_SOL` é o código d
 | Código (SIT_SOL) | Descrição (STA_NOTA) | Fase do Processo |
 | :--- | :--- | :--- |
 | **A** | **ACOLHIDO** | **1. Entrada** (Recebimento da demanda) |
-| **N** | **AG. NOTA FISCAL** | **1. Entrada** (Aguardando faturamento) |
+| **N** | **AG. NOTA FISCAL** | **1. Entrada** (Armazem Geral faturamento) |
 | **L** | **PLANO GERADO** | **2. Planejamento** (Otimização de carga) |
 | **O** | **ONDA GERADA** | **2. Planejamento** (Envio para operação) |
 | **S** | **EM SEPARAÇÃO** | **3. Operação** (Picking) |
@@ -157,11 +157,11 @@ A coluna `STA_NOTA` é a descrição legível, enquanto `SIT_SOL` é o código d
 | **F** | **CONFERÊNCIA** | **3. Operação** (Checking/Auditoria) |
 | **R** | **RECONF. EMBARQUE** | **3. Operação** (Revisão pontual) |
 | **Z** | **EMBARQUE FINALIZADO** | **4. Saída** (Carga pronta para doca) |
-| **V** | **AG. VEÍCULO NA DOCA** | **4. Saída** (Aguardando transporte) |
+| **V** | **AG. VEÍCULO NA DOCA** | **4. Saída** (Armagem Geral transporte) |
 | **Q** | **EMBARQUE INICIADO** | **4. Saída** (Carregamento físico) |
 | **X** | **AG. EXPEDIÇÃO** | **4. Saída** (Documentação final) |
 | **E** | **EXPEDIDO** | **5. Conclusão** (Caminhão saiu - Status Final Sucesso) |
-| **U** | **AG. DESEMBARQUE** | **Exceção** (Processo reverso) |
+| **U** | **AG. DESEMBARQUE** | **Exceção** (Armazem Geral Processo reverso) |
 | **B** | **BLOQUEADO** | **Exceção** (Parado por pendência) |
 | **I** | **INCONSISTENTE** | **Exceção** (Erro de estoque/dados) |
 | **C** | **CANCELADO** | **Fim** (Processo abortado) |
