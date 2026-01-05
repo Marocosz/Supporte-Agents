@@ -126,7 +126,49 @@ WITH (
 
 ---
 
-## 4. Regras de Negócio e Fluxos Operacionais
+## 4. Mapeamentos Oficiais (De/Para)
+
+Esta seção documenta os valores exatos (Enums) presentes no banco de dados para garantir a precisão nas consultas e filtros.
+
+### 4.1. Unidades e Filiais
+Mapeamento entre o código numérico (`FILIAL`) e o nome comercial (`NOME_FILIAL`).
+
+| Código (FILIAL) | Nome (NOME_FILIAL) | Descrição / Localização |
+| :--- | :--- | :--- |
+| `01` | **SUP IPO** | Ipojuca (PE) |
+| `02` | **SUP MAO I** | Manaus I (AM) |
+| `03` | **SUP BAR** | Barueri (SP) |
+| `04` | **SUP UDI** | Uberlândia (MG) |
+| `05` | **SUP MAO II** | Manaus II (AM) |
+| `06` | **MAO ENTREP** | Manaus Entreposto (AM) |
+
+### 4.2. Status da Operação (Workflow)
+A coluna `STA_NOTA` é a descrição legível, enquanto `SIT_SOL` é o código de sistema. A tabela abaixo ordena o fluxo lógico e mostra a correspondência exata.
+
+| Código (SIT_SOL) | Descrição (STA_NOTA) | Fase do Processo |
+| :--- | :--- | :--- |
+| **A** | **ACOLHIDO** | **1. Entrada** (Recebimento da demanda) |
+| **N** | **AG. NOTA FISCAL** | **1. Entrada** (Aguardando faturamento) |
+| **L** | **PLANO GERADO** | **2. Planejamento** (Otimização de carga) |
+| **O** | **ONDA GERADA** | **2. Planejamento** (Envio para operação) |
+| **S** | **EM SEPARAÇÃO** | **3. Operação** (Picking) |
+| **3** | **AG. BAIXA ESTOQUE** | **3. Operação** (Movimentação sistêmica) |
+| **4** | **BAIXADO ESTOQUE** | **3. Operação** (Conclusão de baixa) |
+| **F** | **CONFERÊNCIA** | **3. Operação** (Checking/Auditoria) |
+| **R** | **RECONF. EMBARQUE** | **3. Operação** (Revisão pontual) |
+| **Z** | **EMBARQUE FINALIZADO** | **4. Saída** (Carga pronta para doca) |
+| **V** | **AG. VEÍCULO NA DOCA** | **4. Saída** (Aguardando transporte) |
+| **Q** | **EMBARQUE INICIADO** | **4. Saída** (Carregamento físico) |
+| **X** | **AG. EXPEDIÇÃO** | **4. Saída** (Documentação final) |
+| **E** | **EXPEDIDO** | **5. Conclusão** (Caminhão saiu - Status Final Sucesso) |
+| **U** | **AG. DESEMBARQUE** | **Exceção** (Processo reverso) |
+| **B** | **BLOQUEADO** | **Exceção** (Parado por pendência) |
+| **I** | **INCONSISTENTE** | **Exceção** (Erro de estoque/dados) |
+| **C** | **CANCELADO** | **Fim** (Processo abortado) |
+
+---
+
+## 5. Regras de Negócio e Fluxos Operacionais
 
 Existem dois fluxos principais que alimentam esta tabela. A coluna `SIT_SOL` (Situação da Solicitação) é atualizada conforme o avanço das etapas.
 
@@ -170,7 +212,7 @@ Existem dois fluxos principais que alimentam esta tabela. A coluna `SIT_SOL` (Si
 
 ---
 
-## 5. Relacionamentos e Insights
+## 6. Relacionamentos e Insights
 
 ### Relacionamentos com Outras Tabelas
 Para análises mais profundas (ex: detalhe de produtos), esta tabela deve ser cruzada com tabelas auxiliares:
@@ -188,4 +230,3 @@ Com os dados estruturados desta forma, o Agente de IA é capaz de responder:
 3.  **Histórico de Vendas:** "Qual foi a última vez que o cliente X comprou o produto Y?" (Necessário Join).
 4.  **Gargalos Operacionais:** "Qual o tempo médio entre o Fim da Separação e o Início da Conferência?"
 5.  **Performance:** "Qual separador processou mais volumes hoje?"
-```
