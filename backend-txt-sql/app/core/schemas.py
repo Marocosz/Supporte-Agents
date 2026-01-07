@@ -4,48 +4,60 @@
 from typing import List, Literal, Union, Dict, Any, Optional
 from pydantic import BaseModel, Field
 
+class BaseResponse(BaseModel):
+    """Campos comuns injetados pela API (api.py) após o processamento do Agente."""
+    session_id: Optional[str] = Field(
+        default=None, 
+        description="ID único da sessão para rastreamento."
+    )
+    response_time: Optional[str] = Field(
+        default=None, 
+        description="Tempo total de processamento em segundos."
+    )
+    generated_sql: Optional[str] = Field(
+        default=None, 
+        description="O SQL gerado pelo agente (para auditoria e debug no frontend)."
+    )
+
 # --- Modelo 1: Resposta de Texto (Cards, Listas, KPIs) ---
-
-
-class TextResponse(BaseModel):
+class TextResponse(BaseResponse):
     type: Literal["text"] = Field(
-        description="Sempre 'text' para respostas textuais")
+        description="Identificador fixo para renderização de texto."
+    )
     content: str = Field(
-        description="O conteúdo da resposta, formatado e limpo (pode conter markdown simples ou quebras de linha).")
+        description="O conteúdo da resposta em PT-BR, formatado (pode conter markdown)."
+    )
 
 # --- Modelo 2: Resposta de Gráfico (Analytics) ---
-# Unificamos pois a estrutura de dados vinda do SQL (Lista de Dicts) é universal.
-
-
-class ChartResponse(BaseModel):
-    type: Literal["chart"] = Field(description="Sempre 'chart' para gráficos")
-
-    # O LLM é forçado a escolher um destes 3 tipos
+class ChartResponse(BaseResponse):
+    type: Literal["chart"] = Field(
+        description="Identificador fixo para renderização de gráficos."
+    )
+    
     chart_type: Literal["bar", "line", "pie"] = Field(
-        description="O tipo de visualização mais adequado para os dados."
+        description="O tipo de visualização: 'bar' (Barra), 'line' (Linha) ou 'pie' (Pizza)."
     )
-
-    title: str = Field(description="Título curto e descritivo do gráfico")
-
-    # Dados brutos do SQL convertidos para lista de dicionários
+    
+    title: str = Field(
+        description="Título curto e descritivo do gráfico em PT-BR."
+    )
+    
     data: List[Dict[str, Any]] = Field(
-        description="Lista de objetos contendo os dados. Ex: [{'filial': 'SP', 'valor': 100}, ...]"
+        description="Lista de dados brutos. Ex: [{'filial': 'SP', 'valor': 100}, ...]"
     )
-
-    # Configuração de mapeamento para o Frontend
+    
     x_axis: str = Field(
-        description="Nome exato da chave no dicionário que representa a Categoria ou Tempo (Eixo X / Fatias)"
+        description="Chave do JSON que representa a Categoria/Tempo (Eixo X)."
     )
+    
     y_axis: List[str] = Field(
-        description="Lista com os nomes das chaves que representam os Valores Numéricos (Eixo Y / Tamanho)"
+        description="Lista de chaves do JSON que representam os Valores (Eixo Y)."
     )
-
+    
     y_axis_label: Optional[str] = Field(
-        default=None,
-        description="Rótulo legível para a unidade de medida (ex: 'Valor (R$)', 'Qtd Volumes', 'Kg')"
+        default=None, 
+        description="Rótulo da unidade de medida (Ex: 'Valor (R$)', 'Qtd Volumes')."
     )
-
 
 # --- Union Type para uso nos Parsers ---
-# O parser tentará validar contra essas estruturas
 AgentResponse = Union[ChartResponse, TextResponse]

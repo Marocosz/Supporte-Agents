@@ -1,15 +1,13 @@
 # =================================================================================================
 # =================================================================================================
 #
-#                           PONTO DE ENTRADA DA API (BACKEND) - v2.0
+#                           PONTO DE ENTRADA DA API (BACKEND) - v2.1
 #
 # Visão Geral:
 # Este arquivo conecta o servidor web (FastAPI) à nova Arquitetura Multi-Agente.
 #
-# Atualizações da Arquitetura:
-# 1. Substituição do "Monolith Chain" pelo "Orchestrator Chain".
-# 2. Entrada de histórico via Payload (Stateless) para decisão do Router.
-# 3. Retorno padronizado via Schemas (Pydantic).
+# Atualizações Recentes:
+# - Injeção explícita de 'query' e 'execution_time' na resposta final para o Frontend.
 #
 # =================================================================================================
 # =================================================================================================
@@ -39,7 +37,7 @@ logger = logging.getLogger(__name__)
 app = FastAPI(
     title="Supporte BI AI - SQL Agent",
     description="API de BI Logístico com Arquitetura Multi-Agente (Router -> Specialists)",
-    version="6.3"
+    version="6.4"
 )
 
 # Configura CORS (Mantido para compatibilidade total)
@@ -76,7 +74,7 @@ async def chat_endpoint(request: ChatRequest):
     Endpoint principal.
     1. Recebe a pergunta e histórico.
     2. Passa para o Orquestrador (que chama Router -> Agente Especialista).
-    3. Retorna JSON estruturado (Texto ou Gráfico).
+    3. Retorna JSON estruturado (Texto ou Gráfico) com metadados (query, tempo, sql).
     """
     start_time = time.monotonic()
     
@@ -108,11 +106,8 @@ async def chat_endpoint(request: ChatRequest):
         })
 
         # 3. Processar Resultado
-        # O 'result' vindo dos agentes já é um dicionário validado (TextResponse ou ChartResponse)
-        # graças ao .model_dump() no orchestrator.py.
-        
-        # Se por acaso vier aninhado (alguns runnables fazem isso), corrigimos:
-        final_response = result.get("final_response", result) if isinstance(result, dict) else result
+        # O 'result' vindo do orchestrator já deve ser um dicionário limpo
+        final_response = result
 
         # 4. Calcular Tempo e Montar Resposta Final da API
         end_time = time.monotonic()
@@ -120,7 +115,14 @@ async def chat_endpoint(request: ChatRequest):
 
         # Injetamos metadados técnicos no JSON de resposta
         if isinstance(final_response, dict):
-            final_response['response_time'] = f"{duration:.2f}"
+            # Formatação do tempo
+            final_response['execution_time'] = duration
+            final_response['response_time'] = f"{duration:.2f}" # Mantido para compatibilidade legada
+            
+            # Injeta a query original (Pedido pelo usuário)
+            final_response['query'] = request.question
+            
+            # Garante session_id
             final_response['session_id'] = session_id
             
             # (Opcional) Log para debug
@@ -135,12 +137,13 @@ async def chat_endpoint(request: ChatRequest):
             "type": "text",
             "content": f"Desculpe, ocorreu um erro interno ao processar sua solicitação. Detalhes: {str(e)}",
             "session_id": session_id,
+            "query": request.question,
             "response_time": "0.00"
         }
 
 @app.get("/")
 def read_root():
-    return {"status": "Supporte BI Multi-Agent API is running", "version": "2.0"}
+    return {"status": "Supporte BI Multi-Agent API is running", "version": "2.1"}
 
 if __name__ == "__main__":
     import uvicorn

@@ -4,7 +4,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import PydanticOutputParser
 
 from app.core.llm import get_answer_llm
-from app.core.schemas import TextResponse # <--- Importar
+from app.core.schemas import TextResponse
 from app.agents.router_agent import get_router_chain
 from app.agents.tracking_agent import get_tracking_chain
 from app.agents.analytics_agent import get_analytics_chain
@@ -47,18 +47,36 @@ def route_request(inputs):
     else:
         chain = get_chat_chain()
     
-    # Executa e retorna o objeto Pydantic já convertido em Dict pelo invoke final do api.py
-    # O PydanticOutputParser retorna um OBJETO Python (TextResponse ou ChartResponse).
-    # Precisamos garantir que isso vire dict (JSON) para a API.
+    # Executa a cadeia selecionada
     res = chain.invoke(inputs)
     
-    # Se o output for do tipo Pydantic, convertemos para dict.
-    # Se for um dict aninhado (final_response), extraímos.
-    if isinstance(res, dict) and "final_response" in res:
-        final_obj = res["final_response"]
-        return final_obj.model_dump() if hasattr(final_obj, "model_dump") else final_obj
+    # --- LÓGICA DE EXTRAÇÃO E CONSOLIDAÇÃO ---
+    # Precisamos garantir que o SQL gerado (se houver) seja passado para o output final
     
-    return res.model_dump() if hasattr(res, "model_dump") else res
+    final_obj = res
+    generated_sql = None
+
+    # Se 'res' for um dicionário (padrão dos agentes Tracking/Analytics que usam RunnablePassthrough)
+    if isinstance(res, dict):
+        # 1. Tenta capturar o SQL real gerado na etapa anterior
+        if "sql" in res:
+            generated_sql = res["sql"]
+        
+        # 2. Extrai o objeto de resposta final (Pydantic)
+        if "final_response" in res:
+            final_obj = res["final_response"]
+    
+    # Converte o objeto Pydantic (TextResponse ou ChartResponse) para Dict
+    response_dict = final_obj.model_dump() if hasattr(final_obj, "model_dump") else final_obj
+
+    # --- INJEÇÃO DE METADADOS TÉCNICOS ---
+    # Se capturamos um SQL real e o retorno é um dicionário, garantimos que ele esteja lá
+    if generated_sql and isinstance(response_dict, dict):
+        # Limpeza extra para garantir visualização bonita no front
+        clean_sql = str(generated_sql).replace("```sql", "").replace("```", "").strip()
+        response_dict["sql"] = clean_sql
+
+    return response_dict
 
 def get_orchestrator_chain():
     """

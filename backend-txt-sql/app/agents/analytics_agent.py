@@ -5,7 +5,7 @@ from langchain_core.output_parsers import StrOutputParser, PydanticOutputParser
 from app.core.llm import get_llm, get_answer_llm
 from app.core.database import db_instance, get_compact_db_schema
 from app.core.security import apply_security_filters
-from app.core.schemas import AgentResponse # <--- Pode ser Texto ou Gráfico
+from app.core.schemas import AgentResponse 
 from app.prompts.specialized.analytics_prompts import ANALYTICS_PROMPT, ANALYTICS_RESPONSE_PROMPT
 
 logger = logging.getLogger(__name__)

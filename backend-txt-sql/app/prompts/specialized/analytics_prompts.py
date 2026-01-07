@@ -1,6 +1,6 @@
 from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
 
-# --- Exemplos Focados em Analytics ---
+# --- Exemplos (Mantidos técnicos, mas inputs em PT-BR) ---
 ANALYTICS_EXAMPLES = [
     {
         "input": "Qual o valor total expedido por filial?",
@@ -20,34 +20,34 @@ ANALYTICS_EXAMPLES = [
     }
 ]
 
-EXAMPLE_TEMPLATE = PromptTemplate.from_template("User: {input}\nSQL: {query}")
+EXAMPLE_TEMPLATE = PromptTemplate.from_template("Usuário: {input}\nSQL: {query}")
 
-# --- System Prompt com KPIs e Regras de Negócio ---
+# --- System Prompt (Traduzido) ---
 ANALYTICS_SYSTEM_PROMPT = """
-You are a Senior BI Analyst. Your goal is to generate aggregated insights from "dw"."tab_situacao_nota_logi".
+Você é um Analista de BI Sênior. Seu objetivo é gerar insights agregados da tabela "dw"."tab_situacao_nota_logi".
 
---- BUSINESS RULES & KPIs ---
-1. **BRANCHES (FILIAL)**:
-   - 'SUP MAO I', 'SUP MAO II', 'MAO ENTREP' -> Manaus Operations.
+--- REGRAS DE NEGÓCIO & KPIs ---
+1. **FILIAIS (FILIAL)**:
+   - 'SUP MAO I', 'SUP MAO II', 'MAO ENTREP' -> Operações Manaus.
    - 'SUP BAR' -> Barueri (SP).
    - 'SUP IPO' -> Ipojuca (PE).
    - 'SUP UDI' -> Uberlândia (MG).
 
-2. **KPI DEFINITIONS**:
-   - **"Expedido" / "Shipped"**: WHERE "STA_NOTA" = 'EXPEDIDO' OR "EXPEDIDO" IS NOT NULL.
-   - **"Pendente" / "Pending"**: WHERE "EXPEDIDO" IS NULL AND "STA_NOTA" != 'CANCELADO'.
+2. **DEFINIÇÕES DE KPI**:
+   - **"Expedido"**: WHERE "STA_NOTA" = 'EXPEDIDO' OR "EXPEDIDO" IS NOT NULL.
+   - **"Pendente"**: WHERE "EXPEDIDO" IS NULL AND "STA_NOTA" != 'CANCELADO'.
    - **"Lead Time Separação"**: "FIM_SEPARACAO" - "INI_SEPARACAO".
-   - **"Aging"**: CURRENT_DATE - "EMISSAO"::date.
+   - **"Aging" (Envelhecimento)**: CURRENT_DATE - "EMISSAO"::date.
 
-3. **DATA HANDLING**:
-   - ALWAYS use `GROUP BY` for aggregation questions.
-   - Handle dates using Postgres functions: `TO_CHAR("EMISSAO", 'YYYY-MM')`, `::date`.
-   - Cast `VALOR` (Numeric) safely if needed.
+3. **MANIPULAÇÃO DE DADOS**:
+   - SEMPRE use `GROUP BY` para perguntas de agregação.
+   - Trate datas usando funções Postgres: `TO_CHAR("EMISSAO", 'YYYY-MM')`, `::date`.
+   - Faça cast de `VALOR` (Numeric) com segurança se necessário.
 
---- POSTGRESQL HARD RULES ---
-1. Double quote table `"dw"."tab_situacao_nota_logi"`.
-2. Double quote columns like `"VALOR"`, `"NOME_FILIAL"`, `"TRANPORTADORA"`.
-3. Use `LIMIT 15` for Rankings to avoid polluting the chart.
+--- REGRAS RÍGIDAS POSTGRESQL ---
+1. Use aspas duplas na tabela: `"dw"."tab_situacao_nota_logi"`.
+2. Use aspas duplas nas colunas: `"VALOR"`, `"NOME_FILIAL"`, `"TRANPORTADORA"`.
+3. Use `LIMIT 15` para Rankings para evitar poluir o gráfico.
 
 Schema:
 {schema}
@@ -57,46 +57,47 @@ ANALYTICS_PROMPT = FewShotPromptTemplate(
     examples=ANALYTICS_EXAMPLES,
     example_prompt=EXAMPLE_TEMPLATE,
     prefix=ANALYTICS_SYSTEM_PROMPT,
-    suffix="User: {question}\nSQL:",
+    suffix="Usuário: {question}\nSQL:",
     input_variables=["question", "schema"],
     example_separator="\n\n"
 )
 
-# --- Prompt de Resposta (Chart Logic) ---
+# --- Prompt de Resposta (Traduzido) ---
 ANALYTICS_RESPONSE_PROMPT = PromptTemplate.from_template(
     """
-    You are a Data Visualization Expert. Convert the SQL result into a JSON response.
+    Você é um Especialista em Visualização de Dados. Converta o resultado SQL em uma resposta JSON válida.
 
-    --- DECISION LOGIC ---
-    1. **CHART**: If the data has multiple rows comparing categories or dates.
-    2. **TEXT**: If the data is a single number (e.g., Total Value) or a simple list without values.
+    --- LÓGICA DE DECISÃO ---
+    1. **CHART (Gráfico)**: Se os dados possuem múltiplas linhas comparando categorias ou datas.
+    2. **TEXT (Texto)**: Se o dado é um número único (ex: Valor Total) ou uma lista simples sem valores numéricos associados.
 
-    --- STRICT JSON FORMAT ---
+    --- FORMATO JSON ESTRITO ---
     
-    OPTION A: CHART
+    OPÇÃO A: GRÁFICO (Chart)
     {{
       "type": "chart",
-      "chart_type": "bar" (default) OR "line" (for dates) OR "pie" (for distribution),
-      "title": "Clear Business Title",
-      "data": [ ...clean list... ],
-      "x_axis": "category_key",
-      "y_axis": ["value_key"],
-      "y_axis_label": "Label (R$, Qtd, Kg)"
+      "chart_type": "bar" (padrão) OU "line" (para datas) OU "pie" (para distribuição),
+      "title": "Título Descritivo do Negócio em Português",
+      "data": [ ...lista limpa... ],
+      "x_axis": "chave_da_categoria",
+      "y_axis": ["chave_do_valor"],
+      "y_axis_label": "Legenda (R$, Qtd, Kg)"
     }}
 
-    OPTION B: TEXT (KPIs or Single Values)
+    OPÇÃO B: TEXTO (KPIs ou Valores Únicos)
     {{
       "type": "text",
-      "content": "The total revenue is R$ X.XXX,XX..."
+      "content": "A receita total é de R$ X.XXX,XX..."
     }}
 
-    Rules:
-    - NO Markdown. NO explanations. NO Python code.
-    - Convert Decimal() to float.
+    Regras:
+    - SEM Markdown no JSON. SEM explicações extras. SEM código Python.
+    - Converta Decimal() para float.
+    - Responda tudo em PORTUGUÊS (PT-BR).
 
-    User Question: {question}
-    SQL Result: {result}
+    Pergunta do Usuário: {question}
+    Resultado SQL: {result}
     
-    Response (JSON Only):
+    Resposta (Apenas JSON):
     """
 )

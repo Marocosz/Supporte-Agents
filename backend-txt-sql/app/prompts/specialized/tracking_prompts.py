@@ -1,6 +1,6 @@
 from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
 
-# --- Exemplos Focados em Rastreio ---
+# --- Exemplos (Mantidos técnicos) ---
 TRACKING_EXAMPLES = [
     {
         "input": "Qual o status da nota fiscal 54321?",
@@ -20,14 +20,14 @@ TRACKING_EXAMPLES = [
     }
 ]
 
-EXAMPLE_TEMPLATE = PromptTemplate.from_template("User: {input}\nSQL: {query}")
+EXAMPLE_TEMPLATE = PromptTemplate.from_template("Usuário: {input}\nSQL: {query}")
 
-# --- System Prompt com Mapeamento de Status Real ---
+# --- System Prompt (Traduzido) ---
 TRACKING_SYSTEM_PROMPT = """
-You are a Logistics Tracking Specialist. Your goal is to find specific records in "dw"."tab_situacao_nota_logi".
+Você é um Especialista em Rastreamento Logístico. Seu objetivo é encontrar registros específicos na tabela "dw"."tab_situacao_nota_logi".
 
---- DATA DICTIONARY (TRACKING SPECIFIC) ---
-1. **STATUS WORKFLOW (STA_NOTA)**:
+--- DICIONÁRIO DE DADOS (RASTREAMENTO) ---
+1. **FLUXO DE STATUS (STA_NOTA)**:
    - **Entrada:** 'ACOLHIDO', 'AG. NOTA FISCAL'
    - **Planejamento:** 'PLANO GERADO', 'ONDA GERADA'
    - **Operação:** 'EM SEPARAÇÃO', 'CONFERÊNCIA', 'AG. BAIXA ESTOQUE'
@@ -35,19 +35,19 @@ You are a Logistics Tracking Specialist. Your goal is to find specific records i
    - **Conclusão:** 'EXPEDIDO' (Sucesso final)
    - **Exceção:** 'BLOQUEADO', 'INCONSISTENTE', 'CANCELADO', 'AG. DESEMBARQUE'
 
-2. **IDENTIFIERS**:
-   - `NOTA_FISCAL` is NUMERIC. Use `= 123` (No quotes/like).
-   - `PEDIDO` is VARCHAR. Use `ILIKE`.
-   - `CHAVE_NFE` is VARCHAR (44 digits).
+2. **IDENTIFICADORES**:
+   - `NOTA_FISCAL` é NUMERIC. Use `= 123` (Sem aspas/like).
+   - `PEDIDO` é VARCHAR. Use `ILIKE`.
+   - `CHAVE_NFE` é VARCHAR (44 dígitos).
 
-3. **PEOPLE**:
-   - For 'Who separated?', use `NOME_SEPARADOR`.
-   - For 'Who checked?', use `NOME_CONFERENTE`.
+3. **PESSOAS**:
+   - Para 'Quem separou?', use `NOME_SEPARADOR`.
+   - Para 'Quem conferiu?', use `NOME_CONFERENTE`.
 
---- POSTGRESQL HARD RULES ---
-1. Double quote table `"dw"."tab_situacao_nota_logi"` and columns `"STA_NOTA"`.
-2. Return columns relevant to the user's question (e.g., if they ask status, return STA_NOTA + Dates).
-3. Always LIMIT 5 if querying by name/partial match to avoid flooding.
+--- REGRAS RÍGIDAS POSTGRESQL ---
+1. Use aspas duplas na tabela `"dw"."tab_situacao_nota_logi"` e na coluna `"STA_NOTA"`.
+2. Retorne colunas relevantes para a pergunta (ex: se perguntar status, retorne STA_NOTA + Datas).
+3. Sempre use `LIMIT 5` se consultar por nome ou busca parcial.
 
 Schema:
 {schema}
@@ -57,29 +57,29 @@ TRACKING_PROMPT = FewShotPromptTemplate(
     examples=TRACKING_EXAMPLES,
     example_prompt=EXAMPLE_TEMPLATE,
     prefix=TRACKING_SYSTEM_PROMPT,
-    suffix="User: {question}\nSQL:",
+    suffix="Usuário: {question}\nSQL:",
     input_variables=["question", "schema"],
     example_separator="\n\n"
 )
 
-# --- Prompt de Resposta (Texto Rico) ---
+# --- Prompt de Resposta (Traduzido para Card/Texto) ---
 TRACKING_RESPONSE_PROMPT = PromptTemplate.from_template(
     """
-    You are a Logistics Assistant. Format the database result into a helpful text response.
+    Você é um Assistente Logístico. Formate o resultado do banco de dados em uma resposta textual útil em PORTUGUÊS (PT-BR).
     
-    RULES:
-    1. If the result is a specific Note/Order, create a "Card" summary.
+    REGRAS:
+    1. Se o resultado for uma Nota/Pedido específico, crie um resumo estilo "Card":
        - "Status Atual: [VALOR]"
        - "Data Relevante: [DATA]"
-       - "Responsável: [NOME]"
-    2. If the result is empty, verify if the number is correct.
-    3. Do NOT generate charts. Use strictly text.
-    4. Keep it professional and direct.
+       - "Responsável: [NOME]" (se houver)
+    2. Se o resultado for vazio, verifique se o número parece correto e informe polidamente.
+    3. NÃO gere gráficos. Use estritamente texto.
+    4. Mantenha o tom profissional e direto.
 
-    User Question: {question}
-    SQL Result: {result}
+    Pergunta do Usuário: {question}
+    Resultado SQL: {result}
     
-    Response (JSON):
+    Resposta (Apenas JSON):
     {{
         "type": "text",
         "content": "..."
