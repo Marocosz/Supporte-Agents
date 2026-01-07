@@ -2,10 +2,13 @@
 # SCHEMAS DE SAÍDA (CONTRATO DE DADOS BACKEND -> FRONTEND)
 # =================================================================================================
 from typing import List, Literal, Union, Dict, Any, Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 class BaseResponse(BaseModel):
     """Campos comuns injetados pela API (api.py) após o processamento do Agente."""
+    # Configuração de segurança: Ignora campos extras que o LLM possa inventar
+    model_config = ConfigDict(extra='ignore')
+
     session_id: Optional[str] = Field(
         default=None, 
         description="ID único da sessão para rastreamento."
@@ -14,9 +17,10 @@ class BaseResponse(BaseModel):
         default=None, 
         description="Tempo total de processamento em segundos."
     )
+    # O Orchestrator injeta como 'sql', mas mantemos 'generated_sql' aqui por compatibilidade
     generated_sql: Optional[str] = Field(
         default=None, 
-        description="O SQL gerado pelo agente (para auditoria e debug no frontend)."
+        description="O SQL gerado pelo agente."
     )
 
 # --- Modelo 1: Resposta de Texto (Cards, Listas, KPIs) ---
@@ -25,7 +29,7 @@ class TextResponse(BaseResponse):
         description="Identificador fixo para renderização de texto."
     )
     content: str = Field(
-        description="O conteúdo da resposta em PT-BR, formatado (pode conter markdown)."
+        description="O conteúdo da resposta em PT-BR, formatado."
     )
 
 # --- Modelo 2: Resposta de Gráfico (Analytics) ---
@@ -35,7 +39,7 @@ class ChartResponse(BaseResponse):
     )
     
     chart_type: Literal["bar", "line", "pie"] = Field(
-        description="O tipo de visualização: 'bar' (Barra), 'line' (Linha) ou 'pie' (Pizza)."
+        description="O tipo de visualização."
     )
     
     title: str = Field(
@@ -43,7 +47,7 @@ class ChartResponse(BaseResponse):
     )
     
     data: List[Dict[str, Any]] = Field(
-        description="Lista de dados brutos. Ex: [{'filial': 'SP', 'valor': 100}, ...]"
+        description="Lista de dados brutos."
     )
     
     x_axis: str = Field(
@@ -56,7 +60,7 @@ class ChartResponse(BaseResponse):
     
     y_axis_label: Optional[str] = Field(
         default=None, 
-        description="Rótulo da unidade de medida (Ex: 'Valor (R$)', 'Qtd Volumes')."
+        description="Rótulo da unidade de medida."
     )
 
 # --- Union Type para uso nos Parsers ---

@@ -24,7 +24,7 @@ def get_router_chain():
 
     chain = (
         ROUTER_PROMPT
-        | get_llm()
+        | get_llm() # Usa temperatura 0.0 para velocidade máxima
         | StrOutputParser()
         | clean_category
     )

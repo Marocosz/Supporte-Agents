@@ -10,6 +10,7 @@
 
 import logging
 import psycopg2
+from functools import lru_cache # <--- OTIMIZAÇÃO: Cache de memória eficiente
 from langchain_community.utilities import SQLDatabase
 # Necessário para criar a engine e usar variáveis separadas.
 from sqlalchemy import create_engine 
@@ -17,9 +18,6 @@ from .config import settings
 
 # Obtém um logger específico para este módulo.
 logger = logging.getLogger(__name__)
-
-# Variável global para armazenar o schema em cache, evitando múltiplas chamadas ao DB.
-_cached_schema: str | None = None
 
 # Lista de tabelas que o sistema deve focar (Atualizado para o novo BD)
 TARGET_TABLES = ['tab_situacao_nota_logi']
@@ -60,11 +58,15 @@ def get_db_connection() -> SQLDatabase:
         # 4. Criamos a instância SQLDatabase do LangChain usando a Engine customizada.
         # Atualizado: include_tables agora usa a lista TARGET_TABLES definida acima.
         # Adicionado: schema=TARGET_SCHEMA para indicar onde buscar as tabelas.
+        
+        # OTIMIZAÇÃO CRÍTICA DE VELOCIDADE:
+        # sample_rows_in_table_info=0 -> Evita que o LangChain faça um SELECT * LIMIT X
+        # toda vez que inicia. Como já passamos exemplos nos prompts, isso é desnecessário e lento.
         db = SQLDatabase(
             engine=engine,
             schema=TARGET_SCHEMA, 
             include_tables=TARGET_TABLES,
-            sample_rows_in_table_info=2 # Reduzido para economizar tokens, mostra 2 linhas de exemplo
+            sample_rows_in_table_info=0 
         )
         
         logger.info(f"Conexão com o banco de dados (Schema: {TARGET_SCHEMA}) estabelecida com sucesso.")
@@ -74,17 +76,21 @@ def get_db_connection() -> SQLDatabase:
         logger.error(f"Falha ao conectar com o banco de dados (LangChain): {e}")
         raise
 
-def _generate_compact_db_schema() -> str:
+@lru_cache(maxsize=1)
+def get_compact_db_schema() -> str:
     """
     Gera uma string de schema muito compacta para guiar melhor a IA.
     Esta função se conecta ao banco e faz a leitura das colunas.
+    
+    OTIMIZAÇÃO: O decorador @lru_cache garante que esta função seja executada
+    apenas UMA vez. Nas chamadas subsequentes, o resultado é retornado da memória.
 
     Returns:
         Uma string formatada com o esquema do banco de dados.
     """
     conn = None
     try:
-        logger.info("Gerando schema compacto do banco de dados a partir do DB...")
+        logger.info("Gerando schema compacto do banco de dados (CACHE MISS - Executando query real)...")
         
         # Conexão direta com psycopg2 para ler o schema
         conn = psycopg2.connect(
@@ -130,7 +136,7 @@ def _generate_compact_db_schema() -> str:
             schema_parts.append(f"Tabela: {TARGET_SCHEMA}.{table}\nColunas: {', '.join(columns)}")
             
         cur.close()
-        logger.info("Schema compacto gerado com sucesso.")
+        logger.info("Schema compacto gerado e armazenado em CACHE.")
         return "\n\n".join(schema_parts)
     except Exception as e:
         logger.error(f"Erro ao gerar schema compacto: {e}")
@@ -139,23 +145,6 @@ def _generate_compact_db_schema() -> str:
         # Fecha a conexão direta para liberar recursos.
         if conn:
             conn.close()
-
-def get_compact_db_schema() -> str:
-    """
-    Função pública que retorna o schema do banco de dados.
-    Ela utiliza um sistema de cache para evitar múltiplas chamadas ao banco,
-    gerando o schema apenas na primeira vez que é solicitado.
-
-    Returns:
-        A string contendo o esquema do banco de dados.
-    """
-    global _cached_schema
-    # Se o cache estiver vazio, chama a função geradora.
-    if _cached_schema is None:
-        _cached_schema = _generate_compact_db_schema()
-    
-    # Retorna o schema que está em cache.
-    return _cached_schema
 
 # Cria uma instância única da conexão do LangChain quando a aplicação é iniciada.
 # Esta linha tentará se conectar ao banco imediatamente, levantando um erro se falhar.

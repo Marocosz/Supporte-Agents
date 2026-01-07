@@ -16,11 +16,9 @@ def clean_sql_markdown(text: str) -> str:
 def get_analytics_chain():
     """
     Cria a cadeia especialista em Analytics (BI).
-    Foco: Agregações, KPIs, Gráficos.
-    Saída: JSON Validado (Chart ou Text).
     """
 
-    # Parser híbrido (O LLM decide se preenche como ChartResponse ou TextResponse)
+    # Parser híbrido (Validação final apenas)
     parser = PydanticOutputParser(pydantic_object=AgentResponse)
 
     # 1. Gerador de SQL
@@ -53,11 +51,12 @@ def get_analytics_chain():
             logger.error(f"Erro no Analytics Agent: {e}")
             return f"Erro ao calcular indicadores: {str(e)}"
 
-    # 3. Formatador de Visualização Validado
+    # 3. Formatador de Visualização
+    # OTIMIZAÇÃO: Removemos .partial(format_instructions=...) para economizar tokens e evitar conflitos.
     viz_gen = (
-        ANALYTICS_RESPONSE_PROMPT.partial(format_instructions=parser.get_format_instructions())
+        ANALYTICS_RESPONSE_PROMPT
         | get_answer_llm()
-        | parser # <--- Garante a estrutura Pydantic
+        | parser 
     )
 
     chain = (

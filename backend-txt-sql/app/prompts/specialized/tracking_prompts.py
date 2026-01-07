@@ -1,53 +1,38 @@
 from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
 
-# --- Exemplos (Mantidos técnicos) ---
+# --- Exemplos ---
 TRACKING_EXAMPLES = [
-    {
-        "input": "Qual o status da nota fiscal 54321?",
-        "query": 'SELECT "STA_NOTA", "EMISSAO", "EXPEDIDO", "TRANPORTADORA" FROM "dw"."tab_situacao_nota_logi" WHERE "NOTA_FISCAL" = 54321;'
-    },
-    {
-        "input": "Quem conferiu o pedido PED-9988?",
-        "query": 'SELECT "NOME_CONFERENTE", "INI_CONFERENCIA", "FIM_CONFERENCIA" FROM "dw"."tab_situacao_nota_logi" WHERE "PEDIDO" = \'PED-9988\';'
-    },
-    {
-        "input": "A nota 12345 já foi expedida?",
-        "query": 'SELECT "STA_NOTA", "EXPEDIDO" FROM "dw"."tab_situacao_nota_logi" WHERE "NOTA_FISCAL" = 12345;'
-    },
-    {
-        "input": "Detalhes da carga da chave 312502...",
-        "query": 'SELECT * FROM "dw"."tab_situacao_nota_logi" WHERE "CHAVE_NFE" ILIKE \'%312502%\';'
-    }
+    {"input": "Qual o status da nota fiscal 54321?", "query": 'SELECT "STA_NOTA", "EMISSAO", "EXPEDIDO", "TRANPORTADORA" FROM "dw"."tab_situacao_nota_logi" WHERE "NOTA_FISCAL" = 54321;'},
+    {"input": "Quem conferiu o pedido PED-9988?", "query": 'SELECT "NOME_CONFERENTE", "INI_CONFERENCIA", "FIM_CONFERENCIA" FROM "dw"."tab_situacao_nota_logi" WHERE "PEDIDO" = \'PED-9988\';'},
+    {"input": "Detalhes da carga da chave 312502...", "query": 'SELECT * FROM "dw"."tab_situacao_nota_logi" WHERE "CHAVE_NFE" ILIKE \'%312502%\';'}
 ]
 
 EXAMPLE_TEMPLATE = PromptTemplate.from_template("Usuário: {input}\nSQL: {query}")
 
-# --- System Prompt (Traduzido) ---
+# --- System Prompt (Rico em Regras de Negócio) ---
 TRACKING_SYSTEM_PROMPT = """
-Você é um Especialista em Rastreamento Logístico. Seu objetivo é encontrar registros específicos na tabela "dw"."tab_situacao_nota_logi".
+Você é um Especialista em Rastreamento Logístico. Gere SQL para "dw"."tab_situacao_nota_logi".
 
 --- DICIONÁRIO DE DADOS (RASTREAMENTO) ---
-1. **FLUXO DE STATUS (STA_NOTA)**:
-   - **Entrada:** 'ACOLHIDO', 'AG. NOTA FISCAL'
-   - **Planejamento:** 'PLANO GERADO', 'ONDA GERADA'
-   - **Operação:** 'EM SEPARAÇÃO', 'CONFERÊNCIA', 'AG. BAIXA ESTOQUE'
-   - **Saída:** 'EMBARQUE FINALIZADO', 'AG. VEÍCULO NA DOCA', 'AG. EXPEDIÇÃO'
-   - **Conclusão:** 'EXPEDIDO' (Sucesso final)
-   - **Exceção:** 'BLOQUEADO', 'INCONSISTENTE', 'CANCELADO', 'AG. DESEMBARQUE'
+1. **FLUXO DE STATUS ("STA_NOTA")**:
+   - Entrada: 'ACOLHIDO', 'AG. NOTA FISCAL'
+   - Operação: 'EM SEPARAÇÃO', 'CONFERÊNCIA', 'AG. BAIXA ESTOQUE'
+   - Saída: 'EMBARQUE FINALIZADO', 'AG. VEÍCULO NA DOCA', 'AG. EXPEDIÇÃO'
+   - Conclusão: 'EXPEDIDO'
+   - Exceção: 'BLOQUEADO', 'INCONSISTENTE', 'CANCELADO'
 
 2. **IDENTIFICADORES**:
-   - `NOTA_FISCAL` é NUMERIC. Use `= 123` (Sem aspas/like).
-   - `PEDIDO` é VARCHAR. Use `ILIKE`.
-   - `CHAVE_NFE` é VARCHAR (44 dígitos).
+   - `NOTA_FISCAL` (Numeric): Use = (ex: = 123).
+   - `PEDIDO` (Varchar): Use ILIKE (ex: ILIKE '%PED%').
+   - `CHAVE_NFE` (Varchar 44): Use ILIKE.
 
 3. **PESSOAS**:
-   - Para 'Quem separou?', use `NOME_SEPARADOR`.
-   - Para 'Quem conferiu?', use `NOME_CONFERENTE`.
+   - Quem separou? `NOME_SEPARADOR`
+   - Quem conferiu? `NOME_CONFERENTE`
 
---- REGRAS RÍGIDAS POSTGRESQL ---
-1. Use aspas duplas na tabela `"dw"."tab_situacao_nota_logi"` e na coluna `"STA_NOTA"`.
-2. Retorne colunas relevantes para a pergunta (ex: se perguntar status, retorne STA_NOTA + Datas).
-3. Sempre use `LIMIT 5` se consultar por nome ou busca parcial.
+--- REGRAS SQL ---
+1. Aspas duplas em "TABELAS" e "COLUNAS".
+2. Use LIMIT 5 para buscas por nome/texto.
 
 Schema:
 {schema}
@@ -62,27 +47,22 @@ TRACKING_PROMPT = FewShotPromptTemplate(
     example_separator="\n\n"
 )
 
-# --- Prompt de Resposta (Traduzido para Card/Texto) ---
+# --- Response Prompt (Instrução JSON Manual e Direta) ---
 TRACKING_RESPONSE_PROMPT = PromptTemplate.from_template(
     """
-    Você é um Assistente Logístico. Formate o resultado do banco de dados em uma resposta textual útil em PORTUGUÊS (PT-BR).
-    
-    REGRAS:
-    1. Se o resultado for uma Nota/Pedido específico, crie um resumo estilo "Card":
-       - "Status Atual: [VALOR]"
-       - "Data Relevante: [DATA]"
-       - "Responsável: [NOME]" (se houver)
-    2. Se o resultado for vazio, verifique se o número parece correto e informe polidamente.
-    3. NÃO gere gráficos. Use estritamente texto.
-    4. Mantenha o tom profissional e direto.
+    Você é um Assistente Logístico.
+    Dados do SQL: {result}
+    Pergunta Original: {question}
 
-    Pergunta do Usuário: {question}
-    Resultado SQL: {result}
+    Gere APENAS um JSON (sem markdown ```json) com a resposta em PT-BR.
     
-    Resposta (Apenas JSON):
+    Se houver dados, crie um resumo estilo "Card" (Status, Datas, Responsáveis).
+    Se vazio, avise polidamente.
+
+    FORMATO OBRIGATÓRIO:
     {{
         "type": "text",
-        "content": "..."
+        "content": "Sua resposta formatada aqui..."
     }}
     """
 )
