@@ -9,26 +9,22 @@ ANALYTICS_EXAMPLES = [
 
 EXAMPLE_TEMPLATE = PromptTemplate.from_template("Usuário: {input}\nSQL: {query}")
 
-# --- System Prompt (Rico em Regras de Negócio + Trava de Silêncio) ---
+# --- System Prompt ---
 ANALYTICS_SYSTEM_PROMPT = """
 Você é um Analista de BI Sênior. Gere SQL para "dw"."tab_situacao_nota_logi".
 Gere APENAS o código SQL. NÃO EXPLIQUE.
 
+--- ATENÇÃO AOS NOMES DE COLUNAS (CRÍTICO) ---
+1. A coluna de transportadora chama-se **"TRANPORTADORA"** (sic). 
+   - Está escrito errado no banco (sem o 'S'). 
+   - JAMAIS escreva "TRANSPORTADORA". Use sempre **"TRANPORTADORA"**.
+
 --- REGRAS DE KPI ---
-1. **FILIAIS**:
-   - 'SUP MAO I', 'SUP MAO II' -> Manaus.
-   - 'SUP BAR' -> Barueri. 'SUP IPO' -> Ipojuca. 'SUP UDI' -> Uberlândia.
-
-2. **DEFINIÇÕES**:
-   - **"Expedido"**: WHERE "STA_NOTA" = 'EXPEDIDO' OR "EXPEDIDO" IS NOT NULL.
-   - **"Pendente"**: WHERE "EXPEDIDO" IS NULL AND "STA_NOTA" != 'CANCELADO'.
-   - **"Aging"**: CURRENT_DATE - "EMISSAO"::date.
-
-3. **SQL**:
-   - SEMPRE use `GROUP BY` para agregações.
-   - Trate datas: `::date`.
+1. **FILIAIS**: 'SUP MAO I/II' -> Manaus, 'SUP BAR' -> Barueri.
+2. **DEFINIÇÕES**: 'EXPEDIDO' (Status), 'PENDENTE' (Sem data de expedição).
+3. **SQL**: 
    - Aspas duplas em "TABELAS" e "COLUNAS".
-   - Use `LIMIT 15` para Rankings.
+   - GROUP BY obrigatório em agregações.
 
 Schema:
 {schema}
@@ -43,7 +39,7 @@ ANALYTICS_PROMPT = FewShotPromptTemplate(
     example_separator="\n\n"
 )
 
-# --- Response Prompt (Blindado contra Python e Loops) ---
+# --- Response Prompt ---
 ANALYTICS_RESPONSE_PROMPT = PromptTemplate.from_template(
     """
     Dados SQL: {result}
@@ -52,11 +48,11 @@ ANALYTICS_RESPONSE_PROMPT = PromptTemplate.from_template(
     Gere APENAS JSON válido (sem markdown).
     
     CRÍTICO: 
-    1. O campo "data" DEVE conter a lista real de valores literais (ex: [{{ "nome": "A", "valor": 10 }}]).
-    2. NÃO use list comprehension, loops ou código Python dentro do JSON.
-    3. Se o SQL retornou vazio, use o formato de TEXTO avisando.
+    1. O campo "data" DEVE conter a lista real de valores literais.
+    2. NÃO use código Python.
+    3. Se o SQL retornou vazio, use o formato de TEXTO.
 
-    OPÇÃO A - GRÁFICO (Múltiplas linhas/categorias):
+    OPÇÃO A - GRÁFICO:
     {{
       "type": "chart",
       "chart_type": "bar" (ou "line", "pie"),
@@ -67,7 +63,7 @@ ANALYTICS_RESPONSE_PROMPT = PromptTemplate.from_template(
       "y_axis_label": "Unidade"
     }}
 
-    OPÇÃO B - TEXTO (Valor único ou lista):
+    OPÇÃO B - TEXTO:
     {{
       "type": "text",
       "content": "Resumo em PT-BR..."

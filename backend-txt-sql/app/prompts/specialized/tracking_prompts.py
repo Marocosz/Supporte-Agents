@@ -3,36 +3,26 @@ from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
 # --- Exemplos ---
 TRACKING_EXAMPLES = [
     {"input": "Qual o status da nota fiscal 54321?", "query": 'SELECT "STA_NOTA", "EMISSAO", "EXPEDIDO", "TRANPORTADORA" FROM "dw"."tab_situacao_nota_logi" WHERE "NOTA_FISCAL" = 54321;'},
-    {"input": "Quem conferiu o pedido PED-9988?", "query": 'SELECT "NOME_CONFERENTE", "INI_CONFERENCIA", "FIM_CONFERENCIA" FROM "dw"."tab_situacao_nota_logi" WHERE "PEDIDO" = \'PED-9988\';'},
-    {"input": "Detalhes da carga da chave 312502...", "query": 'SELECT * FROM "dw"."tab_situacao_nota_logi" WHERE "CHAVE_NFE" ILIKE \'%312502%\';'}
+    {"input": "Quem conferiu o pedido PED-9988?", "query": 'SELECT "NOME_CONFERENTE", "INI_CONFERENCIA", "FIM_CONFERENCIA" FROM "dw"."tab_situacao_nota_logi" WHERE "PEDIDO" = \'PED-9988\';'}
 ]
 
 EXAMPLE_TEMPLATE = PromptTemplate.from_template("Usuário: {input}\nSQL: {query}")
 
-# --- System Prompt (Rico em Regras de Negócio + Trava de Silêncio) ---
+# --- System Prompt ---
 TRACKING_SYSTEM_PROMPT = """
 Você é um Especialista em Rastreamento Logístico. Gere SQL para "dw"."tab_situacao_nota_logi".
 Gere APENAS o código SQL. NÃO EXPLIQUE.
 
---- DICIONÁRIO DE DADOS (RASTREAMENTO) ---
-1. **FLUXO DE STATUS ("STA_NOTA")**:
-   - Entrada: 'ACOLHIDO', 'AG. NOTA FISCAL'
-   - Operação: 'EM SEPARAÇÃO', 'CONFERÊNCIA', 'AG. BAIXA ESTOQUE'
-   - Saída: 'EMBARQUE FINALIZADO', 'AG. VEÍCULO NA DOCA', 'AG. EXPEDIÇÃO'
-   - Conclusão: 'EXPEDIDO'
-   - Exceção: 'BLOQUEADO', 'INCONSISTENTE', 'CANCELADO'
+--- ATENÇÃO AOS NOMES (CRÍTICO) ---
+1. A coluna é **"TRANPORTADORA"** (sem o 'S' antes do P). NÃO corrija para "TRANSPORTADORA".
 
-2. **IDENTIFICADORES**:
-   - `NOTA_FISCAL` (Numeric): Use = (ex: = 123).
-   - `PEDIDO` (Varchar): Use ILIKE (ex: ILIKE '%PED%').
-   - `CHAVE_NFE` (Varchar 44): Use ILIKE.
-
-3. **PESSOAS**:
-   - Quem separou? `NOME_SEPARADOR`
-   - Quem conferiu? `NOME_CONFERENTE`
+--- DICIONÁRIO DE DADOS ---
+1. STATUS: 'ACOLHIDO', 'EM SEPARAÇÃO', 'EXPEDIDO', 'BLOQUEADO'.
+2. IDs: "NOTA_FISCAL" (Numeric), "PEDIDO" (ILIKE).
+3. PESSOAS: "NOME_SEPARADOR", "NOME_CONFERENTE".
 
 --- REGRAS SQL ---
-1. Aspas duplas em "TABELAS" e "COLUNAS".
+1. Aspas duplas OBRIGATÓRIAS em "TABELAS" e "COLUNAS".
 2. Use LIMIT 5 para buscas por nome/texto.
 
 Schema:
@@ -48,7 +38,7 @@ TRACKING_PROMPT = FewShotPromptTemplate(
     example_separator="\n\n"
 )
 
-# --- Response Prompt (Instrução JSON Manual e Direta) ---
+# --- Response Prompt ---
 TRACKING_RESPONSE_PROMPT = PromptTemplate.from_template(
     """
     Dados do banco: {result}
