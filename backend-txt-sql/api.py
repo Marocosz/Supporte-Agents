@@ -1,231 +1,147 @@
 # =================================================================================================
 # =================================================================================================
 #
-#                           PONTO DE ENTRADA DA API (BACKEND)
+#                           PONTO DE ENTRADA DA API (BACKEND) - v2.0
 #
-# Visão Geral do Módulo:
+# Visão Geral:
+# Este arquivo conecta o servidor web (FastAPI) à nova Arquitetura Multi-Agente.
 #
-# Este arquivo é o coração do backend e serve como o ponto de entrada principal para a aplicação
-# FastAPI. Suas responsabilidades incluem:
-#
-# 1. Inicialização da Aplicação: Cria e configura a instância principal do FastAPI.
-#
-# 2. Configuração de CORS: Define as regras de Cross-Origin Resource Sharing, permitindo
-#    que o frontend (rodando em http://localhost:5173 ou via Nginx) se comunique com este backend.
-#
-# 3. Carregamento do Modelo de IA: Invoca a função `create_master_chain()` do módulo de RAG
-#    para carregar a cadeia de IA com memória uma única vez durante a inicialização do servidor.
-#    Isso é uma otimização crucial de performance.
-#
-# 4. Definição de Endpoints (Rotas):
-#    - `/chat` (POST): O endpoint principal que recebe as perguntas do usuário, gerencia os
-#      IDs de sessão e retorna as respostas geradas pela cadeia de IA.
-#    - `/` (GET): Um endpoint de "health check" para verificar se a API está no ar.
-#    - `/api/dashboard`: Registra todas as rotas relacionadas ao dashboard.
-#
-# 5. Gerenciamento de Sessão: Implementa a lógica para criar um novo ID de sessão para
-#    novas conversas ou reutilizar um ID existente para conversas contínuas.
+# Atualizações da Arquitetura:
+# 1. Substituição do "Monolith Chain" pelo "Orchestrator Chain".
+# 2. Entrada de histórico via Payload (Stateless) para decisão do Router.
+# 3. Retorno padronizado via Schemas (Pydantic).
 #
 # =================================================================================================
 # =================================================================================================
 
 import logging
-import json
 import time
-import uuid  # Importa a biblioteca para gerar IDs de sessão únicos.
+import uuid
+from typing import List, Dict, Any, Optional
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel # Usado para definir os modelos de dados das requisições.
+from pydantic import BaseModel
 
-# Importa a função que constrói a cadeia de IA principal.
-from app.chains.sql_rag_chain import create_master_chain
-# Importa o roteador que contém os endpoints do dashboard.
+# --- NOVOS IMPORTS DA ARQUITETURA ---
+from app.agents.orchestrator import get_orchestrator_chain
+# Importa o roteador que contém os endpoints do dashboard (mantido)
 from app.api import dashboard
 
-# Configura o sistema de logging para toda a aplicação.
-# Define o nível mínimo de log a ser exibido (INFO) e o formato das mensagens.
+# Configuração de Logs
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)-25s - %(levelname)-8s - %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S'
 )
-# Cria um logger específico para este arquivo, facilitando a identificação da origem dos logs.
 logger = logging.getLogger(__name__)
 
-# Cria a instância principal da aplicação FastAPI com metadados para a documentação automática.
+# Inicialização da App
 app = FastAPI(
-    title="Supporte BI SQL API",
-    description="API para interagir com o chatbot de BI Logístico (RAG SQL)",
-    version="1.0.0"
+    title="Supporte BI AI - SQL Agent",
+    description="API de BI Logístico com Arquitetura Multi-Agente (Router -> Specialists)",
+    version="6.3"
 )
 
-# Configura o Middleware de CORS.
-# ATUALIZADO: Adicionada a porta 5173 (Padrão do Vite) e localhost genérico para evitar erros locais.
+# Configura CORS (Mantido para compatibilidade total)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000", 
-        "http://localhost:5173", # Vite padrão
-        "http://localhost:80",   # Nginx padrão
+        "http://localhost:5173", # Vite
+        "http://localhost:80",   # Nginx
         "http://localhost"
     ], 
-    allow_credentials=True, # Permite o envio de credenciais (cookies, etc.).
-    allow_methods=["*"], # Permite todos os métodos HTTP (GET, POST, etc.).
-    allow_headers=["*"], # Permite todos os cabeçalhos HTTP.
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
-# Anexa as rotas definidas no arquivo `dashboard.py` à aplicação principal.
-# Todas as rotas do dashboard serão acessíveis sob o prefixo "/api/dashboard".
+# Rotas de Dashboard (Mantidas)
 app.include_router(dashboard.router, prefix="/api/dashboard")
 
-# Carrega a cadeia de IA com memória UMA VEZ, quando a aplicação é iniciada.
-# Isso evita o custo de recriar a cadeia a cada nova requisição, melhorando a performance.
-rag_chain = create_master_chain()
+# --- Modelos de Entrada (Request) ---
 
-# Define o formato esperado para o corpo (body) de uma requisição para o endpoint /chat.
 class ChatRequest(BaseModel):
     question: str
-    session_id: str | None = None # O ID é opcional; será nulo na primeira mensagem de uma conversa.
+    session_id: str | None = None
+    # NOVO: Recebemos o histórico do frontend para o Router tomar decisões melhores.
+    # Ex: [{ "role": "user", "content": "..." }, { "role": "assistant", "content": "..." }]
+    history: List[Dict[str, str]] = [] 
 
-# Registra a função `chat_endpoint` para lidar com requisições POST no endpoint /chat.
+# --- Endpoint de Chat (O Cérebro) ---
+
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
     """
-    Recebe uma pergunta e um session_id, processa na cadeia com memória
-    e retorna a resposta formatada para o frontend.
+    Endpoint principal.
+    1. Recebe a pergunta e histórico.
+    2. Passa para o Orquestrador (que chama Router -> Agente Especialista).
+    3. Retorna JSON estruturado (Texto ou Gráfico).
     """
-    # Inicia um cronômetro para medir o tempo de resposta total da cadeia.
     start_time = time.monotonic()
     
-    # Loga a chegada de uma nova pergunta para facilitar o acompanhamento no terminal.
+    # Gerenciamento de ID de Sessão (Log e Rastreio)
+    session_id = request.session_id or str(uuid.uuid4())
+
     logger.info("=================================================")
-    logger.info(f"--- Nova Pergunta Recebida: '{request.question}'")
+    logger.info(f"--- [SESSÃO {session_id[:8]}] Nova Pergunta: '{request.question}'")
     logger.info("=================================================")
 
-    # Lógica principal de gerenciamento de sessão:
-    # Se o frontend enviou um `session_id`, usa ele.
-    # Se não (é uma nova conversa), gera um novo UUID (ID único universal).
-    session_id = request.session_id or str(uuid.uuid4())
-    
     try:
-        # Invoca a cadeia de IA principal.
-        # Passa a pergunta do usuário como input principal.
-        # Passa o `session_id` dentro do objeto `config`, que é a forma padrão do LangChain
-        # de fornecer dados de configuração para cadeias que gerenciam histórico.
-        full_chain_output = rag_chain.invoke(
-            {"question": request.question},
-            config={"configurable": {"session_id": session_id}}
-        )
+        # 1. Preparar o Histórico para o Prompt
+        # O Router precisa ler o histórico como texto para resolver pronomes ("dela", "isso").
+        chat_history_text = ""
+        if request.history:
+            chat_history_text = "\n".join([
+                f"{msg.get('role', 'user').title()}: {msg.get('content', '')}" 
+                for msg in request.history[-6:] # Pega apenas as últimas 6 mensagens para economizar tokens
+            ])
+
+        # 2. Instanciar e Invocar o Orquestrador
+        # Nota: O Orquestrador já contém o Router e os Agentes (Tracking/Analytics).
+        orchestrator = get_orchestrator_chain()
         
-        # Extrai o dicionário de resposta formatado pela cadeia.
-        response_dict = full_chain_output.get("api_response", {})
+        result = orchestrator.invoke({
+            "question": request.question,
+            "chat_history": chat_history_text,
+            "category": "" # O próprio chain vai preencher isso via Router
+        })
+
+        # 3. Processar Resultado
+        # O 'result' vindo dos agentes já é um dicionário validado (TextResponse ou ChartResponse)
+        # graças ao .model_dump() no orchestrator.py.
         
-        # Calcula a duração total do processamento.
+        # Se por acaso vier aninhado (alguns runnables fazem isso), corrigimos:
+        final_response = result.get("final_response", result) if isinstance(result, dict) else result
+
+        # 4. Calcular Tempo e Montar Resposta Final da API
         end_time = time.monotonic()
         duration = end_time - start_time
-        
-        # Adiciona informações úteis ao dicionário de resposta.
-        response_dict['response_time'] = f"{duration:.2f}"
-        # Devolve o `session_id` para o frontend, para que ele possa armazená-lo e
-        # enviá-lo de volta na próxima pergunta da mesma conversa.
-        response_dict['session_id'] = session_id
-        
-        return response_dict
-        
+
+        # Injetamos metadados técnicos no JSON de resposta
+        if isinstance(final_response, dict):
+            final_response['response_time'] = f"{duration:.2f}"
+            final_response['session_id'] = session_id
+            
+            # (Opcional) Log para debug
+            # logger.info(f"Resposta Gerada: {final_response.get('type')}")
+
+        return final_response
+
     except Exception as e:
-        # Em caso de qualquer erro inesperado durante a execução da cadeia,
-        # loga o erro completo no terminal e retorna uma mensagem de erro genérica.
-        logger.error(f"Erro no processamento da cadeia RAG: {e}", exc_info=True)
-        return {"type": "text", "content": "Desculpe, ocorreu um erro grave ao processar sua solicitação."}
+        logger.error(f"Erro CRÍTICO no processamento: {e}", exc_info=True)
+        # Fallback seguro para não quebrar o frontend
+        return {
+            "type": "text",
+            "content": f"Desculpe, ocorreu um erro interno ao processar sua solicitação. Detalhes: {str(e)}",
+            "session_id": session_id,
+            "response_time": "0.00"
+        }
 
-
-# Registra a função `read_root` para lidar com requisições GET no endpoint /.
 @app.get("/")
 def read_root():
-    """
-    Endpoint de "health check" para verificar de forma simples se a API está no ar.
-    Útil para monitoramento e testes de deploy.
-    """
-    return {"status": "Supporte BI SQL API is running"}
+    return {"status": "Supporte BI Multi-Agent API is running", "version": "2.0"}
 
-
-"""
---- Exemplos de Saída do Endpoint /chat (Atualizado para o Contexto Logístico) ---
-
-A seguir estão exemplos dos diferentes tipos de JSON que este endpoint pode retornar,
-dependendo da pergunta do usuário e do resultado do processamento da cadeia de IA.
-
-# ---------------------------------------------------------------------------------
-# 1. Resposta de Texto Simples
-# ---------------------------------------------------------------------------------
-# Ocorre em saudações, ou quando o usuário pede um dado específico que não é
-# ideal para um gráfico.
-
-# Pergunta do Usuário: "Qual o status da nota fiscal 12345?"
-
-{
-    "type": "text",
-    "content": "A nota fiscal 12345 está com o status 'EXPEDIDA'.",
-    "generated_sql": "SELECT STA_NOTA FROM tab_situacao_nota_logi WHERE NOTA_FISCAL = 12345",
-    "response_time": "3.14",
-    "session_id": "f9087639-1f3a-48fd-9eb7-53318fc04643"
-}
-
-# ---------------------------------------------------------------------------------
-# 2. Resposta com Gráfico
-# ---------------------------------------------------------------------------------
-# Ocorre quando o LLM Analista de Dados determina que a melhor forma de apresentar
-# a informação é através de uma visualização.
-
-# Pergunta do Usuário: "Qual o valor total de pedidos por filial?"
-
-{
-    "type": "chart",
-    "chart_type": "bar",
-    "title": "Valor Total de Pedidos por Filial",
-    "data": [
-        {
-            "nome_filial": "MATRIZ",
-            "valor_total": 500000.00
-        },
-        {
-            "nome_filial": "FILIAL SP",
-            "valor_total": 300000.00
-        }
-    ],
-    "x_axis": "nome_filial",
-    "y_axis": [
-        "valor_total"
-    ],
-    "y_axis_label": "Valor Total (R$)",
-    "generated_sql": "SELECT NOME_FILIAL, SUM(VALOR_PEDIDO) as valor_total FROM tab_situacao_nota_logi GROUP BY NOME_FILIAL",
-    "response_time": "4.51",
-    "session_id": "f9087639-1f3a-48fd-9eb7-53318fc04643"
-}
-
-# ---------------------------------------------------------------------------------
-# 3. Resposta de Texto para Consulta sem Resultados
-# ---------------------------------------------------------------------------------
-# Ocorre quando a query SQL é válida, mas não encontra nenhum registro no banco de dados.
-
-# Pergunta do Usuário: "Qual a produtividade do separador 'JOAO NINGUEM'?"
-
-{
-    "type": "text",
-    "content": "Não encontrei nenhuma informação sobre a produtividade do separador 'JOAO NINGUEM'.",
-    "generated_sql": "SELECT COUNT(*) FROM tab_situacao_nota_logi WHERE NOME_SEPARADOR = 'JOAO NINGUEM'",
-    "response_time": "2.89",
-    "session_id": "f9087639-1f3a-48fd-9eb7-53318fc04643"
-}
-
-# ---------------------------------------------------------------------------------
-# 4. Resposta de Erro Grave
-# ---------------------------------------------------------------------------------
-# Ocorre quando uma exceção não tratada acontece durante a execução da cadeia de IA.
-
-{
-    "type": "text",
-    "content": "Desculpe, ocorreu um erro grave ao processar sua solicitação."
-}
-
-"""
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8002)
