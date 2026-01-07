@@ -10,13 +10,19 @@ export interface BiChartData {
 }
 
 export interface BiApiResponse {
-    type: 'text' | 'chart';
-    content?: string;
-    title?: string; // Para gráficos
-    generated_sql?: string;
-    response_time?: string;
+    type: 'text' | 'chart' | 'error';
+    content?: string | any; // Pode ser string (texto) ou objeto (dados do gráfico)
+    
+    // --- Metadados Técnicos (Adicionados) ---
+    title?: string;           // Título do gráfico (se houver)
+    sql?: string;            // SQL gerado pelo agente
+    generated_sql?: string;   // Compatibilidade legada
+    query?: string;          // A pergunta original do usuário
+    response_time?: string;   // Tempo formatado "0.45"
+    execution_time?: number;  // Tempo float
     session_id?: string;
-    // Propriedades de gráfico mescladas aqui para facilitar
+    
+    // Propriedades de gráfico mescladas
     chart_type?: 'bar' | 'line' | 'pie';
     data?: any[];
     x_axis?: string;

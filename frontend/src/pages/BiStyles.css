@@ -312,6 +312,18 @@
     border: none;
 }
 
+/* Agrupamento de conteúdo e metadados */
+.bi-message-content-group {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    /* Limita largura do balão */
+}
+
+.bi-message-wrapper.user .bi-message-content-group {
+    align-items: flex-end;
+}
+
 .bi-message-bubble {
     background-color: var(--surface-dark);
     padding: 20px;
@@ -336,14 +348,11 @@
 .bi-chat-chart-container {
     width: 100%;
     min-width: 1200px;
-    /* Largura mínima saudável */
     height: 400px;
-    /* Altura fixa boa para leitura */
     margin-bottom: 20px;
     position: relative;
 }
 
-/* Título do Gráfico dentro do Chat */
 .bi-chart-title {
     font-size: 1.1rem;
     font-weight: 600;
@@ -353,19 +362,6 @@
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     display: block;
-    /* Garante bloco */
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .bi-chat-chart-container {
-        min-width: 100%;
-        height: 350px;
-    }
-
-    .bi-message-wrapper {
-        max-width: 100%;
-    }
 }
 
 /* Loading Dots */
@@ -410,66 +406,121 @@
     }
 }
 
-/* Botões de Query */
-.bi-query-section {
-    margin-top: 15px;
-    padding-top: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.bi-query-toggle {
-    background: none;
-    border: none;
-    color: var(--text-secondary);
-    cursor: pointer;
-    font-size: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 5px 0;
-    transition: color 0.2s;
-}
-
-.bi-query-toggle:hover {
-    color: var(--accent-blue);
-}
-
-.bi-query-box {
-    margin-top: 10px;
-    background-color: var(--input-bg);
-    padding: 10px;
-    border-radius: 6px;
-    font-family: monospace;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    border: 1px solid var(--border-color);
-    overflow-x: auto;
-    white-space: pre-wrap;
-}
-
 /* Scrollbars */
 .bi-dashboard::-webkit-scrollbar,
 .bi-chat-window::-webkit-scrollbar,
-.bi-query-box::-webkit-scrollbar {
+.bi-query-box::-webkit-scrollbar,
+.bi-sql-viewer::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 
 .bi-dashboard::-webkit-scrollbar-track,
 .bi-chat-window::-webkit-scrollbar-track,
-.bi-query-box::-webkit-scrollbar-track {
+.bi-query-box::-webkit-scrollbar-track,
+.bi-sql-viewer::-webkit-scrollbar-track {
     background: var(--background-dark);
 }
 
 .bi-dashboard::-webkit-scrollbar-thumb,
 .bi-chat-window::-webkit-scrollbar-thumb,
-.bi-query-box::-webkit-scrollbar-thumb {
+.bi-query-box::-webkit-scrollbar-thumb,
+.bi-sql-viewer::-webkit-scrollbar-thumb {
     background: var(--border-color);
     border-radius: 4px;
 }
 
 .bi-dashboard::-webkit-scrollbar-thumb:hover,
 .bi-chat-window::-webkit-scrollbar-thumb:hover,
-.bi-query-box::-webkit-scrollbar-thumb:hover {
+.bi-query-box::-webkit-scrollbar-thumb:hover,
+.bi-sql-viewer::-webkit-scrollbar-thumb:hover {
     background: var(--text-secondary);
+}
+
+/* ============================================================
+   --- Metadados e SQL Viewer (NOVO) ---
+   ============================================================ */
+
+.bi-message-metadata {
+    margin-top: 6px;
+    margin-left: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bi-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bi-meta-tag {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.bi-meta-tag.time {
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+.bi-meta-tag.sql-btn {
+    cursor: pointer;
+    color: var(--accent-blue);
+    transition: all 0.2s;
+    background: rgba(94, 114, 228, 0.08);
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(94, 114, 228, 0.15);
+}
+
+.bi-meta-tag.sql-btn:hover {
+    background: rgba(94, 114, 228, 0.2);
+    text-decoration: none;
+}
+
+.bi-meta-tag.sql-btn.active {
+    background: var(--accent-blue);
+    color: white;
+    border-color: var(--accent-blue);
+}
+
+/* Visualizador de SQL */
+.bi-sql-viewer {
+    background: #1e1e2f;
+    /* Fundo mais escuro para código */
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    max-width: 600px;
+    overflow-x: auto;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.bi-sql-header {
+    font-size: 0.7rem;
+    color: #8898aa;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.bi-sql-code {
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.8rem;
+    color: #a5d6ff;
+    /* Azul claro para código */
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+    line-height: 1.4;
 }

@@ -8,6 +8,12 @@ const BiChatMessage: React.FC<{ message: BiMessageType }> = ({ message }) => {
   const content = message.content;
   const [showQuery, setShowQuery] = useState(false);
 
+  // --- LÓGICA ADICIONADA: Compatibilidade de Campos ---
+  // O backend novo manda 'sql', o antigo mandava 'generated_sql'.
+  // Aqui normalizamos para funcionar com ambos.
+  const actualSql = content.sql || content.generated_sql;
+  const responseTime = content.response_time;
+
   const wrapperClass = `bi-message-wrapper ${message.sender}`;
   const bubbleClass = `bi-message-bubble ${message.sender}`;
 
@@ -18,7 +24,7 @@ const BiChatMessage: React.FC<{ message: BiMessageType }> = ({ message }) => {
       </div>
       
       <div className={bubbleClass}>
-        {/* Lógica de Renderização do Conteúdo */}
+        {/* Lógica de Renderização do Conteúdo (Mantida intacta) */}
         {content.type === 'chart' ? (
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 {/* Título do Gráfico Centralizado */}
@@ -42,29 +48,33 @@ const BiChatMessage: React.FC<{ message: BiMessageType }> = ({ message }) => {
         )}
 
         {/* Rodapé da mensagem do Bot (Tempo + Query) */}
-        {isBot && content.generated_sql && (
+        {/* Alterado para verificar se existe SQL (novo ou velho) OU tempo */}
+        {isBot && (actualSql || responseTime) && (
             <div className="bi-query-section">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    {content.response_time && (
+                    {responseTime && (
                         <span style={{ fontSize: '0.7rem', color: '#8898aa' }}>
-                            Tempo: {content.response_time}s
+                            Tempo: {responseTime}s
                         </span>
                     )}
                     
-                    <button 
-                        onClick={() => setShowQuery(!showQuery)} 
-                        className="bi-query-toggle"
-                        title="Ver SQL gerado"
-                    >
-                        <FiCode style={{ marginRight: 4 }} /> 
-                        {showQuery ? 'Ocultar Query' : 'Ver Query'} 
-                        {showQuery ? <FiChevronUp style={{ marginLeft: 4 }} /> : <FiChevronDown style={{ marginLeft: 4 }} />}
-                    </button>
+                    {/* Só mostra o botão se realmente tiver SQL para mostrar */}
+                    {actualSql && (
+                        <button 
+                            onClick={() => setShowQuery(!showQuery)} 
+                            className="bi-query-toggle"
+                            title="Ver SQL gerado"
+                        >
+                            <FiCode style={{ marginRight: 4 }} /> 
+                            {showQuery ? 'Ocultar Query' : 'Ver Query'} 
+                            {showQuery ? <FiChevronUp style={{ marginLeft: 4 }} /> : <FiChevronDown style={{ marginLeft: 4 }} />}
+                        </button>
+                    )}
                 </div>
                 
-                {showQuery && (
+                {showQuery && actualSql && (
                     <div className="bi-query-box">
-                        {content.generated_sql}
+                        {actualSql}
                     </div>
                 )}
             </div>

@@ -42,24 +42,42 @@ const BiChat: React.FC = () => {
         setInput(''); // Limpa input imediatamente
         
         // Adiciona mensagem do usuário
-        const userMsg: BiMessageType = { sender: 'user', content: { type: 'text', content: userText } };
+        const userMsg: BiMessageType = { 
+            sender: 'user', 
+            content: { type: 'text', content: userText } 
+        };
         setMessages(prev => [...prev, userMsg]);
         setLoading(true);
 
         try {
+            // Prepara o histórico para o backend (contexto conversacional)
+            // Mapeia as mensagens atuais para o formato { role, content }
+            const historyPayload = messages.map(msg => ({
+                role: msg.sender === 'user' ? 'user' : 'assistant',
+                content: typeof msg.content.content === 'string' 
+                    ? msg.content.content 
+                    : JSON.stringify(msg.content) // Caso seja objeto complexo
+            }));
+
+            // Envia POST com question + history
             const res = await axios.post(`${API_URL}/chat`, {
                 question: userText,
-                session_id: sessionId
+                session_id: sessionId,
+                history: historyPayload
             });
             
-            // Adiciona resposta do bot (pode ser texto ou chart)
+            // Adiciona resposta do bot (contendo type, content, sql, response_time)
             const botMsg: BiMessageType = { sender: 'bot', content: res.data };
             setMessages(prev => [...prev, botMsg]);
+
         } catch (error) {
             console.error(error);
             setMessages(prev => [...prev, { 
                 sender: 'bot', 
-                content: { type: 'text', content: 'Desculpe, não consegui conectar ao servidor de dados no momento.' } 
+                content: { 
+                    type: 'text', 
+                    content: 'Desculpe, não consegui conectar ao servidor de dados no momento.' 
+                } 
             }]);
         } finally {
             setLoading(false);
