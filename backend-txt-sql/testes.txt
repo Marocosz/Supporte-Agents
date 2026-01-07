@@ -85,7 +85,7 @@ Como foi a evolução do valor total de pedidos na última semana?
 # --- Testes de Gráfico de Pizza ---
 Gere um gráfico de pizza mostrando a distribuição de notas por Status (STA_NOTA).
 Qual a representatividade de cada filial no valor total? Mostre em pizza.
-Faça um gráfico de pizza com os 5 maiores clientes (destinatários) por valor.
+Faça um gráfico de pizza com os 5 maiores clientes (fornecedores) por valor.
 
 
 # ====================================================================================

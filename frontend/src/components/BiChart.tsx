@@ -4,6 +4,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 
+// --- Interfaces ---
 interface ChartData {
   chart_type: 'bar' | 'line' | 'pie';
   title?: string;
@@ -17,197 +18,196 @@ interface BiChartProps {
   data: ChartData;
 }
 
+// --- Constantes e Utilitários ---
 const COLORS = ['#5e72e4', '#2dce89', '#11cdef', '#fb6340', '#f5365c', '#8965e0', '#32325d', '#adb5bd'];
 
-// Função para formatar datas no eixo X (ex: 2023-10-01 -> 01/10)
+// Função para formatar datas no eixo X
 const formatXAxisDate = (tickItem: string) => {
     if (!tickItem) return '';
     try {
-        // Tenta detectar se é data ISO
-        if (tickItem.includes('-') && tickItem.length >= 10) {
+        if (typeof tickItem === 'string' && tickItem.includes('-') && tickItem.length >= 10) {
             const date = new Date(tickItem);
             if (!isNaN(date.getTime())) {
                 return date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
             }
         }
-    } catch (e) {
-        return tickItem;
-    }
-    // Se não for data, encurta texto longo
+    } catch (e) { return tickItem; }
+    
     const str = String(tickItem);
     return str.length > 12 ? str.substring(0, 12) + '...' : str;
 };
 
-// Formata valores grandes (ex: 1000000 -> 1M, 1000 -> 1k)
+// Formata valores grandes (ex: 1M, 1k)
 const formatYAxisNumber = (num: any) => {
     if (typeof num !== 'number') return num;
     if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
     if (num >= 1000) return (num / 1000).toFixed(1) + 'k';
-    return num;
+    return new Intl.NumberFormat('pt-BR').format(num);
 };
 
+// --- Componentes de Tooltip Personalizados (Estilo Template) ---
+
+const CustomTooltip = ({ active, payload, label, y_axis_label }: any) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="custom-tooltip">
+        <p className="tooltip-label">{formatXAxisDate(label)}</p>
+        <p className="tooltip-value">
+          {y_axis_label || 'Valor'}: <strong>{formatYAxisNumber(payload[0].value)}</strong>
+        </p>
+      </div>
+    );
+  }
+  return null;
+};
+
+const CustomPieTooltip = ({ active, payload }: any) => {
+  if (active && payload && payload.length) {
+    const data = payload[0].payload;
+    return (
+      <div className="custom-tooltip">
+        <p className="tooltip-label">{formatXAxisDate(data.name)}</p>
+        <p className="tooltip-value">Valor: <strong>{formatYAxisNumber(data.value)}</strong></p>
+        <p className="tooltip-percent">Percentual: <strong>{(payload[0].percent * 100).toFixed(1)}%</strong></p>
+      </div>
+    );
+  }
+  return null;
+};
+
+// --- Componente Principal ---
+
 const BiChart: React.FC<BiChartProps> = ({ data }) => {
-  const { chart_type, data: chartData, x_axis, y_axis } = data;
+  const { chart_type, data: rawData, x_axis, y_axis, y_axis_label } = data;
 
-  // --- GRÁFICO DE BARRAS ---
-  if (chart_type === 'bar') {
-    return (
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          data={chartData}
-          // Margens ajustadas para evitar cortes
-          margin={{ top: 30, right: 30, left: 20, bottom: 60 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" stroke="#32325d" vertical={false} opacity={0.2} />
-          
-          <XAxis 
-            dataKey={x_axis} 
-            stroke="#8898aa" 
-            tick={{ fill: '#8898aa', fontSize: 11 }} 
-            axisLine={{ stroke: '#8898aa' }}
-            tickLine={false}
-            // Ângulo -45 ajuda a ler, mas sem interval={0} para não sobrepor se tiver muitos
-            angle={-45}
-            textAnchor="end"
-            height={60} 
-            tickFormatter={formatXAxisDate} 
-          />
-          
-          <YAxis 
-            stroke="#8898aa" 
-            tick={{ fill: '#8898aa', fontSize: 11 }} 
-            axisLine={false}
-            tickLine={false}
-            tickFormatter={formatYAxisNumber}
-            // Legenda do Eixo Y
-            label={data.y_axis_label ? { 
-                value: data.y_axis_label, 
-                angle: -90, 
-                position: 'insideLeft', 
-                fill: '#8898aa',
-                style: { textAnchor: 'middle' }
-            } : undefined}
-          />
-          
-          <Tooltip 
-            cursor={{ fill: 'rgba(255,255,255,0.05)' }}
-            contentStyle={{ backgroundColor: '#172b4d', border: '1px solid #5e72e4', borderRadius: '8px', color: '#fff' }}
-            itemStyle={{ color: '#fff' }}
-            formatter={(value: any) => [value, 'Valor']} // Simplifica o tooltip
-          />
-          
-          {/* Se tiver apenas 1 série de dados, a legenda é redundante, mas mantemos para consistência visual */}
-          <Legend verticalAlign="top" height={36} wrapperStyle={{ top: 0 }} iconType="circle" />
-          
-          {y_axis?.map((key, index) => (
-            <Bar 
-                key={key} 
-                dataKey={key} 
-                fill={COLORS[index % COLORS.length]} 
-                radius={[4, 4, 0, 0]}
-                barSize={40}
-                name={key.replace(/_/g, ' ')} // Remove underliers do nome na legenda
-            />
-          ))}
-        </BarChart>
-      </ResponsiveContainer>
-    );
+  // 1. Processamento de Dados (Padronização para name/value)
+  // Isso garante que o Recharts entenda os dados independente do nome da coluna SQL
+  const xAxisKey = x_axis || 'name';
+  const yAxisKey = y_axis && y_axis.length > 0 ? y_axis[0] : 'value';
+
+  const processedData = rawData.map(item => ({
+    ...item,
+    name: item[xAxisKey],
+    value: item[yAxisKey]
+  }));
+
+  // 2. Renderização Condicional baseada no tipo
+  switch (chart_type) {
+    case 'bar':
+        return (
+            <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={processedData} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" vertical={false} />
+                    
+                    <XAxis 
+                        dataKey="name" 
+                        stroke="#8898aa" 
+                        tick={{ fill: '#8898aa', fontSize: 11 }} 
+                        tickLine={false} 
+                        axisLine={false}
+                        angle={-45}
+                        textAnchor="end"
+                        height={60}
+                        tickFormatter={formatXAxisDate} 
+                    />
+                    
+                    <YAxis 
+                        stroke="#8898aa" 
+                        tick={{ fill: '#8898aa', fontSize: 11 }} 
+                        tickLine={false} 
+                        axisLine={false}
+                        tickFormatter={formatYAxisNumber}
+                        label={y_axis_label ? { 
+                            value: y_axis_label, angle: -90, position: 'insideLeft', fill: '#8898aa', style: { textAnchor: 'middle' }
+                        } : undefined}
+                    />
+                    
+                    <Tooltip content={<CustomTooltip y_axis_label={y_axis_label} />} cursor={{ fill: 'rgba(255,255,255,0.05)' }} />
+                    <Legend wrapperStyle={{ paddingTop: '10px' }} iconType="circle" />
+                    
+                    <Bar 
+                        dataKey="value" 
+                        name={yAxisKey.replace(/_/g, ' ')}
+                        fill={COLORS[0]} 
+                        radius={[4, 4, 0, 0]} 
+                        barSize={40}
+                    >
+                        {processedData.map((_, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                        ))}
+                    </Bar>
+                </BarChart>
+            </ResponsiveContainer>
+        );
+
+    case 'line':
+        return (
+            <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={processedData} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" vertical={false} />
+                    
+                    <XAxis 
+                        dataKey="name" 
+                        stroke="#8898aa" 
+                        tick={{ fill: '#8898aa', fontSize: 11 }} 
+                        tickLine={false} 
+                        axisLine={false}
+                        minTickGap={30}
+                        tickFormatter={formatXAxisDate} 
+                    />
+                    
+                    <YAxis 
+                        stroke="#8898aa" 
+                        tick={{ fill: '#8898aa', fontSize: 11 }} 
+                        tickLine={false} 
+                        axisLine={false}
+                        tickFormatter={formatYAxisNumber}
+                    />
+                    
+                    <Tooltip content={<CustomTooltip y_axis_label={y_axis_label} />} />
+                    <Legend wrapperStyle={{ paddingTop: '10px' }} iconType="plainline" />
+                    
+                    <Line 
+                        type="monotone" 
+                        dataKey="value" 
+                        name={yAxisKey.replace(/_/g, ' ')}
+                        stroke={COLORS[0]} 
+                        strokeWidth={3} 
+                        dot={false} 
+                        activeDot={{ r: 6 }} 
+                    />
+                </LineChart>
+            </ResponsiveContainer>
+        );
+
+    case 'pie':
+        return (
+            <ResponsiveContainer width="100%" height="100%">
+                <PieChart margin={{ top: 20, right: 40, left: 40, bottom: 20 }}>
+                    <Pie
+                        data={processedData}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={60}
+                        outerRadius={100}
+                        paddingAngle={2}
+                        dataKey="value"
+                        nameKey="name"
+                        minAngle={3}
+                    >
+                        {processedData.map((_, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke="rgba(0,0,0,0)" />
+                        ))}
+                    </Pie>
+                    <Tooltip content={<CustomPieTooltip />} />
+                    <Legend verticalAlign="bottom" height={36} />
+                </PieChart>
+            </ResponsiveContainer>
+        );
+
+    default:
+        return <p style={{ color: '#8898aa', textAlign: 'center', padding: 20 }}>Gráfico indisponível.</p>;
   }
-
-  // --- GRÁFICO DE LINHA ---
-  if (chart_type === 'line') {
-    return (
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          data={chartData}
-          margin={{ top: 30, right: 30, left: 10, bottom: 20 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" stroke="#32325d" vertical={false} opacity={0.2} />
-          
-          <XAxis 
-            dataKey={x_axis} 
-            stroke="#8898aa" 
-            tick={{ fill: '#8898aa', fontSize: 11 }} 
-            axisLine={false}
-            tickLine={false}
-            // REMOVIDO interval={0} -> Isso resolve o problema da barra preta
-            minTickGap={30} // Garante espaço mínimo entre datas
-            tickFormatter={formatXAxisDate}
-          />
-          
-          <YAxis 
-            stroke="#8898aa" 
-            tick={{ fill: '#8898aa', fontSize: 11 }} 
-            axisLine={false}
-            tickLine={false}
-            tickFormatter={formatYAxisNumber}
-          />
-          
-          <Tooltip 
-            contentStyle={{ backgroundColor: '#172b4d', border: '1px solid #11cdef', borderRadius: '8px', color: '#fff' }}
-            itemStyle={{ color: '#fff' }}
-          />
-          
-          <Legend verticalAlign="top" height={36} iconType="plainline" />
-          
-          {y_axis?.map((key, index) => (
-            <Line
-              key={key}
-              type="monotone"
-              dataKey={key}
-              stroke={COLORS[index % COLORS.length]}
-              strokeWidth={3}
-              dot={false} // Removemos os pontos para linhas com muitos dados (fica mais limpo)
-              activeDot={{ r: 6 }}
-              name={key.replace(/_/g, ' ')}
-            />
-          ))}
-        </LineChart>
-      </ResponsiveContainer>
-    );
-  }
-
-  // --- GRÁFICO DE PIZZA ---
-  if (chart_type === 'pie') {
-    const valueKey = y_axis && y_axis.length > 0 ? y_axis[0] : 'value';
-    const nameKey = x_axis || 'name';
-
-    return (
-      <ResponsiveContainer width="100%" height="100%">
-        <PieChart margin={{ top: 20, right: 40, left: 40, bottom: 20 }}>
-          <Pie
-            data={chartData}
-            cx="50%"
-            cy="50%"
-            // Reduzi o raio para dar espaço às legendas externas
-            outerRadius={100} 
-            innerRadius={40} // Donut chart fica mais moderno e legível
-            fill="#8884d8"
-            dataKey={valueKey}
-            nameKey={nameKey}
-            paddingAngle={2}
-            minAngle={3} // Garante que fatias pequenas apareçam
-            label={({ name, percent }: any) => {
-                // Só mostra label se for relevante (> 1%)
-                if (percent < 0.01) return null;
-                return `${formatXAxisDate(name)} (${(percent * 100).toFixed(0)}%)`;
-            }}
-          >
-            {chartData.map((_: any, index: number) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke="#172b4d" strokeWidth={2} />
-            ))}
-          </Pie>
-          <Tooltip 
-            contentStyle={{ backgroundColor: '#172b4d', border: '1px solid #fb6340', borderRadius: '8px', color: '#fff' }}
-            itemStyle={{ color: '#fff' }}
-          />
-          <Legend verticalAlign="bottom" height={36} />
-        </PieChart>
-      </ResponsiveContainer>
-    );
-  }
-
-  return <p style={{ color: '#8898aa', padding: 20, textAlign: 'center' }}>Tipo de gráfico não suportado.</p>;
 };
 
 export default BiChart;

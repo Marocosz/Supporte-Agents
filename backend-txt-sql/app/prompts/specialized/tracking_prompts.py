@@ -9,9 +9,10 @@ TRACKING_EXAMPLES = [
 
 EXAMPLE_TEMPLATE = PromptTemplate.from_template("Usuário: {input}\nSQL: {query}")
 
-# --- System Prompt (Rico em Regras de Negócio) ---
+# --- System Prompt (Rico em Regras de Negócio + Trava de Silêncio) ---
 TRACKING_SYSTEM_PROMPT = """
 Você é um Especialista em Rastreamento Logístico. Gere SQL para "dw"."tab_situacao_nota_logi".
+Gere APENAS o código SQL. NÃO EXPLIQUE.
 
 --- DICIONÁRIO DE DADOS (RASTREAMENTO) ---
 1. **FLUXO DE STATUS ("STA_NOTA")**:
@@ -50,19 +51,21 @@ TRACKING_PROMPT = FewShotPromptTemplate(
 # --- Response Prompt (Instrução JSON Manual e Direta) ---
 TRACKING_RESPONSE_PROMPT = PromptTemplate.from_template(
     """
-    Você é um Assistente Logístico.
-    Dados do SQL: {result}
+    Dados do banco: {result}
     Pergunta Original: {question}
 
-    Gere APENAS um JSON (sem markdown ```json) com a resposta em PT-BR.
+    Gere APENAS um JSON (sem markdown). NÃO use código Python.
     
-    Se houver dados, crie um resumo estilo "Card" (Status, Datas, Responsáveis).
-    Se vazio, avise polidamente.
-
-    FORMATO OBRIGATÓRIO:
+    CASO 1: Se "REGISTRO_NAO_ENCONTRADO":
     {{
         "type": "text",
-        "content": "Sua resposta formatada aqui..."
+        "content": "Não encontrei o registro solicitado."
+    }}
+
+    CASO 2: Se houver dados:
+    {{
+        "type": "text",
+        "content": "Resumo dos dados (Status, Datas, Responsáveis) em PT-BR."
     }}
     """
 )

@@ -109,7 +109,7 @@
     border-color: var(--accent-blue);
 }
 
-/* --- Dashboard Layout --- */
+/* --- Dashboard Layout (MANTIDO INTACTO) --- */
 .bi-dashboard {
     padding: 2rem;
     height: 100%;
@@ -209,7 +209,12 @@
     margin-bottom: 1.5rem;
 }
 
-/* --- Chat Layout --- */
+/* ==========================================================================
+   ESTILOS DO CHAT (NOVO DESIGN ESTILO TEMPLATE)
+   Substitui o CSS antigo de Chat para melhorar o visual
+   ========================================================================== */
+
+/* Container Principal */
 .bi-chat-container {
     display: flex;
     flex-direction: column;
@@ -217,16 +222,18 @@
     background-color: var(--background-dark);
 }
 
+/* Janela de Chat */
 .bi-chat-window {
     flex-grow: 1;
     padding: 20px 40px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    scroll-behavior: smooth;
+    gap: 0;
+    /* Gap removido pois margin-bottom do wrapper controla */
 }
 
+/* Área de Input */
 .bi-chat-input-area {
     padding: 20px 40px;
     background-color: var(--surface-dark);
@@ -237,6 +244,7 @@
 .bi-chat-form {
     display: flex;
     gap: 15px;
+    align-items: center;
 }
 
 .bi-chat-input {
@@ -247,12 +255,13 @@
     padding: 15px;
     border-radius: 8px;
     font-size: 1rem;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .bi-chat-input:focus {
     outline: none;
     border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(94, 114, 228, 0.2);
 }
 
 .bi-send-btn {
@@ -267,6 +276,7 @@
     justify-content: center;
     cursor: pointer;
     transition: opacity 0.2s;
+    flex-shrink: 0;
 }
 
 .bi-send-btn:hover {
@@ -279,20 +289,36 @@
     opacity: 0.5;
 }
 
-/* --- Chat Messages --- */
+/* ==========================================================================
+   MENSAGENS (CHAT BUBBLES) - DESIGN REFINADO
+   ========================================================================== */
+
 .bi-message-wrapper {
     display: flex;
+    margin-bottom: 25px;
+    /* Espaçamento maior entre mensagens */
+    max-width: 75%;
     gap: 15px;
-    max-width: 95%;
-    /* Quase toda a largura */
-    animation: fadeIn 0.3s ease;
+    align-items: flex-start;
+    transition: max-width 0.3s ease;
 }
 
-.bi-message-wrapper.user {
+/* Se for gráfico, expande a largura */
+.wrapper-has-chart {
+    max-width: 95%;
+}
+
+/* Alinhamentos */
+.bot-wrapper {
+    align-self: flex-start;
+}
+
+.user-wrapper {
     align-self: flex-end;
     flex-direction: row-reverse;
 }
 
+/* Avatar */
 .bi-avatar {
     width: 40px;
     height: 40px;
@@ -306,98 +332,188 @@
     color: var(--text-secondary);
 }
 
-.bi-message-wrapper.user .bi-avatar {
-    background-color: var(--accent-blue-dark);
-    color: white;
+.user-wrapper .bi-avatar {
+    background-color: rgba(94, 114, 228, 0.1);
+    color: var(--accent-blue);
     border: none;
 }
 
-/* Agrupamento de conteúdo e metadados */
-.bi-message-content-group {
-    display: flex;
-    flex-direction: column;
-    max-width: 80%;
-    /* Limita largura do balão */
-}
-
-.bi-message-wrapper.user .bi-message-content-group {
-    align-items: flex-end;
-}
-
+/* Bolha da Mensagem */
 .bi-message-bubble {
-    background-color: var(--surface-dark);
-    padding: 20px;
+    padding: 15px 20px;
     border-radius: 18px;
-    border-top-left-radius: 4px;
     line-height: 1.5;
     color: var(--text-primary);
-    border: 1px solid var(--border-color);
-    min-width: 100px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
-.bi-message-wrapper.user .bi-message-bubble {
+.bot-message {
+    background-color: var(--surface-dark);
+    border: 1px solid var(--border-color);
+    border-top-left-radius: 4px;
+}
+
+.user-message {
     background-color: var(--accent-blue);
     color: white;
-    border: none;
-    border-radius: 18px;
     border-top-right-radius: 4px;
 }
 
-/* --- ESTILOS NOVOS PARA O GRÁFICO NO CHAT --- */
-.bi-chat-chart-container {
-    width: 100%;
-    min-width: 1200px;
-    height: 400px;
-    margin-bottom: 20px;
-    position: relative;
+/* Texto */
+.bi-text-content {
+    margin: 0;
+    white-space: pre-wrap;
 }
 
-.bi-chart-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text-primary);
+/* Gráfico dentro da mensagem */
+.bi-message-bubble.has-chart {
+    padding: 20px;
+    width: 100%;
+}
+
+.bi-chart-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.bi-chart-title-internal {
+    margin-top: 0;
     margin-bottom: 15px;
     text-align: center;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    display: block;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
-/* Loading Dots */
-.loading-dots span {
-    font-size: 1.5rem;
-    animation: blink 1.4s infinite both;
-    margin: 0 1px;
+.bi-chart-container-wrapper {
+    width: 100%;
+    height: 400px;
+    /* Altura garantida para o gráfico */
+    margin-bottom: 10px;
+}
+
+.bi-chart-description {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
     color: var(--text-secondary);
 }
 
-.loading-dots span:nth-child(2) {
-    animation-delay: 0.2s;
+/* ==========================================================================
+   RODAPÉ DA MENSAGEM & QUERY (NOVO)
+   ========================================================================== */
+
+.bi-message-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-color);
 }
 
-.loading-dots span:nth-child(3) {
-    animation-delay: 0.4s;
+.bi-response-time {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.8;
 }
 
-@keyframes blink {
-    0% {
-        opacity: 0.2;
-    }
+.bi-query-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
 
-    20% {
-        opacity: 1;
-    }
+.bi-query-toggle-btn:hover {
+    background-color: var(--input-bg);
+    color: var(--accent-blue);
+}
 
+/* Seta giratória */
+.bi-arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.bi-arrow-icon.toggled {
+    transform: rotate(180deg);
+}
+
+/* Display de SQL */
+.bi-query-display {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-color);
+    animation: fadeIn 0.3s ease;
+}
+
+.bi-query-display pre {
+    background-color: var(--background-dark);
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.bi-query-display code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    color: #a5d6ff;
+}
+
+/* ==========================================================================
+   ANIMAÇÃO DE LOADING (DOTS)
+   ========================================================================== */
+
+.loading-dots div {
+    width: 8px;
+    height: 8px;
+    background-color: var(--text-secondary);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 2px;
+    animation: bounce 1.4s infinite ease-in-out both;
+}
+
+.loading-dots div:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.loading-dots div:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+
+    0%,
+    80%,
     100% {
-        opacity: 0.2;
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1.0);
     }
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(-5px);
     }
 
     to {
@@ -406,121 +522,29 @@
     }
 }
 
-/* Scrollbars */
+/* Scrollbars Globais */
 .bi-dashboard::-webkit-scrollbar,
 .bi-chat-window::-webkit-scrollbar,
-.bi-query-box::-webkit-scrollbar,
-.bi-sql-viewer::-webkit-scrollbar {
+.bi-query-display pre::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 
 .bi-dashboard::-webkit-scrollbar-track,
 .bi-chat-window::-webkit-scrollbar-track,
-.bi-query-box::-webkit-scrollbar-track,
-.bi-sql-viewer::-webkit-scrollbar-track {
+.bi-query-display pre::-webkit-scrollbar-track {
     background: var(--background-dark);
 }
 
 .bi-dashboard::-webkit-scrollbar-thumb,
 .bi-chat-window::-webkit-scrollbar-thumb,
-.bi-query-box::-webkit-scrollbar-thumb,
-.bi-sql-viewer::-webkit-scrollbar-thumb {
+.bi-query-display pre::-webkit-scrollbar-thumb {
     background: var(--border-color);
     border-radius: 4px;
 }
 
 .bi-dashboard::-webkit-scrollbar-thumb:hover,
 .bi-chat-window::-webkit-scrollbar-thumb:hover,
-.bi-query-box::-webkit-scrollbar-thumb:hover,
-.bi-sql-viewer::-webkit-scrollbar-thumb:hover {
+.bi-query-display pre::-webkit-scrollbar-thumb:hover {
     background: var(--text-secondary);
-}
-
-/* ============================================================
-   --- Metadados e SQL Viewer (NOVO) ---
-   ============================================================ */
-
-.bi-message-metadata {
-    margin-top: 6px;
-    margin-left: 4px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.bi-meta-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.bi-meta-tag {
-    font-size: 0.75rem;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    background: transparent;
-    border: none;
-    padding: 0;
-}
-
-.bi-meta-tag.time {
-    font-weight: 500;
-    opacity: 0.8;
-}
-
-.bi-meta-tag.sql-btn {
-    cursor: pointer;
-    color: var(--accent-blue);
-    transition: all 0.2s;
-    background: rgba(94, 114, 228, 0.08);
-    padding: 3px 10px;
-    border-radius: 12px;
-    border: 1px solid rgba(94, 114, 228, 0.15);
-}
-
-.bi-meta-tag.sql-btn:hover {
-    background: rgba(94, 114, 228, 0.2);
-    text-decoration: none;
-}
-
-.bi-meta-tag.sql-btn.active {
-    background: var(--accent-blue);
-    color: white;
-    border-color: var(--accent-blue);
-}
-
-/* Visualizador de SQL */
-.bi-sql-viewer {
-    background: #1e1e2f;
-    /* Fundo mais escuro para código */
-    border-radius: 8px;
-    padding: 12px;
-    margin-top: 5px;
-    border: 1px solid var(--border-color);
-    width: 100%;
-    max-width: 600px;
-    overflow-x: auto;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.bi-sql-header {
-    font-size: 0.7rem;
-    color: #8898aa;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-}
-
-.bi-sql-code {
-    font-family: 'Fira Code', 'Consolas', monospace;
-    font-size: 0.8rem;
-    color: #a5d6ff;
-    /* Azul claro para código */
-    margin: 0;
-    white-space: pre-wrap;
-    word-break: break-all;
-    line-height: 1.4;
 }

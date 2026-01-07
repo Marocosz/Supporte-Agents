@@ -1,41 +1,62 @@
 import logging
+import re
+import json
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
-from langchain_core.output_parsers import StrOutputParser, PydanticOutputParser
+from langchain_core.output_parsers import StrOutputParser
 
 from app.core.llm import get_llm, get_answer_llm
 from app.core.database import db_instance, get_compact_db_schema
 from app.core.security import apply_security_filters
-from app.core.schemas import AgentResponse 
 from app.prompts.specialized.analytics_prompts import ANALYTICS_PROMPT, ANALYTICS_RESPONSE_PROMPT
 
 logger = logging.getLogger(__name__)
 
-def clean_sql_markdown(text: str) -> str:
-    return text.replace("```sql", "").replace("```", "").strip()
+def extract_sql_from_text(text: str) -> str:
+    match_markdown = re.search(r"```sql\s*(.*?)\s*```", text, re.DOTALL | re.IGNORECASE)
+    if match_markdown: return match_markdown.group(1).strip()
+    match_select = re.search(r"(SELECT\s.*)", text, re.DOTALL | re.IGNORECASE)
+    if match_select:
+        sql = match_select.group(1).strip()
+        return sql.split(";")[0] + ";" if ";" in sql else sql
+    return text.strip()
+
+def safe_parse_json(text: str) -> dict:
+    """Limpeza agressiva de JSON com suporte a Markdown."""
+    # 1. Remove blocos de markdown ```json ... ```
+    text_clean = re.sub(r"```json\s*", "", text, flags=re.IGNORECASE)
+    text_clean = re.sub(r"```\s*$", "", text_clean, flags=re.IGNORECASE)
+    text_clean = text_clean.strip()
+
+    # 2. Tenta achar o bloco JSON entre chaves
+    match = re.search(r"(\{.*\})", text_clean, re.DOTALL)
+    json_candidate = match.group(1) if match else text_clean
+
+    try:
+        return json.loads(json_candidate)
+    except json.JSONDecodeError:
+        logger.warning(f"JSON Parse Error. Output raw: {text_clean[:50]}...")
+        # Fallback para texto
+        return {
+            "type": "text",
+            "content": text_clean 
+        }
 
 def get_analytics_chain():
-    """
-    Cria a cadeia especialista em Analytics (BI).
-    """
-
-    # Parser híbrido (Validação final apenas)
-    parser = PydanticOutputParser(pydantic_object=AgentResponse)
-
     # 1. Gerador de SQL
     sql_gen = (
         RunnablePassthrough.assign(schema=lambda _: get_compact_db_schema())
         | ANALYTICS_PROMPT
         | get_llm()
         | StrOutputParser()
-        | RunnableLambda(clean_sql_markdown)
     )
 
-    # 2. Executor Seguro com Proteção de Volume
+    # 2. Executor Seguro
     def execute_analytics_query(inputs):
-        raw_sql = inputs["sql"]
-        secure_sql = apply_security_filters(raw_sql)
+        raw_output = inputs["sql"]
+        clean_sql = extract_sql_from_text(raw_output)
+        secure_sql = apply_security_filters(clean_sql)
+        inputs["sql"] = clean_sql
         
-        # Proteção visual
         sql_lower = secure_sql.lower()
         if "select" in sql_lower and "limit" not in sql_lower and "count(" not in sql_lower:
              secure_sql = secure_sql.rstrip(";") + " LIMIT 20;"
@@ -44,19 +65,19 @@ def get_analytics_chain():
         
         try:
             result = db_instance.run(secure_sql)
-            if not result or result == "[]" or result == "None":
+            if not result or result in ["[]", "None", ""]:
                 return "DADOS_INSUFICIENTES_PARA_ANALISE"
             return result
         except Exception as e:
-            logger.error(f"Erro no Analytics Agent: {e}")
-            return f"Erro ao calcular indicadores: {str(e)}"
+            logger.error(f"Erro Analytics: {e}")
+            return f"Erro: {str(e)}"
 
-    # 3. Formatador de Visualização
-    # OTIMIZAÇÃO: Removemos .partial(format_instructions=...) para economizar tokens e evitar conflitos.
+    # 3. Formatador Seguro
     viz_gen = (
         ANALYTICS_RESPONSE_PROMPT
         | get_answer_llm()
-        | parser 
+        | StrOutputParser()
+        | RunnableLambda(safe_parse_json)
     )
 
     chain = (

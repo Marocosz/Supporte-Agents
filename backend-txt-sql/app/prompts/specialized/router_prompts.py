@@ -1,9 +1,9 @@
 from langchain_core.prompts import PromptTemplate
 
 # Template Otimizado para Baixa Latência (Estilo Keyword Mapping)
-# Removemos textos explicativos longos para o Router decidir em < 0.5s
 ROUTER_TEMPLATE = """
-Classifique a mensagem em: TRACKING, ANALYTICS ou CHAT.
+Classifique a mensagem em EXATAMENTE UMA destas categorias: TRACKING, ANALYTICS ou CHAT.
+NÃO explique. Responda apenas a palavra.
 
 <TRACKING>
 Contexto: Busca pontual de entidades, Status, Onde está, Quem fez.

@@ -1,23 +1,43 @@
 import logging
-from langchain_core.runnables import RunnablePassthrough
-from langchain_core.output_parsers import StrOutputParser, PydanticOutputParser
+import re
+import json
+from langchain_core.runnables import RunnablePassthrough, RunnableLambda
+from langchain_core.output_parsers import StrOutputParser
 
 from app.core.llm import get_llm, get_answer_llm
 from app.core.database import db_instance, get_compact_db_schema
 from app.core.security import apply_security_filters
-from app.core.schemas import TextResponse 
 from app.prompts.specialized.tracking_prompts import TRACKING_PROMPT, TRACKING_RESPONSE_PROMPT
 
 logger = logging.getLogger(__name__)
 
+def extract_sql_from_text(text: str) -> str:
+    match_markdown = re.search(r"```sql\s*(.*?)\s*```", text, re.DOTALL | re.IGNORECASE)
+    if match_markdown: return match_markdown.group(1).strip()
+    match_select = re.search(r"(SELECT\s.*)", text, re.DOTALL | re.IGNORECASE)
+    if match_select:
+        sql = match_select.group(1).strip()
+        return sql.split(";")[0] + ";" if ";" in sql else sql
+    return text.strip()
+
+def safe_parse_json(text: str) -> dict:
+    text_clean = re.sub(r"```json\s*", "", text, flags=re.IGNORECASE)
+    text_clean = re.sub(r"```\s*$", "", text_clean, flags=re.IGNORECASE)
+    text_clean = text_clean.strip()
+
+    match = re.search(r"(\{.*\})", text_clean, re.DOTALL)
+    json_candidate = match.group(1) if match else text_clean
+
+    try:
+        return json.loads(json_candidate)
+    except json.JSONDecodeError:
+        logger.warning("JSON Parse Error (Tracking). Usando Fallback.")
+        return {
+            "type": "text",
+            "content": text_clean
+        }
+
 def get_tracking_chain():
-    """
-    Cria a cadeia especialista em Rastreamento (Tracking).
-    """
-
-    # Parser para validação final (garante que o output seja compatível com TextResponse)
-    parser = PydanticOutputParser(pydantic_object=TextResponse)
-
     # 1. Gerador de SQL
     sql_gen = (
         RunnablePassthrough.assign(schema=lambda _: get_compact_db_schema())
@@ -28,31 +48,31 @@ def get_tracking_chain():
 
     # 2. Executor Seguro
     def execute_tracking_query(inputs):
-        raw_sql = inputs["sql"]
-        clean_raw_sql = raw_sql.replace("```sql", "").replace("```", "").strip()
-        secure_sql = apply_security_filters(clean_raw_sql)
+        raw_output = inputs["sql"]
+        clean_sql = extract_sql_from_text(raw_output)
+        secure_sql = apply_security_filters(clean_sql)
+        inputs["sql"] = clean_sql 
         
         logger.info(f"[TRACKING AGENT] Executing: {secure_sql}")
         
         try:
             result = db_instance.run(secure_sql)
-            if not result or result == "[]" or result == "None":
+            # Se o resultado for string vazia ou lista vazia stringificada
+            if not result or result == "[]":
                 return "REGISTRO_NAO_ENCONTRADO"
             return result
         except Exception as e:
-            logger.error(f"Erro no Tracking Agent: {e}")
-            return f"Erro técnico na busca: {str(e)}"
+            logger.error(f"Erro Tracking: {e}")
+            return f"Erro técnico: {str(e)}"
 
     # 3. Formatador de Resposta
-    # OTIMIZAÇÃO: Removemos a injeção automática de instruções do parser.
-    # Confiamos na instrução manual do TRACKING_RESPONSE_PROMPT.
     response_gen = (
         TRACKING_RESPONSE_PROMPT
         | get_answer_llm()
-        | parser 
+        | StrOutputParser()
+        | RunnableLambda(safe_parse_json)
     )
 
-    # Montagem da Cadeia
     chain = (
         RunnablePassthrough.assign(sql=sql_gen)
         .assign(result=execute_tracking_query)

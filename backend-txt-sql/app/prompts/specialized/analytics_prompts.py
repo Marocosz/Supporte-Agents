@@ -9,9 +9,10 @@ ANALYTICS_EXAMPLES = [
 
 EXAMPLE_TEMPLATE = PromptTemplate.from_template("Usuário: {input}\nSQL: {query}")
 
-# --- System Prompt (Rico em Regras de Negócio) ---
+# --- System Prompt (Rico em Regras de Negócio + Trava de Silêncio) ---
 ANALYTICS_SYSTEM_PROMPT = """
 Você é um Analista de BI Sênior. Gere SQL para "dw"."tab_situacao_nota_logi".
+Gere APENAS o código SQL. NÃO EXPLIQUE.
 
 --- REGRAS DE KPI ---
 1. **FILIAIS**:
@@ -42,20 +43,25 @@ ANALYTICS_PROMPT = FewShotPromptTemplate(
     example_separator="\n\n"
 )
 
-# --- Response Prompt (Instrução JSON Manual) ---
+# --- Response Prompt (Blindado contra Python e Loops) ---
 ANALYTICS_RESPONSE_PROMPT = PromptTemplate.from_template(
     """
     Dados SQL: {result}
     Pergunta: {question}
 
-    Converta para JSON válido (sem markdown).
+    Gere APENAS JSON válido (sem markdown).
+    
+    CRÍTICO: 
+    1. O campo "data" DEVE conter a lista real de valores literais (ex: [{{ "nome": "A", "valor": 10 }}]).
+    2. NÃO use list comprehension, loops ou código Python dentro do JSON.
+    3. Se o SQL retornou vazio, use o formato de TEXTO avisando.
 
     OPÇÃO A - GRÁFICO (Múltiplas linhas/categorias):
     {{
       "type": "chart",
       "chart_type": "bar" (ou "line", "pie"),
       "title": "Título em PT-BR",
-      "data": [ ...dados... ],
+      "data": [ ... DADOS LITERAIS ... ],
       "x_axis": "nome_coluna_categ",
       "y_axis": ["nome_coluna_valor"],
       "y_axis_label": "Unidade"
