@@ -21,6 +21,9 @@ def extract_sql_from_text(text: str) -> str:
     return text.strip()
 
 def safe_parse_json(text: str) -> dict:
+    # LOG: Resposta Bruta da IA
+    logger.info(f"\n[ANALYTICS AGENT] RESPOSTA BRUTA DA IA (RAW):\n{text}\n")
+
     """Limpeza agressiva de JSON com suporte a Markdown."""
     # 1. Remove blocos de markdown ```json ... ```
     text_clean = re.sub(r"```json\s*", "", text, flags=re.IGNORECASE)
@@ -61,7 +64,8 @@ def get_analytics_chain():
         if "select" in sql_lower and "limit" not in sql_lower and "count(" not in sql_lower:
              secure_sql = secure_sql.rstrip(";") + " LIMIT 20;"
         
-        logger.info(f"[ANALYTICS AGENT] Executing: {secure_sql}")
+        # LOG: SQL Final
+        logger.info(f"\n[ANALYTICS AGENT] QUERY SQL FINAL:\n{secure_sql}\n")
         
         try:
             result = db_instance.run(secure_sql)

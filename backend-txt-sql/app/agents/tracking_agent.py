@@ -21,6 +21,9 @@ def extract_sql_from_text(text: str) -> str:
     return text.strip()
 
 def safe_parse_json(text: str) -> dict:
+    # LOG: Resposta Bruta da IA antes do processamento
+    logger.info(f"\n[TRACKING AGENT] RESPOSTA BRUTA DA IA (RAW):\n{text}\n")
+
     text_clean = re.sub(r"```json\s*", "", text, flags=re.IGNORECASE)
     text_clean = re.sub(r"```\s*$", "", text_clean, flags=re.IGNORECASE)
     text_clean = text_clean.strip()
@@ -53,7 +56,8 @@ def get_tracking_chain():
         secure_sql = apply_security_filters(clean_sql)
         inputs["sql"] = clean_sql 
         
-        logger.info(f"[TRACKING AGENT] Executing: {secure_sql}")
+        # LOG: SQL Gerado e Limpo
+        logger.info(f"\n[TRACKING AGENT] QUERY SQL FINAL:\n{secure_sql}\n")
         
         try:
             result = db_instance.run(secure_sql)

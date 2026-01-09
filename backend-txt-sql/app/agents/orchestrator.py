@@ -49,6 +49,9 @@ def get_chat_chain():
 # --- Lógica de Orquestração ---
 
 def route_request(inputs):
+    # LOG: Entrada do Orchestrator
+    logger.info(f"\n>>> [ORCHESTRATOR] INPUTS RECEBIDOS:\n{json.dumps(inputs, indent=2, ensure_ascii=False)}")
+
     category = inputs["category"]
     logger.info(f"[ORCHESTRATOR] Intenção detectada: {category.upper()}")
 
@@ -75,6 +78,9 @@ def route_request(inputs):
     if generated_sql and isinstance(response_dict, dict):
         clean_sql = str(generated_sql).replace("```sql", "").replace("```", "").strip()
         response_dict["sql"] = clean_sql
+
+    # LOG: Saída Final para o Frontend
+    logger.info(f"\n<<< [ORCHESTRATOR] SAÍDA FINAL (PARA O FRONT):\n{json.dumps(response_dict, indent=2, ensure_ascii=False)}\n")
 
     return response_dict
 
