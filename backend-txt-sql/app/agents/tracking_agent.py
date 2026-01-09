@@ -1,6 +1,7 @@
 import logging
 import re
 import json
+import time  # <--- NOVO
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
 
@@ -56,11 +57,18 @@ def get_tracking_chain():
         secure_sql = apply_security_filters(clean_sql)
         inputs["sql"] = clean_sql 
         
-        # LOG: SQL Gerado e Limpo
         logger.info(f"\n[TRACKING AGENT] QUERY SQL FINAL:\n{secure_sql}\n")
         
         try:
+            # --- MEDIÇÃO DE TEMPO DE BANCO ---
+            start_time = time.time()
             result = db_instance.run(secure_sql)
+            end_time = time.time()
+            db_duration = end_time - start_time
+            
+            logger.info(f"⏱️  TEMPO DE BANCO: {db_duration:.4f}s")
+            # ---------------------------------
+
             # Se o resultado for string vazia ou lista vazia stringificada
             if not result or result == "[]":
                 return "REGISTRO_NAO_ENCONTRADO"

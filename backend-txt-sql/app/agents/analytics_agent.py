@@ -1,6 +1,7 @@
 import logging
 import re
 import json
+import time # <--- NOVO
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
 
@@ -68,7 +69,15 @@ def get_analytics_chain():
         logger.info(f"\n[ANALYTICS AGENT] QUERY SQL FINAL:\n{secure_sql}\n")
         
         try:
+            # --- MEDIÇÃO DE TEMPO DE BANCO ---
+            start_time = time.time()
             result = db_instance.run(secure_sql)
+            end_time = time.time()
+            db_duration = end_time - start_time
+            
+            logger.info(f"⏱️  TEMPO DE BANCO: {db_duration:.4f}s")
+            # ---------------------------------
+
             if not result or result in ["[]", "None", ""]:
                 return "DADOS_INSUFICIENTES_PARA_ANALISE"
             return result

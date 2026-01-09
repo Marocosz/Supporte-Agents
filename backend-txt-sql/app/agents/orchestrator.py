@@ -1,6 +1,7 @@
 import logging
 import re
 import json
+import time # <--- NOVO
 from langchain_core.runnables import RunnableLambda
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -49,6 +50,8 @@ def get_chat_chain():
 # --- Lógica de Orquestração ---
 
 def route_request(inputs):
+    start_total = time.time() # <--- INÍCIO CRONÔMETRO
+
     # LOG: Entrada do Orchestrator
     logger.info(f"\n>>> [ORCHESTRATOR] INPUTS RECEBIDOS:\n{json.dumps(inputs, indent=2, ensure_ascii=False)}")
 
@@ -79,8 +82,15 @@ def route_request(inputs):
         clean_sql = str(generated_sql).replace("```sql", "").replace("```", "").strip()
         response_dict["sql"] = clean_sql
 
-    # LOG: Saída Final para o Frontend
-    logger.info(f"\n<<< [ORCHESTRATOR] SAÍDA FINAL (PARA O FRONT):\n{json.dumps(response_dict, indent=2, ensure_ascii=False)}\n")
+    end_total = time.time() # <--- FIM CRONÔMETRO
+    total_duration = end_total - start_total
+    
+    # Adicionamos o tempo total no objeto de resposta (útil para debug no front se quiser)
+    response_dict["server_execution_time"] = round(total_duration, 4)
+
+    # LOG: Saída Final
+    logger.info(f"\n<<< [ORCHESTRATOR] TEMPO TOTAL: {total_duration:.4f}s")
+    logger.info(f"<<< [ORCHESTRATOR] SAÍDA FINAL (PARA O FRONT):\n{json.dumps(response_dict, indent=2, ensure_ascii=False)}\n")
 
     return response_dict
 
