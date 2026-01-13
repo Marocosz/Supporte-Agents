@@ -230,3 +230,7 @@ Com os dados estruturados desta forma, o Agente de IA é capaz de responder:
 3.  **Histórico de Vendas:** "Qual foi a última vez que o cliente X comprou o produto Y?" (Necessário Join).
 4.  **Gargalos Operacionais:** "Qual o tempo médio entre o Fim da Separação e o Início da Conferência?"
 5.  **Performance:** "Qual separador processou mais volumes hoje?"
+6.  
+
+
+# chave de busca: filial, cod_fornecedor, nota_fiscal, serie, (pedido quando n tem nota ou serie)

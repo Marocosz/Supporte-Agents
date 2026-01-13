@@ -13,6 +13,15 @@ from app.agents.analytics_agent import get_analytics_chain
 
 logger = logging.getLogger(__name__)
 
+# --- CORES PARA LOG (ANSI) ---
+CYAN = "\033[96m"
+GREEN = "\033[92m"
+YELLOW = "\033[93m"
+MAGENTA = "\033[95m"
+BLUE = "\033[94m"
+RESET = "\033[0m"
+BOLD = "\033[1m"
+
 def safe_parse_json(text: str) -> dict:
     """Parser seguro para o chat."""
     text_clean = re.sub(r"```json\s*", "", text, flags=re.IGNORECASE)
@@ -53,10 +62,13 @@ def route_request(inputs):
     start_total = time.time() # <--- INÍCIO CRONÔMETRO
 
     # LOG: Entrada do Orchestrator
-    logger.info(f"\n>>> [ORCHESTRATOR] INPUTS RECEBIDOS:\n{json.dumps(inputs, indent=2, ensure_ascii=False)}")
+    print("\n") # Quebra de linha inicial para limpar
+    logger.info(f"{CYAN}================================================================================{RESET}")
+    logger.info(f"{CYAN}{BOLD}>>> [ORCHESTRATOR] NOVA REQUISIÇÃO INICIADA{RESET}")
+    logger.info(f"{GREEN}{BOLD}INPUTS RECEBIDOS:{RESET}\n{json.dumps(inputs, indent=2, ensure_ascii=False)}")
 
     category = inputs["category"]
-    logger.info(f"[ORCHESTRATOR] Intenção detectada: {category.upper()}")
+    logger.info(f"{CYAN}[ORCHESTRATOR] Intenção detectada: {BOLD}{category.upper()}{RESET}")
 
     if category == "tracking":
         chain = get_tracking_chain()
@@ -89,8 +101,10 @@ def route_request(inputs):
     response_dict["server_execution_time"] = round(total_duration, 4)
 
     # LOG: Saída Final
-    logger.info(f"\n<<< [ORCHESTRATOR] TEMPO TOTAL: {total_duration:.4f}s")
-    logger.info(f"<<< [ORCHESTRATOR] SAÍDA FINAL (PARA O FRONT):\n{json.dumps(response_dict, indent=2, ensure_ascii=False)}\n")
+    logger.info(f"{CYAN}--------------------------------------------------------------------------------{RESET}")
+    logger.info(f"{GREEN}{BOLD}<<< [ORCHESTRATOR] SAÍDA FINAL (PARA O FRONT):{RESET}\n{json.dumps(response_dict, indent=2, ensure_ascii=False)}")
+    logger.info(f"{MAGENTA}{BOLD}⏱️  TEMPO TOTAL DA REQUISIÇÃO: {total_duration:.4f}s{RESET}")
+    logger.info(f"{CYAN}================================================================================{RESET}\n")
 
     return response_dict
 

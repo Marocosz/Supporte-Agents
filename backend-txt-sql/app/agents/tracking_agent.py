@@ -12,6 +12,15 @@ from app.prompts.specialized.tracking_prompts import TRACKING_PROMPT, TRACKING_R
 
 logger = logging.getLogger(__name__)
 
+# --- CORES PARA LOG (ANSI) ---
+CYAN = "\033[96m"
+GREEN = "\033[92m"
+YELLOW = "\033[93m"
+MAGENTA = "\033[95m"
+BLUE = "\033[94m"
+RESET = "\033[0m"
+BOLD = "\033[1m"
+
 def extract_sql_from_text(text: str) -> str:
     match_markdown = re.search(r"```sql\s*(.*?)\s*```", text, re.DOTALL | re.IGNORECASE)
     if match_markdown: return match_markdown.group(1).strip()
@@ -23,7 +32,7 @@ def extract_sql_from_text(text: str) -> str:
 
 def safe_parse_json(text: str) -> dict:
     # LOG: Resposta Bruta da IA antes do processamento
-    logger.info(f"\n[TRACKING AGENT] RESPOSTA BRUTA DA IA (RAW):\n{text}\n")
+    logger.info(f"\n{BLUE}{BOLD}[TRACKING AGENT] RESPOSTA BRUTA DA IA (RAW):{RESET}\n{BLUE}{text}{RESET}\n")
 
     text_clean = re.sub(r"```json\s*", "", text, flags=re.IGNORECASE)
     text_clean = re.sub(r"```\s*$", "", text_clean, flags=re.IGNORECASE)
@@ -57,7 +66,8 @@ def get_tracking_chain():
         secure_sql = apply_security_filters(clean_sql)
         inputs["sql"] = clean_sql 
         
-        logger.info(f"\n[TRACKING AGENT] QUERY SQL FINAL:\n{secure_sql}\n")
+        # LOG: SQL Gerado
+        logger.info(f"\n{YELLOW}{BOLD}[TRACKING AGENT] QUERY SQL FINAL:{RESET}\n{YELLOW}{secure_sql}{RESET}\n")
         
         try:
             # --- MEDIÇÃO DE TEMPO DE BANCO ---
@@ -66,7 +76,7 @@ def get_tracking_chain():
             end_time = time.time()
             db_duration = end_time - start_time
             
-            logger.info(f"⏱️  TEMPO DE BANCO: {db_duration:.4f}s")
+            logger.info(f"{MAGENTA}{BOLD}⏱️  TEMPO DE BANCO (Tracking): {db_duration:.4f}s{RESET}")
             # ---------------------------------
 
             # Se o resultado for string vazia ou lista vazia stringificada

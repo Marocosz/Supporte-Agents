@@ -211,6 +211,9 @@ expedido (baixa no estoque) -> c-sit_sol (E)
 (logix encerra)
 
 
+python -m uvicorn api:app --reload --port 8002
+
+
 
 perguntas
 
