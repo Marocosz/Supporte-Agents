@@ -1,147 +1,110 @@
-# =================================================================================================
-# =================================================================================================
-#
-#                           PONTO DE ENTRADA DA API (BACKEND) - v2.2 (OTIMIZADO)
-#
-# Visão Geral:
-# Este arquivo conecta o servidor web (FastAPI) à nova Arquitetura Multi-Agente.
-#
-# Atualizações Recentes:
-# - Integração com Short-Circuit do Orchestrator (zero latency para 'Oi').
-# - Logs limpos (delegados para o Orchestrator).
-#
-# =================================================================================================
-# =================================================================================================
-
+# api.py
 import logging
 import time
 import uuid
 from typing import List, Dict, Any, Optional
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-# --- NOVOS IMPORTS DA ARQUITETURA ---
-from app.agents.orchestrator import get_orchestrator_chain
-# Importa o roteador que contém os endpoints do dashboard (mantido)
+# Importa o Cérebro da Nova Arquitetura
+from app.services.orchestrator import Orchestrator
+# Importa o módulo de dashboard (KPIs estáticos) - Mantido para não quebrar a tela de gráficos
 from app.api import dashboard
 
 # Configuração de Logs
-# (Mantido básico aqui, pois o Orchestrator cuida dos logs detalhados/coloridos)
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)-25s - %(levelname)-8s - %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S'
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    datefmt='%H:%M:%S'
 )
 logger = logging.getLogger(__name__)
 
 # Inicialização da App
 app = FastAPI(
-    title="Supporte BI AI - SQL Agent",
-    description="API de BI Logístico com Arquitetura Multi-Agente (Router -> Specialists)",
-    version="6.5" # Bump de versão
+    title="Supporte BI AI - Enterprise Backend",
+    description="API Orquestrada com Arquitetura Hub-and-Spoke (Router -> Specialists)",
+    version="2.1"
 )
 
-# Configura CORS (Mantido para compatibilidade total)
+# Configura CORS (Permite que o Frontend React acesse)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000", 
-        "http://localhost:5173", # Vite
-        "http://localhost:80",   # Nginx
-        "http://localhost"
-    ], 
+    allow_origins=["*"], # Em produção, restrinja para o domínio do front
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Rotas de Dashboard (Mantidas)
+# Rotas de Dashboard (KPIs rápidos que não dependem da IA)
 app.include_router(dashboard.router, prefix="/api/dashboard")
 
-# --- Modelos de Entrada (Request) ---
+# --- Modelos de Entrada (DTOs) ---
 
 class ChatRequest(BaseModel):
     question: str
     session_id: str | None = None
-    # NOVO: Recebemos o histórico do frontend para o Router tomar decisões melhores.
-    # Ex: [{ "role": "user", "content": "..." }, { "role": "assistant", "content": "..." }]
+    # Histórico opcional (O Orchestrator gerencia contexto internamente agora, 
+    # mas mantemos o campo para compatibilidade)
     history: List[Dict[str, str]] = [] 
 
-# --- Endpoint de Chat (O Cérebro) ---
+# --- Endpoint de Chat (O Coração do Sistema) ---
 
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest):
     """
     Endpoint principal.
-    1. Recebe a pergunta e histórico.
-    2. Passa para o Orquestrador (que chama Router -> Agente Especialista).
-    3. Retorna JSON estruturado (Texto ou Gráfico) com metadados (query, tempo, sql).
+    Recebe a pergunta -> Passa para o Orchestrator -> Retorna resposta estruturada.
     """
-    start_time = time.monotonic()
+    start_time = time.time()
     
-    # Gerenciamento de ID de Sessão (Log e Rastreio)
+    # 1. Gestão de Sessão
     session_id = request.session_id or str(uuid.uuid4())
+    logger.info(f"📨 [API] Nova requisição | Sessão: {session_id[:8]} | Pergunta: '{request.question}'")
 
-    # Logs removidos para evitar duplicação com o Orchestrator
-    
     try:
-        # 1. Preparar o Histórico para o Prompt
-        # O Router precisa ler o histórico como texto para resolver pronomes ("dela", "isso").
-        chat_history_text = ""
-        if request.history:
-            chat_history_text = "\n".join([
-                f"{msg.get('role', 'user').title()}: {msg.get('content', '')}" 
-                for msg in request.history[-6:] # Pega apenas as últimas 6 mensagens para economizar tokens
-            ])
+        # 2. Execução da Pipeline (Onde a mágica acontece)
+        # O Orchestrator cuida de tudo: Routing, SQL, Segurança, RAG.
+        result = Orchestrator.run_pipeline(
+            session_id=session_id,
+            question=request.question
+        )
 
-        # 2. Instanciar e Invocar o Orquestrador
-        # Nota: O Orquestrador já contém o Router e os Agentes (Tracking/Analytics).
-        orchestrator = get_orchestrator_chain()
+        # 3. Formatação Final para o Frontend
+        # Garantimos que os campos técnicos estejam presentes para debug
+        total_duration = time.time() - start_time
         
-        result = orchestrator.invoke({
-            "question": request.question,
-            "chat_history": chat_history_text,
-            "category": "" # O próprio chain vai preencher isso via Router
-        })
-
-        # 3. Processar Resultado
-        # O 'result' vindo do orchestrator já deve ser um dicionário limpo
-        final_response = result
-
-        # 4. Calcular Tempo e Montar Resposta Final da API
-        end_time = time.monotonic()
-        duration = end_time - start_time
-
-        # Injetamos metadados técnicos no JSON de resposta
-        if isinstance(final_response, dict):
-            # Formatação do tempo
-            final_response['execution_time'] = duration
-            final_response['response_time'] = f"{duration:.2f}" # Mantido para compatibilidade legada
-            
-            # Injeta a query original (Pedido pelo usuário)
-            final_response['query'] = request.question
-            
-            # Garante session_id
-            final_response['session_id'] = session_id
-            
-        return final_response
-
-    except Exception as e:
-        logger.error(f"Erro CRÍTICO no processamento: {e}", exc_info=True)
-        # Fallback seguro para não quebrar o frontend
-        return {
-            "type": "text",
-            "content": f"Desculpe, ocorreu um erro interno ao processar sua solicitação. Detalhes: {str(e)}",
+        response = {
+            "type": result.get("type", "text"),
+            "content": result.get("content", ""),
             "session_id": session_id,
             "query": request.question,
-            "response_time": "0.00"
+            # Metadados técnicos
+            "sql": result.get("sql"),          # Só existe se for Tracking/Analytics
+            "data": result.get("data"),        # Dados brutos para gráficos
+            "category": result.get("category"), # TRACKING, ANALYTICS, etc.
+            "response_time": f"{total_duration:.2f}",
+            "server_execution_time": result.get("execution_time", 0)
+        }
+
+        logger.info(f"✅ [API] Resposta enviada em {total_duration:.2f}s (Tipo: {response['type']})")
+        return response
+
+    except Exception as e:
+        logger.critical(f"🔥 [API CRITICAL ERROR] {e}", exc_info=True)
+        # Fallback seguro: Nunca deixe o frontend sem resposta
+        return {
+            "type": "error",
+            "content": "Ocorreu um erro interno crítico no servidor. Por favor, tente novamente em instantes.",
+            "session_id": session_id,
+            "response_time": f"{time.time() - start_time:.2f}"
         }
 
 @app.get("/")
 def read_root():
-    return {"status": "Supporte BI Multi-Agent API is running", "version": "2.2"}
+    return {"status": "online", "system": "Supporte BI Enterprise v2.1", "security_guard": "active"}
 
+# Permite rodar como script: python api.py
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8002)
