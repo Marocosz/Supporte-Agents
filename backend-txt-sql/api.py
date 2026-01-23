@@ -1,13 +1,14 @@
 # =================================================================================================
 # =================================================================================================
 #
-#                           PONTO DE ENTRADA DA API (BACKEND) - v2.1
+#                           PONTO DE ENTRADA DA API (BACKEND) - v2.2 (OTIMIZADO)
 #
 # Visão Geral:
 # Este arquivo conecta o servidor web (FastAPI) à nova Arquitetura Multi-Agente.
 #
 # Atualizações Recentes:
-# - Injeção explícita de 'query' e 'execution_time' na resposta final para o Frontend.
+# - Integração com Short-Circuit do Orchestrator (zero latency para 'Oi').
+# - Logs limpos (delegados para o Orchestrator).
 #
 # =================================================================================================
 # =================================================================================================
@@ -26,6 +27,7 @@ from app.agents.orchestrator import get_orchestrator_chain
 from app.api import dashboard
 
 # Configuração de Logs
+# (Mantido básico aqui, pois o Orchestrator cuida dos logs detalhados/coloridos)
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)-25s - %(levelname)-8s - %(message)s',
@@ -37,7 +39,7 @@ logger = logging.getLogger(__name__)
 app = FastAPI(
     title="Supporte BI AI - SQL Agent",
     description="API de BI Logístico com Arquitetura Multi-Agente (Router -> Specialists)",
-    version="6.4"
+    version="6.5" # Bump de versão
 )
 
 # Configura CORS (Mantido para compatibilidade total)
@@ -81,10 +83,8 @@ async def chat_endpoint(request: ChatRequest):
     # Gerenciamento de ID de Sessão (Log e Rastreio)
     session_id = request.session_id or str(uuid.uuid4())
 
-    logger.info("=================================================")
-    logger.info(f"--- [SESSÃO {session_id[:8]}] Nova Pergunta: '{request.question}'")
-    logger.info("=================================================")
-
+    # Logs removidos para evitar duplicação com o Orchestrator
+    
     try:
         # 1. Preparar o Histórico para o Prompt
         # O Router precisa ler o histórico como texto para resolver pronomes ("dela", "isso").
@@ -125,9 +125,6 @@ async def chat_endpoint(request: ChatRequest):
             # Garante session_id
             final_response['session_id'] = session_id
             
-            # (Opcional) Log para debug
-            # logger.info(f"Resposta Gerada: {final_response.get('type')}")
-
         return final_response
 
     except Exception as e:
@@ -143,7 +140,7 @@ async def chat_endpoint(request: ChatRequest):
 
 @app.get("/")
 def read_root():
-    return {"status": "Supporte BI Multi-Agent API is running", "version": "2.1"}
+    return {"status": "Supporte BI Multi-Agent API is running", "version": "2.2"}
 
 if __name__ == "__main__":
     import uvicorn

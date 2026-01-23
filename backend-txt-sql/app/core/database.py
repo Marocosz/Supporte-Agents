@@ -11,13 +11,25 @@ from .config import settings
 
 logger = logging.getLogger(__name__)
 
+# Tabelas e Schema Alvo (Mantido Intacto)
 TARGET_TABLES = ['tab_situacao_nota_logi']
 TARGET_SCHEMA = 'dw'
 
+# Variável global para manter o Singleton
+_db_instance = None
+
 def get_db_connection() -> SQLDatabase:
     """
-    Cria a conexão principal do LangChain.
+    Cria a conexão principal do LangChain (Singleton).
+    Garante reconexão automática em caso de queda.
     """
+    global _db_instance
+    
+    if _db_instance is not None:
+        return _db_instance
+
+    logger.info("🔌 [DATABASE] Iniciando conexão com o Banco de Dados...")
+    
     DATABASE_URI_FULL = (
         f"postgresql://{settings.DB_USER}:{settings.DB_PASS}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.DB_NAME}"
     )
@@ -26,8 +38,6 @@ def get_db_connection() -> SQLDatabase:
     
     try:
         # OTIMIZAÇÃO CRÍTICA: pool_pre_ping=True
-        # Isso verifica se a conexão está viva antes de executar a query.
-        # Resolve o erro "server closed the connection unexpectedly".
         engine = create_engine(
             DATABASE_URI_FULL,
             connect_args=SSL_ARGS,
@@ -35,19 +45,19 @@ def get_db_connection() -> SQLDatabase:
             pool_recycle=3600 
         )
         
-        # sample_rows_in_table_info=0 para velocidade máxima (não faz SELECT * ao iniciar)
-        db = SQLDatabase(
+        # sample_rows_in_table_info=0 para velocidade máxima
+        _db_instance = SQLDatabase(
             engine=engine,
             schema=TARGET_SCHEMA, 
             include_tables=TARGET_TABLES,
             sample_rows_in_table_info=0 
         )
         
-        logger.info(f"Conexão com o banco de dados (Schema: {TARGET_SCHEMA}) estabelecida com sucesso.")
-        return db
+        logger.info(f"✅ [DATABASE] Conexão com o schema '{TARGET_SCHEMA}' estabelecida com sucesso.")
+        return _db_instance
     
     except Exception as e:
-        logger.error(f"Falha ao conectar com o banco de dados (LangChain): {e}")
+        logger.critical(f"❌ [DATABASE] Falha fatal ao conectar (LangChain): {e}")
         raise
 
 @lru_cache(maxsize=1)
@@ -103,4 +113,5 @@ def get_compact_db_schema() -> str:
         if conn:
             conn.close()
 
-db_instance = get_db_connection()
+# Inicializa a instância na carga do módulo (opcional, mas útil para fail-fast)
+# db_instance = get_db_connection() # Comentado para evitar conexão na importação se não necessário

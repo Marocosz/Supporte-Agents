@@ -32,7 +32,7 @@ const HubPage: React.FC = () => {
                     className="hub-main-logo" 
                 />
                 
-                <h1>Central de Ferramentas</h1>
+                <h1>Central de Agentes</h1>
             </div>
 
             <div className="hub-grid">

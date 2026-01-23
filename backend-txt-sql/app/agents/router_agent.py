@@ -2,7 +2,7 @@ import logging
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 
-from app.core.llm import get_llm
+from app.core.llm import get_answer_llm
 from app.prompts.specialized.router_prompts import ROUTER_PROMPT
 
 logger = logging.getLogger(__name__)
@@ -24,7 +24,7 @@ def get_router_chain():
 
     chain = (
         ROUTER_PROMPT
-        | get_llm() # Usa temperatura 0.0 para velocidade máxima
+        | get_answer_llm()
         | StrOutputParser()
         | clean_category
     )

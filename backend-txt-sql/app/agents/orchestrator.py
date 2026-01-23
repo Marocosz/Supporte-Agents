@@ -1,7 +1,7 @@
 import logging
 import re
 import json
-import time # <--- NOVO
+import time 
 from langchain_core.runnables import RunnableLambda
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -21,6 +21,9 @@ MAGENTA = "\033[95m"
 BLUE = "\033[94m"
 RESET = "\033[0m"
 BOLD = "\033[1m"
+
+# Mensagem padrão de boas-vindas (Centralizada para consistência)
+WELCOME_MESSAGE = "Olá! Sou seu assistente de BI Logístico. Posso gerar gráficos e relatórios sobre suas notas, pedidos e filiais. Como posso ajudar?"
 
 def safe_parse_json(text: str) -> dict:
     """Parser seguro para o chat."""
@@ -56,17 +59,47 @@ def get_chat_chain():
         | RunnableLambda(safe_parse_json)
     )
 
+# --- Funções Auxiliares de Limpeza ---
+
+def clean_chat_history(history: str) -> str:
+    """
+    Remove ruídos do histórico, como a mensagem de boas-vindas repetida,
+    para que a IA foque apenas na conversa real.
+    """
+    if not history:
+        return ""
+    # Remove a mensagem de boas-vindas se ela aparecer no histórico
+    cleaned = history.replace(WELCOME_MESSAGE, "")
+    return cleaned.strip()
+
 # --- Lógica de Orquestração ---
 
 def route_request(inputs):
     start_total = time.time() # <--- INÍCIO CRONÔMETRO
 
+    # 1. Short-Circuit: Verificação de Boas-Vindas (Latência Zero)
+    question = inputs.get("question", "").strip().lower()
+    greetings = ["start", "ola", "olá", "oi", "bom dia", "boa tarde", "inicio", "começar"]
+    
+    if not question or question in greetings:
+        logger.info(f"\n{CYAN}{BOLD}>>> [ORCHESTRATOR] START/SAUDAÇÃO DETECTADO (BYPASS IA){RESET}")
+        return {
+            "type": "text",
+            "content": WELCOME_MESSAGE,
+            "server_execution_time": 0.0
+        }
+
+    # 2. Higienização do Input
+    raw_history = inputs.get("chat_history", "")
+    inputs["chat_history"] = clean_chat_history(raw_history)
+
     # LOG: Entrada do Orchestrator
     print("\n") # Quebra de linha inicial para limpar
     logger.info(f"{CYAN}================================================================================{RESET}")
     logger.info(f"{CYAN}{BOLD}>>> [ORCHESTRATOR] NOVA REQUISIÇÃO INICIADA{RESET}")
-    logger.info(f"{GREEN}{BOLD}INPUTS RECEBIDOS:{RESET}\n{json.dumps(inputs, indent=2, ensure_ascii=False)}")
+    logger.info(f"{GREEN}{BOLD}INPUTS RECEBIDOS (LIMPOS):{RESET}\n{json.dumps(inputs, indent=2, ensure_ascii=False)}")
 
+    # 3. Roteamento Inteligente
     category = inputs["category"]
     logger.info(f"{CYAN}[ORCHESTRATOR] Intenção detectada: {BOLD}{category.upper()}{RESET}")
 

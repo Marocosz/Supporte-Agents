@@ -1,7 +1,7 @@
 import logging
 import re
 import json
-import time  # <--- NOVO
+import time 
 from langchain_core.runnables import RunnablePassthrough, RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
 
@@ -18,6 +18,7 @@ GREEN = "\033[92m"
 YELLOW = "\033[93m"
 MAGENTA = "\033[95m"
 BLUE = "\033[94m"
+RED = "\033[91m" # <--- Nova Cor para erros/alertas
 RESET = "\033[0m"
 BOLD = "\033[1m"
 
@@ -54,6 +55,7 @@ def get_tracking_chain():
     # 1. Gerador de SQL
     sql_gen = (
         RunnablePassthrough.assign(schema=lambda _: get_compact_db_schema())
+        .assign(chat_history=lambda x: x.get("chat_history", "")) 
         | TRACKING_PROMPT
         | get_llm()
         | StrOutputParser()
@@ -76,12 +78,18 @@ def get_tracking_chain():
             end_time = time.time()
             db_duration = end_time - start_time
             
-            logger.info(f"{MAGENTA}{BOLD}⏱️  TEMPO DE BANCO (Tracking): {db_duration:.4f}s{RESET}")
-            # ---------------------------------
+            # === DEBUG PROFUNDO (REMOVE APÓS RESOLVER) ===
+            logger.info(f"{MAGENTA}{BOLD}⏱️  TEMPO DE BANCO: {db_duration:.4f}s{RESET}")
+            logger.info(f"{RED}>>> DEBUG DB RESULT TYPE: {type(result)}{RESET}")
+            logger.info(f"{RED}>>> DEBUG DB RESULT CONTENT: '{result}'{RESET}")
+            # =============================================
 
-            # Se o resultado for string vazia ou lista vazia stringificada
-            if not result or result == "[]":
+            # Se o resultado for string vazia, "[]" ou None
+            # Nota: O LangChain às vezes retorna string vazia "" quando não acha nada.
+            if not result or result == "[]" or result == "":
+                logger.warning(f"{RED}[TRACKING] Resultado vazio detectado.{RESET}")
                 return "REGISTRO_NAO_ENCONTRADO"
+            
             return result
         except Exception as e:
             logger.error(f"Erro Tracking: {e}")

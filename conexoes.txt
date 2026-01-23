@@ -1,0 +1,7 @@
+frontend:
+npm run dev
+localhost:5173
+
+backend-txt-sql
+python -m uvicorn api:app --reload --port 8002
+
