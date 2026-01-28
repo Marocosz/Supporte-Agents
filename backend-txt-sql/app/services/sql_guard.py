@@ -23,7 +23,7 @@ class SQLGuard:
         exp.Update,
         exp.Insert,
         exp.Alter,
-        exp.Truncate,
+        exp.TruncateTable,
         exp.Grant,
         exp.Revoke
     )

@@ -1,57 +1,74 @@
+// frontend/src/components/BiChatMessage.tsx
 import React, { useState } from 'react';
 import { FiUser, FiCpu, FiCode, FiChevronDown } from 'react-icons/fi';
+import ReactMarkdown from 'react-markdown';
 import BiChart from './BiChart';
-import type { BiChatMessage as BiMessageType } from '../types/bi.types';
+import { TrackingTable } from './TrackingTable';
+import type { BiMessage } from '../types/bi.types';
 
-const BiChatMessage: React.FC<{ message: BiMessageType }> = ({ message }) => {
+const BiChatMessage: React.FC<{ message: BiMessage }> = ({ message }) => {
   const isBot = message.sender === 'bot';
-  const content = message.content;
-  
-  // Controle local para mostrar/esconder SQL
   const [showQuery, setShowQuery] = useState(false);
 
-  // Normalização de campos (compatibilidade backend novo/velho)
-  const actualSql = content.sql || content.generated_sql;
-  const responseTime = content.response_time;
+  const actualSql = message.sql; 
+  const responseTime = message.response_time;
+  const executionTime = message.server_execution_time;
   
-  // Verifica se deve mostrar o rodapé (só se for bot e tiver tempo ou sql)
   const hasFooter = isBot && (actualSql || responseTime);
+  const hasChart = message.type === 'chart_data';
 
-  // Classes dinâmicas baseadas no tipo (igual ao template)
-  const wrapperClass = `bi-message-wrapper ${isBot ? 'bot-wrapper' : 'user-wrapper'} ${content.type === 'chart' ? 'wrapper-has-chart' : ''}`;
-  const bubbleClass = `bi-message-bubble ${isBot ? 'bot-message' : 'user-message'} ${content.type === 'chart' ? 'has-chart' : ''}`;
+  const wrapperClass = `bi-message-wrapper ${isBot ? 'bot-wrapper' : 'user-wrapper'} ${hasChart ? 'wrapper-has-chart' : ''}`;
+  const bubbleClass = `bi-message-bubble ${isBot ? 'bot-message' : 'user-message'} ${hasChart ? 'has-chart' : ''}`;
 
   return (
     <div className={wrapperClass}>
-      {/* Avatar (Igual ao template) */}
       <div className="bi-avatar">
         {isBot ? <FiCpu size={20} /> : <FiUser size={20} />}
       </div>
       
-      {/* Balão da Mensagem */}
       <div className={bubbleClass}>
         
-        {/* CONTEÚDO PRINCIPAL */}
-        {content.type === 'chart' ? (
+        {/* --- GRÁFICO --- */}
+        {message.type === 'chart_data' ? (
             <div className="bi-chart-content">
-                {content.title && <h4 className="bi-chart-title-internal">{content.title}</h4>}
+                {message.title && <h4 className="bi-chart-title-internal">{message.title}</h4>}
                 <div className="bi-chart-container-wrapper">
-                    <BiChart data={content as any} />
+                    {/* CORREÇÃO:
+                        1. Espalhamos ...message para passar os dados.
+                        2. Sobrescrevemos chart_type forçando o tipo literal "bar" | "line" | "pie" 
+                           para satisfazer a interface estrita do BiChart.
+                        3. Garantimos que data é sempre um array, não undefined.
+                    */}
+                    <BiChart data={{
+                        ...message,
+                        data: message.data || [],
+                        chart_type: (message.chart_suggestion || message.chart_type || 'bar') as "bar" | "line" | "pie"
+                    }} /> 
                 </div>
-                {content.content && <p className="bi-chart-description">{content.content}</p>}
+                {message.content && <p className="bi-chart-description">{message.content}</p>}
             </div>
         ) : (
-            <p className="bi-text-content">{content.content}</p>
-        )}
+            // --- TEXTO E TABELA ---
+            <div className="bi-content-body">
+                <div className="bi-text-content prose prose-sm max-w-none text-gray-800">
+                    <ReactMarkdown>{message.content}</ReactMarkdown>
+                </div>
 
-        {/* RODAPÉ (Igual ao Template: Tempo + Botão Toggle) */}
-        {hasFooter && (
-            <div className="bi-message-footer">
-                {responseTime && (
-                    <div className="bi-response-time">
-                        <span>Gerado em {responseTime}s</span>
+                {message.type === 'data_result' && message.data && (
+                    <div className="bi-data-table-container mt-4">
+                        <TrackingTable data={message.data} />
                     </div>
                 )}
+            </div>
+        )}
+
+        {/* --- RODAPÉ --- */}
+        {hasFooter && (
+            <div className="bi-message-footer">
+                <div className="bi-response-info">
+                   {responseTime && <span>Total: {responseTime}s</span>}
+                   {executionTime && <span className="ml-2 text-xs opacity-70">(Server: {executionTime}s)</span>}
+                </div>
                 
                 {actualSql && (
                     <button 
@@ -70,10 +87,9 @@ const BiChatMessage: React.FC<{ message: BiMessageType }> = ({ message }) => {
             </div>
         )}
 
-        {/* ÁREA DO SQL (Expandível) */}
         {showQuery && actualSql && (
             <div className="bi-query-display">
-                <pre><code>{actualSql}</code></pre>
+                <pre className="language-sql"><code>{actualSql}</code></pre>
             </div>
         )}
       </div>

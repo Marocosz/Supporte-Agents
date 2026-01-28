@@ -32,21 +32,27 @@ def get_tracking_agent():
     chain = TRACKING_TEMPLATE | llm | StrOutputParser()
     return chain
 
-def generate_tracking_sql(question: str) -> dict:
+# ALTERAÇÃO AQUI: Adicionado parametro user_context
+def generate_tracking_sql(question: str, user_context: str = "") -> dict:
     """Gera o SQL candidato para uma pergunta de rastreamento."""
     try:
         schema = get_compact_db_schema()
         chain = get_tracking_agent()
         
-        logger.info(f"🚚 [TRACKING] Gerando SQL para: '{question}'")
-        raw_result = chain.invoke({"schema": schema, "question": question})
+        logger.info(f"🚚 [TRACKING] Gerando SQL para: '{question}' | Contexto: {bool(user_context)}")
+        
+        # ALTERAÇÃO AQUI: Passando security_context para o prompt
+        raw_result = chain.invoke({
+            "schema": schema, 
+            "question": question,
+            "security_context": user_context
+        })
         
         # 1. Parseia string para dict
         parsed = parse_json_output(raw_result)
         
         # 2. Validação Pydantic
         # Garante que os campos thought_process e sql existem.
-        # Se faltar campo, o Pydantic levanta erro e vai para o except.
         validated_output = AgentSQLOutput(**parsed)
         
         # 3. Retorna como dict para o Orchestrator

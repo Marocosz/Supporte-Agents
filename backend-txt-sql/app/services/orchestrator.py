@@ -6,13 +6,15 @@ from typing import Dict, Any
 from app.services.context import ContextManager
 from app.services.sql_guard import SQLGuard, SecurityError
 from app.core.database import get_db_connection
+# IMPORTANTE: Import do Mock de Segurança (Certifique-se de criar o arquivo app/core/security_mock.py)
+from app.core.security_mock import get_user_context
 
 # Agentes
 from app.agents.router import classify_intent
 from app.agents.tracking import generate_tracking_sql
-from app.agents.analytics import generate_analytics_sql # <--- NOVO
+from app.agents.analytics import generate_analytics_sql
 from app.agents.fixer import fix_sql_query
-from app.agents.librarian import consult_librarian # <--- NOVO
+from app.agents.librarian import consult_librarian
 
 logger = logging.getLogger(__name__)
 
@@ -26,27 +28,35 @@ class Orchestrator:
     WELCOME_MESSAGE = "Olá! Sou seu assistente de BI Logístico. Posso rastrear notas, analisar métricas ou tirar dúvidas."
 
     @staticmethod
-    def run_pipeline(session_id: str, question: str) -> Dict[str, Any]:
+    # ALTERAÇÃO AQUI: Adicionado user_key
+    def run_pipeline(session_id: str, question: str, user_key: str = "admin") -> Dict[str, Any]:
         start_time = time.time()
-        logger.info(f"\n🎬 [ORCHESTRATOR] Sessão: {session_id[:8]} | Input: '{question}'")
+        logger.info(f"\n🎬 [ORCHESTRATOR] Sessão: {session_id[:8]} | User: {user_key} | Input: '{question}'")
 
         # 1. SHORT-CIRCUIT
         if question.strip().lower() in Orchestrator.SHORT_CIRCUIT_KEYWORDS:
             return {"type": "text", "content": Orchestrator.WELCOME_MESSAGE, "execution_time": 0.0}
 
         # 2. CONTEXT & ROUTING
-        final_question = question # (Placeholder para resolução de pronomes futura)
+        final_question = question
         category = classify_intent(final_question)
         ContextManager.update_context(session_id, "last_intent", category)
+        
+        # --- CARREGAMENTO DE CONTEXTO DE SEGURANÇA ---
+        security_data = get_user_context(user_key)
+        # Formata o texto que será injetado no prompt da IA
+        security_prompt_text = f"Função do Usuário: {security_data['role_desc']}\nRestrições SQL: {security_data.get('sql_constraints', 'Nenhuma')}"
 
         result = {}
 
         # 3. DISPATCH FLOW
         if category == "TRACKING":
-            result = Orchestrator._handle_sql_flow(final_question, "TRACKING")
+            # Passamos o security_prompt_text para o fluxo SQL
+            result = Orchestrator._handle_sql_flow(final_question, "TRACKING", security_prompt_text)
             
         elif category == "ANALYTICS":
-            result = Orchestrator._handle_sql_flow(final_question, "ANALYTICS")
+            # Analytics também pode usar o contexto de segurança no futuro
+            result = Orchestrator._handle_sql_flow(final_question, "ANALYTICS", security_prompt_text)
             
         elif category == "KNOWLEDGE":
             # Fluxo sem SQL (Texto puro)
@@ -62,7 +72,8 @@ class Orchestrator:
         return result
 
     @staticmethod
-    def _handle_sql_flow(question: str, mode: str) -> Dict[str, Any]:
+    # ALTERAÇÃO AQUI: Adicionado security_context
+    def _handle_sql_flow(question: str, mode: str, security_context: str = "") -> Dict[str, Any]:
         """Gerencia ciclo de vida SQL (Tracking e Analytics)."""
         db = get_db_connection()
         generated_data = {}
@@ -70,8 +81,10 @@ class Orchestrator:
         # 1. Geração (Generation)
         try:
             if mode == "TRACKING":
-                generated_data = generate_tracking_sql(question)
+                # Passamos o security_context para o tracking
+                generated_data = generate_tracking_sql(question, security_context)
             else:
+                # Analytics por enquanto não usa, mas mantemos interface
                 generated_data = generate_analytics_sql(question)
                 
             candidate_sql = generated_data.get("sql", "")
@@ -130,16 +143,14 @@ class Orchestrator:
         # Formatação para ANALYTICS (Geralmente Gráficos ou Texto Resumido)
         if mode == "ANALYTICS":
             return {
-                "type": "chart_data", # Frontend deve interpretar isso
+                "type": "chart_data", 
                 "content": "Aqui está a análise solicitada:",
-                "data": data, # Dados crus para o front montar o gráfico
+                "data": data, 
                 "sql": sql,
                 "chart_suggestion": meta.get("chart_suggestion", "bar")
             }
             
         # Formatação para TRACKING (Cards ou Texto Detalhado)
-        # Como o db.run retorna string crua de lista Python, retornamos como text/data
-        # O Frontend (BiChatMessage) pode fazer parse se necessário, ou mandamos formatado aqui.
         return {
             "type": "data_result",
             "content": f"Encontrei os seguintes dados:\n{data}",

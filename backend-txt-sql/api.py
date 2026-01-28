@@ -2,13 +2,12 @@
 import logging
 import time
 import uuid
-from fastapi import FastAPI
+from fastapi import FastAPI, Header # <--- Importado Header
 from fastapi.middleware.cors import CORSMiddleware
 
 # Imports da Aplicação
 from app.services.orchestrator import Orchestrator
 from app.api import dashboard
-# IMPORTANTE: Importamos os modelos do schemas.py em vez de redefinir
 from app.core.schemas import ChatRequest, ChatResponse
 
 # Configuração de Logs
@@ -41,7 +40,11 @@ app.include_router(dashboard.router, prefix="/api/dashboard")
 # --- Endpoint de Chat ---
 
 @app.post("/chat", response_model=ChatResponse)
-async def chat_endpoint(request: ChatRequest):
+async def chat_endpoint(
+    request: ChatRequest,
+    # ALTERAÇÃO AQUI: Header X-User-ID opcional (default admin)
+    x_user_id: str = Header(default="admin", alias="X-User-ID") 
+):
     """
     Endpoint principal.
     Recebe a pergunta -> Passa para o Orchestrator -> Retorna resposta estruturada e validada.
@@ -50,13 +53,14 @@ async def chat_endpoint(request: ChatRequest):
     
     # 1. Gestão de Sessão
     session_id = request.session_id or str(uuid.uuid4())
-    logger.info(f"📨 [API] Nova requisição | Sessão: {session_id[:8]} | Pergunta: '{request.question}'")
+    logger.info(f"📨 [API] Nova requisição | Sessão: {session_id[:8]} | User: {x_user_id} | Pergunta: '{request.question}'")
 
     try:
         # 2. Execução da Pipeline
         result = Orchestrator.run_pipeline(
             session_id=session_id,
-            question=request.question
+            question=request.question,
+            user_key=x_user_id.lower() # Passamos a chave do usuário para o Mock de Segurança
         )
 
         # 3. Formatação Final
@@ -90,7 +94,7 @@ async def chat_endpoint(request: ChatRequest):
             "query": request.question,
             "response_time": f"{time.time() - start_time:.2f}",
             "server_execution_time": 0.0,
-            "debug_info": str(e) # Em produção, pode remover isso para segurança
+            "debug_info": str(e)
         }
 
 @app.get("/")
