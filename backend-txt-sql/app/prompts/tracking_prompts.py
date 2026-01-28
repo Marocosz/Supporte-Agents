@@ -34,6 +34,7 @@ Ao procurar por um número fornecido pelo usuário (ex: "Nota 12345"):
 """
 
 # --- 3. SYSTEM PROMPT (TRACKING SPECIALIST) ---
+# CORREÇÃO: Usamos {{{{ para que o Python transforme em {{ e o LangChain entenda como literal.
 TRACKING_SYSTEM_PROMPT = f"""
 Você é um Arquiteto de Dados Sênior especialista em Tracking Logístico no PostgreSQL.
 Sua missão é gerar consultas SQL cirúrgicas para rastrear entidades na tabela `dw.tab_situacao_nota_logi`.
@@ -63,11 +64,11 @@ Toda consulta DEVE retornar, obrigatoriamente e nesta ordem, as seguintes coluna
 4. Para Datas: Se pedir "Hoje", use `CURRENT_DATE`.
 
 --- FORMATO DE SAÍDA ---
-Responda APENAS um JSON válido:
-{{
+Responda APENAS um JSON válido. Não use blocos de código markdown.
+{{{{
     "thought_process": "Identifiquei a busca por (Nota/Pedido). O usuário (tem/não tem) restrição de filial. Query focada em X.",
     "sql": "SELECT DISTINCT ON ..."
-}}
+}}}}
 """
 
 TRACKING_TEMPLATE = PromptTemplate.from_template(
@@ -76,6 +77,7 @@ TRACKING_TEMPLATE = PromptTemplate.from_template(
 
 # --- 4. SYSTEM PROMPT (FIXER) ---
 # MELHORIA AQUI: Usamos f-string para injetar as colunas obrigatórias também no Fixer.
+# CORREÇÃO: {{{{ para escapar o JSON dentro da f-string
 FIXER_SYSTEM_PROMPT = f"""
 Você é um Mecânico de SQL. Sua tarefa é corrigir uma query que falhou.
 
@@ -96,10 +98,10 @@ ERRO DO BANCO:
 
 --- FORMATO DE SAÍDA ---
 Responda APENAS um JSON válido:
-{{
+{{{{
     "correction_logic": "Explique o que corrigiu",
     "fixed_sql": "SELECT ..."
-}}
+}}}}
 """
 
 FIXER_TEMPLATE = PromptTemplate.from_template(FIXER_SYSTEM_PROMPT + "\nJSON:")

@@ -3,11 +3,9 @@ import React from 'react';
 import type { DatabaseRow } from '../types/bi.types'; 
 
 interface TrackingTableProps {
-  // Tipagem forte: Array de registros do banco (sem any)
-  data: DatabaseRow[];
+  data: DatabaseRow[] | string | any; // Aceita string temporariamente para não quebrar
 }
 
-// Aceita a união de tipos primitivos possíveis em uma célula de banco
 const getStatusColor = (status: string | number | boolean | null | undefined) => {
   const s = String(status || '').toUpperCase();
   if (s.includes('EXPEDIDO')) return 'bg-green-100 text-green-800';
@@ -17,9 +15,38 @@ const getStatusColor = (status: string | number | boolean | null | undefined) =>
 };
 
 export const TrackingTable: React.FC<TrackingTableProps> = ({ data }) => {
-  if (!data || data.length === 0) return null;
+  // 1. BLINDAGEM: Se vier nulo/undefined, não renderiza nada
+  if (!data) return null;
 
-  const columns = Object.keys(data[0]);
+  let safeData: DatabaseRow[] = [];
+
+  // 2. TRATAMENTO: Tenta converter se for string
+  if (Array.isArray(data)) {
+    safeData = data;
+  } else if (typeof data === 'string') {
+    try {
+      // Tenta corrigir aspas simples de Python para aspas duplas de JSON (fallback básico)
+      // Nota: O ideal é o backend mandar certo, isso é apenas um 'bandage'
+      const fixedJson = data.replace(/'/g, '"').replace(/None/g, 'null').replace(/True/g, 'true').replace(/False/g, 'false');
+      const parsed = JSON.parse(fixedJson);
+      if (Array.isArray(parsed)) safeData = parsed;
+    } catch (e) {
+      console.error("Erro ao fazer parse dos dados da tabela:", e);
+      return (
+        <div className="p-3 bg-red-50 text-red-700 text-xs rounded border border-red-200">
+          Erro de formato de dados. O backend retornou texto em vez de JSON.
+          <br/>Conteúdo bruto: {data.substring(0, 50)}...
+        </div>
+      );
+    }
+  }
+
+  // 3. VALIDAÇÃO FINAL: Se ainda não for array ou estiver vazio
+  if (!Array.isArray(safeData) || safeData.length === 0) {
+    return <div className="text-gray-500 text-sm italic p-2">Nenhum dado estruturado encontrado.</div>;
+  }
+
+  const columns = Object.keys(safeData[0]);
 
   return (
     <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm mt-3">
@@ -34,13 +61,12 @@ export const TrackingTable: React.FC<TrackingTableProps> = ({ data }) => {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {data.map((row, idx) => (
+          {safeData.map((row, idx) => (
             <tr key={idx} className="hover:bg-gray-50">
               {columns.map((col) => (
                 <td key={`${idx}-${col}`} className="px-4 py-3 whitespace-nowrap text-gray-700">
                   {col === 'STA_NOTA' ? (
                     <span className={`px-2 py-1 rounded-full text-xs font-semibold ${getStatusColor(row[col])}`}>
-                      {/* String() converte null/undefined/boolean para texto seguro */}
                       {String(row[col] || '')}
                     </span>
                   ) : (

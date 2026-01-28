@@ -5,8 +5,8 @@ from typing import Dict, Any
 
 from app.services.context import ContextManager
 from app.services.sql_guard import SQLGuard, SecurityError
-from app.core.database import get_db_connection
-# IMPORTANTE: Import do Mock de Segurança (Certifique-se de criar o arquivo app/core/security_mock.py)
+# IMPORTANTE: Importamos a nova função que retorna Dicionários e o Schema para o Fixer
+from app.core.database import get_db_connection, run_query_as_dict, get_compact_db_schema
 from app.core.security_mock import get_user_context
 
 # Agentes
@@ -28,7 +28,6 @@ class Orchestrator:
     WELCOME_MESSAGE = "Olá! Sou seu assistente de BI Logístico. Posso rastrear notas, analisar métricas ou tirar dúvidas."
 
     @staticmethod
-    # ALTERAÇÃO AQUI: Adicionado user_key
     def run_pipeline(session_id: str, question: str, user_key: str = "admin") -> Dict[str, Any]:
         start_time = time.time()
         logger.info(f"\n🎬 [ORCHESTRATOR] Sessão: {session_id[:8]} | User: {user_key} | Input: '{question}'")
@@ -72,10 +71,10 @@ class Orchestrator:
         return result
 
     @staticmethod
-    # ALTERAÇÃO AQUI: Adicionado security_context
     def _handle_sql_flow(question: str, mode: str, security_context: str = "") -> Dict[str, Any]:
         """Gerencia ciclo de vida SQL (Tracking e Analytics)."""
-        db = get_db_connection()
+        # Mantemos o get_db_connection apenas se precisarmos do objeto LangChain para outra coisa, 
+        # mas a execução será via run_query_as_dict
         generated_data = {}
 
         # 1. Geração (Generation)
@@ -108,7 +107,10 @@ class Orchestrator:
                 
                 # 3. Execução
                 logger.info(f"▶️ [DB] Executando: {secure_sql}")
-                db_result = db.run(secure_sql) # Retorna string ou lista de tuplas
+                
+                # CORREÇÃO CRÍTICA: Usamos run_query_as_dict para retornar JSON real (Lista de Dicionários)
+                # Em vez de db.run() que retornava string de tuplas
+                db_result = run_query_as_dict(secure_sql) 
                 
                 # 4. Formatação (Presenter Simplificado)
                 return Orchestrator._format_success_response(
@@ -126,7 +128,9 @@ class Orchestrator:
                 logger.warning(f"⚠️ [DB ERROR] {db_error}")
                 if attempt < max_retries:
                     logger.info("🔧 [FIXER] Corrigindo SQL...")
-                    current_sql = fix_sql_query(current_sql, str(db_error))
+                    # Precisamos do schema atualizado para corrigir erros de coluna
+                    schema = get_compact_db_schema()
+                    current_sql = fix_sql_query(current_sql, str(db_error), schema)
                 else:
                     return {"type": "error", "content": "Erro técnico no banco de dados após tentativas de correção."}
 
@@ -136,9 +140,9 @@ class Orchestrator:
     def _format_success_response(mode: str, data: Any, sql: str, meta: dict) -> dict:
         """Transforma dados crus em formato que o Frontend entende."""
         
-        # Se veio vazio ou string vazia
-        if not data or data == "[]" or data == "":
-            return {"type": "text", "content": "❌ Não encontrei nenhum registro correspondente."}
+        # Se veio vazio
+        if not data:
+            return {"type": "text", "content": "❌ Não encontrei nenhum registro correspondente no banco."}
 
         # Formatação para ANALYTICS (Geralmente Gráficos ou Texto Resumido)
         if mode == "ANALYTICS":
@@ -153,7 +157,8 @@ class Orchestrator:
         # Formatação para TRACKING (Cards ou Texto Detalhado)
         return {
             "type": "data_result",
-            "content": f"Encontrei os seguintes dados:\n{data}",
+            # Limpamos o content para não poluir o chat com JSON bruto
+            "content": f"Encontrei {len(data)} registro(s) correspondente(s):",
             "sql": sql,
-            "data": data
+            "data": data # O Frontend usa este campo para montar a Tabela
         }

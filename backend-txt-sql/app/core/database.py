@@ -5,8 +5,8 @@
 import logging
 import psycopg2
 from functools import lru_cache 
+from sqlalchemy import create_engine, text
 from langchain_community.utilities import SQLDatabase
-from sqlalchemy import create_engine 
 from .config import settings
 
 logger = logging.getLogger(__name__)
@@ -58,6 +58,30 @@ def get_db_connection() -> SQLDatabase:
     
     except Exception as e:
         logger.critical(f"❌ [DATABASE] Falha fatal ao conectar (LangChain): {e}")
+        raise
+
+# --- ADIÇÃO CRÍTICA: Função para Execução Direta (Retorna JSON Puro) ---
+def run_query_as_dict(query: str) -> list:
+    """
+    Executa SQL e retorna LISTA DE DICIONÁRIOS REAIS.
+    Essencial para o Frontend receber JSON estruturado e não string.
+    """
+    db = get_db_connection()
+    try:
+        with db._engine.connect() as connection:
+            result = connection.execute(text(query))
+            
+            # Se não retorna linhas (ex: UPDATE), retorna vazio
+            if not result.returns_rows:
+                return []
+            
+            # Converte as linhas do SQLAlchemy (Mapping) para Dicionários Python
+            # Isso garante que as colunas venham nomeadas: {"NOTA_FISCAL": 40908}
+            data = [dict(row._mapping) for row in result]
+            return data
+            
+    except Exception as e:
+        logger.error(f"Erro na execução da query direta: {e}")
         raise
 
 @lru_cache(maxsize=1)
@@ -112,6 +136,3 @@ def get_compact_db_schema() -> str:
     finally:
         if conn:
             conn.close()
-
-# Inicializa a instância na carga do módulo (opcional, mas útil para fail-fast)
-# db_instance = get_db_connection() # Comentado para evitar conexão na importação se não necessário
