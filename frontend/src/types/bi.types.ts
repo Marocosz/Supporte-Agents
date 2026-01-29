@@ -58,4 +58,5 @@ export interface BiMessage {
   
   debug_info?: string;
   title?: string;
+  category?: string;
 }

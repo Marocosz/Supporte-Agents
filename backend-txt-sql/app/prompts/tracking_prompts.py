@@ -2,12 +2,14 @@
 from langchain_core.prompts import PromptTemplate
 
 # --- 1. COLUNAS OBRIGATÓRIAS (PADRÃO DE SAÍDA) ---
+# ALTERAÇÃO: Reforçamos que a SERIE é obrigatória no retorno para o Frontend montar as abas
 MANDATORY_COLUMNS = """
 1. "NOTA_FISCAL" (Número da nota - Formatar como inteiro se possível)
-2. "DESTINATARIO" (Nome do cliente)
-3. "EMISSAO" (Data de emissão)
-4. "STA_NOTA" (Status atual da operação)
-5. "TRANPORTADORA" (Quem transporta - Atenção: no banco é sem 'S')
+2. "SERIE" (Série da nota - OBRIGATÓRIO incluir esta coluna no SELECT)
+3. "DESTINATARIO" (Nome do cliente)
+4. "EMISSAO" (Data de emissão)
+5. "STA_NOTA" (Status atual da operação)
+6. "TRANPORTADORA" (Quem transporta - Atenção: no banco é sem 'S')
 """
 
 # --- 2. CONHECIMENTO DE NEGÓCIO (DOMAIN KNOWLEDGE) ---
@@ -58,7 +60,7 @@ Toda consulta DEVE retornar, obrigatoriamente e nesta ordem, as seguintes coluna
 3. Se a informação pedida for EXTRA (ex: "peso", "valor", "quem conferiu", "data agendamento"), adicione a coluna correspondente do schema APÓS as obrigatórias.
 
 --- REGRAS TÉCNICAS (SQL) ---
-1. Use SEMPRE `DISTINCT ON ("SERIE", "NOTA_FISCAL")` para evitar duplicatas de histórico.
+1. A query DEVE começar com: `SELECT DISTINCT ON ("SERIE", "NOTA_FISCAL") "SERIE", "NOTA_FISCAL", ...` (A coluna SERIE precisa estar explícita no SELECT logo após o DISTINCT ON).
 2. Ordene SEMPRE por `"SERIE", "NOTA_FISCAL", "last_updated" DESC` (para pegar o status mais recente).
 3. Para textos (Destinatário/Transportadora), use `ILIKE`.
 4. Para Datas: Se pedir "Hoje", use `CURRENT_DATE`.
@@ -67,7 +69,7 @@ Toda consulta DEVE retornar, obrigatoriamente e nesta ordem, as seguintes coluna
 Responda APENAS um JSON válido. Não use blocos de código markdown.
 {{{{
     "thought_process": "Identifiquei a busca por (Nota/Pedido). O usuário (tem/não tem) restrição de filial. Query focada em X.",
-    "sql": "SELECT DISTINCT ON ..."
+    "sql": "SELECT DISTINCT ON (\\"SERIE\\", \\"NOTA_FISCAL\\") \\"SERIE\\", CAST(\\"NOTA_FISCAL\\" AS INT), ..."
 }}}}
 """
 
@@ -92,7 +94,7 @@ ERRO DO BANCO:
 
 --- TAREFA ---
 1. Analise o erro.
-2. Corrija o SQL mantendo a lógica das colunas obrigatórias:
+2. Corrija o SQL mantendo a lógica das colunas obrigatórias (Garanta que a coluna "SERIE" esteja no SELECT):
 {MANDATORY_COLUMNS}
 3. Se o erro for nome de coluna, consulte o Schema e corrija (Ex: 'TRANSPORTADORA' vs 'TRANPORTADORA').
 

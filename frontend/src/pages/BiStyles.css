@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
 /* src/pages/BiStyles.css */
+
+
 
 /* --- Wrapper do Módulo BI --- */
 .bi-module-wrapper {
@@ -339,6 +343,7 @@
 }
 
 /* Bolha da Mensagem */
+/* Bolha da Mensagem (Agora Flex Column para controle de largura dos filhos) */
 .bi-message-bubble {
     padding: 15px 20px;
     border-radius: 18px;
@@ -346,7 +351,60 @@
     color: var(--text-primary);
     position: relative;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    /* Alterado para Flex Column */
+    display: flex;
+    flex-direction: column;
+
     width: 100%;
+    /* Ocupa espaço disponível no wrapper */
+    /* min-width: 600px;  <-- REMOVIDO ou MOVIDO para has-tracking se desejar que TEXTO simples não seja gigante */
+}
+
+/* Se tem tracking, aí sim forçamos largura mínima (opcional, mas o usuário pediu 'minimo de tamanho') */
+.bi-message-bubble.has-tracking {
+    min-width: 600px;
+}
+
+/* ... (outros estilos) ... */
+
+/* Display de SQL - TRUQUE PARA NÃO EXPANDIR A LARGURA */
+.bi-query-display {
+    margin-top: 10px;
+    padding-top: 10px;
+    animation: fadeIn 0.3s ease;
+
+    /* O pulo do gato: width 0 e min-width 100% num container flex-col obriga o item a respeitar a largura do pai estabelecida pelos irmãos */
+    align-self: stretch;
+    width: 0;
+    min-width: 100%;
+}
+
+.bi-query-display pre {
+    background-color: var(--background-dark);
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+    max-height: 200px;
+    overflow-y: auto;
+
+    /* Garante que o pre também não force barra */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Badge de Status na Tabela */
+.tracking-value-status {
+    background-color: var(--input-bg);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
 }
 
 .bot-message {
@@ -417,6 +475,7 @@
 
 .bi-response-time {
     font-size: 0.75rem;
+    /* Tamanho pequeno igual ao botão 'ver query' */
     color: var(--text-secondary);
     opacity: 0.8;
 }
@@ -449,25 +508,7 @@
     transform: rotate(180deg);
 }
 
-/* Display de SQL */
-.bi-query-display {
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px dashed var(--border-color);
-    animation: fadeIn 0.3s ease;
-}
-
-.bi-query-display pre {
-    background-color: var(--background-dark);
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
-    margin: 0;
-    white-space: pre-wrap;
-    word-break: break-all;
-    max-height: 200px;
-    overflow-y: auto;
-}
+/* (Regras antigas removidas pois foram movidas para cima) */
 
 .bi-query-display code {
     font-family: 'Fira Code', monospace;
@@ -547,4 +588,397 @@
 .bi-chat-window::-webkit-scrollbar-thumb:hover,
 .bi-query-display pre::-webkit-scrollbar-thumb:hover {
     background: var(--text-secondary);
+}
+
+/* ==========================================================================
+   TRACKING CARD (INTEGRATED VERSION)
+   ========================================================================== */
+
+.tracking-card {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    margin-top: 8px;
+    font-family: 'IBM Plex Mono', 'Fira Code', monospace;
+    box-shadow: none;
+}
+
+/* --- Ajustes Globais do Header --- */
+.tracking-header-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.tracking-header {
+    padding: 0 0 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    /* Alinha na base */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tracking-header-main {
+    display: flex;
+    flex-direction: column;
+    /* Remove padding */
+}
+
+/* Título movido para fora do balão */
+.tracking-main-title {
+    font-size: 1.1rem;
+    /* Maior conforme pedido */
+    text-transform: uppercase;
+    font-weight: 800;
+    opacity: 1;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    /* Cor para ser visível no bg escuro do app */
+
+    position: absolute;
+    /* Sai do fluxo */
+    top: -40px;
+    /* Sobe acima do balão */
+    left: 0;
+
+    display: block;
+}
+
+/* Adiciona margem ao topo do balão de rastreamento para não bater na mensagem anterior */
+.bi-message-bubble.has-tracking {
+    margin-top: 30px;
+    overflow: visible;
+    /* Garante que o titulo absolute apareça */
+}
+
+/* --- Custom Dropdown Styles --- */
+.tracking-custom-dropdown {
+    position: relative;
+    min-width: 120px;
+}
+
+.tracking-dropdown-trigger {
+    background-color: var(--input-bg);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    cursor: pointer;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.tracking-dropdown-trigger:hover {
+    background-color: rgba(58, 134, 255, 0.1);
+    color: var(--accent-blue);
+}
+
+.tracking-dropdown-arrow {
+    transition: transform 0.2s;
+}
+
+.tracking-dropdown-arrow.open {
+    transform: rotate(180deg);
+}
+
+.tracking-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 4px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    min-width: 140px;
+    overflow: hidden;
+    padding: 4px;
+}
+
+.tracking-dropdown-item {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.1s;
+    text-transform: uppercase;
+}
+
+.tracking-dropdown-item:hover {
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+}
+
+.tracking-dropdown-item.selected {
+    background-color: rgba(58, 134, 255, 0.1);
+    color: var(--accent-blue);
+}
+
+.tracking-big-number {
+    font-size: 1.4rem;
+    font-weight: 800;
+    line-height: 1;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+
+    /* Decoração Container */
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.tracking-number-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+/* Badge (Unico) */
+.tracking-badge-serie {
+    background: var(--input-bg);
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-align: center;
+    min-width: 60px;
+    /* Ajuste de margem */
+    margin-bottom: 2px;
+}
+
+.tracking-badge-serie {
+    margin-top: 2px;
+}
+
+.tracking-badge-serie {
+    background: var(--input-bg);
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-align: center;
+    min-width: 60px;
+}
+
+.tracking-badge-serie span {
+    display: block;
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.6;
+}
+
+.tracking-badge-serie strong {
+    font-size: 0.9rem;
+    font-family: monospace;
+    font-weight: 700;
+    display: block;
+    line-height: 1.1;
+}
+
+/* --- Dropdown no Header (Estilo Minimalista) --- */
+.tracking-header-action {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.tracking-minimal-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--input-bg);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 6px 32px 6px 12px;
+    /* Espaço na direita para seta */
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    cursor: pointer;
+    text-transform: uppercase;
+
+    /* Background com seta customizada (SVG Data URI) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+
+    transition: all 0.2s ease;
+}
+
+.tracking-minimal-select:hover {
+    background-color: rgba(58, 134, 255, 0.1);
+    /* Leve azul ao passar o mouse */
+    color: var(--accent-blue);
+    /* Atualiza a cor da seta no hover (opcional, seria necessário outro SVG, mas o azul fica bom) */
+}
+
+.tracking-minimal-select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background-color: var(--bg-card);
+    box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
+}
+
+/* Dark Mode adjustment para o SVG (invertendo a cor da seta se necessário) */
+/* Mas como usamos --text-secondary no SVG (%23555), no dark mode pode ficar escuro.
+   Idealmente usariamos currentColor, mas select n suporta bem em bg-image. 
+   Vamos forçar uma seta mais clara no dark mode se o usuario estiver no modo escuro.
+*/
+@media (prefers-color-scheme: dark) {
+    .tracking-minimal-select {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ccc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    }
+}
+
+.tracking-serie-select {
+    flex-grow: 1;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    outline: none;
+    transition: box-shadow 0.2s;
+}
+
+.tracking-serie-select:focus {
+    box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
+    border-color: var(--accent-blue);
+}
+
+/* --- 3. LISTA VERTICAL (ESTABILIZADA) --- */
+.tracking-list-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.tracking-list-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-items: center;
+    padding: 14px 0;
+    /* Mais espaço entre linhas (era 10px) */
+    /* Remove padding lateral */
+    border-bottom: 1px solid var(--border-color);
+    /* Linha divisória sutil */
+    height: auto;
+    /* Altura automatica */
+}
+
+.tracking-list-row:last-child {
+    border-bottom: none;
+}
+
+.tracking-item-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    /* Impede que o label encolha */
+}
+
+.tracking-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+
+.tracking-item-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: right;
+
+    /* TRUQUE PARA NÃO PULAR DE TAMANHO */
+    max-width: 60%;
+    /* Ocupa no máximo 60% da linha */
+    white-space: nowrap;
+    /* Não quebra linha nunca */
+    overflow: hidden;
+    /* Esconde o que sobrar */
+    text-overflow: ellipsis;
+    /* Coloca '...' no final */
+}
+
+/* --- 4. Rodapé Fixo --- */
+.tracking-footer {
+    padding: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+    border-radius: 8px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: currentColor;
+    display: inline-block;
+}
+
+/* Status Colors */
+.status-success {
+    background: rgba(16, 185, 129, 0.15);
+    color: #059669;
+}
+
+.status-warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: #d97706;
+}
+
+.status-error {
+    background: rgba(239, 68, 68, 0.15);
+    color: #dc2626;
+}
+
+.status-info {
+    background: rgba(59, 130, 246, 0.15);
+    color: #2563eb;
+}
+
+/* Dark Mode tweaks removidos pois agora usamos variaveis globais */
+@media (prefers-color-scheme: dark) {
+    .tracking-pill {
+        background: transparent;
+        color: var(--text-secondary);
+        border-color: var(--border-color);
+    }
+
+    .tracking-item-value {
+        color: #f1f5f9;
+    }
+
+    .status-success {
+        background: rgba(16, 185, 129, 0.2);
+        color: #34d399;
+    }
 }

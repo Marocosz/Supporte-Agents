@@ -15,6 +15,7 @@ from app.agents.tracking import generate_tracking_sql
 from app.agents.analytics import generate_analytics_sql
 from app.agents.fixer import fix_sql_query
 from app.agents.librarian import consult_librarian
+from app.agents.listing import generate_listing_sql
 
 logger = logging.getLogger(__name__)
 
@@ -56,6 +57,10 @@ class Orchestrator:
         elif category == "ANALYTICS":
             # Analytics também pode usar o contexto de segurança no futuro
             result = Orchestrator._handle_sql_flow(final_question, "ANALYTICS", security_prompt_text)
+
+        elif category == "LISTING":
+            # Novo fluxo LISTING
+            result = Orchestrator._handle_sql_flow(final_question, "LISTING", security_prompt_text)
             
         elif category == "KNOWLEDGE":
             # Fluxo sem SQL (Texto puro)
@@ -82,6 +87,9 @@ class Orchestrator:
             if mode == "TRACKING":
                 # Passamos o security_context para o tracking
                 generated_data = generate_tracking_sql(question, security_context)
+            elif mode == "LISTING":
+                # Novo: LISTING usa o novo agente
+                generated_data = generate_listing_sql(question, security_context)
             else:
                 # Analytics por enquanto não usa, mas mantemos interface
                 generated_data = generate_analytics_sql(question)
@@ -155,10 +163,16 @@ class Orchestrator:
             }
             
         # Formatação para TRACKING (Cards ou Texto Detalhado)
+        if mode == "TRACKING" or mode == "LISTING":
+            return {
+                "type": "data_result",
+                # Limpamos o content para não poluir o chat com JSON bruto
+                "content": "", 
+                "sql": sql,
+                "data": data # O Frontend usa este campo para montar a Tabela
+            }
+        
         return {
-            "type": "data_result",
-            # Limpamos o content para não poluir o chat com JSON bruto
-            "content": f"Encontrei {len(data)} registro(s) correspondente(s):",
-            "sql": sql,
-            "data": data # O Frontend usa este campo para montar a Tabela
+            "type": "text",
+            "content": str(data)
         }

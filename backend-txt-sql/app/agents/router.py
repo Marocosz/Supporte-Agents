@@ -17,15 +17,16 @@ Classifique a pergunta do usuário em EXATAMENTE UMA destas categorias:
 
 1. TRACKING: Busca pontual de status, rastreamento, onde está, quem conferiu. (Ex: "Cadê a nota X?", "Status do pedido Y")
 2. ANALYTICS: Agregações, somas, contagens, totais, rankings, métricas gerais. (Ex: "Total vendido", "Quantas notas...")
-3. KNOWLEDGE: Dúvidas conceituais, significados de termos, regras de negócio. (Ex: "O que é status bloqueado?", "Prazo de entrega")
-4. CHAT: Conversa fiada, cumprimentos, agradecimentos que não exigem dados. (Ex: "Tchau", "Obrigado", "Quem é você?")
+3. LISTING: Listagens de registros, busca de múltiplos itens, relatórios tabulares simples. (Ex: "Quais são as últimas 10 notas?", "Liste os pedidos de hoje")
+4. KNOWLEDGE: Dúvidas conceituais, significados de termos, regras de negócio. (Ex: "O que é status bloqueado?", "Prazo de entrega")
+5. CHAT: Conversa fiada, cumprimentos, agradecimentos que não exigem dados. (Ex: "Tchau", "Obrigado", "Quem é você?")
 
 Pergunta: {question}
 
 --- FORMATO DE SAÍDA ---
 Responda APENAS um JSON válido:
 {{
-    "category": "TRACKING" | "ANALYTICS" | "KNOWLEDGE" | "CHAT",
+    "category": "TRACKING" | "ANALYTICS" | "LISTING" | "KNOWLEDGE" | "CHAT",
     "reasoning": "Breve explicação do porquê escolheu essa categoria"
 }}
 """
@@ -37,7 +38,7 @@ def parse_json_output(text: str) -> dict:
     except json.JSONDecodeError:
         # Fallback simples se falhar o JSON: tenta achar a palavra chave no texto cru
         text_upper = text.upper()
-        for cat in ["TRACKING", "ANALYTICS", "KNOWLEDGE", "CHAT"]:
+        for cat in ["TRACKING", "ANALYTICS", "LISTING", "KNOWLEDGE", "CHAT"]:
             if cat in text_upper:
                 return {"category": cat, "reasoning": "Fallback de parse (JSON inválido)"}
         return {"category": "CHAT", "reasoning": "Erro total de parse"}
