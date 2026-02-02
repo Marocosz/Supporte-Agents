@@ -1,0 +1,309 @@
+{
+  "metadata": {
+    "sistema": "SARA",
+    "data_analise": "2026-02-02T14:13:37.401345",
+    "periodo_dias": 180,
+    "total_chamados": 170,
+    "total_grupos": 6,
+    "taxa_ruido": 0.5765
+  },
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "metricas": {
+        "volume": 8,
+        "top_servicos": {
+          "MELHORIAS": 3,
+          "DESENVOLVIMENTO": 3,
+          "TRATATIVA INTERNA": 2
+        },
+        "top_solicitantes": {
+          "Renato Pereira de Moraes Neto": 3,
+          "Marcia Viviane do Nascimento Silva Guedes": 2,
+          "Katianne Jesus Rodrigues de Franca Cortez": 2,
+          "Juscelyo Rangell Assis Paula": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119040",
+        "120590",
+        "120985",
+        "121321",
+        "120515",
+        "121323",
+        "122137",
+        "129647"
+      ],
+      "titulo": "Campos ausentes em relatórios logísticos",
+      "descricao": "SISTEMA: SARA – LOGÍSTICA. Erro raiz: Falta de campos críticos nos relatórios (peso de entrada/saída, tara, peso líquido) e histórico de movimentos/contêineres (associação por lote); requer criação de novas colunas e dados para CESVs, OS e importadores."
+    },
+    {
+      "cluster_id": 1,
+      "metricas": {
+        "volume": 11,
+        "top_servicos": {
+          "HOMOLOGAÇÃO": 9,
+          "ERRO SISTÊMICO": 1,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1
+        },
+        "top_solicitantes": {
+          "Caroline Ponciano Carvalho": 10,
+          "Elusiane Cristina de Albuquerque": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "124044",
+        "124043",
+        "124042",
+        "124039",
+        "124038",
+        "124800",
+        "128192",
+        "128493",
+        "128268",
+        "128265",
+        "129957"
+      ],
+      "titulo": "Faturamento RA: Cálculo Não Gerado",
+      "descricao": "Sistema: SARA — Raiz: falha no módulo de faturamento (RA) em homologação que impede geração de cálculo, gravação de datas no demonstrativo e correta estratificação, impactando ARMZ, GR, faturamento antecipado e faturamento complementar."
+    },
+    {
+      "cluster_id": 2,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "TRATATIVA INTERNA": 2,
+          "CADASTRO DE USUÁRIO": 2,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1
+        },
+        "top_solicitantes": {
+          "Wemelly Barros de Souza": 4,
+          "Evelly Fernandes da Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118016",
+        "119593",
+        "120822",
+        "126434",
+        "128214"
+      ],
+      "titulo": "Acesso bloqueado no TOTVS RA",
+      "descricao": "SISTEMA: SARA. Erro raiz: permissões de acesso não liberadas para TOTVS RA (coletor e balança manual), impedindo login/assunção de atividades. Padrão: várias solicitações de liberação de acesso com identificação (nome/RG/CPF)."
+    },
+    {
+      "cluster_id": 3,
+      "metricas": {
+        "volume": 8,
+        "top_servicos": {
+          "TRATATIVA INTERNA": 5,
+          "MELHORIAS": 2,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1
+        },
+        "top_solicitantes": {
+          "Wemelly Barros de Souza": 7,
+          "Juscelyo Rangell Assis Paula": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119430",
+        "120170",
+        "119748",
+        "119746",
+        "126446",
+        "126556",
+        "126570",
+        "120117"
+      ],
+      "titulo": "SARA: Falta visibilidade de dados",
+      "descricao": "Erro raiz: Falta de visibilidade de informações críticas (container, lote, BL, importador) no coletor e no recebimento de container no TOTVS RA, impactando conferência e automação."
+    },
+    {
+      "cluster_id": 4,
+      "metricas": {
+        "volume": 20,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 9,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 7,
+          "ANALISE DE CASOS": 2,
+          "ERRO OPERACIONAL": 1,
+          "ESTORNO": 1
+        },
+        "top_solicitantes": {
+          "Wemelly Barros de Souza": 15,
+          "Evelly Fernandes da Silva": 3,
+          "Maycon Luis Miranda": 1,
+          "Marcia Viviane do Nascimento Silva Guedes": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117493",
+        "117538",
+        "119757",
+        "121746",
+        "121742",
+        "124881",
+        "125910",
+        "125118",
+        "126594",
+        "127010",
+        "121865",
+        "127463",
+        "128532",
+        "129483",
+        "130499",
+        "130288",
+        "129815",
+        "131586",
+        "131425",
+        "132715"
+      ],
+      "titulo": "Etiquetas com Status Incorreto",
+      "descricao": "SISTEMA: SARA. ERRO RAIZ: Inconsistência de status das etiquetas: aparecem como 'impressa' apesar de estarem armazenadas/locadas, impedindo a conclusão de baixas, a coleta/liberação e a correção de saldo; necessita ajuste para o estado 'armazenada' ou 'carregado'."
+    },
+    {
+      "cluster_id": 5,
+      "metricas": {
+        "volume": 20,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 8,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 6,
+          "CADASTRO": 2,
+          "TRATATIVA INTERNA": 1,
+          "ANALISE DE CASO": 1
+        },
+        "top_solicitantes": {
+          "Wemelly Barros de Souza": 11,
+          "Marcia Viviane do Nascimento Silva Guedes": 6,
+          "Jose Wellington Nascimento Silva": 1,
+          "Thiago Valdemir": 1,
+          "Evelly Fernandes da Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 11
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 6
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119009",
+        "119690",
+        "120623",
+        "122916",
+        "123099",
+        "123110",
+        "124090",
+        "124522",
+        "124518",
+        "124846",
+        "125669",
+        "125810",
+        "126316",
+        "125825",
+        "124516",
+        "127065",
+        "127775",
+        "127963",
+        "128256",
+        "127755"
+      ],
+      "titulo": "Falha Sistêmica na OS Logística",
+      "descricao": "Sistema: SARA. Erro raiz: falha sistêmica no módulo de OS da logística que impede cadastro de containers, averbação/saída, geração/baixa de OS e descarga, bloqueando expedição."
+    }
+  ]
+}

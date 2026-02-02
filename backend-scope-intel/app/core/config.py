@@ -15,14 +15,18 @@ class Settings(BaseSettings):
     
     # OpenAI
     OPENAI_API_KEY: str
+    OPENAI_EMBEDDING_MODEL: str = "text-embedding-3-small"
+    OPENAI_CHAT_MODEL: str = "gpt-5-nano"
     
     # Onde vamos salvar os JSONs de resultado?
     OUTPUT_DIR: str = "data_output" 
     
     FLUIG_TABLE_NAME: str = "ml001292"
 
-    class Config:
-        env_file = ".env"
+    model_config = {
+        "env_file": ".env",
+        "extra": "ignore"
+    }
 
 @lru_cache()
 def get_settings() -> Settings:

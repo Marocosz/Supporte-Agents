@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ThemeToggle from '../components/ThemeToggle';
 // 1. Importe o hook do tema
-import { useTheme } from '../contexts/ThemeContext'; 
+import { useTheme } from '../contexts/ThemeContext';
 import './HubPage.css';
 
 // 2. Importe as DUAS imagens
@@ -21,17 +21,17 @@ const HubPage: React.FC = () => {
     return (
         <div className="hub-wrapper">
             <div className="floating-toggle-wrapper">
-                <ThemeToggle /> 
+                <ThemeToggle />
             </div>
-            
+
             <div className="hub-header">
                 {/* 5. Use a variável logoSrc aqui */}
-                <img 
-                    src={logoSrc} 
-                    alt="Supporte Logística" 
-                    className="hub-main-logo" 
+                <img
+                    src={logoSrc}
+                    alt="Supporte Logística"
+                    className="hub-main-logo"
                 />
-                
+
                 <h1>Central de Agentes</h1>
             </div>
 
@@ -56,14 +56,23 @@ const HubPage: React.FC = () => {
                     </div>
                 </Link>
 
-                {/* Card 3 - NOVO: Supporte BI */}
-                {/* Alterado: Removido style inline, adicionada classe 'bi' para controle via CSS */}
+                {/* Card 3 - Supporte BI */}
                 <Link to="/agentbi" className="hub-card bi">
                     <div className="hub-card-icon">📊</div>
                     <h2>Supporte BI</h2>
                     <p>Dashboard analítico e chat SQL para dados logísticos.</p>
                     <div className="hub-status-badge">
                         <span className="hub-status-dot"></span> Online
+                    </div>
+                </Link>
+
+                {/* Card 4 - Scope Intelligence */}
+                <Link to="/scopeintel" className="hub-card scope">
+                    <div className="hub-card-icon">🧬</div>
+                    <h2>Scope Intelligence</h2>
+                    <p>Identificação de padrões de erros e clustering semântico.</p>
+                    <div className="hub-status-badge">
+                        <span className="hub-status-dot"></span> Novo
                     </div>
                 </Link>
             </div>

@@ -8,6 +8,7 @@ import ChatPage from './pages/ChatPage';       // Agente de Qualidade
 import HubPage from './pages/HubPage';         // Hub Central
 import DocRobosPage from './pages/DocRobosPage'; // Gerador de docs
 import BiAgentPage from './pages/BiAgentPage';   // <--- NOVO: Agente de BI Logístico
+import ScopeIntelPage from './pages/ScopeIntelPage'; // <--- NOVO: Dashboard Scope Intelligence
 import './App.css';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
     <ThemeProvider>
       <BrowserRouter>
         <Routes>
-          
+
           {/* 1. Rota Raiz (/): Mostra o HUB com os cards de seleção */}
           <Route path="/" element={<HubPage />} />
 
@@ -28,6 +29,9 @@ function App() {
 
           {/* 4. NOVO: Rota BI (/agentbi): Abre o Supporte BI (Dashboard + Chat) */}
           <Route path="/agentbi" element={<BiAgentPage />} />
+
+          {/* 5. NOVO: Rota Scope Intel (/scopeintel) */}
+          <Route path="/scopeintel" element={<ScopeIntelPage />} />
 
           {/* 5. Rota Coringa (*): Se o usuário digitar url errada, volta pro Hub */}
           <Route path="*" element={<Navigate to="/" replace />} />

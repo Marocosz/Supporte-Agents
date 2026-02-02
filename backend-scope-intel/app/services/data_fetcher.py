@@ -1,3 +1,22 @@
+# ==============================================================================
+# ARQUIVO: app/services/data_fetcher.py
+#
+# OBJETIVO:
+#   Consultar dados brutos do Fluig (MySQL) para alimentar o pipeline de IA.
+#   Esta é a "boca de entrada" do sistema que extrai informações de negócio.
+#
+# RESPONSABILIDADES:
+#   - Conectar no banco SQL via SQLAlchemy
+#   - Executar query otimizada para buscar chamados de um sistema específico
+#   - Limpar HTML sujo (tags, &nbsp;) dos campos de texto rico do Fluig
+#   - Preparar o texto concatenado ("Documento Virtual") que será vetorizado
+#
+# DEPENDÊNCIAS:
+#   - SQLAlchemy (Banco de Dados)
+#   - Pandas (Manipulação tabular)
+#   - BeautifulSoup (Limpeza de HTML)
+# ==============================================================================
+
 import pandas as pd
 from sqlalchemy.orm import Session
 from sqlalchemy import text
@@ -9,8 +28,13 @@ logger = logging.getLogger(__name__)
 
 def clean_html(raw_html: str) -> str:
     """
-    Remove tags HTML e caracteres invisíveis do texto rico do Fluig.
-    Ex: '<div><p>Erro &nbsp;</p></div>' vira 'Erro'
+    Limpa strings que contém HTML (comum em campos Memo/Richtext do Fluig).
+    
+    ENTRADA: '<p>Erro no sistema &nbsp;<strong>Crítico</strong></p>'
+    SAÍDA:   'Erro no sistema Crítico'
+    
+    Por que isso é necessário?
+    Tags HTML sujam o vetor semântico. A IA precisa focar no CONTEÚDO, não na formatação.
     """
     if not isinstance(raw_html, str):
         return ""
@@ -25,10 +49,13 @@ def clean_html(raw_html: str) -> str:
 def build_embedding_text(row: dict) -> str:
     """
     Cria o 'Documento Virtual' unificando as colunas.
-    Essa é a string que será transformada em vetor pela OpenAI.
+    Essa é a string COMPLETA que será enviada para a OpenAI para virar vetor.
+    
+    ESTRATÉGIA:
+    Concatenamos campos estruturados (Sistema, Serviço) com campos livres (Título, Descrição)
+    usando rótulos explícitos (ex: 'SISTEMA:', 'ERRO:'). Isso ajuda o modelo de Embedding
+    a entender a topologia da informação.
     """
-    # Montamos um bloco de texto estruturado
-    # O uso de prefixos (TITULO:, DESCRIÇÃO:) ajuda a IA a focar
     documento = (
         f"SISTEMA: {row.get('sistema', 'N/A')} | "
         f"SERVIÇO: {row.get('servico', 'N/A')} | "
@@ -40,12 +67,23 @@ def build_embedding_text(row: dict) -> str:
 
 def fetch_chamados(db: Session, sistema: str, dias_atras: int = 180):
     """
-    Busca chamados no MySQL e prepara para vetorização.
+    Executa a query principal de extração de dados.
+    
+    PARÂMETROS:
+        - sistema: Nome exato do sistema no campo 'cat_sistema' (ex: 'Logix').
+        - dias_atras: Janela de tempo de análise (Data de Abertura).
+        
+    RETORNO:
+        - Lista de dicionários prontos para serem vetorizados.
     """
     logger.info(f"Iniciando busca de chamados para o sistema: {sistema} (últimos {dias_atras} dias)")
     
-    # Query otimizada para pegar a última versão do formulário e converter data
-    # Ajuste o formato STR_TO_DATE conforme o seu banco (aqui assumi DD/MM/YYYY)
+    # QUERY EXPLICADA:
+    # 1. Selecionamos campos de Identificação (ID, Solicitante) e Contexto (Sistema, Erro).
+    # 2. Convertemos a data de string ('dd/mm/yyyy') para DATE real para filtro.
+    # 3. FILTRO DE VERSÃO (CRÍTICO): O Fluig cria uma nova linha na tabela para cada 'save' do formulário.
+    #    A subquery ``WHERE t1.version = (SELECT MAX(version)...)`` garante que pegamos apenas
+    #    o estado FINAL do chamado, evitando duplicatas e dados desatualizados.
     query = text(f"""
         SELECT 
             processInstanceId as id_chamado,
@@ -54,7 +92,7 @@ def fetch_chamados(db: Session, sistema: str, dias_atras: int = 180):
             STR_TO_DATE(txt_dt_solicitacao, '%d/%m/%Y') as data_abertura,
             text_status_chamado as status,
             
-            -- Colunas de Contexto
+            -- Colunas de Contexto (Usadas no Embedding)
             cat_sistema as sistema,
             cat_servico as servico,
             cat_subarea as subarea,
@@ -63,36 +101,36 @@ def fetch_chamados(db: Session, sistema: str, dias_atras: int = 180):
             
         FROM {settings.FLUIG_TABLE_NAME} t1
         WHERE 
-            -- Filtro de Versão (Crucial para Fluig)
+            -- Filtro de Versão (Garante registro único e atualizado por chamado)
             t1.version = (
                 SELECT MAX(version) FROM {settings.FLUIG_TABLE_NAME} t2 
                 WHERE t2.documentid = t1.documentid
             )
             AND t1.cat_sistema = :sistema
-            -- Filtro de Data (MySQL)
+            -- Filtro de Janela de Tempo (Otimização de performance)
             AND STR_TO_DATE(t1.txt_dt_solicitacao, '%d/%m/%Y') >= DATE_SUB(NOW(), INTERVAL :dias DAY)
     """)
     
     try:
-        # Executa a query e joga num DataFrame do Pandas
+        # Pandas facilita o manuseio dos dados SQL -> Memória
         df = pd.read_sql(query, db.bind, params={"sistema": sistema, "dias": dias_atras})
         
         if df.empty:
             logger.warning("Nenhum chamado encontrado com os filtros atuais.")
             return []
 
-        # 1. Limpeza do HTML
+        # 1. Pipeline de Limpeza (HTML -> Texto Puro)
         df['descricao_limpa'] = df['descricao_raw'].apply(clean_html)
         
-        # 2. Criação do Texto para IA
-        # Convertemos para dict antes de aplicar para facilitar
+        # 2. Conversão para Dicionários Python
         records = df.to_dict(orient='records')
         
+        # 3. Enriquecimento
         for record in records:
-            # Adiciona o campo 'texto_vetor' no dicionário
+            # Gera o texto final para a IA
             record['texto_vetor'] = build_embedding_text(record)
             
-            # Converte data para string ISO para salvar no JSON/Qdrant sem erro
+            # Formatação de data para JSON/ISO 8601 (Compatibilidade com Qdrant/Frontend)
             if record['data_abertura']:
                 record['data_abertura'] = record['data_abertura'].strftime('%Y-%m-%d')
 
@@ -101,4 +139,5 @@ def fetch_chamados(db: Session, sistema: str, dias_atras: int = 180):
 
     except Exception as e:
         logger.error(f"Erro crítico ao buscar dados: {e}")
+        # Relançamos o erro para parar o pipeline, pois sem dados não faz sentido continuar.
         raise e

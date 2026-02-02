@@ -2,21 +2,21 @@
 
 Esta é uma abordagem sólida para a construção de um backend de IA focado em análise de tickets corporativos. Ao remover a responsabilidade de "decisor" da IA e focá-la em **padronização e agrupamento**, elimina-se os maiores riscos de alucinação e viés, transformando a IA em uma ferramenta de *Data Enrichment* (Enriquecimento de Dados).
 
-Abaixo está o projeto técnico detalhado, integrando a arquitetura de processamento com a estratégia de agregação de dados.
+Abaixo está o projeto técnico detalhado, integrando a arquitetura de processamento com a estratégia de agregação de dados, adaptado para o modelo de **Processamento Interno em Lote (Batch)**.
 
 ---
 
-## 1. Arquitetura da Solução: O Pipeline "Cluster & Label"
+## 1. Arquitetura da Solução: O Pipeline "Cluster & Label" (Batch)
 
-Não utilizaremos uma arquitetura complexa de múltiplos agentes conversando entre si, pois isso é lento e caro para processamento em lote. A melhor arquitetura é um **Pipeline Linear de Processamento de Dados**, onde a IA Generativa entra apenas no final para "dar nome aos bois".
+Não utilizaremos uma arquitetura complexa de múltiplos agentes ou interação em tempo real com o usuário para a geração da análise. A arquitetura definida é um **Pipeline Linear de Processamento em Lote (Batch Processing)**, executado internamente pela equipe técnica (ex: a cada 6 meses ou mensalmente). A IA Generativa entra apenas no final para "dar nome aos bois".
 
 ### Fluxo do Pipeline
-1.  **Ingestão Parametrizada:** SQL Query dinâmica baseada nos filtros do usuário.
+1.  **Ingestão em Lote (Batch):** SQL Query de janela fixa (ex: últimos 6 meses) executada internamente via script.
 2.  **Vetorização (Embeddings):** Transformação de texto em matemática.
 3.  **Redução Dimensional & Clustering:** Matemática pura para encontrar os grupos (sem IA generativa aqui).
 4.  **Agregação Determinística (Python/SQL):** Cálculo exato de métricas (contagem de serviços, solicitantes, etc.).
 5.  **Agente Sintetizador (LLM):** Lê uma amostra do grupo e gera o título/descrição do problema.
-6.  **Persistência Relacional:** Salva os relacionamentos para permitir os filtros cruzados (estilo Power BI).
+6.  **Persistência de Resultados:** Salva um arquivo JSON consolidado (artefato estático) para consumo rápido pelo Dashboard.
 
 ---
 
@@ -152,16 +152,16 @@ Este é o objeto que o seu backend entrega para o dashboard, juntando o cálculo
 
 ---
 
-## 5. Estrutura de Dados para Persistência e Filtros
+## 5. Estrutura de Dados para Persistência e Filtros (Modelo JSON)
 
-Para entregar dashboards (Solicitante x Problema), o resultado deve popular tabelas intermediárias no banco relacional:
+Para entregar dashboards (Solicitante x Problema) sem a complexidade de banco de dados em tempo real, o script gera um **Arquivo JSON Rico (Dataset)** que alimenta o frontend:
 
-1.  **Tabela `analise_problemas_detectados`**:
-    * `id_problema_cluster`, `titulo_problema`, `descricao_tecnica`, `data_analise`.
-2.  **Tabela `analise_chamados_vinculo`**:
-    * `id_chamado_original`, `id_problema_cluster`, `solicitante`, `servico`.
+1.  **Arquivo `analise_logix.json`**:
+    * Contém os clusters identificados (Problemas).
+    * Contém a lista de chamados vinculados a cada cluster.
+    * Serve como base de dados estática ("Snapshot") do período analisado.
 
-Com isso, ferramentas de BI fazem filtros usando SQL simples (`GROUP BY`, `COUNT`) sem gastar tokens de IA.
+Com isso, o Frontend carrega esse JSON e faz filtros (Data, Solicitante) usando JavaScript localmente, garantindo performance instantânea.
 
 ---
 
@@ -174,31 +174,29 @@ Com isso, ferramentas de BI fazem filtros usando SQL simples (`GROUP BY`, `COUNT
 * **Perda de Rastreabilidade:** Nunca perca o ID do chamado original. O processo deve sempre retornar quais IDs compõem o cluster.
 
 ### Escala e Performance
-* **Cache de Embeddings (Hashing):** Gere um hash (SHA256) do texto antes de enviar para a API. Se já existir no banco, reutilize o vetor. Economiza muito dinheiro em reprocessamentos.
-* **Processamento Incremental vs. Full:** Como o clustering depende da densidade relativa, recomenda-se processamento *Full* do período selecionado para análises "On Demand" (mais preciso).
+* **Cache de Embeddings (Hashing):** Gere um hash (SHA256) do texto antes de enviar para a API (ou use o Qdrant ID). Se já existir no banco, reutilize o vetor. Economiza muito dinheiro em reprocessamentos futuros.
 * **Auditoria:** Guarde o JSON de resposta da IA para cada cluster para auditoria humana futura.
 
 ## Resumo
 Você não precisa de RAG clássico aqui. Você está construindo um **Pipeline de ETL Cognitivo**. O segredo do sucesso é: **Matemática para agrupar, IA para descrever, SQL/Código para contar.** Certifique-se de que a conexão e contagem sejam feitas pela camada determinística (Código) e apenas a interpretação pela camada probabilística (IA).
 
-# Arquitetura de Solução: Backend de Análise de Chamados (On-Demand)
+# Arquitetura de Solução: Backend de Análise de Chamados (Batch Interno)
 
-Este documento descreve a arquitetura técnica para o sistema de análise inteligente de tickets. O sistema opera sob o modelo **"On-Demand Parametrizado"**: ele não processa em tempo real, mas sim sob comando do usuário, permitindo análises retroativas flexíveis (ex: "Últimos 6 meses do Sistema Logix").
+Este documento descreve a arquitetura técnica para o sistema de análise inteligente de tickets. O sistema opera sob o modelo **"Processamento em Lote Interno"**: ele não processa em tempo real via solicitação do usuário final, mas sim através de execução programada (Script) pela equipe técnica, gerando visualizações estáticas de períodos fechados (ex: "Semestre Passado").
 
 ---
 
 ## 1. Visão Geral da Arquitetura
 
-A solução é dividida em três camadas principais: **Frontend (Interação)**, **Backend (Orquestração & IA)** e **Dados (Persistência)**. O processamento pesado é desacoplado da API principal através de filas de tarefas.
+A solução é dividida em três camadas principais: **Script de Processamento (ETL & IA)**, **API de Leitura** e **Frontend (Dashboard)**.
 
 ### Diagrama Lógico de Fluxo
 
-1.  **Frontend:** Coleta parâmetros (Data Início, Data Fim, Sistema) e dispara a análise.
-2.  **API Gateway:** Recebe o pedido e enfileira um *Job Assíncrono*.
-3.  **ETL Worker (Background):** Busca os dados brutos no banco legado.
-4.  **AI Pipeline:** Limpa -> Vetoriza -> Agrupa (Cluster) -> Resume (LLM).
-5.  **Analytics Engine:** Cruza os clusters com os metadados originais (via Código/Pandas).
-6.  **Dashboard:** Consome o JSON consolidado para visualização.
+1.  **Execução Manual/Agendada:** TI roda o script `run_pipeline.py`.
+2.  **ETL & AI Core:** Script busca dados, vetoriza, agrupa e rotula.
+3.  **Geração de Artefato:** Script salva `analise_sistema_data.json`.
+4.  **API Gateway:** Expõe endpoint de leitura (`GET /analise`).
+5.  **Dashboard:** Consome o JSON consolidado para visualização instantânea.
 
 ---
 
@@ -206,45 +204,44 @@ A solução é dividida em três camadas principais: **Frontend (Interação)**,
 
 ### A. Frontend (Dashboard Interativo)
 * **Tecnologia:** React, Vue ou Angular + Biblioteca de Gráficos (ECharts/Recharts).
-* **Tela de Configuração:**
-    * *Inputs:* Seletor de Data (Range), Dropdown (Sistema), Dropdown (Serviço).
-    * *Ação:* Botão "Gerar Análise".
-    * *Feedback:* WebSocket ou Polling para barra de progresso ("Lendo dados...", "Gerando Clusters...").
+* **Tela de Visualização:**
+    * *Inputs:* Filtros locais (JavaScript) aplicados sobre os dados do JSON carregado.
+    * *Sem Loading:* Como o dado já está processado, a abertura é imediata.
 * **Tela de Resultados:**
     * **Visão Geral:** Cards ordenados por volume ("Erro X - 450 casos").
     * **Detalhe:** Ao clicar no card, exibe a descrição da IA, gráfico de evolução temporal e tabelas de "Top Solicitantes" e "Serviços Afetados".
 
-### B. Backend (Python - FastAPI + Celery)
-* **API (FastAPI):** Endpoint REST para receber o comando e consultar status.
-* **Task Queue (Celery + Redis):** Essencial. O processamento de embeddings e clustering é intensivo. O Celery garante que a API não trave enquanto processa 6 meses de dados.
+### B. Backend (Python - Scripts + FastAPI Leitura)
+* **Script Runner:** Arquivo Python executado via terminal/cron que orquestra todo o processamento pesado.
+* **API (FastAPI):** Endpoint REST super leve apenas para servir os arquivos JSON gerados.
 * **Módulo Core (AI Pipeline):**
-    1.  **Data Fetcher:** SQL Query dinâmica no banco legado.
+    1.  **Data Fetcher:** SQL Query no banco legado (Janela de 6 meses).
     2.  **Vectorizer:** Converte texto em vetores (OpenAI Ada-003 ou SentenceTransformers).
     3.  **Cluster Engine:** Algoritmo **HDBSCAN** para agrupar por densidade.
     4.  **Labeler Agent:** Chama o LLM *apenas* para dar nome aos grupos formados (Amostragem de 5 itens).
-    5.  **Aggregator:** Código Python (Pandas) que consolida as estatísticas (quem abriu, qual serviço, etc.).
+    5.  **Aggregator:** Código Python (Pandas) que consolida as estatísticas.
 
 ### C. Camada de Dados (Híbrida)
 * **Banco Legado (Leitura):** SQL Server/Oracle/Postgres onde residem os chamados.
-* **Vector Store (Opcional/Recomendado):** **Qdrant** ou **PGVector**.
-    * *Função:* Cache de embeddings. Se o usuário rodar a mesma análise duas vezes, reutiliza os vetores, economizando custo e tempo.
-* **Banco Analítico (Escrita):** Tabelas enxutas ou Document Store (MongoDB/Postgres JSONB) com o resultado pronto para o Dashboard.
+* **Vector Store (Cache):** **Qdrant** (Docker Local).
+    * *Função:* Cache de embeddings. Garante que se rodarmos o script novamente, não pagamos pela vetorização dos mesmos chamados.
+* **File System (Saída):** Pasta `data_output/` contendo os JSONs de resultado.
 
 ---
 
-## 3. O Fluxo de Dados "Passo a Passo"
+## 3. O Fluxo de Dados "Passo a Passo" (Execução do Script)
 
-Exemplo de execução: Usuário seleciona **"Sistema Logix, Últimos 6 Meses"**.
+Exemplo de execução: TI roda `python run_pipeline.py --sistema Logix --dias 180`.
 
 ### Passo 1: Extração e Limpeza (Python/Pandas)
-* **Ação:** Backend executa SQL filtrado por data e sistema.
+* **Ação:** Script executa SQL filtrado por data e sistema.
 * **Processamento:** Remove assinaturas de e-mail, tags HTML e concatena `Título + Descrição`.
 * **Saída:** DataFrame com ID e Texto Limpo.
 
 ### Passo 2: Vetorização (Embeddings)
-* **Ação:** Sistema verifica cache (Hash do texto).
-    * *Cache Hit:* Recupera vetor do banco.
-    * *Cache Miss:* Chama API de Embedding e salva.
+* **Ação:** Sistema verifica cache no Qdrant.
+    * *Cache Hit:* Recupera vetor do banco local (Gratuito).
+    * *Cache Miss:* Chama API de Embedding e salva (Pago).
 * **Saída:** Matriz multidimensional de vetores numéricos.
 
 ### Passo 3: Clustering (HDBSCAN)
@@ -260,7 +257,7 @@ Exemplo de execução: Usuário seleciona **"Sistema Logix, Últimos 6 Meses"**.
 ### Passo 5: Consolidação (Code Interpreter Pattern)
 * **Ação:** O Python cruza os IDs do Cluster 1 com o banco original.
 * **Cálculo:** `GROUP BY solicitante`, `GROUP BY servico`, `COUNT(*)`.
-* **Saída:** JSON final estruturado.
+* **Saída:** JSON final estruturado salvo em disco.
 
 ---
 
@@ -320,10 +317,10 @@ Para garantir que os clusters e a análise sejam confiáveis:
 1.  **Vetorização Robusta:** O uso de Embeddings transforma sinônimos ("Senha incorreta" e "Credencial inválida") em vetores próximos matematicamente.
 2.  **HDBSCAN vs Ruído:** O algoritmo não força agrupamentos. Se um chamado é único, ele é classificado como ruído (-1), evitando alucinação de padrões.
 3.  **Validação Matemática:** O backend pode calcular o *Silhouette Score* dos clusters. Clusters com score baixo (muito dispersos) podem ser descartados ou marcados para revisão.
-4.  **Auditoria:** O JSON gerado pela IA (Passo 4) deve ser salvo. Isso permite que um humano verifique se o título "Falha de Rede" realmente corresponde aos textos dos chamados daquele grupo.
+4.  **Auditoria:** O JSON gerado deve ser salvo. Isso permite que um humano verifique se o título "Falha de Rede" realmente corresponde aos textos dos chamados daquele grupo.
 
 ## 6. Boas Práticas de Implementação
 
 * **Não use IA para contar:** Sempre use o código (Python/SQL) para gerar métricas de volume, datas e solicitantes. A IA serve apenas para *interpretar* o texto e gerar o rótulo do problema.
-* **Cache é Dinheiro:** A implementação do Vector Store é crucial para viabilidade econômica se o usuário for rodar análises frequentes sobre os mesmos períodos.
-* **Processamento Assíncrono:** Nunca deixe o usuário esperando na tela (loading infinito). Use WebSockets ou Polling para atualizar a barra de progresso da análise.
+* **Cache é Dinheiro:** A implementação do Vector Store (Qdrant) é crucial para viabilidade econômica, permitindo rodar o script periodicamente sem recustear todo o histórico.
+* **Execução Programada:** O processamento ocorre em background via script, sem bloquear o usuário final, gerando arquivos estáticos para consumo imediato.

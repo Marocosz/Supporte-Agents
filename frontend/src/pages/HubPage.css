@@ -7,20 +7,22 @@
     /* Usando variáveis globais */
     background-color: var(--bg-page);
     color: var(--text-primary);
-    
+
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-    position: relative; /* CRÍTICO: Para o ThemeToggle (posição absoluta) funcionar */
+    position: relative;
+    /* CRÍTICO: Para o ThemeToggle (posição absoluta) funcionar */
     transition: background-color 0.3s ease;
 }
 
 .hub-header {
     text-align: center;
-    margin-bottom: 40px; /* Reduzi um pouco pois a logo vai ocupar espaço */
+    margin-bottom: 40px;
+    /* Reduzi um pouco pois a logo vai ocupar espaço */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,10 +31,10 @@
 /* --- LOGO ATUALIZADA --- */
 .hub-main-logo {
     /* Ajuste o tamanho conforme sua preferência anterior */
-    width: 500px; 
+    width: 500px;
     height: auto;
     margin-bottom: 20px;
-    
+
 }
 
 /* No tema CLARO, a logo cinza já aparece bem, então removemos o contorno branco */
@@ -41,14 +43,16 @@
 }
 
 .hub-header h1 {
-    color: var(--text-primary); /* Variável global */
+    color: var(--text-primary);
+    /* Variável global */
     font-size: 2.5rem;
     margin: 0 0 10px 0;
     letter-spacing: -1px;
 }
 
 .hub-header p {
-    color: var(--text-secondary); /* Variável global */
+    color: var(--text-secondary);
+    /* Variável global */
 }
 
 .hub-grid {
@@ -56,19 +60,22 @@
     /* Alterado: max-width aumentado para 1200px para permitir 3 cards na mesma linha */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    max-width: 1200px; 
+    max-width: 1200px;
     width: 90%;
 }
 
 .hub-card {
-    background: var(--bg-card); /* Variável global */
+    background: var(--bg-card);
+    /* Variável global */
     padding: 30px;
     border-radius: 16px;
     text-decoration: none;
-    color: var(--text-primary); /* Garante que o texto se adapte */
+    color: var(--text-primary);
+    /* Garante que o texto se adapte */
     box-shadow: 0 4px 6px -1px var(--shadow-color);
     transition: all 0.3s;
-    border: 1px solid var(--border-color); /* Variável global */
+    border: 1px solid var(--border-color);
+    /* Variável global */
     display: flex;
     flex-direction: column;
     position: relative;
@@ -84,7 +91,8 @@
     left: 0;
     width: 100%;
     height: 4px;
-    background: var(--primary-color); /* Cor padrão fallback */
+    background: var(--primary-color);
+    /* Cor padrão fallback */
     opacity: 0.8;
 }
 
@@ -100,13 +108,15 @@
 
 .hub-card h2 {
     margin: 0 0 10px 0;
-    color: var(--text-primary); /* Variável global */
+    color: var(--text-primary);
+    /* Variável global */
     font-size: 1.25rem;
 }
 
 .hub-card p {
     margin: 0 0 20px 0;
-    color: var(--text-secondary); /* Variável global */
+    color: var(--text-secondary);
+    /* Variável global */
     line-height: 1.5;
     flex-grow: 1;
 }
@@ -120,7 +130,7 @@
     font-size: 0.875rem;
     font-weight: 600;
     /* Manter cores fixas para status de badge */
-    background-color: #dcfce7; 
+    background-color: #dcfce7;
     color: #166534;
     align-self: flex-start;
 }
@@ -128,12 +138,28 @@
 .hub-status-dot {
     width: 8px;
     height: 8px;
-    background-color: var(--accent-green); /* Usando variável de acento */
+    background-color: var(--accent-green);
+    /* Usando variável de acento */
     border-radius: 50%;
     display: inline-block;
 }
 
 /* Cores específicas de acento das bordas superiores dos cards */
-.hub-card.quali::before { background: var(--accent-blue); }
-.hub-card.robo::before { background: var(--accent-green); }
-.hub-card.bi::before { background: #5e72e4; } /* Cor roxa/azul específica para o BI */
+.hub-card.quali::before {
+    background: var(--accent-blue);
+}
+
+.hub-card.robo::before {
+    background: var(--accent-green);
+}
+
+.hub-card.bi::before {
+    background: #5e72e4;
+}
+
+/* Cor roxa/azul específica para o BI */
+.hub-card.scope::before {
+    background: #8b5cf6;
+}
+
+/* Cor roxa (Indigo) para Scope Intelligence */

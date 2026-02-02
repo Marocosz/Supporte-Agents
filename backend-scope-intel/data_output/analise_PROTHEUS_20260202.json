@@ -1,0 +1,868 @@
+{
+  "metadata": {
+    "sistema": "PROTHEUS",
+    "data_analise": "2026-02-02T13:22:38.146998",
+    "periodo_dias": 180,
+    "total_chamados": 498,
+    "total_grupos": 17,
+    "taxa_ruido": 0.6426
+  },
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "DESENVOLVIMENTO": 5
+        },
+        "top_solicitantes": {
+          "Mhaysa Soares Borges": 2,
+          "Mauricio Rodrigues Borges": 1,
+          "Katianne Jesus Rodrigues de Franca Cortez": 1,
+          "Maria Eduarda Barbosa de Lima": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "121102",
+        "121100",
+        "122703",
+        "124484",
+        "124672"
+      ],
+      "titulo": "Configuração e automação falha",
+      "descricao": "Sistema: PROTHEUS BACKOFFICE. Erro raiz: Falta de padronização/parametrização dos lembretes de vencimento e das notificações (configuração por empresa ausente; automação de alertas não implementada; templates de cobrança incompletos)."
+    },
+    {
+      "cluster_id": 1,
+      "metricas": {
+        "volume": 6,
+        "top_servicos": {
+          "CADASTRO": 5,
+          "DESENVOLVIMENTO": 1
+        },
+        "top_solicitantes": {
+          "Elyana Custodio Ciriaco": 6
+        },
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "128749",
+        "129669",
+        "125849",
+        "129675",
+        "129665",
+        "126933"
+      ],
+      "titulo": "PROTHEUS ZFM PIS/COFINS Excluir",
+      "descricao": "Sistema PROTHEUS. Erro raiz: ausência de regra de isenção de PIS/COFINS para tomadores na ZFM; necessidade de configurar exclusão de retenções (CST 08) conforme tese/decisão judicial."
+    },
+    {
+      "cluster_id": 2,
+      "metricas": {
+        "volume": 9,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 7,
+          "INTEGRAÇÕES": 1,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Tulio Candido de Oliveira": 3,
+          "Beatriz  Santana Santos Ribeiro": 3,
+          "Victor Machado Martins": 2,
+          "Alana Aranalde Gomes Fukes": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "120263",
+        "123924",
+        "123380",
+        "118420",
+        "122744",
+        "129289",
+        "132233",
+        "130685",
+        "132381"
+      ],
+      "titulo": "Lead Time no New Tracking",
+      "descricao": "Sistema: PROTHEUS. Erro raiz: falha de cálculo de lead time no módulo New Tracking, gerando divergência entre o lead time calculado/mostrado e o esperado em diversas notas fiscais (datas de expedição, vencimento e regras de feriados)."
+    },
+    {
+      "cluster_id": 3,
+      "metricas": {
+        "volume": 8,
+        "top_servicos": {
+          "CADASTRO": 4,
+          "INTEGRAÇÕES": 2,
+          "ERRO SISTÊMICO": 1,
+          "CADASTRO DE USUARIO": 1
+        },
+        "top_solicitantes": {
+          "Mirella de Almeida Barcelos": 3,
+          "Tais Cristina da Silva Felix": 1,
+          "Rayane Aparecida Carvalho Morais": 1,
+          "Mirielle Santos de Oliveira": 1,
+          "Carolina Simao Araujo": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118341",
+        "122693",
+        "122694",
+        "128031",
+        "130793",
+        "131421",
+        "133076",
+        "133237"
+      ],
+      "titulo": "PROTHEUS Retrocesso de Data",
+      "descricao": "SISTEMA: PROTHEUS. ERRO RAIZ: Permitir retrocesso/adiantamento da data base (controle de data inadequado para alterações históricas ou futuras)."
+    },
+    {
+      "cluster_id": 4,
+      "metricas": {
+        "volume": 13,
+        "top_servicos": {
+          "CADASTRO": 7,
+          "CADASTRO DE USUÁRIO": 3,
+          "ALTERAÇÃO DE PERFIL DO USUÁRIO": 2,
+          "CONFIGURAÇÃO DE PERFIL DE USUARIO": 1
+        },
+        "top_solicitantes": {
+          "Rayane Aparecida Carvalho Morais": 2,
+          "Denes Marques Gualberto": 1,
+          "Camila Sá de Oliveira": 1,
+          "Vivianne Freire Pinto": 1,
+          "Matheus Moreira Lemes": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119949",
+        "124479",
+        "126015",
+        "126473",
+        "128682",
+        "128609",
+        "129401",
+        "129281",
+        "131167",
+        "131062",
+        "131189",
+        "133425",
+        "133640"
+      ],
+      "titulo": "Acesso a Módulos PROTHEUS",
+      "descricao": "Sistema: PROTHEUS. Causa raiz: Gestão de permissões inadequada no Backoffice, resultando em liberações manuais de acesso a módulos (43/TMS, 34, 98) para usuários e operações de faturamento/notas fiscais."
+    },
+    {
+      "cluster_id": 5,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "LENTIDÃO SISTÊMICA": 5
+        },
+        "top_solicitantes": {
+          "Carolina Simao Araujo": 1,
+          "Thaina Oliveira": 1,
+          "Lorena Alves Pessalacia Freitas": 1,
+          "Viviane De Vasconcelos Brito": 1,
+          "Vitor Hugo Morais Vilela": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "120615",
+        "128797",
+        "131168",
+        "123484",
+        "124069"
+      ],
+      "titulo": "Lentidão sistêmica Protheus",
+      "descricao": "PROTHEUS — Lentidão sistêmica no Backoffice com travamentos nas rotinas e na importação/consulta, indicativo de gargalo de recursos (CPU/DB)."
+    },
+    {
+      "cluster_id": 6,
+      "metricas": {
+        "volume": 9,
+        "top_servicos": {
+          "PENDENCIA BACKOFFICE": 7,
+          "INTEGRAÇÕES": 2
+        },
+        "top_solicitantes": {
+          "Joao Xavier Goncalves Filho": 9
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "120594",
+        "121608",
+        "124216",
+        "125179",
+        "126334",
+        "127870",
+        "128574",
+        "133364",
+        "133601"
+      ],
+      "titulo": "Falha de integração do retorno simbólico",
+      "descricao": "ERRO RAIZ: falha na integração de retornos simbólicos com pedidos presos na WMS80000 (travamento/lock) durante o processamento."
+    },
+    {
+      "cluster_id": 7,
+      "metricas": {
+        "volume": 12,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 6,
+          "INDISPONIBILIDADE": 3,
+          "INTEGRAÇÕES": 2,
+          "ANALISE DE CASOS": 1
+        },
+        "top_solicitantes": {
+          "Tulio Candido de Oliveira": 10,
+          "Laihara Araújo Ferreira Castro": 1,
+          "Laura Almeida Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118399",
+        "120050",
+        "119119",
+        "124209",
+        "124870",
+        "124748",
+        "125406",
+        "127042",
+        "130668",
+        "127971",
+        "132524",
+        "133354"
+      ],
+      "titulo": "Falha no Envio de Baixas BIC",
+      "descricao": "PROTHEUS: raiz = falha de integração/automação no envio automático de arquivos de baixa de entrega para BIC (envio por e-mail não ocorre; notas entregues não são enviadas)."
+    },
+    {
+      "cluster_id": 8,
+      "metricas": {
+        "volume": 11,
+        "top_servicos": {
+          "ERRO OPERACIONAL": 5,
+          "ERRO SISTÊMICO": 5,
+          "MANUTENÇÃO": 1
+        },
+        "top_solicitantes": {
+          "Monica Cristina Duarte": 5,
+          "Mhaysa Soares Borges": 4,
+          "Leticia Alves Garcia": 1,
+          "Rhanna Ribeiro Lino": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118846",
+        "120650",
+        "121382",
+        "121298",
+        "122934",
+        "126399",
+        "126957",
+        "129374",
+        "130794",
+        "132285",
+        "133473"
+      ],
+      "titulo": "PROTHEUS Erro Rotina Títulos FIDC",
+      "descricao": "Falha sistêmica na rotina de geração/numeração de títulos FIDC no Protheus, causando conflitos de numeração, divergências de valores e necessidade de ajustes manuais/retificações."
+    },
+    {
+      "cluster_id": 9,
+      "metricas": {
+        "volume": 12,
+        "top_servicos": {
+          "ERRO OPERACIONAL": 12
+        },
+        "top_solicitantes": {
+          "Amanda Silveira Bernardes": 11,
+          "Amanda Moraes": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "120513",
+        "120358",
+        "123365",
+        "125415",
+        "129117",
+        "129495",
+        "129884",
+        "130356",
+        "133111",
+        "133274",
+        "133279",
+        "133278"
+      ],
+      "titulo": "Exclusão CT-e: GFE bloqueia",
+      "descricao": "Sistema: PROTHEUS. Erro raiz: Exclusão de CT-e dependente do cancelamento na SEFAZ e da remoção de documentos vinculados no GFE; demanda intervenção de BD/TI para eliminar vínculos e o flag de pagamento (romaneios com alto volume)."
+    },
+    {
+      "cluster_id": 10,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 3,
+          "ERRO OPERACIONAL": 2
+        },
+        "top_solicitantes": {
+          "Flaviane Mendonca Silva": 2,
+          "Hemily Costa Nascimento Oliveira": 1,
+          "Giovana Stefani Silva": 1,
+          "Sarah Araujo Santos": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "124085",
+        "125639",
+        "131024",
+        "132133",
+        "132322"
+      ],
+      "titulo": "Erro de Contabilização Protheus",
+      "descricao": "Sistema: PROTHEUS. Causa raiz: falha sistêmica no módulo Backoffice que impede a contabilização/postagem de lançamentos (folha, tributos, rescisões, GNRE ICMS), gerando divergências entre processamento offline e o registro efetivo."
+    },
+    {
+      "cluster_id": 11,
+      "metricas": {
+        "volume": 6,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 3,
+          "ERRO OPERACIONAL": 1,
+          "INDISPONIBILIDADE": 1,
+          "RESET DE SENHA": 1
+        },
+        "top_solicitantes": {
+          "Cassia Beatriz Soares Quirino": 2,
+          "Marilia Betania Sales da Rocha": 2,
+          "Everson Machado Cardoso": 1,
+          "Janaina Mendonca Alves": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117794",
+        "122667",
+        "125355",
+        "127162",
+        "128060",
+        "123964"
+      ],
+      "titulo": "PROTHEUS - Falha de Login",
+      "descricao": "Root-causa: falha de autenticação/login no Protheus (senha atualizada não funciona) com indisponibilidade de acesso; há indicação de inconsistência de anexos em um caso."
+    },
+    {
+      "cluster_id": 12,
+      "metricas": {
+        "volume": 27,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 24,
+          "ERRO OPERACIONAL": 2,
+          "INTEGRAÇÕES": 1
+        },
+        "top_solicitantes": {
+          "Maria Eduarda Candido Amaral": 6,
+          "Alexandre Brito Gomes da Silva": 6,
+          "Antonia Vitoria Moreira Aguiar": 6,
+          "Bremmer Gonçalves Oliveira da Cruz": 6,
+          "Isaac Cardoso Souza Santos": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 6
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119414",
+        "119409",
+        "119822",
+        "119416",
+        "122131",
+        "122279",
+        "122588",
+        "122547",
+        "123545",
+        "123726",
+        "123288",
+        "124956",
+        "125181",
+        "124931",
+        "128191",
+        "126458",
+        "128726",
+        "129598",
+        "130809",
+        "131195",
+        "131198",
+        "125439",
+        "129255",
+        "131876",
+        "133068",
+        "133078",
+        "133592"
+      ],
+      "titulo": "PROTHEUS Backoffice: Erro Sistêmico",
+      "descricao": "Sistema: PROTHEUS. Erro raiz: Falha sistêmica no Backoffice de viagens (manifests, fechamento/encerramento e estorno) causando erros genéricos, tela vazia e registros não refletidos/persistidos."
+    },
+    {
+      "cluster_id": 13,
+      "metricas": {
+        "volume": 8,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 7,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Elusiane Cristina de Albuquerque": 4,
+          "Viviane de Paula Franca": 2,
+          "Leticia Alves Garcia": 1,
+          "Viviane De Vasconcelos Brito": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119365",
+        "119475",
+        "120564",
+        "120065",
+        "129840",
+        "131306",
+        "130517",
+        "133286"
+      ],
+      "titulo": "Envio de faturamento Protheus falha",
+      "descricao": "Raiz do problema: falha sistêmica no Protheus que impede o envio automático de faturamento por e-mail e a geração de pastas de faturamento para os clientes (PPP/TMS), com envio de e-mails não ocorrendo e sem mensagens de erro visíveis (ambiente 43)."
+    },
+    {
+      "cluster_id": 14,
+      "metricas": {
+        "volume": 24,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 22,
+          "ANALISE DE CASO": 2
+        },
+        "top_solicitantes": {
+          "Adriely Loureiro de Oliveira": 5,
+          "Alexandre Brito Gomes da Silva": 4,
+          "Isaac Cardoso Souza Santos": 3,
+          "Mhaysa Soares Borges": 3,
+          "Maria Eduarda Candido Amaral": 3
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 7
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 7
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119566",
+        "121002",
+        "122200",
+        "122474",
+        "123211",
+        "123550",
+        "123898",
+        "124669",
+        "124665",
+        "128622",
+        "128717",
+        "129005",
+        "129134",
+        "130714",
+        "130754",
+        "130569",
+        "131050",
+        "131423",
+        "132901",
+        "132826",
+        "131860",
+        "133231",
+        "133441",
+        "133611"
+      ],
+      "titulo": "Protheus NFSe: Falha de transmissão",
+      "descricao": "Sistema PROTHEUS apresenta falha sistêmica na transmissão/autorização de NFSe após indisponibilidade, resultando em NFSe não transmitidas, falha de monitoramento e impacto no fechamento mensal em várias filiais."
+    },
+    {
+      "cluster_id": 15,
+      "metricas": {
+        "volume": 10,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 9,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Bremmer Gonçalves Oliveira da Cruz": 5,
+          "Alexandre Brito Gomes da Silva": 4,
+          "Janikele Simoes Rodrigues": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 7
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117628",
+        "122604",
+        "125359",
+        "131330",
+        "133285",
+        "133405",
+        "133404",
+        "133403",
+        "133501",
+        "133507"
+      ],
+      "titulo": "Falha CT-e Transmissão",
+      "descricao": "Sistema: PROTHEUS. Erro raiz: falha de transmissão/autorização de CT-e no BackOffice (ERRO SISTÊMICO/ERRO OPERACIONAL). Impacto: CT-es não autorizados em várias filiais (ex.: 0604), incluindo CT-e de substituição. Causa provável: erro na integração com SEFAZ/WS de autorização."
+    },
+    {
+      "cluster_id": 16,
+      "metricas": {
+        "volume": 8,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 8
+        },
+        "top_solicitantes": {
+          "Alexandre Brito Gomes da Silva": 6,
+          "Isaac Cardoso Souza Santos": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119315",
+        "125929",
+        "130463",
+        "131379",
+        "131554",
+        "123913",
+        "131722",
+        "132171"
+      ],
+      "titulo": "PROTHEUS NOTFIS/EDI: Falha Envio",
+      "descricao": "Causa raiz: Bug sistêmico no Backoffice do PROTHEUS que gerencia NOTFIS/EDI; falha de envio e duplicidade de arquivos devido à geração de nomes incorretos (ex.: arquivo com prefixo BHT substituindo o remetente)."
+    }
+  ]
+}
