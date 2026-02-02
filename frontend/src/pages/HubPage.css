@@ -1,165 +1,331 @@
-/* src/pages/HubPage.css */
+/* Layout Principal Split-Screen */
+.hub-split-layout {
+    display: flex;
+    flex-direction: row;
+    /* Coloca sidebar e content lado a lado */
+    height: 100%;
+    overflow: hidden;
+    /* Scroll acontece internamente em cada painel */
+}
 
-/* Removemos as variáveis locais fixas do Hub. Ele usará as variáveis globais do index.css */
-
-.hub-wrapper {
-    font-family: 'Inter', sans-serif;
-    /* Usando variáveis globais */
-    background-color: var(--bg-page);
-    color: var(--text-primary);
-
-    min-height: 100vh;
+/* Coluna Esquerda: Lista de Apps */
+.hub-sidebar {
+    width: 400px;
+    background-color: var(--bg-card);
+    /* Fundo levemente distinto se em light mode, ou igual */
+    border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.hub-sidebar-header {
+    padding: 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hub-sidebar-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.hub-sidebar-header p {
+    margin: 5px 0 0 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Lista de apps */
+.hub-app-list {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Item individual da lista */
+.hub-app-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-primary);
+}
+
+.hub-app-item:hover {
+    background-color: var(--input-bg);
+}
+
+.hub-app-item.active {
+    background-color: rgba(58, 134, 255, 0.1);
+    /* Azul sutil */
+    border-color: var(--accent-blue);
+}
+
+.hub-item-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    position: relative;
-    /* CRÍTICO: Para o ThemeToggle (posição absoluta) funcionar */
-    transition: background-color 0.3s ease;
+    background-color: var(--input-bg);
+    border-radius: 8px;
+    color: var(--accent-blue);
+    margin-right: 15px;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
 }
 
-.hub-header {
-    text-align: center;
-    margin-bottom: 40px;
-    /* Reduzi um pouco pois a logo vai ocupar espaço */
+.hub-app-item.active .hub-item-icon {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+.hub-item-info {
+    flex: 1;
+}
+
+.hub-item-info h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.hub-item-info span {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.hub-arrow-icon {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.2s ease;
+    color: var(--accent-blue);
+}
+
+.hub-app-item.active .hub-arrow-icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Coluna Direita: Conteúdo */
+.hub-content-area {
+    flex: 1;
+    background-color: var(--bg-page);
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    padding: 60px;
+    overflow-y: auto;
 }
 
-/* --- LOGO ATUALIZADA --- */
-.hub-main-logo {
-    /* Ajuste o tamanho conforme sua preferência anterior */
-    width: 500px;
-    height: auto;
-    margin-bottom: 20px;
-
-}
-
-/* No tema CLARO, a logo cinza já aparece bem, então removemos o contorno branco */
-.light-theme .hub-main-logo {
-    filter: none;
-}
-
-.hub-header h1 {
-    color: var(--text-primary);
-    /* Variável global */
-    font-size: 2.5rem;
-    margin: 0 0 10px 0;
-    letter-spacing: -1px;
-}
-
-.hub-header p {
-    color: var(--text-secondary);
-    /* Variável global */
-}
-
-.hub-grid {
-    display: grid;
-    /* Alterado: max-width aumentado para 1200px para permitir 3 cards na mesma linha */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    width: 90%;
-}
-
-.hub-card {
-    background: var(--bg-card);
-    /* Variável global */
-    padding: 30px;
-    border-radius: 16px;
-    text-decoration: none;
-    color: var(--text-primary);
-    /* Garante que o texto se adapte */
-    box-shadow: 0 4px 6px -1px var(--shadow-color);
-    transition: all 0.3s;
-    border: 1px solid var(--border-color);
-    /* Variável global */
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-/* A borda superior colorida é controlada por este ::before */
-.hub-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+.hub-content-wrapper {
+    max-width: 800px;
     width: 100%;
-    height: 4px;
-    background: var(--primary-color);
-    /* Cor padrão fallback */
-    opacity: 0.8;
 }
 
-.hub-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px var(--shadow-color);
+/* Animação suave na troca de conteúdo */
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-out;
 }
 
-.hub-card-icon {
-    font-size: 2rem;
-    margin-bottom: 20px;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.hub-card h2 {
-    margin: 0 0 10px 0;
-    color: var(--text-primary);
-    /* Variável global */
-    font-size: 1.25rem;
+/* View: Welcome (Institucional) */
+.hub-welcome-view {
+    text-align: center;
 }
 
-.hub-card p {
-    margin: 0 0 20px 0;
+.hub-welcome-view h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, var(--text-primary), var(--accent-blue));
+    background-clip: text;
+    /* Standard */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.welcome-subtitle {
+    font-size: 1.2rem;
     color: var(--text-secondary);
-    /* Variável global */
-    line-height: 1.5;
-    flex-grow: 1;
+    margin-bottom: 50px;
 }
 
-.hub-status-badge {
+.welcome-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.welcome-card {
+    background-color: var(--bg-card);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    border: 1px solid var(--border-color);
+}
+
+.welcome-card h3 {
+    margin-top: 0;
+    color: var(--text-primary);
+}
+
+.welcome-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.welcome-instruction {
+    font-style: italic;
+    color: var(--accent-blue);
+    margin-top: 40px;
+    animation: bounceRight 2s infinite;
+}
+
+@keyframes bounceRight {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+/* View: App Detail */
+.hub-detail-view {
+    /* Alinhamento à esquerda, padrão de leitura */
+    text-align: left;
+}
+
+.hub-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 30px;
+}
+
+.hub-big-icon {
+    width: 80px;
+    height: 80px;
+    background-color: var(--input-bg);
+    border-radius: 16px;
+    color: var(--accent-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.hub-detail-header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    color: var(--text-primary);
+}
+
+.hub-detail-body h3 {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.hub-detail-body p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 40px;
+}
+
+.hub-detail-meta {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.meta-item strong {
+    color: var(--text-primary);
+    margin-right: 5px;
+}
+
+.meta-item span {
+    color: var(--text-secondary);
+}
+
+.status-online {
+    color: var(--accent-green) !important;
+    font-weight: 600;
+}
+
+/* Botão de Ação */
+.hub-btn-primary {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 4px 12px;
-    border-radius: 9999px;
-    font-size: 0.875rem;
+    gap: 10px;
+    background-color: var(--accent-blue);
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
     font-weight: 600;
-    /* Manter cores fixas para status de badge */
-    background-color: #dcfce7;
-    color: #166534;
-    align-self: flex-start;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(58, 134, 255, 0.4);
 }
 
-.hub-status-dot {
-    width: 8px;
-    height: 8px;
-    background-color: var(--accent-green);
-    /* Usando variável de acento */
-    border-radius: 50%;
-    display: inline-block;
+.hub-btn-primary:hover {
+    transform: translateY(-2px);
+    background-color: var(--accent-blue-dark);
+    box-shadow: 0 8px 25px rgba(58, 134, 255, 0.5);
 }
 
-/* Cores específicas de acento das bordas superiores dos cards */
-.hub-card.quali::before {
-    background: var(--accent-blue);
-}
+/* Responsividade Básica */
+@media (max-width: 900px) {
+    .hub-split-layout {
+        flex-direction: column;
+    }
 
-.hub-card.robo::before {
-    background: var(--accent-green);
-}
+    .hub-sidebar {
+        width: 100%;
+        height: 40%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
 
-.hub-card.bi::before {
-    background: #5e72e4;
+    .hub-content-area {
+        height: 60%;
+        padding: 30px;
+    }
 }
-
-/* Cor roxa/azul específica para o BI */
-.hub-card.scope::before {
-    background: #8b5cf6;
-}
-
-/* Cor roxa (Indigo) para Scope Intelligence */

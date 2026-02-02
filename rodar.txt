@@ -1,11 +1,49 @@
-doc qualidade
+================================================================================
+GUIA DE EXECUÇÃO - SUPPORTE AGENTS
+================================================================================
+Este arquivo contém os comandos para iniciar todos os serviços do projeto.
+Recomenda-se abrir terminais separados para cada serviço.
+
+--------------------------------------------------------------------------------
+1. FRONTEND (Interface Gráfica)
+--------------------------------------------------------------------------------
+Porta: http://localhost:5173
+Comando:
+cd frontend
+npm run dev
+
+--------------------------------------------------------------------------------
+2. AGENTE DE QUALIDADE (IA Docs)
+--------------------------------------------------------------------------------
+Porta: http://localhost:8000
+Pasta: backend-doc-qualidade
+Comando:
+cd backend-doc-qualidade
 python -m uvicorn app.main:app --reload --port 8000 --reload-dir app
 
-doc robo
+--------------------------------------------------------------------------------
+3. AGENTE DE ROBÔS (Geração de Docs RPA)
+--------------------------------------------------------------------------------
+Pasta: backend-doc-robos
+Comando:
+cd backend-doc-robos
 python main.py
 
-txt-sql
+--------------------------------------------------------------------------------
+4. TEXT-TO-SQL (Supporte BI / Chat SQL)
+--------------------------------------------------------------------------------
+Porta: http://localhost:8002
+Pasta: backend-txt-sql
+Comando:
+cd backend-txt-sql
 python -m uvicorn api:app --reload --port 8002
 
-front
-npm run dev
+--------------------------------------------------------------------------------
+5. SCOPE INTELLIGENCE (Ticket Intel)
+--------------------------------------------------------------------------------
+Porta: http://localhost:8001
+Pasta: backend-scope-intel
+Comando:
+cd backend-scope-intel
+python -m uvicorn app.main:app --reload --port 8001
+================================================================================

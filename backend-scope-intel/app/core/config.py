@@ -3,7 +3,7 @@ from pydantic_settings import BaseSettings
 from functools import lru_cache
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "Ticket Intel AI (Batch)"
+    PROJECT_NAME: str = "Scope Intelligence (Batch)"
     
     # Banco de Dados (MySQL Leitura)
     DATABASE_URL: str

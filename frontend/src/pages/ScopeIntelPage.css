@@ -1,18 +1,14 @@
-/* TicketIntelPage.css */
+/* ScopeIntelPage.css - Refatorado para usar Variáveis de Tema */
 
 /* --- Container e Upload --- */
 .intel-page {
     min-height: 100vh;
-    background-color: #f8fafc;
-    color: #1e293b;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
     font-family: 'Inter', sans-serif;
     display: flex;
     flex-direction: column;
-}
-
-.intel-page.dark {
-    background-color: #0f172a;
-    color: #f1f5f9;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .intel-upload-container {
@@ -23,19 +19,14 @@
 }
 
 .intel-upload-box {
-    background: white;
+    background: var(--bg-card);
     padding: 3rem;
     border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px var(--shadow-color);
     text-align: center;
-    border: 2px dashed #cbd5e1;
+    border: 2px dashed var(--border-color);
     position: relative;
     transition: all 0.3s;
-}
-
-.intel-page.dark .intel-upload-box {
-    background: #1e293b;
-    border-color: #334155;
 }
 
 .intel-upload-box:hover {
@@ -59,19 +50,15 @@
 }
 
 .intel-hero h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
     font-weight: 800;
-    color: #1e293b;
-}
-
-.intel-page.dark .intel-hero h1 {
-    color: white;
+    color: var(--text-primary);
 }
 
 .intel-hero p {
     font-size: 1.2rem;
-    color: #64748b;
+    color: var(--text-secondary);
 }
 
 .intel-systems-grid {
@@ -83,28 +70,26 @@
 }
 
 .intel-sys-card {
-    background: white;
+    background: var(--bg-card);
     width: 220px;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 16px;
     text-align: center;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px -1px var(--shadow-color);
     cursor: pointer;
     transition: all 0.3s;
     border-top: 4px solid transparent;
-    /* Cor definida inline */
     position: relative;
-    border: 1px solid #e2e8f0;
-}
-
-.intel-page.dark .intel-sys-card {
-    background: #1e293b;
-    border-color: #334155;
+    border: 1px solid var(--border-color);
+    /* Forçando a cor da borda inferior/lateral ser sutil */
+    border-bottom-color: var(--border-color);
+    border-left-color: var(--border-color);
+    border-right-color: var(--border-color);
 }
 
 .intel-sys-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 25px -5px var(--shadow-color);
 }
 
 .intel-sys-icon {
@@ -121,21 +106,12 @@
 .intel-sys-card h2 {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
-    color: #1e293b;
-}
-
-.intel-page.dark .intel-sys-card h2 {
-    color: white;
+    color: var(--text-primary);
 }
 
 .intel-sys-card p {
     font-size: 0.9rem;
-    color: #94a3b8;
-}
-
-.intel-sys-card.upload {
-    border-top: 4px solid #94a3b8;
-    border-style: dashed;
+    color: var(--text-secondary);
 }
 
 .intel-loading {
@@ -161,19 +137,14 @@
 
 /* --- Header & KPI --- */
 .intel-header {
-    background: white;
+    background: var(--bg-card);
     padding: 1rem 2rem;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
-}
-
-.intel-page.dark .intel-header {
-    background: #1e293b;
-    border-color: #334155;
 }
 
 .intel-title h1 {
@@ -197,7 +168,8 @@
     margin-left: 8px;
 }
 
-.intel-page.dark .intel-badge-sys {
+/* Ajuste específico para dark mode no badge, se necessário, ou usar variáveis se disponíveis */
+[data-theme='dark'] .intel-badge-sys {
     background: #0c4a6e;
     color: #7dd3fc;
 }
@@ -216,31 +188,14 @@
 .intel-kpi-label {
     font-size: 0.75rem;
     text-transform: uppercase;
-    color: #64748b;
+    color: var(--text-secondary);
     font-weight: 600;
 }
 
 .intel-kpi-value {
     font-size: 1.1rem;
     font-weight: 700;
-}
-
-.intel-btn-upload-small {
-    background: #3b82f6;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.intel-btn-upload-small:hover {
-    background: #2563eb;
+    color: var(--text-primary);
 }
 
 /* --- Content & Grid --- */
@@ -262,22 +217,17 @@
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    color: #94a3b8;
+    color: var(--text-secondary);
 }
 
 .intel-search-bar input {
     width: 100%;
     padding: 12px 12px 12px 40px;
     border-radius: 12px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--border-color);
     font-size: 1rem;
-    background: white;
-    color: inherit;
-}
-
-.intel-page.dark .intel-search-bar input {
-    background: #1e293b;
-    border-color: #475569;
+    background: var(--bg-card);
+    color: var(--text-primary);
 }
 
 .intel-grid {
@@ -287,8 +237,8 @@
 }
 
 .intel-card {
-    background: white;
-    border: 1px solid #e2e8f0;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 1.5rem;
     cursor: pointer;
@@ -297,15 +247,10 @@
     overflow: hidden;
 }
 
-.intel-page.dark .intel-card {
-    background: #1e293b;
-    border-color: #334155;
-}
-
 .intel-card:hover {
     border-color: #3b82f6;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .intel-card-header {
@@ -316,17 +261,13 @@
 }
 
 .intel-vol-badge {
-    background: #f1f5f9;
-    color: #64748b;
+    background: var(--bg-page);
+    /* Badge subtle bg */
+    color: var(--text-secondary);
     padding: 4px 8px;
     border-radius: 99px;
     font-size: 0.8rem;
     font-weight: 700;
-}
-
-.intel-page.dark .intel-vol-badge {
-    background: #334155;
-    color: #94a3b8;
 }
 
 .intel-card h3 {
@@ -335,11 +276,12 @@
     font-weight: 600;
     line-height: 1.4;
     flex: 1;
+    color: var(--text-primary);
 }
 
 .intel-card-desc {
     font-size: 0.9rem;
-    color: #64748b;
+    color: var(--text-secondary);
     display: -webkit-box;
     -webkit-line-clamp: 3;
     line-clamp: 3;
@@ -352,13 +294,9 @@
     display: flex;
     gap: 1rem;
     font-size: 0.8rem;
-    color: #94a3b8;
-    border-top: 1px solid #f1f5f9;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border-color);
     padding-top: 0.75rem;
-}
-
-.intel-page.dark .intel-card-mini-stats {
-    border-color: #334155;
 }
 
 .mini-stat {
@@ -383,7 +321,7 @@
 }
 
 .intel-modal {
-    background: white;
+    background: var(--bg-card);
     width: 90%;
     max-width: 800px;
     max-height: 90vh;
@@ -392,11 +330,7 @@
     position: relative;
     overflow-y: auto;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
-}
-
-.intel-page.dark .intel-modal {
-    background: #0f172a;
-    border: 1px solid #334155;
+    border: 1px solid var(--border-color);
 }
 
 .intel-close-btn {
@@ -405,7 +339,88 @@
     right: 1rem;
     background: none;
     border: none;
-    color: #94a3b8;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.intel-modal-header h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.8rem;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.intel-modal-chips {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.chip {
+    background: var(--bg-page);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.chip.volume {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+[data-theme='dark'] .chip.volume {
+    background: #172554;
+    color: #60a5fa;
+}
+
+.intel-modal-desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.intel-row-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.intel-section h3 {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+}
+
+.intel-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.intel-section li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.intel-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
     cursor: pointer;
     font-size: 1.5rem;
 }

@@ -155,7 +155,7 @@ def main(sistema: str, dias: int):
 
 if __name__ == "__main__":
     # Configuração da Interface de Linha de Comando (CLI)
-    parser = argparse.ArgumentParser(description='Ticket Intel AI - Pipeline Batch')
+    parser = argparse.ArgumentParser(description='Scope Intelligence - Pipeline Batch')
     parser.add_argument('--sistema', type=str, required=True, help='Nome do sistema (Ex: Logix, Protheus)')
     parser.add_argument('--dias', type=int, default=180, help='Quantos dias atrás analisar (Padrão: 180)')
     

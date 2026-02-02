@@ -3,11 +3,12 @@ import { useSession } from "../contexts/SessionContext";
 import { useChatSocket } from "../hooks/useChatSocket";
 import type { ISessionStartRequest, IWsMessage } from "../types/chat.types";
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm'; 
+import remarkGfm from 'remark-gfm';
 import TextareaAutosize from 'react-textarea-autosize';
 
 import { useTheme } from "../contexts/ThemeContext";
-import ThemeToggle from "../components/ThemeToggle";
+import Navbar from "../components/Navbar"; // Novo Import
+import NavAction from "../components/NavAction";
 import MermaidModal from "../components/MermaidModal";
 
 // --- ÍCONES SVG GLOBAIS ---
@@ -47,7 +48,7 @@ const formatMessageContent = (content: string) => {
     // Remove crases soltas que estejam sozinhas em uma linha (comum em erros de LLM)
     // A flag 'gm' aplica a regra para cada linha, não só inicio/fim da string total
     fixed = fixed.replace(/^\s*`\s*$/gm, "");
-    
+
     // Limpeza de bordas gerais (mantida, mas ajustada)
     fixed = fixed.replace(/^[\s`]+/, "");
     fixed = fixed.replace(/[\s`]+$/, "");
@@ -79,9 +80,9 @@ const SafeCodeBlock = (props: any) => {
                 boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
                 fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace'
             }}>
-                <div style={{ 
-                    borderBottom: '1px solid var(--border-color)', 
-                    paddingBottom: '8px', 
+                <div style={{
+                    borderBottom: '1px solid var(--border-color)',
+                    paddingBottom: '8px',
                     marginBottom: '8px',
                     fontSize: '0.75rem',
                     color: 'var(--text-secondary)',
@@ -92,10 +93,10 @@ const SafeCodeBlock = (props: any) => {
                     <span style={{ fontWeight: 'bold' }}>MERMAID</span>
                     <span style={{ fontSize: '0.85em', opacity: 0.8 }}>(Código Fonte)</span>
                 </div>
-                <code {...rest} style={{ 
-                    whiteSpace: 'pre-wrap', 
-                    fontSize: '0.9em', 
-                    display: 'block', 
+                <code {...rest} style={{
+                    whiteSpace: 'pre-wrap',
+                    fontSize: '0.9em',
+                    display: 'block',
                     lineHeight: '1.5',
                     color: 'var(--text-primary)'
                 }}>
@@ -107,10 +108,10 @@ const SafeCodeBlock = (props: any) => {
 
     // Estilo padrão para outros códigos que não sejam mermaid (inline codes)
     return (
-        <code {...rest} className={className} style={{ 
-            background: 'var(--input-bg)', 
+        <code {...rest} className={className} style={{
+            background: 'var(--input-bg)',
             color: 'var(--accent-red)', // Destaque sutil para código inline
-            padding: '2px 5px', 
+            padding: '2px 5px',
             borderRadius: '4px',
             border: '1px solid var(--border-color)',
             fontSize: '0.9em'
@@ -127,32 +128,32 @@ const MarkdownComponents = {
     // Força estilos de tabela para garantir visualização correta no chat
     table: (props: any) => (
         <div style={{ overflowX: 'auto', margin: '1rem 0' }}>
-            <table {...props} style={{ 
-                borderCollapse: 'collapse', 
-                width: '100%', 
+            <table {...props} style={{
+                borderCollapse: 'collapse',
+                width: '100%',
                 fontSize: '0.9rem',
                 color: 'var(--text-primary)' // Garante cor correta do texto
             }} />
         </div>
     ),
     thead: (props: any) => (
-        <thead {...props} style={{ 
+        <thead {...props} style={{
             backgroundColor: 'var(--input-bg)', // Fundo do cabeçalho adaptativo
             color: 'var(--text-primary)'
         }} />
     ),
     th: (props: any) => (
-        <th {...props} style={{ 
-            border: '1px solid var(--border-color)', 
-            padding: '10px', 
+        <th {...props} style={{
+            border: '1px solid var(--border-color)',
+            padding: '10px',
             fontWeight: '600',
             textAlign: 'left',
             color: 'var(--text-primary)'
         }} />
     ),
     td: (props: any) => (
-        <td {...props} style={{ 
-            border: '1px solid var(--border-color)', 
+        <td {...props} style={{
+            border: '1px solid var(--border-color)',
             padding: '8px',
             color: 'var(--text-primary)'
         }} />
@@ -186,12 +187,7 @@ const StartSessionForm: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOp
 
     return (
         <div className="start-form">
-            <div className="start-header-actions">
-                <button className="icon-button" onClick={onMermaidOpen} title="Abrir Editor Mermaid">
-                    <MermaidIcon />
-                </button>
-                <ThemeToggle /> 
-            </div>
+            {/* Header removido -> Navbar Global */}
 
             <h2>Iniciar Novo Documento</h2>
             <form onSubmit={handleSubmit}>
@@ -261,7 +257,7 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const handleGoHome = () => {
-        window.location.href = '/'; 
+        window.location.href = '/';
     };
 
     const isFinal = messages.length > 0 && messages[messages.length - 1].type === "final";
@@ -348,20 +344,7 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
 
     return (
         <div className="chat-window">
-            <div className="chat-header">
-                <div className="chat-header-content">
-                    <button className="icon-button header-back-button" onClick={handleGoHome} title="Voltar ao Hub">
-                        <ArrowLeftIcon />
-                    </button>
-                    <h2>Chat de Geração de Documento</h2>
-                    <div className="header-actions">
-                        <button className="icon-button" onClick={onMermaidOpen} title="Abrir Editor Mermaid">
-                            <MermaidIcon />
-                        </button>
-                        <ThemeToggle />
-                    </div>
-                </div>
-            </div>
+            {/* Header removido -> Navbar Global */}
 
             <div className="message-list">
                 <div className="message-list-content">
@@ -369,7 +352,7 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
                         msg.type === 'user' ? (
                             <div key={index} className="message-bubble type-user">
                                 {/* CORREÇÃO: Aplica formatMessageContent e usa MarkdownComponents */}
-                                <ReactMarkdown 
+                                <ReactMarkdown
                                     remarkPlugins={[remarkGfm]}
                                     components={MarkdownComponents}
                                 >
@@ -385,7 +368,7 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
                                 <AgentPersona />
                                 <div className={`message-bubble type-${msg.type}`}>
                                     {/* CORREÇÃO: Aplica formatMessageContent e usa MarkdownComponents */}
-                                    <ReactMarkdown 
+                                    <ReactMarkdown
                                         remarkPlugins={[remarkGfm]}
                                         components={MarkdownComponents}
                                     >
@@ -467,35 +450,51 @@ const ChatWindow: React.FC<{ onMermaidOpen: () => void }> = ({ onMermaidOpen }) 
  */
 const ChatPage: React.FC = () => {
     const { sessionId, status } = useSession();
-    const { theme } = useTheme(); 
+    const { theme } = useTheme();
     const [isMermaidModalOpen, setIsMermaidModalOpen] = useState(false);
-    
+
+    const mermaidButton = (
+        <NavAction
+            icon={<MermaidIcon />}
+            label="Abrir Editor Mermaid"
+            onClick={() => setIsMermaidModalOpen(true)}
+        />
+    );
+
     return (
-        <>
-            {sessionId && status === "connected" ? (
-                <ChatWindow onMermaidOpen={() => setIsMermaidModalOpen(true)} />
-            ) : (
-                <div className="start-page-layout">
-                    <div className="start-page-left">
-                        <div className="start-page-promo">
-                            <div className="promo-design-line"></div>
-                            <div className="promo-image-container"><BotIcon /></div>
-                            <div className="promo-text-container">
-                                <h3>Assistente de Documentação IA</h3>
-                                <p>Bem-vindo ao assistente inteligente da Supporte Logística...</p>
+        <div className="app-shell">
+            <Navbar
+                title="Agente de Qualidade IA"
+                rightContent={mermaidButton}
+            />
+
+            <main className="app-main full-height">
+                {sessionId && status === "connected" ? (
+                    <ChatWindow onMermaidOpen={() => setIsMermaidModalOpen(true)} />
+                ) : (
+                    <div className="start-page-layout">
+                        <div className="start-page-left">
+                            <div className="start-page-promo">
+                                <div className="promo-design-line"></div>
+                                <div className="promo-image-container"><BotIcon /></div>
+                                <div className="promo-text-container">
+                                    <h3>Assistente de Documentação IA</h3>
+                                    <p>Bem-vindo ao assistente inteligente da Supporte Logística...</p>
+                                </div>
                             </div>
                         </div>
+                        <div className="vertical-divider"></div>
+                        <div className="start-page-right">
+                            <StartSessionForm onMermaidOpen={() => setIsMermaidModalOpen(true)} />
+                        </div>
                     </div>
-                    <div className="vertical-divider"></div>
-                    <div className="start-page-right">
-                        <StartSessionForm onMermaidOpen={() => setIsMermaidModalOpen(true)} />
-                    </div>
-                </div>
-            )}
+                )}
+            </main>
+
             {isMermaidModalOpen && (
                 <MermaidModal theme={theme} onClose={() => setIsMermaidModalOpen(false)} />
             )}
-        </>
+        </div>
     );
 };
 

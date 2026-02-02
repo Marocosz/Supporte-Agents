@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ThemeToggle from '../components/ThemeToggle'; // IMPORTADO AQUI
+import Navbar from '../components/Navbar'; // IMPORTADO AQUI
 import './DocRobosPage.css';
 
 // URL base da API do backend de Robos (definida no docker-compose ou .env)
@@ -95,95 +95,93 @@ const DocRobosPage: React.FC = () => {
 
     // --- RENDERIZAÇÃO ---
     return (
-        <div className="doc-robos-page">
-            {/* Wrapper adicionado para posicionar no canto, resolvendo o problema de layout */}
-            <div className="floating-toggle-wrapper">
-                <ThemeToggle />
-            </div>
-            
-            <div className="doc-container">
-                
-                {/* 1. ESTADO DE CARREGAMENTO */}
-                {isLoading && (
-                    <div className="loading-wrapper">
-                        <h2>Gerando documentação, por favor aguarde...</h2>
-                        <p>Este processo pode levar alguns segundos dependendo do tamanho dos arquivos.</p>
-                        <div className="spinner"></div>
-                    </div>
-                )}
+        <div className="app-shell">
+            <Navbar title="Gerador Docs Robôs" />
 
-                {/* 2. ESTADO DE RESULTADOS (Sucesso/Erro) */}
-                {!isLoading && results && (
-                    <div className="results-wrapper">
-                        <h1>Resultados da Geração</h1>
+            <main className="app-main centered">
+                <div className="doc-container">
 
-                        {results.sucessos.length > 0 && (
-                            <>
-                                <h2>Documentos Gerados com Sucesso:</h2>
-                                <ul className="results-list">
-                                    {results.sucessos.map((filename, index) => (
-                                        <li key={index} className="result-item success">
-                                            <span className="file-name-text">{filename}</span>
-                                            {/* Link para endpoint de download que criaremos */}
-                                            <a 
-                                                href={`${API_BASE_URL}/download/${filename}`} 
-                                                className="download-link"
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                <DownloadIcon />
-                                                Baixar Documento
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </>
-                        )}
+                    {/* 1. ESTADO DE CARREGAMENTO */}
+                    {isLoading && (
+                        <div className="loading-wrapper">
+                            <h2>Gerando documentação, por favor aguarde...</h2>
+                            <p>Este processo pode levar alguns segundos dependendo do tamanho dos arquivos.</p>
+                            <div className="spinner"></div>
+                        </div>
+                    )}
 
-                        {results.erros.length > 0 && (
-                            <>
-                                <h2>Ocorreram Erros:</h2>
-                                <ul className="results-list">
-                                    {results.erros.map((erro, index) => (
-                                        <li key={index} className="result-item error">{erro}</li>
-                                    ))}
-                                </ul>
-                            </>
-                        )}
+                    {/* 2. ESTADO DE RESULTADOS (Sucesso/Erro) */}
+                    {!isLoading && results && (
+                        <div className="results-wrapper">
+                            <h1>Resultados da Geração</h1>
 
-                        <button onClick={handleReset} className="btn-back">
-                            &larr; Voltar e Gerar Nova Documentação
-                        </button>
-                    </div>
-                )}
+                            {results.sucessos.length > 0 && (
+                                <>
+                                    <h2>Documentos Gerados com Sucesso:</h2>
+                                    <ul className="results-list">
+                                        {results.sucessos.map((filename, index) => (
+                                            <li key={index} className="result-item success">
+                                                <span className="file-name-text">{filename}</span>
+                                                {/* Link para endpoint de download que criaremos */}
+                                                <a
+                                                    href={`${API_BASE_URL}/download/${filename}`}
+                                                    className="download-link"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <DownloadIcon />
+                                                    Baixar Documento
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </>
+                            )}
 
-                {/* 3. ESTADO INICIAL (Formulário) */}
-                {!isLoading && !results && (
-                    <div className="form-wrapper">
-                        <h1>Gerador de Documentação com IA</h1>
-                        <p style={{textAlign: 'center', color: "var(--text-secondary)"}}>Supporte Agents</p>
-                        
-                        <form onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label className="form-label" htmlFor="arquivos">
-                                    Arquivos do Projeto (.py ou .pas):
-                                </label>
-                                
-                                {/* --- NOVA ESTRUTURA DE UPLOAD (LABEL + INPUT HIDDEN) --- */}
-                                <div className="file-upload-wrapper">
-                                    <input 
-                                            type="file" 
-                                            id="arquivos" 
+                            {results.erros.length > 0 && (
+                                <>
+                                    <h2>Ocorreram Erros:</h2>
+                                    <ul className="results-list">
+                                        {results.erros.map((erro, index) => (
+                                            <li key={index} className="result-item error">{erro}</li>
+                                        ))}
+                                    </ul>
+                                </>
+                            )}
+
+                            <button onClick={handleReset} className="btn-back">
+                                &larr; Voltar e Gerar Nova Documentação
+                            </button>
+                        </div>
+                    )}
+
+                    {/* 3. ESTADO INICIAL (Formulário) */}
+                    {!isLoading && !results && (
+                        <div className="form-wrapper">
+                            <h1>Gerador de Documentação com IA</h1>
+                            <p style={{ textAlign: 'center', color: "var(--text-secondary)" }}>Supporte Agents</p>
+
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-group">
+                                    <label className="form-label" htmlFor="arquivos">
+                                        Arquivos do Projeto (.py ou .pas):
+                                    </label>
+
+                                    {/* --- NOVA ESTRUTURA DE UPLOAD (LABEL + INPUT HIDDEN) --- */}
+                                    <div className="file-upload-wrapper">
+                                        <input
+                                            type="file"
+                                            id="arquivos"
                                             className="hidden-input"
-                                            multiple 
+                                            multiple
                                             required
                                             onChange={handleFileChange}
-                                            accept=".py,.pas,.txt" 
-                                    />
-                                    <label 
-                                            htmlFor="arquivos" 
+                                            accept=".py,.pas,.txt"
+                                        />
+                                        <label
+                                            htmlFor="arquivos"
                                             className={`custom-file-upload ${files && files.length > 0 ? 'has-files' : ''}`}
-                                    >
+                                        >
                                             <CloudUploadIcon />
                                             <span className="upload-text">
                                                 {files && files.length > 0 ? "Arquivos Prontos!" : "Clique para Escolher Arquivos"}
@@ -196,36 +194,33 @@ const DocRobosPage: React.FC = () => {
                                                     {files.length} selecionado(s)
                                                 </div>
                                             )}
-                                    </label>
+                                        </label>
+                                    </div>
+                                    {/* --- FIM DA NOVA ESTRUTURA --- */}
                                 </div>
-                                {/* --- FIM DA NOVA ESTRUTURA --- */}
-                            </div>
 
-                            <div className="form-group">
-                                <label className="form-label" htmlFor="contexto">
-                                    Contexto Adicional (Opcional):
-                                </label>
-                                <textarea 
-                                    id="contexto" 
-                                    className="form-textarea"
-                                    placeholder="Ex: Este sistema faz parte de um projeto de ERP..."
-                                    value={context}
-                                    onChange={(e) => setContext(e.target.value)}
-                                ></textarea>
-                            </div>
+                                <div className="form-group">
+                                    <label className="form-label" htmlFor="contexto">
+                                        Contexto Adicional (Opcional):
+                                    </label>
+                                    <textarea
+                                        id="contexto"
+                                        className="form-textarea"
+                                        placeholder="Ex: Este sistema faz parte de um projeto de ERP..."
+                                        value={context}
+                                        onChange={(e) => setContext(e.target.value)}
+                                    ></textarea>
+                                </div>
 
-                            <button type="submit" className="btn-submit">
-                                Gerar Documentação
-                            </button>
-                            
-                            <div style={{marginTop: '20px', textAlign: 'center'}}>
-                                <a href="/" className="btn-back" style={{fontSize: '14px'}}>Voltar para o Hub</a>
-                            </div>
-                        </form>
-                    </div>
-                )}
+                                <button type="submit" className="btn-submit">
+                                    Gerar Documentação
+                                </button>
+                            </form>
+                        </div>
+                    )}
 
-            </div>
+                </div>
+            </main>
         </div>
     );
 };

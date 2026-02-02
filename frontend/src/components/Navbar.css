@@ -1,0 +1,180 @@
+/* Shared Navbar Styles */
+.shared-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    height: 70px;
+    /* Altura padrão */
+    background: var(--bg-card);
+    /* Usa a cor do cartão/header do tema */
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+    position: sticky;
+    /* Ou relative, dependendo do layout */
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.navbar-back-btn:hover {
+    background: var(--bg-page);
+    color: var(--text-primary);
+}
+
+.navbar-brand-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border-color);
+    margin: 0 4px;
+}
+
+.navbar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.25rem;
+}
+
+.navbar-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+.navbar-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Responsividade básica */
+@media (max-width: 768px) {
+    .shared-navbar {
+        height: 60px;
+        padding: 0 16px;
+    }
+
+    .back-label {
+        display: none;
+        /* Esconde texto "Hub" em mobile */
+    }
+
+    .navbar-title {
+        font-size: 1rem;
+    }
+}
+
+/* --- Padronização de Botões de Ação (NavAction) --- */
+.nav-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 36px;
+    padding: 0 12px;
+    /* Mais largo se tiver texto, ou se for icon-only ajusta */
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    background: transparent;
+    color: var(--text-secondary);
+    min-width: 36px;
+    /* Garante quadrado se for só ícone */
+}
+
+/* Variante Ghost (Padrão - Transparente) */
+.nav-action-btn.ghost:hover:not(:disabled) {
+    background-color: var(--input-bg);
+    /* hover cinza claro */
+    color: var(--text-primary);
+}
+
+.nav-action-btn.ghost.active {
+    background-color: rgba(58, 134, 255, 0.15);
+    color: var(--accent-blue);
+}
+
+/* Variante Primary (Preenchido - Destaque) */
+.nav-action-btn.primary {
+    background-color: var(--accent-blue);
+    color: white;
+}
+
+.nav-action-btn.primary:hover:not(:disabled) {
+    background-color: var(--accent-blue-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(58, 134, 255, 0.3);
+}
+
+/* Variante Danger (Ações destrutivas) */
+.nav-action-btn.danger {
+    color: var(--accent-red);
+}
+
+.nav-action-btn.danger:hover:not(:disabled) {
+    background-color: rgba(255, 77, 77, 0.1);
+}
+
+/* Ícone */
+.nav-action-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    /* Tamanho padrão do ícone */
+}
+
+/* Label textual */
+.nav-action-label {
+    font-size: 0.9rem;
+}
+
+/* Disabled State */
+.nav-action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Ajuste específico para quando usamos apenas o ícone (sem showLabel) */
+.nav-action-btn:not(:has(.nav-action-label)) {
+    padding: 0;
+    width: 36px;
+    /* Quadrado perfeito */
+}

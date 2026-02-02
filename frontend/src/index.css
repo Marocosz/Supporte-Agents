@@ -13,44 +13,57 @@
   --primary-color: #3a86ff;
 
   /* --- TEMA CLARO (Neutro / Cinza Gelo) --- */
-  --bg-page: #f2f2f2;        /* Cinza neutro, sem azul (tipo cimento bem claro) */
-  --bg-card: #ffffff;        /* Branco puro */
-  --text-primary: #121212;   /* Preto padrão */
-  --text-secondary: #555555; /* Cinza médio */
-  --border-color: #dcdcdc;   /* Cinza neutro */
-  --input-bg: #e8e8e8;       /* Input levemente mais escuro que o fundo */
-  --shadow-color: rgba(0, 0, 0, 0.08); /* Sombra preta suave */
+  --bg-page: #f2f2f2;
+  /* Cinza neutro, sem azul (tipo cimento bem claro) */
+  --bg-card: #ffffff;
+  /* Branco puro */
+  --text-primary: #121212;
+  /* Preto padrão */
+  --text-secondary: #555555;
+  /* Cinza médio */
+  --border-color: #dcdcdc;
+  /* Cinza neutro */
+  --input-bg: #e8e8e8;
+  /* Input levemente mais escuro que o fundo */
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  /* Sombra preta suave */
 }
 
 /* Sobrescreve as variáveis quando o tema for ESCURO */
 [data-theme='dark'] {
-  --bg-page: #121212;        /* Preto clássico (como estava antes) */
-  --bg-card: #1e1e1e;        /* Superfície cinza escuro padrão */
-  --text-primary: #e0e0e0;   /* Texto claro */
-  --text-secondary: #aaaaaa; /* Texto secundário */
-  --border-color: #333333;   /* Bordas escuras */
-  --input-bg: #2a2a2a;       /* Input escuro */
+  --bg-page: #121212;
+  /* Preto clássico (como estava antes) */
+  --bg-card: #1e1e1e;
+  /* Superfície cinza escuro padrão */
+  --text-primary: #e0e0e0;
+  /* Texto claro */
+  --text-secondary: #aaaaaa;
+  /* Texto secundário */
+  --border-color: #333333;
+  /* Bordas escuras */
+  --input-bg: #2a2a2a;
+  /* Input escuro */
   --shadow-color: rgba(0, 0, 0, 0.5);
-  --primary-color: #3b82f6;  
+  --primary-color: #3b82f6;
 }
 
 /* 2. Aplica o tema global */
 body {
   margin: 0;
   font-family: var(--font-sans);
-  
+
   /* Usa as variáveis dinâmicas */
   background-color: var(--bg-page);
   color: var(--text-primary);
-  
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   /* --- Layout Global --- */
   min-height: 100vh;
   width: 100vw;
-  
-  overflow-x: hidden; 
+
+  overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -67,6 +80,52 @@ body {
 
 /* --- Alias de Compatibilidade --- */
 :root {
-  --background-dark: var(--bg-page);
   --surface-dark: var(--bg-card);
+}
+
+/* --- LAYOUT SHELL PADRONIZADO (Fixes "Navbar não fica no topo") --- */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  /* Navbar fica fixa, conteúdo scrolla */
+  background-color: var(--bg-page);
+}
+
+/* Navbar dentro do Shell (sempre topo) */
+.app-shell>nav {
+  flex-shrink: 0;
+  z-index: 1000;
+  position: relative;
+  /* Remove behavior de sticky se estiver dentro de flex column */
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Conteúdo Principal (scrolla independentemente) */
+.app-main {
+  flex: 1;
+  /* Ocupa todo o resto verticalmente */
+  overflow-y: auto;
+  /* Scroll aqui */
+  position: relative;
+  display: flex;
+  /* Para permitir alinhamentos internos */
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Variante: Conteúdo FOCADO/CENTRALIZADO (Para Hub e Docs) */
+.app-main.centered {
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 40px;
+  /* Espaço extra embaixo */
+}
+
+/* Variante: Conteúdo Full (Para Dashboards/Chat que gerenciam seu próprio scroll interno) */
+.app-main.full-height {
+  overflow: hidden;
+  /* Remove scroll do main, deixa filho controlar */
 }
