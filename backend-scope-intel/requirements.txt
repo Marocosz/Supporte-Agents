@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pydantic-settings
+sqlalchemy
+mysql-connector-python
+python-dotenv
+qdrant-client
+openai
+pandas
+scikit-learn
+hdbscan
+beautifulsoup4
