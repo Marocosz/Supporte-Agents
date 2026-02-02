@@ -76,6 +76,7 @@ backend-doc-qualidade/model_cache/
 backend-doc-qualidade/hf_cache/
 backend-doc-qualidade/core/faiss_index/
 
+backend-scope-intel/qdrant_data/
 
 ### Passo 2: Inicializar o Git Localmente
 
