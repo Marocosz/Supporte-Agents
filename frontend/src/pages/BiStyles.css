@@ -52,7 +52,7 @@
 }
 
 .bi-nav-back:hover {
-    color: var(--accent-blue);
+    color: var(--accent-orange);
 }
 
 .bi-nav-center {
@@ -83,8 +83,8 @@
 }
 
 .bi-nav-item.active {
-    color: var(--accent-blue);
-    border-bottom-color: var(--accent-blue);
+    color: var(--accent-orange);
+    border-bottom-color: var(--accent-orange);
 }
 
 .bi-nav-actions {
@@ -109,8 +109,8 @@
 
 .bi-theme-btn:hover {
     background-color: var(--input-bg);
-    color: var(--accent-blue);
-    border-color: var(--accent-blue);
+    color: var(--accent-orange);
+    border-color: var(--accent-orange);
 }
 
 /* --- Dashboard Layout (MANTIDO INTACTO) --- */
@@ -157,8 +157,8 @@
 }
 
 .bi-kpi-icon.text-blue {
-    color: var(--accent-blue);
-    background-color: rgba(58, 134, 255, 0.15);
+    color: var(--accent-orange);
+    background-color: rgba(249, 115, 22, 0.15);
 }
 
 .bi-kpi-icon.text-green {
@@ -264,12 +264,12 @@
 
 .bi-chat-input:focus {
     outline: none;
-    border-color: var(--accent-blue);
-    box-shadow: 0 0 0 3px rgba(94, 114, 228, 0.2);
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
 }
 
 .bi-send-btn {
-    background-color: var(--accent-blue);
+    background-color: var(--accent-orange);
     color: white;
     border: none;
     border-radius: 50%;
@@ -337,8 +337,8 @@
 }
 
 .user-wrapper .bi-avatar {
-    background-color: rgba(94, 114, 228, 0.1);
-    color: var(--accent-blue);
+    background-color: rgba(249, 115, 22, 0.1);
+    color: var(--accent-orange);
     border: none;
 }
 
@@ -414,7 +414,7 @@
 }
 
 .user-message {
-    background-color: var(--accent-blue);
+    background-color: var(--accent-orange);
     color: white;
     border-top-right-radius: 4px;
 }
@@ -496,7 +496,7 @@
 
 .bi-query-toggle-btn:hover {
     background-color: var(--input-bg);
-    color: var(--accent-blue);
+    color: var(--accent-orange);
 }
 
 /* Seta giratória */
@@ -676,8 +676,8 @@
 }
 
 .tracking-dropdown-trigger:hover {
-    background-color: rgba(58, 134, 255, 0.1);
-    color: var(--accent-blue);
+    background-color: rgba(249, 115, 22, 0.1);
+    color: var(--accent-orange);
 }
 
 .tracking-dropdown-arrow {
@@ -720,8 +720,8 @@
 }
 
 .tracking-dropdown-item.selected {
-    background-color: rgba(58, 134, 255, 0.1);
-    color: var(--accent-blue);
+    background-color: rgba(249, 115, 22, 0.1);
+    color: var(--accent-orange);
 }
 
 .tracking-big-number {

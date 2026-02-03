@@ -64,9 +64,9 @@
 }
 
 .hub-app-item.active {
-    background-color: rgba(58, 134, 255, 0.1);
-    /* Azul sutil */
-    border-color: var(--accent-blue);
+    background-color: rgba(249, 115, 22, 0.1);
+    /* Laranja sutil */
+    border-color: var(--accent-orange);
 }
 
 .hub-item-icon {
@@ -77,14 +77,14 @@
     justify-content: center;
     background-color: var(--input-bg);
     border-radius: 8px;
-    color: var(--accent-blue);
+    color: var(--accent-orange);
     margin-right: 15px;
     flex-shrink: 0;
     transition: all 0.2s ease;
 }
 
 .hub-app-item.active .hub-item-icon {
-    background-color: var(--accent-blue);
+    background-color: var(--accent-orange);
     color: white;
 }
 
@@ -109,7 +109,7 @@
     opacity: 0;
     transform: translateX(-10px);
     transition: all 0.2s ease;
-    color: var(--accent-blue);
+    color: var(--accent-orange);
 }
 
 .hub-app-item.active .hub-arrow-icon {
@@ -158,7 +158,7 @@
 .hub-welcome-view h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    background: linear-gradient(90deg, var(--text-primary), var(--accent-blue));
+    background: linear-gradient(90deg, var(--text-primary), var(--accent-orange));
     background-clip: text;
     /* Standard */
     -webkit-background-clip: text;
@@ -199,7 +199,7 @@
 
 .welcome-instruction {
     font-style: italic;
-    color: var(--accent-blue);
+    color: var(--accent-orange);
     margin-top: 40px;
     animation: bounceRight 2s infinite;
 }
@@ -236,7 +236,7 @@
     height: 80px;
     background-color: var(--input-bg);
     border-radius: 16px;
-    color: var(--accent-blue);
+    color: var(--accent-orange);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -293,7 +293,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background-color: var(--accent-blue);
+    background-color: var(--accent-orange);
     color: white;
     padding: 15px 40px;
     border: none;
@@ -302,13 +302,13 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 15px rgba(58, 134, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
 }
 
 .hub-btn-primary:hover {
     transform: translateY(-2px);
-    background-color: var(--accent-blue-dark);
-    box-shadow: 0 8px 25px rgba(58, 134, 255, 0.5);
+    background-color: var(--accent-orange-dark);
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.5);
 }
 
 /* Responsividade Básica */

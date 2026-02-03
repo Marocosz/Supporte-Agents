@@ -6,11 +6,13 @@
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* --- Cores de Acento (Compartilhadas) --- */
-  --accent-blue: #3a86ff;
-  --accent-blue-dark: #0056b3;
-  --accent-red: #ff4d4d;
-  --accent-green: #2ecc71;
-  --primary-color: #3a86ff;
+  --accent-orange: #F97316;
+  /* Laranja Intermediário (Vibrante) */
+  --accent-orange-dark: #EA580C;
+  /* Laranja Escuro */
+  --accent-red: #ef4444;
+  --accent-green: #22c55e;
+  --primary-color: #F97316;
 
   /* --- TEMA CLARO (Neutro / Cinza Gelo) --- */
   --bg-page: #f2f2f2;
@@ -44,7 +46,8 @@
   --input-bg: #2a2a2a;
   /* Input escuro */
   --shadow-color: rgba(0, 0, 0, 0.5);
-  --primary-color: #3b82f6;
+  --primary-color: #FB923C;
+  /* Laranja Claro para Dark Mode */
 }
 
 /* 2. Aplica o tema global */

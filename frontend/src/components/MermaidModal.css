@@ -99,7 +99,7 @@
 }
 
 .mm-editor textarea:focus {
-  border-color: var(--accent-blue);
+  border-color: var(--accent-orange);
 }
 
 .mm-preview {
@@ -112,7 +112,7 @@
 
 .mm-preview-area {
   flex: 1;
-  background: var(--background-dark); 
+  background: var(--background-dark);
   border-radius: 8px;
   overflow: hidden;
   position: relative;
@@ -122,14 +122,14 @@
    4. MERMAID & SVG
    ========================================= */
 
-.mm-preview-area > div {
+.mm-preview-area>div {
   overflow: visible !important;
 }
 
 .mm-svg-container {
   width: 100%;
   height: 100%;
-  display: flex;           
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -149,22 +149,22 @@
 /* Regras para o DIV que contém o texto dentro do nó */
 .mm-svg-container svg .node foreignObject div {
   /* Removemos o white-space: normal para o Mermaid calcular a largura certa */
-  /* white-space: normal !important; */ 
-  
+  /* white-space: normal !important; */
+
   /* --- CENTRALIZAÇÃO PERFEITA --- */
-  text-align: center !important; 
-  
+  text-align: center !important;
+
   /* Força o conteúdo a ocupar todo o espaço e centralizar */
   width: 100% !important;
   height: 100% !important;
-  
+
   /* Flexbox para garantir o centro vertical e horizontal */
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  
+
   /* Garante que o texto quebre se for forçado por <br> */
-  line-height: 1.2 !important; 
+  line-height: 1.2 !important;
 }
 
 /* Garante que os "labels" (rótulos nas linhas) também fiquem visíveis e com a fonte certa */
@@ -204,7 +204,7 @@
 }
 
 .mm-download-btn {
-  background: var(--accent-blue);
+  background: var(--accent-orange);
   padding: 10px 20px;
   color: white;
   border: none;
@@ -238,11 +238,14 @@
 }
 
 .mm-editor textarea::-webkit-scrollbar-thumb {
-  background-color: var(--border-color); /* Cor sutil baseada no tema */
+  background-color: var(--border-color);
+  /* Cor sutil baseada no tema */
   border-radius: 4px;
-  border: 2px solid var(--input-bg); /* Cria um espaço (padding) visual */
+  border: 2px solid var(--input-bg);
+  /* Cria um espaço (padding) visual */
 }
 
 .mm-editor textarea::-webkit-scrollbar-thumb:hover {
-  background-color: var(--text-secondary); /* Destaque ao passar o mouse */
+  background-color: var(--text-secondary);
+  /* Destaque ao passar o mouse */
 }

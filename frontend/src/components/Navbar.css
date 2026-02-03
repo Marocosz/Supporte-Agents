@@ -126,20 +126,20 @@
 }
 
 .nav-action-btn.ghost.active {
-    background-color: rgba(58, 134, 255, 0.15);
-    color: var(--accent-blue);
+    background-color: rgba(249, 115, 22, 0.15);
+    color: var(--accent-orange);
 }
 
 /* Variante Primary (Preenchido - Destaque) */
 .nav-action-btn.primary {
-    background-color: var(--accent-blue);
+    background-color: var(--accent-orange);
     color: white;
 }
 
 .nav-action-btn.primary:hover:not(:disabled) {
-    background-color: var(--accent-blue-dark);
+    background-color: var(--accent-orange-dark);
     transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(58, 134, 255, 0.3);
+    box-shadow: 0 2px 5px rgba(249, 115, 22, 0.3);
 }
 
 /* Variante Danger (Ações destrutivas) */

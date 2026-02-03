@@ -71,7 +71,7 @@
 .promo-design-line {
   width: 4px;
   height: 150px;
-  background: var(--accent-blue);
+  background: var(--accent-orange);
   border-radius: 2px;
 }
 
@@ -82,7 +82,7 @@
 .promo-image-container svg {
   width: 120px;
   height: 120px;
-  color: var(--accent-blue);
+  color: var(--accent-orange);
 }
 
 .promo-text-container h3 {
@@ -148,13 +148,13 @@
 
 .start-form input:focus {
   outline: none;
-  border-color: var(--accent-blue);
-  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.3);
+  border-color: var(--accent-orange);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.3);
 }
 
 .start-form button {
   padding: 12px;
-  background-color: var(--accent-blue);
+  background-color: var(--accent-orange);
   color: white;
   border: none;
   border-radius: 8px;
@@ -275,7 +275,7 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: var(--accent-blue);
+  background-color: var(--accent-orange);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -304,7 +304,7 @@
 
 .message-bubble.type-user {
   align-self: flex-end;
-  background-color: var(--accent-blue-dark);
+  background-color: var(--accent-orange-dark);
   color: white;
   border-bottom-right-radius: 4px;
 }
@@ -322,7 +322,7 @@
 }
 
 .message-bubble strong {
-  color: var(--accent-blue);
+  color: var(--accent-orange);
   font-weight: 600;
 }
 
@@ -336,8 +336,8 @@
 
 .action-buttons button {
   padding: 8px 15px;
-  border: 1px solid var(--accent-blue);
-  background-color: var(--accent-blue);
+  border: 1px solid var(--accent-orange);
+  background-color: var(--accent-orange);
   color: white;
   border-radius: 20px;
   cursor: pointer;
@@ -404,7 +404,7 @@
   width: 16px;
   height: 16px;
   border: 2px solid var(--text-secondary);
-  border-top-color: var(--accent-blue);
+  border-top-color: var(--accent-orange);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -456,7 +456,7 @@
 
 .chat-input button {
   padding: 12px 20px;
-  background-color: var(--accent-blue);
+  background-color: var(--accent-orange);
   color: white;
   border: none;
   border-radius: 20px;
@@ -495,8 +495,8 @@
 
 .download-chip:hover {
   background-color: var(--border-color);
-  border-color: var(--accent-blue);
-  color: var(--accent-blue);
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
 }
 
 .download-chip svg {
@@ -557,7 +557,7 @@
 
 .icon-button:hover {
   color: var(--text-primary);
-  border-color: var(--accent-blue);
+  border-color: var(--accent-orange);
   background-color: var(--input-bg);
 }
 
@@ -594,7 +594,7 @@
 
 .start-header-actions button:hover {
   color: var(--text-primary);
-  border-color: var(--accent-blue);
+  border-color: var(--accent-orange);
   background-color: var(--input-bg);
 }
 
@@ -617,7 +617,7 @@
   align-items: center;
   gap: 10px;
   padding: 12px 20px;
-  background-color: var(--accent-blue);
+  background-color: var(--accent-orange);
   color: white;
   border: none;
   border-radius: 8px;

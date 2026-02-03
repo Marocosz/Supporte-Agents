@@ -30,7 +30,7 @@
 }
 
 .intel-upload-box:hover {
-    border-color: #3b82f6;
+    border-color: var(--accent-orange);
     transform: translateY(-5px);
 }
 
@@ -78,13 +78,8 @@
     box-shadow: 0 4px 6px -1px var(--shadow-color);
     cursor: pointer;
     transition: all 0.3s;
-    border-top: 4px solid transparent;
     position: relative;
     border: 1px solid var(--border-color);
-    /* Forçando a cor da borda inferior/lateral ser sutil */
-    border-bottom-color: var(--border-color);
-    border-left-color: var(--border-color);
-    border-right-color: var(--border-color);
 }
 
 .intel-sys-card:hover {
@@ -117,7 +112,7 @@
 .intel-loading {
     margin-top: 2rem;
     font-size: 1.1rem;
-    color: #3b82f6;
+    color: var(--accent-orange);
     animation: pulse 1s infinite;
 }
 
@@ -151,15 +146,15 @@
     margin: 0;
     font-size: 1.5rem;
     font-weight: 700;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    background: linear-gradient(90deg, var(--accent-orange), #F59E0B);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .intel-badge-sys {
-    background: #e0f2fe;
-    color: #0284c7;
+    background: #ffedd5;
+    color: #c2410c;
     padding: 2px 8px;
     border-radius: 6px;
     font-size: 0.75rem;
@@ -170,8 +165,8 @@
 
 /* Ajuste específico para dark mode no badge, se necessário, ou usar variáveis se disponíveis */
 [data-theme='dark'] .intel-badge-sys {
-    background: #0c4a6e;
-    color: #7dd3fc;
+    background: #7c2d12;
+    color: #fdba74;
 }
 
 .intel-kpi-row {
@@ -248,7 +243,7 @@
 }
 
 .intel-card:hover {
-    border-color: #3b82f6;
+    border-color: var(--accent-orange);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px var(--shadow-color);
 }
@@ -347,7 +342,7 @@
 .intel-modal-header h2 {
     margin: 0 0 1rem 0;
     font-size: 1.8rem;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    background: linear-gradient(90deg, var(--accent-orange), #F59E0B);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -369,13 +364,13 @@
 }
 
 .chip.volume {
-    background: #dbeafe;
-    color: #1e40af;
+    background: #ffedd5;
+    color: #9a3412;
 }
 
 [data-theme='dark'] .chip.volume {
-    background: #172554;
-    color: #60a5fa;
+    background: #431407;
+    color: #fb923c;
 }
 
 .intel-modal-desc {
@@ -428,7 +423,7 @@
 .intel-modal-header h2 {
     margin: 0 0 1rem 0;
     font-size: 1.8rem;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    background: linear-gradient(90deg, var(--accent-orange), #F59E0B);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -450,8 +445,8 @@
 }
 
 .chip.volume {
-    background: #dbeafe;
-    color: #1e40af;
+    background: #ffedd5;
+    color: #9a3412;
 }
 
 .intel-page.dark .chip {
@@ -460,8 +455,8 @@
 }
 
 .intel-page.dark .chip.volume {
-    background: #172554;
-    color: #60a5fa;
+    background: #431407;
+    color: #fb923c;
 }
 
 .intel-modal-desc {

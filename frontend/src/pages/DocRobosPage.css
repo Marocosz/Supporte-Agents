@@ -9,33 +9,46 @@
     /* Substitui o gradiente fixo e usa as variáveis dinâmicas */
     background: var(--bg-page);
     color: var(--text-primary);
-    
+
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    position: relative; /* CRÍTICO: Para o ThemeToggle (posição absoluta) funcionar */
+    position: relative;
+    /* CRÍTICO: Para o ThemeToggle (posição absoluta) funcionar */
     transition: background-color 0.3s ease;
 }
 
 .doc-container {
     width: 100%;
     max-width: 800px;
-    background-color: var(--bg-card); /* Variável */
+    background-color: var(--bg-card);
+    /* Variável */
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 8px 30px var(--shadow-color); /* Variável */
-    border: 1px solid var(--border-color); /* Variável */
+    box-shadow: 0 8px 30px var(--shadow-color);
+    /* Variável */
+    border: 1px solid var(--border-color);
+    /* Variável */
     animation: fadeIn 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Tipografia */
-.doc-container h1, .doc-container h2 {
-    color: var(--text-primary); /* Variável */
+.doc-container h1,
+.doc-container h2 {
+    color: var(--text-primary);
+    /* Variável */
     text-align: center;
     font-weight: 700;
     font-size: 2.2em;
@@ -47,7 +60,8 @@
     font-size: 1.8em;
     margin-top: 40px;
     margin-bottom: 20px;
-    border-bottom: 2px solid var(--border-color); /* Variável */
+    border-bottom: 2px solid var(--border-color);
+    /* Variável */
     padding-bottom: 10px;
 }
 
@@ -60,7 +74,8 @@
     display: block;
     margin-top: 25px;
     font-weight: 500;
-    color: var(--text-primary); /* Variável */
+    color: var(--text-primary);
+    /* Variável */
     margin-bottom: 8px;
 }
 
@@ -79,8 +94,10 @@
     justify-content: center;
     padding: 30px;
     margin-top: 5px;
-    background-color: var(--input-bg); /* Usa a variável do tema */
-    border: 2px dashed var(--border-color); /* Borda tracejada moderna */
+    background-color: var(--input-bg);
+    /* Usa a variável do tema */
+    border: 2px dashed var(--border-color);
+    /* Borda tracejada moderna */
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -90,8 +107,9 @@
 
 /* Efeito Hover na área de upload */
 .custom-file-upload:hover {
-    border-color: var(--accent-blue);
-    background-color: rgba(58, 134, 255, 0.05); /* Leve tint azul */
+    border-color: var(--accent-orange);
+    background-color: rgba(249, 115, 22, 0.05);
+    /* Leve tint laranja */
     transform: translateY(-2px);
 }
 
@@ -100,7 +118,7 @@
     width: 48px;
     height: 48px;
     margin-bottom: 10px;
-    color: var(--accent-blue);
+    color: var(--accent-orange);
     opacity: 0.8;
     transition: transform 0.3s ease;
 }
@@ -134,7 +152,7 @@
 /* Badge indicando quantidade de arquivos */
 .file-count-badge {
     margin-top: 10px;
-    background-color: var(--accent-blue);
+    background-color: var(--accent-orange);
     color: white;
     padding: 4px 12px;
     border-radius: 20px;
@@ -150,12 +168,15 @@
     width: 100%;
     padding: 12px;
     margin-top: 5px;
-    border: 1px solid var(--border-color); /* Variável */
+    border: 1px solid var(--border-color);
+    /* Variável */
     border-radius: 8px;
     box-sizing: border-box;
     transition: border-color 0.3s, box-shadow 0.3s;
-    background-color: var(--input-bg); /* Variável */
-    color: var(--text-primary); /* Variável */
+    background-color: var(--input-bg);
+    /* Variável */
+    color: var(--text-primary);
+    /* Variável */
     font-family: inherit;
     resize: vertical;
     min-height: 100px;
@@ -163,8 +184,9 @@
 
 .form-textarea:focus {
     outline: none;
-    border-color: var(--accent-blue); /* Variável */
-    box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+    border-color: var(--accent-orange);
+    /* Variável */
+    box-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
 }
 
 .btn-submit {
@@ -173,7 +195,7 @@
     padding: 15px;
     margin-top: 40px;
     /* Manter o gradiente bonito */
-    background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+    background: linear-gradient(45deg, var(--accent-orange), var(--accent-green));
     color: white;
     border: none;
     border-radius: 8px;
@@ -181,12 +203,12 @@
     font-weight: 500;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
 }
 
 .btn-submit:hover:not(:disabled) {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.5);
+    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.5);
 }
 
 .btn-submit:disabled {
@@ -203,8 +225,10 @@
 }
 
 .spinner {
-    border: 8px solid var(--border-color); /* Variável */
-    border-top: 8px solid var(--accent-blue); /* Variável */
+    border: 8px solid var(--border-color);
+    /* Variável */
+    border-top: 8px solid var(--accent-orange);
+    /* Variável */
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -213,8 +237,13 @@
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Resultados */
@@ -232,14 +261,15 @@
     padding: 15px 20px;
     margin-bottom: 15px;
     border-radius: 10px;
-    
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Para telas pequenas */
+    flex-wrap: wrap;
+    /* Para telas pequenas */
     gap: 15px;
-    
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .file-name-text {
@@ -263,8 +293,9 @@
 .download-link {
     display: inline-flex;
     align-items: center;
-    gap: 8px; /* Espaço entre ícone e texto */
-    background-color: var(--accent-green); 
+    gap: 8px;
+    /* Espaço entre ícone e texto */
+    background-color: var(--accent-green);
     color: #fff;
     padding: 10px 20px;
     border-radius: 8px;
@@ -276,7 +307,8 @@
 }
 
 .download-link:hover {
-    background-color: #27ae60; /* Verde um pouco mais escuro */
+    background-color: #27ae60;
+    /* Verde um pouco mais escuro */
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(46, 204, 113, 0.3);
 }
@@ -290,7 +322,8 @@
 .btn-back {
     display: inline-block;
     margin-top: 30px;
-    color: var(--accent-blue); /* Variável */
+    color: var(--accent-orange);
+    /* Variável */
     background: none;
     border: none;
     font-size: 16px;
@@ -301,6 +334,7 @@
 }
 
 .btn-back:hover {
-    color: var(--text-primary); /* Variável */
+    color: var(--text-primary);
+    /* Variável */
     text-decoration: underline;
 }

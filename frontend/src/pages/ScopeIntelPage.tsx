@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useTheme } from '../contexts/ThemeContext';
+
 import {
     BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, ResponsiveContainer, CartesianGrid
 } from 'recharts';
@@ -117,10 +117,10 @@ const ScopeIntelPage: React.FC = () => {
                         <XAxis dataKey="mes" tick={{ fontSize: 12 }} />
                         <YAxis tick={{ fontSize: 12 }} />
                         <RechartsTooltip
-                            contentStyle={{ backgroundColor: '#1e293b', border: 'none', borderRadius: '8px' }}
+                            contentStyle={{ backgroundColor: '#431407', border: 'none', borderRadius: '8px' }}
                             itemStyle={{ color: '#fff' }}
                         />
-                        <Bar dataKey="qtd" fill="#8884d8" radius={[4, 4, 0, 0]} />
+                        <Bar dataKey="qtd" fill="#F97316" radius={[4, 4, 0, 0]} />
                     </BarChart>
                 </ResponsiveContainer>
             </div>
@@ -186,7 +186,6 @@ const ScopeIntelPage: React.FC = () => {
                                         key={analysis.filename}
                                         className="intel-sys-card"
                                         onClick={() => loadAnalysisData(analysis.filename)}
-                                        style={{ borderTopColor: config.color }}
                                     >
                                         <div className="intel-sys-icon" style={{ color: config.color, backgroundColor: 'var(--bg-page)', border: `1px solid ${config.color}40` }}>
                                             {config.icon}
