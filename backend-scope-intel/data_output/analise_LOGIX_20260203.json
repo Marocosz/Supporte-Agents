@@ -1,0 +1,3249 @@
+{
+  "metadata": {
+    "sistema": "LOGIX",
+    "data_analise": "2026-02-03T12:55:48.570380",
+    "periodo_dias": 180,
+    "total_chamados": 1037,
+    "total_grupos": 42,
+    "taxa_ruido": 0.1109
+  },
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "metricas": {
+        "volume": 30,
+        "top_servicos": {
+          "CONSULTA SIMPLES BD": 30
+        },
+        "top_solicitantes": {
+          "Beatriz  Santana Santos Ribeiro": 30
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 20
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119120",
+        "118864",
+        "119231",
+        "119386",
+        "119481",
+        "119556",
+        "119909",
+        "120352",
+        "120056",
+        "120166",
+        "120690",
+        "120908",
+        "120628",
+        "120942",
+        "121017",
+        "121164",
+        "121316",
+        "121450",
+        "121473",
+        "121558",
+        "121677",
+        "121810",
+        "122001",
+        "122118",
+        "122490",
+        "122700",
+        "123171",
+        "123496",
+        "123923",
+        "127333"
+      ],
+      "titulo": "Emissão de Lotes VITORIA REGIA",
+      "descricao": "Resumo executivo: existem solicitações repetidas para o envio de lotes de faturamento no âmbito do serviço CONSULTA SIMPLES BD, subárea LOGISTICA, no sistema LOGIX, com destino à VITORIA REGIA. As chamadas apresentam datas de faturamento de 02/09, 12/09, 16/09, 23/09 e 07/10, indicando envio sob demanda de lotes de faturamento. Não há menção de falha técnica, sugerindo possível ausência de entrega automática ou de relatório consolidado. O impacto observado é o aumento de workload manual pela equipe de logística e potencial atraso no fluxo de faturamento. Sistemas afetados: LOGIX, CONSULTA SIMPLES BD e LOGISTICA. A repetição do padrão aponta para demanda previsível por esse tipo de entrega de dados, o que pode justificar avaliação de automação ou ajustes no cronograma de envio."
+    },
+    {
+      "cluster_id": 1,
+      "metricas": {
+        "volume": 24,
+        "top_servicos": {
+          "CONSULTA SIMPLES BD": 24
+        },
+        "top_solicitantes": {
+          "Beatriz  Santana Santos Ribeiro": 22,
+          "Mirielle Santos de Oliveira": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 13
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 10
+          }
+        ]
+      },
+      "ids_chamados": [
+        "123660",
+        "126282",
+        "126397",
+        "126551",
+        "126964",
+        "126754",
+        "127447",
+        "127675",
+        "127899",
+        "128084",
+        "128270",
+        "128340",
+        "128546",
+        "128620",
+        "128736",
+        "128956",
+        "129000",
+        "129140",
+        "129262",
+        "129431",
+        "129682",
+        "130549",
+        "130721",
+        "130723"
+      ],
+      "titulo": "Emissão de Lotes Vitória Régia",
+      "descricao": "Resumo executivo: os chamados são repetidos para solicitar o envio dos lotes relacionados ao faturamento, com referências de datas distintas (18/11, 19/11, 02/12, 07/10, 04/12, 25/11). O tratamento ocorre no LOGIX, Serviço Consulta Simples BD, Sub-área Logística, com o objetivo de emissão de lotes Vitória Régia. Não há indicação de indisponibilidade do sistema, apenas uma sequência de solicitações de envio de dados; o impacto é principalmente operacional, mantendo o fluxo de faturamento/logística dependente dessas entregas. Os sistemas afetados são LOGIX e o Serviço Consulta Simples BD, sob a área Logística. A repetição dos pedidos sugere necessidade de padronização/automatização do envio de lotes para o faturamento, visando reduzir esforço manual e inconsistência de dados."
+    },
+    {
+      "cluster_id": 2,
+      "metricas": {
+        "volume": 25,
+        "top_servicos": {
+          "CONSULTA SIMPLES BD": 25
+        },
+        "top_solicitantes": {
+          "Beatriz  Santana Santos Ribeiro": 25
+        },
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 18
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 5
+          }
+        ]
+      },
+      "ids_chamados": [
+        "122952",
+        "123035",
+        "123272",
+        "123420",
+        "123982",
+        "124156",
+        "123598",
+        "124320",
+        "124432",
+        "124610",
+        "124892",
+        "124797",
+        "125014",
+        "125105",
+        "125291",
+        "125728",
+        "125830",
+        "125918",
+        "126043",
+        "126172",
+        "129807",
+        "129934",
+        "130057",
+        "130154",
+        "130314"
+      ],
+      "titulo": "Solicitação de emissão de lotes Vitória Régia",
+      "descricao": "Resumo executivo: cinco chamados indicam demanda recorrente de emissão de lotes Vitória Régia para faturamento, operada pelo LOGIX via Serviço Consulta Simples BD na área de Logística. As solicitações referem-se a datas de faturamento distintas (15/10, 29/10, 30/09 e 01/10, 15/12 e 17/10). Não há relatos de falha de acesso ou erro no serviço; trata-se de atividade operacional necessária para o processamento de faturas. O impacto percebido é dependência do faturamento com possível atraso na disponibilidade de informações para equipes de logística e contabilidade. Sistemas afetados: LOGIX, módulo Logística, Serviço Consulta Simples BD."
+    },
+    {
+      "cluster_id": 3,
+      "metricas": {
+        "volume": 23,
+        "top_servicos": {
+          "CONSULTA SIMPLES BD": 23
+        },
+        "top_solicitantes": {
+          "Mirielle Santos de Oliveira": 14,
+          "Beatriz  Santana Santos Ribeiro": 9
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 9
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 12
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117659",
+        "117660",
+        "117722",
+        "117883",
+        "118021",
+        "118145",
+        "118245",
+        "118378",
+        "118595",
+        "130919",
+        "131044",
+        "131226",
+        "131415",
+        "131600",
+        "131759",
+        "131847",
+        "132058",
+        "132066",
+        "132220",
+        "132281",
+        "132402",
+        "132517",
+        "132727"
+      ],
+      "titulo": "Emissão de lotes Vitoria Regia",
+      "descricao": "Resumo executivo: os chamados são recorrentes e apontam para encaminhar ou emitir lotes de faturamento da Vitoria Regia. São registros sob LOGIX, serviço Consulta Simples BD, subárea Logística, com datas de faturamento variadas (08/01/26; 23/12/2026; 06/08; 18/08; 12/01/26). Não há relato de indisponibilidade do sistema; trata-se de uma demanda repetitiva de envio de lotes. O impacto envolve sobrecarga operacional para Logística e faturamento e potencial atraso no fluxo de faturamento; sistemas afetados são LOGIX, Consulta Simples BD e o módulo de faturamento da área de Logística."
+    },
+    {
+      "cluster_id": 4,
+      "metricas": {
+        "volume": 19,
+        "top_servicos": {
+          "CONSULTA SIMPLES BD": 15,
+          "PENDENCIA BACKOFFICE": 3,
+          "CADASTRO": 1
+        },
+        "top_solicitantes": {
+          "Adriely Loureiro de Oliveira": 18,
+          "Junio Oliveira Reis": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117613",
+        "118425",
+        "118600",
+        "118928",
+        "119646",
+        "119708",
+        "121106",
+        "121341",
+        "123914",
+        "124022",
+        "124308",
+        "124752",
+        "124786",
+        "125451",
+        "125743",
+        "125905",
+        "126176",
+        "126655",
+        "127049"
+      ],
+      "titulo": "Solicitação de parâmetros dimensionais",
+      "descricao": "Resumo executivo: há um padrão de chamados solicitando parâmetros dimensionais para diferentes ranges no cliente Triumph (filial 0602). Os casos ocorrem sob o sistema LOGIX, nos serviços CONSULTA SIMPLES BD (subárea LOGISTICA) e, em um caso, PENDENCIA BACKOFFICE. Os ranges variam amplamente entre as solicitações, indicando demanda contínua por dados dimensionais para planejamento/logística. Impacto percebido: possível dependência de extração de dados dimensionais para operações de logística e backoffice, com demanda constante que pode impactar tempos de resposta e fluxos de trabalho. Sistemas afetados: LOGIX, com módulos de Consulta Simples BD e Pendência BackOffice na área Logística, Triumph."
+    },
+    {
+      "cluster_id": 5,
+      "metricas": {
+        "volume": 32,
+        "top_servicos": {
+          "LENTIDÃO SISTÊMICA": 22,
+          "INDISPONIBILIDADE": 4,
+          "LENTIDÃO SISTEMICA": 4,
+          "MELHORIAS": 1,
+          "LIBERAR SESSÃO COLETORES": 1
+        },
+        "top_solicitantes": {
+          "Eduardo Soares dos Santos": 8,
+          "Joao Xavier Goncalves Filho": 3,
+          "Vinicius Alves de Freitas": 3,
+          "Douglas Bitencourt Dos Santos": 2,
+          "Jose Alves Da Silva Neto": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 14
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 5
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117724",
+        "118028",
+        "118101",
+        "119113",
+        "119126",
+        "118992",
+        "119186",
+        "119190",
+        "119191",
+        "119471",
+        "119602",
+        "119889",
+        "120298",
+        "120973",
+        "121562",
+        "121711",
+        "123567",
+        "119555",
+        "119615",
+        "119651",
+        "125152",
+        "126995",
+        "126997",
+        "129333",
+        "129959",
+        "130000",
+        "130323",
+        "131889",
+        "132455",
+        "132542",
+        "132849",
+        "132990"
+      ],
+      "titulo": "Lentidão sistêmica no Logix",
+      "descricao": "Os chamados indicam lentidão sistêmica no Logix com impacto direto na área de Logística. Os usuários relatam telas demorando para abrir, comandos executados lentamente e, em alguns casos, indisponibilidade de acesso. Em particular, o uso do COLETOR para a separação de carga está inviável devido à lentidão, gerando atrasos operacionais. Também há relato isolado de indisponibilidade de acesso vinculada a uma falha na unidade de ipojuca. O problema parece afetar componentes do Logix relacionados à logística e à conectividade entre módulos, com impacto potencial em prazos de separação de cargas e na cadência de operações."
+    },
+    {
+      "cluster_id": 6,
+      "metricas": {
+        "volume": 16,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 15,
+          "LIBERAÇÃO DE ACESSO EM PASTAS OU ARQUIVOS": 1
+        },
+        "top_solicitantes": {
+          "Emerson Oliveira Brito dos Santos": 11,
+          "Sueliton Gomes Rodrigues": 3,
+          "Geisiane Soares Santos Silva": 1,
+          "Dacio Batista da Silva Junior": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117570",
+        "119129",
+        "119295",
+        "119298",
+        "119299",
+        "119530",
+        "119745",
+        "120371",
+        "120951",
+        "122317",
+        "127213",
+        "128050",
+        "128028",
+        "129424",
+        "129819",
+        "131976"
+      ],
+      "titulo": "Dificuldade para Cadastrar Usuários",
+      "descricao": "Chamados recorrentes relatam cadastros de usuários no LOGIX, serviço CADASTRO DE USUÁRIO (sub-área LOGÍSTICA), com objetivo de onboarding de novos colaboradores. As solicitações exigem dados completos (nome, cargo, admissão, CPF, matrícula e local) e, em algumas situações, a criação de usuários espelho para unidades como Barueri e AG; há ainda um chamado específico para Criação de Usuários no SARA, para porteiros, espelhando o usuário já existente da Porteira JOSIANE. O padrão indica um volume expressivo de cadastros para novas contratações, o que impacta o tempo de disponibilização de acessos e pode gerar inconsistências entre sistemas. Os dados enviados contêm informações sensíveis (CPF, matrícula) e devem ser validados quanto à conformidade e à duplicidade para evitar entradas duplicadas ou incorretas. Sistemas afetados: LOGIX (CADASTRO DE USUÁRIO, LOGÍSTICA) e, no caso do quinto chamado, o SARA."
+    },
+    {
+      "cluster_id": 7,
+      "metricas": {
+        "volume": 22,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 15,
+          "CADASTRO": 2,
+          "CENTRAL DE CADASTROS": 2,
+          "CONFIGURAÇÃO DE PERFIL DE USUARIO": 2,
+          "ARMAZÉM": 1
+        },
+        "top_solicitantes": {
+          "Jefferson Miranda De Oliveira": 5,
+          "Joaquim Targino da Silva Neto": 1,
+          "Welington dos Santos Borges": 1,
+          "Emerson Oliveira Brito dos Santos": 1,
+          "Patrícia Maria Falcão": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 6
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118920",
+        "119387",
+        "119898",
+        "119937",
+        "120573",
+        "120689",
+        "121139",
+        "123442",
+        "123562",
+        "124774",
+        "124879",
+        "126086",
+        "127192",
+        "129194",
+        "129925",
+        "130468",
+        "131261",
+        "131311",
+        "132011",
+        "132140",
+        "132189",
+        "133081"
+      ],
+      "titulo": "Dificuldade de login no cadastro de usuário",
+      "descricao": "Resumo executivo: Os chamados são predominantemente sobre acesso ao LOGIX, no serviço CADASTRO DE USUÁRIO da área Logística. O padrão envolve redefinição de senhas e recuperação de login, com usuários relatando esquecimento ou expiração de senhas e indisponibilidade de acesso para concluir cadastros e processos dependentes. Ao longo dos tickets, observam-se logins como 002560, 000078, 707069 e 025018; em alguns casos também há pedidos de ajuste de acessos entre membros de equipes devido a remanejamentos. O impacto é a indisponibilidade de acesso ao sistema pelo time de cadastro/usuários, atrasando cadastros, atualizações de perfis e validação de permissões. Os sistemas afetados são LOGIX, com foco no CADASTRO DE USUÁRIO e na sub-área LOGISTICA."
+    },
+    {
+      "cluster_id": 8,
+      "metricas": {
+        "volume": 16,
+        "top_servicos": {
+          "DESBLOQUEIO DE CONTA": 7,
+          "INDISPONIBILIDADE": 5,
+          "COLETORES - PROBLEMAS DE CONEXÃO": 2,
+          "LIBERAÇÃO DE ACESSOS ": 1,
+          "LIBERAR SESSÃO COLETORES": 1
+        },
+        "top_solicitantes": {
+          "Ewerton Bezerra Nogueira": 16
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 6
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117599",
+        "117902",
+        "117954",
+        "118441",
+        "118895",
+        "119196",
+        "119503",
+        "119797",
+        "120215",
+        "124864",
+        "125058",
+        "125535",
+        "125573",
+        "125869",
+        "125936",
+        "132268"
+      ],
+      "titulo": "Bloqueio de contas após queda de energia",
+      "descricao": "Os chamados indicam bloqueio de contas de usuários da área logística após excederem o limite de conexões, relacionados a quedas de energia no armazém. O volume de desbloqueios solicitados (7) e ocorrências de indisponibilidade, associadas ao serviço LOGIX na subárea Logística, sinalizam impacto significativo nas operações de coleta. Os casos mencionam usuários como 000132, 000114, 609121, 000102, JOSE GREGORIO CORALES BLANCO, mpaixão, 990109, 0001002 e 659453, com motivação explícita de queda de energia. Em resumo, há padrão de bloqueios de acesso decorrentes de exceder conexões em cenários de indisponibilidade, afetando o fluxo de coleta/logística."
+    },
+    {
+      "cluster_id": 10009,
+      "titulo": "Gestão de Cadastros no Logix",
+      "descricao": "Esta categoria reúne incidentes relacionados à gestão de cadastros no LOGIX (cadastro, atualização e inativação de endereços, SKUs e itens logísticos), bem como questões de integração via EDI e de seleção/picking. Existem variações desse problema dentro do grupo, incluindo erros de cadastro, dificuldades de atualização de itens (ex.: SKUs Harman), inativação de cadastros e conflitos de dados entre módulos. O objetivo é cobrir as ocorrências que afetam criação, manutenção e desativação de cadastros, com impactos nas operações de logística, atendimento de pedidos e faturamento.",
+      "metricas": {
+        "volume": 97,
+        "top_servicos": {
+          "CADASTRO": 56,
+          "CENTRAL DE CADASTROS": 18,
+          "CONSULTA SIMPLES BD": 10,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 2,
+          "INTEGRAÇÕES": 1
+        },
+        "top_solicitantes": {
+          "Emerson Danillo de Souza Silva": 9,
+          "Larayne Lua Pereira Araújo": 9,
+          "João Luiz Miguel Aires": 9,
+          "Maria Helena Ferreira da Silva": 6,
+          "Matheus Moreira Lemes": 6
+        },
+        "timeline": []
+      },
+      "sub_clusters": [
+        {
+          "cluster_id": 9,
+          "metricas": {
+            "volume": 9,
+            "top_servicos": {
+              "CADASTRO": 6,
+              "PROCESSAMENTO MANUAL DE ARQUIVOS": 2,
+              "INTEGRAÇÕES": 1
+            },
+            "top_solicitantes": {
+              "Meire Vieira Ceccarelli da Silva": 5,
+              "Rafaella Oliveira Silva": 1,
+              "Jefferson Miranda De Oliveira": 1,
+              "Carolynne Angelica Sousa Chaves": 1,
+              "Joao Victor Gomes Pereira": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-08",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-09",
+                "qtd": 3
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 4
+              }
+            ]
+          },
+          "ids_chamados": [
+            "118516",
+            "120143",
+            "122186",
+            "122451",
+            "127259",
+            "128770",
+            "128872",
+            "128905",
+            "128867"
+          ],
+          "titulo": "Erro no Cadastro de Endereço Impede Pedido",
+          "descricao": "Chamados repetidamente indicam falhas relacionadas ao cadastro de endereços/cliente no LOGIX, que impedem o processamento de pedidos (exemplos: pedido 481328, 481077, 00455618). Em alguns casos, a cidade do destinatário não está cadastrada no LOGIX, gerando travamento/erro de processamento. Há demanda para criação de novos endereços e para verificação de rotinas de alteração/inclusão de cadastros. Também há discrepâncias entre LOGIX e dados importados (XML/Protheus), sugerindo problema de sincronização de cadastros entre sistemas. Impacto percebido: atrasos no processamento de pedidos, necessidade de intervenção manual (cadastro de endereço) e inconsistências de dados entre sistemas."
+        },
+        {
+          "cluster_id": 10,
+          "metricas": {
+            "volume": 27,
+            "top_servicos": {
+              "CADASTRO": 22,
+              "CENTRAL DE CADASTROS": 2,
+              "DESENVOLIVMENTO": 1,
+              "RECEBIMENTO": 1,
+              "ANALISE DE CASOS": 1
+            },
+            "top_solicitantes": {
+              "Emerson Danillo de Souza Silva": 9,
+              "Maria Helena Ferreira da Silva": 6,
+              "Clara Fernanda Santos Martins": 3,
+              "Veronica Lucia Silva de Lemos": 2,
+              "Larayne Lua Pereira Araújo": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-08",
+                "qtd": 5
+              },
+              {
+                "mes": "2025-09",
+                "qtd": 9
+              },
+              {
+                "mes": "2025-10",
+                "qtd": 2
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 3
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 7
+              }
+            ]
+          },
+          "ids_chamados": [
+            "117572",
+            "117949",
+            "118220",
+            "118531",
+            "119497",
+            "119985",
+            "120506",
+            "122151",
+            "122271",
+            "122389",
+            "122399",
+            "122435",
+            "122449",
+            "122512",
+            "124078",
+            "125672",
+            "128279",
+            "130030",
+            "130036",
+            "130707",
+            "131397",
+            "131766",
+            "132275",
+            "132382",
+            "132682",
+            "133143",
+            "133153"
+          ],
+          "titulo": "Dificuldade com Cadastros no Logix",
+          "descricao": "Conjunto de chamados indica demanda contínua para cadastro de itens, códigos fiscais, criação de contas de fornecedores e parâmetros de itens no sistema LOGIX. As solicitações costumam incluir cadastros de itens referenciados em notas fiscais e planilhas anexas, bem como cadastros urgentes para permitir o recebimento sistêmico da carga. Em alguns casos, o assunto envolve a área de Desenvolvimento para parametrização de dados como peso unitário/bruto de cabos. Impacto percebido: impede o andamento do recebimento de mercadorias, atrasa a validação de itens e a integração com cadastros de fornecedores e códigos fiscais. Sistemas afetados: LOGIX (serviço Cadastro, sub-área Logística), com menção eventual a Cadastro em Desenvolvimento; potenciais efeitos nos fluxos de Recebimento e Análise de Casos."
+        },
+        {
+          "cluster_id": 11,
+          "metricas": {
+            "volume": 4,
+            "top_servicos": {
+              "CENTRAL DE CADASTROS": 2,
+              "CADASTRO": 1,
+              "ALTERAÇÃO DE REGISTROS NO BANCO DE DADOS": 1
+            },
+            "top_solicitantes": {
+              "João Luiz Miguel Aires": 4
+            },
+            "timeline": [
+              {
+                "mes": "2025-09",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-10",
+                "qtd": 2
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 1
+              }
+            ]
+          },
+          "ids_chamados": [
+            "120206",
+            "123588",
+            "123921",
+            "126498"
+          ],
+          "titulo": "Inativação de SKUs no Cadastro",
+          "descricao": "Resumo executivo: os chamados concentram ações de inativação de SKUs cadastrados para diversos clientes, com o objetivo de manter apenas os itens necessários ativos no cadastro para evitar erros na importação de notas fiscais. As solicitações são tratadas no LOGIX, nos serviços Central de Cadastros ou Cadastro, com foco na área de Logística. As bases de clientes incluem Ox Bike, Cromus, Seculus, Haifa, Armor, BIC, Brudden, Copag Amazonia e Pioneer Barueri, entre outros, e costumam ser fornecidas por meio de planilhas anexadas por e-mail, em especial quando há volumes elevados (em alguns casos mais de 67 mil SKUs). Em alguns casos a planilha excede o limite de envio (FLUIG: 10 MB) exigindo envio por e-mail. As inativação são realizadas para filiais como Uberlândia (Matriz 04) e Barueri, mantendo ativos apenas os SKUs recebidos do armazém para evitar erro de importação de NF. Observa-se a dependência de evidências de cadastro (fotos/comprovações) e de agenda de reuniões/atualizações de operação para validação. O impacto envolve possível atraso nos ajustes de cadastro, risco de inconsistência entre cadastros e notas, e indisponibilidade temporária de mudanças até a validação final. Sistemas afetados são LOGIX, Central de Cadastros, Cadastro e Banco de Dados, com atuação na subárea Logística."
+        },
+        {
+          "cluster_id": 12,
+          "metricas": {
+            "volume": 7,
+            "top_servicos": {
+              "CONSULTA SIMPLES BD": 6,
+              "CENTRAL DE CADASTROS": 1
+            },
+            "top_solicitantes": {
+              "Aleff Herculano da Silva": 2,
+              "Welington dos Santos Borges": 2,
+              "Juscelyo Rangell Assis Paula": 2,
+              "Matheus Moreira Lemes": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-10",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 2
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 3
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 1
+              }
+            ]
+          },
+          "ids_chamados": [
+            "125069",
+            "126353",
+            "128114",
+            "129914",
+            "130661",
+            "130678",
+            "131245"
+          ],
+          "titulo": "Inativação de endereços no LOGIX",
+          "descricao": "Os chamados são de natureza repetitiva, solicitando inativação de endereços listados em anexos via banco de dados e, em alguns casos, alterações de endereços, dentro do serviço Consulta Simples BD (LOGIX) da área Logística. Há ainda um pedido distinto, pela Central de Cadastros, para excluir depositantes considerados inativos na tela de apuração 6418, com base em uma planilha anexada que marca ativos/inativos. O conjunto de tickets indica uma demanda contínua de manutenção de cadastros de Logística, com uso de anexos para especificar registros a serem inativados ou removidos, o que impacta diretamente os cadastros de endereços e de depositantes, bem como referências nas telas de apuração. Sistemas afetados: LOGIX, serviço Consulta Simples BD (Logística), e LOGIX, Central de Cadastros (Logística). Observação: não há detalhes sobre regras de negócio ou validações; os anexos são o veículo de instrução para as alterações."
+        },
+        {
+          "cluster_id": 13,
+          "metricas": {
+            "volume": 5,
+            "top_servicos": {
+              "CADASTRO": 5
+            },
+            "top_solicitantes": {
+              "Paulo Melo": 3,
+              "Mauro Sergio Sampaio Farias": 2
+            },
+            "timeline": [
+              {
+                "mes": "2025-09",
+                "qtd": 3
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 1
+              }
+            ]
+          },
+          "ids_chamados": [
+            "121115",
+            "122315",
+            "122318",
+            "128306",
+            "128746"
+          ],
+          "titulo": "Dificuldade em marcar o picking nos itens",
+          "descricao": "Chamados indicam necessidade de configuração de picking no cadastro de itens do LOGIX, com foco na marcação da opção 'utiliza picking' para itens de clientes específicos (Wyda e BIC) e a aplicação da opção 'PALETE MISTO' para todos os itens da WYDA em 06 - MAO ENTREP. Em alguns casos, descreve-se que o picking para materiais de Harman não é solicitado a partir do endereço picking, resultando em quebras de pallets nos endereços superiores e uso do endereço incorreto. O impacto observado é aumento de retrabalho, risco de erros de separação, desvios de estoque e atrasos na expedição. Sistemas afetados envolvem LOGIX (cadastro de itens e lógica de picking) e o WMS através do campo man10021, com dependência da filial 06 MAO Entrep. Recomenda-se validar governança de cadastros de itens relacionados a picking, padronizar a aplicação dos flags 'utiliza picking' e 'PALETE MISTO', auditar itens que já possuem a configuração e alinhar regras de endereçamento de picking com operações de armazém para evitar discrepâncias."
+        },
+        {
+          "cluster_id": 14,
+          "metricas": {
+            "volume": 28,
+            "top_servicos": {
+              "CADASTRO": 15,
+              "CENTRAL DE CADASTROS": 4,
+              "CONSULTA SIMPLES BD": 4,
+              "ALTERAÇÃO DE TABELAS": 1,
+              "ERRO OPERACIONAL": 1
+            },
+            "top_solicitantes": {
+              "Karla Lohanna Martins Goncalves": 5,
+              "Matheus Moreira Lemes": 5,
+              "Fabiano de  Paula Ferreira": 3,
+              "João Luiz Miguel Aires": 3,
+              "Warley Aparecido Pereira": 3
+            },
+            "timeline": [
+              {
+                "mes": "2025-08",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-09",
+                "qtd": 6
+              },
+              {
+                "mes": "2025-10",
+                "qtd": 5
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 3
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 5
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 8
+              }
+            ]
+          },
+          "ids_chamados": [
+            "118790",
+            "119749",
+            "119795",
+            "120490",
+            "122068",
+            "122408",
+            "122623",
+            "124919",
+            "124999",
+            "125404",
+            "125865",
+            "125909",
+            "126010",
+            "126060",
+            "128476",
+            "128916",
+            "128937",
+            "129551",
+            "129044",
+            "130625",
+            "131119",
+            "131298",
+            "131861",
+            "131342",
+            "132356",
+            "132294",
+            "132972",
+            "131849"
+          ],
+          "titulo": "Atualização de cadastro de itens logísticos",
+          "descricao": "Chamados indicam demanda recorrente de mudanças no cadastro mestre de itens no módulo Logística do LOGIX, envolvendo os serviços CADASTRO, CENTRAL DE CADASTROS e CONSULTA SIMPLES BD. As solicitações costumam trazer anexos (planilhas e/ou EDI) para inclusão de novos itens, atualização de cadastros para faturamento, alteração de categorias e exclusão de EANs, com atuação de Marcia para validação e encaminhamento. O impacto observado é direto na consistência do cadastro de itens, com risco de afetar o faturamento mensal, entradas, saídas e inventário; os sistemas afetados são LOGIX, com as áreas de Logística correspondentes. Recomenda-se consolidar o fluxo de mudanças de cadastro, validação de anexos e governança de dados para reduzir retrabalho e inconsistências."
+        },
+        {
+          "cluster_id": 15,
+          "metricas": {
+            "volume": 9,
+            "top_servicos": {
+              "CENTRAL DE CADASTROS": 6,
+              "CADASTRO": 3
+            },
+            "top_solicitantes": {
+              "Larayne Lua Pereira Araújo": 6,
+              "Danilo Mariano Viana": 1,
+              "Aleff Herculano da Silva": 1,
+              "Leandro Carlos Silveira": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-08",
+                "qtd": 2
+              },
+              {
+                "mes": "2025-09",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-10",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 2
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 3
+              }
+            ]
+          },
+          "ids_chamados": [
+            "119189",
+            "119176",
+            "119982",
+            "125429",
+            "126063",
+            "126926",
+            "128752",
+            "128691",
+            "129362"
+          ],
+          "titulo": "Falha no cadastro de SKUs",
+          "descricao": "Chamados indicam recorrentes pedidos de cadastro de SKUs no LOGIX (Central de Cadastros e Cadastro) com foco em clientes COPAG e TODAYTEC. Os itens apresentados chegam com cadastros incorretos ou incompletos: ausência de DUN14 e EAN13, ou códigos que não seguem o mesmo padrão entre filiais (ex.: Uberlândia frente a Ipojuca). Também existem solicitações de ajuste de dimensões (ex.: largura de itens discordante entre planilha e FIT) e pedidos para criar atributos de estoque para o serial de saída. Em alguns casos há anexos de EDI e NF que guiam o cadastro. O impacto observado é atraso na inclusão de itens de clientes e inconsistência de dados que pode afetar operações de entrega, estoque e faturamento. Sistemas afetados: LOGIX, Central de Cadastros e Cadastro, sob a subárea Logística, com itens de cadastro para COPAG e Todaytec/Ipojuca."
+        },
+        {
+          "cluster_id": 16,
+          "metricas": {
+            "volume": 4,
+            "top_servicos": {
+              "CADASTRO": 4
+            },
+            "top_solicitantes": {
+              "Larayne Lua Pereira Araújo": 2,
+              "Aleff Herculano da Silva": 1,
+              "João Luiz Miguel Aires": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-09",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-10",
+                "qtd": 2
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 1
+              }
+            ]
+          },
+          "ids_chamados": [
+            "120644",
+            "124511",
+            "124633",
+            "126308"
+          ],
+          "titulo": "Cadastro de SKUs Harman PA no LOGIX",
+          "descricao": "Resumo executivo: os chamados concentram-se no cadastro e atualização de SKUs para o cliente Harman (depositante 007703111000103), relacionadas à operação PA na área Logística do LOGIX. As demandas envolvem a inclusão de SKUs conforme planilhas anexas e alterações de campos como Categoria, Altura Lastro e Lastro. Há necessidade adicional de configurar o controle de SN na expedição e bipagem do SN em duas caixas para itens com múltiplos de 2. Um caso relata incompatibilidade de SKU causada pela diferença de quantidade do item 58035035 (1 vs 2), sugerindo uma atualização de cadastro diretamente no banco de dados para corrigir a quantidade. Os chamados indicam o uso recorrente de planilhas para cadastros/atualizações, com impacto potencial em prazos de cadastro, consistência de estoque e nos processos de expedição. Recomenda-se alinhamento de dados entre cadastros e estoque, validação de quantidades e aplicação das regras de SN e bipagem para itens que geram múltiplas caixas, além de padronizar o fluxo de envio de planilhas anexas."
+        },
+        {
+          "cluster_id": 17,
+          "metricas": {
+            "volume": 4,
+            "top_servicos": {
+              "CENTRAL DE CADASTROS": 3,
+              "CENTRAL DE CADASTRO": 1
+            },
+            "top_solicitantes": {
+              "Leandro Carlos Silveira": 3,
+              "João Luiz Miguel Aires": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-10",
+                "qtd": 3
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 1
+              }
+            ]
+          },
+          "ids_chamados": [
+            "123357",
+            "123448",
+            "125017",
+            "133556"
+          ],
+          "titulo": "Cadastro de itens no LOGIX via EDI",
+          "descricao": "Resumo executivo: as amostras indicam demanda contínua para cadastro de itens no LOGIX, Central de Cadastros (Logística). Os chamados costumam trazer anexos com planilhas ou solicitações para criar pastas de importação de arquivos EDI de cadastro de item, vinculados a depositantes como Harman, BMW e PTLS, com CNPJ indicados. Não há relato de falha técnica; o objetivo é que o time de Cadastros registre os itens no sistema a partir dos dados fornecidos. Sistemas afetados: LOGIX – Central de Cadastros (Logística), com tolerância a cadastros de itens e importação via EDI. Impacto percebido: demanda operacional adicional para recebimento de planilhas, validação de dados e importação, o que pode impactar prazos de cadastro e consistência de informações se o mapeamento/EDI não estiver padronizado."
+        }
+      ],
+      "ids_chamados": [
+        "118516",
+        "120143",
+        "122186",
+        "122451",
+        "127259",
+        "128770",
+        "128872",
+        "128905",
+        "128867",
+        "117572",
+        "117949",
+        "118220",
+        "118531",
+        "119497",
+        "119985",
+        "120506",
+        "122151",
+        "122271",
+        "122389",
+        "122399",
+        "122435",
+        "122449",
+        "122512",
+        "124078",
+        "125672",
+        "128279",
+        "130030",
+        "130036",
+        "130707",
+        "131397",
+        "131766",
+        "132275",
+        "132382",
+        "132682",
+        "133143",
+        "133153",
+        "120206",
+        "123588",
+        "123921",
+        "126498",
+        "125069",
+        "126353",
+        "128114",
+        "129914",
+        "130661",
+        "130678",
+        "131245",
+        "121115",
+        "122315",
+        "122318",
+        "128306",
+        "128746",
+        "118790",
+        "119749",
+        "119795",
+        "120490",
+        "122068",
+        "122408",
+        "122623",
+        "124919",
+        "124999",
+        "125404",
+        "125865",
+        "125909",
+        "126010",
+        "126060",
+        "128476",
+        "128916",
+        "128937",
+        "129551",
+        "129044",
+        "130625",
+        "131119",
+        "131298",
+        "131861",
+        "131342",
+        "132356",
+        "132294",
+        "132972",
+        "131849",
+        "119189",
+        "119176",
+        "119982",
+        "125429",
+        "126063",
+        "126926",
+        "128752",
+        "128691",
+        "129362",
+        "120644",
+        "124511",
+        "124633",
+        "126308",
+        "123357",
+        "123448",
+        "125017",
+        "133556"
+      ]
+    },
+    {
+      "cluster_id": 18,
+      "metricas": {
+        "volume": 10,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 4,
+          "DESBLOQUEIO DE CONTA": 2,
+          "INDISPONIBILIDADE": 1,
+          "CONFIGURAÇÃO DE CONTAS DE E-MAIL": 1,
+          "RESET DE SENHA": 1
+        },
+        "top_solicitantes": {
+          "Sueliton Gomes Rodrigues": 1,
+          "Emerson Luiz Pereira de Castro": 1,
+          "Valdecir Rosa Campos Junior": 1,
+          "Joao Ricardo da Silva Leitao": 1,
+          "Raimundo Renan Matos da Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119927",
+        "120072",
+        "121600",
+        "121975",
+        "122025",
+        "122636",
+        "123075",
+        "131406",
+        "132117",
+        "132259"
+      ],
+      "titulo": "Bloqueio de usuário no LOGIX",
+      "descricao": "A amostra de chamados aponta padrão recorrente de bloqueio de contas de usuário no LOGIX, com foco nos serviços CADASTRO DE USUÁRIO e DESBLOQUEIO DE CONTA (sub-área Logística). Os relatos referem usuários bloqueados que solicitam desbloqueio de acesso, ou desbloqueio de senha; em alguns casos o bloqueio decorre de esquecimento de senha que resulta em bloqueio de usuário. Há ainda um registro de indisponibilidade reportada na área de Logística associada a bloqueios. O impacto percebido é a impossibilidade de login, o que interrompe atividades operacionais da logística e de usuários dependentes do sistema. Os casos envolvem IDs variados (exemplos: 002286, 000126, 002894, 00123), sugerindo um padrão comum de controle de acesso no LOGIX. Não há informações suficientes para confirmar a raiz técnica do bloqueio a partir dos tickets apresentados."
+    },
+    {
+      "cluster_id": 19,
+      "metricas": {
+        "volume": 15,
+        "top_servicos": {
+          "INDISPONIBILIDADE": 6,
+          "DESBLOQUEIO DE CONTA": 4,
+          "CADASTRO DE USUÁRIO": 2,
+          "PENDENCIA BACKOFFICE": 1,
+          "CENTRAL DE CADASTROS": 1
+        },
+        "top_solicitantes": {
+          "Ewerton Bezerra Nogueira": 10,
+          "Keison Lima da Silva": 2,
+          "Matheus da Silva Trindade": 1,
+          "Adriely Loureiro de Oliveira": 1,
+          "Mauro Sergio Sampaio Farias": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117907",
+        "118168",
+        "118263",
+        "118298",
+        "118218",
+        "119095",
+        "119077",
+        "125016",
+        "125039",
+        "126549",
+        "128269",
+        "128747",
+        "128884",
+        "129143",
+        "129727"
+      ],
+      "titulo": "Excedeu Conexão de Usuário",
+      "descricao": "Resumo executivo: os chamados indicam repetidamente que usuários recebem a mensagem 'excedeu conexão' ao tentar acessar o LOGIX, envolvendo os serviços CADASTRO DE USUÁRIO, DESBLOQUEIO DE CONTA e PENDENCIA BACKOFFICE, em uma subárea de Logística. Os incidentes afetam várias contas (exemplos: 519742, 000111, 000102, JLIMA, 02000128) e, em alguns casos, incluem desbloqueio de contas; há menções a senhas associadas nos registros. O impacto observado é indisponibilidade de login e de operações de cadastro/desbloqueio para a equipe logística, o que compromete o fluxo de cadastro de usuários e desbloqueio de contas. Recomenda-se monitorar padrões de tentativas de acesso, validar políticas de autenticação/lockout e proteger informações sensíveis contidas nos tickets."
+    },
+    {
+      "cluster_id": 20,
+      "metricas": {
+        "volume": 12,
+        "top_servicos": {
+          "CONSULTA SIMPLES BD": 2,
+          "ANALISE DE CASO": 2,
+          "DESENVOLVIMENTO": 1,
+          "CADASTRO": 1,
+          "RELATÓRIOS": 1
+        },
+        "top_solicitantes": {
+          "Fabiano de  Paula Ferreira": 3,
+          "Mauricio  Maciel de Oliveira Ferreira": 3,
+          "Caroline Ponciano Carvalho": 1,
+          "Vinicius Rodrigues Pereira": 1,
+          "Adriely Loureiro de Oliveira": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "122023",
+        "122685",
+        "122691",
+        "123688",
+        "126162",
+        "126470",
+        "127087",
+        "128063",
+        "131389",
+        "131803",
+        "131804",
+        "132421"
+      ],
+      "titulo": "Dificuldade na Extração de Relatórios Logix",
+      "descricao": "Resumo executivo para gestor de TI: os chamados concentram-se em solicitações de extração de relatórios do sistema Logix, com variações de escopo e dados requisitados. Os relatos 1 e 2 solicitam a extração do relatório de saídas no período de 01/01/2025 a 31/12/2025, com campos SKU, descrição do item, data de saída, número do pedido e endereço de separação; o chamado 3 pede o relatório de armazenagem (em pallets) para 2025, para os CNPJs indicados; o chamado 4 aponta a necessidade de ajustar o relatório WMS6170 para exibir valores totais em todas as unidades; e o chamado 5 aponta Erro no relatório de posição de estoque, com 1014 itens bloqueados. Observa-se inconsistência entre unidades (Uberlândia vs Ipojuca) quanto à exibição de valores e potenciais discrepâncias de dados (valores ausentes, itens bloqueados). Os sistemas afetados são o Logix e seus serviços correlatos — Esclarecimento de dúvidas, Processamento manual de arquivos, Consulta simples BD, Cadastro de usuário e Análise de caso — dentro da subárea Logística. O impacto é o atraso na obtenção de dados para tomada de decisão, retrabalho para consolidação entre unidades e risco de decisões com dados incompletos. Não há causas técnicas explícitas nos relatos; as informações indicam apenas necessidades de extração com escopo variável e questões de qualidade de dados. Recomenda-se padronizar requisitos de relatório, alinhar escopo entre unidades, validar dados de estoque e disponibilizar relatórios com escopo definido e confiável."
+    },
+    {
+      "cluster_id": 21,
+      "metricas": {
+        "volume": 16,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 13,
+          "PENDENCIA BACKOFFICE": 3
+        },
+        "top_solicitantes": {
+          "Joao Xavier Goncalves Filho": 14,
+          "Paulo Melo": 1,
+          "Jefferson Miranda De Oliveira": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118217",
+        "118305",
+        "118487",
+        "118679",
+        "118807",
+        "119082",
+        "119224",
+        "120421",
+        "121103",
+        "121697",
+        "122724",
+        "122978",
+        "124098",
+        "126510",
+        "118966",
+        "129137"
+      ],
+      "titulo": "Erro na importação de XMLs no processamento manual",
+      "descricao": "Resumo executivo: os chamados apontam falhas repetidas na importação de XMLs no serviço PROCESSAMENTO MANUAL DE ARQUIVOS (Logística) do LOGIX, com erro EDI0050 relatado para NF/NFS de depositantes DBS e ValGroup, abrangendo diversos itens (ex.: NFS 1396-1397, 1398-1400, 16937; NF 6683-6691 e números correlatos), o que impede ou atrasa a importação de documentos de notas fiscais. Os incidentes afetam principalmente o processamento logístico e exigem avaliação do motivo do erro e, quando possível, reimportação manual. Além disso, há uma pendência de baixa de NFS 21101-18 e 20030-18 no serviço PENDENCIA BACKOFFICE para o cliente BIC, que vem sendo tratada pela TI há bastante tempo, necessitando de uma solução definitiva para baixa no sistema. Sistemas afetados: LOGIX — PROCESSAMENTO MANUAL DE ARQUIVOS (LOGISTICA) e LOGIX — PENDENCIA BACKOFFICE (LOGISTICA). Impacto percebido: atrasos no processamento de notas fiscais e pendências de baixa, com dependência de intervenção de TI para reprocessamento ou baixa."
+    },
+    {
+      "cluster_id": 22,
+      "metricas": {
+        "volume": 10,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 7,
+          "CADASTRO": 1,
+          "CENTRAL DE CADASTROS": 1,
+          "CONFIGURAÇÃO DE PERFIL DE USUARIO": 1
+        },
+        "top_solicitantes": {
+          "Warley Aparecido Pereira": 3,
+          "Maycon Douglas": 3,
+          "Eduardo Soares dos Santos": 2,
+          "Winning Santos Silva": 1,
+          "Victor Hugo Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118861",
+        "122677",
+        "123108",
+        "124126",
+        "124125",
+        "128213",
+        "131814",
+        "131890",
+        "132048",
+        "132138"
+      ],
+      "titulo": "Espelhamento de usuário no LOGIX",
+      "descricao": "Resumo executivo: há uma tendência de abertura de chamados para espelhamento de usuário no LOGIX, com foco nos serviços Cadastro de Usuário e Central de Cadastros, na subárea Logística. As solicitações visam duplicar ou transferir o login entre colaboradores e, em alguns casos, o perfil de usuário, incluindo dados de identificação como nome, matrícula e, em itens específicos, credenciais (login e senha) para o usuário a ser espelhado. O impacto percebido é o provisionamento manual de acessos e perfis, o que pode atrasar onboarding/offboarding e exigir validação de permissões entre sistemas. Os sistemas afetados são o LOGIX – Serviço Cadastro de Usuário (Logística) e o LOGIX – Central de Cadastros (Logística). A repetição do tema sugere que o processo de espelhamento pode não estar automatizado ou pode demandar controles adicionais de segurança e aprovação de perfis."
+    },
+    {
+      "cluster_id": 23,
+      "metricas": {
+        "volume": 26,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 24,
+          "CADASTRO": 1,
+          "ERRO SISTÊMICO": 1
+        },
+        "top_solicitantes": {
+          "Joao Xavier Goncalves Filho": 23,
+          "Veronica Lucia Silva de Lemos": 1,
+          "Stephanie Maiara Soares de Brito": 1,
+          "Paulo Borges de Oliveira": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 11
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 9
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117661",
+        "117820",
+        "117958",
+        "118080",
+        "118800",
+        "118801",
+        "118755",
+        "118682",
+        "119319",
+        "119197",
+        "119641",
+        "119991",
+        "120099",
+        "120586",
+        "121028",
+        "122085",
+        "122202",
+        "122585",
+        "122587",
+        "122725",
+        "123105",
+        "123282",
+        "124240",
+        "124470",
+        "125563",
+        "128054"
+      ],
+      "titulo": "Erro na importação de XML no processamento manual",
+      "descricao": "Chamados indicam erro persistente na importação de XML da nota fiscal via o serviço PROCESSAMENTO MANUAL DE ARQUIVOS, subárea LOGÍSTICA, no sistema LOGIX. Em todos os casos o arquivo apresenta erro na EDI0050 durante a importação, impedindo o processamento da NF. As NFs variam (1433, 17505, 1378, 6, 1448) e os depositantes (DBS, Vitoria Regia, HARMAN). O impacto é o atraso ou interrupção no fluxo de recebimento e registro de notas fiscais, com efeitos indiretos em operações logísticas e faturamento. Sistemas afetados: LOGIX, PROCESSAMENTO MANUAL DE ARQUIVOS, LOGÍSTICA."
+    },
+    {
+      "cluster_id": 24,
+      "metricas": {
+        "volume": 11,
+        "top_servicos": {
+          "INTEGRAÇÕES": 3,
+          "CADASTRO": 3,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 2,
+          "INDISPONIBILIDADE": 1,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Maria Helena Ferreira da Silva": 5,
+          "Sueliton Gomes Rodrigues": 4,
+          "Emerson Danillo de Souza Silva": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 6
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117898",
+        "118075",
+        "122641",
+        "122675",
+        "126362",
+        "126494",
+        "126864",
+        "126918",
+        "127097",
+        "127403",
+        "133333"
+      ],
+      "titulo": "Erros graves bloqueiam importação de NF",
+      "descricao": "Os chamados indicam falhas repetidas na importação de notas fiscais em XML (principalmente de Bajaj/Asibras), bloqueando o fluxo de integração entre LOGIX e o restante do ERP. Em diversas ocorrências, após a importação, a nota não se reflete na tela 3760 e não há retorno por e-mail; ao tentar assumir o erro, o sistema exibe apenas 'erro grave' sem detalhar o código ou a causa, dificultando a identificação da raiz do problema. O impacto é transversal aos serviços LOGIX de Integrações, Indisponibilidade, Processamento Manual de Arquivos, Recebimento e Cadastro, afetando cadastros e o processamento de arquivos e o recebimento de notas, com menções a NF Asibras e NF Bajaj."
+    },
+    {
+      "cluster_id": 25,
+      "metricas": {
+        "volume": 14,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 11,
+          "CONFIGURAÇÃO DE PERFIL DE USUARIO": 2,
+          "CADASTRO": 1
+        },
+        "top_solicitantes": {
+          "Welington dos Santos Borges": 11,
+          "Ligia Zago Brezolim Feitoza": 1,
+          "Sueliton Gomes Rodrigues": 1,
+          "Emerson Danillo de Souza Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118047",
+        "118051",
+        "119722",
+        "119973",
+        "121027",
+        "123159",
+        "123762",
+        "124730",
+        "125104",
+        "126178",
+        "127671",
+        "131818",
+        "132498",
+        "132496"
+      ],
+      "titulo": "Dificuldade no cadastro de usuário",
+      "descricao": "Chamados concentrados no LOGIX, com o serviço Cadastro de Usuário (e, em alguns casos, Cadastro) na área Logística. As solicitações envolvem a criação de novos usuários (muitas vezes com dados fornecidos em anexos) e a vinculação desses usuários a depositantes ou a recursos operacionais como auxiliar de descarga, bem como a inclusão desses usuários em propostas de depósitos. Em alguns itens há referência a validação com terceiros (ex.: Marcia). O impacto percebido é o atraso no onboarding de usuários e a necessidade de intervenção manual para processar cadastros e vínculos, o que pode atrasar operações logísticas. Sistemas afetados: LOGIX, módulos de Cadastro de Usuário e Configuração de Perfil de Usuário, além dos cadastros de depositantes vinculados aos usuários."
+    },
+    {
+      "cluster_id": 26,
+      "metricas": {
+        "volume": 27,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 20,
+          "PENDENCIA BACKOFFICE": 1,
+          "CENTRAL DE CADASTROS": 1,
+          "HOMOLOGAÇÃO": 1,
+          "CADASTRO DE USUARIO": 1
+        },
+        "top_solicitantes": {
+          "Joaquim Targino da Silva Neto": 7,
+          "Rebeca Braga Faria": 3,
+          "Jonathan Goncalves Pinheiro": 2,
+          "Paulo Melo": 1,
+          "Enio Andreilson de Araujo Sales": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 5
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118201",
+        "118427",
+        "118554",
+        "118572",
+        "118547",
+        "119426",
+        "121951",
+        "123198",
+        "123340",
+        "124059",
+        "124498",
+        "124529",
+        "124835",
+        "125522",
+        "126286",
+        "126707",
+        "128249",
+        "128425",
+        "129211",
+        "129876",
+        "130247",
+        "130585",
+        "131247",
+        "132116",
+        "132346",
+        "132880",
+        "133363"
+      ],
+      "titulo": "Criação de acessos no Logix",
+      "descricao": "Resumo executivo: a demanda principal nos tickets analisados é a criação de acessos de usuários no sistema LOGIX, serviço CADASTRO DE USUÁRIO, com foco na área LOGÍSTICA. Os chamados costumam trazer dados do colaborador—nome, matrícula, cargo, admissão ou data de início, local de trabalho e, em alguns casos, CPF—e solicitam a geração de um login ou de um usuário espelho. O volume de ocorrências é relevante, indicando uma demanda contínua de onboarding/provisioning para a equipe de Logística. Os tickets afetam o LOGIX e o subserviço CADASTRO DE USUÁRIO, apresentando impactos diretos no acesso de novos colaboradores e em mudanças de função, o que pode atrasar operações que dependem de autenticação. Observa-se, ainda, um ticket relacionado a treinamento de inventário (Homologação), o que demonstra dispersão de solicitações, mas a tendência dominante é a criação de usuários."
+    },
+    {
+      "cluster_id": 27,
+      "metricas": {
+        "volume": 12,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 12
+        },
+        "top_solicitantes": {
+          "Caroline Ponciano Carvalho": 4,
+          "Enio Andreilson de Araujo Sales": 2,
+          "Vinicius Alves de Freitas": 2,
+          "João Luiz Miguel Aires": 1,
+          "Maycon Douglas": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117923",
+        "118640",
+        "119891",
+        "119881",
+        "120746",
+        "121997",
+        "124724",
+        "127896",
+        "128419",
+        "129120",
+        "129935",
+        "130586"
+      ],
+      "titulo": "Dificuldade na criação de usuário no LOGIX",
+      "descricao": "Resumo executivo: há demanda recorrente de cadastramento e replicação de usuários no LOGIX, serviço Cadastro de Usuário, sub-área Logística. Os tickets descrevem criação de usuários para acesso a agendamento de Inbound e espelhamento de perfis de usuários existentes, com dados como nome, matrícula, cargo, área e local de trabalho, além da replicação de acessos para múltiplas empresas (01, 02, 03, 05 e 06) e para perfis de usuários como Giovanna Mendes Martins. Embora variem os nomes envolvidos (Lays Malta, Adaias Jose da Silva, Arthur Rodrigues dos Santos, Kleber Ferreira etc.), o padrão é provisionar contas com login espelho e permissões correspondentes. O impacto observado é o atraso no provisionamento de acessos para a equipe de Logística, com efeitos sobre o agendamento de inbound e operações de transporte. Os sistemas afetados são o LOGIX, com o serviço Cadastro de Usuário e a sub-área Logística. Recomenda-se padronizar o processo de criação/replicação de usuários, incluindo definição de perfis de acesso, validação de campos (matrícula, local de trabalho) e automação de espelhamento para reduzir retrabalho e risco de inconsistências."
+    },
+    {
+      "cluster_id": 28,
+      "metricas": {
+        "volume": 16,
+        "top_servicos": {
+          "INTEGRAÇÕES": 9,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 4,
+          "ERRO OPERACIONAL": 3
+        },
+        "top_solicitantes": {
+          "Guilherme Augusto Siqueira Vecchi Pinto": 15,
+          "Wilker Gabriel Cezario da Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117606",
+        "118422",
+        "119623",
+        "119763",
+        "121568",
+        "122162",
+        "122207",
+        "123476",
+        "124457",
+        "125725",
+        "127316",
+        "128700",
+        "128818",
+        "133115",
+        "133349",
+        "133433"
+      ],
+      "titulo": "Falha na Integração de Pedidos Rain Bird",
+      "descricao": "Resumo executivo: os chamados indicam falha recorrente na integração Rain Bird no LOGIX, impactando o módulo de Integrações da área Logística. Em diversos pedidos, os itens não aparecem no monitor nem sobem para produção (exemplos 107_1_6073_5, 107_1_6335_12, 107_1_6352_33/34). Há ainda registros de notas fiscais não sendo integradas automaticamente ao monitor de expedições (notas fiscais listadas 1250445 a 1250507) e necessidade de verificação de cadastro de cidade para liberação de pedidos (pedido 107_1_6088_1). O problema envolve principalmente LOGIX, o módulo de Integrações/Logística e o monitor de expedições, com impacto de atrasos na expedição, necessidade de verificação/manutenção manual e risco de perda de rastreabilidade das notas, afetando produção e entregas aos clientes Rain Bird."
+    },
+    {
+      "cluster_id": 29,
+      "metricas": {
+        "volume": 17,
+        "top_servicos": {
+          "LIBERAÇÃO DE ACESSOS ": 8,
+          "CADASTRO": 3,
+          "CADASTRO DE USUÁRIO": 2,
+          "CONFIGURAÇÃO DE PERFIL DE USUARIO": 2,
+          "CONSULTA SIMPLES BD": 1
+        },
+        "top_solicitantes": {
+          "Odair de Pablo Cordeiro Carvalho": 9,
+          "Jose Alves Da Silva Neto": 1,
+          "Maycon Douglas": 1,
+          "Aleff Herculano da Silva": 1,
+          "Denes Marques Gualberto": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118103",
+        "118104",
+        "118105",
+        "118106",
+        "118107",
+        "118108",
+        "118109",
+        "119019",
+        "122343",
+        "122877",
+        "126942",
+        "128353",
+        "128921",
+        "129093",
+        "132520",
+        "132072",
+        "133765"
+      ],
+      "titulo": "Liberação de acessos no Logix solicitada",
+      "descricao": "Conjunto de chamados da área de Logística envolvendo liberação e ajuste de acessos no LOGIX. Os pedidos concentram-se na concessão de permissões para conferentes em transações específicas (6533, 6448, 6065 e 6334) para usuários MAYKON PATRYCK, LUAN HENRIQUE e RONEI DE ANDRADE, com instruções de espelhamento de permissões entre usuários. Também há solicitações de retirada de acessos para reduzir o conjunto de usuários autorizados, mantendo apenas wsantos e jpaula, com possível criação de grupo de acesso para modificações, além de um pedido de cadastro de usuário para acesso a Logix Relatórios (6355 e 3760). Impacto percebido: risco de concessões indevidas, inconsistência entre acessos de diferentes usuários e potenciais atrasos operacionais para disponibilidade de transações. Sistemas afetados: LOGIX (módulos Liberação de Acessos, Cadastro de Usuário) e Logix Relatórios. Recomendação para gestão: padronizar o fluxo de liberação/retirada de acessos, validar vínculos entre usuário, matrícula e as transações solicitadas, e definir regras claras de acesso a transações críticas para evitar permissões excessivas ou conflitantes."
+    },
+    {
+      "cluster_id": 30,
+      "metricas": {
+        "volume": 47,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 8,
+          "ANALISE DE CASO": 7,
+          "ERRO OPERACIONAL": 6,
+          "ARMAZÉM": 5,
+          "INTEGRAÇÕES": 3
+        },
+        "top_solicitantes": {
+          "Matheus Moreira Lemes": 8,
+          "Juliana Sabrina  Palmeira da Silva": 7,
+          "Fabiano de  Paula Ferreira": 4,
+          "Karla Lohanna Martins Goncalves": 4,
+          "Juscelyo Rangell Assis Paula": 3
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 7
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 11
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118153",
+        "118488",
+        "118296",
+        "119014",
+        "118788",
+        "119379",
+        "119636",
+        "120947",
+        "121217",
+        "117729",
+        "120188",
+        "120910",
+        "121811",
+        "122255",
+        "122831",
+        "122817",
+        "123707",
+        "125123",
+        "125753",
+        "125797",
+        "125402",
+        "127060",
+        "127517",
+        "127975",
+        "128059",
+        "128372",
+        "128364",
+        "128206",
+        "129375",
+        "129828",
+        "129416",
+        "130139",
+        "130120",
+        "130755",
+        "131762",
+        "132017",
+        "132316",
+        "132198",
+        "128495",
+        "132812",
+        "132574",
+        "132522",
+        "133051",
+        "133099",
+        "133066",
+        "133253",
+        "130699"
+      ],
+      "titulo": "Falhas variadas no Logix impactam logística",
+      "descricao": "Este conjunto de chamados aponta falhas distintas no módulo LOGIX relacionadas à área de logística. Observa-se que notas com itens bloqueados não sobem para o Logix, exigindo importação manual de XMLs e planilhas para consulta, o que aumenta o tempo de processamento. Há ainda um problema de faturamento em que o sistema não contabiliza itens armazenados, impossibilitando a geração de faturas conforme esperado. Outros casos envolvem valor incorreto de NF de entrada, o que afeta o cálculo de seguro e requer correção para refletir o valor real. Também há divergência entre CESV, etiqueta e o físico da contagem, demandando ajuste de dados no sistema. Por fim, há necessidade de ajustar a View de depositante para refletir volumes conforme o XML de venda do cliente e o WMS. Esses episódios impactam a visibilidade de itens bloqueados, atrasos no faturamento, inconsistências entre módulos (Recebimento, Faturamento de Serviço, Análise de Caso) e requerem uma resposta coordenada para alinhamento de dados e regras de negócios no Logix."
+    },
+    {
+      "cluster_id": 31,
+      "metricas": {
+        "volume": 29,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 17,
+          "ERRO OPERACIONAL": 6,
+          "RECEBIMENTO": 3,
+          "INTEGRAÇÕES": 1,
+          "INDISPONIBILIDADE": 1
+        },
+        "top_solicitantes": {
+          "Veronica Lucia Silva de Lemos": 6,
+          "Adriely Loureiro de Oliveira": 5,
+          "Emerson Oliveira Brito dos Santos": 4,
+          "Douglas Bitencourt Dos Santos": 3,
+          "Maria Helena Ferreira da Silva": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 9
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119404",
+        "119972",
+        "120341",
+        "117790",
+        "117919",
+        "121501",
+        "124020",
+        "124150",
+        "124656",
+        "125620",
+        "126759",
+        "127112",
+        "127664",
+        "127977",
+        "128319",
+        "128650",
+        "129098",
+        "129574",
+        "129663",
+        "130490",
+        "130836",
+        "130860",
+        "130805",
+        "131043",
+        "130965",
+        "132366",
+        "132549",
+        "133211",
+        "133341"
+      ],
+      "titulo": "XMLs pendentes na pasta de entrada Cross",
+      "descricao": "Resumo executivo: os relatos indicam falha recorrente no processamento de XMLs no fluxo Cross dentro do LOGIX. Os arquivos ficam presos na pasta de entrada ou não sobem para a pasta de importação Cross, gerando pendências de importação e lentidão no processamento. Observa-se XMLs pendentes, arquivos que não são importados e atrasos no fluxo de notas fiscais Cross. Os chamados afetam primariamente o serviço PROCESSAMENTO MANUAL DE ARQUIVOS (com foco na pasta de entrada/Cross) e o serviço RECEBIMENTO, com um caso de indisponibilidade. A sub-área impactada é LOGISTICA. O impacto percebido é o atraso no recebimento e no processamento de notas/faturas Cross, com acúmulo de XMLs na pasta de entrada e demora na conclusão de importações, o que pode comprometer prazos e follow-up de pedidos."
+    },
+    {
+      "cluster_id": 32,
+      "metricas": {
+        "volume": 14,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 8,
+          "INDISPONIBILIDADE": 1,
+          "LIBERAÇÃO DE ACESSO EM PASTAS OU ARQUIVOS": 1,
+          "INTEGRAÇÕES": 1,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Joao Xavier Goncalves Filho": 6,
+          "Danilo Mariano Viana": 2,
+          "Juliana Sabrina  Palmeira da Silva": 1,
+          "Caroline Ponciano Carvalho": 1,
+          "Keison Lima da Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119227",
+        "119362",
+        "120742",
+        "122292",
+        "122555",
+        "122671",
+        "123095",
+        "125443",
+        "125998",
+        "126687",
+        "129331",
+        "131444",
+        "132608",
+        "132850"
+      ],
+      "titulo": "Falha na importação de XML",
+      "descricao": "Resumo executivo: os chamados indicam falha recorrente no processamento manual de arquivos no Logix, serviço Processamento Manual de Arquivos, sub-área Logística. Em todos os casos, os XMLs de faturamento não são importados; as pastas de importação ficam travadas ou os arquivos permanecem presos na origem, com referências a caminhos de rede internos. Em alguns cenários, os arquivos são movidos automaticamente para o diretório de erro de processamento. O impacto é direto no processamento de notas fiscais dos depositantes e na disponibilidade de dados para faturamento. Observa-se ainda uma tentativa de automação do fluxo de importação (chamado 4, área de Desenvolvimento), que não está funcionando, apontando para necessidade de alinhamento entre áreas para restabelecer o fluxo. Sistemas afetados: LOGIX, serviço Processamento Manual de Arquivos, sub-área Logística; potencial impacto em integrações associadas ao recebimento/importação de XML."
+    },
+    {
+      "cluster_id": 33,
+      "metricas": {
+        "volume": 10,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 4,
+          "RECEBIMENTO": 3,
+          "ERRO OPERACIONAL": 1,
+          "INDISPONIBILIDADE": 1,
+          "INTEGRAÇÕES": 1
+        },
+        "top_solicitantes": {
+          "Sueliton Gomes Rodrigues": 5,
+          "Maria Helena Ferreira da Silva": 2,
+          "Giovanna Mendes Martins": 1,
+          "Warley Aparecido Pereira": 1,
+          "Emerson Danillo de Souza Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117644",
+        "119938",
+        "120917",
+        "119412",
+        "123827",
+        "129793",
+        "131161",
+        "132695",
+        "132969",
+        "133610"
+      ],
+      "titulo": "XML não processado na pasta origem",
+      "descricao": "Chamados indicam falha recorrente no processamento de XML de notas dentro do LOGIX, afetando os serviços de Recebimento e Processamento Manual de Arquivos. Em diversos casos (notas 8928; 399 a 404; 410; 13 XML de recebimento Canadian; nota 1760022 de fornecedores da Souza Cruz), os XML foram importados para a pasta origem ou para a pasta de entrada, porém não avançaram para processamento ou integração, permanecendo travados. O impacto observado é o atraso no registro de notas de recebimento, possível acúmulo de arquivos na pasta de origem/entrada e atraso nos fluxos downstream de recebimentos e pagamentos. Os sistemas afetados são o LOGIX, com ênfase nos serviços Recebimento e Processamento Manual de Arquivos, havendo, ainda, menção a Erro Operacional como categoria do chamado. Não há informações de causas técnicas explícitas; os relatos indicam um problema de ingestão/encaminhamento de XML para processamento que precisa ser apurado com maior detalhamento."
+    },
+    {
+      "cluster_id": 34,
+      "metricas": {
+        "volume": 16,
+        "top_servicos": {
+          "INTEGRAÇÕES": 8,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 4,
+          "CADASTRO": 1,
+          "ESCLARECIMENTO DE DUVIDAS": 1,
+          "ANALISE DE CASOS": 1
+        },
+        "top_solicitantes": {
+          "Stephanie Maiara Soares de Brito": 9,
+          "Emilly da Silva Souza": 2,
+          "Joao Xavier Goncalves Filho": 1,
+          "Emerson Danillo de Souza Silva": 1,
+          "Veronica Lucia Silva de Lemos": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117957",
+        "118301",
+        "118601",
+        "118786",
+        "118577",
+        "120384",
+        "122612",
+        "123432",
+        "123597",
+        "127116",
+        "127875",
+        "128048",
+        "129606",
+        "131122",
+        "133485",
+        "133796"
+      ],
+      "titulo": "Erro de Cadastro Impede Importação de XML",
+      "descricao": "Os chamados indicam falha recorrente na importação de XML no LOGIX causada por cadastro de transportadora ausente ou incorreto, com destaque para a transportadora Joao Paulo Barbosa de Marins (COLIBRI). Notas como 6166 e 6331-6333 não integram o LOGIX devido a erro de cadastro, impactando diretamente o faturamento e a conclusão de cobranças; em alguns casos, mesmo após ajustes de cadastro, o problema persiste, exigindo intervenção de integração para finalizar o faturamento. Além disso, há relatos de divergência de valores entre o XML e o Protheus (filiais 0602-LOGIX/0607-PROTHEUS), sugerindo possível origem na cadeia de integração entre LOGIX e Protheus. Há ainda referências a notas que não estão parametrizadas para recebimento por divergência de CNPJ (Triumph). O impacto observado é atraso no faturamento, retrabalho de validação de cadastros de transportadoras e validação de dados da nota, com sistemas afetados LOGIX (integrações e processamento manual de arquivos) e Protheus, envolvendo clientes como VALGroup, Colibri/Joao Paulo Barbosa de Marins e Triumph."
+    },
+    {
+      "cluster_id": 35,
+      "metricas": {
+        "volume": 12,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 7,
+          "CENTRAL DE CADASTROS": 3,
+          "CADASTRO": 2
+        },
+        "top_solicitantes": {
+          "Welington dos Santos Borges": 2,
+          "Ana Daiane do Nascimento Martins": 1,
+          "Mauro Sergio Sampaio Farias": 1,
+          "Jefferson Miranda De Oliveira": 1,
+          "Warley Aparecido Pereira": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117645",
+        "119507",
+        "120773",
+        "122107",
+        "122808",
+        "122684",
+        "124369",
+        "125856",
+        "126552",
+        "128630",
+        "128768",
+        "130530"
+      ],
+      "titulo": "Dificuldade na Liberação de Acesso Logístico",
+      "descricao": "Resumo executivo: as amostras indicam demanda recorrente por liberação de acesso a componentes do LOGIX, principalmente aos módulos de CADASTRO DE USUÁRIO e CENTRAL DE CADASTROS, com envolvimento da área logística. As solicitações abrangem perfis variados (estagiários, assistentes e funcionários com várias matrículas) e têm como objetivo conceder permissões de leitura/consulta, bem como habilitar cadastros de itens de armazenagem e, em alguns casos, a importação de XMLs. Em várias ocorrências o acesso está bloqueado ou ainda não liberado, impedindo atividades de conferência, recebimento, validações físicas e consultas de informações de itens, o que impacta diretamente os processos logísticos. Os chamados mencionam a tela MAN10021 e o acesso para consulta, sugerindo necessidade de padronização de critérios de permissões entre filiais (incluindo Filial 05 e 06) e equipes de TI responsáveis pela liberação."
+    },
+    {
+      "cluster_id": 36,
+      "metricas": {
+        "volume": 26,
+        "top_servicos": {
+          "CADASTRO": 9,
+          "CADASTRO DE USUÁRIO": 8,
+          "CENTRAL DE CADASTROS": 3,
+          "CENTRAL DE CADASTRO": 2,
+          "INDISPONIBILIDADE": 1
+        },
+        "top_solicitantes": {
+          "José Josenilson": 5,
+          "Larayne Lua Pereira Araújo": 3,
+          "Aleff Herculano da Silva": 2,
+          "João Luiz Miguel Aires": 2,
+          "Mauricio  Maciel de Oliveira Ferreira": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 6
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118144",
+        "119341",
+        "119516",
+        "120639",
+        "122180",
+        "122178",
+        "123100",
+        "123263",
+        "124501",
+        "124519",
+        "125852",
+        "125927",
+        "126001",
+        "126788",
+        "128489",
+        "128623",
+        "129101",
+        "130350",
+        "130453",
+        "130963",
+        "131726",
+        "131729",
+        "132089",
+        "132474",
+        "132933",
+        "133175"
+      ],
+      "titulo": "Dificuldade na Liberação de Acesso ao LOGIX",
+      "descricao": "Resumo executivo: os chamados concentram-se na liberação de acessos a telas do LOGIX nas áreas de CADASTRO, CADASTRO DE USUÁRIO e CENTRAL DE CADASTRO, com foco na logística. Os usuários pedem acesso a telas específicas (6902, 6101, 60096, 6235, 6355, 3760) para consulta de informações como serial numbers, relatórios ou exportação de documentos, incluindo referências a CRM FOCAL/CANADIAL, usuário espelho e nomes como Mario Altamir e João Aires. O impacto é a indisponibilidade de informações e operações dependentes de permissões, gerando atrasos em cadastros, consultas e geração de relatórios; os sistemas afetados incluem LOGIX, módulos de CADASTRO e, em um caso, WMS 6173. Não há indicação de falha de software; trata-se de gestão de permissões de acesso e onboarding de usuários."
+    },
+    {
+      "cluster_id": 37,
+      "metricas": {
+        "volume": 22,
+        "top_servicos": {
+          "ERRO OPERACIONAL": 13,
+          "ERRO SISTÊMICO": 5,
+          "PROBLEMAS DE IMPRESSÃO": 2,
+          "ANALISE DE CASOS": 1,
+          "CADASTRO": 1
+        },
+        "top_solicitantes": {
+          "Jose Alves Da Silva Neto": 6,
+          "Romario Correa Araujo": 5,
+          "Warley Aparecido Pereira": 3,
+          "Odair de Pablo Cordeiro Carvalho": 1,
+          "David de Oliveira Lima": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117658",
+        "117775",
+        "119659",
+        "120040",
+        "120234",
+        "120550",
+        "119885",
+        "119527",
+        "120343",
+        "119590",
+        "123451",
+        "123456",
+        "124451",
+        "125690",
+        "127927",
+        "127926",
+        "127988",
+        "128360",
+        "128418",
+        "129121",
+        "131157",
+        "131203"
+      ],
+      "titulo": "Falha na Impressão de Etiquetas Logix",
+      "descricao": "Resumo executivo: Chamados indicam falhas recorrentes no processo de etiquetagem no LOGIX, impactando a área de logística. Os relatos descrevem falta de etiquetas já impressas, dificuldade em evidenciar a sequência de etiquetas/volumes, e informações incorretas exibidas nas etiquetas (por exemplo, em vez do número da etiqueta aparece a data da bipagem, ou CESV substitui a etiqueta prevista). Também há referência a uma etiqueta agrupadora com 64 caixas. O impacto observado inclui atraso nas operações de separação e transbordo, risco de divergências de estoque e retrabalho, além de comprometimento da rastreabilidade de pallets e itens. Sistemas afetados são LOGIX, com serviços ERRO OPERACIONAL e ERRO SISTÊMICO, sub-área Logística. Os relatos indicam um problema de etiquetagem com traços operacionais e potenciais causas sistêmicas, exigindo correção de dados, ajustes de impressão e validação de conteúdos antes da emissão."
+    },
+    {
+      "cluster_id": 38,
+      "metricas": {
+        "volume": 18,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 7,
+          "INTEGRAÇÕES": 4,
+          "ERRO OPERACIONAL": 3,
+          "ESCLARECIMENTO DE DUVIDAS": 1,
+          "ANALISE DE CASO": 1
+        },
+        "top_solicitantes": {
+          "Rafaella Oliveira Silva": 4,
+          "Adriely Loureiro de Oliveira": 4,
+          "Veronica Lucia Silva de Lemos": 3,
+          "Tulio Candido de Oliveira": 1,
+          "Danilo Mariano Viana": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118355",
+        "118971",
+        "120044",
+        "120187",
+        "120804",
+        "119752",
+        "122745",
+        "122938",
+        "124357",
+        "124444",
+        "125073",
+        "125680",
+        "125530",
+        "125519",
+        "125957",
+        "129737",
+        "132514",
+        "132511"
+      ],
+      "titulo": "Falha no processamento de notas fiscais",
+      "descricao": "Diversos chamados relatam falha no processamento de notas fiscais no módulo Processamento Manual de Arquivos do LOGIX. Os sintomas variam: notas não processadas sem mensagem de erro no e-mail (ex.: NF 332594 e 332595); notas postadas na pasta para importação que não sobem ao sistema (ex.: notas de saída 333758 e 333755, envio de XML em 01/09); e erros graves identificados (NF 107470 HARMAN CROSS, NF 41664 COPAG CROSS) conforme anexos. Em um caso, as NF não são processadas pela Central de Pedidos e apresentam erros anexados. A consequência é atraso no processamento de notas, retrabalho e possíveis impactos em faturamento e prazos de entrega para clientes. Sistemas afetados: LOGIX, serviço Processamento Manual de Arquivos; há menção ocasional à Central de Pedidos. Recomenda-se verificar a integridade dos arquivos XML enviados, a pasta de importação e as mensagens de erro anexadas para diagnóstico e prevenção de recorrência."
+    },
+    {
+      "cluster_id": 39,
+      "metricas": {
+        "volume": 32,
+        "top_servicos": {
+          "RECEBIMENTO": 7,
+          "INTEGRAÇÕES": 5,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 5,
+          "ERRO SISTÊMICO": 4,
+          "ERRO OPERACIONAL": 3
+        },
+        "top_solicitantes": {
+          "Beatriz  Santana Santos Ribeiro": 5,
+          "Adriely Loureiro de Oliveira": 5,
+          "Joao Xavier Goncalves Filho": 3,
+          "Jefferson Miranda De Oliveira": 3,
+          "Keison Lima da Silva": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 11
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 9
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118902",
+        "120779",
+        "122124",
+        "124639",
+        "125832",
+        "125714",
+        "125945",
+        "126160",
+        "127936",
+        "128412",
+        "128731",
+        "129065",
+        "129169",
+        "129384",
+        "129555",
+        "129710",
+        "129866",
+        "130419",
+        "130832",
+        "130926",
+        "131013",
+        "132200",
+        "132266",
+        "132042",
+        "132521",
+        "132877",
+        "133144",
+        "133393",
+        "133524",
+        "133523",
+        "133722",
+        "133732"
+      ],
+      "titulo": "Erro no recebimento de notas fiscais",
+      "descricao": "Os chamados indicam falhas recorrentes no recebimento e no processamento de notas, com mensagens de erro ao gerar CESV/recebimento (exemplos: emissão de notas e recebimento de motos). Em um caso de erro sistêmico, notas vinculadas a uma carga Cross‑Docking aparecem com status Acolhido, gerando urgência pela liberação, pois transportadoras aguardam o destino da carga. Há ainda solicitações relacionadas à internalização de notas de armazenagem e à extração de chassis expedidos, o que sugere gargalo ou inconsistência no fluxo de conferência entre recebimento, armazenagem e envio. O sistema afetado é o LOGIX, principalmente o serviço RECEBIMENTO e os processos de NF/CESV e Cross‑Docking. O impacto observado é atraso no recebimento, bloqueio temporário de liberações de cargas e necessidade de intervenção imediata para evitar impactos na cadeia de suprimentos, com o cliente Triumph sendo referência. Recomenda-se revisar validações de NF no recebimento, tratamento de mensagens de erro no CESV, e o fluxo de integração com armazenagem e Cross‑Docking para reduzir recorrência."
+    },
+    {
+      "cluster_id": 40,
+      "metricas": {
+        "volume": 20,
+        "top_servicos": {
+          "INTEGRAÇÕES": 9,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 7,
+          "ERRO OPERACIONAL": 2,
+          "CADASTRO": 1,
+          "ANALISE DE CASO": 1
+        },
+        "top_solicitantes": {
+          "Wilker Gabriel Cezario da Silva": 7,
+          "Guilherme Augusto Siqueira Vecchi Pinto": 5,
+          "Karla Lohanna Martins Goncalves": 4,
+          "Emerson Danillo de Souza Silva": 2,
+          "Carolynne Angelica Sousa Chaves": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118071",
+        "120788",
+        "120901",
+        "121392",
+        "122031",
+        "122704",
+        "122757",
+        "122672",
+        "123265",
+        "123261",
+        "124515",
+        "124493",
+        "125062",
+        "127547",
+        "128496",
+        "128498",
+        "128730",
+        "128870",
+        "130061",
+        "133763"
+      ],
+      "titulo": "Falha na Integração de Pedidos e Notas",
+      "descricao": "Os chamados indicam falhas repetidas na integração de dados no LOGIX, envolvendo os serviços de Integrações, Erro Operacional e Processamento Manual de Arquivos, com foco na área logística. Os sintomas recorrentes incluem pedidos não recebidos pelo LOGIX (inclusive casos em que itens com referências alteradas geram duplicidade ou não são acolhidos), notas enviadas pelo cliente que não integram mesmo com anexos XML, e cadastros de cidade ausentes que impedem a correta entrega (ex.: TODAYTEC). Em alguns tickets, arquivos XMLs e planilhas enviados pelo cliente não são processados, exigindo reprocessamento manual e verificações no painel EDI0050. O impacto observado é o atraso no processamento de pedidos, necessidade de reprocessamento por clientes (como Canadian), aumento de tickets e risco de inconsistências de estoque ou faturamento. Sistemas afetados: LOGIX (Integrações, Erro Operacional, Processamento Manual de Arquivos), fluxos de integração EDI e cadastros de cidade. Recomenda-se aos gestores validar: a consistência dos cadastros (especialmente cidades), o fluxo EDI entre clientes e LOGIX, o mapeamento de itens/Referências entre XMLs e pedidos, e as rotinas de processamento de notas/arquivos para reduzir falhas de integração e o retrabalho de reprocessamento."
+    },
+    {
+      "cluster_id": 41,
+      "metricas": {
+        "volume": 19,
+        "top_servicos": {
+          "INTEGRAÇÕES": 11,
+          "ERRO OPERACIONAL": 3,
+          "ERRO SISTÊMICO": 2,
+          "INDISPONIBILIDADE": 1,
+          "HOMOLOGAÇÃO": 1
+        },
+        "top_solicitantes": {
+          "Carolynne Angelica Sousa Chaves": 7,
+          "Maria Helena Ferreira da Silva": 5,
+          "Emerson Danillo de Souza Silva": 3,
+          "Jessica Oliveira Giroldo": 2,
+          "Carlos Augusto Sena Terra": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117881",
+        "118260",
+        "118993",
+        "120313",
+        "120592",
+        "121708",
+        "122189",
+        "122371",
+        "122769",
+        "123151",
+        "124237",
+        "125117",
+        "124912",
+        "127239",
+        "128185",
+        "130927",
+        "131087",
+        "131191",
+        "132954"
+      ],
+      "titulo": "Falha na ingestão de pedidos Canadian",
+      "descricao": "Os relatos indicam falhas recorrentes na integração entre o LOGIX e o fornecedor Canadian. Observam-se ingestão inconsistente de pedidos pela API (pedidos não aparecem ou aparecem como duplicados na API/monitor), falha no envio automático de posição de estoque por e-mail (relatórios não são entregues ao grupo infposestoque.canadianipo@supplog.com), erros ao efetuar cancelamentos de pedidos (mensagem de erro ao estornar itens para o estoque), necessidade de exclusão de informações de testes que geram pendências no sistema e instrução para redirecionar o processamento via API para evitar processamento por API. Impacto percebido: atraso ou indisponibilidade de atualizações de estoque e status de pedidos, impacto operacional em logística e monitoramento, com múltiplos usuários e componentes do LOGIX (serviço INTEGRAÇÕES, sub-área LOGISTICA)."
+    },
+    {
+      "cluster_id": 42,
+      "metricas": {
+        "volume": 13,
+        "top_servicos": {
+          "DESENVOLVIMENTO": 5,
+          "MELHORIA": 3,
+          "ARMAZÉM": 2,
+          "DESENVOLIVMENTO": 1,
+          "MELHORIAS": 1
+        },
+        "top_solicitantes": {
+          "Juscelyo Rangell Assis Paula": 4,
+          "Mauricio  Maciel de Oliveira Ferreira": 2,
+          "Gabriel Rosa de Castro": 2,
+          "Warley Aparecido Pereira": 2,
+          "Joao Xavier Goncalves Filho": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 6
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117733",
+        "122064",
+        "123189",
+        "123882",
+        "119517",
+        "128152",
+        "130407",
+        "132263",
+        "132284",
+        "132264",
+        "133048",
+        "133385",
+        "133475"
+      ],
+      "titulo": "Bloqueios no empilhamento e ajustes no LOGIX Armazém",
+      "descricao": "Resumo executivo para gestor de TI. Os chamados indicam uma dispersão de demandas no módulo LOGIX voltadas para ARMAZÉM/LOGÍSTICA: desde bloqueios operacionais no empilhamento (CH1) até problemas de configuração de equipamento que não restringe a movimentação a 1 palete (CH4). Existem também solicitações de melhoria de usabilidade e fluxo de dados, como ajustar a ordem de campos na tela de conferência da transação WMS6242 para exibir o destino após a origem (conferência via plano WMS6355) (CH2) e adicionar leitura de data de validade no QR Code, com a leitura atual de seis atributos expandida para incluir a data de validade no estoque (CH3). Por fim, há uma demanda de desenvolvimento para identificar operações de transbordo com um identificador na WMS 6448, com visão futura de classificação por tipo de operação (Fracionado, Lotação, Transbordo, Crossdocking, etc.) (CH5). O conjunto impacta operações de estoque, conferência, recebimento/armazenagem e transbordo, com risco de atrasos, inconsistências de dados e maior dependência de intervenções manuais. Sistemas impactados: LOGIX, com módulos de ARMAZÉM e MELHORIAS/DESENVOLVIMENTO, incluindo transações WMS6242, WMS6355 e WMS6448."
+    },
+    {
+      "cluster_id": 43,
+      "metricas": {
+        "volume": 15,
+        "top_servicos": {
+          "ERRO OPERACIONAL": 8,
+          "EXPEDIÇÃO": 3,
+          "INDISPONIBILIDADE": 2,
+          "ERRO SISTÊMICO": 2
+        },
+        "top_solicitantes": {
+          "Douglas Bitencourt Dos Santos": 3,
+          "Eduardo Soares dos Santos": 3,
+          "Joaquim Targino da Silva Neto": 2,
+          "Aleff Herculano da Silva": 1,
+          "Marcelo Mesquita de Sousa": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 5
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117662",
+        "118703",
+        "118898",
+        "121806",
+        "123717",
+        "127807",
+        "128212",
+        "128892",
+        "130823",
+        "131400",
+        "131894",
+        "131897",
+        "132393",
+        "132568",
+        "133798"
+      ],
+      "titulo": "Erro ao finalizar a separação de carga",
+      "descricao": "Resumo executivo: os chamados apontam falhas operacionais recorrentes no sistema LOGIX, área Logística, impedindo a conclusão da separação de itens e a baixa de cargas. Em vários relatos, ao final da conferência ou da separação, surge erro na tela do coletor ou, em alguns casos, a contagem de itens não é aceita pelo equipamento do separador (ex.: 12 cxs separados, apenas 10 aceitos), gerando divergência de estoque. Também há ocorrências de ressuprimento não permitido quando o item requer autorização via papel. Em outra linha, uma posição específica não libera a baixa (FF.94.1) mesmo após a troca de usuário, e há falha ao imprimir o plano de separação (erro no módulo de expedição). Um caso é reportado como expedição, com erro durante a baixa da carga. O impacto percebido envolve atrasos na separação e na expedição, retrabalho e risco de inconsistências de estoque, com necessidade de intervenção manual e monitoramento adicional até a normalização do processo. Os sistemas afetados são principalmente LOGIX (serviço ERRO OPERACIONAL) e, em um caso, EXPEDIÇÃO."
+    },
+    {
+      "cluster_id": 44,
+      "metricas": {
+        "volume": 17,
+        "top_servicos": {
+          "ERRO OPERACIONAL": 6,
+          "INTEGRAÇÕES": 5,
+          "ERRO SISTÊMICO": 3,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 2,
+          "ESCLARECIMENTO DE DUVIDAS": 1
+        },
+        "top_solicitantes": {
+          "Douglas Bitencourt Dos Santos": 3,
+          "Ana Daiane do Nascimento Martins": 3,
+          "Keison Lima da Silva": 2,
+          "Anderson Rosa de Oliveira": 2,
+          "Fabiano de  Paula Ferreira": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117612",
+        "117799",
+        "118588",
+        "118209",
+        "121292",
+        "121569",
+        "121593",
+        "123025",
+        "123324",
+        "123404",
+        "124168",
+        "124472",
+        "124955",
+        "127699",
+        "130978",
+        "132410",
+        "133079"
+      ],
+      "titulo": "Erro ao gerar pedidos afeta logística",
+      "descricao": "Resumo executivo: Os chamados apontam falhas repetidas ao gerar pedidos no LOGIX, ocorrendo tanto com erros visíveis na tela quanto com quedas sistêmicas durante o processo de geração (exemplos de pedidos citados incluem 9745) e problemas de transmissão entre integrações. Em alguns casos há indicação de inconsistência com o ERP Protheus, dificultando localizar ou excluir ordens como o pedido 252537/6325, o que impacta o fluxo de operações logísticas, o carregamento de notas fiscais no armazém e a conclusão de pedidos de retorno (ex.: pedido 6496). O efeito percebido é a interrupção do processamento de pedidos, aumento de retrabalho e dependência de intervenções manuais para reconciliação entre LOGIX e ERP. Atinge principalmente o módulo de logística, com consumo de tempo e risco de atraso no inventário e na emissão de NF. Os componentes afetados envolvem Erro Operacional, Integrações e Erro Sistêmico dentro do LOGIX."
+    },
+    {
+      "cluster_id": 45,
+      "metricas": {
+        "volume": 10,
+        "top_servicos": {
+          "ERRO OPERACIONAL": 4,
+          "INDISPONIBILIDADE": 3,
+          "DESENVOLVIMENTO": 1,
+          "ARMAZÉM": 1,
+          "EXPEDIÇÃO": 1
+        },
+        "top_solicitantes": {
+          "Jefferson Miranda De Oliveira": 2,
+          "Emerson Danillo de Souza Silva": 2,
+          "Aleff Herculano da Silva": 1,
+          "Welington dos Santos Borges": 1,
+          "José Josenilson": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118242",
+        "119135",
+        "122361",
+        "128735",
+        "129659",
+        "130312",
+        "131429",
+        "131775",
+        "133102",
+        "133679"
+      ],
+      "titulo": "Erro na conferência de itens",
+      "descricao": "Resumo executivo: os chamados coletados indicam falhas recorrentes no processo de conferência de itens no LOGIX, com impacto operacional na logística e no faturamento e com demanda de melhoria funcional para evitar cancelamentos de itens com erro. Os sintomas relatados incluem: a reconferência de itens não se efetiva após a alocação, com o sistema indicando sucesso mas o item não aparecendo na lista do operador; erro na gravação de dados para o faturamento ao finalizar conferência; mensagem de que a quantidade informada é maior que a disponível durante a conferência, mesmo quando a conferência e o chassi conferem; erro ao tentar realizar a conferência de itens específicos (Intelbras); e a sugestão de criar uma opção/funcionalidade no LOGIX para excluir itens indisponíveis ou com erro de múltiplos para evitar o cancelamento de pedidos de grandes volumes. O impacto percebido é aumento de tempo de processamento no armazém, atrasos na conferência de pedidos e potenciais impactos no faturamento, com muitos chamados associados ao módulo de Conferência dentro do LOGIX. Os sistemas afetados parecem centrar-se no LOGIX (módulos de conferência e, indiretamente, faturamento) e nas áreas de Armazém e Logística. Recomenda-se roadmap de análise de logs de conferência, validação de consistência entre quantidade informada e disponível, verificação de falhas de gravação de dados para faturamento e avaliação da viabilidade da funcionalidade solicitada no CHAMADO 5 para reduzir retrabalho e cancelamentos."
+    },
+    {
+      "cluster_id": 46,
+      "metricas": {
+        "volume": 45,
+        "top_servicos": {
+          "PENDENCIA BACKOFFICE": 20,
+          "ERRO SISTÊMICO": 7,
+          "INTEGRAÇÕES": 6,
+          "ERRO OPERACIONAL": 4,
+          "ESCLARECIMENTO DE DUVIDAS": 3
+        },
+        "top_solicitantes": {
+          "Joao Xavier Goncalves Filho": 18,
+          "Adriely Loureiro de Oliveira": 4,
+          "Julio Santos": 4,
+          "Cassio Neves Alves": 3,
+          "Maria Eduarda Candido Amaral": 3
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 11
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 15
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 10
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117787",
+        "119388",
+        "120368",
+        "120576",
+        "120575",
+        "120781",
+        "121030",
+        "121097",
+        "119921",
+        "121438",
+        "121682",
+        "122163",
+        "122746",
+        "123351",
+        "123332",
+        "123600",
+        "123715",
+        "123041",
+        "124341",
+        "124186",
+        "124477",
+        "125060",
+        "125560",
+        "125411",
+        "125068",
+        "125915",
+        "125947",
+        "125956",
+        "126210",
+        "126554",
+        "122353",
+        "126544",
+        "126040",
+        "126858",
+        "126954",
+        "127196",
+        "127194",
+        "128175",
+        "130353",
+        "130566",
+        "130665",
+        "131067",
+        "132811",
+        "132582",
+        "133334"
+      ],
+      "titulo": "Erro na Geração de Retorno Simbólico",
+      "descricao": "Os chamados indicam falhas recorrentes no processamento de retorno simbólico no LOGIX, com dificuldades para gerar ou integrar pedidos a partir de notas fiscais. Existem relatos de divergência de quantidade na integração (WMS80000) e de erro na geração de pedidos vinculados a NFs (WMS9745). Além disso, há questionamentos sobre regime especial de retorno simbólico que parece ter ficado indisponível, sugerindo eventual mudança de parametrização ou configuração. O impacto observado envolve atraso no fluxo de backoffice/logística, pendências associadas a recebimentos e faturamento, bem como necessidade de intervenções manuais para clientes relevantes (ex.: COPAG e Triumph). Em conjunto, os incidentes apontam para possíveis inconsistências entre o WMS e o módulo de retorno simbólico, exigindo validação de configuração, integrações entre WMS e LOGIX e confirmação de alterações recentes no regime de retorno simbólico."
+    },
+    {
+      "cluster_id": 47,
+      "metricas": {
+        "volume": 19,
+        "top_servicos": {
+          "INTEGRAÇÕES": 17,
+          "ERRO SISTÊMICO": 1,
+          "INDISPONIBILIDADE": 1
+        },
+        "top_solicitantes": {
+          "Priscilla Maria Karla Wanderley": 6,
+          "Ana Daiane do Nascimento Martins": 2,
+          "Leandro Carlos Silveira": 1,
+          "Emilly da Silva Souza": 1,
+          "Thaina Oliveira": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118552",
+        "118688",
+        "119235",
+        "119484",
+        "120066",
+        "119858",
+        "119117",
+        "122397",
+        "123089",
+        "124012",
+        "125053",
+        "125287",
+        "126358",
+        "127164",
+        "127331",
+        "128001",
+        "129042",
+        "129991",
+        "133607"
+      ],
+      "titulo": "Erro na Integração de Notas Fiscais",
+      "descricao": "Os chamados indicam falhas de integração entre o Logix e o ERP/backoffice durante o processamento de CESV e emissão de notas. Sintomas recorrentes incluem erro ao concluir o CESV, mensagens de integração, notas que não geram conta e ordem ou não aparecem para geração manual, e divergência de itens entre Logix e o ERP (ex.: nota 461 com 104 linhas no Logix versus 28 no ERP). O impacto inclui atraso no fechamento de CESV, necessidade de intervenção manual e inconsistência de dados, afetando logística e faturamento. Sistemas afetados: Logix (Integrações, Logística), ERP Protheus/backoffice externo, com interface de transmissão de notas fiscais e CESVs."
+    },
+    {
+      "cluster_id": 48,
+      "metricas": {
+        "volume": 12,
+        "top_servicos": {
+          "PENDENCIA BACKOFFICE": 11,
+          "ANALISE DE CASO": 1
+        },
+        "top_solicitantes": {
+          "Jose Aldair da Silva Furtado": 4,
+          "Joao Xavier Goncalves Filho": 3,
+          "Maria Genice da Silva": 2,
+          "Emerson Luiz Pereira de Castro": 1,
+          "Brenda Camila Batista Figueira da Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119084",
+        "119214",
+        "118514",
+        "118372",
+        "121186",
+        "121397",
+        "119343",
+        "122718",
+        "122970",
+        "124640",
+        "124966",
+        "125331"
+      ],
+      "titulo": "Falha na conclusão de CESV no Backoffice",
+      "descricao": "Os chamados são do LOGIX, serviço PENDENCIA BACKOFFICE, e descrevem falha na conclusão/fechamento de CESV, com impactos na liberação de veículos. Observa-se divergência entre estados de notas/pedidos nas telas WMS6497 e WMS9745, com notas consideradas pendentes por um sistema enquanto já processadas pelo outro. Em alguns casos há integração com Backoffice externo não realizada, indicando que o número do pedido de venda no ERP não é propagado. Em outros, o CESV aparece como concluído, mas o relatório de pendências (Tela 6632) continua listando-o, sugerindo possível bug ou falha de sincronização. Há ainda situações de erro ao liberar o veículo (ex.: etiqueta sem saldo) e mensagens sobre notas sem pedidos externos bloqueando a conclusão. O impacto observado é a impossibilidade de concluir CESVs, atrasos na liberação de veículos e inconsistências entre LOGIX, WMS e ERP/Backoffice. Sistemas afetados: LOGIX, WMS6497, WMS9745, ERP/Backoffice externo, Tela 6632 (Consulta de Pendências)."
+    },
+    {
+      "cluster_id": 49,
+      "metricas": {
+        "volume": 36,
+        "top_servicos": {
+          "ERRO OPERACIONAL": 17,
+          "ERRO SISTÊMICO": 5,
+          "PENDENCIA BACKOFFICE": 3,
+          "EXPEDIÇÃO": 3,
+          "ANALISE DE CASOS": 2
+        },
+        "top_solicitantes": {
+          "Maria Helena Ferreira da Silva": 4,
+          "Maria Genice da Silva": 4,
+          "Welington dos Santos Borges": 3,
+          "Junio Oliveira Reis": 3,
+          "Emerson Luiz Pereira de Castro": 3
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 9
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 10
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 6
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118052",
+        "118409",
+        "120135",
+        "120081",
+        "120756",
+        "121720",
+        "122142",
+        "122374",
+        "122354",
+        "122380",
+        "122628",
+        "123024",
+        "122886",
+        "123196",
+        "127071",
+        "127390",
+        "128645",
+        "128647",
+        "129436",
+        "129523",
+        "129863",
+        "130310",
+        "130611",
+        "130658",
+        "130667",
+        "130693",
+        "130862",
+        "130654",
+        "132217",
+        "132296",
+        "132370",
+        "133045",
+        "133119",
+        "133520",
+        "133767",
+        "133812"
+      ],
+      "titulo": "Erro operacional ao gerenciar CESV na logística",
+      "descricao": "Os chamados apontam falhas operacionais no fluxo de CESV no LOGIX, com relatos de dificuldade para localizar CESV na tela 6631, cancelamentos de cargas ocorrendo antes da conferência ou sem conclusão, falha ao dar baixa em notas fiscais associadas às CESV, e erro ao realizar o endereçamento de clientes. O impacto observado são atrasos e retrabalho nos processos logísticos, incluindo cancelamento de cargas, baixa de notas fiscais e endereçamento de clientes. Os sistemas afetados são LOGIX, com o serviço ERRO OPERACIONAL na área de LOGISTICA; em um caso há referência ao serviço ARMAZÉM. Clientes citados nos títulos incluem BIC, Iconic, Triumph e Ruiz. A diversidade de gatilhos (consulta de CESV, cancelamento, baixa de NF, endereçamento) sugere um padrão de falha no fluxo CESV, não restrita a um único subprocesso."
+    }
+  ]
+}

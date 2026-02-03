@@ -1,0 +1,860 @@
+{
+  "metadata": {
+    "sistema": "SARA",
+    "data_analise": "2026-02-03T13:16:04.899157",
+    "periodo_dias": 180,
+    "total_chamados": 170,
+    "total_grupos": 19,
+    "taxa_ruido": 0.0941
+  },
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "metricas": {
+        "volume": 4,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 3,
+          "INDISPONIBILIDADE": 1
+        },
+        "top_solicitantes": {
+          "Katianne Jesus Rodrigues de Franca Cortez": 3,
+          "Maycon Luis Miranda": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "121790",
+        "119669",
+        "122606",
+        "127195"
+      ],
+      "titulo": "Erros de banco de dados em faturamento",
+      "descricao": "Resumo executivo: os chamados indicam falhas críticas de banco de dados no TOTVS SARA, com impacto nos módulos de faturamento e, em menor escala, expedição/logística. Os incidentes são recentes e apresentam mensagens de erro não mapeado do SQL Server durante operações de geração de relatórios e edição de documentos: divide por zero ao calcular o relatório de Cálculo Potencial de Receita (casos com lotes 202300000053 e 202400000053), conversão falha de varchar para int ao editar documento de entrada e deadlock que levou à retranção de operações. O efeito percebido é a interrupção na geração de relatórios financeiros e na edição de documentos, gerando atraso nas informações de faturamento, impacto em processos logísticos e possível retrabalho em lotes. Os chamados envolvem ambiente Windows 10, FireDAC e SQL Server Native Client 11.0, com repetição em diferentes módulos (faturamento e expedição) dentro da área de logística. Recomenda-se uma análise inicial das consultas SQL envolvidas, validação de tipos de dados e avaliação de contenção/locks para evitar deadlocks, além de planejar retentativas e testes de recuperação em ambiente de homologação antes de promover correções para produção."
+    },
+    {
+      "cluster_id": 1,
+      "metricas": {
+        "volume": 15,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 5,
+          "HOMOLOGAÇÃO": 4,
+          "TRATATIVA INTERNA": 2,
+          "CADASTRO": 2,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 2
+        },
+        "top_solicitantes": {
+          "Wemelly Barros de Souza": 5,
+          "Wilson Pereira dos Santos": 3,
+          "Marcia Viviane do Nascimento Silva Guedes": 2,
+          "Alexandre  de Almeida": 1,
+          "Evelly Fernandes da Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118016",
+        "119408",
+        "119593",
+        "119967",
+        "122052",
+        "122049",
+        "120822",
+        "123602",
+        "126434",
+        "128214",
+        "129157",
+        "131159",
+        "132008",
+        "132088",
+        "132010"
+      ],
+      "titulo": "Dificuldade de Acesso no SARA",
+      "descricao": "Resumo executivo: os chamados apontam dificuldades recorrentes de autenticação e liberação de acesso no SARA, envolvendo os serviços de CADASTRO DE USUÁRIO, TRATATIVA INTERNA, PROCESSAMENTO MANUAL DE ARQUIVOS e HOMOLOGAÇÃO. Os relatos indicam senha não reconhecida, necessidade de ajuste de acesso ao coletor para permitir o login de colaboradores e bloqueio de motoristas no sistema, além de solicitações para criar usuários em ambiente de homologação. O impacto é observado principalmente na área de Logística, impedindo cadastros, login, liberações de dispositivos e prosseguimento de programação. Recomenda-se revisar fluxos de provisioning de usuários, políticas de senhas e controles de acesso aos dispositivos (coletor) e ambientes de homologação para reduzir retrabalho e gargalos operacionais."
+    },
+    {
+      "cluster_id": 2,
+      "metricas": {
+        "volume": 18,
+        "top_servicos": {
+          "MELHORIAS": 6,
+          "DESENVOLVIMENTO": 6,
+          "TRATATIVA INTERNA": 3,
+          "CADASTRO": 2,
+          "CONSULTA SIMPLES BD": 1
+        },
+        "top_solicitantes": {
+          "Katianne Jesus Rodrigues de Franca Cortez": 5,
+          "Renato Pereira de Moraes Neto": 4,
+          "Juscelyo Rangell Assis Paula": 2,
+          "Wemelly Barros de Souza": 2,
+          "Marcia Viviane do Nascimento Silva Guedes": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 11
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119040",
+        "120578",
+        "120590",
+        "120733",
+        "120985",
+        "121321",
+        "120515",
+        "121390",
+        "121323",
+        "120420",
+        "122137",
+        "122573",
+        "126939",
+        "124481",
+        "129647",
+        "129831",
+        "124480",
+        "133774"
+      ],
+      "titulo": "Dificuldade na Geração de Relatórios Logísticos",
+      "descricao": "Os chamados são demandas de melhoria e desenvolvimento de relatórios no sistema SARA, módulo Logística. O conjunto aponta necessidade de disponibilizar relatórios que apresentem o histórico de lotes com os contêineres associados para mapear o perfil de clientes; relatórios de containers desunitizados sem depender exclusivamente da data de entrada/chegada para abranger todas as desovas; relatório de movimentos de contêiner durante o armazenamento, com informações do importador, número do contêiner, data do movimento, usuário e posição/destino; relatório de saída de carga por período sem obrigatoriedade de informar o importador; e relatório de clientes bloqueados. Essas solicitações indicam limitação atual dos filtros de relatório, especialmente uso da data de entrada/chegada e obrigatoriedade de campos específicos, o que compromete a visibilidade operacional, a tomada de decisão e a governança na logística. Sistemas afetados são o SARA, com foco no sub–área Logística, incluindo desenvolvimento e melhorias para relatórios de movimentação, desunitização e cadastros/contratos de clientes, com referências a caminhos como Containers Desunitizados e relatórios de movimentação/saída de carga."
+    },
+    {
+      "cluster_id": 3,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "CADASTRO": 3,
+          "ALTERAÇÃO DE REGISTROS NO BANCO DE DADOS": 1,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Jose Wellington Nascimento Silva": 3,
+          "Simone Campelo de Sousa": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118738",
+        "119354",
+        "117904",
+        "125747",
+        "128348"
+      ],
+      "titulo": "Divergência de quantidade nos itens do lote",
+      "descricao": "Resumo executivo: Os chamados coletados no SARA, área Logística, indicam ajustes de quantidade lançada nos itens de lote, com variações de 2 para 2000 unidades em diferentes containers (ex.: 202500004153, 202500005370, GESU6137309, MSBU8255839) e divergência entre quantidade física, documental e registrada. Em alguns casos também há cancelamento de liberações de carga ou alteração de cliente em NF já autorizada. Os impactos percebidos incluem inconsistência de inventário, potenciais impactos em NF e faturamento, e retrabalho para correções. Os sistemas afetados são SARA e seus serviços CADASTRO, ALTERAÇÃO DE REGISTROS NO BANCO DE DADOS e ERRO OPERACIONAL. Recomenda-se revisar as regras de validação de quantidades nos itens do lote e controles de alterações de clientes em NF para reduzir discrepâncias e retrabalho."
+    },
+    {
+      "cluster_id": 4,
+      "metricas": {
+        "volume": 4,
+        "top_servicos": {
+          "ESCLARECIMENTO DE DUVIDAS": 1,
+          "INTEGRAÇÕES": 1,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Elusiane Cristina de Albuquerque": 4
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "121425",
+        "129767",
+        "129957",
+        "130291"
+      ],
+      "titulo": "Falha no faturamento do SARA",
+      "descricao": "Chamados indicam problemas recorrentes de faturamento dentro do SARA, com impacto direto para a área logística. Observam-se indisponibilidade do módulo de faturamento, divergências ou ausência de processos no módulo DS/LOTE para faturamento, além de casos em que o faturamento complementar não está sendo processado (faturamento antecipado). Também há solicitações para excluir linhas não faturáveis na integração entre SARA e Protheus, alegando que tais linhas tornam a integração mais lenta. O conjunto de ocorrências resulta em atrasos no faturamento, necessidade de intervenção manual em arquivos e usuários afetados, com sistemas impactados incluindo SARA, o módulo de faturamento, DS/LOTE e a integração com Protheus."
+    },
+    {
+      "cluster_id": 5,
+      "metricas": {
+        "volume": 6,
+        "top_servicos": {
+          "HOMOLOGAÇÃO": 5,
+          "ERRO SISTÊMICO": 1
+        },
+        "top_solicitantes": {
+          "Caroline Ponciano Carvalho": 6
+        },
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "124044",
+        "124042",
+        "124039",
+        "124800",
+        "128268",
+        "128265"
+      ],
+      "titulo": "Falha no faturamento e exportação",
+      "descricao": "Chamados indicam falhas recorrentes no fluxo de faturamento no ambiente de homologação do SARA, serviço de Logística. Os sintomas variam desde: falha na geração de cálculos no módulo faturamento; cobrança de armazenagem registrada sem estratificação adequada nos demonstrativos; erro na tela de faturamento antecipado ao tentar gravar a data fim do período; cobrança de múltiplos períodos exibida como um único; exportação de planilha de faturamento antecipado que não traz todas as informações necessárias (colunas como apreensão da carga, data entrada, data último faturamento, dias de armazenagem, dias pendentes), entre outros. O impacto percebido inclui cobranças potencialmente incorretas, demonstrativos incompletos, necessidade de retrabalho e atrasos no fechamento. Os sistemas afetados são o SARA em homologação, com foco no módulo de faturamento, demonstrativos e exportação de dados na área de Logística."
+    },
+    {
+      "cluster_id": 6,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "HOMOLOGAÇÃO": 5
+        },
+        "top_solicitantes": {
+          "Caroline Ponciano Carvalho": 5
+        },
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "124043",
+        "124038",
+        "128192",
+        "128491",
+        "128493"
+      ],
+      "titulo": "Falha no funcionamento de botões na RA",
+      "descricao": "Resumo executivo: Chamados da área de Logística em SARA/HOMOLOGAÇÃO indicam falhas de UI que afetam os fluxos Release RA e PSS. Os sintomas incluem botão de processamento não visível ou detectável; tela de relacionar OCR na segunda pesagem não abre em HML, ao contrário do observado em produção; não detecção do botão processar no subprocesso Faturamento Complementar; ícone de Pesagem travando ao clicar; e a busca de códigos no Coletor não retorna resultados (ex.: 67969). O impacto observado é o atraso ou bloqueio de etapas críticas de liberação de RA, inconsistência entre ambientes e necessidade de validações manuais, com sistemas afetados: SARA, ambiente de Homologação, logística, módulos Release RA e PSS, OCR, Coletor e Faturamento Complementar. Recomenda-se investigar a consistência de renderização de UI entre ambientes, estados e visibilidade de botões, além de analisar logs de frontend e integração com o Coletor para identificação de divergências de código ou configuração."
+    },
+    {
+      "cluster_id": 7,
+      "metricas": {
+        "volume": 11,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 4,
+          "TRATATIVA INTERNA": 2,
+          "ERRO OPERACIONAL": 2,
+          "ANALISE DE CASO": 1,
+          "CADASTRO": 1
+        },
+        "top_solicitantes": {
+          "Wemelly Barros de Souza": 3,
+          "Marcia Viviane do Nascimento Silva Guedes": 2,
+          "Evelly Fernandes da Silva": 2,
+          "Elusiane Cristina de Albuquerque": 1,
+          "Juscelyo Rangell Assis Paula": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118835",
+        "119047",
+        "119529",
+        "123330",
+        "124685",
+        "124943",
+        "124939",
+        "125340",
+        "128815",
+        "129715",
+        "128821"
+      ],
+      "titulo": "Erro nas datas retroativas do SARA",
+      "descricao": "Resumo executivo: os chamados indicam limitações e falhas relacionadas ao tratamento de datas retroativas no sistema SARA, com impacto direto nos processos logísticos. Os relatos abrangem ajustes de datas de início/fim em decorrência de retroatividade nos serviços de processamento manual de arquivos e cadastro, além de dificuldades em registrar ou bloquear lançamentos com datas retroativas, incluindo a necessidade de manter a data atual nos lançamentos quando possível. Observa-se ainda que, em operações de fechamento de lote para serviços de contêiner, o sistema impede ou dificulta alterações com datas retroativas, pois a data de fechamento é gerada automaticamente. Um dos casos descreve erro no relatório de inventário retroativo, com faixa de datas entre 21/08/2024 e 08/01/2025. Sistemicamente, os serviços afetados são SARA (módulos PROCESSAMENTO MANUAL DE ARQUIVOS, CADASTRO, TRATATIVA INTERNA e MELHORIAS), com impactos operacionais, de confiabilidade de dados e de planejamento logístico."
+    },
+    {
+      "cluster_id": 8,
+      "metricas": {
+        "volume": 18,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 6,
+          "ERRO SISTÊMICO": 5,
+          "LENTIDÃO SISTÊMICA": 3,
+          "TRATATIVA INTERNA": 1,
+          "CADASTRO": 1
+        },
+        "top_solicitantes": {
+          "Wemelly Barros de Souza": 14,
+          "Thiago Valdemir": 2,
+          "Evelly Fernandes da Silva": 1,
+          "Caua Henrique Matias da Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 9
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "120623",
+        "121601",
+        "122916",
+        "123099",
+        "123110",
+        "124090",
+        "123920",
+        "125669",
+        "125810",
+        "126316",
+        "125825",
+        "126307",
+        "124516",
+        "127065",
+        "128256",
+        "127755",
+        "130877",
+        "133082"
+      ],
+      "titulo": "Erro na baixa da OS de carregamento",
+      "descricao": "Resumo executivo: os relatos indicam falha ao executar a baixa da OS de carregamento no módulo SARA/TOTVS RA, com a mensagem 'erro ao calcular o período'. O problema é recorrente e aparece em saídas de cargas de entreposto, prejudicando a liberação de veículos. Em alguns chamados há referência a bloqueio de localização durante a coleta de etiquetas, o que atrasa a bipagem e a baixa de OS; em outros há divergência entre a quantidade de itens coletados e a liberada no sistema. Sistemas afetados incluem o SARA (serviços TRATATIVA INTERNA, CADASTRO, ANALISE DE CASO) e o TOTVS RA, com foco na área de Logística. O impacto percebido é operacional: atrasos logísticos, necessidade de intervenção humana e potenciais impactos na liberação de veículos. Recomenda-se analisar logs de erro, validar regras de cálculo de período na baixa, investigar inconsistências de localização e de contagem entre coleta e liberação, e estabelecer monitoramento proativo para reduzir impactos na liberação de veículos."
+    },
+    {
+      "cluster_id": 9,
+      "metricas": {
+        "volume": 7,
+        "top_servicos": {
+          "TRATATIVA INTERNA": 4,
+          "COLETORES - PROBLEMAS DE CONEXÃO": 1,
+          "CADASTRO": 1,
+          "ERRO SISTÊMICO": 1
+        },
+        "top_solicitantes": {
+          "Wemelly Barros de Souza": 3,
+          "Marcia Viviane do Nascimento Silva Guedes": 2,
+          "Wilson Pereira dos Santos": 1,
+          "Thiago Valdemir": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118085",
+        "117877",
+        "120956",
+        "121129",
+        "122775",
+        "122774",
+        "118197"
+      ],
+      "titulo": "Falha ao Encerrar OS no Coletor",
+      "descricao": "Chamados indicam falha ao encerrar as OS de recebimento e descarga nos coletores do SARA, impactando operações logísticas. Relatos incluem divergência de quantidade que exige termo de falta/excesso, mensagens de integridade de lacre ou ausência de lacres ao fechar a OS, além de erro ao encerrar OS no coletor via Telnet/ZOC. Há também relatos de falha de acesso aos coletores (problemas de conexão) em geral, ainda que o sistema opere em outras this máquinas. Em alguns casos, o CESV não gerou OS de descarga para containers recebidos. Os problemas afetam principalmente Tratativa Interna e Cadastros, com serviços conectados ao TOTVS RA, e compreendem o ecossistema SARA (logística). O impacto é retenção de ordens, impedimento de fechamento de recebimento/descarga e necessidade de intervenção manual até regularização. Recomenda-se validar divergências de quantidade, registrar termos conforme política, checar integridade de lacres e verificar conectividade e integração com TOTVS RA para encerramento de OS."
+    },
+    {
+      "cluster_id": 10,
+      "metricas": {
+        "volume": 4,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 2,
+          "ANALISE DE CASOS": 1,
+          "EXPEDIÇÃO": 1
+        },
+        "top_solicitantes": {
+          "Henrique Jose da Silva": 4
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "120347",
+        "121812",
+        "125011",
+        "133107"
+      ],
+      "titulo": "Erros em AC/WILSON afetam Logística",
+      "descricao": "Resumo executivo: os chamados indicam falhas intermitentes no SARA envolvendo os serviços de Processamento Manual de Arquivos, Análise de Casos e Expedição, com AC/WILSON como usuário recorrente. Os sintomas apontam para erro ao carregar etiquetas de D.A com quantidade parcial (impede o fechamento da O.S.), erro ao desconsolidar lote após o estorno (ocorrendo novamente na tentativa subsequente), erro ao executar a O.S de sobre rodas, onde as OSs fecham mas aparece a mensagem de erro exigindo atualização da página, e erro ao liberar saldo de D.I/D.A (relato resolvido rapidamente pelo usuário). O impacto é operacional: atrasos no processamento logístico, necessidade de intervenção manual e risco de inconsistências de itens e status das O.S, afetando logística, expedição e análise de casos. Não há indicação de causa raiz clara nos relatos; as ocorrências ocorrem dentro do mesmo ambiente SARA, sugerindo falhas intermitentes em operações críticas de O.S., desconsolidação e carga de etiquetas, com foco no usuário AC/WILSON."
+    },
+    {
+      "cluster_id": 11,
+      "metricas": {
+        "volume": 6,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 2,
+          "ERRO SISTÊMICO": 2,
+          "TRATATIVA INTERNA": 1,
+          "CADASTRO": 1
+        },
+        "top_solicitantes": {
+          "Wemelly Barros de Souza": 4,
+          "Marcia Viviane do Nascimento Silva Guedes": 1,
+          "Maycon Luis Miranda": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119378",
+        "121746",
+        "121742",
+        "127765",
+        "130499",
+        "129881"
+      ],
+      "titulo": "Saldo incorreto de estoque após saídas",
+      "descricao": "Os chamados indicam inconsistência de saldo de estoque no SARA após carregamentos/saídas. Os sintomas recorrentes são saldo sistêmico incorreto, saldo negativo e volumes multiplicados no módulo de estoque atual, mesmo quando as informações de saída refletem o saldo correto. Em alguns casos, itens aparecem como inativos ou o lote já foi faturado ou expedido, impedindo o fechamento de ordens, o faturamento e o alinhamento entre inventário físico e o sistema. Observa-se ainda que, em entreposto, o estoque permanece embora o container tenha sido liberado, requerendo ajustes manuais para zerar ou corrigir saldos. Esses casos costumam exigir PROCESSAMENTO MANUAL DE ARQUIVOS e cadastros para correção, e são classificados como ERRO SISTÊMICO por parte do suporte. Sistemas afetados: SARA; áreas envolvidas: LOGÍSTICA, com impacto direto em estoque, entreposto e faturamento. Lotes/itens com maior referência: 20250004797 (Item 08), 20250002364, 202500002333, Lote 23/000096; OS: 61838, 57847; Cliente: MCZ."
+    },
+    {
+      "cluster_id": 12,
+      "metricas": {
+        "volume": 10,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 4,
+          "INTEGRAÇÕES": 2,
+          "ATUALIZAÇÕES E CORREÇÕES": 1,
+          "INDISPONIBILIDADE": 1,
+          "ANALISE DE CASOS": 1
+        },
+        "top_solicitantes": {
+          "Maycon Luis Miranda": 6,
+          "Marcia Viviane do Nascimento Silva Guedes": 1,
+          "Caua Henrique Matias da Silva": 1,
+          "Patricia da Silva Santiago": 1,
+          "Henrique Jose da Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119111",
+        "122742",
+        "126296",
+        "127177",
+        "127963",
+        "130632",
+        "131095",
+        "131307",
+        "133396",
+        "130682"
+      ],
+      "titulo": "Erro no SARA afeta Logística",
+      "descricao": "Conjunto de chamados aponta erros em múltiplos componentes do SARA na área de Logística. Os relatos incluem: Transit Time não exibe todas as DTA's, mostrando apenas uma; erro ao acessar o Módulo Portaria; erro na conexão da balança com o SARA; falha ao inicializar o SARA ao abrir o sistema; mensagem Parametro TRAFEGO_NOTE-IPO-1010 não cadastrado associada ao login informado. O impacto observado é a interrupção de fluxos logísticos, com dificuldade de monitorar transportes, validar dados de veículos e manter operações de logística em andamento, além de problemas de autenticação/parametrização. Sistemas afetados: a plataforma SARA, com impactos em Integrações (Transit Time), Portaria, Balança e componentes de autenticação/parametrização. A situação sugere possíveis falhas de integração ou disponibilidade entre módulos, recomendando coleta de logs, verificação de parâmetros e conectividade com dispositivos de campo."
+    },
+    {
+      "cluster_id": 13,
+      "metricas": {
+        "volume": 9,
+        "top_servicos": {
+          "CADASTRO": 3,
+          "ERRO SISTÊMICO": 3,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1,
+          "INTEGRAÇÕES": 1,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Marcia Viviane do Nascimento Silva Guedes": 5,
+          "Jose Wellington Nascimento Silva": 3,
+          "Esther Stephane da Silva Franca": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119009",
+        "119690",
+        "124522",
+        "124846",
+        "125002",
+        "127775",
+        "128026",
+        "128692",
+        "130011"
+      ],
+      "titulo": "Falha na validação de containers",
+      "descricao": "Resumo executivo: os chamados analisados apontam falhas recorrentes na gestão de containers no SARA, com impactos em LOGISTICA e nos módulos de CADASTRO, INTEGRAÇÕES e operações. Observa-se principalmente falha de validação que gerou duplicidade de DTC em containers MSKU0634680 MRKU2326664, afetando os lotes 202500006617, 202500006593, 202500006618 e 202500006619 (CHAMADO 1). Também há falhas na geração de ordens de serviço (OS) de descarga e de carregamento, impedindo a expedição/recebimento para os lotes 202500004430 (CHAMADO 2) e 202500000249 (CHAMADO 3), sem mensagens de erro aparentes. Adicionalmente, houve erro de cadastro de containers que entraram no Bitrem, bloqueando a expedição (CHAMADO 4), e um ajuste de entrada de container (CAXU9240135) relatando inconsistência entre a condição reportada (container vazio) e a operação logistica (cabotagem com container cheio), com referências CESV/OS associadas (CHAMADO 5). Impacto: atrasos operacionais, necessidade de intervenções manuais para validação, correção de cadastros e ajustes de entrada, prejudicando descarga, carregamento e expedição. Sistemas afetados: SARA, com serviços ERRO SISTÊMICO, CADASTRO, INTEGRAÇÕES e ERRO OPERACIONAL sob a subárea LOGISTICA, afetando principalmente operações de LOGISTICA, Integrações e Cadastros de containers."
+    },
+    {
+      "cluster_id": 14,
+      "metricas": {
+        "volume": 4,
+        "top_servicos": {
+          "ADUANEIRO": 2,
+          "CADASTRO": 1,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1
+        },
+        "top_solicitantes": {
+          "Maycon Luis Miranda": 2,
+          "Marcia Viviane do Nascimento Silva Guedes": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "123831",
+        "130972",
+        "133469",
+        "133526"
+      ],
+      "titulo": "Falha na Operação DUIMP no Aduaneiro",
+      "descricao": "Resumo executivo: Os chamados apontam falhas no manuseio de DUIMP/DA no SARA, com erro ao cadastrar DUIMP, falha ao lançar DA/DUIMP e problemas na expedição de lotes, o que bloqueia a nacionalização de cargas e impacta a operação logística. Os incidentes afetam os módulos de Aduaneiro e Cadastro dentro do SARA, bem como o processamento manual de arquivos, com prints de erro anexos. Há menção a uma nova API para DTA aérea que não está operando conforme o esperado, sugerindo uma possível falha de integração entre cadastro, DUIMP/DA e a API de recintos. Em termos de impacto, a nacionalização da carga está comprometida, dificultando admitir DUIMP/DA e prosseguir com a expedição. Recomenda-se prioridade à verificação de fluxos de cadastro de DUIMP, validação da integração com a API de DTA aérea e correção de erros de expedição para restabelecer operações."
+    },
+    {
+      "cluster_id": 15,
+      "metricas": {
+        "volume": 4,
+        "top_servicos": {
+          "MELHORIAS": 2,
+          "ALTERAÇÃO DE VIEW": 1,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1
+        },
+        "top_solicitantes": {
+          "Wemelly Barros de Souza": 3,
+          "Juscelyo Rangell Assis Paula": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "122015",
+        "126446",
+        "126556",
+        "126570"
+      ],
+      "titulo": "Dificuldade de exibição no coletor",
+      "descricao": "Chamados indicam dificuldade de exibir informações relevantes na tela do coletor do módulo logístico SARA e solicitam ampliar a visibilidade de dados em ambientes de coleta e BI. As solicitações envolvem: inclusão do nome do cliente, do tipo de container e da temperatura (quando refrigerado) na tela do coletor; inclusão do lote e do BL (conhecimento) no coletor; e inclusão do tipo de operação (importação, cabotagem ou exportação) na view VW_POWER_BI_DOCTO hospedada nos servidores 192.168.103.101 e 192.168.102.160/mssqlserver_a (PSS e PSC). Os serviços afetados são PROCESSAMENTO MANUAL DE ARQUIVOS, MELHORIAS e ALTERAÇÃO DE VIEW, com foco nas subáreas LOGISTICA e INOVAÇÃO. O impacto percebido é maior visibilidade de informações críticas para operações logísticas, melhoria na tomada de decisão e eficiência de consultas/relatórios de BI. Recomenda-se priorizar as mudanças por criticidade da informação e avaliar impactos de performance e alterações em views e consultas."
+    },
+    {
+      "cluster_id": 16,
+      "metricas": {
+        "volume": 7,
+        "top_servicos": {
+          "TRATATIVA INTERNA": 7
+        },
+        "top_solicitantes": {
+          "Wemelly Barros de Souza": 4,
+          "Juscelyo Rangell Assis Paula": 2,
+          "Renato Pereira de Moraes Neto": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 5
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119430",
+        "120170",
+        "120119",
+        "118718",
+        "119748",
+        "119746",
+        "120117"
+      ],
+      "titulo": "Melhoria no Processo de Recebimento de Container",
+      "descricao": "Os chamados apontam uma demanda recorrente por melhorias no processo de recebimento de container (DTC/DTA) no módulo Logística do SARA/TOTVS RA. Os temas comuns destacam a necessidade de aumentar visibilidade de dados, como informação do importador, lote e número do container, na tela do coletor ou nas OS, para facilitar a conferência e a gestão durante a operação. Também é mencionada a automatização de serviços padrão do recebimento, como a movimentação de container (cod 001) e a conferência (cod 005), bem como a retirada de etapas manuais, como a inclusão/ confirmação de lacre pela conferente, uma vez que a vistoria é realizada pelo Gate na entrada. Adicionalmente, há pedidos de treinamento para o módulo de comunicação, para parametrizar eventos e o envio automático de e-mails a clientes. O conjunto das solicitações sugere um objetivo comum de reduzir retrabalho, papel e tempos operacionais, com impacto direto nos serviços de Tratativa Interna da área Logística e nos fluxos de recebimento de container."
+    },
+    {
+      "cluster_id": 17,
+      "metricas": {
+        "volume": 8,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 5,
+          "ANALISE DE CASOS": 1,
+          "ESCLARECIMENTO DE DUVIDAS": 1,
+          "PROBLEMAS DE IMPRESSÃO": 1
+        },
+        "top_solicitantes": {
+          "Wemelly Barros de Souza": 5,
+          "Maycon Luis Miranda": 1,
+          "Evelly Fernandes da Silva": 1,
+          "Renato Pereira de Moraes Neto": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119757",
+        "119049",
+        "125118",
+        "126594",
+        "121865",
+        "129483",
+        "130288",
+        "119823"
+      ],
+      "titulo": "Erro na Impressão de Etiquetas SARA",
+      "descricao": "As amostras indicam falhas recorrentes na impressão de etiquetas no ambiente SARA, com impactos diretos no fluxo logístico. Os relatos envolvem impressão de etiquetas de série via coletor web, atualização de status da etiqueta (ex.: de 'impressa' para 'armazenada') e geração de termos de avaria por etiqueta, além de mensagens de erro anexadas ao processo de impressão. Em alguns casos o coletor reconhece a etiqueta, mas não envia para impressão, enquanto em outros há erro ao imprimir etiquetas de série (anexo). Também há solicitação de extração de estoque por paletes com etiquetas geradas, o que aponta que o processamento de etiquetas está relacionado a diversas etapas do estoque. Os sistemas afetados incluem SARA (impressão, análise de casos e esclarecimento de dúvidas), TOTVS RA (integração de etiquetas) e o coletor web. O impacto percebido envolve atrasos no processamento de etiquetas, impedimento de prosseguir com conferência/armazenagem e necessidade de intervenção de suporte para correção do fluxo de etiquetas."
+    },
+    {
+      "cluster_id": 18,
+      "metricas": {
+        "volume": 9,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 5,
+          "ERRO SISTÊMICO": 3,
+          "ESTORNO": 1
+        },
+        "top_solicitantes": {
+          "Wemelly Barros de Souza": 7,
+          "Evelly Fernandes da Silva": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "124881",
+        "125910",
+        "127010",
+        "127463",
+        "128532",
+        "129815",
+        "131586",
+        "131425",
+        "132715"
+      ],
+      "titulo": "Falha no ajuste de status de etiquetas",
+      "descricao": "Os relatos concentram-se no sistema SARA, no serviço PROCESSAMENTO MANUAL DE ARQUIVOS da área logística, com falhas repetidas no ajuste de status de etiquetas e na consistência do saldo após operações de estorno/armazenagem. Em todos os casos, o status exibido (impressa, carregada, armazenada) não corresponde ao estado lógico das etiquetas ou ao saldo registrado, o que impede o avanço do processamento das OS e da baixa de estoque. Em vários tickets, tentativas de estornar etiquetas não atualizam o status, ou o sistema não permite o estorno da última etiqueta, deixando-as travadas ou exigindo intervenção de TI para correção. Em alguns casos, foi necessário liberar saldo/ajustar o status para seguir com o carregamento ou a baixa; em outros, o sistema mostrou divergência de saldo entre a tela de saldo atual, o estoque físico e as operações de localização, gerando necessidade de ajustes manuais. O impacto percebido é atraso no processamento de recebimentos, descompasso entre estoque físico e registro digital, e maior dependência de suporte para correções pontuais. Os chamados apontam também a necessidade de uma funcionalidade interna para realizar ajustes de status de etiquetas com mais autonomia, sugerindo potencial melhoria de usabilidade do módulo. Os casos utilizam diversos lotes e OS, mas compartilham a raiz do problema: inconsistência de status e saldo durante os fluxos de estorno, armazenamento e geração de etiquetas."
+    }
+  ]
+}

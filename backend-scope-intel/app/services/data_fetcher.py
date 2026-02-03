@@ -141,3 +141,79 @@ def fetch_chamados(db: Session, sistema: str, dias_atras: int = 180):
         logger.error(f"Erro crítico ao buscar dados: {e}")
         # Relançamos o erro para parar o pipeline, pois sem dados não faz sentido continuar.
         raise e
+
+def fetch_batch_by_ids(db: Session, ids: list[str]):
+    """
+    Busca detalhes completos de uma lista específica de IDs de chamados.
+    Usado pelo Frontend para "hidratar" os exemplos sob demanda (Lazy Loading).
+    
+    PARÂMETROS:
+        - ids: Lista de strings com os IDs dos chamados (ex: ['12345', '12346'])
+        
+    RETORNO:
+        - Lista de dicionários com os detalhes limpos.
+    """
+    if not ids:
+        return []
+
+    # Solução Robusta para 'IN clause': Expandir manualmente os parâmetros
+    # Isso evita incompatibilidades de drivers (mysql-connector vs pyodbc vs sqlite) ao passar tuplas/listas
+    bind_keys = [f"id_{i}" for i in range(len(ids))]
+    params = {f"id_{i}": val for i, val in enumerate(ids)}
+    
+    # Cria string ":id_0, :id_1, :id_2"
+    bind_placeholders = ", ".join([f":{k}" for k in bind_keys])
+    
+    query = text(f"""
+        SELECT 
+            processInstanceId as id_chamado,
+            txt_solicitante as solicitante,
+            STR_TO_DATE(txt_dt_solicitacao, '%d/%m/%Y') as data_abertura,
+            text_status_chamado as status,
+            cat_sistema as sistema,
+            txt_num_titulo as titulo,
+            txt_detalhe_sol as descricao_raw
+        FROM {settings.FLUIG_TABLE_NAME} t1
+        WHERE 
+            processInstanceId IN ({bind_placeholders})
+            AND t1.version = (
+                SELECT MAX(version) FROM {settings.FLUIG_TABLE_NAME} t2 
+                WHERE t2.documentid = t1.documentid
+            )
+    """)
+
+    try:
+        # Executa query passando o dicionário explícito de parâmetros
+        result = db.execute(query, params)
+        rows = result.fetchall()
+        
+        output = []
+        for row in rows:
+            # Row mapping (acesso por nome da coluna)
+            # SQLAlchemy moderno retorna Row que age como dict ou tupla nomeada
+            
+            # Limpeza HTML
+            desc_limpa = clean_html(row.descricao_raw if hasattr(row, 'descricao_raw') else row[6])
+            
+            # Formata data se necessário (se o driver retornar date object)
+            dt_abertura = row.data_abertura if hasattr(row, 'data_abertura') else row[2]
+            if not isinstance(dt_abertura, str) and dt_abertura is not None:
+                dt_abertura = dt_abertura.strftime('%Y-%m-%d')
+            elif dt_abertura is None:
+                dt_abertura = ""
+
+            item = {
+                "id_chamado": row.id_chamado if hasattr(row, 'id_chamado') else row[0],
+                "solicitante": row.solicitante if hasattr(row, 'solicitante') else row[1],
+                "data_abertura": dt_abertura,
+                "status": row.status if hasattr(row, 'status') else row[3],
+                "titulo": row.titulo if hasattr(row, 'titulo') else row[5],
+                "descricao_limpa": desc_limpa
+            }
+            output.append(item)
+            
+        return output
+
+    except Exception as e:
+        logger.error(f"Erro ao buscar batch de IDs: {e}")
+        return []

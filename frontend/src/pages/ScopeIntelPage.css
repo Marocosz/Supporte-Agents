@@ -169,28 +169,95 @@
     color: #fdba74;
 }
 
-.intel-kpi-row {
+/* --- Header Redesenhado --- */
+.intel-header-redesigned {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 2rem 2rem 1rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.intel-header-info h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.intel-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* --- KPI Cards Wrapper --- */
+.intel-kpi-cards-wrapper {
     display: flex;
     gap: 1.5rem;
-    align-items: center;
 }
 
-.intel-kpi {
+/* --- Card de KPI Individual --- */
+.intel-kpi-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    min-width: 140px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
 }
 
-.intel-kpi-label {
+.intel-kpi-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-orange);
+}
+
+.intel-kpi-card .kpi-label {
     font-size: 0.75rem;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
     color: var(--text-secondary);
+    margin-bottom: 0.25rem;
     font-weight: 600;
 }
 
-.intel-kpi-value {
-    font-size: 1.1rem;
+.intel-kpi-card .kpi-value {
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
+}
+
+/* Destaque para Eficiência (Ex: Card colorido ou borda) */
+.intel-kpi-card.highlight {
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(249, 115, 22, 0.05) 100%);
+    border-color: rgba(249, 115, 22, 0.3);
+}
+
+/* Ajustes para Responsividade */
+@media (max-width: 768px) {
+    .intel-header-redesigned {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .intel-kpi-cards-wrapper {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .intel-kpi-card {
+        flex: 1;
+        min-width: 0;
+    }
 }
 
 /* --- Content & Grid --- */
@@ -227,77 +294,110 @@
 
 .intel-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* Cards mais largos (min 500px) para acomodar texto longo confortavelmente */
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     gap: 1.5rem;
+}
+
+/* Para telas menores, ajusta para 1 coluna */
+@media (max-width: 768px) {
+    .intel-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .intel-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 12px;
+    /* Cantos arredondados modernos */
     padding: 1.5rem;
     cursor: pointer;
-    transition: all 0.2s;
-    position: relative;
-    overflow: hidden;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    /* Sem altura fixa, deixa o conteúdo empurrar */
 }
 
 .intel-card:hover {
-    border-color: var(--accent-orange);
+    border-color: var(--text-secondary);
+    /* Hover sutil na borda */
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--shadow-color);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
 }
 
 .intel-card-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    /* Alinha verticalmente */
     margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    /* Separação sutil header/body */
 }
 
+/* Título à esquerda */
+.intel-card h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+/* Badge de Volume à direita */
 .intel-vol-badge {
     background: var(--bg-page);
-    /* Badge subtle bg */
-    color: var(--text-secondary);
-    padding: 4px 8px;
-    border-radius: 99px;
-    font-size: 0.8rem;
-    font-weight: 700;
+    color: var(--text-primary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    border: 1px solid var(--border-color);
 }
 
-.intel-card h3 {
-    margin: 0 0 0 10px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    line-height: 1.4;
+/* Corpo do Card */
+.intel-card-body {
     flex: 1;
-    color: var(--text-primary);
+    margin-bottom: 1.5rem;
 }
 
 .intel-card-desc {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    margin-bottom: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    /* Removemos line-clamp para mostrar tudo */
+    white-space: pre-line;
+    /* Respeita quebras de linha se houver */
 }
 
-.intel-card-mini-stats {
+/* Rodapé com Tags */
+.intel-card-footer {
     display: flex;
-    gap: 1rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+    /* Opcional: border-top se quiser separar, mas "clean" prefere espaço em branco */
+}
+
+.service-tag {
+    background-color: #f1f5f9;
+    color: #475569;
+    padding: 4px 10px;
+    border-radius: 4px;
     font-size: 0.8rem;
-    color: var(--text-secondary);
-    border-top: 1px solid var(--border-color);
-    padding-top: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
 }
 
-.mini-stat {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+/* Dark Mode para as tags */
+.intel-page.dark .service-tag {
+    background-color: #334155;
+    color: #cbd5e1;
 }
 
 /* --- Modal --- */
@@ -500,4 +600,112 @@
 
 .intel-page.dark .intel-section li {
     border-color: #334155;
+}
+
+/* --- ESTILOS PARA EXEMPLOS DE CHAMADOS (TICKETS) --- */
+
+.intel-tickets-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.intel-ticket-item {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+    transition: all 0.2s ease;
+}
+
+.intel-ticket-item:hover {
+    transform: translateX(4px);
+    border-color: var(--accent-orange);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+}
+
+.ticket-header strong {
+    color: var(--text-primary);
+    font-family: monospace;
+    background-color: var(--border-color);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.ticket-date {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+.ticket-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 4px 0;
+    font-size: 0.95rem;
+}
+
+.ticket-desc-preview {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-bottom: 8px;
+    word-break: break-word;
+    /* Garante que palavras longas quebrem */
+}
+
+.ticket-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    /* Status neutro por padrão */
+    background-color: #e2e8f0;
+    color: #475569;
+}
+
+/* Modificadores Dark Mode */
+.intel-page.dark .ticket-badge {
+    background-color: #334155;
+    color: #94a3b8;
+}
+
+/* Estilo para Loading */
+.intel-loading-text {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-secondary);
+    font-style: italic;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+/* Garante que o container de exemplos ocupe a largura total */
+.intel-section.full-width {
+    width: 100%;
+    grid-column: 1 / -1;
+    /* Se estiver dentro de grid */
 }

@@ -14,7 +14,12 @@ class ClusterResult(BaseModel):
     descricao: str
     metricas: ClusterMetrics
     # ids_chamados é opcional na visualização geral, mas existe no JSON
-    ids_chamados: Optional[List[str]] = [] 
+    ids_chamados: Optional[List[str]] = []
+    
+    # --- NOVO: Suporte a Hierarquia (Árvore) ---
+    # Permite que um cluster tenha "filhos". 
+    # Usamos ForwardRef ('ClusterResult') pois a classe referencia a si mesma.
+    sub_clusters: Optional[List['ClusterResult']] = [] 
 
 class AnalysisMetadata(BaseModel):
     sistema: str
@@ -22,6 +27,7 @@ class AnalysisMetadata(BaseModel):
     periodo_dias: int
     total_chamados: int
     total_grupos: int
+    taxa_ruido: float # Adicionado conforme seu output anterior
 
 # --- Schemas de Resposta da API ---
 
@@ -36,3 +42,10 @@ class AnalysisFileSummary(BaseModel):
     sistema: str
     data_criacao: str
     tamanho_bytes: int
+
+class BatchTicketRequest(BaseModel):
+    """
+    Payload para solicitar detalhes de múltiplos chamados.
+    Frontend envia { "ids": ["1", "2"] }
+    """
+    ids: List[str]

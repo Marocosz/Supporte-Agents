@@ -59,3 +59,30 @@ def get_analysis_detail(filename: str):
         return data
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro ao ler arquivo: {str(e)}")
+
+# --- NOVAS DEPENDÊNCIAS PARA O ENDPOINT DINÂMICO ---
+from fastapi import Depends
+from sqlalchemy.orm import Session
+from app.core.database import SessionLocal
+from app.api.schemas import BatchTicketRequest
+from app.services import data_fetcher
+
+# Dependency Injection para Banco de Dados
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+@router.post("/tickets/batch")
+def get_tickets_batch(payload: BatchTicketRequest, db: Session = Depends(get_db)):
+    """
+    Endpoint de Lazy Loading: Recebe uma lista de IDs e retorna os detalhes do banco.
+    Usado quando o usuário clica num cluster e quer ver exemplos reais.
+    """
+    try:
+        titulos = data_fetcher.fetch_batch_by_ids(db, payload.ids)
+        return titulos
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

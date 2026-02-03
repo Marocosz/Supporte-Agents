@@ -1,0 +1,2167 @@
+{
+  "metadata": {
+    "sistema": "PROTHEUS",
+    "data_analise": "2026-02-03T12:32:00.883338",
+    "periodo_dias": 180,
+    "total_chamados": 501,
+    "total_grupos": 34,
+    "taxa_ruido": 0.0978
+  },
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "metricas": {
+        "volume": 12,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 6,
+          "INDISPONIBILIDADE": 3,
+          "INTEGRAÇÕES": 2,
+          "ANALISE DE CASOS": 1
+        },
+        "top_solicitantes": {
+          "Tulio Candido de Oliveira": 10,
+          "Laihara Araújo Ferreira Castro": 1,
+          "Laura Almeida Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118399",
+        "120050",
+        "119119",
+        "124209",
+        "124870",
+        "124748",
+        "125406",
+        "127042",
+        "130668",
+        "127971",
+        "132524",
+        "133354"
+      ],
+      "titulo": "Erro no Envio de Arquivos de Baixa para BIC",
+      "descricao": "Chamados indicam uma falha sistêmica no Protheus que impede o envio automático de arquivos de baixa de entregas para o BIC. O problema aparece em várias áreas (Backoffice e Inovação) e serviços (ERRO SISTÊMICO, INDISPONIBILIDADE, INTEGRAÇÕES), com relatos de envio de arquivos por e-mail e integração com o New Tracking. O impacto é a não entrega dos arquivos aos destinatários, potencial atraso de informações de notas/entregas e necessidade de verificação/manual, além de pedidos para incluir endereços de e-mail adicionais para recebimento. Os sistemas afetados são o Protheus e as integrações envolvidas com o BIC."
+    },
+    {
+      "cluster_id": 1,
+      "metricas": {
+        "volume": 30,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 23,
+          "ERRO OPERACIONAL": 4,
+          "INTEGRAÇÕES": 2,
+          "CADASTRO": 1
+        },
+        "top_solicitantes": {
+          "Maria Eduarda Candido Amaral": 9,
+          "Alexandre Brito Gomes da Silva": 6,
+          "Antonia Vitoria Moreira Aguiar": 5,
+          "Bremmer Gonçalves Oliveira da Cruz": 3,
+          "João Victor Silva Rodrigues": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 5
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 5
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119414",
+        "119409",
+        "119822",
+        "119416",
+        "122131",
+        "122279",
+        "122588",
+        "122547",
+        "123541",
+        "123726",
+        "123765",
+        "124956",
+        "124890",
+        "124931",
+        "125692",
+        "128191",
+        "128141",
+        "126458",
+        "129234",
+        "128726",
+        "130809",
+        "131195",
+        "131198",
+        "125439",
+        "131006",
+        "129255",
+        "126171",
+        "131876",
+        "133078",
+        "133592"
+      ],
+      "titulo": "Erro ao estornar viagens no Protheus",
+      "descricao": "Tratam-se de falhas sistêmicas no Protheus (Backoffice) ao realizar estornos e gerenciar viagens. Os sintomas incluem mensagens de erro ao estornar viagens (exemplos: viagem 246178 da filial 0604; viagem 0101-040778) e telas que ficam vazias sem retornar os registros, além de divergência no estorno de viagens já fechadas. Também há pedidos para retornar operações e excluir viagens vazias. O impacto envolve dificuldade para cancelar CT-e, possível atraso no faturamento e impacto na documentação para motoristas. Sistemas afetados: Protheus – Backoffice, com foco em operações de viagem e faturamento. Filiais envolvidas: 0104, 0604, 0602, 0606."
+    },
+    {
+      "cluster_id": 2,
+      "metricas": {
+        "volume": 14,
+        "top_servicos": {
+          "ERRO OPERACIONAL": 12,
+          "CADASTRO": 1,
+          "MELHORIAS": 1
+        },
+        "top_solicitantes": {
+          "Amanda Silveira Bernardes": 11,
+          "Maria Eduarda Lopes": 2,
+          "Amanda Moraes": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119510",
+        "120513",
+        "120358",
+        "123365",
+        "125415",
+        "129117",
+        "129495",
+        "129884",
+        "130356",
+        "124152",
+        "133111",
+        "133274",
+        "133279",
+        "133278"
+      ],
+      "titulo": "Dificuldade na exclusão de CT-e TMS",
+      "descricao": "Os chamados tratam de exclusões de CT-e de viagem vinculados ao módulo TMS no Protheus, com pedido de apoio para cancelar documentos na SEFAZ e remover todos os fretes integrados no GFE, além de ações via banco de dados para desassociar esses documentos de romaneios específicos (ex.: romaneios 00018148, 00018165, 00016764). Em vários casos é solicitada a retirada do flag de pagamento GFE da viagem (ex.: 0604-7-000194125, 0604-7-000194351, 0604-7-000185167), indicando alta quantidade de documentos vinculados e necessidade de regularização. Também há solicitações de geração de relatório com a relação de CNPJs excluídos da base de TDE (ZZ4) para controle periódico. O impacto percebido é operacional: dependência de TI para ações diretas no banco de dados, risco de inconsistências entre TMS, GFE, romaneios e SEFAZ, e atraso no fechamento de meses por conta do processamento manual."
+    },
+    {
+      "cluster_id": 3,
+      "metricas": {
+        "volume": 9,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 7,
+          "INTEGRAÇÕES": 1,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Tulio Candido de Oliveira": 3,
+          "Beatriz  Santana Santos Ribeiro": 3,
+          "Victor Machado Martins": 2,
+          "Alana Aranalde Gomes Fukes": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "120263",
+        "123924",
+        "123380",
+        "118420",
+        "122744",
+        "129289",
+        "132233",
+        "130685",
+        "132381"
+      ],
+      "titulo": "Erro no cálculo de Lead Time",
+      "descricao": "Vários chamados indicam falha no cálculo de lead time no Protheus, com divergência entre o valor exibido no New Tracking e o lead time esperado a partir da data de emissão e das regras de feriados. Notas fiscais apresentam lead times divergentes, incluindo casos com lead time zerado e casos em que o lead time exibido não condiz com prazos reais (por exemplo diferenças entre D+11 e a data de expedição, conforme exemplos de clientes como Americanas Tomador BIC). O impacto observado envolve planejamento de expedição, cumprimento de SLA e desempenho da operação, afetando o BackOffice do Protheus e a integração com o tracking. As amostras são consistentes em indicar que a origem pode estar na lógica de cálculo de lead time ou na sincronização entre Protheus e o New Tracking, exigindo validação de regras, datas de emissão e consistência entre notas, rotas e feriados. Recomenda-se reprodução de casos, revisão de rotinas de lead time e da integração entre sistemas para identificar padrão e estabelecer ações corretivas."
+    },
+    {
+      "cluster_id": 4,
+      "metricas": {
+        "volume": 6,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 5,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Bremmer Gonçalves Oliveira da Cruz": 3,
+          "Alexandre Brito Gomes da Silva": 1,
+          "Isaac Cardoso Souza Santos": 1,
+          "Antonia Vitoria Moreira Aguiar": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "123545",
+        "122581",
+        "123288",
+        "125181",
+        "129598",
+        "133068"
+      ],
+      "titulo": "Erro ao transmitir manifestos no Protheus",
+      "descricao": "Resumo executivo: Os chamados indicam falha sistêmica no Protheus ao transmitir ou autorizar manifestos de viagens/lotação (Mesa de Frete), com impactos observados na produtividade e nas entregas. Os erros variam entre falha na autorização de manifestos, falha no schema XML após atualização, falta de informação na TAG do vale pedágio, e rejeições de informações de pagamento (erro 014 MDF). Os casos envolvem as áreas de Backoffice e Logística, com a integração ao REPOM indicada como afetada. Em termos de sistemas afetados, destacam-se Protheus, Backoffice e Logística, com interrupção de processos de transmissão/autorização de manifestos. Requer investigação de validações XML, mapeamento de campos de pagamento e compatibilidade com integrações de terceiros para restabelecer fluxos de autorização e transmissão de manifestos."
+    },
+    {
+      "cluster_id": 5,
+      "metricas": {
+        "volume": 14,
+        "top_servicos": {
+          "DESENVOLVIMENTO": 9,
+          "ERRO SISTÊMICO": 3,
+          "MELHORIAS": 1,
+          "MELHORIA": 1
+        },
+        "top_solicitantes": {
+          "Rhanna Ribeiro Lino": 3,
+          "Higor Malaquias dos Santos": 3,
+          "Victor Machado Martins": 2,
+          "Viviane De Vasconcelos Brito": 1,
+          "Mauricio Rodrigues Borges": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117807",
+        "122177",
+        "117810",
+        "118394",
+        "117796",
+        "124093",
+        "126993",
+        "129445",
+        "128695",
+        "127673",
+        "129228",
+        "131297",
+        "132201",
+        "133604"
+      ],
+      "titulo": "Erro sistêmico no faturamento Protheus",
+      "descricao": "Os chamados indicam falhas sistêmicas no Protheus, principalmente no Backoffice, envolvendo faturamento e notas fiscais. Os sintomas recorrentes incluem notas fiscais não disponíveis para manipulação ou envio, necessidade de imprimir a NF (preferencialmente em lote) e casos de pagamento em duplicidade, além de solicitações para amarrar notas fiscais a pedidos de marketplace com CNPJ diferente e para emitir NF por ordem de CTE para parceiros específicos. O impacto é financeiro e operacional, com atrasos no faturamento, dificuldades de reconciliação e atrito com clientes e parceiros; sistemas afetados incluem Protheus/Backoffice, Full Commerce, financeiro e integrações com marketplaces."
+    },
+    {
+      "cluster_id": 6,
+      "metricas": {
+        "volume": 16,
+        "top_servicos": {
+          "DESENVOLVIMENTO": 6,
+          "CADASTRO": 6,
+          "ESCLARECIMENTO DE DUVIDAS": 2,
+          "ANALISE DE CASO": 1,
+          "ERRO SISTÊMICO": 1
+        },
+        "top_solicitantes": {
+          "Elyana Custodio Ciriaco": 8,
+          "Moaby Alves Rodrigues da Mota": 2,
+          "Mhaysa Soares Borges": 1,
+          "Viviane De Vasconcelos Brito": 1,
+          "Hemily Costa Nascimento Oliveira": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118995",
+        "120090",
+        "120708",
+        "121640",
+        "125988",
+        "121459",
+        "126305",
+        "127299",
+        "127297",
+        "128749",
+        "129669",
+        "125849",
+        "124447",
+        "129675",
+        "129665",
+        "126933"
+      ],
+      "titulo": "Dificuldade em gerenciar ICMS e baixas no Protheus",
+      "descricao": "Chamados indicam necessidade de aprimorar o Protheus para suportar controles fiscais e operacionais. Principalmente, melhorias em relatórios (ex.: SF3), para consolidar débitos/créditos de ICMS por cliente, inclusive associando saídas com CFOPs específicos e o cliente da Supporte. Além disso, há requests de esclarecimento sobre motivos de baixa (PDT/PDA) que não aparecem nos relatórios atuais, bem como apoio para baixa de títulos e inclusão de parcelamentos. Outras demandas envolvem configuração de saídas com tomadores ZFM (CST 08 não incidência) e mensagens de suspensão de PIS/COFINS em notas e CTe relacionados à Zona Franca de Manaus. Sistemas afetados: Protheus e Backoffice; acessos necessários para equipes de Desenvolvimento, Cadastro e fiscal/contábil. O desfecho esperado é um alinhamento entre financeiro, fiscal e TI para implantar relatórios, orientar/importar parcelas e implementar regras de tributação conforme a legislação, reduzindo inconsistências e otimizando os fechamentos mensais."
+    },
+    {
+      "cluster_id": 10007,
+      "titulo": "Instabilidade e Acesso no Protheus",
+      "descricao": "Agrupa incidentes relacionados à instabilidade operacional e questões de acesso no Protheus, incluindo dificuldades de login, cadastros de usuários, liberações de ambientes e módulos, e solicitações de relatórios. Existem variações de sintomas dentro deste grupo, com diferentes impactos, mas o objetivo comum é gerenciar acessos, permissões e uso adequado do Protheus.",
+      "metricas": {
+        "volume": 53,
+        "top_servicos": {
+          "CADASTRO": 24,
+          "ALTERAÇÃO DE PERFIL DO USUÁRIO": 6,
+          "INTEGRAÇÕES": 4,
+          "DESENVOLVIMENTO": 4,
+          "CADASTRO DE USUÁRIO": 3
+        },
+        "top_solicitantes": {
+          "Mirella de Almeida Barcelos": 3,
+          "Mauricio Rodrigues Borges": 3,
+          "Tais Cristina da Silva Felix": 2,
+          "Ester Silva": 2,
+          "Isaac Cardoso Souza Santos": 2
+        },
+        "timeline": []
+      },
+      "sub_clusters": [
+        {
+          "cluster_id": 7,
+          "metricas": {
+            "volume": 20,
+            "top_servicos": {
+              "CADASTRO": 9,
+              "ALTERAÇÃO DE PERFIL DO USUÁRIO": 3,
+              "ERRO SISTÊMICO": 2,
+              "INTEGRAÇÕES": 2,
+              "CADASTRO DE USUARIO": 2
+            },
+            "top_solicitantes": {
+              "Mirella de Almeida Barcelos": 3,
+              "Tais Cristina da Silva Felix": 2,
+              "Ester Silva": 2,
+              "Mauricio Rodrigues Borges": 2,
+              "Ana Laura Sucupira": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-08",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-09",
+                "qtd": 4
+              },
+              {
+                "mes": "2025-10",
+                "qtd": 2
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 3
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 5
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 5
+              }
+            ]
+          },
+          "ids_chamados": [
+            "118341",
+            "122693",
+            "122809",
+            "122694",
+            "126438",
+            "126528",
+            "128031",
+            "125425",
+            "129145",
+            "129173",
+            "129851",
+            "130698",
+            "130793",
+            "131421",
+            "121009",
+            "121494",
+            "131809",
+            "132303",
+            "133076",
+            "133237"
+          ],
+          "titulo": "Falha ao retroceder data base no Protheus",
+          "descricao": "Os chamados são relativos ao Protheus, com foco em ajustes de data base para fins fiscais (retrocesso/adiantamento) e em questões de cadastro/identidade de usuários (alteração de perfil e replicação de usuário). Também há demanda de desativação de contratos antigos no módulo Gestão de Contratos e uma solicitação de agendamento para tratar de inconsistências em lançamentos e documentos, com prioridade alta em ao menos um caso. Os impactos percebidos abrangem risco fiscal e contábil por dados de base desatualizados, dificuldades em cadastros e acessos, além de impactos em integrações e nos processos de BackOffice e Controle de Acesso. Recomenda-se avaliar governança de data base, padronização de ajustes de dados e de alterações de usuários, bem como a remoção de contratos antigos."
+        },
+        {
+          "cluster_id": 8,
+          "metricas": {
+            "volume": 15,
+            "top_servicos": {
+              "CADASTRO": 10,
+              "INTEGRAÇÕES": 1,
+              "LIBERAÇÃO DE ACESSO EM PASTAS OU ARQUIVOS": 1,
+              "CADASTRO DE USUÁRIO": 1,
+              "ALTERAÇÃO DE PERFIL DO USUÁRIO": 1
+            },
+            "top_solicitantes": {
+              "Isaac Cardoso Souza Santos": 2,
+              "Matheus Moreira Lemes": 2,
+              "Jessica Oliveira Giroldo": 1,
+              "Ligia Zago Brezolim Feitoza": 1,
+              "Camila Sá de Oliveira": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-08",
+                "qtd": 2
+              },
+              {
+                "mes": "2025-09",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-10",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 4
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 3
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 4
+              }
+            ]
+          },
+          "ids_chamados": [
+            "118079",
+            "118018",
+            "122506",
+            "124479",
+            "126015",
+            "126022",
+            "126473",
+            "128391",
+            "130063",
+            "129281",
+            "131014",
+            "131189",
+            "132235",
+            "132336",
+            "133425"
+          ],
+          "titulo": "Dificuldade em cadastros no Protheus",
+          "descricao": "Resumo executivo para gestor de TI: os chamados concentram-se em cadastros e liberações no Protheus (BackOffice), incluindo inclusão de filiais, liberação de filiais para usuários, cadastro de grupos de imobilizados e parametrização de ambiente de homologação para emissão de CTes. Também há um caso de erro/fluxo relacionado à ADF para pagamentos que precisa ser liberado/desbloqueado. O impacto percebido envolve atrasos no onboarding de novas filiais, habilitação de usuários, validação de testes de integração e continuidade de pagamentos, além de potenciais impactos em cadastros mestres e ativos. Sistemas afetados: Protheus, módulos CADASTRO, CADASTRO DE USUÁRIO e INTEGRAÇÕES, com envolvimento de ambientes de homologação e produção conforme a necessidade de replicação de cadastros."
+        },
+        {
+          "cluster_id": 9,
+          "metricas": {
+            "volume": 9,
+            "top_servicos": {
+              "DESENVOLVIMENTO": 2,
+              "ALTERAÇÃO DE PERFIL DO USUÁRIO": 2,
+              "INTEGRAÇÕES": 1,
+              "ESCLARECIMENTO DE DUVIDAS": 1,
+              "ANALISE DE CASOS": 1
+            },
+            "top_solicitantes": {
+              "Ivo Silva Trindade": 2,
+              "Alexandre Brito Gomes da Silva": 1,
+              "Astor Martins da Silva Junior": 1,
+              "Rhanna Ribeiro Lino": 1,
+              "Maria Eduarda Lopes": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-08",
+                "qtd": 3
+              },
+              {
+                "mes": "2025-10",
+                "qtd": 2
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 2
+              },
+              {
+                "mes": "2026-02",
+                "qtd": 2
+              }
+            ]
+          },
+          "ids_chamados": [
+            "118847",
+            "118377",
+            "117809",
+            "123547",
+            "128682",
+            "129401",
+            "123260",
+            "133639",
+            "133640"
+          ],
+          "titulo": "Liberação de Acesso aos Ambientes Protheus",
+          "descricao": "Resumo executivo: há demanda recorrente de liberação/alteração de acessos no Protheus, abrangendo ambientes (02 e 06) e diversos módulos (Financeiro – Contas a Pagar, Fornecedores, Produtos, Documentos de Entrada, Estoque, Compras) com usuário espelho joao.filho e solicitações de inclusão de acesso para alexandre.silva. Impacto percebido: atrasos nas atividades operacionais que dependem de privilégios de acesso e conclusão de atividades em desenvolvimento, alterações de perfil, integrações e esclarecimento de dúvidas. Sistemas afetados: PROTHEUS (Backoffice), com dependência de ambientes e módulos citados. Recomendações: estabelecer fluxo padronizado de provisioning, validação de requerimentos, atribuição de acessos por ambiente/módulo de forma automatizada, com controles de auditoria e prazos de entrega."
+        },
+        {
+          "cluster_id": 10,
+          "metricas": {
+            "volume": 4,
+            "top_servicos": {
+              "CADASTRO": 2,
+              "DESENVOLVIMENTO": 2
+            },
+            "top_solicitantes": {
+              "Lilian Teixeira de Souza": 2,
+              "Mhaysa Soares Borges": 1,
+              "Mauricio Rodrigues Borges": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-09",
+                "qtd": 3
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 1
+              }
+            ]
+          },
+          "ids_chamados": [
+            "120568",
+            "122043",
+            "128609",
+            "122660"
+          ],
+          "titulo": "Solicitações de relatórios e acessos no Protheus",
+          "descricao": "Chamados indicam demanda de geração de relatórios e liberação de acessos no Protheus (Backoffice). As solicitações abrangem a inclusão de novos relatórios de folha via SMARTVIEW, a geração de um relatório pontual com a lista de usuários que lançaram notas fiscais nos últimos 3 meses, a necessidade de um relatório de acessos dos usuários dos módulos 7 e 16 para certificar quem não pode ter acesso à folha, e a liberação do módulo de acesso listado para extração de relatório de notas fiscais (Função: Faturamento, Módulo: 34 - Contabilidade Gerencial, Usuários: mhaysa.gomes leticia.garcia angelica.ferreira maria.barbosa danielle.firmino). O impacto percebido é a dependência de equipes de Desenvolvimento e Cadastro para atendimento, com riscos de atraso na disponibilidade de informações críticas relacionadas à folha, notas fiscais, faturamento e controle de acessos."
+        },
+        {
+          "cluster_id": 11,
+          "metricas": {
+            "volume": 5,
+            "top_servicos": {
+              "CADASTRO": 3,
+              "CADASTRO DE USUÁRIO": 2
+            },
+            "top_solicitantes": {
+              "Denes Marques Gualberto": 1,
+              "Michele do Carmo": 1,
+              "Vinícius Fernandes de Paulo": 1,
+              "Viviane de Paula Franca": 1,
+              "Laihara Araújo Ferreira Castro": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-09",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 2
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 1
+              }
+            ]
+          },
+          "ids_chamados": [
+            "119949",
+            "126224",
+            "128707",
+            "131167",
+            "131062"
+          ],
+          "titulo": "Dificuldade de acesso aos módulos Protheus",
+          "descricao": "Resumo executivo: há demanda frequente por provisionamento de acesso a módulos e ambientes do PROTHEUS via BACKOFFICE, com pedidos para liberação de módulos como 78 GFE, 43 TMS e o ambiente 98 (portaria/relatórios de chegada de veículos). Os solicitantes incluem Janikele.rodrigues, laihara.castro, VINICIUS.PAULO e Ingrid Silva Soares, indicando necessidade de visibilidade e permissões específicas para geração de relatórios, informações de faturamento e controle de entrada/saída de veículos. Sistemas afetados são PROTHEUS e BACKOFFICE, abrangendo os módulos e ambientes mencionados. O impacto observado é a dependência de liberação de permissões para concluir cadastros e consultas, o que pode atrasar faturamento, geração de relatórios e operações de portaria/entrada de veículos."
+        }
+      ],
+      "ids_chamados": [
+        "118341",
+        "122693",
+        "122809",
+        "122694",
+        "126438",
+        "126528",
+        "128031",
+        "125425",
+        "129145",
+        "129173",
+        "129851",
+        "130698",
+        "130793",
+        "131421",
+        "121009",
+        "121494",
+        "131809",
+        "132303",
+        "133076",
+        "133237",
+        "118079",
+        "118018",
+        "122506",
+        "124479",
+        "126015",
+        "126022",
+        "126473",
+        "128391",
+        "130063",
+        "129281",
+        "131014",
+        "131189",
+        "132235",
+        "132336",
+        "133425",
+        "118847",
+        "118377",
+        "117809",
+        "123547",
+        "128682",
+        "129401",
+        "123260",
+        "133639",
+        "133640",
+        "120568",
+        "122043",
+        "128609",
+        "122660",
+        "119949",
+        "126224",
+        "128707",
+        "131167",
+        "131062"
+      ]
+    },
+    {
+      "cluster_id": 12,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "DESENVOLVIMENTO": 2,
+          "INTEGRAÇÕES": 1,
+          "EXCLUSÃO DE ACESSOS": 1,
+          "CADASTRO": 1
+        },
+        "top_solicitantes": {
+          "Rhanna Ribeiro Lino": 2,
+          "Henrique Fernandes Pereira": 1,
+          "Ana Laura Sucupira": 1,
+          "Ligia Zago Brezolim Feitoza": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117805",
+        "122032",
+        "130771",
+        "121333",
+        "133120"
+      ],
+      "titulo": "Dificuldades na gestão de acessos e APIs",
+      "descricao": "Os chamados apontam demanda administrativa no Protheus Backoffice relacionada à gestão de acessos e configuração de APIs. Há pedido de criação de usuário API (para uso em ambiente de homologação), exclusão de colaboradores em diferentes filiais e exclusão de acessos, além de solicitações de parametrização de APIs de pagamento (Banco Brasil e SICOOB) para ambientes de desenvolvimento. Os sistemas afetados são o Protheus, com os serviços de Integrações, Cadastro, Exclusão de Acessos e Desenvolvimento, e a área de Backoffice. O impacto percebido envolve atraso no onboarding de usuários/API, remoção de acessos e integrações de pagamentos, o que pode impactar o faturamento e as integrações com parceiros."
+    },
+    {
+      "cluster_id": 13,
+      "metricas": {
+        "volume": 16,
+        "top_servicos": {
+          "PENDENCIA BACKOFFICE": 8,
+          "INTEGRAÇÕES": 5,
+          "ERRO OPERACIONAL": 3
+        },
+        "top_solicitantes": {
+          "Joao Xavier Goncalves Filho": 9,
+          "Cassio Neves Alves": 3,
+          "Priscilla Maria Karla Wanderley": 2,
+          "Douglas Bitencourt Dos Santos": 1,
+          "Aleff Herculano da Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 5
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "120594",
+        "118151",
+        "121608",
+        "123546",
+        "123599",
+        "124216",
+        "125179",
+        "125751",
+        "126355",
+        "126334",
+        "127870",
+        "127781",
+        "128574",
+        "133351",
+        "133364",
+        "133601"
+      ],
+      "titulo": "Falha na integração do retorno simbólico no Protheus",
+      "descricao": "Os chamados indicam falhas recorrentes na integração do pedido de retorno simbólico entre o WMS e o Protheus. Em vários casos o pedido fica travado na WMS (códigos como WMS80000/WMS8000) ou o número do pedido não é gerado no Protheus durante a geração do retorno simbólico, gerando erros de integração. O impacto observado inclui pendência no BackOffice e dificuldade de finalizar retornos simbólicos e regularizações de ordens (exemplos: SC 1232617, SC 1334052; CESV 2026000551 na tela 6497). Sistemas afetados são Protheus, WMS, com envolvimento de BackOffice e Integrações."
+    },
+    {
+      "cluster_id": 14,
+      "metricas": {
+        "volume": 9,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 6,
+          "INTEGRAÇÕES": 1,
+          "ERRO OPERACIONAL": 1,
+          "ANALISE DE CASO": 1
+        },
+        "top_solicitantes": {
+          "Higor Malaquias dos Santos": 6,
+          "Wellington de Jesus Ribeiro": 3
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118743",
+        "120342",
+        "120212",
+        "126447",
+        "128908",
+        "128934",
+        "131788",
+        "131900",
+        "133152"
+      ],
+      "titulo": "Falha na Transmissão e Geração de GNRE",
+      "descricao": "Os chamados indicam falha sistêmica no PROTHEUS, no BackOffice, relacionada ao processamento de GNRE, impactando geração, transmissão e ajustes de vencimento. Existem relatos de que filiais 2001, 2002 e 2003 não transmitem GNREs (16-18/08/2025) e que arquivos não são gerados desde 03/09/2025, além de solicitações para alterar vencimentos de GNREs já geradas com parâmetros diversos (datas de novembro/dezembro). Também há referência a falha no preenchimento automático do campo código da receita (F6CODREC) com o código 100102, exigindo investigação. O impacto percebido é o acúmulo de documentos sem pagamento, atrasos no fluxo de pagamentos e necessidade de intervenção manual para evitar inadimplência. Os tickets envolvem ambientes Protheus, Integrações e BackOffice, com dependência de integração com o A8. Recomenda-se coletar logs de GNRE, verificar conectividade Protheus-A8, revisar o mapeamento de F6CODREC e validar regras de vencimento automático para GNREs, com prioridade para filiais 2001-2003 e as datas críticas citadas."
+    },
+    {
+      "cluster_id": 15,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "LENTIDÃO SISTÊMICA": 5
+        },
+        "top_solicitantes": {
+          "Carolina Simao Araujo": 1,
+          "Thaina Oliveira": 1,
+          "Lorena Alves Pessalacia Freitas": 1,
+          "Viviane De Vasconcelos Brito": 1,
+          "Vitor Hugo Morais Vilela": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "120615",
+        "128797",
+        "131168",
+        "123484",
+        "124069"
+      ],
+      "titulo": "Lentidão sistêmica no Protheus Backoffice",
+      "descricao": "Resumo executivo: Os chamados indicam lentidão sistêmica recorrente no Protheus, com maior impacto no Backoffice. Usuários relatam atraso na obtenção de informações (Pec), lentidão na importação de lançamentos, dificuldade em alterar lançamentos e lentidão na consulta. Há relatos de travamentos e quedas periódicas que exigem atualização de página ou relogin para retomar atividades, mas a operação costuma falhar novamente em curto intervalo. O problema tem afetado várias rotinas do Backoffice, incluindo o módulo contábil, prejudicando a produtividade e atrasando tarefas operacionais. Não há indicação de causa específica nos relatos; a recorrência sugere possível gargalo de desempenho ou instabilidade no ERP. O conjunto de ocorrências indica um padrão de falha de desempenho com impacto direto na continuidade das operações diárias do time de Backoffice."
+    },
+    {
+      "cluster_id": 16,
+      "metricas": {
+        "volume": 35,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 18,
+          "ERRO OPERACIONAL": 4,
+          "INDISPONIBILIDADE": 3,
+          "RESET DE SENHA": 2,
+          "PROBLEMAS COM ACESSO A SERVIDORES": 1
+        },
+        "top_solicitantes": {
+          "Cassia Beatriz Soares Quirino": 3,
+          "Tais Cristina da Silva Felix": 3,
+          "Rayane Aparecida Carvalho Morais": 3,
+          "Marilia Betania Sales da Rocha": 2,
+          "Janaina Mendonca Alves": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 6
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 5
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117794",
+        "118241",
+        "118764",
+        "118012",
+        "118558",
+        "120693",
+        "120595",
+        "120980",
+        "121211",
+        "120904",
+        "121486",
+        "121669",
+        "122667",
+        "125354",
+        "125355",
+        "127061",
+        "127162",
+        "127441",
+        "126531",
+        "128060",
+        "128919",
+        "127248",
+        "129383",
+        "130074",
+        "130285",
+        "130746",
+        "131349",
+        "123964",
+        "127089",
+        "129689",
+        "132378",
+        "132830",
+        "132684",
+        "133632",
+        "133552"
+      ],
+      "titulo": "Dificuldade de acesso ao Protheus",
+      "descricao": "Resumo executivo: os chamados indicam problemas de acesso e disponibilidade no Protheus, com duas solicitações de reset de senha, uma requisição de acesso e instalação via URL interna (192.168.102.150:14030/webapp/), um incidente de indisponibilidade no Backoffice (Computador Matriz Uberlândia) e um erro sistêmico ao anexar a guia Documento de entrada no Ambiente 2 – Compras. O impacto observado envolve usuários sem login, interrupções em operações de compras e controle de acesso, além da necessidade de provisioning de acesso e instalação de software. Sistemas afetados incluem Protheus (Backoffice), Ambiente 2 – Compras e a infraestrutura de rede interna. Recomenda-se priorizar verificação de autenticação/recuperação de senha, disponibilidade do ambiente de compras e do WebApp, bem como ajustes no fluxo de anexação de guias para evitar falhas."
+    },
+    {
+      "cluster_id": 17,
+      "metricas": {
+        "volume": 16,
+        "top_servicos": {
+          "DESENVOLVIMENTO": 13,
+          "MELHORIAS": 2,
+          "CADASTRO": 1
+        },
+        "top_solicitantes": {
+          "Viviane De Vasconcelos Brito": 5,
+          "Mhaysa Soares Borges": 3,
+          "Mauricio Rodrigues Borges": 2,
+          "Katianne Jesus Rodrigues de Franca Cortez": 2,
+          "Maria Luiza da Silva Pereira": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 9
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "121102",
+        "121100",
+        "122703",
+        "123233",
+        "121046",
+        "121055",
+        "121007",
+        "121739",
+        "124484",
+        "120706",
+        "125641",
+        "125668",
+        "121860",
+        "126760",
+        "118432",
+        "124672"
+      ],
+      "titulo": "Configuração de lembretes de vencimento",
+      "descricao": "Resumo executivo: Os chamados reunidos referem-se a ajustes de configuração e automação no Protheus, com foco em BackOffice e Logística, envolvendo quatro frentes distintas. Primeiro, há duas ocorrências idênticas solicitando a configuração de lembretes de vencimento de títulos para as empresas 06, 01 e 04, seguindo o modelo já existente para as empresas 14, 02 e 19. Em seguida, há um pedido para criar subpastas de faturas no envio automático, para marcar ou desmarcar faturas do mesmo cliente e possibilitar envio de docs por e-mail. Além disso, há uma demanda para incluir no arquivo CSV da Rodonaves (GFE) códigos de CEP. Finalmente, há uma solicitação de orçamento para personalização de faturamento com regras de faturamento aglutinado. Os impactos perceptíveis incluem ajustes nas regras de faturamento, melhorias no envio de faturas/documentos e na preparação de dados para transportadora, afetando os módulos de BackOffice, Logística e o fluxo de faturamento automático no Protheus."
+    },
+    {
+      "cluster_id": 18,
+      "metricas": {
+        "volume": 10,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 7,
+          "PENDENCIA BACKOFFICE": 1,
+          "ANALISE DE CASOS": 1,
+          "DESENVOLVIMENTO": 1
+        },
+        "top_solicitantes": {
+          "Maria Genice da Silva": 3,
+          "Thaina Oliveira": 3,
+          "Alexandre Brito Gomes da Silva": 1,
+          "Marilia Betania Sales da Rocha": 1,
+          "Hemily Costa Nascimento Oliveira": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118758",
+        "119644",
+        "120031",
+        "120872",
+        "122736",
+        "123350",
+        "128486",
+        "129503",
+        "131180",
+        "131331"
+      ],
+      "titulo": "Falha na emissão de Conta e Ordem",
+      "descricao": "Os chamados indicam falhas recorrentes no Protheus, no Backoffice, sob o serviço Erro Sistêmico, que impedem a geração de Conta e Ordem (CO) para várias notas e pedidos. Observam-se mensagens de bloqueio de pedidos, como PEDIDO BLOQUEADO, além de situações em que as notas não geram CO ou exigem ajuste manual (notas BIC) devido a problemas de classificação fiscal entre LOGIX e Protheus. O impacto é a interrupção da emissão de notas fiscais, com necessidade de retrabalho e verificação de integrações, afetando faturamento, contabilidade e atendimento a clientes. Sistemas afetados incluem o Protheus (Backoffice) e interfaces de classificação fiscal/logix integradas ao sistema."
+    },
+    {
+      "cluster_id": 19,
+      "metricas": {
+        "volume": 7,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 6,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Isaac Cardoso Souza Santos": 2,
+          "Beatriz Aguiar Dias Campos": 1,
+          "Danilo Saturnino de Oliveira": 1,
+          "Andrie Galdino da Silva": 1,
+          "Alexandre Brito Gomes da Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "125899",
+        "126932",
+        "128622",
+        "130716",
+        "131049",
+        "131196",
+        "123362"
+      ],
+      "titulo": "Erro sistêmico no Protheus afeta pedidos",
+      "descricao": "Resumo executivo: os relatos configuram ERRO SISTÊMICO no Protheus, com impacto transversal em backoffice (pedidos de compra e venda), desvinculação de ADF, atualização de AG/ENTREPOSTO, cancelamentos e geração de pedidos. Sintomas recorrentes incluem mensagens de erro ao gerar pedidos, impossibilitar desvinculação de ADF devido à NF já lançada (gerando duplicidade na contas a pagar), falha na atualização de AG/ENTREPOSTO na filial 0607 e erro ao anular pedidos. Impacto: atrasos operacionais, necessidade de intervenção manual e risco de inconsistências contábeis com notas fiscais. Sistemas afetados: Protheus (Backoffice), filiais 0607 e 0101, com casos identificados em 007337, 0607-023062, 000847007 e cliente 14808074. Observação: não há causa explícita nos relatos; os casos mostram variações de falhas sistêmicas nos processos de pedidos e faturamento."
+    },
+    {
+      "cluster_id": 20,
+      "metricas": {
+        "volume": 11,
+        "top_servicos": {
+          "CADASTRO": 7,
+          "ERRO SISTÊMICO": 1,
+          "ERRO OPERACIONAL": 1,
+          "DESENVOLVIMENTO": 1,
+          "MELHORIAS": 1
+        },
+        "top_solicitantes": {
+          "Larayne Lua Pereira Araújo": 5,
+          "Cristovão Pedroso de Souza": 2,
+          "Maria Genice da Silva": 1,
+          "Pedro Rocha": 1,
+          "Ana Daiane do Nascimento Martins": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117754",
+        "117864",
+        "117879",
+        "118494",
+        "119578",
+        "120566",
+        "120477",
+        "122820",
+        "123992",
+        "125547",
+        "120480"
+      ],
+      "titulo": "Divergência de código entre venda e retorno simbólico",
+      "descricao": "Resumo executivo: os chamados indicam divergência de código de item entre a nota de venda e o retorno simbólico, com a necessidade de parametrizações no Protheus para emitir o retorno com o mesmo código utilizado na venda. Clientes citados incluem Copag (importação), Suvinil, Triumph e IPOJuCA/Uberlândia, evidenciando um problema transversal entre cadastros/backoffice, estoque e faturamento. Impacto percebido: inconsistência nos documentos, discrepâncias entre itens cadastrados no estoque e os registrados nas notas, e retrabalho para clientes. Sistemas afetados: Protheus (Backoffice/Cadastro/Desenvolvimento/Melhorias) e as rotinas de retorno simbólico, notas fiscais e relação entre conta/ordem. Observação: há repetidas solicitações de padronização (espelhamento de SKU) para IPOJuCA e outras filiais, sugerindo necessidade de padronizar o mapeamento de itens entre estoque e documentos de venda/retorno para evitar desvios futuros."
+    },
+    {
+      "cluster_id": 21,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 3,
+          "ANALISE DE CASO": 1,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Higor Malaquias dos Santos": 2,
+          "Francisley de Faria Silva": 1,
+          "Rubenita Maria Monteiro de Lima Silva": 1,
+          "Rhanna Ribeiro Lino": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118655",
+        "121572",
+        "124202",
+        "129714",
+        "133473"
+      ],
+      "titulo": "Falha na compensação automática entre adiantamento e NF",
+      "descricao": "como ativo, a compensação automática não ocorre e ocorre o casamento entre adiantamento e nota fiscal sem a baixa correspondente, exigindo intervenções manuais. Além disso, há discrepâncias na contabilização de descontos/juros em baixas de títulos quando o motivo de baixa é NOD, sugerindo regras de contabilização diferentes conforme o motivo. As solicitações incluem realizar testes para que a compensação funcione com alterações em lote para marcar o campo 'adiantamento' como ativo, e enviar um relatório dos adiantamentos gerados nos últimos 12 meses que compensaram com uma nota fiscal e que posteriormente movimentaram o banco. Também há pedido de apoio para compensar títulos específicos listados e de ajustes de regras de contabilização para evitar inconsistências entre descontos e juros. O impacto reportado envolve BackOffice, Contas a Pagar e Financeiro, dificultando o fechamento contábil e a confiabilidade do processo de tesouraria no ambiente Protheus."
+    },
+    {
+      "cluster_id": 22,
+      "metricas": {
+        "volume": 24,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 12,
+          "ERRO OPERACIONAL": 8,
+          "ANALISE DE CASO": 2,
+          "MANUTENÇÃO": 1,
+          "MELHORIAS": 1
+        },
+        "top_solicitantes": {
+          "Monica Cristina Duarte": 5,
+          "Rhanna Ribeiro Lino": 5,
+          "Mhaysa Soares Borges": 4,
+          "Francisley de Faria Silva": 2,
+          "Rejane Barbosa da Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 6
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118846",
+        "119918",
+        "120650",
+        "120891",
+        "121382",
+        "121298",
+        "121509",
+        "122934",
+        "123652",
+        "126399",
+        "126717",
+        "126957",
+        "127508",
+        "125421",
+        "129378",
+        "129374",
+        "130720",
+        "130794",
+        "129773",
+        "131848",
+        "129127",
+        "132285",
+        "132803",
+        "133802"
+      ],
+      "titulo": "Falha no processamento de títulos no Protheus",
+      "descricao": "Chamados recorrentes indicam falhas nas rotinas de backoffice do Protheus, impactando o processamento/baixa de títulos e pagamentos. O conjunto inclui: títulos não contabilizados na filial 02; monitor de pagamentos deixando itens em processamento sem retorno de erro ou baixa efetuada; exclusão de títulos borderôs FIDC por erro operacional; retorno CNAB não funcionando, impedindo baixa automática de títulos do contas a pagar nos bancos 756 e 237; e solicitações de exclusão de títulos com borderôs. O efeito comum é acúmulo de itens pendentes, atraso na liquidação e necessidade de intervenção manual, com impactos em contas a pagar/receber, reconciliação e fluxos de caixa. Sistemas afetados são o Protheus, módulo Backoffice, especialmente rotinas de contas a pagar/receber, monitor de pagamentos e integração CNAB. Embora os chamados indiquem erro operacional de rotina, um caso é descrito como erro sistêmico, o que sugere falha na contabilização ou na integração, conforme indicado pelos relatos."
+    },
+    {
+      "cluster_id": 23,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 4,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Bremmer Gonçalves Oliveira da Cruz": 2,
+          "Alexandre Brito Gomes da Silva": 1,
+          "Antonia Vitoria Moreira Aguiar": 1,
+          "Joao Victor Gomes Pereira": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119562",
+        "131318",
+        "131330",
+        "131835",
+        "133770"
+      ],
+      "titulo": "Erro no cálculo de CT-e em lote",
+      "descricao": "Resumo executivo: As amostras indicam falhas recorrentes no cálculo de CT-e em lotes no sistema PROTHEUS, com impactos diretos na geração de CT-e e no processamento de lançamentos de BackOffice. Em várias ocorrências (lotes 021926, 150118, 0104-303480, 141916, 0000191784) o cálculo falha ou não conclui, gerando impedimento à emissão ou à validação do documento, e em um caso houve estorno de cálculo para evitar custos, seguido de necessidade de reabertura do processo. Além disso, surgem desvios de cubagem (ex.: cubagem de 100.000,00 m3 que resulta em valor incorreto) e inconsistência na aplicação de componentes fiscais como o TDE, onde a primeira emissão não cobre a taxa apesar de cadastros completos, enquanto recalcular produz cobrança. O problema afeta as áreas de BackOffice e administrativa, com dependência de rotinas de cálculo no PROTHEUS, causando atritos operacionais, retrabalho, atrasos em emissão de CT-e e custos adicionais. Indicam um comportamento instável entre as rotinas de cálculo, estorno e cancelamento de RPS, sugerindo que a prioridade é investigar o módulo de cálculo de CTE, a integração com cadastros de cubagem e a aplicação de taxas (TDE) para garantir consistência entre emissões e recalculos."
+    },
+    {
+      "cluster_id": 24,
+      "metricas": {
+        "volume": 16,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 15,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Alexandre Brito Gomes da Silva": 5,
+          "Bremmer Gonçalves Oliveira da Cruz": 4,
+          "Antonia Vitoria Moreira Aguiar": 2,
+          "Ligia Zago Brezolim Feitoza": 2,
+          "Iasmin da Silva Santos": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 9
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117628",
+        "122212",
+        "122604",
+        "122788",
+        "125359",
+        "129078",
+        "130098",
+        "131392",
+        "132001",
+        "133276",
+        "133285",
+        "133405",
+        "133404",
+        "133403",
+        "133501",
+        "133507"
+      ],
+      "titulo": "Falha no processamento de CT-e",
+      "descricao": "Conjunto de chamados indica falhas sistêmicas no processamento de CT-e no Protheus, atingindo o ciclo completo de CT-e no módulo BACKOFFICE. Os relatos descrevem falha na emissão de CT-e de substituição, erro na importação de CT-e com pagamento (condição não gera duplicatas) e transmissão com dificuldades, além de problemas de monitoramento e impressão: PDFs em branco, e inconsistência na chave de acesso devido ao CNPJ da filial (0604), o que também impede cancelamento. Em uma ocorrência, a transmissão de CT-e apresentou erro, e há relatos de falhas genéricas com anexos. O impacto percebido é a paralisação/retardo de emissão, importação, monitoramento, impressão e transmissão de CT-es, exigindo intervenção de suporte técnico para validação de logs, dados de configuração e possíveis correções no fluxo de CT-e."
+    },
+    {
+      "cluster_id": 25,
+      "metricas": {
+        "volume": 6,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 4,
+          "ERRO OPERACIONAL": 2
+        },
+        "top_solicitantes": {
+          "Iasmin da Silva Santos": 2,
+          "Maria Eduarda Candido Amaral": 1,
+          "Alexandre Brito Gomes da Silva": 1,
+          "Antonia Vitoria Moreira Aguiar": 1,
+          "Rejane Barbosa da Silva": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "124215",
+        "126922",
+        "130767",
+        "130459",
+        "131566",
+        "132566"
+      ],
+      "titulo": "Erro de cancelamento não refletido no SEFAZ",
+      "descricao": "Resumo executivo: os chamados indicam falhas sistêmicas e operacionais no backoffice do Protheus com divergências entre ERP, SPED e SEFAZ. Em CH1, geração do TXT do SPED ICMS/IPI apresenta 02 (documento cancelado) para documentos que deveriam aparecer como 05 (inutilizado). Em CH2, cancelamento de CT-e não é refletido no SEFAZ (ERP mostra estorno, SEFAZ mostra autorizado). Em CH3, cancelamento de notas com retenção de ISS não considera a apuração correspondente. Em CH4, cadastro de destinatário foi alterado (mudança de município), gerando divergência na emissão. Em CH5, DT de cancelamento de CT-e aparece no ERP, mas o documento permanece ativo no portal, gerando descompasso entre fiscal e contábil. Impacto: risco de inconformidade com obrigações fiscais, retrabalho e inconsistência de dados entre SPED, CT-e/NFe e cadastros. Sistemas afetados: Protheus BackOffice, geração de SPED ICMS/IPI, CT-e/NFe, cadastro de destinatários, integração com SEFAZ."
+    },
+    {
+      "cluster_id": 26,
+      "metricas": {
+        "volume": 11,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 4,
+          "CADASTRO": 4,
+          "ERRO OPERACIONAL": 2,
+          "ATUALIZAÇÕES E CORREÇÕES": 1
+        },
+        "top_solicitantes": {
+          "Maria Eduarda Lopes": 3,
+          "Hemily Costa Nascimento Oliveira": 3,
+          "Elyana Custodio Ciriaco": 2,
+          "Mirella de Almeida Barcelos": 1,
+          "Michele do Carmo": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118054",
+        "121269",
+        "123889",
+        "123896",
+        "124085",
+        "125057",
+        "126280",
+        "129514",
+        "128449",
+        "133167",
+        "133166"
+      ],
+      "titulo": "Erro em cadastros e alíquotas no Protheus",
+      "descricao": "Os chamados indicam falhas de qualidade de dados no Protheus (Backoffice) com impactos no cadastro, fiscal e obrigações regulatórias. Observa-se que diversos municípios aparecem sem código de país no grupo de regiões, totalizando aproximadamente 5.647 registros, com solicitação de atualização via banco devido à morosidade de alterações manuais. Há ainda erro no cálculo de Reg Cliente, apesar do município cadastrado estar correto, sugerindo falha de processamento interno. Divergência de alíquotas de crédito presumido para frete surge em razão de arredondamento inadequado pela configuração atual (1,24% em vez de 1,2375%), gerando erros de validação no SPED Contribuições, especially por a cadência permitir apenas duas casas decimais. Além disso, o SPED Contribuições apresenta erros de alíquotas para transportadores autônomos e pessoas jurídicas, exigindo saneamento manual de cerca de 200 registros por empresa, o que consome várias horas de trabalho. Também há solicitação de atualização de alíquotas internas de estados (AL 20%, RN 20%, PI 22,5%), apontando incorreções conforme planilha fornecida. O conjunto de casos impacta operações de backoffice e fiscal, destacando a necessidade de saneamento de dados, correção de cadastros e ajustes de configuração para obedecer à legislação vigente."
+    },
+    {
+      "cluster_id": 27,
+      "metricas": {
+        "volume": 13,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 11,
+          "INTEGRAÇÕES": 1,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_solicitantes": {
+          "Elusiane Cristina de Albuquerque": 3,
+          "Viviane de Paula Franca": 2,
+          "Viviane De Vasconcelos Brito": 2,
+          "Karla Lohanna Martins Goncalves": 2,
+          "Leticia Alves Garcia": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119365",
+        "119475",
+        "120564",
+        "120065",
+        "122111",
+        "121945",
+        "129840",
+        "131384",
+        "130792",
+        "130517",
+        "132717",
+        "133286",
+        "133392"
+      ],
+      "titulo": "Falha no envio automático de faturas",
+      "descricao": "Resumo executivo: os chamados indicam falha sistêmica no envio automático de faturas pelo Protheus (Backoffice). Ao acionar o disparo de notas fiscais por e-mail, os envios ocorrem para destinatários incorretos ou aleatórios, ou apenas parcialmente, com algumas faturas não sendo encaminhadas. Em alguns casos a função de envio automático permanece indisponível por dias, exigindo disparos manuais. O impacto é a desinformação junto aos clientes, atrasos no faturamento e retrabalho para o time de faturamento/backoffice. Sistemas afetados incluem Protheus, Backoffice e a rotina de envio de faturas por e-mail, com referência ao Outlook como destino."
+    },
+    {
+      "cluster_id": 28,
+      "metricas": {
+        "volume": 17,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 11,
+          "INTEGRAÇÕES": 5,
+          "INDISPONIBILIDADE": 1
+        },
+        "top_solicitantes": {
+          "Alexandre Brito Gomes da Silva": 6,
+          "Mirielle Santos de Oliveira": 3,
+          "Isaac Cardoso Souza Santos": 2,
+          "Maria Luiza da Silva Pereira": 1,
+          "Michele do Carmo": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 6
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119001",
+        "119315",
+        "119531",
+        "119461",
+        "118438",
+        "121262",
+        "122054",
+        "124397",
+        "125929",
+        "130463",
+        "131379",
+        "131554",
+        "123913",
+        "131722",
+        "132171",
+        "133002",
+        "133554"
+      ],
+      "titulo": "Falha no envio de Notfis/EDI",
+      "descricao": "Os chamados apontam falha recorrente no envio de Notfis/EDI no Protheus Backoffice, com impacto direto em clientes e na operação de faturamento. Em alguns casos o envio não ocorre e não há mensagem de erro clara; em outros, o Notfis/EDI não chega ao destinatário por email, indicando provável indisponibilidade de entrega. Há ainda situações em que apenas o XML é transmitido aos clientes, deixando o PDF ausente. Um caso específico relata que o Pioneer não recebe o arquivo OCOREN/CONEMB via FTP há três dias, no caminho /outbound/venda, para o CNPJ 05.553.531/0002-06. Em geral, os chamados descrevem falhas de transmissão de arquivos, inconsistência entre formatos (XML vs PDF) e entrega por email, sem logs ou mensagens de erro claras. Os sistemas afetados são Protheus, Backoffice, integrações e Notfis/EDI, com impacto potencial sobre clientes, entregas documentais e processos de faturamento."
+    },
+    {
+      "cluster_id": 29,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 3,
+          "ERRO OPERACIONAL": 1,
+          "DESENVOLVIMENTO": 1
+        },
+        "top_solicitantes": {
+          "Viviane De Vasconcelos Brito": 3,
+          "Angelica Lopes Ferreira": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "121182",
+        "122937",
+        "127478",
+        "124888",
+        "126984"
+      ],
+      "titulo": "Falha na Geração de Boletos",
+      "descricao": "Os chamados indicam falha recorrente na emissão/geração de boletos no ERP Protheus, com impacto direto no envio para bancos (ex.: Grafeno). O ambiente de produção está indisponível para emissão de boletos, e o monitor de pendências aponta erro. Em uma rotina de faturamento automático (Regras de fat automático), boletos não são gerados, enquanto faturas continuam a ser criadas normalmente. Impacto principal é o impedimento do envio de boletos para cobrança, acarretando atrasos no recebimento. Sistemas afetados: Protheus (Backoffice), ambiente de produção, rotinas de geração/emissão de boletos e monitor de pendências."
+    },
+    {
+      "cluster_id": 30,
+      "metricas": {
+        "volume": 7,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 7
+        },
+        "top_solicitantes": {
+          "Viviane de Paula Franca": 2,
+          "Viviane De Vasconcelos Brito": 2,
+          "Elusiane Cristina de Albuquerque": 2,
+          "Mhaysa Soares Borges": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118006",
+        "123506",
+        "121996",
+        "125420",
+        "130482",
+        "131306",
+        "131338"
+      ],
+      "titulo": "Erro na geração de pastas de faturamento",
+      "descricao": "Resumo executivo: os chamados indicam uma falha sistêmica no Protheus, no Backoffice, relacionada à geração de documentos de faturamento. Em vários casos, as pastas para envio de faturamento não são criadas automaticamente e os documentos (faturas, boletos, demonstrativos, capa de fatura) não seguem para as pastas correspondentes, impedindo o envio aos clientes. Também há relatos de indisponibilidade na geração de CTRC e de faturamento por lote. O impacto é direto no fluxo de faturamento e na entrega de documentos aos clientes, afetando as equipes de faturamento e logística. O problema é caracterizado como erro sistêmico no ambiente Protheus, com variações de mensagem (tela, anexos), sem uma raiz causal definida nos relatos."
+    },
+    {
+      "cluster_id": 31,
+      "metricas": {
+        "volume": 6,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 6
+        },
+        "top_solicitantes": {
+          "Monica Cristina Duarte": 2,
+          "Giovana Stefani Silva": 2,
+          "Vitor Hugo Morais Vilela": 1,
+          "Rodolfo Martins": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "125908",
+        "125911",
+        "125639",
+        "126285",
+        "122008",
+        "131682"
+      ],
+      "titulo": "Erro na Contabilização de Lançamentos",
+      "descricao": "Conjunto de chamados aponta um padrão de falhas sistêmicas no Protheus, dentro do Backoffice, relacionadas à contabilização. Observam-se inconsistências em lançamentos contábeis (ex.: itens débito não identificados), baixa não refletida no financeiro, não contabilização de GNRE ICMS em várias filiais e ausência de Centro de Custo nos lançamentos de meses específicos. Os relatos envolvem diferentes empresas/filiais (ex.: lote 008850, empresa 0101; filiais 2001-2004) e indicam possível falha de integração entre financeiro e contabilidade, com impacto direto no fechamento contábil, nas reconciliações e na geração de relatórios. Trata-se de um problema sistêmico que exige validação de dados, correção de registros e revisão de processos de contabilização para evitar desvios contábeis. "
+    },
+    {
+      "cluster_id": 32,
+      "metricas": {
+        "volume": 12,
+        "top_servicos": {
+          "ERRO OPERACIONAL": 7,
+          "ERRO SISTÊMICO": 5
+        },
+        "top_solicitantes": {
+          "Lilian Teixeira de Souza": 6,
+          "Flaviane Mendonca Silva": 3,
+          "Aline Darley Oliveira": 2,
+          "Sarah Araujo Santos": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "121477",
+        "122965",
+        "125567",
+        "125568",
+        "122967",
+        "121843",
+        "122042",
+        "131024",
+        "131846",
+        "131217",
+        "132322",
+        "132133"
+      ],
+      "titulo": "Erro no Cálculo de IR no Protheus",
+      "descricao": "Resumo executivo: os chamados indicam falhas no módulo Backoffice do Protheus relacionadas ao cálculo do IR e à contabilização da folha de pagamento. Os sintomas incluem cálculo incorreto de IR para vários funcionários após atualização de tabelas, necessidade de ajustes manuais mensais para novos colaboradores e para retornos de férias, reconhecimento indevido de funcionário no eSocial (dados de desligado usados para ativo) e falha na contabilização da folha quando o processamento é concluído offline, mas não é registrado no sistema. Esses problemas afetam a folha de pagamento, o cumprimento de IRRF e o envio ao eSocial, gerando retrabalho, inconsistências contábeis e riscos de conformidade. Sistemas afetados: Protheus, Backoffice e Esocial."
+    },
+    {
+      "cluster_id": 33,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "INTEGRAÇÕES": 3,
+          "PENDENCIA BACKOFFICE": 2
+        },
+        "top_solicitantes": {
+          "Priscilla Maria Karla Wanderley": 2,
+          "Danielle Firmino": 1,
+          "Viviane de Paula Franca": 1,
+          "Maria Eduarda Candido Amaral": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "121604",
+        "128277",
+        "129168",
+        "121446",
+        "130421"
+      ],
+      "titulo": "Erro de quantidade no retorno simbólico",
+      "descricao": "Resumo executivo: os chamados indicam falhas recorrentes de integração de notas com o Protheus, principalmente no retorno simbólico de notas fiscais, envolvendo divergência de quantidade informada e, em alguns casos, número de itens inconsistentes. Os registros citam NF 2675 (Harman), NF 300476 (Série 17) na tela 80000, NF 1030 de retorno e faturamento SARA, com mensagens de quantidade informada incorreta ou retorno não aceito, além de um caso de atraso significativo (em torno de 30 minutos) na conclusão da integração SARA. Os impactos são atraso no processamento de notas, necessidade de validação manual e orientação de procedimentos, afetando as áreas de BackOffice e Integrações do Protheus e envolvendo os módulos de Integrações, BackOffice e SARA."
+    },
+    {
+      "cluster_id": 34,
+      "metricas": {
+        "volume": 15,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 10,
+          "ERRO OPERACIONAL": 3,
+          "PENDENCIA BACKOFFICE": 1,
+          "INTEGRAÇÕES": 1
+        },
+        "top_solicitantes": {
+          "Adriely Loureiro de Oliveira": 2,
+          "Elyana Custodio Ciriaco": 2,
+          "Douglas Bitencourt Dos Santos": 1,
+          "Junio Oliveira Reis": 1,
+          "Amanda Silveira Bernardes": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118751",
+        "118747",
+        "118845",
+        "118169",
+        "122122",
+        "123211",
+        "124489",
+        "124669",
+        "127209",
+        "127083",
+        "129134",
+        "131302",
+        "131599",
+        "131867",
+        "127244"
+      ],
+      "titulo": "Falha nos processos de Notas Fiscais no Protheus",
+      "descricao": "Este conjunto de chamados, todos no Protheus com a área Backoffice, aponta falhas recorrentes no fluxo de Notas Fiscais, envolvendo geração, cancelamento e anulação, bem como inconsistências na integração com SARA e na sincronização de dados entre sistemas. Entre os relatos estão o salvamento da nota ocorrendo no caminho errado, a não atualização da dataCancelamento na tabela tb_pacote_envio, o que bloqueia o cancelamento no SARA, além de erros ao gerar NF, cancelar NFS e anular NF com anexos. O impacto é operacional, com interrupções ou atrasos no faturamento, bloqueio de cancelamentos no SARA e retrabalho manual. Os sistemas afetados são PROTHEUS, SARA e tb_pacote_envio, com a maioria dos casos classificados como ERRO OPERACIONAL e alguns como ERRO SISTÊMICO. Recomenda-se investigar os fluxos de NF, a consistência de dados entre Protheus e tb_pacote_envio e a integração SARA/Protheus."
+    },
+    {
+      "cluster_id": 35,
+      "metricas": {
+        "volume": 11,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 9,
+          "INTEGRAÇÕES": 1,
+          "MELHORIAS": 1
+        },
+        "top_solicitantes": {
+          "Mhaysa Soares Borges": 5,
+          "Maria Eduarda Candido Amaral": 2,
+          "Robson Matheus Santos de Oliveira": 1,
+          "Thaina Oliveira": 1,
+          "Iasmin da Silva Santos": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118756",
+        "121002",
+        "122228",
+        "121821",
+        "122805",
+        "124665",
+        "126579",
+        "120970",
+        "130754",
+        "130768",
+        "128758"
+      ],
+      "titulo": "Erro sistêmico no Protheus afeta NF",
+      "descricao": "Resumo executivo: os chamados apontam falhas sistêmicas no Protheus que comprometem emissão, transmissão e impressão de notas fiscais (NF/NFSE) e o fluxo de integrações. Os sintomas incluem indisponibilidade durante o faturamento com a transmissão da NFSE não funcionando (CH1), rejeição de NF por GTIN não informado da unidade tributável (CH2), divergência de valores unitários ao emitir/imprimir NF (CH3), falha na impressão de NFSE por lote e por documento (CH4) e um caso de nota com status bloqueado no Cross Docking (NF 21618) (CH5). Os sistemas afetados são o BackOffice do Protheus, os módulos de faturamento e NF/NFSE, bem como as integrações com processos de Cross Docking. O impacto percebido é a interrupção de faturamento, necessidade de geração manual de PDFs e retrabalho para validação de dados. Recomenda-se validação de fluxos de transmissão/ impressão, checagem de dados de GTIN, consistência de valores unitários e verificação de estados de notas em integrações de Cross Docking para restaurar o fluxo normal."
+    },
+    {
+      "cluster_id": 36,
+      "metricas": {
+        "volume": 13,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 11,
+          "ANALISE DE CASO": 2
+        },
+        "top_solicitantes": {
+          "Isaac Cardoso Souza Santos": 3,
+          "Alexandre Brito Gomes da Silva": 3,
+          "Antonia Vitoria Moreira Aguiar": 3,
+          "Maria Eduarda Candido Amaral": 2,
+          "Ana Luiza Feitoza": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 8
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119566",
+        "122200",
+        "123550",
+        "128717",
+        "130569",
+        "131218",
+        "131423",
+        "131806",
+        "132901",
+        "132826",
+        "133231",
+        "133441",
+        "133611"
+      ],
+      "titulo": "Erro no processamento de NFS-e",
+      "descricao": "Resumo executivo: as amostras indicam um padrão de falhas do tipo ERRO SISTÊMICO no Protheus, na subárea Backoffice, relacionadas a NFS-e, com ocorrências de monitoramento, transmissão e autorização entre filiais como Uberlândia, Barueri e MAO; há relatos de notas específicas e mensagens de erro diversas, incluindo falhas de validação XML (schema) durante o monitoramento, o que impede ou atrasa o processamento das notas e pode impactar expedições e entrega de hoje. O sistema afetado é o Protheus, especialmente o módulo de NFS-e no Backoffice, com consequências para a operação de expedição, recebimento de documentos e controle de notas. O volume observado nas amostras é de 11 ocorrências de ERRO SISTÊMICO e 2 de ANALISE DE CASO, indicando recorrência e necessidade de intervenção de TI de nível N3. Recomenda-se prioridade para investigar a integração NFS-e com o Protheus, checar fluxos de autorização e monitoramento, analisar logs de erro e validar os schemas XML das notas envolvidas, bem como confirmar dados das notas envolvidas para as filiais citadas."
+    },
+    {
+      "cluster_id": 37,
+      "metricas": {
+        "volume": 13,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 9,
+          "INTEGRAÇÕES": 1,
+          "ANALISE DE CASOS": 1,
+          "ANALISE DE CASO": 1,
+          "ERRO SISTEMICO": 1
+        },
+        "top_solicitantes": {
+          "Adriely Loureiro de Oliveira": 4,
+          "Anderson Rosa de Oliveira": 1,
+          "Mirielle Santos de Oliveira": 1,
+          "Antonia Vitoria Moreira Aguiar": 1,
+          "Maria Eduarda Candido Amaral": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119037",
+        "122474",
+        "121723",
+        "123898",
+        "128215",
+        "129005",
+        "125446",
+        "130714",
+        "131050",
+        "122221",
+        "123718",
+        "132523",
+        "131860"
+      ],
+      "titulo": "Falha na transmissão de notas fiscais",
+      "descricao": "Resumo executivo: os chamados indicam falha sistêmica no processamento de notas fiscais no Protheus, com sintomas de envio ausente ou indisponível no New Tracking, monitoramento de NF e de anulações como 0009762256 falhando, e NF não transmitidas (ex.: 18503, 18580, 18581). Em várias ocorrências, a emissão aparece no Logix, mas não reflete no tracking, prejudicando o fechamento mensal (filial 0607, cliente 14808074) e impactando o Backoffice e integrações. Sistemas afetados incluem Protheus (Backoffice, Inovação, Integrações) e o módulo New Tracking. Recomenda-se investigação dos fluxos de transmissão de NF, validação de logs e sincronização entre NF, tracking e monitoramento, com foco em consistência de dados e impacto no fechamento contábil/financeiro."
+    }
+  ]
+}

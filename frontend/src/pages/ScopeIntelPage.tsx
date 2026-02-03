@@ -4,7 +4,7 @@ import {
     BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, ResponsiveContainer, CartesianGrid
 } from 'recharts';
 import {
-    FiActivity, FiSearch, FiX
+    FiActivity, FiX
 } from 'react-icons/fi';
 import Navbar from '../components/Navbar';
 import './ScopeIntelPage.css';
@@ -29,6 +29,7 @@ interface Cluster {
     descricao: string;
     ids_chamados: string[];
     metricas: Metricas;
+    sub_clusters?: Cluster[]; // Adicionado para suportar hierarquia
 }
 
 interface Metadata {
@@ -63,14 +64,79 @@ const SYSTEM_CONFIG: Record<string, { icon: string; color: string; label: string
 
 const DEFAULT_CONFIG = { icon: '📁', color: '#64748b', label: 'Sistema' };
 
+// Interface para os detalhes de um chamado carregado sob demanda
+interface TicketDetail {
+    id_chamado: string;
+    titulo: string;
+    solicitante: string;
+    data_abertura: string;
+    status: string;
+    descricao_limpa: string;
+}
+
 const ScopeIntelPage: React.FC = () => {
     // theme removido pois não é usado aqui
     const [data, setData] = useState<AnaliseData | null>(null);
     const [analyses, setAnalyses] = useState<AnalysisSummary[]>([]); // Lista de análises disponíveis
     const [selectedCluster, setSelectedCluster] = useState<Cluster | null>(null);
-    const [searchTerm, setSearchTerm] = useState('');
+    // const [searchTerm, setSearchTerm] = useState(''); // REMOVIDO
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    // --- CACHE DE CHAMADOS (LAZY LOADING) ---
+    // Estrutura: { [cluster_id]: TicketDetail[] }
+    // Isso evita múltiplas chamadas de API para o mesmo cluster.
+    const [ticketsCache, setTicketsCache] = useState<Record<number, TicketDetail[]>>({});
+    const [loadingTickets, setLoadingTickets] = useState(false);
+
+    // Função para buscar exemplos de chamados quando abrir o modal
+    React.useEffect(() => {
+        if (!selectedCluster) return;
+
+        // SE FOR PAI (MACRO), NÃO BUSCA CHAMADOS DIRETOS (Os chamados estão nos filhos)
+        if (selectedCluster.sub_clusters && selectedCluster.sub_clusters.length > 0) {
+            return;
+        }
+
+        // 1. Verifica se já está no cache
+        if (ticketsCache[selectedCluster.cluster_id]) {
+            return; // Já temos, não precisa buscar
+        }
+
+        // 2. Se não tem IDs para buscar, aborta
+        const idsToFetch = selectedCluster.ids_chamados?.slice(0, 5) || [];
+        if (idsToFetch.length === 0) return;
+
+        // 3. Busca na API
+        const fetchTickets = async () => {
+            setLoadingTickets(true);
+            try {
+                const response = await fetch('http://localhost:8001/api/tickets/batch', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ids: idsToFetch })
+                });
+
+                if (!response.ok) throw new Error('Falha ao buscar chamados');
+
+                const data: TicketDetail[] = await response.json();
+
+                // 4. Salva no Cache
+                setTicketsCache(prev => ({
+                    ...prev,
+                    [selectedCluster.cluster_id]: data
+                }));
+
+            } catch (err) {
+                console.error("Erro ao carregar exemplos de chamados", err);
+            } finally {
+                setLoadingTickets(false);
+            }
+        };
+
+        fetchTickets();
+
+    }, [selectedCluster]);
 
     // Carregar a lista de análises disponíveis ao montar o componente
     React.useEffect(() => {
@@ -96,14 +162,8 @@ const ScopeIntelPage: React.FC = () => {
     };
 
 
-
-    const filteredClusters = data?.clusters.filter(c =>
-        c.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        c.descricao.toLowerCase().includes(searchTerm.toLowerCase())
-    ) || [];
-
-    // Ordenar clusters por volume (maior primeiro)
-    const sortedClusters = [...filteredClusters].sort((a, b) => b.metricas.volume - a.metricas.volume);
+    // Filtro removido - agora mostra todos (ou adicione lógica simples se precisar ordenar)
+    const sortedClusters = data?.clusters ? [...data.clusters].sort((a, b) => b.metricas.volume - a.metricas.volume) : [];
 
     // Renderiza a Timeline do cluster selecionado
     const renderTimeline = (timeline: TimelineItem[]) => {
@@ -217,7 +277,7 @@ const ScopeIntelPage: React.FC = () => {
     return (
         <div className="app-shell">
             <Navbar
-                title={`Scope: ${data.metadata.sistema}`}
+                title={`${data.metadata.sistema}`}
                 icon={<FiActivity size={24} />}
                 onBack={() => setData(null)}
                 backLabel="Sistemas"
@@ -225,24 +285,29 @@ const ScopeIntelPage: React.FC = () => {
 
             <main className="app-main">
                 {/* Header / KPI Row */}
-                <div className="intel-header">
-                    {/* Removido título daqui pois está na navbar */}
-                    <div style={{ flex: 1 }}></div>
+                {/* Header / KPI Row Nova Estrutura */}
+                <div className="intel-header-redesigned">
 
-                    <div className="intel-kpi-row">
-                        <div className="intel-kpi">
-                            <span className="intel-kpi-label">Total Chamados</span>
-                            <span className="intel-kpi-value">{data.metadata.total_chamados}</span>
+                    {/* LADO ESQUERDO: Títulos e Metadados */}
+                    <div className="intel-header-info">
+                        <h1>Grupos dos Chamados</h1>
+                        <p className="intel-subtitle">
+                            Análise baseada nos últimos <strong>{data.metadata.periodo_dias} dias</strong>. <br />
+                            Última atualização: {new Date(data.metadata.data_analise).toLocaleDateString()} às {new Date(data.metadata.data_analise).toLocaleTimeString().slice(0, 5)}
+                        </p>
+                    </div>
+
+                    {/* LADO DIREITO: 3 Cards de KPI */}
+                    <div className="intel-kpi-cards-wrapper">
+
+                        <div className="intel-kpi-card">
+                            <span className="kpi-label">Volume de Chamados</span>
+                            <span className="kpi-value">{data.metadata.total_chamados}</span>
                         </div>
-                        <div className="intel-kpi">
-                            <span className="intel-kpi-label">Padrões Detectados</span>
-                            <span className="intel-kpi-value">{data.metadata.total_grupos}</span>
-                        </div>
-                        <div className="intel-kpi" title="Porcentagem de chamados úteis após remoção de ruído (spam, logs, mensagens curtas).">
-                            <span className="intel-kpi-label">Eficiência IA</span>
-                            <span className="intel-kpi-value">
-                                {((1 - data.metadata.taxa_ruido) * 100).toFixed(1)}%
-                            </span>
+
+                        <div className="intel-kpi-card">
+                            <span className="kpi-label">Grupos Detectados</span>
+                            <span className="kpi-value">{data.metadata.total_grupos}</span>
                         </div>
 
                     </div>
@@ -251,41 +316,50 @@ const ScopeIntelPage: React.FC = () => {
                 {/* Main Content */}
                 <div className="intel-content">
 
-                    {/* Search Bar */}
-                    <div className="intel-search-bar">
-                        <FiSearch className="intel-search-icon" />
-                        <input
-                            type="text"
-                            placeholder="Buscar por erro, descrição..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                        />
-                    </div>
+                    {/* Search Bar REMOVIDA DAQUI */}
 
                     {/* Clusters Grid */}
                     <div className="intel-grid">
-                        {sortedClusters.map(cluster => (
-                            <div
-                                key={cluster.cluster_id}
-                                className="intel-card"
-                                onClick={() => setSelectedCluster(cluster)}
-                            >
-                                <div className="intel-card-header">
-                                    <span className="intel-vol-badge">{cluster.metricas.volume}</span>
-                                    <h3>{cluster.titulo}</h3>
-                                </div>
-                                <p className="intel-card-desc">{cluster.descricao}</p>
+                        {sortedClusters.map(cluster => {
+                            // Pega APENAS o serviço mais frequente (índice 0)
+                            const topService = Object.keys(cluster.metricas.top_servicos)[0];
+                            const isMacro = !!(cluster.sub_clusters && cluster.sub_clusters.length > 0);
 
-                                <div className="intel-card-mini-stats">
-                                    <div className="mini-stat">
-                                        <FiActivity />
-                                        <span>
-                                            Top: {Object.keys(cluster.metricas.top_servicos)[0] || 'N/A'}
-                                        </span>
+                            return (
+                                <div
+                                    key={cluster.cluster_id}
+                                    className={`intel-card ${isMacro ? 'macro-card' : ''}`}
+                                    onClick={() => setSelectedCluster(cluster)}
+                                    style={isMacro ? { borderLeft: '4px solid #f97316' } : {}} // Destaque visual
+                                >
+                                    {/* Cabeçalho: Título + Volume */}
+                                    <div className="intel-card-header">
+                                        <h3>{cluster.titulo}</h3>
+                                        <span className="intel-vol-badge">{cluster.metricas.volume} chamados</span>
+                                    </div>
+
+                                    {/* Corpo: Resumo Completo */}
+                                    <div className="intel-card-body">
+                                        <p className="intel-card-desc">{cluster.descricao}</p>
+                                    </div>
+
+                                    {/* Rodapé: Tag do Principal Serviço ou Contador de Filhos */}
+                                    <div className="intel-card-footer">
+                                        {isMacro ? (
+                                            <span style={{ fontSize: '0.8rem', marginRight: 'auto', color: '#f97316', fontWeight: 600 }}>
+                                                📂 {cluster.sub_clusters?.length} sub-grupos
+                                            </span>
+                                        ) : (
+                                            topService && (
+                                                <span className="service-tag">
+                                                    {topService}
+                                                </span>
+                                            )
+                                        )}
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </main>
@@ -299,7 +373,12 @@ const ScopeIntelPage: React.FC = () => {
                         </button>
 
                         <div className="intel-modal-header">
-                            <h2>{selectedCluster.titulo}</h2>
+                            <h2>
+                                {selectedCluster.titulo}
+                                {selectedCluster.sub_clusters && selectedCluster.sub_clusters.length > 0 && (
+                                    <span style={{ fontSize: '0.6em', marginLeft: '10px', color: '#999', fontWeight: 'normal' }}>(Categoria Macro)</span>
+                                )}
+                            </h2>
                             <div className="intel-modal-chips">
                                 <span className="chip">ID: {selectedCluster.cluster_id}</span>
                                 <span className="chip volume">{selectedCluster.metricas.volume} eventos</span>
@@ -309,39 +388,136 @@ const ScopeIntelPage: React.FC = () => {
                         <p className="intel-modal-desc">{selectedCluster.descricao}</p>
 
                         <div className="intel-modal-body">
-                            <div className="intel-section">
-                                <h3>📈 Tendência Temporal</h3>
-                                {renderTimeline(selectedCluster.metricas.timeline)}
-                            </div>
 
-                            <div className="intel-row-split">
-                                <div className="intel-section">
-                                    <h3>🔧 Top Serviços</h3>
-                                    <ul>
-                                        {Object.entries(selectedCluster.metricas.top_servicos)
-                                            .slice(0, 5)
-                                            .map(([name, qtd]) => (
-                                                <li key={name}>
-                                                    <span>{name}</span>
-                                                    <strong>{qtd}</strong>
-                                                </li>
-                                            ))}
-                                    </ul>
+                            {/* LÓGICA DE EXIBIÇÃO: MACRO (Filhos) ou MICRO (Detalhes) */}
+                            {selectedCluster.sub_clusters && selectedCluster.sub_clusters.length > 0 ? (
+                                // --- MODO MACRO: LISTA DE FILHOS ---
+                                <div className="intel-section full-width">
+                                    <h3>📂 Sub-problemas Identificados</h3>
+                                    <div className="intel-subclusters-grid" style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+                                        gap: '15px',
+                                        marginTop: '15px'
+                                    }}>
+                                        {selectedCluster.sub_clusters.map(sub => (
+                                            <div
+                                                key={sub.cluster_id}
+                                                className="intel-sub-card"
+                                                style={{
+                                                    background: 'var(--bg-secondary)',
+                                                    padding: '16px',
+                                                    borderRadius: '8px',
+                                                    cursor: 'pointer',
+                                                    border: '1px solid var(--border-color)',
+                                                    transition: 'all 0.2s ease'
+                                                }}
+                                                // Dril-down: Clicar no filho atualiza o modal para o filho
+                                                onClick={() => setSelectedCluster(sub)}
+                                                onMouseEnter={e => (e.currentTarget.style.borderColor = '#f97316')}
+                                                onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--border-color)')}
+                                            >
+                                                <h4 style={{ margin: '0 0 8px 0', color: 'var(--text-primary)', fontSize: '0.95rem' }}>
+                                                    {sub.titulo}
+                                                </h4>
+                                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                    <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+                                                        {sub.metricas.volume} chamados
+                                                    </span>
+                                                    <span style={{ fontSize: '1.2rem' }}>➡️</span>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* Métricas Agregadas do Pai */}
+                                    <div className="intel-row-split" style={{ marginTop: '30px', borderTop: '1px solid var(--border-color)', paddingTop: '20px' }}>
+                                        <div className="intel-section">
+                                            <h3>🔧 Top Serviços Afetados (Total)</h3>
+                                            <ul>
+                                                {Object.entries(selectedCluster.metricas.top_servicos)
+                                                    .slice(0, 5)
+                                                    .map(([name, qtd]) => (
+                                                        <li key={name}>
+                                                            <span>{name}</span>
+                                                            <strong>{qtd}</strong>
+                                                        </li>
+                                                    ))}
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="intel-section">
-                                    <h3>👤 Top Solicitantes</h3>
-                                    <ul>
-                                        {Object.entries(selectedCluster.metricas.top_solicitantes)
-                                            .slice(0, 5)
-                                            .map(([name, qtd]) => (
-                                                <li key={name}>
-                                                    <span>{name}</span>
-                                                    <strong>{qtd}</strong>
-                                                </li>
-                                            ))}
-                                    </ul>
-                                </div>
-                            </div>
+
+                            ) : (
+                                // --- MODO MICRO: DETALHES COMPLETOS ---
+                                <>
+                                    <div className="intel-section">
+                                        <h3>📈 Tendência Temporal</h3>
+                                        {renderTimeline(selectedCluster.metricas.timeline)}
+                                    </div>
+
+                                    <div className="intel-row-split">
+                                        <div className="intel-section">
+                                            <h3>🔧 Top Serviços</h3>
+                                            <ul>
+                                                {Object.entries(selectedCluster.metricas.top_servicos)
+                                                    .slice(0, 5)
+                                                    .map(([name, qtd]) => (
+                                                        <li key={name}>
+                                                            <span>{name}</span>
+                                                            <strong>{qtd}</strong>
+                                                        </li>
+                                                    ))}
+                                            </ul>
+                                        </div>
+                                        <div className="intel-section">
+                                            <h3>👤 Top Solicitantes</h3>
+                                            <ul>
+                                                {Object.entries(selectedCluster.metricas.top_solicitantes)
+                                                    .slice(0, 5)
+                                                    .map(([name, qtd]) => (
+                                                        <li key={name}>
+                                                            <span>{name}</span>
+                                                            <strong>{qtd}</strong>
+                                                        </li>
+                                                    ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    {/* --- SEÇÃO DE EXEMPLOS (LAZY LOADED) --- */}
+                                    <div className="intel-section full-width" style={{ marginTop: '20px' }}>
+                                        <h3>📌 Exemplos Recentes</h3>
+                                        {loadingTickets && !ticketsCache[selectedCluster.cluster_id] ? (
+                                            <p className="intel-loading-text">Carregando exemplos...</p>
+                                        ) : (
+                                            <div className="intel-tickets-list">
+                                                {ticketsCache[selectedCluster.cluster_id]?.map(ticket => (
+                                                    <div key={ticket.id_chamado} className="intel-ticket-item">
+                                                        <div className="ticket-header">
+                                                            <strong>{ticket.id_chamado}</strong>
+                                                            <span className="ticket-date">
+                                                                {new Date(ticket.data_abertura).toLocaleDateString()}
+                                                            </span>
+                                                        </div>
+                                                        <p className="ticket-title">{ticket.titulo}</p>
+                                                        <p className="ticket-desc-preview">
+                                                            {ticket.descricao_limpa}
+                                                        </p>
+                                                        <span className="ticket-badge">{ticket.status}</span>
+                                                    </div>
+                                                ))}
+
+                                                {(!ticketsCache[selectedCluster.cluster_id] || ticketsCache[selectedCluster.cluster_id].length === 0) && (
+                                                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                                                        Nenhum detalhe disponível para exibição.
+                                                    </p>
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
