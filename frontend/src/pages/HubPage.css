@@ -158,7 +158,7 @@
 .hub-welcome-view h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    background: linear-gradient(90deg, var(--text-primary), var(--accent-orange));
+    background: var(--accent-orange-dark);
     background-clip: text;
     /* Standard */
     -webkit-background-clip: text;

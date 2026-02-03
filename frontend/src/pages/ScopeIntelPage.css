@@ -79,7 +79,7 @@
     cursor: pointer;
     transition: all 0.3s;
     position: relative;
-    border: 1px solid var(--border-color);
+    border: 1px solid rgb(255, 128, 0, 0.6);
 }
 
 .intel-sys-card:hover {
