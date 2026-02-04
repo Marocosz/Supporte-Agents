@@ -89,10 +89,18 @@ const renderTimeline = (timeline: TimelineItem[]) => {
                     <XAxis dataKey="mes" tick={{ fontSize: 12 }} />
                     <YAxis tick={{ fontSize: 12 }} />
                     <RechartsTooltip
-                        contentStyle={{ backgroundColor: '#431407', border: 'none', borderRadius: '8px' }}
-                        itemStyle={{ color: '#fff' }}
+                        contentStyle={{ backgroundColor: '#431407', border: '1px solid #7c2d12', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.5)' }}
+                        itemStyle={{ color: '#fed7aa' }}
+                        labelStyle={{ color: '#fff', fontWeight: 'bold', marginBottom: '5px' }}
+                        cursor={{ fill: 'rgba(255,255,255,0.05)' }}
                     />
-                    <Bar dataKey="qtd" fill="#F97316" radius={[4, 4, 0, 0]} name="Volume" />
+                    <Bar
+                        dataKey="qtd"
+                        fill="#F97316"
+                        radius={[4, 4, 0, 0]}
+                        name="Volume"
+                        activeBar={{ fill: '#fdba74' }}
+                    />
                 </BarChart>
             </ResponsiveContainer>
         </div>
@@ -111,11 +119,18 @@ const renderSazonalidade = (sazonalidade: { dia: string; qtd: number }[]) => {
                     <XAxis dataKey="dia" tick={{ fontSize: 12 }} />
                     <YAxis tick={{ fontSize: 12 }} />
                     <RechartsTooltip
-                        contentStyle={{ backgroundColor: '#064e3b', border: 'none', borderRadius: '8px' }}
-                        itemStyle={{ color: '#fff' }}
-                        cursor={{ fill: 'transparent' }}
+                        contentStyle={{ backgroundColor: '#064e3b', border: '1px solid #065f46', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.5)' }}
+                        itemStyle={{ color: '#6ee7b7' }}
+                        labelStyle={{ color: '#fff', fontWeight: 'bold', marginBottom: '5px' }}
+                        cursor={{ fill: 'rgba(255,255,255,0.05)' }}
                     />
-                    <Bar dataKey="qtd" fill="#10B981" radius={[4, 4, 0, 0]} name="Volume" />
+                    <Bar
+                        dataKey="qtd"
+                        fill="#10B981"
+                        radius={[4, 4, 0, 0]}
+                        name="Volume"
+                        activeBar={{ fill: '#6ee7b7' }}
+                    />
                 </BarChart>
             </ResponsiveContainer>
         </div>
@@ -491,7 +506,7 @@ const ScopeIntelPage: React.FC = () => {
                                     </div>
                                 ) : (
                                     <>
-                                        {/* GRID DE GRÁFICOS: TIMELINE E SAZONALIDADE LADO A LADO */}
+                                        {/* GRID DE GRÁFICOS: TIMELINE E SAZONALIDADE LADO A LADO (Apenas Filho) */}
                                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
                                             <div className="intel-section">
                                                 <h3>Tendência Mensal</h3>
@@ -536,8 +551,27 @@ const ScopeIntelPage: React.FC = () => {
                                                 <h3>Top Sub-áreas (Refinamento)</h3>
                                                 <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '10px' }}>
                                                     {Object.entries(selectedCluster.metricas.top_subareas).slice(0, 8).map(([name, qtd]) => (
-                                                        <span key={name} style={{ background: '#27272a', padding: '6px 12px', borderRadius: '4px', fontSize: '0.85rem', border: '1px solid #3f3f46' }}>
-                                                            {name} <strong style={{ color: '#aaa', marginLeft: '4px' }}>({qtd})</strong>
+                                                        <span key={name} style={{
+                                                            background: 'var(--bg-secondary)',
+                                                            padding: '6px 12px',
+                                                            borderRadius: '6px',
+                                                            fontSize: '0.85rem',
+                                                            border: '1px solid var(--border-color)',
+                                                            color: 'var(--text-primary)',
+                                                            display: 'flex',
+                                                            alignItems: 'center'
+                                                        }}>
+                                                            {name}
+                                                            <strong style={{
+                                                                color: 'var(--text-secondary)',
+                                                                marginLeft: '6px',
+                                                                background: 'rgba(255,255,255,0.05)',
+                                                                padding: '1px 6px',
+                                                                borderRadius: '4px',
+                                                                fontSize: '0.8em'
+                                                            }}>
+                                                                {qtd}
+                                                            </strong>
                                                         </span>
                                                     ))}
                                                 </div>

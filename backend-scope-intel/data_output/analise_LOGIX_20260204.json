@@ -1,0 +1,4884 @@
+{
+  "metadata": {
+    "sistema": "LOGIX",
+    "data_analise": "2026-02-04T09:46:11.622388",
+    "periodo_dias": 180,
+    "total_chamados": 1026,
+    "total_grupos": 40,
+    "taxa_ruido": 0.1316
+  },
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "metricas": {
+        "volume": 18,
+        "top_servicos": {
+          "CONSULTA SIMPLES BD": 18
+        },
+        "top_subareas": {
+          "LOGISTICA": 18
+        },
+        "top_solicitantes": {
+          "Beatriz  Santana Santos Ribeiro": 18
+        },
+        "top_status": {},
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 9
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 3
+          },
+          {
+            "dia": "Ter",
+            "qtd": 4
+          },
+          {
+            "dia": "Qua",
+            "qtd": 4
+          },
+          {
+            "dia": "Qui",
+            "qtd": 3
+          },
+          {
+            "dia": "Sex",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "123982",
+        "124156",
+        "124320",
+        "124432",
+        "124610",
+        "124892",
+        "125014",
+        "125105",
+        "125291",
+        "127675",
+        "127899",
+        "128084",
+        "128270",
+        "128340",
+        "128546",
+        "128620",
+        "128736",
+        "128956"
+      ],
+      "titulo": "Falha na Emissão de Lotes Vitória Régia",
+      "descricao": "Usuários da área de Logística não conseguem emitir os lotes Vitória Régia para faturamento de outubro. O serviço Consulta Simples BD no Logix está afetado.",
+      "tags": [
+        "Emissão de Lotes",
+        "Vitória Régia",
+        "Consulta Simples BD",
+        "Logix",
+        "Logística"
+      ]
+    },
+    {
+      "cluster_id": 1,
+      "metricas": {
+        "volume": 18,
+        "top_servicos": {
+          "CONSULTA SIMPLES BD": 14,
+          "PENDENCIA BACKOFFICE": 3,
+          "CADASTRO": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 18
+        },
+        "top_solicitantes": {
+          "Adriely Loureiro de Oliveira": 17,
+          "Junio Oliveira Reis": 1
+        },
+        "top_status": {
+          "finalizado": 3
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 6
+          },
+          {
+            "dia": "Ter",
+            "qtd": 3
+          },
+          {
+            "dia": "Qua",
+            "qtd": 3
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 4
+          },
+          {
+            "dia": "Sab",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118425",
+        "118600",
+        "118928",
+        "119646",
+        "119708",
+        "121106",
+        "121341",
+        "123914",
+        "124022",
+        "124308",
+        "124752",
+        "124786",
+        "125451",
+        "125743",
+        "125905",
+        "126176",
+        "126655",
+        "127049"
+      ],
+      "titulo": "Solicitações de Parâmetros Dimensionais Triumph",
+      "descricao": "Solicitações de parâmetros dimensionais estão sendo feitas para Triumph via LOGIX. Afetam a filial 0602 de Triumph.",
+      "tags": [
+        "Parametros Dimensionais",
+        "Triumph",
+        "LOGIX",
+        "Logistica",
+        "Solicitacoes"
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "metricas": {
+        "volume": 14,
+        "top_servicos": {
+          "CONSULTA SIMPLES BD": 14
+        },
+        "top_subareas": {
+          "LOGISTICA": 14
+        },
+        "top_solicitantes": {
+          "Mirielle Santos de Oliveira": 14
+        },
+        "top_status": {},
+        "timeline": [
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 12
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 3
+          },
+          {
+            "dia": "Ter",
+            "qtd": 5
+          },
+          {
+            "dia": "Qua",
+            "qtd": 2
+          },
+          {
+            "dia": "Qui",
+            "qtd": 2
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "130919",
+        "131044",
+        "131226",
+        "131415",
+        "131600",
+        "131759",
+        "131847",
+        "132058",
+        "132066",
+        "132220",
+        "132281",
+        "132402",
+        "132517",
+        "132727"
+      ],
+      "titulo": "Falha na Emissão de Lotes Vitoria Regia",
+      "descricao": "Não está sendo possível encaminhar os lotes de faturamento Vitoria Regia. Afeta o serviço Consulta Simples BD na área Logística.",
+      "tags": [
+        "Emissão de Lotes",
+        "Faturamento",
+        "Consulta Simples BD",
+        "Logística",
+        "Vitoria Regia"
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "metricas": {
+        "volume": 32,
+        "top_servicos": {
+          "CONSULTA SIMPLES BD": 32
+        },
+        "top_subareas": {
+          "LOGISTICA": 32
+        },
+        "top_solicitantes": {
+          "Beatriz  Santana Santos Ribeiro": 30,
+          "Mirielle Santos de Oliveira": 2
+        },
+        "top_status": {},
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 12
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 13
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 6
+          },
+          {
+            "dia": "Ter",
+            "qtd": 6
+          },
+          {
+            "dia": "Qua",
+            "qtd": 7
+          },
+          {
+            "dia": "Qui",
+            "qtd": 6
+          },
+          {
+            "dia": "Sex",
+            "qtd": 7
+          }
+        ]
+      },
+      "ids_chamados": [
+        "122952",
+        "123035",
+        "123272",
+        "123496",
+        "123420",
+        "123660",
+        "123923",
+        "123598",
+        "124797",
+        "125728",
+        "125830",
+        "125918",
+        "126043",
+        "126172",
+        "126282",
+        "126397",
+        "126551",
+        "126964",
+        "126754",
+        "129000",
+        "129140",
+        "129262",
+        "129431",
+        "129807",
+        "129682",
+        "129934",
+        "130057",
+        "130154",
+        "130314",
+        "130549",
+        "130721",
+        "130723"
+      ],
+      "titulo": "Emissão de Lotes Vitória Régia",
+      "descricao": "Solicitações de envio de lotes para faturamento com datas específicas. Afeta a área de Logística que utiliza o LOGIX com o serviço Consulta Simples BD.",
+      "tags": [
+        "Lotes",
+        "Faturamento",
+        "LOGIX",
+        "Consulta Simples BD",
+        "Logística"
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "metricas": {
+        "volume": 24,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 17,
+          "CADASTRO": 2,
+          "CENTRAL DE CADASTROS": 2,
+          "CONFIGURAÇÃO DE PERFIL DE USUARIO": 2,
+          "ARMAZÉM": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 24
+        },
+        "top_solicitantes": {
+          "Jefferson Miranda De Oliveira": 5,
+          "Laura Almeida Silva": 1,
+          "Joaquim Targino da Silva Neto": 1,
+          "Welington dos Santos Borges": 1,
+          "Emerson Oliveira Brito dos Santos": 1
+        },
+        "top_status": {
+          "finalizado": 3
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 6
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 6
+          },
+          {
+            "dia": "Ter",
+            "qtd": 7
+          },
+          {
+            "dia": "Qua",
+            "qtd": 4
+          },
+          {
+            "dia": "Qui",
+            "qtd": 4
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          },
+          {
+            "dia": "Dom",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118554",
+        "118920",
+        "119387",
+        "119898",
+        "119937",
+        "120573",
+        "120689",
+        "121139",
+        "122682",
+        "123442",
+        "123562",
+        "124774",
+        "124879",
+        "126086",
+        "127192",
+        "129194",
+        "129925",
+        "130468",
+        "131261",
+        "131311",
+        "132011",
+        "132140",
+        "132189",
+        "133081"
+      ],
+      "titulo": "Problemas de Acesso ao LOGIX",
+      "descricao": "Usuários da área Logística relatam falha de acesso ao LOGIX e solicitam recuperação ou reset de senha. O problema afeta cadastros de usuário e a central de cadastros.",
+      "tags": [
+        "Senha",
+        "Login",
+        "LOGIX",
+        "Cadastro",
+        "Central de Cadastros"
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "metricas": {
+        "volume": 33,
+        "top_servicos": {
+          "LENTIDÃO SISTÊMICA": 22,
+          "INDISPONIBILIDADE": 4,
+          "LENTIDÃO SISTEMICA": 4,
+          "ERRO SISTÊMICO": 1,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 30,
+          "BACKOFFICE": 1,
+          "CONTROLE DE ACESSOS": 1,
+          "REDES": 1
+        },
+        "top_solicitantes": {
+          "Eduardo Soares dos Santos": 8,
+          "Joao Xavier Goncalves Filho": 4,
+          "Vinicius Alves de Freitas": 3,
+          "Douglas Bitencourt Dos Santos": 2,
+          "Jose Alves Da Silva Neto": 2
+        },
+        "top_status": {
+          "finalizado": 11,
+          "aberto": 3
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 14
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 5
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 5
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 8
+          },
+          {
+            "dia": "Ter",
+            "qtd": 3
+          },
+          {
+            "dia": "Qua",
+            "qtd": 5
+          },
+          {
+            "dia": "Qui",
+            "qtd": 5
+          },
+          {
+            "dia": "Sex",
+            "qtd": 8
+          },
+          {
+            "dia": "Sab",
+            "qtd": 1
+          },
+          {
+            "dia": "Dom",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117724",
+        "118028",
+        "118101",
+        "119113",
+        "119126",
+        "118992",
+        "119186",
+        "119190",
+        "119191",
+        "119471",
+        "119602",
+        "119889",
+        "120298",
+        "120973",
+        "121562",
+        "121711",
+        "119555",
+        "119615",
+        "119651",
+        "125152",
+        "126995",
+        "126997",
+        "128613",
+        "129333",
+        "129959",
+        "130000",
+        "130323",
+        "131078",
+        "131889",
+        "132455",
+        "132542",
+        "132849",
+        "132990"
+      ],
+      "titulo": "Lentidão Sistêmica no Logix",
+      "descricao": "Lentidão sistêmica está afetando a área de Logística. Coletores e operações de conferência/separação estão com desempenho baixo.",
+      "tags": [
+        "Lentidão",
+        "Logix",
+        "Logística",
+        "Coletores",
+        "Conferência"
+      ]
+    },
+    {
+      "cluster_id": 6,
+      "metricas": {
+        "volume": 13,
+        "top_servicos": {
+          "CONSULTA SIMPLES BD": 13
+        },
+        "top_subareas": {
+          "LOGISTICA": 13
+        },
+        "top_solicitantes": {
+          "Beatriz  Santana Santos Ribeiro": 13
+        },
+        "top_status": {},
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 12
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 1
+          },
+          {
+            "dia": "Ter",
+            "qtd": 2
+          },
+          {
+            "dia": "Qua",
+            "qtd": 4
+          },
+          {
+            "dia": "Qui",
+            "qtd": 3
+          },
+          {
+            "dia": "Sex",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "120352",
+        "120056",
+        "120166",
+        "120690",
+        "120908",
+        "120628",
+        "120942",
+        "121017",
+        "121164",
+        "121316",
+        "121450",
+        "122118",
+        "127333"
+      ],
+      "titulo": "Erro na Emissão de Lotes Vitória Régia",
+      "descricao": "Usuários da área Logística não recebem os lotes de faturamento da Vitória Régia.",
+      "tags": [
+        "Lotes",
+        "Vitória Régia",
+        "Consulta Simples BD",
+        "Logística",
+        "LOGIX"
+      ]
+    },
+    {
+      "cluster_id": 7,
+      "metricas": {
+        "volume": 16,
+        "top_servicos": {
+          "CONSULTA SIMPLES BD": 16
+        },
+        "top_subareas": {
+          "LOGISTICA": 16
+        },
+        "top_solicitantes": {
+          "Beatriz  Santana Santos Ribeiro": 16
+        },
+        "top_status": {
+          "finalizado": 6
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 5
+          },
+          {
+            "dia": "Ter",
+            "qtd": 4
+          },
+          {
+            "dia": "Qua",
+            "qtd": 2
+          },
+          {
+            "dia": "Qui",
+            "qtd": 3
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119120",
+        "118864",
+        "119231",
+        "119386",
+        "119481",
+        "119556",
+        "119909",
+        "121473",
+        "121558",
+        "121677",
+        "121810",
+        "122001",
+        "122490",
+        "122700",
+        "123171",
+        "127447"
+      ],
+      "titulo": "Envio de Lotes Vitória Régia Incompleto",
+      "descricao": "Lotes enviados automaticamente estão chegando incompletos para faturamento na área logística. Ajustar o horário de envio do relatório para as 17:00.",
+      "tags": [
+        "Lotes Incompletos",
+        "Vitória Régia",
+        "LOGIX",
+        "Envio Automático",
+        "Faturamento"
+      ]
+    },
+    {
+      "cluster_id": 8,
+      "metricas": {
+        "volume": 45,
+        "top_servicos": {
+          "DESBLOQUEIO DE CONTA": 13,
+          "INDISPONIBILIDADE": 12,
+          "CADASTRO DE USUÁRIO": 7,
+          "LIBERAR SESSÃO COLETORES": 4,
+          "PENDENCIA BACKOFFICE": 2
+        },
+        "top_subareas": {
+          "LOGISTICA": 42,
+          "CONTROLE DE ACESSOS": 3
+        },
+        "top_solicitantes": {
+          "Ewerton Bezerra Nogueira": 26,
+          "Keison Lima da Silva": 2,
+          "Adriely Loureiro de Oliveira": 2,
+          "Matheus da Silva Trindade": 1,
+          "Fernando Nazário Borges": 1
+        },
+        "top_status": {
+          "finalizado": 14
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 15
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 9
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 6
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 6
+          },
+          {
+            "dia": "Ter",
+            "qtd": 14
+          },
+          {
+            "dia": "Qua",
+            "qtd": 9
+          },
+          {
+            "dia": "Qui",
+            "qtd": 9
+          },
+          {
+            "dia": "Sex",
+            "qtd": 6
+          },
+          {
+            "dia": "Sab",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117902",
+        "117907",
+        "117954",
+        "118168",
+        "118263",
+        "118298",
+        "118441",
+        "118218",
+        "118572",
+        "119095",
+        "118895",
+        "119196",
+        "119388",
+        "119503",
+        "119797",
+        "119927",
+        "120215",
+        "120072",
+        "119077",
+        "121600",
+        "121975",
+        "122025",
+        "122636",
+        "123075",
+        "124864",
+        "125016",
+        "125039",
+        "125058",
+        "125535",
+        "125573",
+        "125869",
+        "125936",
+        "126549",
+        "127526",
+        "128269",
+        "128747",
+        "128884",
+        "128969",
+        "129143",
+        "129727",
+        "130479",
+        "131406",
+        "132117",
+        "132259",
+        "132268"
+      ],
+      "titulo": "Bloqueio de Conta por Excesso de Conexões",
+      "descricao": "Contas de usuários da área Logística estão bloqueadas por excederem tentativas de login. O acesso via desktop está indisponível para esses usuários.",
+      "tags": [
+        "Bloqueio de Conta",
+        "Excesso de Conexões",
+        "LOGIX",
+        "Login",
+        "Logística"
+      ]
+    },
+    {
+      "cluster_id": 9,
+      "metricas": {
+        "volume": 21,
+        "top_servicos": {
+          "INTEGRAÇÕES": 14,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 5,
+          "ERRO OPERACIONAL": 2
+        },
+        "top_subareas": {
+          "LOGISTICA": 21
+        },
+        "top_solicitantes": {
+          "Guilherme Augusto Siqueira Vecchi Pinto": 19,
+          "Wilker Gabriel Cezario da Silva": 2
+        },
+        "top_status": {
+          "finalizado": 1,
+          "aberto": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 6
+          },
+          {
+            "dia": "Ter",
+            "qtd": 4
+          },
+          {
+            "dia": "Qua",
+            "qtd": 5
+          },
+          {
+            "dia": "Qui",
+            "qtd": 4
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118422",
+        "119623",
+        "119763",
+        "120901",
+        "121392",
+        "121568",
+        "122031",
+        "122162",
+        "122207",
+        "122672",
+        "123265",
+        "123476",
+        "125725",
+        "127316",
+        "127547",
+        "128496",
+        "128700",
+        "128818",
+        "133115",
+        "133349",
+        "133433"
+      ],
+      "titulo": "Pedidos Presos No Plano Gerado",
+      "descricao": "Pedidos estão presos no status 'plano gerado' no LOGIX, impedindo a liberação para separação e conferência. Atinge a área de Logística, impactando os pedidos Rain Bird e TODAYTEC.",
+      "tags": [
+        "Plano Gerado",
+        "Logística",
+        "Rain Bird",
+        "TODAYTEC",
+        "LOGIX"
+      ]
+    },
+    {
+      "cluster_id": 10,
+      "metricas": {
+        "volume": 13,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 5,
+          "INTEGRAÇÕES": 5,
+          "ERRO OPERACIONAL": 2,
+          "ERRO SISTÊMICO": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 13
+        },
+        "top_solicitantes": {
+          "Rafaella Oliveira Silva": 5,
+          "Adriely Loureiro de Oliveira": 4,
+          "Wilker Gabriel Cezario da Silva": 2,
+          "Gabriela Oliveira": 1,
+          "Karla Lohanna Martins Goncalves": 1
+        },
+        "top_status": {
+          "finalizado": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 5
+          },
+          {
+            "dia": "Ter",
+            "qtd": 2
+          },
+          {
+            "dia": "Qua",
+            "qtd": 5
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118355",
+        "120044",
+        "120788",
+        "119752",
+        "122745",
+        "124986",
+        "125680",
+        "125530",
+        "125519",
+        "128498",
+        "128730",
+        "132514",
+        "132511"
+      ],
+      "titulo": "Notas Fiscais Não Processadas no LOGIX",
+      "descricao": "Notas Fiscais não estão sendo processadas no LOGIX (EDI0050/FTP). Afeta a área de Logística.",
+      "tags": [
+        "NotasFiscais",
+        "LOGIX",
+        "EDI0050",
+        "FTP",
+        "Logistica"
+      ]
+    },
+    {
+      "cluster_id": 10011,
+      "titulo": "Problemas de Acesso e Autenticação",
+      "descricao": "Grupo de falhas de controle de acesso e configuração de permissões, resultando em liberações inadequadas e bloqueios de acesso a telas críticas. O impacto acumulado é operacional, com atrasos e risco de inconsistências de dados.",
+      "tags": [
+        "Logística",
+        "Acesso",
+        "Permissões",
+        "Crítico"
+      ],
+      "metricas": {
+        "volume": 68,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 22,
+          "CADASTRO": 15,
+          "CENTRAL DE CADASTROS": 8,
+          "LIBERAÇÃO DE ACESSOS ": 6,
+          "CONFIGURAÇÃO DE PERFIL DE USUARIO": 4
+        },
+        "top_solicitantes": {
+          "Odair de Pablo Cordeiro Carvalho": 8,
+          "José Josenilson": 5,
+          "Paulo Melo": 4,
+          "Larayne Lua Pereira Araújo": 4,
+          "Aleff Herculano da Silva": 3
+        },
+        "top_status": {
+          "finalizado": 13,
+          "aberto": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 14
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 12
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 12
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 10
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 10
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 2
+          }
+        ]
+      },
+      "sub_clusters": [
+        {
+          "cluster_id": 11,
+          "metricas": {
+            "volume": 8,
+            "top_servicos": {
+              "LIBERAÇÃO DE ACESSOS ": 6,
+              "CADASTRO": 1,
+              "LIBERAR SESSÃO COLETORES": 1
+            },
+            "top_subareas": {
+              "LOGISTICA": 8
+            },
+            "top_solicitantes": {
+              "Odair de Pablo Cordeiro Carvalho": 8
+            },
+            "top_status": {
+              "finalizado": 6
+            },
+            "timeline": [
+              {
+                "mes": "2025-08",
+                "qtd": 6
+              },
+              {
+                "mes": "2025-10",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 1
+              }
+            ],
+            "sazonalidade": [
+              {
+                "dia": "Qua",
+                "qtd": 6
+              },
+              {
+                "dia": "Qui",
+                "qtd": 2
+              }
+            ]
+          },
+          "ids_chamados": [
+            "118103",
+            "118104",
+            "118105",
+            "118106",
+            "118107",
+            "118108",
+            "122877",
+            "129093"
+          ],
+          "titulo": "Configuração de Acesso Desalinhada no Logix",
+          "descricao": "Solicitações de liberação de acesso no Logix para conferentes da área de Logística. A sessão de Coletores exibe pedidos do armazém 2 em vez do armazém 3.",
+          "tags": [
+            "Acesso",
+            "Logix",
+            "Logística",
+            "Coletores",
+            "Configuração"
+          ]
+        },
+        {
+          "cluster_id": 12,
+          "metricas": {
+            "volume": 60,
+            "top_servicos": {
+              "CADASTRO DE USUÁRIO": 22,
+              "CADASTRO": 14,
+              "CENTRAL DE CADASTROS": 8,
+              "CONFIGURAÇÃO DE PERFIL DE USUARIO": 4,
+              "INDISPONIBILIDADE": 2
+            },
+            "top_subareas": {
+              "LOGISTICA": 59,
+              "CONTROLE DE ACESSOS": 1
+            },
+            "top_solicitantes": {
+              "José Josenilson": 5,
+              "Paulo Melo": 4,
+              "Larayne Lua Pereira Araújo": 4,
+              "Aleff Herculano da Silva": 3,
+              "Marcelo Mesquita de Sousa": 2
+            },
+            "top_status": {
+              "finalizado": 7,
+              "aberto": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-08",
+                "qtd": 8
+              },
+              {
+                "mes": "2025-09",
+                "qtd": 12
+              },
+              {
+                "mes": "2025-10",
+                "qtd": 11
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 8
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 9
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 10
+              },
+              {
+                "mes": "2026-02",
+                "qtd": 2
+              }
+            ],
+            "sazonalidade": [
+              {
+                "dia": "Seg",
+                "qtd": 10
+              },
+              {
+                "dia": "Ter",
+                "qtd": 10
+              },
+              {
+                "dia": "Qua",
+                "qtd": 13
+              },
+              {
+                "dia": "Qui",
+                "qtd": 16
+              },
+              {
+                "dia": "Sex",
+                "qtd": 11
+              }
+            ]
+          },
+          "ids_chamados": [
+            "118144",
+            "118201",
+            "118703",
+            "119019",
+            "118504",
+            "119341",
+            "119516",
+            "119507",
+            "120360",
+            "120639",
+            "120773",
+            "121041",
+            "121955",
+            "122117",
+            "122180",
+            "122107",
+            "122178",
+            "122201",
+            "122343",
+            "122808",
+            "122684",
+            "123100",
+            "123263",
+            "124501",
+            "124519",
+            "124369",
+            "124835",
+            "125726",
+            "125852",
+            "125927",
+            "125856",
+            "126001",
+            "126552",
+            "126788",
+            "126942",
+            "128353",
+            "128489",
+            "128623",
+            "128630",
+            "128768",
+            "128921",
+            "129101",
+            "128904",
+            "129951",
+            "130350",
+            "130453",
+            "130530",
+            "130963",
+            "131726",
+            "131729",
+            "132089",
+            "132375",
+            "132520",
+            "132919",
+            "132474",
+            "132933",
+            "132072",
+            "133175",
+            "133765",
+            "133925"
+          ],
+          "titulo": "Liberação de Acesso às Telas 6101/60096",
+          "descricao": "Funcionário Mario Altamir não tem acesso às telas 6101 e 60096.",
+          "tags": [
+            "Liberação de Acesso",
+            "Tela 6101/60096",
+            "Cadastro de Usuário",
+            "Logística"
+          ]
+        }
+      ],
+      "ids_chamados": [
+        "118103",
+        "118104",
+        "118105",
+        "118106",
+        "118107",
+        "118108",
+        "122877",
+        "129093",
+        "118144",
+        "118201",
+        "118703",
+        "119019",
+        "118504",
+        "119341",
+        "119516",
+        "119507",
+        "120360",
+        "120639",
+        "120773",
+        "121041",
+        "121955",
+        "122117",
+        "122180",
+        "122107",
+        "122178",
+        "122201",
+        "122343",
+        "122808",
+        "122684",
+        "123100",
+        "123263",
+        "124501",
+        "124519",
+        "124369",
+        "124835",
+        "125726",
+        "125852",
+        "125927",
+        "125856",
+        "126001",
+        "126552",
+        "126788",
+        "126942",
+        "128353",
+        "128489",
+        "128623",
+        "128630",
+        "128768",
+        "128921",
+        "129101",
+        "128904",
+        "129951",
+        "130350",
+        "130453",
+        "130530",
+        "130963",
+        "131726",
+        "131729",
+        "132089",
+        "132375",
+        "132520",
+        "132919",
+        "132474",
+        "132933",
+        "132072",
+        "133175",
+        "133765",
+        "133925"
+      ]
+    },
+    {
+      "cluster_id": 13,
+      "metricas": {
+        "volume": 12,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 9,
+          "CONFIGURAÇÃO DE PERFIL DE USUARIO": 2,
+          "CADASTRO": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 12
+        },
+        "top_solicitantes": {
+          "Welington dos Santos Borges": 11,
+          "Emerson Danillo de Souza Silva": 1
+        },
+        "top_status": {
+          "finalizado": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 5
+          },
+          {
+            "dia": "Ter",
+            "qtd": 1
+          },
+          {
+            "dia": "Qua",
+            "qtd": 2
+          },
+          {
+            "dia": "Qui",
+            "qtd": 2
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118047",
+        "118051",
+        "119722",
+        "119973",
+        "121027",
+        "123159",
+        "123762",
+        "124730",
+        "125104",
+        "131818",
+        "132498",
+        "132496"
+      ],
+      "titulo": "Solicitação de Criação de Usuários",
+      "descricao": "Solicitações de criação de novos usuários no LOGIX pela área de Logística. Usuários devem ser vinculados aos depósitos e aos recursos de auxiliares de descarga.",
+      "tags": [
+        "Cadastro",
+        "LOGIX",
+        "Logística",
+        "Auxiliares de descarga",
+        "Depósitos"
+      ]
+    },
+    {
+      "cluster_id": 14,
+      "metricas": {
+        "volume": 14,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 9,
+          "PENDENCIA BACKOFFICE": 1,
+          "CADASTRO": 1,
+          "CENTRAL DE CADASTROS": 1,
+          "CONFIGURAÇÃO DE PERFIL DE USUARIO": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 14
+        },
+        "top_solicitantes": {
+          "Warley Aparecido Pereira": 4,
+          "Maycon Douglas": 3,
+          "Eduardo Soares dos Santos": 2,
+          "Everson Machado Cardoso": 1,
+          "Winning Santos Silva": 1
+        },
+        "top_status": {
+          "finalizado": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 5
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 1
+          },
+          {
+            "dia": "Ter",
+            "qtd": 6
+          },
+          {
+            "dia": "Qua",
+            "qtd": 1
+          },
+          {
+            "dia": "Qui",
+            "qtd": 2
+          },
+          {
+            "dia": "Sex",
+            "qtd": 3
+          },
+          {
+            "dia": "Dom",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118861",
+        "119426",
+        "122677",
+        "123108",
+        "124126",
+        "124125",
+        "128213",
+        "128249",
+        "129935",
+        "131814",
+        "131890",
+        "132048",
+        "132138",
+        "133463"
+      ],
+      "titulo": "Falha no Espelhamento de Usuário",
+      "descricao": "Espelhamento de perfil de usuário não está funcionando no LOGIX. Afeta usuários da área de Logística que solicitam o espelhamento.",
+      "tags": [
+        "Espelhamento",
+        "LOGIX",
+        "Cadastro de Usuário",
+        "Logística",
+        "Conferência"
+      ]
+    },
+    {
+      "cluster_id": 15,
+      "metricas": {
+        "volume": 10,
+        "top_servicos": {
+          "CONSULTA SIMPLES BD": 2,
+          "DESENVOLVIMENTO": 1,
+          "CADASTRO": 1,
+          "RELATÓRIOS": 1,
+          "CENTRAL DE CADASTROS": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 10
+        },
+        "top_solicitantes": {
+          "Mauricio  Maciel de Oliveira Ferreira": 3,
+          "Caroline Ponciano Carvalho": 1,
+          "Vinicius Rodrigues Pereira": 1,
+          "Adriely Loureiro de Oliveira": 1,
+          "Warley Aparecido Pereira": 1
+        },
+        "top_status": {},
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 5
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Ter",
+            "qtd": 4
+          },
+          {
+            "dia": "Qua",
+            "qtd": 1
+          },
+          {
+            "dia": "Qui",
+            "qtd": 3
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "122023",
+        "122685",
+        "123688",
+        "126162",
+        "127087",
+        "131114",
+        "131389",
+        "131803",
+        "131804",
+        "132421"
+      ],
+      "titulo": "Relatórios Logix: Exportação com Falha",
+      "descricao": "Exportação de relatórios no Logix falha ou exibe dados incompletos. Atinge usuários da área de Logística e diretoria que dependem desses relatórios.",
+      "tags": [
+        "Relatórios",
+        "Exportação",
+        "Logix",
+        "Logística"
+      ]
+    },
+    {
+      "cluster_id": 16,
+      "metricas": {
+        "volume": 23,
+        "top_servicos": {
+          "ANALISE DE CASO": 7,
+          "ERRO OPERACIONAL": 4,
+          "INTEGRAÇÕES": 3,
+          "ANALISE DE CASOS": 2,
+          "CADASTRO": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 23
+        },
+        "top_solicitantes": {
+          "Fabiano de  Paula Ferreira": 7,
+          "Matheus Moreira Lemes": 4,
+          "Karla Lohanna Martins Goncalves": 2,
+          "Anderson Rosa de Oliveira": 2,
+          "Warley Aparecido Pereira": 2
+        },
+        "top_status": {
+          "finalizado": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 5
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 8
+          },
+          {
+            "dia": "Ter",
+            "qtd": 6
+          },
+          {
+            "dia": "Qua",
+            "qtd": 4
+          },
+          {
+            "dia": "Qui",
+            "qtd": 3
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118531",
+        "121217",
+        "121811",
+        "122255",
+        "122831",
+        "122691",
+        "125753",
+        "125797",
+        "126470",
+        "127060",
+        "127517",
+        "128372",
+        "128063",
+        "128206",
+        "129375",
+        "129416",
+        "130120",
+        "130755",
+        "131191",
+        "132017",
+        "133048",
+        "133099",
+        "133253"
+      ],
+      "titulo": "Divergência de Dados entre LOGIX",
+      "descricao": "Há divergências de datas e volumes entre LOGIX, GPF/relatórios e fontes externas. Afeta operações logísticas e clientes nas filiais.",
+      "tags": [
+        "Divergência de Dados",
+        "LOGIX",
+        "Relatórios",
+        "Posição de Estoque",
+        "Datas de Recebimento"
+      ]
+    },
+    {
+      "cluster_id": 17,
+      "metricas": {
+        "volume": 19,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 16,
+          "CADASTRO DE USUARIO": 1,
+          "CONFIGURAÇÃO DE PERFIL DE USUARIO": 1,
+          "CRIAÇÃO DE ACESSOS": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 19
+        },
+        "top_solicitantes": {
+          "Caroline Ponciano Carvalho": 4,
+          "Rebeca Braga Faria": 3,
+          "Enio Andreilson de Araujo Sales": 2,
+          "Emerson Danillo de Souza Silva": 1,
+          "João Luiz Miguel Aires": 1
+        },
+        "top_status": {
+          "finalizado": 3
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 4
+          },
+          {
+            "dia": "Ter",
+            "qtd": 6
+          },
+          {
+            "dia": "Qua",
+            "qtd": 6
+          },
+          {
+            "dia": "Qui",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117923",
+        "118547",
+        "118640",
+        "119891",
+        "120746",
+        "121951",
+        "123198",
+        "123340",
+        "124529",
+        "124724",
+        "126286",
+        "127896",
+        "128419",
+        "128425",
+        "129120",
+        "130586",
+        "132116",
+        "132880",
+        "133363"
+      ],
+      "titulo": "Alta Demanda por Criação de Usuários LOGIX",
+      "descricao": "Solicitações de criação de usuários estão chegando para o LOGIX na área Logística. Afetam colaboradores que precisam de acesso ao LOGIX.",
+      "tags": [
+        "Cadastro",
+        "LOGIX",
+        "Logística",
+        "Provisionamento",
+        "Acesso"
+      ]
+    },
+    {
+      "cluster_id": 18,
+      "metricas": {
+        "volume": 26,
+        "top_servicos": {
+          "CADASTRO DE USUÁRIO": 24,
+          "LIBERAÇÃO DE ACESSO EM PASTAS OU ARQUIVOS": 1,
+          "CENTRAL DE CADASTRO": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 26
+        },
+        "top_solicitantes": {
+          "Emerson Oliveira Brito dos Santos": 10,
+          "Joaquim Targino da Silva Neto": 7,
+          "Sueliton Gomes Rodrigues": 4,
+          "Vinicius Alves de Freitas": 2,
+          "Jonathan Goncalves Pinheiro": 2
+        },
+        "top_status": {
+          "finalizado": 5
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 5
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 8
+          },
+          {
+            "dia": "Ter",
+            "qtd": 6
+          },
+          {
+            "dia": "Qua",
+            "qtd": 1
+          },
+          {
+            "dia": "Qui",
+            "qtd": 8
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          },
+          {
+            "dia": "Sab",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119129",
+        "119295",
+        "119298",
+        "119299",
+        "119530",
+        "119745",
+        "119881",
+        "120371",
+        "120951",
+        "121997",
+        "122317",
+        "124059",
+        "124498",
+        "126707",
+        "127213",
+        "127671",
+        "128050",
+        "128028",
+        "129211",
+        "129819",
+        "129876",
+        "130247",
+        "130585",
+        "131247",
+        "131976",
+        "132346"
+      ],
+      "titulo": "Alta Demanda em Cadastro de Usuário",
+      "descricao": "Solicitações de cadastro de novos usuários estão em alta para o serviço LOGIX (Cadastro de Usuário) na área de Logística em Barueri. O volume impacta a criação de acessos para novos colaboradores.",
+      "tags": [
+        "Cadastro de Usuário",
+        "LOGIX",
+        "Logística",
+        "Barueri",
+        "Alta Demanda"
+      ]
+    },
+    {
+      "cluster_id": 19,
+      "metricas": {
+        "volume": 19,
+        "top_servicos": {
+          "CADASTRO": 10,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 2,
+          "INTEGRAÇÕES": 2,
+          "CENTRAL DE CADASTROS": 2,
+          "ARMAZÉM": 2
+        },
+        "top_subareas": {
+          "LOGISTICA": 19
+        },
+        "top_solicitantes": {
+          "Emerson Danillo de Souza Silva": 6,
+          "Meire Vieira Ceccarelli da Silva": 5,
+          "Clara Fernanda Santos Martins": 3,
+          "Rafaella Oliveira Silva": 1,
+          "Jefferson Miranda De Oliveira": 1
+        },
+        "top_status": {
+          "finalizado": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 7
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 6
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 4
+          },
+          {
+            "dia": "Ter",
+            "qtd": 6
+          },
+          {
+            "dia": "Qua",
+            "qtd": 1
+          },
+          {
+            "dia": "Qui",
+            "qtd": 4
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          },
+          {
+            "dia": "Sab",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118516",
+        "120143",
+        "122186",
+        "122449",
+        "123693",
+        "127259",
+        "128770",
+        "128872",
+        "128905",
+        "128867",
+        "130030",
+        "130036",
+        "130707",
+        "132275",
+        "132382",
+        "132529",
+        "132682",
+        "133084",
+        "133527"
+      ],
+      "titulo": "Falha no Cadastro de Endereços no Logix",
+      "descricao": "Cadastros de endereços não são processados no Logix. A área de logística está impactada.",
+      "tags": [
+        "Cadastro",
+        "Endereço",
+        "Logix",
+        "Processamento"
+      ]
+    },
+    {
+      "cluster_id": 20,
+      "metricas": {
+        "volume": 11,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 6,
+          "CADASTRO": 2,
+          "ERRO OPERACIONAL": 1,
+          "ERRO SISTÊMICO": 1,
+          "ARMAZÉM": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 11
+        },
+        "top_solicitantes": {
+          "Juliana Sabrina  Palmeira da Silva": 7,
+          "Veronica Lucia Silva de Lemos": 1,
+          "Douglas Bitencourt Dos Santos": 1,
+          "Marcia Regina Maria de Souza": 1,
+          "Emerson Danillo de Souza Silva": 1
+        },
+        "top_status": {
+          "finalizado": 5,
+          "cancelada": 1,
+          "aberto": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 2
+          },
+          {
+            "dia": "Ter",
+            "qtd": 1
+          },
+          {
+            "dia": "Qua",
+            "qtd": 2
+          },
+          {
+            "dia": "Qui",
+            "qtd": 2
+          },
+          {
+            "dia": "Sex",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118153",
+        "117949",
+        "118488",
+        "118296",
+        "119014",
+        "118788",
+        "119379",
+        "119636",
+        "120506",
+        "128495",
+        "133066"
+      ],
+      "titulo": "Divergência de Conversão de Unidades",
+      "descricao": "Erros de conversão de unidades afetam faturamento e peso durante processamento manual de arquivos no Logix. Afeta a área de Logística (clientes Alpek, Covestro e WYDA).",
+      "tags": [
+        "Conversão de Unidades",
+        "Faturamento",
+        "Peso Divergente",
+        "Notas Fiscais",
+        "Logística"
+      ]
+    },
+    {
+      "cluster_id": 21,
+      "metricas": {
+        "volume": 24,
+        "top_servicos": {
+          "CONSULTA SIMPLES BD": 8,
+          "CADASTRO": 6,
+          "CENTRAL DE CADASTROS": 6,
+          "ALTERAÇÃO DE REGISTROS NO BANCO DE DADOS": 1,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 24
+        },
+        "top_solicitantes": {
+          "João Luiz Miguel Aires": 7,
+          "Welington dos Santos Borges": 4,
+          "Fabiano de  Paula Ferreira": 3,
+          "Juscelyo Rangell Assis Paula": 3,
+          "Aleff Herculano da Silva": 2
+        },
+        "top_status": {},
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 5
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 10
+          },
+          {
+            "dia": "Ter",
+            "qtd": 3
+          },
+          {
+            "dia": "Qua",
+            "qtd": 5
+          },
+          {
+            "dia": "Qui",
+            "qtd": 5
+          },
+          {
+            "dia": "Sex",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119749",
+        "120490",
+        "120206",
+        "122068",
+        "123588",
+        "123921",
+        "124919",
+        "124999",
+        "125069",
+        "125404",
+        "125865",
+        "126353",
+        "126498",
+        "126010",
+        "128114",
+        "128937",
+        "129044",
+        "130661",
+        "130625",
+        "130678",
+        "131298",
+        "131245",
+        "132356",
+        "132294"
+      ],
+      "titulo": "Inativação de Endereços Falha",
+      "descricao": "Inativação de endereços falha no LOGIX via Consulta Simples BD. Afeta a área de logística em todas as filiais.",
+      "tags": [
+        "Inativação de Endereços",
+        "Consulta Simples BD",
+        "LOGIX",
+        "Logística"
+      ]
+    },
+    {
+      "cluster_id": 22,
+      "metricas": {
+        "volume": 31,
+        "top_servicos": {
+          "CADASTRO": 20,
+          "CENTRAL DE CADASTROS": 10,
+          "CENTRAL DE CADASTRO": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 31
+        },
+        "top_solicitantes": {
+          "Larayne Lua Pereira Araújo": 8,
+          "Emerson Danillo de Souza Silva": 4,
+          "Leandro Carlos Silveira": 4,
+          "Matheus Moreira Lemes": 4,
+          "Warley Aparecido Pereira": 2
+        },
+        "top_status": {
+          "finalizado": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 6
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 9
+          },
+          {
+            "dia": "Ter",
+            "qtd": 6
+          },
+          {
+            "dia": "Qua",
+            "qtd": 5
+          },
+          {
+            "dia": "Qui",
+            "qtd": 2
+          },
+          {
+            "dia": "Sex",
+            "qtd": 9
+          }
+        ]
+      },
+      "ids_chamados": [
+        "119189",
+        "119176",
+        "119982",
+        "122151",
+        "122271",
+        "122389",
+        "122399",
+        "122408",
+        "122512",
+        "123357",
+        "123448",
+        "124511",
+        "124633",
+        "125017",
+        "125672",
+        "125429",
+        "126063",
+        "126060",
+        "126308",
+        "126926",
+        "128279",
+        "128752",
+        "128916",
+        "128691",
+        "129362",
+        "131119",
+        "131154",
+        "131861",
+        "131342",
+        "131849",
+        "133556"
+      ],
+      "titulo": "Inconsistência de Cadastros entre Filiais",
+      "descricao": "Operadores da Logística não conseguem cadastrar ou atualizar itens no LOGIX. O problema afeta as filiais usando a Central de Cadastros.",
+      "tags": [
+        "Cadastro",
+        "Central de Cadastros",
+        "Logix",
+        "Itens",
+        "Códigos de Barras"
+      ]
+    },
+    {
+      "cluster_id": 23,
+      "metricas": {
+        "volume": 17,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 7,
+          "INDISPONIBILIDADE": 2,
+          "ERRO OPERACIONAL": 2,
+          "INTEGRAÇÕES": 2,
+          "RECEBIMENTO": 2
+        },
+        "top_subareas": {
+          "LOGISTICA": 17
+        },
+        "top_solicitantes": {
+          "Sueliton Gomes Rodrigues": 8,
+          "Karla Lohanna Martins Goncalves": 3,
+          "Wilker Gabriel Cezario da Silva": 2,
+          "Jefferson Miranda De Oliveira": 2,
+          "Marcia Regina Maria de Souza": 1
+        },
+        "top_status": {
+          "finalizado": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 2
+          },
+          {
+            "dia": "Ter",
+            "qtd": 3
+          },
+          {
+            "dia": "Qua",
+            "qtd": 5
+          },
+          {
+            "dia": "Qui",
+            "qtd": 4
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          },
+          {
+            "dia": "Sab",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117898",
+        "119938",
+        "120917",
+        "119412",
+        "122757",
+        "124515",
+        "125957",
+        "127097",
+        "127403",
+        "128364",
+        "128870",
+        "129137",
+        "130061",
+        "132393",
+        "132969",
+        "133333",
+        "133763"
+      ],
+      "titulo": "XMLs Não Processados no Logix",
+      "descricao": "XMLs de recebimento não são processados pelo serviço de Processamento Manual de Arquivos. A falha afeta as notas da Bajaj na área Logística.",
+      "tags": [
+        "XML",
+        "Processamento Manual de Arquivos",
+        "Recebimento",
+        "Bajaj",
+        "Logística"
+      ]
+    },
+    {
+      "cluster_id": 24,
+      "metricas": {
+        "volume": 12,
+        "top_servicos": {
+          "CADASTRO": 6,
+          "INTEGRAÇÕES": 3,
+          "ERRO OPERACIONAL": 1,
+          "RECEBIMENTO": 1,
+          "ANALISE DE CASOS": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 12
+        },
+        "top_solicitantes": {
+          "Maria Helena Ferreira da Silva": 9,
+          "Emerson Danillo de Souza Silva": 3
+        },
+        "top_status": {
+          "finalizado": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 4
+          },
+          {
+            "dia": "Ter",
+            "qtd": 4
+          },
+          {
+            "dia": "Qua",
+            "qtd": 2
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118075",
+        "119985",
+        "122435",
+        "122641",
+        "122675",
+        "124078",
+        "126362",
+        "126494",
+        "126864",
+        "126918",
+        "133143",
+        "133153"
+      ],
+      "titulo": "Falha de Importação de XML de NF",
+      "descricao": "XMLs de NF não são importados pelo LOGIX. Afeta a área de Logística, com impactos no Recebimento e Cadastros (Asibras).",
+      "tags": [
+        "XML",
+        "NF",
+        "Integração",
+        "Logística",
+        "Recebimento"
+      ]
+    },
+    {
+      "cluster_id": 25,
+      "metricas": {
+        "volume": 41,
+        "top_servicos": {
+          "RECEBIMENTO": 9,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 7,
+          "INTEGRAÇÕES": 6,
+          "ERRO OPERACIONAL": 6,
+          "ERRO SISTÊMICO": 3
+        },
+        "top_subareas": {
+          "LOGISTICA": 41
+        },
+        "top_solicitantes": {
+          "Beatriz  Santana Santos Ribeiro": 7,
+          "Jefferson Miranda De Oliveira": 5,
+          "Adriely Loureiro de Oliveira": 5,
+          "Joao Xavier Goncalves Filho": 3,
+          "Helder Rosalio da Silva": 2
+        },
+        "top_status": {
+          "finalizado": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 14
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 9
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 4
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 9
+          },
+          {
+            "dia": "Ter",
+            "qtd": 4
+          },
+          {
+            "dia": "Qua",
+            "qtd": 14
+          },
+          {
+            "dia": "Qui",
+            "qtd": 6
+          },
+          {
+            "dia": "Sex",
+            "qtd": 7
+          },
+          {
+            "dia": "Sab",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118902",
+        "120804",
+        "120779",
+        "122124",
+        "124639",
+        "125832",
+        "125714",
+        "125945",
+        "126160",
+        "127936",
+        "127975",
+        "127869",
+        "128412",
+        "128616",
+        "128731",
+        "129065",
+        "129169",
+        "129384",
+        "129555",
+        "129710",
+        "129866",
+        "130312",
+        "130419",
+        "130611",
+        "130832",
+        "130926",
+        "130862",
+        "131013",
+        "132200",
+        "132266",
+        "132296",
+        "132042",
+        "132521",
+        "132812",
+        "132877",
+        "133393",
+        "133523",
+        "133718",
+        "133722",
+        "133732",
+        "133889"
+      ],
+      "titulo": "Bloqueio de Notas Cross Docking",
+      "descricao": "Notas Cross Docking Triumph aparecem como bloqueadas na tela 6325 e não ficam disponíveis para processamento na tela 6566. Afetam o recebimento e o processamento logístico da filial Triumph (Ipojuca) e operações associadas.",
+      "tags": [
+        "Bloqueio",
+        "Cross Docking",
+        "WMS",
+        "Triumph",
+        "Recebimento"
+      ]
+    },
+    {
+      "cluster_id": 26,
+      "metricas": {
+        "volume": 16,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 14,
+          "ERRO SISTÊMICO": 1,
+          "INTEGRAÇÕES": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 16
+        },
+        "top_solicitantes": {
+          "Joao Xavier Goncalves Filho": 13,
+          "Wilker Gabriel Cezario da Silva": 1,
+          "Stephanie Maiara Soares de Brito": 1,
+          "Paulo Borges de Oliveira": 1
+        },
+        "top_status": {
+          "finalizado": 8
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 9
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 3
+          },
+          {
+            "dia": "Ter",
+            "qtd": 6
+          },
+          {
+            "dia": "Qua",
+            "qtd": 3
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 3
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117820",
+        "117958",
+        "118080",
+        "118800",
+        "118801",
+        "118682",
+        "119319",
+        "119197",
+        "119641",
+        "119991",
+        "120947",
+        "122085",
+        "122585",
+        "123105",
+        "124240",
+        "127989"
+      ],
+      "titulo": "Erro de Importação XML no LOGIX",
+      "descricao": "Usuários da logística não conseguem importar XML de NF via LOGIX (Processamento Manual de Arquivos). O problema afeta as NFs 1380, 1381, 1410 e 1502 do depositante DBS com erro na importação, e há um erro sistêmico para DBS 1513.",
+      "tags": [
+        "XML",
+        "Importação",
+        "LOGIX",
+        "DBS",
+        "Erros"
+      ]
+    },
+    {
+      "cluster_id": 27,
+      "metricas": {
+        "volume": 26,
+        "top_servicos": {
+          "DESENVOLVIMENTO": 6,
+          "DESENVOLIVMENTO": 3,
+          "INDISPONIBILIDADE": 3,
+          "MELHORIA": 3,
+          "MELHORIAS": 2
+        },
+        "top_subareas": {
+          "LOGISTICA": 26
+        },
+        "top_solicitantes": {
+          "Juscelyo Rangell Assis Paula": 5,
+          "Mauricio  Maciel de Oliveira Ferreira": 3,
+          "Emerson Danillo de Souza Silva": 3,
+          "Welington dos Santos Borges": 2,
+          "Aleff Herculano da Silva": 2
+        },
+        "top_status": {
+          "aberto": 2,
+          "finalizado": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 8
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 9
+          },
+          {
+            "dia": "Ter",
+            "qtd": 3
+          },
+          {
+            "dia": "Qua",
+            "qtd": 5
+          },
+          {
+            "dia": "Qui",
+            "qtd": 5
+          },
+          {
+            "dia": "Sex",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118044",
+        "117733",
+        "118242",
+        "119135",
+        "117729",
+        "122064",
+        "122361",
+        "123189",
+        "123882",
+        "123567",
+        "119517",
+        "125123",
+        "125042",
+        "128059",
+        "128306",
+        "128746",
+        "128152",
+        "130407",
+        "131429",
+        "132263",
+        "132522",
+        "132284",
+        "132264",
+        "133102",
+        "133475",
+        "133524"
+      ],
+      "titulo": " Fração de Paletes Inconsistente",
+      "descricao": "Operadores de Logística no estoque relatam que o sistema solicita fracionar paletes mesmo quando poderia usar apenas um. A inconsistência afeta as operações de recebimento no estoque.",
+      "tags": [
+        "Fração",
+        "Palete",
+        "Logística",
+        "Estoque",
+        "Operacoes"
+      ]
+    },
+    {
+      "cluster_id": 28,
+      "metricas": {
+        "volume": 11,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 3,
+          "CADASTRO": 1,
+          "ESCLARECIMENTO DE DUVIDAS": 1,
+          "ERRO OPERACIONAL": 1,
+          "ERRO SISTÊMICO": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 11
+        },
+        "top_solicitantes": {
+          "Veronica Lucia Silva de Lemos": 2,
+          "Emerson Danillo de Souza Silva": 2,
+          "Tulio Candido de Oliveira": 1,
+          "Julio Santos": 1,
+          "Danilo Mariano Viana": 1
+        },
+        "top_status": {
+          "finalizado": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 6
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Ter",
+            "qtd": 1
+          },
+          {
+            "dia": "Qua",
+            "qtd": 1
+          },
+          {
+            "dia": "Qui",
+            "qtd": 7
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118971",
+        "119497",
+        "120187",
+        "122938",
+        "124444",
+        "131185",
+        "132131",
+        "132170",
+        "132370",
+        "133055",
+        "133485"
+      ],
+      "titulo": "Erro no Processamento de NF no LOGIX",
+      "descricao": "NFs não estão sendo processadas pela central de pedidos. A falha afeta a área logística que utiliza o LOGIX.",
+      "tags": [
+        "Processamento de NF",
+        "LOGIX",
+        "Erros na NF",
+        "Divergência de Valores"
+      ]
+    },
+    {
+      "cluster_id": 10028,
+      "titulo": "Falhas de Importação XML no LOGIX",
+      "descricao": "Impacto agregado: falhas de importação e de acesso a XMLs comprometem o processamento logístico no LOGIX, com pastas travadas e erros de autorização. O efeito operacional é atrasos no recebimento, retrabalho e falha de notificações de falha.",
+      "tags": [
+        "LOGIX",
+        "XML",
+        "Importação",
+        "Logística",
+        "Autorização"
+      ],
+      "metricas": {
+        "volume": 57,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 28,
+          "ERRO OPERACIONAL": 11,
+          "RECEBIMENTO": 6,
+          "INTEGRAÇÕES": 4,
+          "INDISPONIBILIDADE": 2
+        },
+        "top_solicitantes": {
+          "Veronica Lucia Silva de Lemos": 8,
+          "Joao Xavier Goncalves Filho": 7,
+          "Adriely Loureiro de Oliveira": 5,
+          "Emerson Oliveira Brito dos Santos": 4,
+          "Emerson Danillo de Souza Silva": 3
+        },
+        "top_status": {
+          "finalizado": 2,
+          "aberto": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 11
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 11
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 11
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 10
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ]
+      },
+      "sub_clusters": [
+        {
+          "cluster_id": 29,
+          "metricas": {
+            "volume": 4,
+            "top_servicos": {
+              "PROCESSAMENTO MANUAL DE ARQUIVOS": 3,
+              "RECEBIMENTO": 1
+            },
+            "top_subareas": {
+              "LOGISTICA": 4
+            },
+            "top_solicitantes": {
+              "Adriely Loureiro de Oliveira": 4
+            },
+            "top_status": {},
+            "timeline": [
+              {
+                "mes": "2025-11",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 2
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 1
+              }
+            ],
+            "sazonalidade": [
+              {
+                "dia": "Seg",
+                "qtd": 1
+              },
+              {
+                "dia": "Ter",
+                "qtd": 1
+              },
+              {
+                "dia": "Qua",
+                "qtd": 1
+              },
+              {
+                "dia": "Qui",
+                "qtd": 1
+              }
+            ]
+          },
+          "ids_chamados": [
+            "126759",
+            "129574",
+            "129663",
+            "132366"
+          ],
+          "titulo": "Erro de Autorização no Upload de XML",
+          "descricao": "Operadores do LOGIX não conseguem carregar XMLs na pasta FTP devido a erro de autorização. Afeta a Filial Triumph 0602 no processo de recebimento/logística.",
+          "tags": [
+            "Autorização",
+            "XML",
+            "FTP",
+            "LOGIX",
+            "Recebimento"
+          ]
+        },
+        {
+          "cluster_id": 30,
+          "metricas": {
+            "volume": 5,
+            "top_servicos": {
+              "PROCESSAMENTO MANUAL DE ARQUIVOS": 3,
+              "ERRO OPERACIONAL": 1,
+              "EXPEDIÇÃO": 1
+            },
+            "top_subareas": {
+              "LOGISTICA": 5
+            },
+            "top_solicitantes": {
+              "Keison Lima da Silva": 1,
+              "Paulo Borges de Oliveira": 1,
+              "Wesley Lima da Silva": 1,
+              "Maria Helena Ferreira da Silva": 1,
+              "Adriely Loureiro de Oliveira": 1
+            },
+            "top_status": {},
+            "timeline": [
+              {
+                "mes": "2025-09",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-10",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 1
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 1
+              }
+            ],
+            "sazonalidade": [
+              {
+                "dia": "Seg",
+                "qtd": 2
+              },
+              {
+                "dia": "Ter",
+                "qtd": 1
+              },
+              {
+                "dia": "Qua",
+                "qtd": 1
+              },
+              {
+                "dia": "Sex",
+                "qtd": 1
+              }
+            ]
+          },
+          "ids_chamados": [
+            "121501",
+            "124020",
+            "128319",
+            "130836",
+            "132549"
+          ],
+          "titulo": "Falha na Exclusão de XMLs na Logística",
+          "descricao": "Operadores da Logística não conseguem excluir XMLs na pasta de entrada/crossdocking. A pasta está travada, impactando o processamento manual de arquivos.",
+          "tags": [
+            "XML",
+            "Exclusão",
+            "Pasta de Entrada",
+            "Logística",
+            "Travamento"
+          ]
+        },
+        {
+          "cluster_id": 31,
+          "metricas": {
+            "volume": 14,
+            "top_servicos": {
+              "PROCESSAMENTO MANUAL DE ARQUIVOS": 7,
+              "ERRO OPERACIONAL": 4,
+              "RECEBIMENTO": 2,
+              "INDISPONIBILIDADE": 1
+            },
+            "top_subareas": {
+              "LOGISTICA": 14
+            },
+            "top_solicitantes": {
+              "Veronica Lucia Silva de Lemos": 6,
+              "Emerson Oliveira Brito dos Santos": 3,
+              "Emerson Danillo de Souza Silva": 2,
+              "Giovanna Mendes Martins": 1,
+              "Cesar Augusto  Feliciano De Melo": 1
+            },
+            "top_status": {
+              "finalizado": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-08",
+                "qtd": 2
+              },
+              {
+                "mes": "2025-09",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-10",
+                "qtd": 4
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 4
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 2
+              }
+            ],
+            "sazonalidade": [
+              {
+                "dia": "Seg",
+                "qtd": 2
+              },
+              {
+                "dia": "Ter",
+                "qtd": 2
+              },
+              {
+                "dia": "Qua",
+                "qtd": 4
+              },
+              {
+                "dia": "Qui",
+                "qtd": 1
+              },
+              {
+                "dia": "Sex",
+                "qtd": 5
+              }
+            ]
+          },
+          "ids_chamados": [
+            "119404",
+            "120341",
+            "117790",
+            "124315",
+            "124345",
+            "124656",
+            "125620",
+            "128650",
+            "129098",
+            "130490",
+            "130805",
+            "130965",
+            "133211",
+            "133341"
+          ],
+          "titulo": "Pasta de Entrada Travada na CROSS",
+          "descricao": "XMLs do CROSS não estão sendo importados na pasta de entrada, afetando a área de Logística no LOGIX.",
+          "tags": [
+            "Entrada Travada",
+            "XML",
+            "Cross",
+            "Logística",
+            "LOGIX"
+          ]
+        },
+        {
+          "cluster_id": 32,
+          "metricas": {
+            "volume": 8,
+            "top_servicos": {
+              "PROCESSAMENTO MANUAL DE ARQUIVOS": 4,
+              "ERRO OPERACIONAL": 2,
+              "ANALISE DE CASO": 1,
+              "INTEGRAÇÕES": 1
+            },
+            "top_subareas": {
+              "LOGISTICA": 8
+            },
+            "top_solicitantes": {
+              "Joao Xavier Goncalves Filho": 4,
+              "Veronica Lucia Silva de Lemos": 2,
+              "Isaac Cardoso Souza Santos": 1,
+              "Maria Helena Ferreira da Silva": 1
+            },
+            "top_status": {
+              "finalizado": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-08",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-09",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 3
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 2
+              }
+            ],
+            "sazonalidade": [
+              {
+                "dia": "Seg",
+                "qtd": 1
+              },
+              {
+                "dia": "Ter",
+                "qtd": 3
+              },
+              {
+                "dia": "Qui",
+                "qtd": 1
+              },
+              {
+                "dia": "Sex",
+                "qtd": 2
+              },
+              {
+                "dia": "Sab",
+                "qtd": 1
+              }
+            ]
+          },
+          "ids_chamados": [
+            "119175",
+            "122292",
+            "126687",
+            "130765",
+            "130860",
+            "131043",
+            "131122",
+            "131444"
+          ],
+          "titulo": "Pastas de Importação Travadas no LOGIX",
+          "descricao": "Pastas de importação no LOGIX estão travadas em todas as origens, impedindo a importação de XMLs. Afeta o serviço PROCESSAMENTO MANUAL DE ARQUIVOS na área de Logística.",
+          "tags": [
+            "XML",
+            "Importação",
+            "LOGIX",
+            "Travamento",
+            "Logística"
+          ]
+        },
+        {
+          "cluster_id": 33,
+          "metricas": {
+            "volume": 9,
+            "top_servicos": {
+              "PROCESSAMENTO MANUAL DE ARQUIVOS": 4,
+              "RECEBIMENTO": 2,
+              "LIBERAÇÃO DE ACESSO EM PASTAS OU ARQUIVOS": 1,
+              "ESCLARECIMENTO DE DUVIDAS": 1,
+              "DESENVOLVIMENTO": 1
+            },
+            "top_subareas": {
+              "LOGISTICA": 9
+            },
+            "top_solicitantes": {
+              "Joao Xavier Goncalves Filho": 3,
+              "Stephanie Maiara Soares de Brito": 2,
+              "Warley Aparecido Pereira": 2,
+              "Caroline Ponciano Carvalho": 1,
+              "Aleff Herculano da Silva": 1
+            },
+            "top_status": {},
+            "timeline": [
+              {
+                "mes": "2025-09",
+                "qtd": 3
+              },
+              {
+                "mes": "2025-10",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 2
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 2
+              },
+              {
+                "mes": "2026-02",
+                "qtd": 1
+              }
+            ],
+            "sazonalidade": [
+              {
+                "dia": "Seg",
+                "qtd": 2
+              },
+              {
+                "dia": "Ter",
+                "qtd": 4
+              },
+              {
+                "dia": "Qua",
+                "qtd": 3
+              }
+            ]
+          },
+          "ids_chamados": [
+            "120742",
+            "122555",
+            "122671",
+            "125443",
+            "127116",
+            "127875",
+            "132608",
+            "132695",
+            "133796"
+          ],
+          "titulo": "Erro de Importação de XML",
+          "descricao": "Equipe Logística enfrenta falha de importação de XML no Logix. Arquivos são movidos para a pasta de erro e não chegam notificações de falha.",
+          "tags": [
+            "XML",
+            "Importação",
+            "Logix",
+            "Pasta de Erro",
+            "Notificações"
+          ]
+        },
+        {
+          "cluster_id": 34,
+          "metricas": {
+            "volume": 6,
+            "top_servicos": {
+              "PROCESSAMENTO MANUAL DE ARQUIVOS": 2,
+              "INTEGRAÇÕES": 2,
+              "ERRO OPERACIONAL": 1,
+              "RECEBIMENTO": 1
+            },
+            "top_subareas": {
+              "LOGISTICA": 6
+            },
+            "top_solicitantes": {
+              "Douglas Bitencourt Dos Santos": 3,
+              "Emerson Oliveira Brito dos Santos": 1,
+              "Keison Lima da Silva": 1,
+              "Emerson Danillo de Souza Silva": 1
+            },
+            "top_status": {},
+            "timeline": [
+              {
+                "mes": "2025-08",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-09",
+                "qtd": 1
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 3
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 1
+              }
+            ],
+            "sazonalidade": [
+              {
+                "dia": "Seg",
+                "qtd": 1
+              },
+              {
+                "dia": "Ter",
+                "qtd": 2
+              },
+              {
+                "dia": "Qua",
+                "qtd": 1
+              },
+              {
+                "dia": "Sex",
+                "qtd": 1
+              },
+              {
+                "dia": "Sab",
+                "qtd": 1
+              }
+            ]
+          },
+          "ids_chamados": [
+            "119972",
+            "117919",
+            "125998",
+            "127112",
+            "127977",
+            "133610"
+          ],
+          "titulo": "XML Não Sobe Para Sistema Logix",
+          "descricao": "XMLs na pasta Origem não sobem para o sistema Logix. Afeta processamento de arquivos, recebimento e integrações.",
+          "tags": [
+            "XML",
+            "Subida",
+            "Logix",
+            "Recebimento",
+            "Integrações"
+          ]
+        },
+        {
+          "cluster_id": 35,
+          "metricas": {
+            "volume": 11,
+            "top_servicos": {
+              "PROCESSAMENTO MANUAL DE ARQUIVOS": 5,
+              "ERRO OPERACIONAL": 3,
+              "INDISPONIBILIDADE": 1,
+              "INTEGRAÇÕES": 1,
+              "PROCESSAMENTO DE ARQUIVO": 1
+            },
+            "top_subareas": {
+              "LOGISTICA": 11
+            },
+            "top_solicitantes": {
+              "Danilo Mariano Viana": 3,
+              "Giovanna Mendes Martins": 2,
+              "Julio Santos": 2,
+              "Juliana Sabrina  Palmeira da Silva": 1,
+              "Leandro Carlos Silveira": 1
+            },
+            "top_status": {
+              "aberto": 1
+            },
+            "timeline": [
+              {
+                "mes": "2025-08",
+                "qtd": 2
+              },
+              {
+                "mes": "2025-10",
+                "qtd": 5
+              },
+              {
+                "mes": "2025-11",
+                "qtd": 2
+              },
+              {
+                "mes": "2025-12",
+                "qtd": 1
+              },
+              {
+                "mes": "2026-01",
+                "qtd": 1
+              }
+            ],
+            "sazonalidade": [
+              {
+                "dia": "Seg",
+                "qtd": 1
+              },
+              {
+                "dia": "Ter",
+                "qtd": 4
+              },
+              {
+                "dia": "Qua",
+                "qtd": 2
+              },
+              {
+                "dia": "Qui",
+                "qtd": 1
+              },
+              {
+                "dia": "Sex",
+                "qtd": 2
+              },
+              {
+                "dia": "Sab",
+                "qtd": 1
+              }
+            ]
+          },
+          "ids_chamados": [
+            "119227",
+            "119362",
+            "123095",
+            "123827",
+            "124150",
+            "124230",
+            "125362",
+            "127243",
+            "127664",
+            "129331",
+            "132850"
+          ],
+          "titulo": "Falha na Importação de Arquivos",
+          "descricao": "A pasta de origem de importação não está processando no LOGIX. A falha afeta a área de Logística, prejudicando a importação de XML e demais arquivos.",
+          "tags": [
+            "Importação",
+            "XML",
+            "LOGIX",
+            "Logística",
+            "Processamento de Arquivos"
+          ]
+        }
+      ],
+      "ids_chamados": [
+        "126759",
+        "129574",
+        "129663",
+        "132366",
+        "121501",
+        "124020",
+        "128319",
+        "130836",
+        "132549",
+        "119404",
+        "120341",
+        "117790",
+        "124315",
+        "124345",
+        "124656",
+        "125620",
+        "128650",
+        "129098",
+        "130490",
+        "130805",
+        "130965",
+        "133211",
+        "133341",
+        "119175",
+        "122292",
+        "126687",
+        "130765",
+        "130860",
+        "131043",
+        "131122",
+        "131444",
+        "120742",
+        "122555",
+        "122671",
+        "125443",
+        "127116",
+        "127875",
+        "132608",
+        "132695",
+        "133796",
+        "119972",
+        "117919",
+        "125998",
+        "127112",
+        "127977",
+        "133610",
+        "119227",
+        "119362",
+        "123095",
+        "123827",
+        "124150",
+        "124230",
+        "125362",
+        "127243",
+        "127664",
+        "129331",
+        "132850"
+      ]
+    },
+    {
+      "cluster_id": 36,
+      "metricas": {
+        "volume": 21,
+        "top_servicos": {
+          "ERRO OPERACIONAL": 12,
+          "ERRO SISTÊMICO": 5,
+          "PROBLEMAS DE IMPRESSÃO": 2,
+          "ANALISE DE CASOS": 1,
+          "CADASTRO": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 21
+        },
+        "top_solicitantes": {
+          "Jose Alves Da Silva Neto": 5,
+          "Romario Correa Araujo": 5,
+          "Warley Aparecido Pereira": 3,
+          "Odair de Pablo Cordeiro Carvalho": 1,
+          "David de Oliveira Lima": 1
+        },
+        "top_status": {
+          "finalizado": 1,
+          "aberto": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 3
+          },
+          {
+            "dia": "Ter",
+            "qtd": 1
+          },
+          {
+            "dia": "Qua",
+            "qtd": 6
+          },
+          {
+            "dia": "Qui",
+            "qtd": 4
+          },
+          {
+            "dia": "Sex",
+            "qtd": 6
+          },
+          {
+            "dia": "Dom",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117775",
+        "119659",
+        "120040",
+        "120234",
+        "120550",
+        "119885",
+        "119527",
+        "120343",
+        "119590",
+        "123451",
+        "123456",
+        "124451",
+        "125690",
+        "127927",
+        "127926",
+        "127988",
+        "128360",
+        "128418",
+        "129121",
+        "131157",
+        "131203"
+      ],
+      "titulo": "Falha de Etiquetas e QR no Logix",
+      "descricao": "Impressão de etiquetas e leitura de QR apresentam falhas no LOGIX da área Logística. A operação de recebimento, expedição e separação está impactada.",
+      "tags": [
+        "Etiquetas",
+        "QR Code",
+        "Logix",
+        "Logística",
+        "Impressão"
+      ]
+    },
+    {
+      "cluster_id": 37,
+      "metricas": {
+        "volume": 17,
+        "top_servicos": {
+          "ERRO OPERACIONAL": 7,
+          "PENDENCIA BACKOFFICE": 2,
+          "ERRO SISTÊMICO": 2,
+          "EXPEDIÇÃO": 2,
+          "ESCLARECIMENTO DE DUVIDAS": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 17
+        },
+        "top_solicitantes": {
+          "Douglas Bitencourt Dos Santos": 3,
+          "Eduardo Soares dos Santos": 3,
+          "Adriely Loureiro de Oliveira": 2,
+          "Joaquim Targino da Silva Neto": 2,
+          "Joao Xavier Goncalves Filho": 2
+        },
+        "top_status": {
+          "finalizado": 3
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 5
+          },
+          {
+            "dia": "Ter",
+            "qtd": 5
+          },
+          {
+            "dia": "Qua",
+            "qtd": 1
+          },
+          {
+            "dia": "Qui",
+            "qtd": 3
+          },
+          {
+            "dia": "Sex",
+            "qtd": 1
+          },
+          {
+            "dia": "Dom",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117787",
+        "118204",
+        "118898",
+        "121806",
+        "123717",
+        "125560",
+        "125411",
+        "126040",
+        "127807",
+        "128212",
+        "128892",
+        "130823",
+        "131400",
+        "131894",
+        "131897",
+        "132568",
+        "133798"
+      ],
+      "titulo": "Erro ao Finalizar WMS60216",
+      "descricao": "Erro ao finalizar a lista de separação 3403 na WMS60216. A equipe de Logística não consegue concluir a separação.",
+      "tags": [
+        "WMS60216",
+        "Finalização",
+        "Logística",
+        "Backoffice"
+      ]
+    },
+    {
+      "cluster_id": 38,
+      "metricas": {
+        "volume": 12,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 10,
+          "PENDENCIA BACKOFFICE": 2
+        },
+        "top_subareas": {
+          "LOGISTICA": 12
+        },
+        "top_solicitantes": {
+          "Joao Xavier Goncalves Filho": 12
+        },
+        "top_status": {
+          "finalizado": 6
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 2
+          },
+          {
+            "dia": "Ter",
+            "qtd": 3
+          },
+          {
+            "dia": "Qui",
+            "qtd": 2
+          },
+          {
+            "dia": "Sex",
+            "qtd": 5
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118217",
+        "118305",
+        "118487",
+        "118679",
+        "119082",
+        "119224",
+        "120421",
+        "121103",
+        "121697",
+        "122724",
+        "122978",
+        "124098"
+      ],
+      "titulo": "Erro na Importação EDI0050",
+      "descricao": "Usuários da logística não conseguem importar XMLs no LOGIX devido ao erro EDI0050. Afeta as importações de NFS para DBS e Copag.",
+      "tags": [
+        "EDI0050",
+        "LOGIX",
+        "Importação XML",
+        "Logística",
+        "DBS"
+      ]
+    },
+    {
+      "cluster_id": 39,
+      "metricas": {
+        "volume": 16,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 11,
+          "PENDENCIA BACKOFFICE": 3,
+          "CADASTRO": 1,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 16
+        },
+        "top_solicitantes": {
+          "Joao Xavier Goncalves Filho": 14,
+          "Veronica Lucia Silva de Lemos": 1,
+          "Ana Daiane do Nascimento Martins": 1
+        },
+        "top_status": {
+          "finalizado": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 9
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 4
+          },
+          {
+            "dia": "Ter",
+            "qtd": 4
+          },
+          {
+            "dia": "Qua",
+            "qtd": 4
+          },
+          {
+            "dia": "Qui",
+            "qtd": 2
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118807",
+        "118755",
+        "119894",
+        "120099",
+        "120586",
+        "121028",
+        "121958",
+        "122202",
+        "122431",
+        "122587",
+        "122725",
+        "123282",
+        "124470",
+        "125563",
+        "126510",
+        "131503"
+      ],
+      "titulo": "Falha na Importação XML EDI0050",
+      "descricao": "Erro na importação de XML com código EDI0050. Afeta o LOGIX – Processamento Manual de Arquivos na área de Logística.",
+      "tags": [
+        "EDI0050",
+        "XML",
+        "Importação",
+        "LOGIX",
+        "Logística"
+      ]
+    },
+    {
+      "cluster_id": 40,
+      "metricas": {
+        "volume": 16,
+        "top_servicos": {
+          "ERRO OPERACIONAL": 5,
+          "INDISPONIBILIDADE": 3,
+          "CADASTRO": 2,
+          "DESENVOLIVMENTO": 1,
+          "MELHORIAS": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 16
+        },
+        "top_solicitantes": {
+          "Welington dos Santos Borges": 3,
+          "Warley Aparecido Pereira": 3,
+          "Cassio Neves Alves": 2,
+          "Anderson Rosa de Oliveira": 2,
+          "Aleff Herculano da Silva": 2
+        },
+        "top_status": {
+          "finalizado": 3
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 5
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 5
+          },
+          {
+            "dia": "Ter",
+            "qtd": 5
+          },
+          {
+            "dia": "Qua",
+            "qtd": 1
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118045",
+        "117875",
+        "118580",
+        "119798",
+        "120644",
+        "121570",
+        "123041",
+        "126004",
+        "128735",
+        "129292",
+        "129551",
+        "129943",
+        "131967",
+        "132426",
+        "133119",
+        "130699"
+      ],
+      "titulo": "Bloquear Saldo na Doca de Recebimento",
+      "descricao": "Solicitação para bloquear o saldo quando estiver na função de doca de recebimento. Afeta usuários da logística no sistema LOGIX.",
+      "tags": [
+        "BloqueioSaldo",
+        "DocaRecebimento",
+        "LOGIX",
+        "Logística"
+      ]
+    },
+    {
+      "cluster_id": 41,
+      "metricas": {
+        "volume": 12,
+        "top_servicos": {
+          "INTEGRAÇÕES": 6,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 3,
+          "ERRO OPERACIONAL": 2,
+          "CADASTRO": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 12
+        },
+        "top_solicitantes": {
+          "Stephanie Maiara Soares de Brito": 8,
+          "Emilly da Silva Souza": 2,
+          "Maria Helena Ferreira da Silva": 2
+        },
+        "top_status": {
+          "finalizado": 3
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 1
+          },
+          {
+            "dia": "Ter",
+            "qtd": 5
+          },
+          {
+            "dia": "Qua",
+            "qtd": 2
+          },
+          {
+            "dia": "Sex",
+            "qtd": 3
+          },
+          {
+            "dia": "Sab",
+            "qtd": 1
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117957",
+        "118301",
+        "118786",
+        "118577",
+        "120384",
+        "123432",
+        "123597",
+        "128048",
+        "129606",
+        "130864",
+        "131186",
+        "133886"
+      ],
+      "titulo": "XML Não Integra no LOGIX",
+      "descricao": "XML de recebimento não está integrando ao LOGIX, impactando o recebimento de cargas na área logística.",
+      "tags": [
+        "XML",
+        "Integração",
+        "LOGIX",
+        "Logística",
+        "Cargas"
+      ]
+    },
+    {
+      "cluster_id": 42,
+      "metricas": {
+        "volume": 31,
+        "top_servicos": {
+          "INTEGRAÇÕES": 13,
+          "ERRO OPERACIONAL": 5,
+          "INDISPONIBILIDADE": 3,
+          "CADASTRO": 3,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 2
+        },
+        "top_subareas": {
+          "LOGISTICA": 31
+        },
+        "top_solicitantes": {
+          "Maria Helena Ferreira da Silva": 13,
+          "Carolynne Angelica Sousa Chaves": 7,
+          "Emerson Danillo de Souza Silva": 7,
+          "Jessica Oliveira Giroldo": 2,
+          "Carlos Augusto Sena Terra": 1
+        },
+        "top_status": {
+          "finalizado": 4,
+          "aberto": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 7
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 6
+          },
+          {
+            "dia": "Ter",
+            "qtd": 6
+          },
+          {
+            "dia": "Qua",
+            "qtd": 7
+          },
+          {
+            "dia": "Qui",
+            "qtd": 5
+          },
+          {
+            "dia": "Sex",
+            "qtd": 7
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117881",
+        "118071",
+        "118413",
+        "118260",
+        "119356",
+        "118993",
+        "120313",
+        "120592",
+        "121708",
+        "122189",
+        "122371",
+        "122769",
+        "123151",
+        "123261",
+        "124237",
+        "125062",
+        "125117",
+        "124912",
+        "127239",
+        "128185",
+        "129793",
+        "129947",
+        "130492",
+        "130927",
+        "130991",
+        "130941",
+        "131087",
+        "131397",
+        "131552",
+        "131766",
+        "132954"
+      ],
+      "titulo": "Falha em Cadastros e Integrações CANADIAN",
+      "descricao": "Clientes CANADIAN enfrentam falhas em cadastros, integrações e envio de relatórios de estoque no Logix. Atinge operações de logística e processamento de pedidos.",
+      "tags": [
+        "Cadastro",
+        "Integrações",
+        "Logística",
+        "EDI/API",
+        "Canadian"
+      ]
+    },
+    {
+      "cluster_id": 43,
+      "metricas": {
+        "volume": 17,
+        "top_servicos": {
+          "ERRO OPERACIONAL": 7,
+          "PENDENCIA BACKOFFICE": 3,
+          "ERRO SISTÊMICO": 2,
+          "EXPEDIÇÃO": 2,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 17
+        },
+        "top_solicitantes": {
+          "Welington dos Santos Borges": 4,
+          "Joao Xavier Goncalves Filho": 3,
+          "Jefferson Miranda De Oliveira": 2,
+          "Maria Eduarda Candido Amaral": 2,
+          "Junio Oliveira Reis": 1
+        },
+        "top_status": {
+          "finalizado": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 3
+          },
+          {
+            "dia": "Ter",
+            "qtd": 3
+          },
+          {
+            "dia": "Qua",
+            "qtd": 5
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 5
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118052",
+        "119940",
+        "120135",
+        "120756",
+        "120781",
+        "121720",
+        "122354",
+        "122380",
+        "123196",
+        "127390",
+        "129436",
+        "129914",
+        "130667",
+        "130693",
+        "132217",
+        "132197",
+        "132630"
+      ],
+      "titulo": "Falha Operacional Afeta Planejamento de Embarque",
+      "descricao": "Operadores da área logística relatam falha no LOGIX ao planejar embarques e cancelar pedidos. O problema impacta expedição e planejamento de embarque em várias filiais.",
+      "tags": [
+        "LOGIX",
+        "Planejamento de Embarque",
+        "Expedição",
+        "Autorização",
+        "Operacional"
+      ]
+    },
+    {
+      "cluster_id": 44,
+      "metricas": {
+        "volume": 32,
+        "top_servicos": {
+          "PENDENCIA BACKOFFICE": 11,
+          "ERRO OPERACIONAL": 6,
+          "ERRO SISTÊMICO": 4,
+          "INTEGRAÇÕES": 3,
+          "ANALISE DE CASOS": 2
+        },
+        "top_subareas": {
+          "LOGISTICA": 32
+        },
+        "top_solicitantes": {
+          "Maria Genice da Silva": 6,
+          "Veronica Lucia Silva de Lemos": 5,
+          "Emerson Luiz Pereira de Castro": 4,
+          "Jose Aldair da Silva Furtado": 4,
+          "Joao Xavier Goncalves Filho": 3
+        },
+        "top_status": {
+          "finalizado": 5,
+          "aberto": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 9
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 4
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 2
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 8
+          },
+          {
+            "dia": "Ter",
+            "qtd": 6
+          },
+          {
+            "dia": "Qua",
+            "qtd": 4
+          },
+          {
+            "dia": "Qui",
+            "qtd": 6
+          },
+          {
+            "dia": "Sex",
+            "qtd": 8
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118216",
+        "119084",
+        "119214",
+        "118514",
+        "118409",
+        "118372",
+        "120081",
+        "120576",
+        "121186",
+        "120188",
+        "121397",
+        "119343",
+        "121905",
+        "122397",
+        "122718",
+        "122628",
+        "122970",
+        "123024",
+        "122886",
+        "124640",
+        "124966",
+        "125287",
+        "127071",
+        "128645",
+        "128647",
+        "129144",
+        "129863",
+        "130658",
+        "130654",
+        "133045",
+        "133767",
+        "133812"
+      ],
+      "titulo": "Erros de processamento de CESV no LOGIX",
+      "descricao": "Operadores da logística enfrentam falhas no processamento de CESV no LOGIX. O backlog de pendências no backoffice impede a conclusão de CESV.",
+      "tags": [
+        "CESV",
+        "LOGIX",
+        "Expedição",
+        "Backoffice",
+        "Erro"
+      ]
+    },
+    {
+      "cluster_id": 45,
+      "metricas": {
+        "volume": 15,
+        "top_servicos": {
+          "INTEGRAÇÕES": 7,
+          "PENDENCIA BACKOFFICE": 5,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1,
+          "ERRO SISTÊMICO": 1,
+          "ANALISE DE CASO": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 15
+        },
+        "top_solicitantes": {
+          "Douglas Bitencourt Dos Santos": 3,
+          "Julio Santos": 2,
+          "Maria Genice da Silva": 2,
+          "Anderson Rosa de Oliveira": 1,
+          "Priscilla Maria Karla Wanderley": 1
+        },
+        "top_status": {
+          "finalizado": 3
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 3
+          },
+          {
+            "dia": "Ter",
+            "qtd": 2
+          },
+          {
+            "dia": "Qua",
+            "qtd": 4
+          },
+          {
+            "dia": "Qui",
+            "qtd": 4
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          }
+        ]
+      },
+      "ids_chamados": [
+        "118209",
+        "118688",
+        "119484",
+        "120368",
+        "120575",
+        "121569",
+        "122163",
+        "122746",
+        "123404",
+        "124012",
+        "124341",
+        "124472",
+        "125053",
+        "128001",
+        "130665"
+      ],
+      "titulo": "Erro Sistêmico Afeta Integrações LOGIX",
+      "descricao": "Operação de geração de pedidos falha devido a erro de integração no LOGIX. Afeta as operações de logística nas filiais que dependem das integrações.",
+      "tags": [
+        "Erro Sistêmico",
+        "Integrações",
+        "LOGIX",
+        "Pedidos",
+        "Logística"
+      ]
+    },
+    {
+      "cluster_id": 46,
+      "metricas": {
+        "volume": 18,
+        "top_servicos": {
+          "PENDENCIA BACKOFFICE": 6,
+          "ERRO SISTÊMICO": 5,
+          "ERRO OPERACIONAL": 3,
+          "INTEGRAÇÕES": 3,
+          "ANALISE DE CASOS": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 18
+        },
+        "top_solicitantes": {
+          "Joao Xavier Goncalves Filho": 10,
+          "Cassio Neves Alves": 3,
+          "Maria Eduarda Candido Amaral": 2,
+          "Antonia Vitoria Moreira Aguiar": 1,
+          "Anderson Rosa de Oliveira": 1
+        },
+        "top_status": {
+          "finalizado": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 4
+          },
+          {
+            "dia": "Ter",
+            "qtd": 5
+          },
+          {
+            "dia": "Qua",
+            "qtd": 3
+          },
+          {
+            "dia": "Qui",
+            "qtd": 2
+          },
+          {
+            "dia": "Sex",
+            "qtd": 4
+          }
+        ]
+      },
+      "ids_chamados": [
+        "117723",
+        "117799",
+        "121097",
+        "123332",
+        "124186",
+        "125060",
+        "125068",
+        "125915",
+        "126210",
+        "126544",
+        "126858",
+        "126954",
+        "127196",
+        "127194",
+        "130566",
+        "131067",
+        "132811",
+        "132582"
+      ],
+      "titulo": "Erro Transação Begin no WMS",
+      "descricao": "Usuários da logística não conseguem gerar pedidos de retorno devido ao erro 'TRANSACAO BEGIN -[-535, 0]' no LOGIX/WMS. O problema impede a emissão de pedidos e mantém saldos de itens inalterados, afetando logística e backoffice.",
+      "tags": [
+        "TransaçãoBegin",
+        "WMS",
+        "LOGIX",
+        "Retorno",
+        "Backoffice"
+      ]
+    }
+  ]
+}

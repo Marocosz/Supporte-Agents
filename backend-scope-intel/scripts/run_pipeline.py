@@ -174,7 +174,10 @@ async def main(sistema: str, dias: int):
             agg_servicos = {}
             agg_solicitantes = {}
             agg_status = {}
+            agg_subareas = {} 
             agg_timeline_map = {}
+            agg_sazonalidade_map = {}
+
             volume_total = 0
 
             for child in lista_filhos_objs:
@@ -187,19 +190,50 @@ async def main(sistema: str, dias: int):
                     agg_solicitantes[sol] = agg_solicitantes.get(sol, 0) + qtd
                 for st, qtd in child['metricas'].get('top_status', {}).items():
                     agg_status[st] = agg_status.get(st, 0) + qtd
+                for sub, qtd in child['metricas'].get('top_subareas', {}).items():
+                    agg_subareas[sub] = agg_subareas.get(sub, 0) + qtd
+                
+                # Soma Timeline
                 for time_item in child['metricas'].get('timeline', []):
-                    mes = time_item['mes']
-                    qtd = time_item['qtd']
-                    agg_timeline_map[mes] = agg_timeline_map.get(mes, 0) + qtd
+                    # Suporte a dict ou objeto (defensivo)
+                    if isinstance(time_item, dict):
+                        mes = time_item.get('mes')
+                        qtd = time_item.get('qtd')
+                    else:
+                        mes = getattr(time_item, 'mes', None)
+                        qtd = getattr(time_item, 'qtd', 0)
+                    
+                    if mes:
+                        agg_timeline_map[mes] = agg_timeline_map.get(mes, 0) + qtd
+                    
+                # Soma Sazonalidade
+                for saz_item in child['metricas'].get('sazonalidade', []):
+                    if isinstance(saz_item, dict):
+                        dia = saz_item.get('dia')
+                        qtd = saz_item.get('qtd')
+                    else:
+                        dia = getattr(saz_item, 'dia', None)
+                        qtd = getattr(saz_item, 'qtd', 0)
+                    
+                    if dia:
+                        agg_sazonalidade_map[dia] = agg_sazonalidade_map.get(dia, 0) + qtd
 
             # Top 5 Pai
             top_servicos_pai = dict(sorted(agg_servicos.items(), key=lambda x: x[1], reverse=True)[:5])
             top_solicitantes_pai = dict(sorted(agg_solicitantes.items(), key=lambda x: x[1], reverse=True)[:5])
             top_status_pai = dict(sorted(agg_status.items(), key=lambda x: x[1], reverse=True)[:5])
+            top_subareas_pai = dict(sorted(agg_subareas.items(), key=lambda x: x[1], reverse=True)[:5])
             
             timeline_pai = [
                 {"mes": m, "qtd": q} 
                 for m, q in sorted(agg_timeline_map.items())
+            ]
+            
+            # Ordenação de Sazonalidade (Seg -> Dom)
+            dias_ordem = {'Seg': 0, 'Ter': 1, 'Qua': 2, 'Qui': 3, 'Sex': 4, 'Sab': 5, 'Dom': 6}
+            sazonalidade_pai = [
+                {"dia": d, "qtd": q}
+                for d, q in sorted(agg_sazonalidade_map.items(), key=lambda x: dias_ordem.get(x[0], 99))
             ]
             
             macro_id_num = int(macro_key.split('_')[1])
@@ -214,7 +248,9 @@ async def main(sistema: str, dias: int):
                     "top_servicos": top_servicos_pai,
                     "top_solicitantes": top_solicitantes_pai,
                     "top_status": top_status_pai,
-                    "timeline": timeline_pai
+                    "top_subareas": top_subareas_pai,
+                    "timeline": timeline_pai,
+                    "sazonalidade": sazonalidade_pai
                 },
                 "sub_clusters": lista_filhos_objs, 
                 "ids_chamados": all_ids_filhos

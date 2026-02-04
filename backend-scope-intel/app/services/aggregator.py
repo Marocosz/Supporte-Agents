@@ -74,7 +74,11 @@ def consolidate_clusters(records: list[dict], cluster_labels: list[int]) -> list
         # 3a. Identifica estatística de Status (Abertos vs Fechados)
         top_status = {}
         if 'status' in grupo.columns:
-            top_status = grupo['status'].value_counts().head(5).to_dict()
+            # Preenche nulos e vazios para contabilizar tudo
+            status_series = grupo['status'].fillna('Não Informado').replace('', 'Não Informado')
+            # Opcional: Normalizar texto (ex: 'finalizado' -> 'Finalizado')
+            status_series = status_series.apply(lambda x: x.title() if isinstance(x, str) else str(x))
+            top_status = status_series.value_counts().head(5).to_dict()
 
         # 3b. Identifica estatística de Sub-Área (Mais granular que serviço)
         top_subareas = {}

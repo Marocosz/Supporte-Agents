@@ -3,10 +3,22 @@ from typing import List, Dict, Any, Optional
 
 # --- Schemas Internos (Partes do JSON) ---
 
+class TimelineItem(BaseModel):
+    mes: str
+    qtd: int
+
+class SazonalidadeItem(BaseModel):
+    dia: str
+    qtd: int
+
 class ClusterMetrics(BaseModel):
     volume: int
     top_servicos: Dict[str, int]
     top_solicitantes: Dict[str, int]
+    top_subareas: Dict[str, int] = {}
+    top_status: Dict[str, int] = {}
+    timeline: List[TimelineItem] = []
+    sazonalidade: List[SazonalidadeItem] = []
 
 class ClusterResult(BaseModel):
     cluster_id: int
