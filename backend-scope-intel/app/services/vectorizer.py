@@ -28,15 +28,19 @@ logger = logging.getLogger(__name__)
 # Cliente OpenAI
 client = OpenAI(api_key=settings.OPENAI_API_KEY)
 
-def generate_uuid_from_string(val: str) -> str:
+def generate_uuid_from_string(val: str, system_name: str = "") -> str:
     """
-    Gera um UUID determinístico baseado no ID do chamado.
+    Gera um UUID determinístico baseado no ID do chamado e Opcionalmente no Sistema.
     
-    Por que não uuid4 (aleatório)?
-    Se rodarmos o pipeline duas vezes para o mesmo chamado, queremos sobrescrever o registro
-    existente no Qdrant, e não criar uma duplicata. Usando UUID5(NAMESPACE_DNS, id), 
-    o ID "CHAMADO-123" sempre vai virar o mesmo hash "a3f1...", garantindo idempotência.
+    CRÍTICO:
+    Para evitar colisão de IDs entre sistemas diferentes (ex: ID 100 no Protheus e ID 100 no Logix),
+    devemos usar o prefixo do sistema.
+    string_base = "PROTHEUS_100" -> UUID X
+    string_base = "LOGIX_100"    -> UUID Y
     """
+    if system_name:
+        val = f"{system_name}_{val}"
+        
     return str(uuid.uuid5(uuid.NAMESPACE_DNS, str(val)))
 
 def get_embeddings(texts: list[str]) -> list[list[float]]:
@@ -53,7 +57,8 @@ def get_embeddings(texts: list[str]) -> list[list[float]]:
         
         response = client.embeddings.create(
             input=texts,
-            model=settings.OPENAI_EMBEDDING_MODEL
+            model=settings.OPENAI_EMBEDDING_MODEL,
+            dimensions=3072
         )
         # Extrai apenas os vetores da resposta
         return [data.embedding for data in response.data]
@@ -86,8 +91,8 @@ def process_and_vectorize(records: list[dict]):
 
     # 2. Preparar Lotes
     for i, record in enumerate(records):
-        # Gera ID único para o Qdrant (Determinístico)
-        point_id = generate_uuid_from_string(record['id_chamado'])
+        # Gera ID único para o Qdrant (Composito: Sistema + ID)
+        point_id = generate_uuid_from_string(record['id_chamado'], record.get('sistema', ''))
         
         # Prepara metadados (Payload) - Removemos o texto longo para não duplicar peso no banco
         # Mantemos apenas campos filtro: sistema, data, serviço, etc.

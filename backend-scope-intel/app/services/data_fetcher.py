@@ -119,7 +119,12 @@ def fetch_chamados(db: Session, sistema: str, dias_atras: int = 180):
             logger.warning("Nenhum chamado encontrado com os filtros atuais.")
             return []
 
-        # 1. Pipeline de Limpeza (HTML -> Texto Puro)
+        # 0. Proteção Extra contra Duplicidade (Blindagem)
+        # Se por algum motivo o banco trouxer IDs repetidos, garantimos unicidade aqui.
+        qtd_antes = len(df)
+        df.drop_duplicates(subset=['id_chamado'], keep='last', inplace=True)
+        if len(df) < qtd_antes:
+            logger.warning(f"🛡️ Desduplicação: {qtd_antes - len(df)} registros repetidos foram removidos.")
         df['descricao_limpa'] = df['descricao_raw'].apply(clean_html)
         
         # 2. Conversão para Dicionários Python

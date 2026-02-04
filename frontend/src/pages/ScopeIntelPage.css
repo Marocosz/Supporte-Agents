@@ -421,12 +421,30 @@
     max-width: 800px;
     max-height: 90vh;
     border-radius: 16px;
-    padding: 2rem;
+    padding: 0;
     position: relative;
-    overflow-y: auto;
+    overflow: hidden;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
     border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
 }
+
+.intel-modal-scroll-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+    padding-top: 3rem;
+    width: 100%;
+}
+
+.intel-modal-scroll-content::-webkit-scrollbar { width: 6px; }
+.intel-modal-scroll-content::-webkit-scrollbar-track { background: transparent; margin: 10px 0; }
+.intel-modal-scroll-content::-webkit-scrollbar-thumb { background-color: rgba(100, 116, 139, 0.3); border-radius: 10px; }
+.intel-modal-scroll-content::-webkit-scrollbar-thumb:hover { background-color: rgba(100, 116, 139, 0.5); }
+.intel-page.dark .intel-modal-scroll-content::-webkit-scrollbar-thumb { background-color: rgba(255, 255, 255, 0.2); }
+
+
 
 .intel-close-btn {
     position: absolute;
@@ -437,7 +455,30 @@
     color: var(--text-secondary);
     cursor: pointer;
     font-size: 1.5rem;
+    z-index: 10;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
 }
+.intel-close-btn:hover { color: var(--accent-orange); }
+
+.intel-back-btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 10;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
+}
+.intel-back-btn:hover { color: var(--accent-orange); }
+
+
 
 .intel-modal-header h2 {
     margin: 0 0 1rem 0;
@@ -709,3 +750,188 @@
     grid-column: 1 / -1;
     /* Se estiver dentro de grid */
 }
+
+/* --- New Table-like List Styles --- */
+.intel-list-grid {
+    display: flex;
+    flex-direction: column;
+    /* Container agora age como a "tabela" */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-card);
+    overflow: hidden;
+    /* Para respeitar bordas arredondadas nos filhos */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.intel-list-card {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    /* Remove borda arredondada individual */
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    transition: background 0.1s ease;
+}
+
+/* Remover overrides anteriores de bg */
+.intel-page:not(.dark) .intel-list-card,
+.intel-page.dark .intel-list-card {
+    background: transparent;
+}
+
+/* Zebra striping opcional para "cara de planilha" */
+.intel-list-card:nth-child(even) {
+    background-color: var(--bg-secondary);
+    /* Alternativa sutil */
+}
+
+/* Ou apenas hover na linha */
+.intel-list-card:hover {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    transform: none;
+    /* Remove movimento */
+    box-shadow: none;
+}
+
+/* Remover borda do último item */
+.intel-list-card:last-child {
+    border-bottom: none;
+}
+
+.intel-list-card span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    flex: 1;
+    font-weight: 500;
+}
+
+.intel-list-card strong {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    background: transparent;
+    /* Remove badge look */
+    padding: 0;
+    border: none;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    /* Alinha números melhor */
+}
+
+/* Back Button styles remain same */
+.intel-back-btn {
+    background: none;
+    border: none;
+    color: var(--accent-orange);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.intel-back-btn:hover {
+    background: rgba(249, 115, 22, 0.1);
+}
+ / *   - - -   B a c k   B u t t o n   P o s i t i o n i n g   &   S c r o l l b a r   F i x   - - -   * / 
+ 
+ / *   A l i g n   C l o s e   a n d   B a c k   B u t t o n s   * / 
+ . i n t e l - b a c k - b t n   { 
+         p o s i t i o n :   a b s o l u t e ; 
+         t o p :   1 r e m ; 
+         / *   L e f t   i s   h a n d l e d   i n l i n e   o r   b e l o w   * / 
+         l e f t :   1 r e m ; 
+         b a c k g r o u n d :   n o n e ; 
+         b o r d e r :   n o n e ; 
+         c o l o r :   v a r ( - - t e x t - s e c o n d a r y ) ; 
+         c u r s o r :   p o i n t e r ; 
+         f o n t - s i z e :   1 . 5 r e m ; 
+         p a d d i n g :   0 ; 
+         m a r g i n :   0 ; 
+         t r a n s i t i o n :   c o l o r   0 . 2 s ; 
+         l i n e - h e i g h t :   1 ; 
+ } 
+ 
+ . i n t e l - b a c k - b t n : h o v e r   { 
+         c o l o r :   v a r ( - - a c c e n t - o r a n g e ) ; 
+         b a c k g r o u n d :   n o n e ; 
+ } 
+ 
+ / *   F i x   S c r o l l b a r   A p p e a r a n c e   * / 
+ . i n t e l - m o d a l : : - w e b k i t - s c r o l l b a r   { 
+         w i d t h :   6 p x ; 
+ } 
+ 
+ . i n t e l - m o d a l : : - w e b k i t - s c r o l l b a r - t r a c k   { 
+         b a c k g r o u n d :   t r a n s p a r e n t ; 
+         m a r g i n :   1 0 p x   0 ;   / *   s p a c e   f r o m   r o u n d e d   c o r n e r s   * / 
+ } 
+ 
+ . i n t e l - m o d a l : : - w e b k i t - s c r o l l b a r - t h u m b   { 
+         b a c k g r o u n d - c o l o r :   r g b a ( 1 0 0 ,   1 1 6 ,   1 3 9 ,   0 . 3 ) ;   / *   s u b t l e   g r e y   * / 
+         b o r d e r - r a d i u s :   1 0 p x ; 
+ } 
+ 
+ . i n t e l - m o d a l : : - w e b k i t - s c r o l l b a r - t h u m b : h o v e r   { 
+         b a c k g r o u n d - c o l o r :   r g b a ( 1 0 0 ,   1 1 6 ,   1 3 9 ,   0 . 5 ) ; 
+ } 
+ 
+ / *   D a r k   m o d e   s c r o l l b a r   * / 
+ . i n t e l - p a g e . d a r k   . i n t e l - m o d a l : : - w e b k i t - s c r o l l b a r - t h u m b   { 
+         b a c k g r o u n d - c o l o r :   r g b a ( 2 5 5 ,   2 5 5 ,   2 5 5 ,   0 . 2 ) ; 
+ } 
+ 
+ 
+ 
+ 
+ / *   - - -   F i x   S c r o l l b a r   C o r n e r   I s s u e   - - -   * / 
+ . i n t e l - m o d a l   { 
+         p a d d i n g :   0 ;   / *   R e m o v e   p a d d i n g   f r o m   f r a m e   t o   l e t   c o n t e n t   h a n d l e   i t   * / 
+         d i s p l a y :   f l e x ; 
+         f l e x - d i r e c t i o n :   c o l u m n ; 
+         o v e r f l o w :   h i d d e n ;   / *   C l i p s   c h i l d r e n   t o   e x p e c t e d   b o r d e r - r a d i u s   * / 
+         / *   E n s u r e   r e l a t i v e   p o s i t i o n i n g   f o r   b u t t o n s   * / 
+         p o s i t i o n :   r e l a t i v e ; 
+         / *   H e i g h t   c o n s t r a i n t   h a n d l e d   b y   m a x - h e i g h t   * / 
+ } 
+ 
+ . i n t e l - m o d a l - s c r o l l - c o n t e n t   { 
+         f l e x :   1 ; 
+         o v e r f l o w - y :   a u t o ; 
+         p a d d i n g :   2 r e m ; 
+         p a d d i n g - t o p :   3 r e m ;   / *   E x t r a   t o p   p a d d i n g   f o r   b u t t o n s   s p a c e   * / 
+         w i d t h :   1 0 0 % ; 
+         / *   C u s t o m   s c r o l l b a r   s t y l e s   * / 
+ } 
+ 
+ / *   R e - a p p l y   s c r o l l b a r   s t y l e s   t o   t h e   n e w   c o n t a i n e r   * / 
+ . i n t e l - m o d a l - s c r o l l - c o n t e n t : : - w e b k i t - s c r o l l b a r   { 
+         w i d t h :   6 p x ; 
+ } 
+ . i n t e l - m o d a l - s c r o l l - c o n t e n t : : - w e b k i t - s c r o l l b a r - t r a c k   { 
+         b a c k g r o u n d :   t r a n s p a r e n t ; 
+         m a r g i n :   1 0 p x   0 ;   
+ } 
+ . i n t e l - m o d a l - s c r o l l - c o n t e n t : : - w e b k i t - s c r o l l b a r - t h u m b   { 
+         b a c k g r o u n d - c o l o r :   r g b a ( 1 0 0 ,   1 1 6 ,   1 3 9 ,   0 . 3 ) ; 
+         b o r d e r - r a d i u s :   1 0 p x ; 
+ } 
+ . i n t e l - m o d a l - s c r o l l - c o n t e n t : : - w e b k i t - s c r o l l b a r - t h u m b : h o v e r   { 
+         b a c k g r o u n d - c o l o r :   r g b a ( 1 0 0 ,   1 1 6 ,   1 3 9 ,   0 . 5 ) ; 
+ } 
+ . i n t e l - p a g e . d a r k   . i n t e l - m o d a l - s c r o l l - c o n t e n t : : - w e b k i t - s c r o l l b a r - t h u m b   { 
+         b a c k g r o u n d - c o l o r :   r g b a ( 2 5 5 ,   2 5 5 ,   2 5 5 ,   0 . 2 ) ; 
+ } 
+ 
+ 
+ 
+ 

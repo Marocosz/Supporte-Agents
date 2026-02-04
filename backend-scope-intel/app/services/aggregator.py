@@ -58,7 +58,7 @@ def consolidate_clusters(records: list[dict], cluster_labels: list[int]) -> list
             continue
 
         # Filtra apenas os chamados pertencentes ao grupo atual da iteração
-        grupo = df[df['cluster_id'] == label]
+        grupo = df[df['cluster_id'] == label].copy()
         
         # --- CÁLCULO DE MÉTRICAS ---
         
@@ -71,6 +71,16 @@ def consolidate_clusters(records: list[dict], cluster_labels: list[int]) -> list
         # 3. Identifica quem são os usuários que mais sofrem com este problema
         top_solicitantes = grupo['solicitante'].value_counts().head(5).to_dict()
         
+        # 3a. Identifica estatística de Status (Abertos vs Fechados)
+        top_status = {}
+        if 'status' in grupo.columns:
+            top_status = grupo['status'].value_counts().head(5).to_dict()
+
+        # 3b. Identifica estatística de Sub-Área (Mais granular que serviço)
+        top_subareas = {}
+        if 'subarea' in grupo.columns:
+            top_subareas = grupo['subarea'].value_counts().head(5).to_dict()
+        
         # 4. Seleção de Amostra para IA (Context Window)
         # Seleciona até 5 textos aleatórios para evitar viés de ordem (ex: pegar só antigos ou só novos)
         # O random_state garante que sempre pegaremos as mesmas amostras se rodar de novo (determinístico)
@@ -79,25 +89,34 @@ def consolidate_clusters(records: list[dict], cluster_labels: list[int]) -> list
         # 5. Lista de IDs para permitir "Drill-down" no Frontend (ver os chamados reais)
         ids_chamados = grupo['id_chamado'].tolist()
 
-        # 6. Timeline (Evolução Temporal) - NOVO!
-        # Agrupa por mês para gerar gráficos de tendência (ex: Problema explodiu em Junho?)
-        # Converte a coluna 'data_abertura' para datetime caso não esteja
+        # 6. Timeline (Evolução Temporal) & Sazonalidade (Dia da Semana)
+        sazonalidade_data = []
+        timeline_data = []
+
         if 'data_abertura' in grupo.columns:
              # Garante formato datetime
             grupo['dt_temp'] = pd.to_datetime(grupo['data_abertura'], errors='coerce')
             
-            # Agrupa por Ano-Mês (YYYY-MM) e conta
+            # --- TIMELINE (Mês) ---
             timeline_series = grupo.groupby(grupo['dt_temp'].dt.to_period('M')).size()
-            
-            # Converte para formato JSON-friendly: [{"mes": "2023-01", "qtd": 10}, ...]
             timeline_data = [
                 {"mes": str(period), "qtd": int(count)} 
                 for period, count in timeline_series.items()
             ]
-            # Ordena por data
             timeline_data.sort(key=lambda x: x['mes'])
+
+            # --- SAZONALIDADE (Dia da Semana) ---
+            # 0=Segunda, 6=Domingo
+            dias_map = {0: 'Seg', 1: 'Ter', 2: 'Qua', 3: 'Qui', 4: 'Sex', 5: 'Sab', 6: 'Dom'}
+            sazonal_counts = grupo['dt_temp'].dt.dayofweek.value_counts().sort_index()
+            
+            sazonalidade_data = [
+                {"dia": dias_map.get(idx, str(idx)), "qtd": int(val)}
+                for idx, val in sazonal_counts.items()
+            ]
         else:
             timeline_data = []
+            sazonalidade_data = []
 
         # Monta o objeto intermediário que será enriquecido pela IA posteriormente
         cluster_data = {
@@ -105,8 +124,11 @@ def consolidate_clusters(records: list[dict], cluster_labels: list[int]) -> list
             "metricas": {
                 "volume": int(total),
                 "top_servicos": top_servicos,
+                "top_subareas": top_subareas, 
                 "top_solicitantes": top_solicitantes,
-                "timeline": timeline_data # Adicionado para gráficos de tendência
+                "top_status": top_status, # NOVO
+                "timeline": timeline_data,
+                "sazonalidade": sazonalidade_data 
             },
             "amostras_texto": amostras, # Será consumido pelo llm_agent
             "ids_chamados": ids_chamados

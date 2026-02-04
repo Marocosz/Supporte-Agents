@@ -11,11 +11,11 @@ class Settings(BaseSettings):
     # Qdrant (Memória de Vetores)
     QDRANT_HOST: str = "localhost"
     QDRANT_PORT: int = 6333
-    QDRANT_COLLECTION_PREFIX: str = "chamados_v1"
+    QDRANT_COLLECTION_PREFIX: str = "chamados_large_v1"
     
     # OpenAI
     OPENAI_API_KEY: str
-    OPENAI_EMBEDDING_MODEL: str = "text-embedding-3-small"
+    OPENAI_EMBEDDING_MODEL: str = "text-embedding-3-large"
     OPENAI_CHAT_MODEL: str = "gpt-5-nano"
     
     # Onde vamos salvar os JSONs de resultado?

@@ -74,7 +74,7 @@ def perform_clustering(vectors: list[list[float]]):
     macro_labels = _run_umap_hdbscan(
         data, 
         n_neighbors=params['n_neighbors_macro'], 
-        min_dist=0.0, 
+        min_dist=0.2, 
         min_cluster_size=params['macro_min_size'], # <--- Dinâmico
         min_samples=1
     )

@@ -36,7 +36,7 @@ class VectorStore:
         # Se mudar o modelo na OpenAI, OBRIGATORIAMENTE deve mudar aqui.
         # Ex: Ada-002 = 1536 dim
         # Ex: embedding-3-large = 3072 dim (padrão)
-        self.vector_size = 1536 
+        self.vector_size = 3072 
 
     def ensure_collection_exists(self):
         """

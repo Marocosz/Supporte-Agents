@@ -4,6 +4,10 @@
 # OBJETIVO:
 #   Script principal (Entrypoint) para rodar a análise de chamados em modo BATCH.
 #   Orquestra: SQL -> Vetor -> Clustering Hierárquico -> Naming IA (Pai/Filho) -> JSON.
+#
+#   HISTÓRICO:
+#   - Refatorado para ASYNC/AWAIT para rodar chamadas OpenAI em paralelo.
+#   - Adicionado tratamento para cluster de RUÍDO (-1).
 # ==============================================================================
 
 import sys
@@ -11,8 +15,9 @@ import os
 import argparse
 import json
 import logging
+import asyncio
 from datetime import datetime
-import numpy as np # Import necessário para sampling
+import numpy as np 
 
 # Adiciona a raiz do projeto ao Python Path
 sys.path.append(os.getcwd())
@@ -27,13 +32,38 @@ from app.services import data_fetcher, vectorizer, cluster_engine, aggregator, l
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-def main(sistema: str, dias: int):
+async def process_micro_cluster(child_id, child_obj):
+    """
+    Função auxiliar para processar um único micro-cluster de forma assíncrona.
+    Retorna uma tupla (child_id, dados_atualizados)
+    """
+    try:
+        analise_micro = await llm_agent.gerar_analise_micro_async(
+            child_obj['amostras_texto'], 
+            child_obj['metricas'].get('top_servicos')
+        )
+        
+        child_obj['titulo'] = analise_micro['titulo']
+        child_obj['descricao'] = analise_micro['descricao']
+        child_obj['tags'] = analise_micro.get('tags', []) # NOVO: Tags da IA
+        
+        # Remove o campo pesado de amostras do filho final
+        # Mas guardamos num campo temporário se o Pai precisar (embora no macro usemos título+descrição)
+        # Por segurança, limpamos aqui para o JSON final, e o Pai usa o que já tem.
+        child_obj.pop('amostras_texto', None)
+        
+        return child_id, child_obj
+    except Exception as e:
+        logger.error(f"Erro ao processar cluster {child_id}: {e}")
+        return child_id, None
+
+async def main(sistema: str, dias: int):
     start_time = datetime.now()
-    logger.info(f"=== Iniciando Pipeline HIERÁRQUICO para Sistema: {sistema} ===")
+    logger.info(f"=== Iniciando Pipeline HIERÁRQUICO (ASYNC) para Sistema: {sistema} ===")
 
     db = SessionLocal()
     try:
-        # 1. ETL e Vetorização (Mantido igual)
+        # 1. ETL e Vetorização 
         logger.info(">>> ETAPA 1: Buscando dados no MySQL...")
         records = data_fetcher.fetch_chamados(db, sistema, dias_atras=dias)
         
@@ -52,136 +82,160 @@ def main(sistema: str, dias: int):
         valid_records = []
         
         for r in records:
-            uid = vectorizer.generate_uuid_from_string(r['id_chamado'])
+            uid = vectorizer.generate_uuid_from_string(r['id_chamado'], sistema)
             if uid in vector_map:
                 vectors_ordered.append(vector_map[uid])
                 valid_records.append(r)
         
         logger.info(f"Vetores alinhados: {len(vectors_ordered)} prontos.")
 
-        # --- MUDANÇA PRINCIPAL AQUI ---
-        
         # 2. Clustering Hierárquico
         logger.info(">>> ETAPA 4: Executando Clustering Hierárquico (Macro -> Micro)...")
-        # O engine agora retorna DUAS coisas: labels finais (micro) e o mapa da árvore
         micro_labels, hierarchy_map = cluster_engine.perform_clustering(vectors_ordered)
         
         # 3. Consolidar Dados dos FILHOS (Micro-Clusters)
         logger.info(">>> ETAPA 5: Consolidando Estatísticas dos Micro-Clusters...")
         
-        # O aggregator funciona bem com lista plana. Ele vai gerar stats para todos os micros.
-        # clusters_raw agora contém a lista de todos os "filhos" (folhas da árvore).
+        # O aggregator gera stats para todos os micros encontrados nos labels
         clusters_raw_list = aggregator.consolidate_clusters(valid_records, micro_labels)
         
-        # Transformar em dicionário para acesso rápido pelo ID: { 12: {dados...}, 13: {dados...} }
-        micro_clusters_data = {c['cluster_id']: c for c in clusters_raw_list}
+        # Separar quem é cluster válido e quem é ruído (-1)
+        micro_clusters_data = {}
+        noise_cluster_data = None
         
-        # 4. Montagem da Árvore e Naming (IA)
-        logger.info(">>> ETAPA 6: Estruturando Árvore e Chamando OpenAI...")
+        for c in clusters_raw_list:
+            cid = c['cluster_id']
+            if cid == -1:
+                noise_cluster_data = c
+            else:
+                micro_clusters_data[cid] = c
+                
+        # 4. Análise MICRO em Paralelo (Async)
+        logger.info(f">>> ETAPA 6A: Disparando Análise IA para {len(micro_clusters_data)} Micro-Clusters em Paralelo...")
+        
+        tasks = []
+        for cid, c_obj in micro_clusters_data.items():
+            tasks.append(process_micro_cluster(cid, c_obj))
+            
+        # Executa tudo junto!
+        results = await asyncio.gather(*tasks)
+        
+        # Atualiza o mapa com os resultados processados
+        processed_micro_map = {}
+        for res_id, res_obj in results:
+            if res_obj:
+                processed_micro_map[res_id] = res_obj
+                
+        logger.info(">>> Análise Micro concluída.")
+
+        # 5. Montagem da Árvore e Naming MACRO (Pai/Filho)
+        logger.info(">>> ETAPA 6B: Estruturando Árvore Macro...")
         
         final_clusters_tree = []
         
         # Iteramos sobre o mapa de hierarquia (Os Pais)
-        # hierarchy_map ex: { "macro_0": [0, 1, 2], "macro_1": [3] }
-        
         for macro_key, children_ids in hierarchy_map.items():
             
-            # Filtra filhos válidos (exclui ruído -1 se tiver entrado na lista)
-            valid_children = [cid for cid in children_ids if cid in micro_clusters_data]
-            if not valid_children:
-                continue
-                
-            # --- A. Processar os FILHOS (Micro - Visão Técnica) ---
+            # Filtra filhos válidos que foram processados com sucesso
             lista_filhos_objs = []
-            todos_textos_do_pai = [] 
-            titulos_filhos = []
             
-            for child_id in valid_children:
-                child_obj = micro_clusters_data[child_id]
-                
-                # CHAMA IA TÉCNICA (MICRO)
-                # logger.info(f"   > [MICRO] Analisando Cluster {child_id}...") # Comentado para menos spam no log
-                analise_micro = llm_agent.gerar_analise_micro(
-                    child_obj['amostras_texto'], 
-                    child_obj['metricas'].get('top_servicos')
-                )
-                
-                child_obj['titulo'] = analise_micro['titulo']
-                child_obj['descricao'] = analise_micro['descricao']
-                
-                # Remove o campo pesado de amostras do filho final
-                amostras_backup = child_obj.pop('amostras_texto', [])
-                
-                lista_filhos_objs.append(child_obj)
-                titulos_filhos.append(analise_micro['titulo'])
-                todos_textos_do_pai.extend(amostras_backup) # Acumula para o pai ler
+            for child_id in children_ids:
+                if child_id in processed_micro_map:
+                    lista_filhos_objs.append(processed_micro_map[child_id])
+            
+            if not lista_filhos_objs:
+                continue
 
-            # --- B. Processar o PAI (Macro - Visão Executiva) ---
+            # --- Processar o PAI (Macro) ---
             
             # Caso Especial: Se o pai só tem 1 filho, ele vira o próprio filho (Lista Plana)
+            # Acelera o processo e simplifica visualização
             if len(lista_filhos_objs) == 1:
-                logger.info(f"   > [FLAT] Cluster Único: {lista_filhos_objs[0]['titulo']}")
+                # logger.info(f"   > [FLAT] Cluster Único: {lista_filhos_objs[0]['titulo']}")
                 final_clusters_tree.append(lista_filhos_objs[0])
                 continue
                 
             # Caso Padrão: Tem vários filhos, cria o Pai Agrupador
-            logger.info(f"   > [MACRO] Criando Categoria Pai para {len(valid_children)} sub-grupos...")
+            # logger.info(f"   > [MACRO] Criando Categoria Pai para {len(lista_filhos_objs)} sub-grupos...")
             
-            # 1. Agregação de Texto para Amostragem (Item 3 - Safer Sampling)
-            # Usamos list comprehension para filtrar vazios e garantir que é lista
-            import random
-            amostra_pai = []
-            if todos_textos_do_pai:
-                qtd_amostra = min(5, len(todos_textos_do_pai))
-                amostra_pai = random.sample(todos_textos_do_pai, qtd_amostra)
+            # Coleta Metadados dos Filhos para o Pai
+            filhos_metadata = []
+            for child in lista_filhos_objs:
+                filhos_metadata.append({
+                    "titulo": child['titulo'],
+                    "descricao": child['descricao']
+                })
             
             # CHAMA IA EXECUTIVA (MACRO)
-            analise_pai = llm_agent.gerar_analise_macro(amostra_pai, titulos_filhos)
+            analise_pai = await llm_agent.gerar_analise_macro_async(filhos_metadata)
             
-            # 2. Agregação de Métricas e IDs (Item 1 - Frontend Safety)
-            # Acumula dados dos filhos para o Pai não ficar "vazio" no Dashboard
+            # Agregação de Métricas do Pai
             all_ids_filhos = []
             agg_servicos = {}
             agg_solicitantes = {}
+            agg_status = {}
+            agg_timeline_map = {}
             volume_total = 0
 
             for child in lista_filhos_objs:
                 volume_total += child['metricas']['volume']
                 all_ids_filhos.extend(child.get('ids_chamados', []))
                 
-                # Soma Serviços
                 for srv, qtd in child['metricas'].get('top_servicos', {}).items():
                     agg_servicos[srv] = agg_servicos.get(srv, 0) + qtd
-                    
-                # Soma Solicitantes
                 for sol, qtd in child['metricas'].get('top_solicitantes', {}).items():
                     agg_solicitantes[sol] = agg_solicitantes.get(sol, 0) + qtd
+                for st, qtd in child['metricas'].get('top_status', {}).items():
+                    agg_status[st] = agg_status.get(st, 0) + qtd
+                for time_item in child['metricas'].get('timeline', []):
+                    mes = time_item['mes']
+                    qtd = time_item['qtd']
+                    agg_timeline_map[mes] = agg_timeline_map.get(mes, 0) + qtd
 
-            # Pega os Top 5 acumulados para o Pai
+            # Top 5 Pai
             top_servicos_pai = dict(sorted(agg_servicos.items(), key=lambda x: x[1], reverse=True)[:5])
             top_solicitantes_pai = dict(sorted(agg_solicitantes.items(), key=lambda x: x[1], reverse=True)[:5])
+            top_status_pai = dict(sorted(agg_status.items(), key=lambda x: x[1], reverse=True)[:5])
             
-            # Gera ID fictício para o Pai (ex: 10000 + ID original)
+            timeline_pai = [
+                {"mes": m, "qtd": q} 
+                for m, q in sorted(agg_timeline_map.items())
+            ]
+            
             macro_id_num = int(macro_key.split('_')[1])
             
             macro_obj = {
                 "cluster_id": 10000 + macro_id_num, 
                 "titulo": analise_pai['titulo'], 
                 "descricao": analise_pai['descricao'],
+                "tags": analise_pai.get('tags', []), 
                 "metricas": {
                     "volume": volume_total,
-                    "top_servicos": top_servicos_pai,     # Agora preenchido!
-                    "top_solicitantes": top_solicitantes_pai, # Agora preenchido!
-                    "timeline": [] # Timeline agregada é complexa, deixamos vazia por enqto
+                    "top_servicos": top_servicos_pai,
+                    "top_solicitantes": top_solicitantes_pai,
+                    "top_status": top_status_pai,
+                    "timeline": timeline_pai
                 },
                 "sub_clusters": lista_filhos_objs, 
-                "ids_chamados": all_ids_filhos # <--- CRÍTICO: Frontend agora consegue clicar no Pai
+                "ids_chamados": all_ids_filhos
             }
             
-            logger.info(f"     -> Título Pai: {macro_obj['titulo']}")
             final_clusters_tree.append(macro_obj)
 
-        # 5. Salvar Resultado (JSON Hierárquico)
+        # --- 6. Tratamento do RUÍDO / Dispersos ---
+        if noise_cluster_data:
+            logger.info(f">>> Incluindo Grupo de Dispersos ({noise_cluster_data['metricas']['volume']} itens)...")
+            
+            # Formatamos manualmente para não gastar tokens, pois são dispersos
+            noise_cluster_data['titulo'] = "Outros / Dispersos"
+            noise_cluster_data['descricao'] = "Chamados que não apresentaram padrão claro de agrupamento com os demais."
+            noise_cluster_data['tags'] = ["Variados", "Sem Padrão"]
+            noise_cluster_data.pop('amostras_texto', None) # Limpa texto pesado
+            
+            # Adiciona ao final da lista
+            final_clusters_tree.append(noise_cluster_data)
+
+        # 7. Salvar Resultado (JSON Hierárquico)
         output_filename = f"analise_{sistema}_{datetime.now().strftime('%Y%m%d')}.json"
         output_path = os.path.join(settings.OUTPUT_DIR, output_filename)
         
@@ -198,7 +252,7 @@ def main(sistema: str, dias: int):
                 "data_analise": datetime.now().isoformat(),
                 "periodo_dias": dias,
                 "total_chamados": len(valid_records),
-                "total_grupos": len(final_clusters_tree), # Conta grupos raiz (Pais + Filhos Solteiros)
+                "total_grupos": len(final_clusters_tree), 
                 "taxa_ruido": float(f"{noise_ratio:.4f}")
             },
             "clusters": final_clusters_tree
@@ -219,4 +273,5 @@ if __name__ == "__main__":
     parser.add_argument('--dias', type=int, default=180)
     args = parser.parse_args()
     
-    main(args.sistema, args.dias)
+    # Executa o loop assíncrono
+    asyncio.run(main(args.sistema, args.dias))
