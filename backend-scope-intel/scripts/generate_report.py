@@ -29,6 +29,7 @@ import sys
 from datetime import datetime
 import matplotlib.pyplot as plt
 from dotenv import load_dotenv # <--- NOVO IMPORT
+import html
 
 # Configuração de Logs
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -137,14 +138,10 @@ def p(text, style):
 
 def get_example_tickets(cluster, limit=5):
     """
-    Tenta obter exemplos de texto.
-    1. Se já estiver no JSON (amostras_texto), usa.
-    2. Se não, usa 'ids_chamados' para buscar no banco via fetch_batch_by_ids.
+    Obtém exemplos de tickets.
+    Prioridade: Busca no Banco de Dados (Layout Rico Padronizado).
+    Fallback: Usa 'amostras_texto' do JSON se DB falhar.
     """
-    amostras = cluster.get('amostras_texto', [])
-    if amostras:
-        return amostras[:limit]
-    
     ids = cluster.get('ids_chamados', [])
     if not ids:
         ids_filhos = []
@@ -154,27 +151,38 @@ def get_example_tickets(cluster, limit=5):
             ids_filhos.extend(s.get('ids_chamados', []))
         ids = ids_filhos
 
-    if not ids:
-        return []
+    # Tenta buscar no Banco PRIMEIRO para garantir layout padronizado (HTML)
+    if ids:
+        target_ids = ids[:limit]
+        db = SessionLocal()
+        try:
+            detailed_tickets = fetch_batch_by_ids(db, target_ids)
+            if detailed_tickets:
+                # Formata: "ID | SOLICITANTE | DATA ... \n TITULO ... \n DESCRIÇÃO ..."
+                text_samples = []
+                for t in detailed_tickets:
+                    txt = (
+                        f"<b>ID:</b> {t['id_chamado']} | "
+                        f"<b>Solicitante:</b> {t['solicitante']} | "
+                        f"<b>Data:</b> {t['data_abertura']}<br/>"
+                        f"<b>Título:</b> {t['titulo']}<br/>"
+                        f"<b>Descrição:</b> {t['descricao_limpa']}"
+                    )
+                    text_samples.append(txt)
+                db.close()
+                return text_samples
+        except Exception as e:
+            logger.error(f"Erro ao buscar tickets no DB: {e}")
+            # Falha silenciosa para tentar fallback
+        finally:
+            db.close()
     
-    # Busca no Banco (limitando a N IDs para não sobrecarregar)
-    target_ids = ids[:limit]
+    # Fallback: Se não conseguiu do DB, usa o texto cru do JSON (menos padronizado)
+    amostras = cluster.get('amostras_texto', [])
+    if amostras:
+        return amostras[:limit]
     
-    db = SessionLocal()
-    try:
-        detailed_tickets = fetch_batch_by_ids(db, target_ids)
-        # Formata: "TITULO: ... \n DESCRIÇÃO: ..."
-        text_samples = []
-        for t in detailed_tickets:
-            # Texto rico formatado
-            txt = f"<b>[{t['id_chamado']}] {t['titulo']}</b><br/>{t['descricao_limpa']}"
-            text_samples.append(txt)
-        return text_samples
-    except Exception as e:
-        logger.error(f"Erro ao buscar tickets no DB: {e}")
-        return []
-    finally:
-        db.close()
+    return []
 
 def create_pdf(json_file_path):
     try:
@@ -238,7 +246,12 @@ def create_pdf(json_file_path):
     story.append(p("Parâmetros do Pipeline de Inteligência", style_h1))
     tech_text = (
         "<b>Motor de Vetorização:</b> OpenAI Embeddings (1536 dimensões)<br/>"
-        "<b>Algoritmo de Redução:</b> UMAP (Manifold Learning) - Redução para 5D (Cálculo) e 2D (Visualização)<br/>"
+        "<b>Algoritmo de Redução (UMAP):</b><br/>"
+        "&nbsp;&nbsp;&bull; <i>n_neighbors=min(30, total)</i>: Equilíbrio entre estrutura local e global.<br/>"
+        "&nbsp;&nbsp;&bull; <i>n_components=2</i>: Projeção 2D otimizada para visualização.<br/>"
+        "&nbsp;&nbsp;&bull; <i>min_dist=0.2</i>: Controla a compactação dos clusters visuais.<br/>"
+        "&nbsp;&nbsp;&bull; <i>metric='cosine'</i>: Similaridade baseada em ângulo (semântica).<br/>"
+        "&nbsp;&nbsp;&bull; <i>random_state=4</i>: Semente fixa para reprodutibilidade.<br/>"
         "<b>Algoritmo de Agrupamento:</b> HDBSCAN Hierárquico (Densidade Variável)<br/>"
         "<b>LLM Analista:</b> GPT-4o (Análise Semântica e Racional)<br/>"
         "<b>Estratégia:</b> Abordagem Híbrida (Matemática + Semântica) com Validação Estatística."
@@ -271,7 +284,8 @@ def create_pdf(json_file_path):
         
         # --- Racional da IA (Se existir) ---
         if racional:
-            racional_text = f"<b>🧠 Raciocínio da IA:</b> <i>{racional}</i>"
+            racional_escaped = html.escape(racional)
+            racional_text = f"<b>🧠 Raciocínio da IA:</b> <i>{racional_escaped}</i>"
             story.append(p(racional_text, ParagraphStyle('Racional', parent=style_body, textColor=colors.HexColor("#4b5563"), backColor=colors.HexColor("#f3f4f6"), borderWidth=0, padding=5)))
             story.append(Spacer(1, 0.3*cm))
 
