@@ -321,14 +321,33 @@ def create_pdf(json_file_path):
             ]]
             sub_table = Table(sub_card_content, colWidths=[18*cm])
             sub_table.setStyle(TableStyle([
-                ('BACKGROUND', (0,0), (-1,-1), colors.HexColor("#ef4444")), # Vermelho alerta
+                ('BACKGROUND', (0,0), (-1,-1), colors.HexColor("#2563eb")), # Azul a pedido
                 ('rx', (0,0), (-1,-1), 10), # Arredondado (simulate)
                 ('PADDING', (0,0), (-1,-1), 8),
             ]))
             story.append(sub_table)
             story.append(Spacer(1, 0.3*cm))
 
-        # 2. Tabelas Lado a Lado (Solicitantes vs Serviços)
+        # 3. CARD DE STATUS (Novo layout pedido)
+        # Formata os top 5 status em uma string única ou mini-tags
+        top_stats = metricas.get('top_status', {})
+        if top_stats:
+            # Ex: "Finalizado: 10 | Aberto: 5 ..."
+            stats_str = " | ".join([f"{k}: {v}" for k,v in list(top_stats.items())[:5]])
+            
+            status_content = [[
+                p(f"📊 Status dos Chamados: {stats_str}", ParagraphStyle('StatusCard', parent=styles['Normal'], textColor=colors.HexColor("#1e3a8a"), alignment=TA_CENTER))
+            ]]
+            status_table = Table(status_content, colWidths=[18*cm])
+            status_table.setStyle(TableStyle([
+                ('BACKGROUND', (0,0), (-1,-1), colors.HexColor("#dbeafe")), # Azul bem claro
+                ('BOX', (0,0), (-1,-1), 1, colors.HexColor("#bfdbfe")),
+                ('padding', (0,0), (-1,-1), 8),
+            ]))
+            story.append(status_table)
+            story.append(Spacer(1, 0.5*cm))
+
+        # 4. Tabelas Lado a Lado (Solicitantes vs Serviços) - Voltando ao Dual Layout
         
         # Col 1: Solicitantes
         users_rows = [[p("Top Solicitantes", style_section_label), p("Qtd", style_section_label)]]
@@ -341,7 +360,7 @@ def create_pdf(json_file_path):
             ('BACKGROUND', (0,0), (-1,0), style_card_bg),
         ]))
 
-        # Col 2: Serviços (Sem Subarea aqui)
+        # Col 2: Serviços
         serv_rows = [[p("Top Serviços", style_section_label), p("Qtd", style_section_label)]]
         for k, v in list(metricas.get('top_servicos', {}).items())[:5]:
             serv_rows.append([p(k, style_small), p(str(v), style_small)])

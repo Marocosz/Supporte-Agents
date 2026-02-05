@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import {
-    BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, ResponsiveContainer, CartesianGrid
+    LineChart, Line, BarChart, Bar, XAxis, YAxis, Tooltip as RechartsTooltip, ResponsiveContainer, CartesianGrid
 } from 'recharts';
 import {
     FiActivity, FiX, FiArrowLeft
@@ -29,6 +29,7 @@ interface Cluster {
     cluster_id: number;
     titulo: string;
     descricao: string;
+    analise_racional?: string; // NOVO
     tags?: string[]; // NOVO
     ids_chamados: string[];
     metricas: Metricas;
@@ -84,24 +85,25 @@ const renderTimeline = (timeline: TimelineItem[]) => {
     return (
         <div style={{ width: '100%', height: 200 }}>
             <ResponsiveContainer>
-                <BarChart data={timeline}>
-                    <CartesianGrid strokeDasharray="3 3" opacity={0.2} />
+                <LineChart data={timeline}>
+                    <CartesianGrid strokeDasharray="3 3" opacity={0.2} vertical={false} />
                     <XAxis dataKey="mes" tick={{ fontSize: 12 }} />
                     <YAxis tick={{ fontSize: 12 }} />
                     <RechartsTooltip
-                        contentStyle={{ backgroundColor: '#431407', border: '1px solid #7c2d12', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.5)' }}
-                        itemStyle={{ color: '#fed7aa' }}
-                        labelStyle={{ color: '#fff', fontWeight: 'bold', marginBottom: '5px' }}
-                        cursor={{ fill: 'rgba(255,255,255,0.05)' }}
+                        contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+                        itemStyle={{ color: '#2563eb' }}
+                        labelStyle={{ color: '#374151', fontWeight: 'bold', marginBottom: '5px' }}
                     />
-                    <Bar
+                    <Line
+                        type="monotone"
                         dataKey="qtd"
-                        fill="#F97316"
-                        radius={[4, 4, 0, 0]}
-                        name="Volume"
-                        activeBar={{ fill: '#fdba74' }}
+                        stroke="#2563eb"
+                        strokeWidth={3}
+                        dot={{ r: 4, fill: '#2563eb', strokeWidth: 0 }}
+                        activeDot={{ r: 6 }}
+                        name="Chamados"
                     />
-                </BarChart>
+                </LineChart>
             </ResponsiveContainer>
         </div>
     );
@@ -516,6 +518,22 @@ const ScopeIntelPage: React.FC = () => {
 
                             <p className="intel-modal-desc">{selectedCluster.descricao}</p>
 
+                            {/* RACIOCÍNIO DA IA (NOVO) */}
+                            {selectedCluster.analise_racional && (
+                                <div style={{
+                                    background: 'var(--bg-secondary)',
+                                    padding: '16px',
+                                    borderRadius: '8px',
+                                    marginBottom: '2rem',
+                                    borderLeft: '4px solid var(--accent-orange)'
+                                }}>
+                                    <strong style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>🧠 Raciocínio da IA:</strong>
+                                    <p style={{ margin: 0, fontStyle: 'italic', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
+                                        {selectedCluster.analise_racional}
+                                    </p>
+                                </div>
+                            )}
+
                             <div className="intel-modal-body">
                                 {selectedCluster.sub_clusters && selectedCluster.sub_clusters.length > 0 ? (
                                     <div className="intel-section full-width">
@@ -671,6 +689,14 @@ const ScopeIntelPage: React.FC = () => {
                                                         {loadingTickets ? 'Buscando...' : `Carregar mais (+5 chamados)`}
                                                     </button>
                                                 )}
+                                        </div>
+
+                                        {/* LISTA COMPLETA DE IDs (IGUAL AO PDF) */}
+                                        <div className="intel-section full-width" style={{ marginTop: '30px', borderTop: '1px solid var(--border-color)', paddingTop: '20px' }}>
+                                            <h3>Lista Completa de Chamados (IDs)</h3>
+                                            <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', wordBreak: 'break-all', lineHeight: '1.6' }}>
+                                                {selectedCluster.ids_chamados?.join(', ') || 'Nenhum ID disponível.'}
+                                            </p>
                                         </div>
                                     </>
                                 )}
