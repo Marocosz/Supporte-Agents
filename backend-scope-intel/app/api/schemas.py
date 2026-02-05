@@ -64,6 +64,10 @@ class ClusterResult(BaseModel):
     # Permite que um cluster tenha "filhos". 
     # Usamos ForwardRef ('ClusterResult') pois a classe referencia a si mesma.
     sub_clusters: Optional[List['ClusterResult']] = [] 
+    analise_racional: Optional[str] = ""
+
+# Necessário para resolver a referência circular (ClusterResult dentro de ClusterResult)
+ClusterResult.model_rebuild() 
 
 class AnalysisMetadata(BaseModel):
     sistema: str

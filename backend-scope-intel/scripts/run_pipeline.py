@@ -271,6 +271,7 @@ async def main(sistema: str, dias: int):
                 "cluster_id": 10000 + macro_id_num, 
                 "titulo": analise_pai['titulo'], 
                 "descricao": analise_pai['descricao'],
+                "analise_racional": analise_pai.get('analise_racional', ''), # NOVO: Raciocínio do Pai
                 "tags": analise_pai.get('tags', []), 
                 "top_keywords": top_keywords_pai, # Salvando também no pai
                 "metricas": {
@@ -296,6 +297,7 @@ async def main(sistema: str, dias: int):
             noise_cluster_data['titulo'] = "Outros / Dispersos"
             noise_cluster_data['descricao'] = "Chamados que não apresentaram padrão claro de agrupamento com os demais."
             noise_cluster_data['tags'] = ["Variados", "Sem Padrão"]
+            noise_cluster_data['analise_racional'] = "Este grupo contém incidentes heterogêneos que não atingiram a densidade mínima para formar um cluster coeso (Ruído Estatístico). Não refletem um problema sistêmico único."
             # noise_cluster_data.pop('amostras_texto', None) # MANTER AMOSTRAS (Pedido do user)
             
             # Adiciona ao final da lista

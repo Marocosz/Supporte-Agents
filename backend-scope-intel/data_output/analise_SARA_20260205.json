@@ -1,11 +1,11 @@
 {
   "metadata": {
     "sistema": "SARA",
-    "data_analise": "2026-02-05T09:30:45.356276",
+    "data_analise": "2026-02-05T10:21:10.317208",
     "periodo_dias": 180,
     "total_chamados": 171,
-    "total_grupos": 18,
-    "taxa_ruido": 0.1287,
+    "total_grupos": 16,
+    "taxa_ruido": 0.117,
     "clustering_params": {
       "macro_min_size": 4,
       "max_cluster_size": 20,
@@ -16,6 +16,386 @@
   "clusters": [
     {
       "cluster_id": 0,
+      "metricas": {
+        "volume": 8,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 3,
+          "CADASTRO": 2,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1,
+          "INTEGRAÇÕES": 1,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 8
+        },
+        "top_solicitantes": {
+          "Marcia Viviane do Nascimento Silva Guedes": 5,
+          "Jose Wellington Nascimento Silva": 3
+        },
+        "top_status": {
+          "Não Informado": 7,
+          "Finalizado": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 3
+          },
+          {
+            "dia": "Ter",
+            "qtd": 1
+          },
+          {
+            "dia": "Qua",
+            "qtd": 2
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 1
+          }
+        ],
+        "tendencia": {
+          "tipo": "Estável",
+          "variacao_pct": 0.0,
+          "alerta": false,
+          "detalhe": "Volume estável de 1 para 1 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.25,
+          "usuarios_unicos": 2
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: LOTE NÃO GERADO. DESCRIÇÃO DETALHADA: Bom dia! O documento de entrada DTC 04797359 do container CXRU1120330, são dois BL´s por se tratar de um processo parte. O lote foi gerado no momento da entrada e só gerou para um BL: CTSH25070043B, ficou falando gerar o lote para o BL CTSH25070043A.",
+        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: Processo apresenta erro na geração da OS de descarga.. DESCRIÇÃO DETALHADA: Pessoal, bom dia, tudo bem ? Precisamos do vosso apoio para ajustar o container - CAIU6726420. Não estamos conseguindo gerar a OS de descarga. LOTE: 202500004430",
+        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO DE CADASTRO CONTAINERS. DESCRIÇÃO DETALHADA: Bom dia! Erro ao cadastrar containers que deram entrada no Bitrem e não estávamos conseguindo realizar a expedição.",
+        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: CONTAINER NÃO GEROU OS. DESCRIÇÃO DETALHADA: Boa tarde! Container HLBU9974510 do lote 202500005477 não foi gerado a OS.",
+        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO DE CADASTRO CONTAINERS. DESCRIÇÃO DETALHADA: Bom dia! Foi solicitado para alterar o cadastro do documento do container, devido ao lançamento da troca do documento. LOTE: 202500005562 OS: 66568 OS: 66659 CNTR: MSDU7609030 / MEDU8479274",
+        "SISTEMA: SARA | SERVIÇO: INTEGRAÇÕES | SUB-ÁREA: LOGISTICA | TÍTULO: AO GERAR OS DE CARREGAMENTO CONTAINER EXPORTAÇÃO - DUE. DESCRIÇÃO DETALHADA: Bom dia! Notar que não estamos conseguindo gerar OS de carregamento do lote 202500000249. Não está apresentando nenhum erro ou mensagem. DUE: BR0021007550",
+        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: Ajuste sistêmico dos processos vinculados aos containers: MSKU0634680 - MRKU2326664. DESCRIÇÃO DETALHADA: Bom dia! O problema foi resolvido junto com Wilson. No entanto, foi identificado algumas falhas de validações para os containers: MSKU0634680 - MRKU2326664, onde foram recebidos com o mesmo número de DTC, com isso houve erros de duplicidade em todos os lotes. Levamos 1h 30min para visualizar e sanar o problema. Lotes: 202500006617 202500006593 202500006618 202500006619",
+        "SISTEMA: SARA | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: LOGISTICA | TÍTULO: AJUSTE NA ENTRADA DO CONTAINER - CAXU9240135. DESCRIÇÃO DETALHADA: Bom dia ! Precisamos ajustar a entrada do container - CAXU9240135 em nosso sistema. Inicialmente foi recebido como container vazio, com a CESV: 29043 - OS: 71559 Foi gerada uma CESV de carregamento para o container vazio: 30079 OS: 72572 - Na tentativa de ajustar a entrada, pois esse container seria recebido na modalidade CABOTAGEM container cheio."
+      ],
+      "top_keywords": [
+        "container",
+        "erro",
+        "sara",
+        "sub",
+        "área",
+        "logistica",
+        "não",
+        "lote",
+        "foi",
+        "entrada",
+        "cadastro",
+        "containers",
+        "gerar",
+        "sistêmico",
+        "conseguindo"
+      ],
+      "ids_chamados": [
+        "119009",
+        "119690",
+        "124522",
+        "124846",
+        "125002",
+        "127775",
+        "128692",
+        "130011"
+      ],
+      "chamados_viz": [
+        {
+          "id": "119009",
+          "x": 16.389873504638672,
+          "y": 1.2735399007797241,
+          "prob": 0.772
+        },
+        {
+          "id": "119690",
+          "x": 16.63677215576172,
+          "y": 0.7904577255249023,
+          "prob": 0.9433
+        },
+        {
+          "id": "124522",
+          "x": 16.494823455810547,
+          "y": 0.8939902782440186,
+          "prob": 1.0
+        },
+        {
+          "id": "124846",
+          "x": 15.89126205444336,
+          "y": 1.0123512744903564,
+          "prob": 1.0
+        },
+        {
+          "id": "125002",
+          "x": 16.194011688232422,
+          "y": 0.9397672414779663,
+          "prob": 1.0
+        },
+        {
+          "id": "127775",
+          "x": 16.806638717651367,
+          "y": 0.9096972346305847,
+          "prob": 1.0
+        },
+        {
+          "id": "128692",
+          "x": 15.940617561340332,
+          "y": 0.8076604604721069,
+          "prob": 1.0
+        },
+        {
+          "id": "130011",
+          "x": 15.919636726379395,
+          "y": 0.87009197473526,
+          "prob": 1.0
+        }
+      ],
+      "titulo": "Erro Sistêmico na Geração de OS de Descarregamento",
+      "descricao": "Impacto: usuários não conseguem gerar OS de descarga para containers, bloqueando a expedição e o processamento de lotes. Isso provoca atrasos no recebimento de containers, necessidade de ajustes manuais de cadastros e validações, e potenciais duplicidades de registros (DTC) durante o tratamento de entradas.",
+      "tags": [
+        "container",
+        "logistica",
+        "lote",
+        "os",
+        "cadastro",
+        "erro_sistemico"
+      ],
+      "analise_racional": "Análise dos termos recorrentes aponta domínio de problemas de geração de ordens de serviço (OS) e de lotes para containers no módulo SARA, com foco em falhas sistêmicas e cadastros/logística. As amostras indicam atrasos e impedimentos na expedição devido a OS incompletas ou duplicadas, justificando o título e a descrição."
+    },
+    {
+      "cluster_id": 1,
+      "metricas": {
+        "volume": 13,
+        "top_servicos": {
+          "TRATATIVA INTERNA": 7,
+          "MELHORIAS": 4,
+          "INTEGRAÇÕES": 1,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 13
+        },
+        "top_solicitantes": {
+          "Wemelly Barros de Souza": 9,
+          "Juscelyo Rangell Assis Paula": 2,
+          "Marcela Maria de Oliveira": 1,
+          "Renato Pereira de Moraes Neto": 1
+        },
+        "top_status": {
+          "Não Informado": 12,
+          "Finalizado": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 8
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 6
+          },
+          {
+            "dia": "Ter",
+            "qtd": 1
+          },
+          {
+            "dia": "Qui",
+            "qtd": 4
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          }
+        ],
+        "tendencia": {
+          "tipo": "Crescente",
+          "variacao_pct": 200.0,
+          "alerta": true,
+          "detalhe": "Volume crescente de 1 para 3 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.31,
+          "usuarios_unicos": 4
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: MELHORIA NO PROCESSO DE RECEBIMENTO DE CONTAINER - TOTVS RA. DESCRIÇÃO DETALHADA: Boa tarde, prezados! Segue alguns pontos para analise de possíveis melhorias no processo de recebimento de container (DTC/ DTA). 01 - Inclusão da Informação do Importador e Lote na tela do coletor, atualmente o conferente de pátio não possível essa visibilidade através do aparelho. 02 - Automatização dos serviços que são padrão no recebimento do container, como o \"cod 001 movimentação de container\" e o \" 005 conferente\". 03 - Retirar a necessidade de inclusão/ confirmação de \"lacre\" na baixa da OS pelo conferente, pois, a vistoria do container/ lacre é realizada pelo time do Gate na entrada da unidade. Ganhos: retirar a impressão de etiquetas e papel físico.",
+        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: MELHORIA NO PROCESSO DE RECEBIMENTO DE CONTAINER - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Segue tema para analise de possíveis melhorias no processo de recebimento de container (DTC/ DTA). • Inclusão da Informação do Importador e Lote na tela do coletor, atualmente o conferente de pátio não possível essa visibilidade através do aparelho.",
+        "SISTEMA: SARA | SERVIÇO: MELHORIAS | SUB-ÁREA: LOGISTICA | TÍTULO: SERVIÇO DE DESCARGA - MIC DTA - TOTVS RA. DESCRIÇÃO DETALHADA: Boa tarde, prezados! Poderia verificar a possibilidade de inclusão de recebimento de MIC DTA através dos coletores (possibilitando a baixa pelo conferente). Pois atualmente só conseguimos realizar através do computador. Em anexo segue tela do coletor conseguimos abrir a OS, mas ao clicar em permanecer sobre rodas e incluir a localização é exibido a mensagem \"Necessário realizar pesagem de entrada\". Também anexado a imagem a tela do computador, apenas incluindo a locação a quantidade de volumes é gerada automaticamente e conseguimos com o processo e baixa do serviço.",
+        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: INCLUSÃO DE INFORMAÕES NO COLETOR - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Atualmente ao pesquisar o container na tela do coletor não temos a visibilidade de informações consideradas importantes relacionadas a unidade. Dessa forma, favor verificar possibilidade de inclusão do nome do cliente. Segue em anexo telas do coletor / local de inclusão.",
+        "SISTEMA: SARA | SERVIÇO: MELHORIAS | SUB-ÁREA: LOGISTICA | TÍTULO: INCLUSÃO DE LOTE E BL NO COLETOR - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Atualmente ao pesquisar o container na tela do coletor não temos a visibilidade de informações consideradas importantes relacionadas a unidade. Dessa forma, favor verificar possibilidade de inclusão do lote e BL (conhecimento) no coletor. Segue em anexo telas do coletor / local de inclusão.",
+        "SISTEMA: SARA | SERVIÇO: MELHORIAS | SUB-ÁREA: LOGISTICA | TÍTULO: INCLUSÃO DE TIPO DE CONTAINER E TEMPERATURA  - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Atualmente ao pesquisar o container na tela do coletor não temos a visibilidade de informações consideradas importantes relacionadas a unidade. Dessa forma, favor verificar possibilidade de inclusão do tipo de container e da temperatura se caso ele for refrigerado. Segue em anexo telas do coletor / local de inclusão e informações do cadastro do container (módulo consulta).",
+        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: LANÇAMENO DE SERVIÇOS - RECEBIMENTO DE CONTAINER - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Segue tema para analise de possíveis melhorias no processo de recebimento de container (DTC/ DTA). • Automatização dos serviços que são padrão no recebimento do container, como o \"cod 001 movimentação de container\" e o \" 005 conferente\".",
+        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: INCLUSÃO DE CONTAINER NAS OS - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Wilson, Conforme tratativa, favor realizar a inclusão do número do container nas OS que envolvam a unidade, para facilitar a visibilidade durante a realização do serviço.",
+        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: CONSULTAS INFORMAÇÕES NO SARA - ACRÉSCIMO DE INFORMAÇÕES NA BASE.. DESCRIÇÃO DETALHADA: Boa noite, Favor verificar se existe possibilidade de incluir na tela de consulta de contêiner, quando se tratar de carga LCL, a informação do importador. Hoje o SARA informa apenas os BL´s filhotes e conhecimento. Segue anexo tela de consulta.",
+        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: Validação processo DDC  / View's CNTR Vazios e Cheios. DESCRIÇÃO DETALHADA: Wilson, bom dia! Preciso validar os processos de transbordo de containers para verificar se os containers cheios que estão sendo transbordados estão tendo sua saída registrada e onde conseguimos achar o vinculo do novo container vazio que foi ovado com o novo lote. E também o processo inverso, verificar a entrada do container vazio com o vinculo do novo lote que será estufado."
+      ],
+      "top_keywords": [
+        "container",
+        "sara",
+        "inclusão",
+        "sub",
+        "área",
+        "logistica",
+        "coletor",
+        "recebimento",
+        "totvs",
+        "prezados",
+        "tela",
+        "tratativa",
+        "processo",
+        "segue",
+        "verificar"
+      ],
+      "ids_chamados": [
+        "119430",
+        "119815",
+        "120170",
+        "120578",
+        "120119",
+        "119819",
+        "118718",
+        "119748",
+        "119746",
+        "126446",
+        "126556",
+        "126570",
+        "120117"
+      ],
+      "chamados_viz": [
+        {
+          "id": "119430",
+          "x": 15.446627616882324,
+          "y": 1.8607600927352905,
+          "prob": 1.0
+        },
+        {
+          "id": "119815",
+          "x": 15.66538143157959,
+          "y": 1.7355420589447021,
+          "prob": 1.0
+        },
+        {
+          "id": "120170",
+          "x": 15.182184219360352,
+          "y": 1.5068750381469727,
+          "prob": 1.0
+        },
+        {
+          "id": "120578",
+          "x": 14.920051574707031,
+          "y": 1.8350201845169067,
+          "prob": 0.8731
+        },
+        {
+          "id": "120119",
+          "x": 14.607319831848145,
+          "y": 2.053514003753662,
+          "prob": 0.7556
+        },
+        {
+          "id": "119819",
+          "x": 15.8185453414917,
+          "y": 2.0717225074768066,
+          "prob": 0.8812
+        },
+        {
+          "id": "118718",
+          "x": 15.196928977966309,
+          "y": 2.163285732269287,
+          "prob": 1.0
+        },
+        {
+          "id": "119748",
+          "x": 15.547167778015137,
+          "y": 1.3099021911621094,
+          "prob": 1.0
+        },
+        {
+          "id": "119746",
+          "x": 15.578275680541992,
+          "y": 1.6533972024917603,
+          "prob": 1.0
+        },
+        {
+          "id": "126446",
+          "x": 15.502093315124512,
+          "y": 2.3403310775756836,
+          "prob": 1.0
+        },
+        {
+          "id": "126556",
+          "x": 15.37381362915039,
+          "y": 2.10036563873291,
+          "prob": 1.0
+        },
+        {
+          "id": "126570",
+          "x": 15.285904884338379,
+          "y": 1.9108189344406128,
+          "prob": 1.0
+        },
+        {
+          "id": "120117",
+          "x": 15.241040229797363,
+          "y": 1.3047635555267334,
+          "prob": 0.9037
+        }
+      ],
+      "titulo": "Melhorias no Recebimento de Container TOTVS RA",
+      "descricao": "Impacto funcional: elevar a visibilidade de informações no coletor (importador, lote, BL, tipo de container, temperatura) durante o recebimento, automatizar rotinas padrão (movimentação e conferência), reduzir o uso de papel e acelerar a baixa, melhorando a rastreabilidade do container e a experiência do usuário.",
+      "tags": [
+        "SARA",
+        "LOGISTICA",
+        "MELHORIAS",
+        "RECIBIMENTO CONTAINER",
+        "TOTVS RA",
+        "COLETOR"
+      ],
+      "analise_racional": "Análise: o cluster é dominado por TRATATIVA INTERNA/MELHORIAS na LOGÍSTICA com foco em recebimento de containers via SARA/TOTVS RA. Termos recorrentes (container, coletor, recebimento, inclusão, TOTVS) confirmam o tema: melhorias no fluxo de recebimento, visibilidade de informações no coletor e automação de rotinas. Variações incluem inclusão de lote/BL, tipo de container e temperatura como subitens relevantes."
+    },
+    {
+      "cluster_id": 2,
       "metricas": {
         "volume": 20,
         "top_servicos": {
@@ -154,187 +534,172 @@
       "chamados_viz": [
         {
           "id": "119040",
-          "x": 12.572647094726562,
-          "y": 2.55189847946167,
+          "x": 14.059986114501953,
+          "y": 2.203555107116699,
           "prob": 1.0
         },
         {
           "id": "120590",
-          "x": 12.800027847290039,
-          "y": 3.2215821743011475,
-          "prob": 1.0
+          "x": 14.625160217285156,
+          "y": 2.5730323791503906,
+          "prob": 0.8288
         },
         {
           "id": "120733",
-          "x": 12.747038841247559,
-          "y": 2.364375591278076,
-          "prob": 1.0
+          "x": 14.000271797180176,
+          "y": 2.319375514984131,
+          "prob": 0.9466
         },
         {
           "id": "120985",
-          "x": 12.851997375488281,
-          "y": 3.0225183963775635,
-          "prob": 1.0
+          "x": 14.530320167541504,
+          "y": 2.22189998626709,
+          "prob": 0.8142
         },
         {
           "id": "121321",
-          "x": 13.063552856445312,
-          "y": 2.521430492401123,
-          "prob": 1.0
+          "x": 14.302063941955566,
+          "y": 2.876493215560913,
+          "prob": 0.8259
         },
         {
           "id": "120515",
-          "x": 12.804045677185059,
-          "y": 2.5068366527557373,
-          "prob": 1.0
+          "x": 13.987845420837402,
+          "y": 2.7964859008789062,
+          "prob": 0.9511
         },
         {
           "id": "121390",
-          "x": 13.502545356750488,
-          "y": 2.104548692703247,
-          "prob": 0.8593
+          "x": 14.399773597717285,
+          "y": 1.5176973342895508,
+          "prob": 0.7858
         },
         {
           "id": "121323",
-          "x": 13.139227867126465,
-          "y": 2.6934196949005127,
-          "prob": 1.0
+          "x": 14.51777458190918,
+          "y": 2.72379469871521,
+          "prob": 0.8259
         },
         {
           "id": "122015",
-          "x": 12.719647407531738,
-          "y": 3.3313848972320557,
-          "prob": 1.0
+          "x": 14.684947967529297,
+          "y": 1.999946117401123,
+          "prob": 0.8288
         },
         {
           "id": "120420",
-          "x": 13.304268836975098,
-          "y": 2.3401060104370117,
-          "prob": 0.8593
+          "x": 14.232510566711426,
+          "y": 1.742859125137329,
+          "prob": 0.8142
         },
         {
           "id": "122137",
-          "x": 12.63670539855957,
-          "y": 2.3638129234313965,
-          "prob": 1.0
+          "x": 13.858203887939453,
+          "y": 2.645662307739258,
+          "prob": 0.9466
         },
         {
           "id": "122573",
-          "x": 12.604011535644531,
-          "y": 2.7649922370910645,
+          "x": 13.654516220092773,
+          "y": 2.5097336769104004,
           "prob": 1.0
         },
         {
           "id": "119529",
-          "x": 12.122159957885742,
-          "y": 2.89652156829834,
+          "x": 13.556997299194336,
+          "y": 2.4315032958984375,
           "prob": 1.0
         },
         {
           "id": "126939",
-          "x": 12.233946800231934,
-          "y": 2.785282850265503,
-          "prob": 1.0
+          "x": 14.013465881347656,
+          "y": 2.4662625789642334,
+          "prob": 0.9511
         },
         {
           "id": "124481",
-          "x": 12.8892822265625,
-          "y": 2.6418230533599854,
-          "prob": 1.0
+          "x": 14.20795726776123,
+          "y": 2.530675172805786,
+          "prob": 0.9511
         },
         {
           "id": "129647",
-          "x": 12.844131469726562,
-          "y": 3.320988416671753,
-          "prob": 1.0
+          "x": 14.691779136657715,
+          "y": 2.5164570808410645,
+          "prob": 0.8288
         },
         {
           "id": "130709",
-          "x": 12.235082626342773,
-          "y": 2.532557487487793,
+          "x": 13.723443984985352,
+          "y": 2.022282838821411,
           "prob": 1.0
         },
         {
           "id": "129831",
-          "x": 12.389357566833496,
-          "y": 2.81532621383667,
-          "prob": 1.0
+          "x": 13.731717109680176,
+          "y": 2.8494739532470703,
+          "prob": 0.9622
         },
         {
           "id": "133774",
-          "x": 13.00772476196289,
-          "y": 2.8340301513671875,
-          "prob": 1.0
+          "x": 14.240214347839355,
+          "y": 3.074831008911133,
+          "prob": 0.8259
         },
         {
           "id": "124480",
-          "x": 12.912432670593262,
-          "y": 2.128350257873535,
-          "prob": 1.0
+          "x": 13.973315238952637,
+          "y": 1.982816219329834,
+          "prob": 0.7069
         }
       ],
       "titulo": "Relatório Analítico de Faturamento Logístico",
-      "descricao": "Usuários precisam de um relatório analítico que consolide informações de faturamento e logística para validação de cobranças, reconciliação com o Protheus e tomada de decisão. Sem esse relatório, há retrabalho, atrasos no faturamento e inconsistências entre notas, cargas e itens de serviço.",
+      "descricao": "Impacto: equipes financeiras e logísticas precisam de um relatório de faturamento com visão analítica para conferência de cobranças, auditoria e fechamento. As solicitações incluem campos como NFS Protheus, RPS Protheus, Data de Emissão Protheus e demais informações relevantes para validação e tomada de decisão.",
       "tags": [
-        "relatório",
-        "faturamento",
-        "logística",
+        "Relatório",
+        "Faturamento",
+        "Logística",
         "SARA",
-        "protheus",
-        "analítico"
+        "Desenvolvimento",
+        "Melhorias"
       ],
-      "analise_racional": "A amostra demonstra um padrão dominante de solicitações para geração/integração de Relatórios Analíticos relacionados a Faturamento e Logística no sistema SARA. Termos recorrentes como 'relatório', 'faturamento', 'logística' indicam que o conteúdo central é o fornecimento de relatórios analíticos com informações financeiras e operacionais (Protheus, NFS/RPS, datas, pesos, CNTR, etc.). Mesmo com variações de conteúdo, o tema principal é a disponibilização de um relatório analítico de faturamento/logística."
+      "analise_racional": "Dominância observada: várias amostras solicitam geração de Relatórios relacionados a Faturamento no sub-área Logística, com pedidos de inclusão de campos detalhados (NFS/RPS Protheus, Data/Emissão Protheus, etc.). O padrão aponta para melhoria/desenvolvimento de relatórios analíticos de faturamento."
     },
     {
-      "cluster_id": 1,
+      "cluster_id": 3,
       "metricas": {
-        "volume": 16,
+        "volume": 4,
         "top_servicos": {
-          "TRATATIVA INTERNA": 9,
-          "MELHORIAS": 4,
-          "INTEGRAÇÕES": 1,
-          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1,
-          "ESCLARECIMENTO DE DUVIDAS": 1
+          "ADUANEIRO": 3,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1
         },
         "top_subareas": {
-          "LOGISTICA": 16
+          "LOGISTICA": 4
         },
         "top_solicitantes": {
-          "Wemelly Barros de Souza": 11,
-          "Juscelyo Rangell Assis Paula": 2,
-          "Marcela Maria de Oliveira": 1,
-          "Renato Pereira de Moraes Neto": 1,
-          "Simone Campelo de Sousa": 1
+          "Marcia Viviane do Nascimento Silva Guedes": 3,
+          "Maycon Luis Miranda": 1
         },
         "top_status": {
-          "Não Informado": 15,
-          "Finalizado": 1
+          "Não Informado": 4
         },
         "timeline": [
           {
-            "mes": "2025-08",
-            "qtd": 4
-          },
-          {
-            "mes": "2025-09",
-            "qtd": 8
-          },
-          {
-            "mes": "2025-11",
-            "qtd": 3
-          },
-          {
             "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-02",
             "qtd": 1
           }
         ],
         "sazonalidade": [
           {
             "dia": "Seg",
-            "qtd": 7
-          },
-          {
-            "dia": "Ter",
             "qtd": 1
           },
           {
@@ -343,337 +708,106 @@
           },
           {
             "dia": "Qui",
-            "qtd": 5
+            "qtd": 1
           },
           {
             "dia": "Sex",
-            "qtd": 2
+            "qtd": 1
           }
         ],
         "tendencia": {
           "tipo": "Decrescente",
-          "variacao_pct": -66.7,
+          "variacao_pct": -50.0,
           "alerta": false,
-          "detalhe": "Volume decrescente de 3 para 1 na última semana."
-        },
-        "concentracao": {
-          "tipo": "Normal",
-          "ratio": 0.31,
-          "usuarios_unicos": 5
-        }
-      },
-      "amostras_texto": [
-        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: MELHORIA NO PROCESSO DE RECEBIMENTO DE CONTAINER - TOTVS RA. DESCRIÇÃO DETALHADA: Boa tarde, prezados! Segue alguns pontos para analise de possíveis melhorias no processo de recebimento de container (DTC/ DTA). 01 - Inclusão da Informação do Importador e Lote na tela do coletor, atualmente o conferente de pátio não possível essa visibilidade através do aparelho. 02 - Automatização dos serviços que são padrão no recebimento do container, como o \"cod 001 movimentação de container\" e o \" 005 conferente\". 03 - Retirar a necessidade de inclusão/ confirmação de \"lacre\" na baixa da OS pelo conferente, pois, a vistoria do container/ lacre é realizada pelo time do Gate na entrada da unidade. Ganhos: retirar a impressão de etiquetas e papel físico.",
-        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: MELHORIA NO PROCESSO DE RECEBIMENTO DE CONTAINER - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Segue tema para analise de possíveis melhorias no processo de recebimento de container (DTC/ DTA). • Inclusão da Informação do Importador e Lote na tela do coletor, atualmente o conferente de pátio não possível essa visibilidade através do aparelho.",
-        "SISTEMA: SARA | SERVIÇO: MELHORIAS | SUB-ÁREA: LOGISTICA | TÍTULO: SERVIÇO DE DESCARGA - MIC DTA - TOTVS RA. DESCRIÇÃO DETALHADA: Boa tarde, prezados! Poderia verificar a possibilidade de inclusão de recebimento de MIC DTA através dos coletores (possibilitando a baixa pelo conferente). Pois atualmente só conseguimos realizar através do computador. Em anexo segue tela do coletor conseguimos abrir a OS, mas ao clicar em permanecer sobre rodas e incluir a localização é exibido a mensagem \"Necessário realizar pesagem de entrada\". Também anexado a imagem a tela do computador, apenas incluindo a locação a quantidade de volumes é gerada automaticamente e conseguimos com o processo e baixa do serviço.",
-        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: LANÇAMENO DE SERVIÇOS - RECEBIMENTO DE CONTAINER - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Segue tema para analise de possíveis melhorias no processo de recebimento de container (DTC/ DTA). • Automatização dos serviços que são padrão no recebimento do container, como o \"cod 001 movimentação de container\" e o \" 005 conferente\".",
-        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: INCLUSÃO DE INFORMAÕES NO COLETOR - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Atualmente ao pesquisar o container na tela do coletor não temos a visibilidade de informações consideradas importantes relacionadas a unidade. Dessa forma, favor verificar possibilidade de inclusão do nome do cliente. Segue em anexo telas do coletor / local de inclusão.",
-        "SISTEMA: SARA | SERVIÇO: MELHORIAS | SUB-ÁREA: LOGISTICA | TÍTULO: INCLUSÃO DE LOTE E BL NO COLETOR - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Atualmente ao pesquisar o container na tela do coletor não temos a visibilidade de informações consideradas importantes relacionadas a unidade. Dessa forma, favor verificar possibilidade de inclusão do lote e BL (conhecimento) no coletor. Segue em anexo telas do coletor / local de inclusão.",
-        "SISTEMA: SARA | SERVIÇO: MELHORIAS | SUB-ÁREA: LOGISTICA | TÍTULO: INCLUSÃO DE TIPO DE CONTAINER E TEMPERATURA  - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Atualmente ao pesquisar o container na tela do coletor não temos a visibilidade de informações consideradas importantes relacionadas a unidade. Dessa forma, favor verificar possibilidade de inclusão do tipo de container e da temperatura se caso ele for refrigerado. Segue em anexo telas do coletor / local de inclusão e informações do cadastro do container (módulo consulta).",
-        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: INCLUSÃO DE CONTAINER NAS OS - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Wilson, Conforme tratativa, favor realizar a inclusão do número do container nas OS que envolvam a unidade, para facilitar a visibilidade durante a realização do serviço.",
-        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: DESCONSOLIDAÇÃO - NOVOS COLETORES (TOVS RA). DESCRIÇÃO DETALHADA: Boa tarde, prezados! Informamos que ainda não estamos conseguindo realizar o serviço de Desconsolidação pelos novos coletores (cargas LCL). A OS é exibida, mas não está possível seguir com a tela até a conclusão. Segue em anexo registro, favor análise. Obs: Conforme pontuado presencialmente, no processo é gerado a OS de desova (master), após finalizada é disponibilizado os houses (filhotes), na OS de desconsolidação.",
-        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: SERVIÇO DE DDC PELO COLETOR. DESCRIÇÃO DETALHADA: Boa tarde, prezados! Informamos que ainda não estamos conseguindo realizar o serviço de DDC (em sistema desova pós desembaraço), pelos novos coletores. Segue em anexo mensagem apresentada ao tentamos executar, favor verificar."
-      ],
-      "top_keywords": [
-        "container",
-        "sara",
-        "sub",
-        "área",
-        "logistica",
-        "inclusão",
-        "coletor",
-        "prezados",
-        "tratativa",
-        "segue",
-        "tela",
-        "interna",
-        "processo",
-        "recebimento",
-        "totvs"
-      ],
-      "ids_chamados": [
-        "119430",
-        "119815",
-        "120170",
-        "120578",
-        "120119",
-        "119819",
-        "118033",
-        "118718",
-        "119748",
-        "119746",
-        "126446",
-        "126556",
-        "126570",
-        "130894",
-        "120117",
-        "118197"
-      ],
-      "chamados_viz": [
-        {
-          "id": "119430",
-          "x": 13.910264015197754,
-          "y": 3.4800500869750977,
-          "prob": 0.9019
-        },
-        {
-          "id": "119815",
-          "x": 14.187479019165039,
-          "y": 3.5271778106689453,
-          "prob": 0.8212
-        },
-        {
-          "id": "120170",
-          "x": 13.844273567199707,
-          "y": 3.0542166233062744,
-          "prob": 0.9583
-        },
-        {
-          "id": "120578",
-          "x": 13.653575897216797,
-          "y": 2.9252123832702637,
-          "prob": 0.6461
-        },
-        {
-          "id": "120119",
-          "x": 13.462258338928223,
-          "y": 2.9972472190856934,
-          "prob": 0.5323
-        },
-        {
-          "id": "119819",
-          "x": 14.048724174499512,
-          "y": 3.765702247619629,
-          "prob": 0.6252
-        },
-        {
-          "id": "118033",
-          "x": 14.472107887268066,
-          "y": 3.8295681476593018,
-          "prob": 0.4888
-        },
-        {
-          "id": "118718",
-          "x": 13.368805885314941,
-          "y": 3.738950252532959,
-          "prob": 1.0
-        },
-        {
-          "id": "119748",
-          "x": 14.233935356140137,
-          "y": 3.0428640842437744,
-          "prob": 0.6451
-        },
-        {
-          "id": "119746",
-          "x": 14.055845260620117,
-          "y": 3.139249324798584,
-          "prob": 0.8212
-        },
-        {
-          "id": "126446",
-          "x": 13.66057300567627,
-          "y": 3.838818073272705,
-          "prob": 1.0
-        },
-        {
-          "id": "126556",
-          "x": 13.43740177154541,
-          "y": 3.6605074405670166,
-          "prob": 1.0
-        },
-        {
-          "id": "126570",
-          "x": 13.606257438659668,
-          "y": 3.4433538913726807,
-          "prob": 1.0
-        },
-        {
-          "id": "130894",
-          "x": 14.26224136352539,
-          "y": 2.481717586517334,
-          "prob": 0.3922
-        },
-        {
-          "id": "120117",
-          "x": 14.297578811645508,
-          "y": 2.7882280349731445,
-          "prob": 0.6451
-        },
-        {
-          "id": "118197",
-          "x": 14.685704231262207,
-          "y": 3.5243470668792725,
-          "prob": 0.4208
-        }
-      ],
-      "titulo": "Melhoria no Recebimento de Container Totvs RA",
-      "descricao": "Impacto funcional: usuários relatam necessidade de visibilidade de informações da unidade e do container no coletor. A melhoria busca incluir dados como Importador, Lote, BL, tipo de container e temperatura no coletor, permitir baixa pelo conferente e automatizar serviços padrão (movimentação de container, conferente), reduzindo retrabalho, uso de papel e tempo de processamento no recebimento de container.",
-      "tags": [
-        "SARA",
-        "TRATATIVA INTERNA",
-        "LOGISTICA",
-        "MELHORIAS",
-        "CONTAINER",
-        "COLETOR",
-        "TOTVS RA"
-      ],
-      "analise_racional": "Dominante: melhorias no recebimento de container com foco em coletor e visibilidade de informações. Termos recorrentes como container, coletor, inclusão, logística e tratativa interna indicam que o cluster demanda melhorias operacionais para registro de dados (importador, lote, BL, tipo de container, temperatura) e automação de serviços no processo de recebimento."
-    },
-    {
-      "cluster_id": 2,
-      "metricas": {
-        "volume": 6,
-        "top_servicos": {
-          "CADASTRO": 3,
-          "ALTERAÇÃO DE REGISTROS NO BANCO DE DADOS": 1,
-          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1,
-          "ERRO OPERACIONAL": 1
-        },
-        "top_subareas": {
-          "LOGISTICA": 6
-        },
-        "top_solicitantes": {
-          "Jose Wellington Nascimento Silva": 3,
-          "Simone Campelo de Sousa": 2,
-          "Marcia Viviane do Nascimento Silva Guedes": 1
-        },
-        "top_status": {
-          "Não Informado": 3,
-          "Finalizado": 2,
-          "Aberto": 1
-        },
-        "timeline": [
-          {
-            "mes": "2025-08",
-            "qtd": 3
-          },
-          {
-            "mes": "2025-10",
-            "qtd": 2
-          },
-          {
-            "mes": "2025-11",
-            "qtd": 1
-          }
-        ],
-        "sazonalidade": [
-          {
-            "dia": "Ter",
-            "qtd": 2
-          },
-          {
-            "dia": "Qua",
-            "qtd": 4
-          }
-        ],
-        "tendencia": {
-          "tipo": "Estável",
-          "variacao_pct": 0.0,
-          "alerta": false,
-          "detalhe": "Volume estável de 1 para 1 na última semana."
+          "detalhe": "Volume decrescente de 2 para 1 na última semana."
         },
         "concentracao": {
           "tipo": "Normal",
           "ratio": 0.5,
-          "usuarios_unicos": 3
+          "usuarios_unicos": 2
         }
       },
       "amostras_texto": [
-        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: AJUSTAR QUANTIDADE NO ITENS DO LOTE - 202500004153 - INTERNATIONAL COMMERCE RECIFE S.A. DESCRIÇÃO DETALHADA: Prezados, bom dia! Por favor, precisamos que seja ajustado a quantidade lançada na aba itens do lote - 202500004153 DE: 2 PARA: 2000",
-        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: AJUSTE DE QUANTIDADE - 202500005370 - CLIENTE RODOAP MAQUINAS E EQUIPAMENTOS LTDA. DESCRIÇÃO DETALHADA: Pessoal, boa tarde. Precisamos ajustar a quantidade lançada no itens do lote para o container: MSBU8255839 DE: 21 PARA: 3 202500005370",
-        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: Cancelar liberação de uma carga e alterar a quantidade de saída de uma DI . DESCRIÇÃO DETALHADA: Bom dia! Prezados, Precisamos cancelar a saída parcial da carga do lote 24/2688, e alterar a quantidade de saída da DI 24/1846274-3.",
-        "SISTEMA: SARA | SERVIÇO: ALTERAÇÃO DE REGISTROS NO BANCO DE DADOS | SUB-ÁREA: LOGISTICA | TÍTULO: QUANTIDADE LANÇADA NO ITENS DO LOTE, DIVERGENTE DA QUANTIDADE FÍSICA E DOCUMENTAL. DESCRIÇÃO DETALHADA: Prezados, boa tarde! Por favor ajustar a quantidade lançada no itens do lote do container: GESU6137309. DE: 1002 PARA: 940 LOTE: 202500003936",
-        "SISTEMA: SARA | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: LOGISTICA | TÍTULO: Alterar o cliente de uma Saída de NF Lote: 5915. DESCRIÇÃO DETALHADA: Bom dia! Wilson, Estamos precisado alterar o cliente de uma Carga já liberada, pois foi cadastrado em nome de outro cliente. Se trata de um documento de NF.",
-        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: TOTVS RA - AJUSTAR DOCUMENTAÇÃO NOTA FISCAL DE EXPORTAÇÃO. DESCRIÇÃO DETALHADA: Bom dia! Ajuste das entradas dos containers e notas de exportação, foi feito juntamente com Wilson na quinta e sexta. LOTE 25/4329 - EXPORTAÇÃO"
+        "SISTEMA: SARA | SERVIÇO: ADUANEIRO | SUB-ÁREA: LOGISTICA | TÍTULO: FALHA NO LANÇAMENTO DA DUIMP/DA. DESCRIÇÃO DETALHADA: Boa tarde! Ao tentarmos lançar a DA/DUIMP, dar o erro do print em anexo. Por favor verificar urgente para que possamos admitir a DA.",
+        "SISTEMA: SARA | SERVIÇO: ADUANEIRO | SUB-ÁREA: LOGISTICA | TÍTULO: CCT AEREO PORTAL UNICO - DTA - 260025836-6 - API RECINTOS - URGENTE. DESCRIÇÃO DETALHADA: Bom dia! Tem uma nova API a ser criada para as DTA aérea com registro de DUIMP. O cliente não está conseguindo nacionalizar a carga.",
+        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO CADASTRO DUIMP. DESCRIÇÃO DETALHADA: ESTA DANDO O ERRO EM ANEXO AO TENTAR CADASTRAR UMA DUIMP, SEGUE PRINT",
+        "SISTEMA: SARA | SERVIÇO: ADUANEIRO | SUB-ÁREA: LOGISTICA | TÍTULO: INCLUIR FINALIDADE PARA DUIMP. DESCRIÇÃO DETALHADA: Bom dia! Não tem a opção da finalidade para cadastrar DUIMP/ENTREPOSTO ADUANEIRO (DA), por favor incluir. Já temos algumas para cadastrar."
       ],
       "top_keywords": [
-        "quantidade",
-        "lote",
+        "duimp",
         "sara",
         "sub",
         "área",
         "logistica",
-        "itens",
-        "ajustar",
-        "lançada",
-        "alterar",
-        "saída",
-        "cliente",
-        "cadastro",
-        "prezados",
-        "precisamos"
+        "aduaneiro",
+        "erro",
+        "cadastrar",
+        "anexo",
+        "print",
+        "favor",
+        "urgente",
+        "dta",
+        "api",
+        "não"
       ],
       "ids_chamados": [
-        "118738",
-        "119354",
-        "117904",
-        "123330",
-        "125747",
-        "128348"
+        "130972",
+        "133469",
+        "133526",
+        "133920"
       ],
       "chamados_viz": [
         {
-          "id": "118738",
-          "x": 15.575303077697754,
-          "y": 2.481175422668457,
+          "id": "130972",
+          "x": 17.12476348876953,
+          "y": 2.0766284465789795,
           "prob": 1.0
         },
         {
-          "id": "119354",
-          "x": 15.858458518981934,
-          "y": 2.7123522758483887,
+          "id": "133469",
+          "x": 16.81916618347168,
+          "y": 2.008497476577759,
           "prob": 1.0
         },
         {
-          "id": "117904",
-          "x": 15.463071823120117,
-          "y": 2.627593517303467,
+          "id": "133526",
+          "x": 16.418176651000977,
+          "y": 2.0471532344818115,
           "prob": 1.0
         },
         {
-          "id": "123330",
-          "x": 14.779828071594238,
-          "y": 2.372894287109375,
-          "prob": 0.5371
-        },
-        {
-          "id": "125747",
-          "x": 15.188063621520996,
-          "y": 2.3931641578674316,
+          "id": "133920",
+          "x": 16.2324275970459,
+          "y": 2.1022958755493164,
           "prob": 1.0
-        },
-        {
-          "id": "128348",
-          "x": 15.951295852661133,
-          "y": 2.5842418670654297,
-          "prob": 0.5371
         }
       ],
-      "titulo": "Ajuste de Quantidade em Itens do Lote",
-      "descricao": "Usuários do módulo CADASTRO/LOGÍSTICA relatam necessidade de ajustar a quantidade lançada nos itens do lote para refletir o estoque real, o que pode causar divergências entre estoque físico e documental, retrabalho, atrasos na liberação de cargas e possíveis impactos em notas fiscais.",
+      "titulo": "Falha No Cadastro De DUIMP No Aduaneiro",
+      "descricao": "Usuários não conseguem cadastrar/lançar DUIMP no módulo Aduaneiro (Logística); o sistema retorna erro ao tentar cadastrar, com prints anexos, impedindo o processamento da DUIMP e atrasando a nacionalização/entrada da carga.",
       "tags": [
-        "ajuste de quantidade",
-        "itens do lote",
-        "logística",
-        "cadastro",
-        "divergência de estoque"
+        "DUIMP",
+        "ADUANEIRO",
+        "LOGISTICA",
+        "ERRO",
+        "CADASTRO",
+        "ANEXO",
+        "PRINT"
       ],
-      "analise_racional": "Análise baseada nos termos recorrentes: quantidade, lote, itens, ajustar/alterar, logística e cadastro indicam foco em ajustes de quantidade nos itens de um lote dentro do módulo CADASTRO/LOGÍSTICA do sistema SARA. As amostras mostram diversos casos de necessidade de ajustar lançamentos de itens do lote, com divergência entre o registrado e o que está no estoque/documentação. Outras categorias (alteração de BD, processamento/manual de arquivos e erro operacional) aparecem apenas como suporte/variação, mas o tema dominante é o ajuste de quantidade em itens do lote."
+      "analise_racional": "Análise: os termos mais recorrentes indicam falhas no cadastro/lançamento de DUIMP dentro do módulo Aduaneiro, com foco na área de Logística. Os relatos mencionam erro ao cadastrar/lançar DUIMP e anexos (prints), apontando um padrão de interrupção no processamento aduaneiro."
     },
     {
-      "cluster_id": 3,
+      "cluster_id": 4,
       "metricas": {
-        "volume": 15,
+        "volume": 14,
         "top_servicos": {
           "CADASTRO DE USUÁRIO": 5,
-          "HOMOLOGAÇÃO": 5,
+          "HOMOLOGAÇÃO": 4,
           "TRATATIVA INTERNA": 2,
           "CADASTRO": 2,
           "PROCESSAMENTO MANUAL DE ARQUIVOS": 1
         },
         "top_subareas": {
-          "LOGISTICA": 15
+          "LOGISTICA": 14
         },
         "top_solicitantes": {
           "Wemelly Barros de Souza": 5,
@@ -683,7 +817,7 @@
           "Evelly Fernandes da Silva": 1
         },
         "top_status": {
-          "Não Informado": 12,
+          "Não Informado": 11,
           "Finalizado": 3
         },
         "timeline": [
@@ -702,10 +836,6 @@
           {
             "mes": "2025-11",
             "qtd": 3
-          },
-          {
-            "mes": "2025-12",
-            "qtd": 1
           },
           {
             "mes": "2026-01",
@@ -727,7 +857,7 @@
           },
           {
             "dia": "Qui",
-            "qtd": 3
+            "qtd": 2
           },
           {
             "dia": "Sex",
@@ -742,8 +872,8 @@
         },
         "concentracao": {
           "tipo": "Normal",
-          "ratio": 0.53,
-          "usuarios_unicos": 8
+          "ratio": 0.5,
+          "usuarios_unicos": 7
         }
       },
       "amostras_texto": [
@@ -767,10 +897,10 @@
         "coletor",
         "acesso",
         "totvs",
-        "homologação",
         "favor",
         "não",
         "cadastro",
+        "homologação",
         "prezados",
         "está",
         "anexo"
@@ -787,7 +917,6 @@
         "126434",
         "128214",
         "128491",
-        "129157",
         "131159",
         "132008",
         "132010"
@@ -795,110 +924,102 @@
       "chamados_viz": [
         {
           "id": "118016",
-          "x": 14.3095121383667,
-          "y": 5.3399529457092285,
-          "prob": 0.8498
+          "x": 16.76487159729004,
+          "y": 3.677189350128174,
+          "prob": 0.6898
         },
         {
           "id": "119408",
-          "x": 14.261049270629883,
-          "y": 4.985352993011475,
-          "prob": 0.6827
+          "x": 16.26631736755371,
+          "y": 3.4753360748291016,
+          "prob": 0.694
         },
         {
           "id": "119593",
-          "x": 14.295659065246582,
-          "y": 5.317025661468506,
-          "prob": 0.8498
+          "x": 16.69771957397461,
+          "y": 3.6143903732299805,
+          "prob": 0.6898
         },
         {
           "id": "119967",
-          "x": 14.050551414489746,
-          "y": 4.840983867645264,
-          "prob": 0.6827
+          "x": 16.109329223632812,
+          "y": 3.6040303707122803,
+          "prob": 0.694
         },
         {
           "id": "122052",
-          "x": 13.876206398010254,
-          "y": 5.346136093139648,
+          "x": 16.728748321533203,
+          "y": 4.011155128479004,
           "prob": 1.0
         },
         {
           "id": "122049",
-          "x": 13.91260814666748,
-          "y": 4.8106465339660645,
-          "prob": 0.6827
+          "x": 16.254276275634766,
+          "y": 3.7186996936798096,
+          "prob": 0.694
         },
         {
           "id": "120822",
-          "x": 14.149489402770996,
-          "y": 5.631397724151611,
+          "x": 16.83055877685547,
+          "y": 3.971484422683716,
           "prob": 1.0
         },
         {
           "id": "123602",
-          "x": 13.790654182434082,
-          "y": 5.556140899658203,
+          "x": 16.481836318969727,
+          "y": 4.365305423736572,
           "prob": 1.0
         },
         {
           "id": "126434",
-          "x": 13.985567092895508,
-          "y": 5.692052364349365,
-          "prob": 1.0
+          "x": 16.906600952148438,
+          "y": 4.178477764129639,
+          "prob": 0.7753
         },
         {
           "id": "128214",
-          "x": 14.651653289794922,
-          "y": 5.588807106018066,
-          "prob": 0.7488
+          "x": 16.98526954650879,
+          "y": 3.7692878246307373,
+          "prob": 0.6898
         },
         {
           "id": "128491",
-          "x": 15.06472110748291,
-          "y": 5.7195000648498535,
-          "prob": 0.6818
-        },
-        {
-          "id": "129157",
-          "x": 14.718063354492188,
-          "y": 4.5364484786987305,
-          "prob": 0.5086
+          "x": 17.609201431274414,
+          "y": 3.6588847637176514,
+          "prob": 0.6151
         },
         {
           "id": "131159",
-          "x": 14.819001197814941,
-          "y": 4.681346893310547,
-          "prob": 0.51
+          "x": 16.68088150024414,
+          "y": 3.0516419410705566,
+          "prob": 0.3891
         },
         {
           "id": "132008",
-          "x": 13.969393730163574,
-          "y": 5.299290657043457,
-          "prob": 0.8582
+          "x": 16.390993118286133,
+          "y": 4.0645270347595215,
+          "prob": 0.9912
         },
         {
           "id": "132010",
-          "x": 13.928872108459473,
-          "y": 5.842367172241211,
+          "x": 16.636903762817383,
+          "y": 4.293557643890381,
           "prob": 1.0
         }
       ],
-      "titulo": "Liberação de Acesso TOTVS RA no Coletor",
-      "descricao": "Usuários da área de logística relatam necessidade de liberar ou ajustar acessos ao TOTVS RA (coletor e ambiente de homologação) para cadastros de usuários e testes. A falta de acesso impede login, operação do coletor e validação de processos, impactando operações logísticas e a realização de homologações.",
+      "titulo": "Liberação De Acesso Ao Coletor TOTVS RA",
+      "descricao": "Usuários da área de logística não conseguem acessar o coletor TOTVS RA ou assumir atividades no equipamento, prejudicando a pesagem remota, o registro de serviços operacionais e a realização de cadastros/homologação. Sem acesso, processos logísticos e de validação ficam interrompidos.",
       "tags": [
-        "TOTVS RA",
-        "SARA",
+        "Acesso TOTVS RA",
+        "Coletor",
         "Logística",
         "Cadastro de Usuário",
-        "Homologação",
-        "Coletor",
-        "Acesso"
+        "Homologação"
       ],
-      "analise_racional": "Análise rápida: maioria das solicitações centra liberação/ajuste de acesso no TOTVS RA via SARA para a área de logística, com foco em cadastro de usuário, coletor e ambiente de homologação. Termos recorrentes (usuário, acesso, TOTVS, homologação, coletor) confirmam o padrão dominante."
+      "analise_racional": "O cluster é dominado por solicitações de LIBERAÇÃO/AJUSTE DE ACESSO ao TOTVS RA para o Coletor, principalmente na área de Logística, com foco em CADASTRO DE USUÁRIO e HOMOLOGAÇÃO. A maioria descreve dificuldade de login ou de assumir atividades no coletor, impactando pesagem remota, baixa de serviços operacionais e testes internos."
     },
     {
-      "cluster_id": 4,
+      "cluster_id": 5,
       "metricas": {
         "volume": 4,
         "top_servicos": {
@@ -981,45 +1102,44 @@
       "chamados_viz": [
         {
           "id": "124043",
-          "x": 15.579503059387207,
-          "y": 5.837260723114014,
+          "x": 17.982141494750977,
+          "y": 3.413923978805542,
           "prob": 1.0
         },
         {
           "id": "124038",
-          "x": 15.810203552246094,
-          "y": 6.087528228759766,
+          "x": 18.084171295166016,
+          "y": 3.4418582916259766,
           "prob": 1.0
         },
         {
           "id": "128192",
-          "x": 16.009166717529297,
-          "y": 5.843950271606445,
+          "x": 18.320207595825195,
+          "y": 3.246750593185425,
           "prob": 1.0
         },
         {
           "id": "128493",
-          "x": 15.572750091552734,
-          "y": 6.01743221282959,
+          "x": 17.861083984375,
+          "y": 3.6525673866271973,
           "prob": 1.0
         }
       ],
-      "titulo": "Botões E Telas Falham Na Homologação SARA",
-      "descricao": "Usuários relatam que a tela de OCR para a segunda pesagem não abre, o botão de processar não é detectado e o ícone de Pesagem trava, impedindo o avanço do processamento na homologação da área de logística (Release RA).",
+      "titulo": "Release RA Em Homologação: Pesagem Travando",
+      "descricao": "Usuários da área de logística relatam falhas de UI no módulo de pesagem durante a homologação do Release RA: a tela não abre na segunda pesagem, o botão de processamento não aparece ou não é detectado, e o ícone de pesagem trava, impactando o fluxo de faturamento e validação da pesagem.",
       "tags": [
         "SARA",
         "Homologação",
         "Logística",
         "Pesagem",
         "UI",
-        "Botões",
-        "Telas",
-        "OCR"
+        "Botão",
+        "Release RA"
       ],
-      "analise_racional": "Termos recorrentes indicam tema dominante: falhas de UI/fluxo na Homologação do SARA, área Logística, com telas não abrindo, botões não detectados e travamento de ícones de Pesagem. Inferência: o cluster se concentra em deficiências de interação do usuário na tela de Release RA e na relação OCR."
+      "analise_racional": "Análise dos termos recorrentes indica foco no módulo Release RA em Homologação, subárea Logística, relacionado à Pesagem e à UI (telas, botões, ícones). As amostras são consistentes ao apontar falhas de interface durante a pesagem (tela não abre, botões não aparecem/detectados, ícone travando), sugerindo um padrão de problema de UI/fluxo na fase de homologação."
     },
     {
-      "cluster_id": 5,
+      "cluster_id": 6,
       "metricas": {
         "volume": 6,
         "top_servicos": {
@@ -1103,55 +1223,376 @@
       "chamados_viz": [
         {
           "id": "124044",
-          "x": 16.233728408813477,
-          "y": 6.017613887786865,
+          "x": 19.293132781982422,
+          "y": 0.6946636438369751,
           "prob": 1.0
         },
         {
           "id": "124042",
-          "x": 16.606868743896484,
-          "y": 5.9181599617004395,
-          "prob": 1.0
+          "x": 19.396677017211914,
+          "y": 0.4344818890094757,
+          "prob": 0.9438
         },
         {
           "id": "124039",
-          "x": 16.766002655029297,
-          "y": 5.8317131996154785,
-          "prob": 0.9816
+          "x": 19.164318084716797,
+          "y": 0.11417997628450394,
+          "prob": 0.9438
         },
         {
           "id": "124800",
-          "x": 16.524839401245117,
-          "y": 5.570772171020508,
+          "x": 19.56822395324707,
+          "y": 0.5606556534767151,
           "prob": 1.0
         },
         {
           "id": "128268",
-          "x": 16.537307739257812,
-          "y": 6.082030773162842,
+          "x": 19.48143196105957,
+          "y": 0.634867250919342,
           "prob": 1.0
         },
         {
           "id": "128265",
-          "x": 16.4515380859375,
-          "y": 5.919148921966553,
+          "x": 19.36195182800293,
+          "y": 0.40615275502204895,
           "prob": 1.0
         }
       ],
-      "titulo": "Erro De Faturamento Na Homologação Logística",
-      "descricao": "Usuários da logística relatam falhas no módulo de faturamento durante a homologação (Release RA) com impactos como: cálculos de faturamento não gerados, exportação de planilhas incompleta (dados críticos ausentes), e cobranças de armazenagem com períodos ou quantidades incorretas, impedindo a geração de demonstrativos e validação de faturamento.",
+      "titulo": "Falha De Faturamento No Módulo Homologação SARA",
+      "descricao": "Usuários não conseguem processar cálculos de faturamento na tela de homologação. A exportação da planilha de faturamento antecipado não traz todas as colunas essenciais (data, dias de armazenagem, itens de cobrança), dificultando a conferência e o fechamento. Cobranças de armazenagem às vezes não registram a quantidade de períodos, gerando discrepâncias nos demonstrativos.",
       "tags": [
-        "HOMOLOGAÇÃO",
-        "LOGISTICA",
-        "FATURAMENTO",
         "SARA",
-        "RELEASE RA",
-        "ERRO SISTÊMICO"
+        "HOMOLOGAÇÃO",
+        "FATURAMENTO",
+        "LOGÍSTICA",
+        "EXPORTAÇÃO",
+        "RELEASE RA"
       ],
-      "analise_racional": "Termos recorrentes indicam foco em homologação de logística (SARA) e faturamento, com ocorrências repetidas de falhas no módulo de faturamento, exportação incompleta de dados e inconsistências em cobranças/periodos na Release RA."
+      "analise_racional": "Dominância da serviço HOMOLOGAÇÃO no SARA com problemas de faturamento. A maioria dos chamados descreve falhas no cálculo/geração de demonstrativos, exportação incompleta de planilhas e registro incorreto de períodos de cobrança de armazenagem, reforçando o tema 'Faturamento' durante homologação."
     },
     {
-      "cluster_id": 6,
+      "cluster_id": 7,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 2,
+          "ANALISE DE CASOS": 1,
+          "EXPEDIÇÃO": 1,
+          "INTEGRAÇÕES": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 5
+        },
+        "top_solicitantes": {
+          "Henrique Jose da Silva": 5
+        },
+        "top_status": {
+          "Não Informado": 5
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 2
+          },
+          {
+            "dia": "Qua",
+            "qtd": 2
+          },
+          {
+            "dia": "Sex",
+            "qtd": 1
+          }
+        ],
+        "tendencia": {
+          "tipo": "Crescente",
+          "variacao_pct": 100.0,
+          "alerta": true,
+          "detalhe": "Volume crescente de 1 para 2 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.2,
+          "usuarios_unicos": 1
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: SARA | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO DESCONSOLIDAR LOTE / AC WILSON. DESCRIÇÃO DETALHADA: AC/WILSON FOI FEITA O ESTORNO DA DESCONSOLIDAÇÃO DO LOTE PARA AJUSTAR A QUANTIDADE DE ITENS, PORÉM AO EFETUAR NOVAMENTE A DESCONSOLIDAÇÃO PARA SEGUIR COM O PROCESSO ESTÁ DANDOS OS SEGUINTES ERRO, SEGUE EM ANEXO. WILSON JÁ ESTÁ CIENTE DO CASO",
+        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: A/C WILSON, Divergência em relatórios de Entrada de DTA's. DESCRIÇÃO DETALHADA: Foi feita a busca do histórico de entrada de DTA pelo Módulo Relatório porém no momento que está gerando a planilha ocorre erros, e quando ela é gerada a quantidade que temos é inferior ao saldo das planilhas manuais.",
+        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: AC/ WILSON - ETIQUETAS DE D.A COM ERRO DE EXPEDIÇÃO PARCIAL. DESCRIÇÃO DETALHADA: ETIQUETA DE D.A COM ERRO AO CARREGAR ETIQUETAS COM QUANTIDADE PARCIAL, A MESMA NÃO ACEITA SER CARREGADA PARCIAL IMPOSSIBILITANDO O FECHAMENTO DA O.S. AC/ WILSON",
+        "SISTEMA: SARA | SERVIÇO: INTEGRAÇÕES | SUB-ÁREA: LOGISTICA | TÍTULO: AC/WILSON Transit Time não está funcionando. DESCRIÇÃO DETALHADA: TEMOS VÁRIAS DTA'S EM TRANSITO PORÉM APENAS 1 APARECE NO TRANSIT TIME",
+        "SISTEMA: SARA | SERVIÇO: EXPEDIÇÃO | SUB-ÁREA: LOGISTICA | TÍTULO: A/C WILSON, ERRO AO LIBERAR SALDO DE D.I/D.A. DESCRIÇÃO DETALHADA: PROBLEMA RESOLVIDO RAPIDAMENTE PELO WILSON"
+      ],
+      "top_keywords": [
+        "wilson",
+        "sara",
+        "sub",
+        "área",
+        "logistica",
+        "erro",
+        "está",
+        "quantidade",
+        "porém",
+        "parcial",
+        "dta",
+        "lote",
+        "foi",
+        "feita",
+        "desconsolidação"
+      ],
+      "ids_chamados": [
+        "120347",
+        "121812",
+        "127796",
+        "133107",
+        "133396"
+      ],
+      "chamados_viz": [
+        {
+          "id": "120347",
+          "x": 18.735868453979492,
+          "y": 2.218130111694336,
+          "prob": 1.0
+        },
+        {
+          "id": "121812",
+          "x": 18.80093002319336,
+          "y": 2.4462130069732666,
+          "prob": 0.9224
+        },
+        {
+          "id": "127796",
+          "x": 18.42510986328125,
+          "y": 2.1460533142089844,
+          "prob": 1.0
+        },
+        {
+          "id": "133107",
+          "x": 19.014530181884766,
+          "y": 2.302528142929077,
+          "prob": 1.0
+        },
+        {
+          "id": "133396",
+          "x": 18.013221740722656,
+          "y": 2.046577215194702,
+          "prob": 1.0
+        }
+      ],
+      "titulo": "Erro De Desconsolidação E Etiquetas Parciais Em Logística",
+      "descricao": "Impacto: usuários relatam divergências entre relatórios de entrada, etiquetas de D.A. com carregamento parcial não aceitando o fechamento de ordens e inconsistências de saldo. Isso provoca retrabalho, atrasos na expedição e dificuldade na conferência de estoque para várias DTA's.",
+      "tags": [
+        "Logística",
+        "Processamento Manual De Arquivos",
+        "Desconsolidação",
+        "Etiquetas Parciais",
+        "DTA/D.A",
+        "Expedição"
+      ],
+      "analise_racional": "Termos recorrentes: logística, erro, parcial, AC WILSON, DTA/D.A, expedição e processamento manual de arquivos indicam um padrão de falhas no manejo logístico. O cluster evidencia desvios entre saldos e dados de entrada, falhas no carregamento de etiquetas parciais e indisponibilidade de tempo de trânsito confiável, associadas a AC Wilson."
+    },
+    {
+      "cluster_id": 8,
+      "metricas": {
+        "volume": 10,
+        "top_servicos": {
+          "TRATATIVA INTERNA": 3,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 2,
+          "ERRO SISTÊMICO": 2,
+          "ANALISE DE CASOS": 1,
+          "CADASTRO": 1
+        },
+        "top_subareas": {
+          "LOGISTICA": 10
+        },
+        "top_solicitantes": {
+          "Henrique Jose da Silva": 4,
+          "Wemelly Barros de Souza": 2,
+          "Wilson Pereira dos Santos": 1,
+          "Maycon Luis Miranda": 1,
+          "Livania Maria Rossetto Paschoalotto": 1
+        },
+        "top_status": {
+          "Não Informado": 7,
+          "Finalizado": 3
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 5
+          },
+          {
+            "dia": "Ter",
+            "qtd": 1
+          },
+          {
+            "dia": "Qua",
+            "qtd": 2
+          },
+          {
+            "dia": "Qui",
+            "qtd": 2
+          }
+        ],
+        "tendencia": {
+          "tipo": "Decrescente",
+          "variacao_pct": -66.7,
+          "alerta": false,
+          "detalhe": "Volume decrescente de 3 para 1 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.6,
+          "usuarios_unicos": 6
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: Erro OA fechar OS no Coletor Telnet - ZOC. DESCRIÇÃO DETALHADA: A cada fechamento de OS no ZOC o sistema emite uma mensagem de erro, não é impeditivo, mas precisa ser verificado o porque da mensagem e corrigi-la. Abertura interna Wilson Santos mesmo analisará Atencisoamente Wilson Santos",
+        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: IMPRESSÃO DE ETIQUETA DE LOCAÇÃO - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Ao tentarmos realizar a impressão das etiquetas de locação por rua/ruas específicas é exibida a mensagem que a célula não possui vínculo com o armazém, conforme imagem anexada. Ex: Rua 00001 a Rua 00002 Atualmente só conseguimos imprimir as etiquetas de todas as ruas da quadra, selecionando a opção destacada na imagem. Gostaríamos de solicitar uma analise da situação informada, para que não haja desperdício ao gerar etiquetas já impressas. Caminho: Módulo operacional - Impressões - Etiqueta de localização",
+        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: GERAÇÃO DE TFA POR ETIQUETA - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Ao tentarmos realizar o registro do termo de avaria pelo campo de etiqueta no coletor, apresenta a mensagem anexada. Dessa forma não conseguimos seguir com a geração do termo, favor verificar.",
+        "SISTEMA: SARA | SERVIÇO: PROBLEMAS DE IMPRESSÃO | SUB-ÁREA: LOGISTICA | TÍTULO: Impressão de etiquetas pelo coletor web.. DESCRIÇÃO DETALHADA: Solicitamos a impressão das etiquetas confeccionados pelos conferentes no coletor web, hoje o coletor reconhece etiqueta mais não realiza impressão.",
+        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: ETIQUETA SEM SALDO. DESCRIÇÃO DETALHADA: ETIQUETA CLIENTE ZEUSAGRO ESTÁ COM ERRO OCASIONANDO FALHA AO FINALIZAR A OS DE EXPEDIÇÃO",
+        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO EXECUTAR O.S DE D.A. DESCRIÇÃO DETALHADA: ZOCC ACUSA ERRO DE SALDO AO FAZER CARREGAMENTO DE ETIQUETA",
+        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: Etiquetas com erro ao ser executada no ZOC. DESCRIÇÃO DETALHADA: A/C Wilson Segue prints, Etiquetas com erro ao ser executada no ZOC",
+        "SISTEMA: SARA | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO IMPRESSÃO ETIQUETAS SARA. DESCRIÇÃO DETALHADA: ERRO EM ANEXO AO TENTAR IMPRIMIR ETIQUETAS DE SERIE",
+        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: AC/WILSON - ERRO AO EXECUTAR O.S DE SOBRE RODAS NO OPERACIONAL. DESCRIÇÃO DETALHADA: SEGUE O ERRO EM ANEXO, AS O.S FECHAM PORÉM APARECE O ERRO, É PRECISO ATUALIZAR A PÁGINA PARA A O.S SUMIR",
+        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: IMPRIMIR  BOLETO  CEVS . DESCRIÇÃO DETALHADA: BOM DIA , Favor disponibilidade no modulo portaria - consulta - impressão boleto de cevs ."
+      ],
+      "top_keywords": [
+        "erro",
+        "sara",
+        "sub",
+        "área",
+        "logistica",
+        "etiquetas",
+        "etiqueta",
+        "impressão",
+        "coletor",
+        "não",
+        "interna",
+        "zoc",
+        "mensagem",
+        "wilson",
+        "tratativa"
+      ],
+      "ids_chamados": [
+        "118850",
+        "117877",
+        "119371",
+        "119757",
+        "124739",
+        "125011",
+        "125118",
+        "121865",
+        "129339",
+        "119823"
+      ],
+      "chamados_viz": [
+        {
+          "id": "118850",
+          "x": 19.501461029052734,
+          "y": 2.6416187286376953,
+          "prob": 1.0
+        },
+        {
+          "id": "117877",
+          "x": 18.275989532470703,
+          "y": 2.219606399536133,
+          "prob": 0.8491
+        },
+        {
+          "id": "119371",
+          "x": 18.875751495361328,
+          "y": 2.5456743240356445,
+          "prob": 1.0
+        },
+        {
+          "id": "119757",
+          "x": 18.988101959228516,
+          "y": 2.9561996459960938,
+          "prob": 1.0
+        },
+        {
+          "id": "124739",
+          "x": 19.125226974487305,
+          "y": 2.7207584381103516,
+          "prob": 1.0
+        },
+        {
+          "id": "125011",
+          "x": 18.302444458007812,
+          "y": 2.3138251304626465,
+          "prob": 0.8491
+        },
+        {
+          "id": "125118",
+          "x": 19.375898361206055,
+          "y": 2.5517141819000244,
+          "prob": 0.9733
+        },
+        {
+          "id": "121865",
+          "x": 19.609691619873047,
+          "y": 3.0558223724365234,
+          "prob": 0.9834
+        },
+        {
+          "id": "129339",
+          "x": 19.344364166259766,
+          "y": 3.4530160427093506,
+          "prob": 0.9834
+        },
+        {
+          "id": "119823",
+          "x": 19.47348403930664,
+          "y": 3.1773288249969482,
+          "prob": 0.9834
+        }
+      ],
+      "titulo": "Erro de Impressão de Etiquetas no Coletor",
+      "descricao": "Usuários relatam falha na impressão de etiquetas de localização no coletor, impedindo a geração de etiquetas para expedição. Isso provoca atraso na expedição, retrabalho de conferência e risco de identificação incorreta de itens durante o embarque. Investigação necessária na integração entre coletor e impressão e nas regras de vinculação de etiquetas com o armazém.",
+      "tags": [
+        "Logística",
+        "Etiquetas",
+        "Impressão",
+        "Erro de Sistema",
+        "SARA"
+      ],
+      "analise_racional": "Análise dos termos recorrentes aponta foco em etiquetas, impressão, coletor e logística. A maioria dos chamados envolve falhas na impressão de etiquetas (localização/expedição) no módulo SARA, abrangendo tratativa interna e processamento manual."
+    },
+    {
+      "cluster_id": 9,
       "metricas": {
         "volume": 16,
         "top_servicos": {
@@ -1277,330 +1718,159 @@
       "chamados_viz": [
         {
           "id": "119049",
-          "x": 18.577150344848633,
-          "y": 4.725915431976318,
-          "prob": 1.0
+          "x": 20.29386329650879,
+          "y": 2.212568521499634,
+          "prob": 0.8867
         },
         {
           "id": "124881",
-          "x": 18.14253044128418,
-          "y": 4.509213447570801,
-          "prob": 1.0
+          "x": 19.79835319519043,
+          "y": 1.8714512586593628,
+          "prob": 0.6791
         },
         {
           "id": "125910",
-          "x": 18.55195426940918,
-          "y": 4.574276924133301,
+          "x": 20.224748611450195,
+          "y": 2.3149280548095703,
           "prob": 1.0
         },
         {
           "id": "126307",
-          "x": 18.293994903564453,
-          "y": 3.9943745136260986,
-          "prob": 1.0
+          "x": 19.751827239990234,
+          "y": 1.6159543991088867,
+          "prob": 0.6748
         },
         {
           "id": "126594",
-          "x": 18.31431007385254,
-          "y": 4.8193254470825195,
-          "prob": 0.9628
+          "x": 19.833337783813477,
+          "y": 2.216398000717163,
+          "prob": 0.8182
         },
         {
           "id": "127010",
-          "x": 18.96343421936035,
-          "y": 4.564244270324707,
-          "prob": 0.8884
+          "x": 20.3123722076416,
+          "y": 2.068413734436035,
+          "prob": 0.9064
         },
         {
           "id": "127463",
-          "x": 18.79521369934082,
-          "y": 4.891205787658691,
-          "prob": 1.0
+          "x": 20.03960609436035,
+          "y": 2.2143261432647705,
+          "prob": 0.9901
         },
         {
           "id": "128532",
-          "x": 18.648242950439453,
-          "y": 4.7565016746521,
+          "x": 20.192365646362305,
+          "y": 2.464548349380493,
           "prob": 1.0
         },
         {
           "id": "127765",
-          "x": 18.115703582763672,
-          "y": 4.07785177230835,
-          "prob": 0.8235
+          "x": 19.368431091308594,
+          "y": 1.5778601169586182,
+          "prob": 0.7786
         },
         {
           "id": "129483",
-          "x": 18.684850692749023,
-          "y": 5.052021503448486,
-          "prob": 1.0
+          "x": 19.941120147705078,
+          "y": 2.696345090866089,
+          "prob": 0.8182
         },
         {
           "id": "130288",
-          "x": 18.615886688232422,
-          "y": 5.038501739501953,
-          "prob": 1.0
+          "x": 19.583763122558594,
+          "y": 2.6209475994110107,
+          "prob": 0.8182
         },
         {
           "id": "129815",
-          "x": 18.487483978271484,
-          "y": 4.380445957183838,
-          "prob": 1.0
+          "x": 19.571794509887695,
+          "y": 2.0005452632904053,
+          "prob": 0.8068
         },
         {
           "id": "131586",
-          "x": 17.87556266784668,
-          "y": 4.446477890014648,
-          "prob": 0.8649
+          "x": 19.182308197021484,
+          "y": 1.6992746591567993,
+          "prob": 0.7676
         },
         {
           "id": "131425",
-          "x": 18.810932159423828,
-          "y": 4.723287582397461,
+          "x": 20.099502563476562,
+          "y": 2.3560216426849365,
           "prob": 1.0
         },
         {
           "id": "132715",
-          "x": 18.70131492614746,
-          "y": 4.442049980163574,
+          "x": 20.27132225036621,
+          "y": 2.7049238681793213,
           "prob": 1.0
         },
         {
           "id": "133151",
-          "x": 18.743221282958984,
-          "y": 4.112269401550293,
-          "prob": 0.8884
+          "x": 19.70826530456543,
+          "y": 2.3349661827087402,
+          "prob": 1.0
         }
       ],
-      "titulo": "Ajuste de Etiquetas no TOTVS RA",
-      "descricao": "Impacto funcional: operações de recebimento, armazenagem e desova não podem avançar corretamente devido a falhas no ajuste de status das etiquetas e na aplicação de estornos. Isso resulta em etiquetas com status incorreto, saldo divergente e necessidade repetida de intervenção de TI para correções manuais e reprocessamento de lotes/OS.",
+      "titulo": "Ajuste de Status de Etiquetas TOTVS RA",
+      "descricao": "Usuários relatam que o status das etiquetas no módulo de logística SARA/TOTVS RA não é atualizado corretamente, impedindo estornos e ajustes de saldo. O processamento manual de arquivos depende dessas mudanças, causando divergências de saldo, bloqueio no carregamento/desova e retrabalho pela TI. Em múltiplos lotes, as etiquetas ficam com status 'impressa' ou travadas, prejudicando recebimento, armazenamento e baixa de OS.",
       "tags": [
-        "Etiquetas",
-        "Status de Etiquetas",
-        "Estorno",
-        "Totvs RA",
-        "Logística",
-        "Erro Sistêmico",
-        "Processamento Manual de Arquivos"
-      ],
-      "analise_racional": "Resumo: o cluster é dominado por falhas no ajuste de status de etiquetas e no estorno no módulo logístico SARA/TOTVS RA. Termos recorrentes incluem etiquetas, status, lote, TOTVS e estorno, indicando que o impacto principal é nas operações de recebimento/desova e nas divergências de saldo."
-    },
-    {
-      "cluster_id": 7,
-      "metricas": {
-        "volume": 6,
-        "top_servicos": {
-          "ESCLARECIMENTO DE DUVIDAS": 1,
-          "LENTIDÃO SISTÊMICA": 1,
-          "INTEGRAÇÕES": 1,
-          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1,
-          "ERRO OPERACIONAL": 1
-        },
-        "top_subareas": {
-          "LOGISTICA": 6
-        },
-        "top_solicitantes": {
-          "Elusiane Cristina de Albuquerque": 4,
-          "Douglas Bitencourt Dos Santos": 1,
-          "Marcia Viviane do Nascimento Silva Guedes": 1
-        },
-        "top_status": {
-          "Não Informado": 6
-        },
-        "timeline": [
-          {
-            "mes": "2025-09",
-            "qtd": 2
-          },
-          {
-            "mes": "2025-11",
-            "qtd": 1
-          },
-          {
-            "mes": "2025-12",
-            "qtd": 2
-          },
-          {
-            "mes": "2026-01",
-            "qtd": 1
-          }
-        ],
-        "sazonalidade": [
-          {
-            "dia": "Seg",
-            "qtd": 2
-          },
-          {
-            "dia": "Ter",
-            "qtd": 1
-          },
-          {
-            "dia": "Qua",
-            "qtd": 2
-          },
-          {
-            "dia": "Sex",
-            "qtd": 1
-          }
-        ],
-        "tendencia": {
-          "tipo": "Estável",
-          "variacao_pct": 0.0,
-          "alerta": false,
-          "detalhe": "Volume estável de 1 para 1 na última semana."
-        },
-        "concentracao": {
-          "tipo": "Normal",
-          "ratio": 0.5,
-          "usuarios_unicos": 3
-        }
-      },
-      "amostras_texto": [
-        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: Problemas com faturamento complementar no SARA. DESCRIÇÃO DETALHADA: Boa tarde Notar que não estamos conseguindo faturar o complemento dos processos que tiveram faturamento anecipado. Erro em anexo",
-        "SISTEMA: SARA | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: LOGISTICA | TÍTULO: PROCESSOS QUE NÃO CONSTAM NO MODULO \"DS/LOTE\" PARA FATURAMENTO. DESCRIÇÃO DETALHADA: Boa tarde Poderiam verifificar o motivo pelo qual os processos do arquivo em anexo do mês 11 não foi apontado no módulo CALCULO DS/LOTE do SARA para faturamento?",
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: Dificuldade para cancelamento de Notas no SARA. DESCRIÇÃO DETALHADA: Boa tarde Gentilez notar que não estamos conseguindo cancelar no SARA as NFs abaixo, porém, as mesmas já se encontram canceladas no Protheus Em anexo o erro que apresenta ao cancelar 18457 18458 18553 18573",
-        "SISTEMA: SARA | SERVIÇO: ESCLARECIMENTO DE DUVIDAS | SUB-ÁREA: LOGISTICA | TÍTULO: Módulo faturamento indisponível. DESCRIÇÃO DETALHADA: Bom dia Gentileza verificar a indisponibilidade do módulo faturamento para o usuário Elusiane Cristina de Albuquerque. Tela do erro em anexo",
-        "SISTEMA: SARA | SERVIÇO: INTEGRAÇÕES | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO EMITIR TICKET DE PESAGEM. DESCRIÇÃO DETALHADA: Bom dia! Estamos com problemas na emissão do Ticket de pesagem no sistema, por favor verificar o quanto antes.] Teremos a pesagem de alguns veículos, onde vamos precisar emitir o ticket e entregar a transportadora.",
-        "SISTEMA: SARA | SERVIÇO: LENTIDÃO SISTÊMICA | SUB-ÁREA: LOGISTICA | TÍTULO: NOTA FISCAL NÃO ESTÁ MONITORANDO. DESCRIÇÃO DETALHADA: Bom DIA!! Ao tentar gerar NF no protheus está gerando erro. Não está monitorando no prothues. Aparece e a seguinte mensagem."
-      ],
-      "top_keywords": [
-        "sara",
-        "erro",
-        "sub",
-        "área",
-        "logistica",
-        "faturamento",
-        "não",
-        "anexo",
-        "módulo",
-        "está",
-        "ticket",
-        "pesagem",
-        "estamos",
-        "boa",
-        "processos"
-      ],
-      "ids_chamados": [
-        "121425",
-        "122504",
-        "127630",
-        "129957",
-        "130291",
-        "131300"
-      ],
-      "chamados_viz": [
-        {
-          "id": "121425",
-          "x": 16.248842239379883,
-          "y": 4.892597198486328,
-          "prob": 1.0
-        },
-        {
-          "id": "122504",
-          "x": 16.430204391479492,
-          "y": 4.717092990875244,
-          "prob": 1.0
-        },
-        {
-          "id": "127630",
-          "x": 16.679180145263672,
-          "y": 4.4941911697387695,
-          "prob": 0.9986
-        },
-        {
-          "id": "129957",
-          "x": 16.468088150024414,
-          "y": 5.038037300109863,
-          "prob": 1.0
-        },
-        {
-          "id": "130291",
-          "x": 16.71835708618164,
-          "y": 3.809051513671875,
-          "prob": 0.9836
-        },
-        {
-          "id": "131300",
-          "x": 16.5423526763916,
-          "y": 4.2845377922058105,
-          "prob": 1.0
-        }
-      ],
-      "titulo": "Falha No Faturamento Do SARA",
-      "descricao": "Impacto: equipes da logística não conseguem faturar complementos, gerar notas e emitir tickets de pesagem; o módulo de faturamento pode ficar indisponível ou não registrar processos, atrasando o fechamento financeiro e gerando retrabalho.",
-      "tags": [
+        "ETIQUETAS",
+        "LOTE",
+        "STATUS",
         "SARA",
-        "Faturamento",
-        "Logística",
-        "Erro Operacional",
-        "Processamento Manual de Arquivos"
+        "LOGISTICA",
+        "TOTVS RA",
+        "ERRO SISTÊMICO",
+        "ESTORNO",
+        "PROCESSAMENTO MANUAL DE ARQUIVOS"
       ],
-      "analise_racional": "Resumo: os termos recorrentes apontam o tema dominante: faturamento no SARA com falhas (processamento manual de arquivos, erro operacional) que impactam a logística. Embora haja menções intermediárias a emissão de tickets/notas, o núcleo do cluster está no problema de faturamento e integração do SARA."
+      "analise_racional": "As amostras são consistentes em indicar falha no controle de status e estorno de etiquetas no módulo TOTVS RA dentro do SARA, com impacto significativo no fluxo logístico (recebimento, desova, armazenamento e baixa de OS). Os termos recorrentes (etiquetas, lote, status, logistica, TOTVS) orientam o padrão dominante: erro sistêmico que impede atualização de saldo e ajuste de etiquetas, exigindo intervenção de TI."
     },
     {
-      "cluster_id": 8,
+      "cluster_id": 10,
       "metricas": {
-        "volume": 8,
+        "volume": 5,
         "top_servicos": {
-          "ERRO SISTÊMICO": 3,
-          "CADASTRO": 2,
-          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1,
-          "INTEGRAÇÕES": 1,
+          "CADASTRO": 3,
+          "ALTERAÇÃO DE REGISTROS NO BANCO DE DADOS": 1,
           "ERRO OPERACIONAL": 1
         },
         "top_subareas": {
-          "LOGISTICA": 8
+          "LOGISTICA": 5
         },
         "top_solicitantes": {
-          "Marcia Viviane do Nascimento Silva Guedes": 5,
-          "Jose Wellington Nascimento Silva": 3
+          "Jose Wellington Nascimento Silva": 3,
+          "Simone Campelo de Sousa": 2
         },
         "top_status": {
-          "Não Informado": 7,
-          "Finalizado": 1
+          "Finalizado": 2,
+          "Não Informado": 2,
+          "Aberto": 1
         },
         "timeline": [
           {
             "mes": "2025-08",
-            "qtd": 1
-          },
-          {
-            "mes": "2025-09",
-            "qtd": 1
+            "qtd": 3
           },
           {
             "mes": "2025-10",
-            "qtd": 3
+            "qtd": 1
           },
           {
             "mes": "2025-11",
             "qtd": 1
-          },
-          {
-            "mes": "2025-12",
-            "qtd": 2
           }
         ],
         "sazonalidade": [
-          {
-            "dia": "Seg",
-            "qtd": 3
-          },
           {
             "dia": "Ter",
             "qtd": 1
           },
           {
             "dia": "Qua",
-            "qtd": 2
-          },
-          {
-            "dia": "Qui",
-            "qtd": 1
-          },
-          {
-            "dia": "Sex",
-            "qtd": 1
+            "qtd": 4
           }
         ],
         "tendencia": {
@@ -1611,137 +1881,118 @@
         },
         "concentracao": {
           "tipo": "Normal",
-          "ratio": 0.25,
+          "ratio": 0.4,
           "usuarios_unicos": 2
         }
       },
       "amostras_texto": [
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: LOTE NÃO GERADO. DESCRIÇÃO DETALHADA: Bom dia! O documento de entrada DTC 04797359 do container CXRU1120330, são dois BL´s por se tratar de um processo parte. O lote foi gerado no momento da entrada e só gerou para um BL: CTSH25070043B, ficou falando gerar o lote para o BL CTSH25070043A.",
-        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: Processo apresenta erro na geração da OS de descarga.. DESCRIÇÃO DETALHADA: Pessoal, bom dia, tudo bem ? Precisamos do vosso apoio para ajustar o container - CAIU6726420. Não estamos conseguindo gerar a OS de descarga. LOTE: 202500004430",
-        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO DE CADASTRO CONTAINERS. DESCRIÇÃO DETALHADA: Bom dia! Erro ao cadastrar containers que deram entrada no Bitrem e não estávamos conseguindo realizar a expedição.",
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: CONTAINER NÃO GEROU OS. DESCRIÇÃO DETALHADA: Boa tarde! Container HLBU9974510 do lote 202500005477 não foi gerado a OS.",
-        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO DE CADASTRO CONTAINERS. DESCRIÇÃO DETALHADA: Bom dia! Foi solicitado para alterar o cadastro do documento do container, devido ao lançamento da troca do documento. LOTE: 202500005562 OS: 66568 OS: 66659 CNTR: MSDU7609030 / MEDU8479274",
-        "SISTEMA: SARA | SERVIÇO: INTEGRAÇÕES | SUB-ÁREA: LOGISTICA | TÍTULO: AO GERAR OS DE CARREGAMENTO CONTAINER EXPORTAÇÃO - DUE. DESCRIÇÃO DETALHADA: Bom dia! Notar que não estamos conseguindo gerar OS de carregamento do lote 202500000249. Não está apresentando nenhum erro ou mensagem. DUE: BR0021007550",
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: Ajuste sistêmico dos processos vinculados aos containers: MSKU0634680 - MRKU2326664. DESCRIÇÃO DETALHADA: Bom dia! O problema foi resolvido junto com Wilson. No entanto, foi identificado algumas falhas de validações para os containers: MSKU0634680 - MRKU2326664, onde foram recebidos com o mesmo número de DTC, com isso houve erros de duplicidade em todos os lotes. Levamos 1h 30min para visualizar e sanar o problema. Lotes: 202500006617 202500006593 202500006618 202500006619",
-        "SISTEMA: SARA | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: LOGISTICA | TÍTULO: AJUSTE NA ENTRADA DO CONTAINER - CAXU9240135. DESCRIÇÃO DETALHADA: Bom dia ! Precisamos ajustar a entrada do container - CAXU9240135 em nosso sistema. Inicialmente foi recebido como container vazio, com a CESV: 29043 - OS: 71559 Foi gerada uma CESV de carregamento para o container vazio: 30079 OS: 72572 - Na tentativa de ajustar a entrada, pois esse container seria recebido na modalidade CABOTAGEM container cheio."
+        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: AJUSTAR QUANTIDADE NO ITENS DO LOTE - 202500004153 - INTERNATIONAL COMMERCE RECIFE S.A. DESCRIÇÃO DETALHADA: Prezados, bom dia! Por favor, precisamos que seja ajustado a quantidade lançada na aba itens do lote - 202500004153 DE: 2 PARA: 2000",
+        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: AJUSTE DE QUANTIDADE - 202500005370 - CLIENTE RODOAP MAQUINAS E EQUIPAMENTOS LTDA. DESCRIÇÃO DETALHADA: Pessoal, boa tarde. Precisamos ajustar a quantidade lançada no itens do lote para o container: MSBU8255839 DE: 21 PARA: 3 202500005370",
+        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: Cancelar liberação de uma carga e alterar a quantidade de saída de uma DI . DESCRIÇÃO DETALHADA: Bom dia! Prezados, Precisamos cancelar a saída parcial da carga do lote 24/2688, e alterar a quantidade de saída da DI 24/1846274-3.",
+        "SISTEMA: SARA | SERVIÇO: ALTERAÇÃO DE REGISTROS NO BANCO DE DADOS | SUB-ÁREA: LOGISTICA | TÍTULO: QUANTIDADE LANÇADA NO ITENS DO LOTE, DIVERGENTE DA QUANTIDADE FÍSICA E DOCUMENTAL. DESCRIÇÃO DETALHADA: Prezados, boa tarde! Por favor ajustar a quantidade lançada no itens do lote do container: GESU6137309. DE: 1002 PARA: 940 LOTE: 202500003936",
+        "SISTEMA: SARA | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: LOGISTICA | TÍTULO: Alterar o cliente de uma Saída de NF Lote: 5915. DESCRIÇÃO DETALHADA: Bom dia! Wilson, Estamos precisado alterar o cliente de uma Carga já liberada, pois foi cadastrado em nome de outro cliente. Se trata de um documento de NF."
       ],
       "top_keywords": [
-        "container",
-        "erro",
+        "quantidade",
+        "lote",
         "sara",
         "sub",
         "área",
         "logistica",
-        "não",
-        "lote",
-        "foi",
-        "entrada",
+        "itens",
+        "lançada",
+        "alterar",
+        "saída",
+        "cliente",
         "cadastro",
-        "containers",
-        "gerar",
-        "sistêmico",
-        "conseguindo"
+        "ajustar",
+        "prezados",
+        "precisamos"
       ],
       "ids_chamados": [
-        "119009",
-        "119690",
-        "124522",
-        "124846",
-        "125002",
-        "127775",
-        "128692",
-        "130011"
+        "118738",
+        "119354",
+        "117904",
+        "125747",
+        "128348"
       ],
       "chamados_viz": [
         {
-          "id": "119009",
-          "x": 15.358471870422363,
-          "y": 3.4516916275024414,
-          "prob": 0.528
-        },
-        {
-          "id": "119690",
-          "x": 15.679914474487305,
-          "y": 3.071749210357666,
+          "id": "118738",
+          "x": 16.111827850341797,
+          "y": -0.033249810338020325,
           "prob": 1.0
         },
         {
-          "id": "124522",
-          "x": 15.492609024047852,
-          "y": 3.2630021572113037,
+          "id": "119354",
+          "x": 16.382221221923828,
+          "y": 0.2156137228012085,
           "prob": 1.0
         },
         {
-          "id": "124846",
-          "x": 15.113365173339844,
-          "y": 2.9363009929656982,
-          "prob": 0.6985
-        },
-        {
-          "id": "125002",
-          "x": 15.377628326416016,
-          "y": 3.097256660461426,
+          "id": "117904",
+          "x": 16.300338745117188,
+          "y": 0.24475665390491486,
           "prob": 1.0
         },
         {
-          "id": "127775",
-          "x": 15.724637985229492,
-          "y": 3.2211647033691406,
+          "id": "125747",
+          "x": 16.041446685791016,
+          "y": 0.27855297923088074,
           "prob": 1.0
         },
         {
-          "id": "128692",
-          "x": 14.970441818237305,
-          "y": 2.910905361175537,
-          "prob": 0.6985
-        },
-        {
-          "id": "130011",
-          "x": 14.95695972442627,
-          "y": 2.8259379863739014,
-          "prob": 0.6985
+          "id": "128348",
+          "x": 16.698637008666992,
+          "y": -0.12384147197008133,
+          "prob": 1.0
         }
       ],
-      "titulo": "Erro Sistêmico na Geração de Lotes de Containers",
-      "descricao": "Impacto: Usuários da área logística não conseguem gerar os Lotes e as OSs associados aos containers, atrasando entrada, descarga, expedição e conferência de estoque. Vários chamados relatam Lote não gerado, OS de descarga não criada, cadastros de containers com falha e duplicidade de registros, gerando retrabalho e atrasos na entrega.",
+      "titulo": "Ajuste de Quantidade em Itens de Lote",
+      "descricao": "Impacto para o usuário: a inconsistência entre a quantidade lançada nos itens do lote, a quantidade física e a documentação (NF/DI) impede o processamento de saídas, exige retrabalho de cadastro e pode atrasar entregas e faturamento.",
       "tags": [
-        "SARA",
-        "Erro Sistêmico",
+        "Ajuste de Quantidade",
+        "Itens de Lote",
         "Logística",
-        "Geração de Lotes",
-        "OS de Carregamento/Descarga",
-        "Containers"
+        "Cadastro",
+        "Divergência de Estoque"
       ],
-      "analise_racional": "Dominante: falhas sistêmicas que impactam a geração de Lotes e Ordens de Serviço para containers na área de Logística, conforme evidenciado por Lote não gerado, OS não gerada e duplicidade de DTC."
+      "analise_racional": "Termos recorrentes: quantidade, lote, itens, saída, logistica, sara; serviço mais frequente: CADASTRO. As amostras descrevem ajustes de quantidade lançada nos itens de um lote, cancelamento de saída e alterações de registros. O tema dominante é correção de estoque/itens de lote no módulo de Logística (SARA)."
     },
     {
-      "cluster_id": 9,
+      "cluster_id": 11,
       "metricas": {
-        "volume": 9,
+        "volume": 15,
         "top_servicos": {
-          "ERRO SISTÊMICO": 3,
+          "ERRO SISTÊMICO": 4,
+          "LENTIDÃO SISTÊMICA": 2,
+          "ERRO OPERACIONAL": 2,
           "ATUALIZAÇÕES E CORREÇÕES": 1,
-          "INDISPONIBILIDADE": 1,
-          "INTEGRAÇÕES": 1,
-          "ANALISE DE CASOS": 1
+          "ESCLARECIMENTO DE DUVIDAS": 1
         },
         "top_subareas": {
-          "LOGISTICA": 8,
+          "LOGISTICA": 14,
           "SOFTWARE": 1
         },
         "top_solicitantes": {
           "Maycon Luis Miranda": 6,
+          "Elusiane Cristina de Albuquerque": 4,
           "Caua Henrique Matias da Silva": 2,
-          "Patricia da Silva Santiago": 1
+          "Douglas Bitencourt Dos Santos": 1,
+          "Adriely Loureiro de Oliveira": 1
         },
         "top_status": {
-          "Não Informado": 8,
+          "Não Informado": 14,
           "Finalizado": 1
         },
         "timeline": [
           {
             "mes": "2025-08",
             "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
           },
           {
             "mes": "2025-10",
@@ -1753,25 +2004,25 @@
           },
           {
             "mes": "2025-12",
-            "qtd": 3
+            "qtd": 5
           },
           {
             "mes": "2026-01",
-            "qtd": 2
+            "qtd": 3
           }
         ],
         "sazonalidade": [
           {
             "dia": "Seg",
-            "qtd": 4
+            "qtd": 6
           },
           {
             "dia": "Ter",
-            "qtd": 1
+            "qtd": 2
           },
           {
             "dia": "Qua",
-            "qtd": 2
+            "qtd": 4
           },
           {
             "dia": "Qui",
@@ -1779,31 +2030,32 @@
           },
           {
             "dia": "Sex",
-            "qtd": 1
+            "qtd": 2
           }
         ],
         "tendencia": {
-          "tipo": "Decrescente",
-          "variacao_pct": -50.0,
+          "tipo": "Estável",
+          "variacao_pct": 0.0,
           "alerta": false,
-          "detalhe": "Volume decrescente de 2 para 1 na última semana."
+          "detalhe": "Volume estável de 2 para 2 na última semana."
         },
         "concentracao": {
           "tipo": "Normal",
-          "ratio": 0.33,
-          "usuarios_unicos": 3
+          "ratio": 0.4,
+          "usuarios_unicos": 6
         }
       },
       "amostras_texto": [
+        "SISTEMA: SARA | SERVIÇO: LENTIDÃO SISTÊMICA | SUB-ÁREA: LOGISTICA | TÍTULO: NOTA FISCAL NÃO ESTÁ MONITORANDO. DESCRIÇÃO DETALHADA: Bom DIA!! Ao tentar gerar NF no protheus está gerando erro. Não está monitorando no prothues. Aparece e a seguinte mensagem.",
+        "SISTEMA: SARA | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: LOGISTICA | TÍTULO: PROCESSOS QUE NÃO CONSTAM NO MODULO \"DS/LOTE\" PARA FATURAMENTO. DESCRIÇÃO DETALHADA: Boa tarde Poderiam verifificar o motivo pelo qual os processos do arquivo em anexo do mês 11 não foi apontado no módulo CALCULO DS/LOTE do SARA para faturamento?",
+        "SISTEMA: SARA | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: LOGISTICA | TÍTULO: RECUSA DE NOTA FISCAL. DESCRIÇÃO DETALHADA: BOA TARDE! INFORMO QUE O CLIENTE TRIUMPH ( 14808074 ) SOLICITOU A RECURA DE UMA NOTA FISCAL NO MANIFESTO DO DESTINATARIO NO PORTAL DA NOTA FISCAL. SEGUE A NOTA FISCAL 102349. O CLIENTE SOLICITOU QUE NO MOTIVO DA RECUSA POR \"DESCONHECIMENTO DA OPERAÇÃO\" E NA JUSTIFICATIVA POR \"OPERAÇÃO NÃO REALIZADA\".",
+        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: Problemas com faturamento complementar no SARA. DESCRIÇÃO DETALHADA: Boa tarde Notar que não estamos conseguindo faturar o complemento dos processos que tiveram faturamento anecipado. Erro em anexo",
+        "SISTEMA: SARA | SERVIÇO: ESCLARECIMENTO DE DUVIDAS | SUB-ÁREA: LOGISTICA | TÍTULO: Módulo faturamento indisponível. DESCRIÇÃO DETALHADA: Bom dia Gentileza verificar a indisponibilidade do módulo faturamento para o usuário Elusiane Cristina de Albuquerque. Tela do erro em anexo",
+        "SISTEMA: SARA | SERVIÇO: INDISPONIBILIDADE | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO MODULO PORTARIA. DESCRIÇÃO DETALHADA: APARECE O ERRO EM ANEXO AO TENTAR ENTRAR NO MÓDULO PORTARIA.",
+        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: Dificuldade para cancelamento de Notas no SARA. DESCRIÇÃO DETALHADA: Boa tarde Gentilez notar que não estamos conseguindo cancelar no SARA as NFs abaixo, porém, as mesmas já se encontram canceladas no Protheus Em anexo o erro que apresenta ao cancelar 18457 18458 18553 18573",
         "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO API RECINTO. DESCRIÇÃO DETALHADA: ERRO EM ANEXO NO API RECINTO",
         "SISTEMA: SARA | SERVIÇO: INTEGRAÇÕES | SUB-ÁREA: LOGISTICA | TÍTULO: API RECINTO INCONSISTENTE. DESCRIÇÃO DETALHADA: OS ERROS ENVIADOS DO API RECINTOS NÃO ESTÃO SAINDO DO STATUS 'PENDENTE', SEGUEM PRINTS. { \"message\":\"Acesso não autenticado. O token enviado no header 'x-csrf-token' está expirado. Acione novamente o serviço de autenticação para geração de novos tokens de segurança.\", \"code\":\"PUCX-ER0201\", \"field\":null, \"path\":null, \"tag\":\"[RCNT-HIJEQRMTZ9]\", \"date\":\"2025-11-12T17:26:23\", \"detail\": [ ] , \"severity\":\"ERROR\", \"info\": { \"mnemonico\":\"RCNT\", \"sistema\":\"Recintos / Serviços Externos\", \"ambiente\":\"PRO\", \"visao\":\"PRIV\", \"usuario\":null, \"url\":\"/recintos-ext/api/ext/acesso-veiculos\", \"fluxo\":null, \"trackerId\":\"sdVERsuBZv\" } }",
-        "SISTEMA: SARA | SERVIÇO: INDISPONIBILIDADE | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO MODULO PORTARIA. DESCRIÇÃO DETALHADA: APARECE O ERRO EM ANEXO AO TENTAR ENTRAR NO MÓDULO PORTARIA.",
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: sara pedindo chave emergencial. DESCRIÇÃO DETALHADA: sara pedindo chave emergencial // ao tentar realizar a saida de um veiculo apareceu essa mensagem ------------------------------------------------------------------------------ Data da Mensagem: 02/01/2026 08:37:23 ------------------------------------------------------------------------------ Não foi possível obter os dados da licença de uso ------------------------------------------------------------------------------ Erro original: 0 ------------------------------------------------------------------------------",
-        "SISTEMA: SARA | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO BALANÇA. DESCRIÇÃO DETALHADA: BALANÇA ESTÁ COM ERRO NA CONEXÃO COM O SARA",
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: Parametro TRAFEGO_NOTE-IPO-1010 não cadastrado, . DESCRIÇÃO DETALHADA: Boa tarde! Por favor verificar a mensagem Parametro TRAFEGO_NOTE-IPO-1010 não cadastrado, Login 05729842430",
-        "SISTEMA: SARA | SERVIÇO: CONFIGURAÇÕES | SUB-ÁREA: LOGISTICA | TÍTULO: BALANÇA RODOVIÁRIA INDISPONIVEL. DESCRIÇÃO DETALHADA: BALANÇA RODOVIÁRIA ESTÁ INDISPONÍVEL, NÃO ESTÁ COMUNICANDO COM O SARA.",
-        "SISTEMA: SARA | SERVIÇO: ATUALIZAÇÕES E CORREÇÕES | SUB-ÁREA: SOFTWARE | TÍTULO: ERRO AO TENTAR INICIALIZAR SARA. DESCRIÇÃO DETALHADA: APARECE O ERRO EM ANEXO AO TENTAR ABRIR O SARA.",
-        "SISTEMA: SARA | SERVIÇO: LENTIDÃO SISTÊMICA | SUB-ÁREA: LOGISTICA | TÍTULO: SARA APRESENTANDO LENTIDAO EM ALGUNS MODULOS . DESCRIÇÃO DETALHADA: SARA APRESENTANDO LENTIDAO EM ALGUNS MODULOS COMO PORTARIA, PESAGEM, OPERACIONAL E OS INTERNA"
+        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: sara pedindo chave emergencial. DESCRIÇÃO DETALHADA: sara pedindo chave emergencial // ao tentar realizar a saida de um veiculo apareceu essa mensagem ------------------------------------------------------------------------------ Data da Mensagem: 02/01/2026 08:37:23 ------------------------------------------------------------------------------ Não foi possível obter os dados da licença de uso ------------------------------------------------------------------------------ Erro original: 0 ------------------------------------------------------------------------------"
       ],
       "top_keywords": [
         "sara",
@@ -1812,262 +2064,137 @@
         "área",
         "logistica",
         "não",
-        "api",
-        "tentar",
-        "está",
-        "null",
-        "balança",
         "anexo",
-        "portaria",
-        "sistêmico",
-        "recinto"
+        "está",
+        "faturamento",
+        "tentar",
+        "nota",
+        "fiscal",
+        "boa",
+        "api",
+        "módulo"
       ],
       "ids_chamados": [
         "119111",
+        "121425",
+        "122504",
         "122742",
+        "122706",
         "126296",
         "127177",
+        "129957",
         "130632",
+        "130291",
         "130877",
         "131095",
+        "131300",
         "131307",
         "130682"
       ],
       "chamados_viz": [
         {
           "id": "119111",
-          "x": 15.73437786102295,
-          "y": 4.8734965324401855,
+          "x": 17.591825485229492,
+          "y": 2.6194255352020264,
+          "prob": 1.0
+        },
+        {
+          "id": "121425",
+          "x": 18.256141662597656,
+          "y": 1.7107888460159302,
+          "prob": 1.0
+        },
+        {
+          "id": "122504",
+          "x": 18.1727237701416,
+          "y": 1.6382250785827637,
           "prob": 1.0
         },
         {
           "id": "122742",
-          "x": 15.540343284606934,
-          "y": 4.64677095413208,
+          "x": 17.627870559692383,
+          "y": 2.5821633338928223,
+          "prob": 1.0
+        },
+        {
+          "id": "122706",
+          "x": 17.75541114807129,
+          "y": 1.0665520429611206,
           "prob": 1.0
         },
         {
           "id": "126296",
-          "x": 15.504891395568848,
-          "y": 4.23914909362793,
-          "prob": 0.9567
-        },
-        {
-          "id": "127177",
-          "x": 15.960649490356445,
-          "y": 3.920198440551758,
-          "prob": 0.9062
-        },
-        {
-          "id": "130632",
-          "x": 15.762701034545898,
-          "y": 5.210205078125,
+          "x": 17.335359573364258,
+          "y": 2.1546478271484375,
           "prob": 1.0
         },
         {
+          "id": "127177",
+          "x": 17.22917366027832,
+          "y": 1.824187159538269,
+          "prob": 1.0
+        },
+        {
+          "id": "129957",
+          "x": 18.651973724365234,
+          "y": 1.279080867767334,
+          "prob": 1.0
+        },
+        {
+          "id": "130632",
+          "x": 18.18368148803711,
+          "y": 2.9352917671203613,
+          "prob": 0.9521
+        },
+        {
+          "id": "130291",
+          "x": 18.53836441040039,
+          "y": 1.029317855834961,
+          "prob": 0.976
+        },
+        {
           "id": "130877",
-          "x": 15.976184844970703,
-          "y": 4.785200119018555,
-          "prob": 0.9155
+          "x": 17.59401512145996,
+          "y": 2.1756348609924316,
+          "prob": 1.0
         },
         {
           "id": "131095",
-          "x": 15.745553016662598,
-          "y": 4.575925350189209,
+          "x": 17.421689987182617,
+          "y": 2.5850231647491455,
+          "prob": 1.0
+        },
+        {
+          "id": "131300",
+          "x": 18.36180877685547,
+          "y": 1.384367823600769,
           "prob": 1.0
         },
         {
           "id": "131307",
-          "x": 16.037612915039062,
-          "y": 4.306175231933594,
-          "prob": 0.9567
+          "x": 17.770151138305664,
+          "y": 1.9585351943969727,
+          "prob": 1.0
         },
         {
           "id": "130682",
-          "x": 15.805489540100098,
-          "y": 5.3498382568359375,
-          "prob": 1.0
+          "x": 18.003719329833984,
+          "y": 2.6983439922332764,
+          "prob": 0.9521
         }
       ],
-      "titulo": "Erro Sistêmico no API Recintos SARA",
-      "descricao": "Impacto funcional: usuários não conseguem acessar módulos logísticos do SARA devido a falhas de integração com o API Recintos e erros de autenticação. A indisponibilidade afeta recebimento, pesagem, portaria e demais operações, gerando lentidão e interrupções no fluxo de trabalho.",
+      "titulo": "Erro Sistêmico no Faturamento do SARA",
+      "descricao": "Usuários relatam indisponibilidade e erros ao acessar o módulo de faturamento do SARA, incluindo falha na geração de notas fiscais, recusa de NFs e processamento de faturamento complementar. O impacto é atraso no faturamento, pendências de cobrança e dificuldades no fechamento contábil, afetando operações logísticas e prazos de entrega.",
       "tags": [
         "SARA",
+        "Faturamento",
         "Erro Sistêmico",
-        "Logística",
-        "Integrações",
-        "Indisponibilidade",
-        "API Recintos",
-        "Autenticação"
+        "Logística"
       ],
-      "analise_racional": "A partir dos termos recorrentes e serviços, o tema dominante é Erro Sistêmico/Indisponibilidade na área Logística do SARA, com foco em integrações e API Recintos; amostras indicam falhas de autenticação/integração em módulos logísticos (Portaria, Pesagem, Balança) e problemas de comunicação com serviços externos."
+      "analise_racional": "O cluster é dominado por ocorrências de ERRO SISTÊMICO no SARA com foco no faturamento/logística, incluindo geração de notas, recusa de NFs e processamento de faturamento. As amostras indicam impacto direto no processamento de faturamento e nas operações logísticas, sugerindo padrão único de falha sistêmica ligada ao módulo de faturamento."
     },
     {
-      "cluster_id": 10,
-      "metricas": {
-        "volume": 7,
-        "top_servicos": {
-          "PROCESSAMENTO MANUAL DE ARQUIVOS": 3,
-          "TRATATIVA INTERNA": 1,
-          "ANALISE DE CASOS": 1,
-          "EXPEDIÇÃO": 1,
-          "INTEGRAÇÕES": 1
-        },
-        "top_subareas": {
-          "LOGISTICA": 7
-        },
-        "top_solicitantes": {
-          "Henrique Jose da Silva": 6,
-          "Wilson Pereira dos Santos": 1
-        },
-        "top_status": {
-          "Não Informado": 6,
-          "Finalizado": 1
-        },
-        "timeline": [
-          {
-            "mes": "2025-08",
-            "qtd": 1
-          },
-          {
-            "mes": "2025-09",
-            "qtd": 2
-          },
-          {
-            "mes": "2025-10",
-            "qtd": 1
-          },
-          {
-            "mes": "2025-11",
-            "qtd": 1
-          },
-          {
-            "mes": "2026-01",
-            "qtd": 2
-          }
-        ],
-        "sazonalidade": [
-          {
-            "dia": "Seg",
-            "qtd": 2
-          },
-          {
-            "dia": "Ter",
-            "qtd": 1
-          },
-          {
-            "dia": "Qua",
-            "qtd": 3
-          },
-          {
-            "dia": "Sex",
-            "qtd": 1
-          }
-        ],
-        "tendencia": {
-          "tipo": "Crescente",
-          "variacao_pct": 100.0,
-          "alerta": true,
-          "detalhe": "Volume crescente de 1 para 2 na última semana."
-        },
-        "concentracao": {
-          "tipo": "Normal",
-          "ratio": 0.29,
-          "usuarios_unicos": 2
-        }
-      },
-      "amostras_texto": [
-        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: AC/ WILSON - ETIQUETAS DE D.A COM ERRO DE EXPEDIÇÃO PARCIAL. DESCRIÇÃO DETALHADA: ETIQUETA DE D.A COM ERRO AO CARREGAR ETIQUETAS COM QUANTIDADE PARCIAL, A MESMA NÃO ACEITA SER CARREGADA PARCIAL IMPOSSIBILITANDO O FECHAMENTO DA O.S. AC/ WILSON",
-        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: A/C WILSON, Divergência em relatórios de Entrada de DTA's. DESCRIÇÃO DETALHADA: Foi feita a busca do histórico de entrada de DTA pelo Módulo Relatório porém no momento que está gerando a planilha ocorre erros, e quando ela é gerada a quantidade que temos é inferior ao saldo das planilhas manuais.",
-        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: AC/WILSON - ERRO AO EXECUTAR O.S DE SOBRE RODAS NO OPERACIONAL. DESCRIÇÃO DETALHADA: SEGUE O ERRO EM ANEXO, AS O.S FECHAM PORÉM APARECE O ERRO, É PRECISO ATUALIZAR A PÁGINA PARA A O.S SUMIR",
-        "SISTEMA: SARA | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO DESCONSOLIDAR LOTE / AC WILSON. DESCRIÇÃO DETALHADA: AC/WILSON FOI FEITA O ESTORNO DA DESCONSOLIDAÇÃO DO LOTE PARA AJUSTAR A QUANTIDADE DE ITENS, PORÉM AO EFETUAR NOVAMENTE A DESCONSOLIDAÇÃO PARA SEGUIR COM O PROCESSO ESTÁ DANDOS OS SEGUINTES ERRO, SEGUE EM ANEXO. WILSON JÁ ESTÁ CIENTE DO CASO",
-        "SISTEMA: SARA | SERVIÇO: INTEGRAÇÕES | SUB-ÁREA: LOGISTICA | TÍTULO: AC/WILSON Transit Time não está funcionando. DESCRIÇÃO DETALHADA: TEMOS VÁRIAS DTA'S EM TRANSITO PORÉM APENAS 1 APARECE NO TRANSIT TIME",
-        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: Erro OA fechar OS no Coletor Telnet - ZOC. DESCRIÇÃO DETALHADA: A cada fechamento de OS no ZOC o sistema emite uma mensagem de erro, não é impeditivo, mas precisa ser verificado o porque da mensagem e corrigi-la. Abertura interna Wilson Santos mesmo analisará Atencisoamente Wilson Santos",
-        "SISTEMA: SARA | SERVIÇO: EXPEDIÇÃO | SUB-ÁREA: LOGISTICA | TÍTULO: A/C WILSON, ERRO AO LIBERAR SALDO DE D.I/D.A. DESCRIÇÃO DETALHADA: PROBLEMA RESOLVIDO RAPIDAMENTE PELO WILSON"
-      ],
-      "top_keywords": [
-        "wilson",
-        "erro",
-        "sara",
-        "sub",
-        "área",
-        "logistica",
-        "porém",
-        "está",
-        "não",
-        "quantidade",
-        "processamento",
-        "manual",
-        "arquivos",
-        "parcial",
-        "dta"
-      ],
-      "ids_chamados": [
-        "117877",
-        "120347",
-        "121812",
-        "125011",
-        "127796",
-        "133107",
-        "133396"
-      ],
-      "chamados_viz": [
-        {
-          "id": "117877",
-          "x": 16.921321868896484,
-          "y": 4.174380302429199,
-          "prob": 0.7964
-        },
-        {
-          "id": "120347",
-          "x": 17.20873260498047,
-          "y": 4.322571754455566,
-          "prob": 1.0
-        },
-        {
-          "id": "121812",
-          "x": 17.37010955810547,
-          "y": 4.877811431884766,
-          "prob": 1.0
-        },
-        {
-          "id": "125011",
-          "x": 16.980012893676758,
-          "y": 4.6348185539245605,
-          "prob": 0.7964
-        },
-        {
-          "id": "127796",
-          "x": 17.27572250366211,
-          "y": 4.446627616882324,
-          "prob": 1.0
-        },
-        {
-          "id": "133107",
-          "x": 17.35452651977539,
-          "y": 4.601902008056641,
-          "prob": 1.0
-        },
-        {
-          "id": "133396",
-          "x": 16.885351181030273,
-          "y": 4.646484851837158,
-          "prob": 0.7978
-        }
-      ],
-      "titulo": "Erro no Processamento Manual de Arquivos Logística",
-      "descricao": "Impacto funcional: usuários enfrentam falhas durante o processamento de arquivos na área de logística, impedindo o fechamento de ordens (OS), geração de planilhas/relatórios e liberação de saldos de D.I/D.A. O problema abrange divergência de quantidades, etiquetas com erro, e mensagens de erro ao executar operações, afetando expedição, conferência e envio de DTA/etiquetas.",
-      "tags": [
-        "Erro",
-        "Processamento Manual de Arquivos",
-        "Logística",
-        "SARA",
-        "Wilson"
-      ],
-      "analise_racional": "Análise aponta repetição do serviço 'PROCESSAMENTO MANUAL DE ARQUIVOS' com foco em LOGÍSTICA e ocorrências de 'ERRO' envolvendo o usuário Wilson. Dado que termos como 'erro' e 'quantidade' aparecem com alta frequência, o PADRÃO dominante é falha de processamento na logística, com variações em etiquetas, O.S., DTA e reconciliações de lote. Outras amostras replicam o mesmo tema, apenas com rótulos diversos, portanto consolide como erro de processamento manual na logística."
-    },
-    {
-      "cluster_id": 11,
+      "cluster_id": 12,
       "metricas": {
         "volume": 6,
         "top_servicos": {
@@ -2166,325 +2293,74 @@
       "chamados_viz": [
         {
           "id": "119047",
-          "x": 15.969354629516602,
-          "y": 1.482660174369812,
+          "x": 16.80030059814453,
+          "y": -0.8423862457275391,
           "prob": 1.0
         },
         {
           "id": "124685",
-          "x": 15.985640525817871,
-          "y": 1.7520428895950317,
+          "x": 16.906166076660156,
+          "y": -0.6984714269638062,
           "prob": 1.0
         },
         {
           "id": "124943",
-          "x": 15.835404396057129,
-          "y": 1.6369413137435913,
-          "prob": 0.8042
+          "x": 16.471532821655273,
+          "y": -0.694014847278595,
+          "prob": 1.0
         },
         {
           "id": "124939",
-          "x": 16.183286666870117,
-          "y": 1.4336402416229248,
+          "x": 16.658761978149414,
+          "y": -0.6594573855400085,
           "prob": 1.0
         },
         {
           "id": "125340",
-          "x": 16.116256713867188,
-          "y": 1.5452673435211182,
+          "x": 16.872095108032227,
+          "y": -1.0070312023162842,
           "prob": 1.0
         },
         {
           "id": "129715",
-          "x": 16.098033905029297,
-          "y": 1.6327471733093262,
+          "x": 16.783409118652344,
+          "y": -0.934706449508667,
           "prob": 1.0
         }
       ],
-      "titulo": "Ajuste de Datas de OS Logística",
-      "descricao": "Impacto funcional: datas incorretas de início/fim e saída comprometem a rastreabilidade de lotes, cronogramas de entrega e fechamento de ordens. Usuários precisam de correções retroativas, geralmente por meio de processamento manual de arquivos, gerando retrabalho e possíveis atrasos no módulo logístico.",
+      "titulo": "Ajuste de Datas em TOTVS RA",
+      "descricao": "Usuários precisam corrigir datas de início, fim e saída de ordens/lotess para refletir registros corretos; quando apenas a data final fica gravada, há divergências que impactam o processamento de arquivos, o controle de lotes na logística, a retificação documental e a geração de relatórios, potencialmente atrasando tratativas internas e auditorias.",
       "tags": [
+        "Ajuste de Data",
+        "Totvs RA",
         "Logística",
-        "Ajuste de Datas",
-        "Retroação",
         "Processamento Manual de Arquivos",
-        "SARA"
+        "Análise de Caso"
       ],
-      "analise_racional": "Domínio principal identificado nas amostras: necessidade de ajuste/retroação de datas (início, fim e saída) em ordens de serviço e lotes dentro da logística, frequentemente via processamento manual de arquivos e análise de caso. Termos recorrentes como 'data', 'início', 'final', 'ajuste' corroboram esse tema. Outras categorias aparecem apenas como apoio (analise de caso, erro operacional, cadastro), mas não alteram o tema dominante."
-    },
-    {
-      "cluster_id": 12,
-      "metricas": {
-        "volume": 4,
-        "top_servicos": {
-          "TRATATIVA INTERNA": 2,
-          "ANALISE DE CASOS": 1,
-          "PROCESSAMENTO MANUAL DE ARQUIVOS": 1
-        },
-        "top_subareas": {
-          "LOGISTICA": 4
-        },
-        "top_solicitantes": {
-          "Henrique Jose da Silva": 3,
-          "Maycon Luis Miranda": 1
-        },
-        "top_status": {
-          "Finalizado": 2,
-          "Não Informado": 2
-        },
-        "timeline": [
-          {
-            "mes": "2025-08",
-            "qtd": 2
-          },
-          {
-            "mes": "2025-09",
-            "qtd": 1
-          },
-          {
-            "mes": "2025-10",
-            "qtd": 1
-          }
-        ],
-        "sazonalidade": [
-          {
-            "dia": "Seg",
-            "qtd": 2
-          },
-          {
-            "dia": "Qua",
-            "qtd": 1
-          },
-          {
-            "dia": "Qui",
-            "qtd": 1
-          }
-        ],
-        "tendencia": {
-          "tipo": "Estável",
-          "variacao_pct": 0.0,
-          "alerta": false,
-          "detalhe": "Volume estável de 1 para 1 na última semana."
-        },
-        "concentracao": {
-          "tipo": "Normal",
-          "ratio": 0.5,
-          "usuarios_unicos": 2
-        }
-      },
-      "amostras_texto": [
-        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: ETIQUETA SEM SALDO. DESCRIÇÃO DETALHADA: ETIQUETA CLIENTE ZEUSAGRO ESTÁ COM ERRO OCASIONANDO FALHA AO FINALIZAR A OS DE EXPEDIÇÃO",
-        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO EXECUTAR O.S DE D.A. DESCRIÇÃO DETALHADA: ZOCC ACUSA ERRO DE SALDO AO FAZER CARREGAMENTO DE ETIQUETA",
-        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: Etiquetas com erro ao ser executada no ZOC. DESCRIÇÃO DETALHADA: A/C Wilson Segue prints, Etiquetas com erro ao ser executada no ZOC",
-        "SISTEMA: SARA | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO IMPRESSÃO ETIQUETAS SARA. DESCRIÇÃO DETALHADA: ERRO EM ANEXO AO TENTAR IMPRIMIR ETIQUETAS DE SERIE"
-      ],
-      "top_keywords": [
-        "erro",
-        "sara",
-        "sub",
-        "área",
-        "logistica",
-        "etiquetas",
-        "etiqueta",
-        "tratativa",
-        "interna",
-        "saldo",
-        "executada",
-        "zoc",
-        "cliente",
-        "zeusagro",
-        "está"
-      ],
-      "ids_chamados": [
-        "118850",
-        "119371",
-        "119757",
-        "124739"
-      ],
-      "chamados_viz": [
-        {
-          "id": "118850",
-          "x": 18.055665969848633,
-          "y": 4.815411567687988,
-          "prob": 1.0
-        },
-        {
-          "id": "119371",
-          "x": 17.7962703704834,
-          "y": 4.767033100128174,
-          "prob": 1.0
-        },
-        {
-          "id": "119757",
-          "x": 17.59486961364746,
-          "y": 5.398360729217529,
-          "prob": 1.0
-        },
-        {
-          "id": "124739",
-          "x": 17.646827697753906,
-          "y": 5.049123764038086,
-          "prob": 1.0
-        }
-      ],
-      "titulo": "Erro De Saldo Ao Gerar Etiquetas Logísticas",
-      "descricao": "Usuários da área logística enfrentam falha de saldo ao gerar e imprimir etiquetas no módulo SARA, o que impede a finalização de ordens de expedição e gera atrasos no envio de mercadorias.",
-      "tags": [
-        "SARA",
-        "Logística",
-        "Etiquetas",
-        "Saldo",
-        "Tratativa Interna",
-        "Analise de Casos",
-        "Processamento Manual de Arquivos"
-      ],
-      "analise_racional": "Resumo: padrões mostrados pelas amostras indicam falha recorrente de saldo ao processar etiquetas logísticas no SARA, principalmente durante tratativas internas, com suporte a processos de analise de casos e processamento manual de arquivos."
+      "analise_racional": "Termos recorrentes indicam necessidade de correção/retroação de datas em ordens de serviço e lotes no módulo SARA-TOTVS RA, especialmente na logística. O tema dominante é ajuste de datas (início/final/saída) com processamento manual de arquivos e análise de caso; outros serviços aparecem como cadastro/erro operacional, porém o desfecho é data incorreta."
     },
     {
       "cluster_id": 13,
       "metricas": {
-        "volume": 4,
+        "volume": 6,
         "top_servicos": {
-          "ERRO SISTÊMICO": 2,
-          "CADASTRO": 1,
-          "PROBLEMAS DE IMPRESSÃO": 1
-        },
-        "top_subareas": {
-          "LOGISTICA": 4
-        },
-        "top_solicitantes": {
-          "Wemelly Barros de Souza": 2,
-          "Livania Maria Rossetto Paschoalotto": 1,
-          "Renato Pereira de Moraes Neto": 1
-        },
-        "top_status": {
-          "Não Informado": 4
-        },
-        "timeline": [
-          {
-            "mes": "2025-09",
-            "qtd": 2
-          },
-          {
-            "mes": "2025-10",
-            "qtd": 1
-          },
-          {
-            "mes": "2025-12",
-            "qtd": 1
-          }
-        ],
-        "sazonalidade": [
-          {
-            "dia": "Seg",
-            "qtd": 3
-          },
-          {
-            "dia": "Qui",
-            "qtd": 1
-          }
-        ],
-        "tendencia": {
-          "tipo": "Estável",
-          "variacao_pct": 0.0,
-          "alerta": false,
-          "detalhe": "Volume estável de 1 para 1 na última semana."
-        },
-        "concentracao": {
-          "tipo": "Normal",
-          "ratio": 0.75,
-          "usuarios_unicos": 3
-        }
-      },
-      "amostras_texto": [
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: IMPRESSÃO DE ETIQUETA DE LOCAÇÃO - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Ao tentarmos realizar a impressão das etiquetas de locação por rua/ruas específicas é exibida a mensagem que a célula não possui vínculo com o armazém, conforme imagem anexada. Ex: Rua 00001 a Rua 00002 Atualmente só conseguimos imprimir as etiquetas de todas as ruas da quadra, selecionando a opção destacada na imagem. Gostaríamos de solicitar uma analise da situação informada, para que não haja desperdício ao gerar etiquetas já impressas. Caminho: Módulo operacional - Impressões - Etiqueta de localização",
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: GERAÇÃO DE TFA POR ETIQUETA - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Ao tentarmos realizar o registro do termo de avaria pelo campo de etiqueta no coletor, apresenta a mensagem anexada. Dessa forma não conseguimos seguir com a geração do termo, favor verificar.",
-        "SISTEMA: SARA | SERVIÇO: PROBLEMAS DE IMPRESSÃO | SUB-ÁREA: LOGISTICA | TÍTULO: Impressão de etiquetas pelo coletor web.. DESCRIÇÃO DETALHADA: Solicitamos a impressão das etiquetas confeccionados pelos conferentes no coletor web, hoje o coletor reconhece etiqueta mais não realiza impressão.",
-        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: IMPRIMIR  BOLETO  CEVS . DESCRIÇÃO DETALHADA: BOM DIA , Favor disponibilidade no modulo portaria - consulta - impressão boleto de cevs ."
-      ],
-      "top_keywords": [
-        "impressão",
-        "etiqueta",
-        "etiquetas",
-        "sara",
-        "sub",
-        "área",
-        "logistica",
-        "coletor",
-        "não",
-        "rua",
-        "erro",
-        "sistêmico",
-        "geração",
-        "totvs",
-        "prezados"
-      ],
-      "ids_chamados": [
-        "125118",
-        "121865",
-        "129339",
-        "119823"
-      ],
-      "chamados_viz": [
-        {
-          "id": "125118",
-          "x": 18.283405303955078,
-          "y": 5.043883800506592,
-          "prob": 1.0
-        },
-        {
-          "id": "121865",
-          "x": 18.209339141845703,
-          "y": 5.348586082458496,
-          "prob": 1.0
-        },
-        {
-          "id": "129339",
-          "x": 17.93846893310547,
-          "y": 5.676915645599365,
-          "prob": 1.0
-        },
-        {
-          "id": "119823",
-          "x": 18.109098434448242,
-          "y": 5.39418888092041,
-          "prob": 1.0
-        }
-      ],
-      "titulo": "Falha na Impressão de Etiquetas de Localização",
-      "descricao": "Usuários da área de Logística não conseguem imprimir etiquetas de localização por ruas específicas; podem ocorrer mensagens de erro ao vincular células com armazéns ou a impressão pode não iniciar, gerando atrasos na rotulagem, conferência e expedição, além de possível desperdício de etiquetas já impressas.",
-      "tags": [
-        "impressão",
-        "etiqueta",
-        "logistica",
-        "coletor",
-        "rua",
-        "sara"
-      ],
-      "analise_racional": "Análise dos termos recorrentes aponta foco em impressão de etiquetas na logística (etiqueta, etiquetas, impressão, coletor, rua) dentro do sistema SARA. Embora haja ocorrência de cadastro, o tema dominante é falha/erro na impressão de etiquetas de localização, em especial para ruas, sugerindo um padrão único de problema de impressão de etiquetas na área/logística."
-    },
-    {
-      "cluster_id": 14,
-      "metricas": {
-        "volume": 7,
-        "top_servicos": {
-          "ERRO SISTÊMICO": 2,
-          "TRATATIVA INTERNA": 1,
+          "TRATATIVA INTERNA": 2,
           "PROCESSAMENTO MANUAL DE ARQUIVOS": 1,
+          "ERRO SISTÊMICO": 1,
           "ERRO OPERACIONAL": 1,
           "MELHORIAS": 1
         },
         "top_subareas": {
-          "LOGISTICA": 7
+          "LOGISTICA": 6
         },
         "top_solicitantes": {
-          "Wemelly Barros de Souza": 3,
+          "Wemelly Barros de Souza": 2,
           "Evelly Fernandes da Silva": 2,
           "Elusiane Cristina de Albuquerque": 1,
-          "Marcia Viviane do Nascimento Silva Guedes": 1
+          "Thiago Valdemir": 1
         },
         "top_status": {
-          "Não Informado": 5,
+          "Não Informado": 4,
           "Finalizado": 1,
           "Aberto": 1
         },
@@ -2494,16 +2370,16 @@
             "qtd": 2
           },
           {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
             "mes": "2025-10",
-            "qtd": 2
+            "qtd": 1
           },
           {
             "mes": "2025-12",
             "qtd": 2
-          },
-          {
-            "mes": "2026-01",
-            "qtd": 1
           }
         ],
         "sazonalidade": [
@@ -2517,7 +2393,7 @@
           },
           {
             "dia": "Qui",
-            "qtd": 3
+            "qtd": 2
           },
           {
             "dia": "Sab",
@@ -2525,273 +2401,152 @@
           }
         ],
         "tendencia": {
-          "tipo": "Decrescente",
-          "variacao_pct": -50.0,
-          "alerta": false,
-          "detalhe": "Volume decrescente de 2 para 1 na última semana."
+          "tipo": "Crescente",
+          "variacao_pct": 100.0,
+          "alerta": true,
+          "detalhe": "Volume crescente de 1 para 2 na última semana."
         },
         "concentracao": {
           "tipo": "Normal",
-          "ratio": 0.57,
+          "ratio": 0.67,
           "usuarios_unicos": 4
         }
       },
       "amostras_texto": [
         "SISTEMA: SARA | SERVIÇO: MELHORIAS | SUB-ÁREA: LOGISTICA | TÍTULO: FECHAMENTO DO LOTE (GERAL)  - TOTVS RA . DESCRIÇÃO DETALHADA: Bom dia, prezados! Notar que em serviços de container, não há a opção de fechar o lote manualmente e incluirmos data/hora. Em casos que é necessário realizar a baixa da OS com data retroativa, o sistema não permite, pois vai contra a data de fechamento do lote que é gerado automaticamente. Favor conceder permissão para realizar os ajustes necessários para conseguirmos dar andamento a esses tipos de processos. Segue situação descrita no chamado 128815.",
         "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: REABERTURA DE OS - TOTVS RA . DESCRIÇÃO DETALHADA: Bom dia, prezados! O processo físico foi \"sobre rodas\" e estamos tentando realizar o ajuste no sistema, para esses casos é necessário reabrir os serviços lançados para o container. Sendo que ao tentarmos realizar o estorno da OS de carga é apresentada a mensagem anexada. Verificamos no sistema e não identificamos o problema relacionado a data, poderia nos instruir para que possamos seguir com o processo? Lote: 202500005355 OS: 65987 Container: CXDU1983050",
-        "SISTEMA: SARA | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: LOGISTICA | TÍTULO: FECHAMENTO DO LOTE - TOTVS RA . DESCRIÇÃO DETALHADA: Bom dia, prezados! Solicitação já tratada com Wilson, apenas para registro. Favor realizar ajuste na data / hora do fechamento do lote para que possamos seguir a finalização com a data retroativa. Na tratativa entre o time aduaneiro e TI, a OS foi reaberta para ajuste no processo. OS: 70972 / 71067 LOTES: 202500006617 202500006593 202500006618 202500006619",
         "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: FECHAMENTO DE OS - TFA QUANT. DIVERGENTE (TOTVS RA). DESCRIÇÃO DETALHADA: Boa tarde, prezados!! Formalizando tratativa, Ao tentar fechar a O.S de desova apresentava a mensagem anexada, \"necessário registrar termo de falta/ execesso\". No coletor ja havia sido criado o termo informando a divergência de quantidade com o cod. 1V. Solicitamos uma instrução de como proceder nesses casos, para seguirmos com o fechamento do serviço. Lote: 202500003869 OS 59615",
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: NÃO ESTÃO CONSEGUINDO REALIZAR A BAIXA DA OS. DESCRIÇÃO DETALHADA: Boa tarde! Notar que não estamos conseguindo realizar a baixa da OS 66225, informa que existe container pendente. Conforme print em anexo.",
-        "SISTEMA: SARA | SERVIÇO: OS INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: OS DE CONFERENCIA -  TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Iniciou o lançamento de OS de conferencia em sistema, que até então era realizado via planilha. Trata-se das cargas/ containers a serem inspecionados pelos órgãos anuentes. Ao tentar finalizar a baixa nesse tipo de OS, é exibido a mensagem anexada, sobre movimentação. Realizamos testes junto ao TI, relacionado ao georreferenciamento para área especifica e OS de movimentação, mas será necessário de outras analises e testes para entender o bloqueio e conseguirmos seguir com a baixa.",
+        "SISTEMA: SARA | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: LOGISTICA | TÍTULO: FECHAMENTO DO LOTE - TOTVS RA . DESCRIÇÃO DETALHADA: Bom dia, prezados! Solicitação já tratada com Wilson, apenas para registro. Favor realizar ajuste na data / hora do fechamento do lote para que possamos seguir a finalização com a data retroativa. Na tratativa entre o time aduaneiro e TI, a OS foi reaberta para ajuste no processo. OS: 70972 / 71067 LOTES: 202500006617 202500006593 202500006618 202500006619",
+        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: FINALIZAÇÃO DE OS DE VEICULO BI-TREM. DESCRIÇÃO DETALHADA: BOM DIA! SOLICITO AJUDA NA FINALIZAÇÃO DA OS 62645, O SISTEMA SO ESTÁ PERMITINDO A BAIXA DE UMA DAS UNIDADES, A UNIDADE ABAIXO NÃO MOSTRA O ESTOQUE, POIS O SISTEMA NÃO ESTÁ FINALIZANDO. LOTE:202500004679 CONTAINER:MSDU4754204",
         "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: . DESCRIÇÃO DETALHADA: Bom dia, para lançamento de serviços de locação de conteiner nos lotes, gentileza bloquear lançar a data retroativa. se possível mander o campo sempre o a data atual do lançamento."
       ],
       "top_keywords": [
-        "área",
+        "lote",
         "data",
         "sara",
         "sub",
+        "área",
         "logistica",
-        "lote",
-        "realizar",
         "fechamento",
+        "não",
+        "realizar",
+        "tratativa",
         "totvs",
         "prezados",
-        "não",
-        "baixa",
-        "necessário",
         "container",
-        "tratativa"
+        "necessário",
+        "casos"
       ],
       "ids_chamados": [
         "118085",
         "118835",
-        "124518",
+        "121129",
         "125825",
         "128815",
-        "128821",
-        "133082"
+        "128821"
       ],
       "chamados_viz": [
         {
           "id": "118085",
-          "x": 16.465595245361328,
-          "y": 2.4689176082611084,
-          "prob": 1.0
+          "x": 17.61471939086914,
+          "y": -0.05135742202401161,
+          "prob": 0.6924
         },
         {
           "id": "118835",
-          "x": 15.655313491821289,
-          "y": 1.8073241710662842,
+          "x": 16.654340744018555,
+          "y": -0.25978899002075195,
           "prob": 1.0
         },
         {
-          "id": "124518",
-          "x": 16.644323348999023,
-          "y": 3.2092316150665283,
-          "prob": 0.9534
+          "id": "121129",
+          "x": 17.26950454711914,
+          "y": 0.29719114303588867,
+          "prob": 0.6766
         },
         {
           "id": "125825",
-          "x": 16.16582489013672,
-          "y": 2.3401215076446533,
+          "x": 17.124542236328125,
+          "y": 0.06874965131282806,
           "prob": 1.0
         },
         {
           "id": "128815",
-          "x": 16.446718215942383,
-          "y": 2.1513619422912598,
+          "x": 17.183155059814453,
+          "y": -0.2838742733001709,
           "prob": 1.0
         },
         {
           "id": "128821",
-          "x": 15.922416687011719,
-          "y": 2.0135791301727295,
+          "x": 17.15082359313965,
+          "y": -0.20096339285373688,
           "prob": 1.0
-        },
-        {
-          "id": "133082",
-          "x": 16.61351776123047,
-          "y": 2.689410448074341,
-          "prob": 0.9534
         }
       ],
-      "titulo": "Fechamento de Lote no TOTVS RA",
-      "descricao": "Usuários da área de logística não conseguem realizar o fechamento de lotes nem registrar datas/hora retroativas no TOTVS RA via SARA. Isso impede a finalização de ordens de serviço, a baixa de movimentações e a reconciliação de itens, resultando em atrasos na conferência de cargas, liberação de containers e fechamento de processos de estoque.",
+      "titulo": "Fechamento De OS E Lote Com Data Retroativa",
+      "descricao": "Impacto funcional: usuários não conseguem fechar OS e lotes com data retroativa; o fechamento do lote é bloqueado pela data gerada automaticamente, atrasando a baixa de unidades e o encerramento de serviços. O fluxo logistico fica emperrado, exigindo tratativas internas, ajustes manuais de data/horário e, em alguns casos, reabertura de OS, gerando retrabalho e atrasos no processamento.",
       "tags": [
-        "logistica",
-        "totvs",
-        "sara",
         "lote",
+        "data",
+        "logistica",
         "fechamento",
         "OS",
-        "erro_sistemico",
-        "tratativa_interna",
-        "processamento_manual"
+        "tratativa interna",
+        "TOTVS RA",
+        "erro operacional"
       ],
-      "analise_racional": "Os termos recorrentes (lote, fechamento, data, TOTVS RA, logística, SARA) indicam padrão de falha ao fechar lotes e ajustar datas/OS no TOTVS RA. As amostras descrevem reaberturas, baixa de OS e divergências, apontando impacto operacional na logística (conferência, recebimento, liberação de containers) e necessidade de ajustes manuais ou tratativas internas."
+      "analise_racional": "Análise baseada nos termos recorrentes: lote, data, logística, fechamento, tratativa interna, OS. As amostras repetem a demanda por ajustes de data/horário para fechamento de OS e lotes, incluindo pedidos de permissões e reaberturas, indicando um padrão único: dificuldade/limitação no fechamento com data retroativa."
     },
     {
-      "cluster_id": 15,
+      "cluster_id": 14,
       "metricas": {
-        "volume": 4,
+        "volume": 19,
         "top_servicos": {
-          "ERRO SISTÊMICO": 3,
-          "INDISPONIBILIDADE": 1
+          "ERRO SISTÊMICO": 9,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 5,
+          "TRATATIVA INTERNA": 1,
+          "INDISPONIBILIDADE": 1,
+          "ANALISE DE CASO": 1
         },
         "top_subareas": {
-          "LOGISTICA": 4
+          "LOGISTICA": 19
         },
         "top_solicitantes": {
+          "Wemelly Barros de Souza": 10,
           "Katianne Jesus Rodrigues de Franca Cortez": 3,
-          "Maycon Luis Miranda": 1
+          "Maycon Luis Miranda": 2,
+          "Marcia Viviane do Nascimento Silva Guedes": 2,
+          "Thiago Valdemir": 1
         },
         "top_status": {
-          "Não Informado": 4
+          "Não Informado": 19
         },
         "timeline": [
           {
             "mes": "2025-09",
-            "qtd": 3
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 8
           },
           {
             "mes": "2025-11",
+            "qtd": 6
+          },
+          {
+            "mes": "2026-01",
             "qtd": 1
           }
         ],
         "sazonalidade": [
           {
             "dia": "Seg",
-            "qtd": 2
+            "qtd": 3
           },
           {
             "dia": "Ter",
-            "qtd": 1
-          },
-          {
-            "dia": "Qui",
-            "qtd": 1
-          }
-        ],
-        "tendencia": {
-          "tipo": "Estável",
-          "variacao_pct": 0.0,
-          "alerta": false,
-          "detalhe": "Volume estável de 1 para 1 na última semana."
-        },
-        "concentracao": {
-          "tipo": "Normal",
-          "ratio": 0.5,
-          "usuarios_unicos": 2
-        }
-      },
-      "amostras_texto": [
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: Erro ao gerar relatório de CÁLCULO POTENCIAL DE RECEITA. DESCRIÇÃO DETALHADA: Bom dia! Ao gerar o relatório de Cálculo Potencial de Receita, o sistema apresentou erro no cálculo do lote 202400000053. Segue abaixo o erro. ------------------------------------------------------------------------------ Data da Mensagem: 22/09/2025 08:20:13 ------------------------------------------------------------------------------ Um erro não mapeado específico para o banco de dados ocorreu. Clique em detalhes para mais informações ------------------------------------------------------------------------------ Executável: C:TOTVS_SARAExecutaveisprj_mod_faturamento.exe Versão: 13.0.0.86 Sistema Operacional: Windows 10 Formulário: frmCheckList Controle: ListView1 Tipo de Exceção: EMSSQLNativeException Mensagem Original: [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Divide by zero error encountered. Código FireDAC: 1200 Level : 1 Kind : ekOther Código Nativo: 8134 Objeto : mdiModFaturamento.Query Mensagem: SQL state: 22012. Native error: 8134. Error message: [Microsoft][SQL Server Native Client 11.0][SQL Server]Divide by zero error encountered. Comando SQL executado: select distinct ini_armazenagem = dateadd(dd, 1, max(nfi_dt_periodo) ) , fim_calculo = getdate() , nfi_arm = isnull( sum( nfi_arm / nfi_cotacao), 0) , nfi_seg = isnull( sum( nfi_seg ), 0) , nfi_mov = isnull( sum( nfi_mov ), 0) , nfi_mov_man = isnull( sum( nfi_mov_man ), 0), nfi_mov_mec = isnull( sum( nfi_mov_mec ), 0), sum(nfi_qtd_periodos) nfi_qtd_periodos , sum(nfi_dias) acf_lote_dias , dias_periodo = datediff(dd, max(nfi_dt_periodo), '2025-09-22') from tab_nf_item_manual a where a.nfim_id in (15652,16808,17214) group by a.lote_id ------------------------------------------------------------------------------",
-        "SISTEMA: SARA | SERVIÇO: INDISPONIBILIDADE | SUB-ÁREA: LOGISTICA | TÍTULO: Erro ao gerar relatório de CÁLCULO POTENCIAL DE RECEITA. DESCRIÇÃO DETALHADA: Bom dia! Ao gerar o relatório de Cálculo Potencial de Receita o sistema apresentou erro no Lote 202300000053 (lote com faturamento antecipado). Abaixo segue o erro. ------------------------------------------------------------------------------ Data da Mensagem: 01/09/2025 08:18:00 ------------------------------------------------------------------------------ Um erro não mapeado específico para o banco de dados ocorreu. Clique em detalhes para mais informações ------------------------------------------------------------------------------ Executável: C:TOTVS_SARAExecutaveisprj_mod_faturamento.exe Versão: 13.0.0.86 Sistema Operacional: Windows 10 Formulário: frmCheckList Controle: ListView1 Tipo de Exceção: EMSSQLNativeException Mensagem Original: [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Divide by zero error encountered. Código FireDAC: 1200 Level : 1 Kind : ekOther Código Nativo: 8134 Objeto : mdiModFaturamento.Query Mensagem: SQL state: 22012. Native error: 8134. Error message: [Microsoft][SQL Server Native Client 11.0][SQL Server]Divide by zero error encountered. Comando SQL executado: select distinct ini_armazenagem = dateadd(dd, 1, max(nfi_dt_periodo) ) , fim_calculo = getdate() , nfi_arm = isnull( sum( nfi_arm / nfi_cotacao), 0) , nfi_seg = isnull( sum( nfi_seg ), 0) , nfi_mov = isnull( sum( nfi_mov ), 0) , nfi_mov_man = isnull( sum( nfi_mov_man ), 0), nfi_mov_mec = isnull( sum( nfi_mov_mec ), 0), sum(nfi_qtd_periodos) nfi_qtd_periodos , sum(nfi_dias) acf_lote_dias , dias_periodo = datediff(dd, max(nfi_dt_periodo), '2025-09-01') from tab_nf_item_manual a where a.nfim_id in (15652,16808) group by a.lote_id ------------------------------------------------------------------------------",
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: Erro ao gerar relatório de CÁLCULO POTENCIAL DE RECEITA. DESCRIÇÃO DETALHADA: Bom dia! Ao gerar o relatório de CÁLCULO POTENCIAL DE RECEITA, o sistema apresentou o erro abaixo: Controle: ListView1 Tipo de Exceção: EMSSQLNativeException Mensagem Original: [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Transaction (Process ID 51) was deadlocked on lock | communication buffer resources with another process and has been chosen as the deadlock victim. Rerun the transaction. Código FireDAC: 1200 Level : 1 Kind : ekRecordLocked Código Nativo: 1205 Objeto : mdiModFaturamento.Query Objeto Servidor: sp_operando_cnt_entreposto_gr_esp Mensagem: SQL state: 40001. Native error: 1205. Error message: [Microsoft][SQL Server Native Client 11.0][SQL Server]Transaction (Process ID 51) was deadlocked on lock | communication buffer resources with another process and has been chosen as the deadlock victim. Rerun the transaction. Comando SQL executado: exec sp_operando_cnt_entreposto_gr_esp :dsai_id, :lote_id, :per_ini, :per_fim, null, :tval_id Parâmetros: DSAI_ID = 202590012676756 LOTE_ID = 202500002885 PER_INI = 1 PER_FIM = 1 TVAL_ID = 8738",
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO TENTAR EDITAR DOCUMENTO DE ENTRADA. DESCRIÇÃO DETALHADA: PRINT EM ANEXO, MENSAGEM DO ERRO ABAIXO, CESV 3656: ------------------------------------------------------------------------------ Data da Mensagem: 13/11/2025 11:05:08 ------------------------------------------------------------------------------ Um erro não mapeado específico para o banco de dados ocorreu. Clique em detalhes para mais informações ------------------------------------------------------------------------------ Executável: C:TOTVS_SARAExecutaveisprj_mod_expedicao.exe Versão: 12.1.2507.5 Sistema Operacional: Windows 10 Formulário: frmModDocEntrada Controle: btbtnOK Tipo de Exceção: EMSSQLNativeException Mensagem Original: [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Conversion failed when converting the varchar value 'V' to data type int. Código FireDAC: 1200 Level : 1 Kind : ekOther Código Nativo: 245 Objeto : frmModDocEntrada.spr_proc_exp_i_lotetemp Objeto Servidor: proc_verifica_modulo11 Mensagem: SQL state: 22018. Native error: 245. Error message: [Microsoft][SQL Server Native Client 11.0][SQL Server]Conversion failed when converting the varchar value 'V' to data type int. Comando SQL executado: dbo.proc_exp_i_lotetemp Parâmetros: @RETURN_VALUE = @w_documento = 202510000000005216546SSZ999999 @w_status = I ------------------------------------------------------------------------------"
-      ],
-      "top_keywords": [
-        "sql",
-        "erro",
-        "server",
-        "sum",
-        "mensagem",
-        "native",
-        "error",
-        "isnull",
-        "firedac",
-        "microsoft",
-        "client",
-        "código",
-        "cálculo",
-        "gerar",
-        "relatório"
-      ],
-      "ids_chamados": [
-        "121790",
-        "119669",
-        "122606",
-        "127195"
-      ],
-      "chamados_viz": [
-        {
-          "id": "121790",
-          "x": 17.871261596679688,
-          "y": 2.741645097732544,
-          "prob": 1.0
-        },
-        {
-          "id": "119669",
-          "x": 17.916929244995117,
-          "y": 2.5798585414886475,
-          "prob": 1.0
-        },
-        {
-          "id": "122606",
-          "x": 17.78925132751465,
-          "y": 2.7338438034057617,
-          "prob": 1.0
-        },
-        {
-          "id": "127195",
-          "x": 17.62628173828125,
-          "y": 2.597776174545288,
-          "prob": 1.0
-        }
-      ],
-      "titulo": "Erro SQL no Cálculo Potencial de Receita",
-      "descricao": "Usuários relatam falha na geração do relatório de Cálculo Potencial de Receita. A execução de consultas SQL falha com EMSSQLNativeException (divide by zero, deadlock, conversion failed when converting varchar to int), impedindo o processamento de faturamento e o fechamento de lotes.",
-      "tags": [
-        "ERRO SISTÊMICO",
-        "LOGISTICA",
-        "SQL SERVER",
-        "EMSSQLNativeException",
-        "Divide by Zero",
-        "Deadlock",
-        "Conversão de varchar para int"
-      ],
-      "analise_racional": "Termos recorrentes indicam falha SQL no módulo de faturamento ao gerar relatórios, com EMSSQLNativeException repetidas e causas comuns como divisão por zero, deadlock e conversão de tipos."
-    },
-    {
-      "cluster_id": 16,
-      "metricas": {
-        "volume": 11,
-        "top_servicos": {
-          "PROCESSAMENTO MANUAL DE ARQUIVOS": 4,
-          "ERRO SISTÊMICO": 3,
-          "LENTIDÃO SISTÊMICA": 2,
-          "TRATATIVA INTERNA": 1,
-          "ANALISE DE CASO": 1
-        },
-        "top_subareas": {
-          "LOGISTICA": 11
-        },
-        "top_solicitantes": {
-          "Wemelly Barros de Souza": 9,
-          "Thiago Valdemir": 1,
-          "Evelly Fernandes da Silva": 1
-        },
-        "top_status": {
-          "Não Informado": 11
-        },
-        "timeline": [
-          {
-            "mes": "2025-09",
-            "qtd": 1
-          },
-          {
-            "mes": "2025-10",
-            "qtd": 6
-          },
-          {
-            "mes": "2025-11",
-            "qtd": 4
-          }
-        ],
-        "sazonalidade": [
-          {
-            "dia": "Ter",
-            "qtd": 2
+            "qtd": 3
           },
           {
             "dia": "Qua",
@@ -2799,11 +2554,15 @@
           },
           {
             "dia": "Qui",
-            "qtd": 3
+            "qtd": 4
           },
           {
             "dia": "Sex",
-            "qtd": 2
+            "qtd": 4
+          },
+          {
+            "dia": "Sab",
+            "qtd": 1
           }
         ],
         "tendencia": {
@@ -2814,164 +2573,221 @@
         },
         "concentracao": {
           "tipo": "Normal",
-          "ratio": 0.27,
-          "usuarios_unicos": 3
+          "ratio": 0.32,
+          "usuarios_unicos": 6
         }
       },
       "amostras_texto": [
+        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: Erro ao gerar relatório de CÁLCULO POTENCIAL DE RECEITA. DESCRIÇÃO DETALHADA: Bom dia! Ao gerar o relatório de Cálculo Potencial de Receita, o sistema apresentou erro no cálculo do lote 202400000053. Segue abaixo o erro. ------------------------------------------------------------------------------ Data da Mensagem: 22/09/2025 08:20:13 ------------------------------------------------------------------------------ Um erro não mapeado específico para o banco de dados ocorreu. Clique em detalhes para mais informações ------------------------------------------------------------------------------ Executável: C:TOTVS_SARAExecutaveisprj_mod_faturamento.exe Versão: 13.0.0.86 Sistema Operacional: Windows 10 Formulário: frmCheckList Controle: ListView1 Tipo de Exceção: EMSSQLNativeException Mensagem Original: [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Divide by zero error encountered. Código FireDAC: 1200 Level : 1 Kind : ekOther Código Nativo: 8134 Objeto : mdiModFaturamento.Query Mensagem: SQL state: 22012. Native error: 8134. Error message: [Microsoft][SQL Server Native Client 11.0][SQL Server]Divide by zero error encountered. Comando SQL executado: select distinct ini_armazenagem = dateadd(dd, 1, max(nfi_dt_periodo) ) , fim_calculo = getdate() , nfi_arm = isnull( sum( nfi_arm / nfi_cotacao), 0) , nfi_seg = isnull( sum( nfi_seg ), 0) , nfi_mov = isnull( sum( nfi_mov ), 0) , nfi_mov_man = isnull( sum( nfi_mov_man ), 0), nfi_mov_mec = isnull( sum( nfi_mov_mec ), 0), sum(nfi_qtd_periodos) nfi_qtd_periodos , sum(nfi_dias) acf_lote_dias , dias_periodo = datediff(dd, max(nfi_dt_periodo), '2025-09-22') from tab_nf_item_manual a where a.nfim_id in (15652,16808,17214) group by a.lote_id ------------------------------------------------------------------------------",
+        "SISTEMA: SARA | SERVIÇO: INDISPONIBILIDADE | SUB-ÁREA: LOGISTICA | TÍTULO: Erro ao gerar relatório de CÁLCULO POTENCIAL DE RECEITA. DESCRIÇÃO DETALHADA: Bom dia! Ao gerar o relatório de Cálculo Potencial de Receita o sistema apresentou erro no Lote 202300000053 (lote com faturamento antecipado). Abaixo segue o erro. ------------------------------------------------------------------------------ Data da Mensagem: 01/09/2025 08:18:00 ------------------------------------------------------------------------------ Um erro não mapeado específico para o banco de dados ocorreu. Clique em detalhes para mais informações ------------------------------------------------------------------------------ Executável: C:TOTVS_SARAExecutaveisprj_mod_faturamento.exe Versão: 13.0.0.86 Sistema Operacional: Windows 10 Formulário: frmCheckList Controle: ListView1 Tipo de Exceção: EMSSQLNativeException Mensagem Original: [FireDAC][Phys][ODBC][Microsoft][SQL Server Native Client 11.0][SQL Server]Divide by zero error encountered. Código FireDAC: 1200 Level : 1 Kind : ekOther Código Nativo: 8134 Objeto : mdiModFaturamento.Query Mensagem: SQL state: 22012. Native error: 8134. Error message: [Microsoft][SQL Server Native Client 11.0][SQL Server]Divide by zero error encountered. Comando SQL executado: select distinct ini_armazenagem = dateadd(dd, 1, max(nfi_dt_periodo) ) , fim_calculo = getdate() , nfi_arm = isnull( sum( nfi_arm / nfi_cotacao), 0) , nfi_seg = isnull( sum( nfi_seg ), 0) , nfi_mov = isnull( sum( nfi_mov ), 0) , nfi_mov_man = isnull( sum( nfi_mov_man ), 0), nfi_mov_mec = isnull( sum( nfi_mov_mec ), 0), sum(nfi_qtd_periodos) nfi_qtd_periodos , sum(nfi_dias) acf_lote_dias , dias_periodo = datediff(dd, max(nfi_dt_periodo), '2025-09-01') from tab_nf_item_manual a where a.nfim_id in (15652,16808) group by a.lote_id ------------------------------------------------------------------------------",
         "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO TENTAR REALIZAR A BAIXA DA OS - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Ao tentarmos realizar a baixa na OS de carregamento, é exibido a mensagem anexada de \"erro ao calcular o período\". Esse problema já ocorreu outra vezes, como relatado no chamado 120623. Favor tratar para que não tenhamos impactos nas liberações dos veículos. Obs: Esse caso é notado em saídas de cargas de entreposto. Situação atual referente aos dados abaixo: Lote: 202500004296 OS: 64824",
         "SISTEMA: SARA | SERVIÇO: ANALISE DE CASO | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO TENTAR REALIZAR A BAIXA DA OS - TOTVS RA ( C. 03). DESCRIÇÃO DETALHADA: Boa tarde, prezados! Ao tentarmos realizar a baixa na OS de carregamento, é exibido a mensagem anexada de \"erro ao calcular o período\". Esse problema já ocorreu outra vezes, como relatado no chamado 120623 e 122916. Favor tratar para que não tenhamos impactos nas liberações dos veículos. Obs: Esse caso é notado em saídas de cargas de entreposto. Situação atual referente aos dados abaixo: Lote: 202500004357 OS: 64907",
         "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO TENTAR REALIZAR A BAIXA DA OS - TOTVS RA ( C. 04). DESCRIÇÃO DETALHADA: Bom dia, prezados! Ao tentarmos realizar a baixa na OS de carregamento, é exibido a mensagem anexada de \"erro ao calcular o período\". Esse problema já ocorreu outra vezes, como relatado no chamado 120623, 122916 e 123099. Favor tratar para que não tenhamos impactos nas liberações dos veículos. Obs: Esse caso é notado em saídas de cargas de entreposto. Situação atual referente aos dados abaixo: Lote: 202500004947 OS: 67477",
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO TENTAR REALIZAR A BAIXA DA OS - TOTVS RA ( C. 05). DESCRIÇÃO DETALHADA: Bom dia, prezados! Ao tentarmos realizar a baixa na OS de carregamento, é exibido a mensagem anexada de \"erro ao calcular o período\". Esse problema já ocorreu outra vezes, como relatado no chamado 120623, 122916, 123099 e 125669. Obs: Esse caso é notado em saídas de cargas de entreposto. Situação atual referente aos dados abaixo: Lote: 202500004889 OS: 67645",
         "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO TENTAR REALIZAR A BAIXA DA OS - TOTVS RA ( C. 06). DESCRIÇÃO DETALHADA: Boa tarde, prezados! Ao tentarmos realizar a baixa na OS de carregamento, é exibido a mensagem anexada de \"erro ao calcular o período\", não sendo possível seguir com a baixa. Esse problema já ocorreu outra vezes, como relatado no chamado 120623, 122916, 123099,125669 e 125810. Obs: Esse caso é notado em saídas de cargas de entreposto. Situação atual referente aos dados abaixo: Lote: 202500004763 OS: 68169",
         "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO TENTAR REALIZAR A BAIXA DA OS - TOTVS RA ( C. 07). DESCRIÇÃO DETALHADA: Boa tarde, prezados! Ao tentarmos realizar a baixa na OS de carregamento, é exibido a mensagem anexada de \"erro ao calcular o período\", não sendo possível seguir com a baixa. Esse problema já ocorreu outra vezes, como relatado no chamado 120623, 122916, 123099,125669, 125810 e 126316. Obs: Esse caso é notado em saídas de cargas de entreposto. Situação atual referente aos dados abaixo: Lote: 202500005408 OS: 69168",
         "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO TENTAR REALIZAR BAIXA NA OS - TOTVS RA (C. 09). DESCRIÇÃO DETALHADA: Bom dia, prezados! Apenas para registro, o processo já foi tratado/liberado por Wilson. Ao tentarmos realizar a baixa na OS de carregamento, é exibido a mensagem anexada de \"erro ao calcular o período\", não sendo possível seguir com a baixa. Favor realizar liberação, para finalizarmos a O.S. Esse problema já ocorreu outra vezes, como relatado no chamado 120623, 122916, 123099,125669, 125810,126316, 127065 e 12775. Obs: Esse caso é notado em saídas de cargas de entreposto. Situação atual referente aos dados abaixo: Lote: 202500005528 OS: 70610 e 70598",
         "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO TENTAR REALIZAR A BAIXA DA OS - TOTVS RA ( C. 08). DESCRIÇÃO DETALHADA: Boa tarde, prezados! Ao tentarmos realizar a baixa na OS de carregamento, é exibido a mensagem anexada de \"erro ao calcular o período\", não sendo possível seguir com a baixa. Favor realizar liberação, para finalizarmos a O.S. Esse problema já ocorreu outra vezes, como relatado no chamado 120623, 122916, 123099,125669, 125810,126316 e 127065. Obs: Esse caso é notado em saídas de cargas de entreposto. Situação atual referente aos dados abaixo: Lote: 202500005403 OS: 69943",
-        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO TENTAR REALIZAR A BAIXA DA OS - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Ao tentarmos realizar a baixa na OS de carregamento, é exibido a mensagem anexada de \"erro ao calcular o período\". Favor verificar, para que possamos seguir com a liberação do veículo. Lote: 202500003973 OS: 62340",
-        "SISTEMA: SARA | SERVIÇO: LENTIDÃO SISTÊMICA | SUB-ÁREA: LOGISTICA | TÍTULO: BAIXA NA OS DE CARREGAMENTO - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Devido o grande volume de etiquetas e itens contidos na OS de carregamento, o processo está apresentando lentidão. Consequentemente impossibilitando a realização do serviço no coletor ( tambem ficamos um tempo com o processo carregando no coletor web, mas ele volta para a tela anterior). Obs: Trata-se de carga de entreposto. Segue em anexo registro da situação atual e exemplo de outro processo em que é possível realizar normalmente. Lote: 202500004399 OS: 66073"
+        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO AO TENTAR REALIZAR A BAIXA DA OS - TOTVS RA ( C. 05). DESCRIÇÃO DETALHADA: Bom dia, prezados! Ao tentarmos realizar a baixa na OS de carregamento, é exibido a mensagem anexada de \"erro ao calcular o período\". Esse problema já ocorreu outra vezes, como relatado no chamado 120623, 122916, 123099 e 125669. Obs: Esse caso é notado em saídas de cargas de entreposto. Situação atual referente aos dados abaixo: Lote: 202500004889 OS: 67645"
       ],
       "top_keywords": [
+        "erro",
         "baixa",
         "realizar",
-        "erro",
+        "sql",
+        "mensagem",
+        "área",
         "sara",
         "sub",
-        "área",
         "logistica",
-        "totvs",
-        "carregamento",
-        "prezados",
+        "server",
         "lote",
-        "caso",
-        "entreposto",
-        "tentar",
-        "tentarmos"
+        "não",
+        "sum",
+        "abaixo",
+        "tentar"
       ],
       "ids_chamados": [
         "120623",
+        "121790",
+        "119669",
+        "122606",
         "122916",
         "123099",
-        "123920",
+        "123110",
+        "123831",
+        "124090",
+        "124518",
         "125669",
         "125810",
         "126316",
-        "124516",
         "127065",
+        "127195",
+        "127963",
         "128256",
-        "127755"
+        "127755",
+        "133082"
       ],
       "chamados_viz": [
         {
           "id": "120623",
-          "x": 16.81351089477539,
-          "y": 2.625002384185791,
-          "prob": 0.7718
+          "x": 17.81244659423828,
+          "y": 0.18696442246437073,
+          "prob": 1.0
+        },
+        {
+          "id": "121790",
+          "x": 18.71038246154785,
+          "y": 0.36751294136047363,
+          "prob": 1.0
+        },
+        {
+          "id": "119669",
+          "x": 18.854063034057617,
+          "y": 0.4692555367946625,
+          "prob": 1.0
+        },
+        {
+          "id": "122606",
+          "x": 18.85100746154785,
+          "y": 0.6419103145599365,
+          "prob": 1.0
         },
         {
           "id": "122916",
-          "x": 17.04006576538086,
-          "y": 2.7970352172851562,
-          "prob": 0.7718
+          "x": 18.024864196777344,
+          "y": 0.2556535303592682,
+          "prob": 1.0
         },
         {
           "id": "123099",
-          "x": 17.1618709564209,
-          "y": 2.566754102706909,
-          "prob": 0.8226
+          "x": 18.14872932434082,
+          "y": -0.09108000248670578,
+          "prob": 1.0
         },
         {
-          "id": "123920",
-          "x": 17.547290802001953,
-          "y": 3.4086010456085205,
-          "prob": 0.588
+          "id": "123110",
+          "x": 18.1416072845459,
+          "y": 0.7152979373931885,
+          "prob": 0.9402
+        },
+        {
+          "id": "123831",
+          "x": 17.679601669311523,
+          "y": 1.0238721370697021,
+          "prob": 0.7998
+        },
+        {
+          "id": "124090",
+          "x": 18.035200119018555,
+          "y": 0.7395845651626587,
+          "prob": 0.9825
+        },
+        {
+          "id": "124518",
+          "x": 17.478349685668945,
+          "y": 0.7114084959030151,
+          "prob": 0.9402
         },
         {
           "id": "125669",
-          "x": 17.221282958984375,
-          "y": 2.886704921722412,
-          "prob": 0.6926
+          "x": 18.123201370239258,
+          "y": 0.4020850360393524,
+          "prob": 1.0
         },
         {
           "id": "125810",
-          "x": 16.9615535736084,
-          "y": 2.9736618995666504,
-          "prob": 0.7718
+          "x": 18.21425437927246,
+          "y": 0.28573912382125854,
+          "prob": 1.0
         },
         {
           "id": "126316",
-          "x": 17.239072799682617,
-          "y": 2.4776742458343506,
+          "x": 18.12079429626465,
+          "y": -0.0881996750831604,
           "prob": 1.0
-        },
-        {
-          "id": "124516",
-          "x": 17.38094711303711,
-          "y": 3.490007162094116,
-          "prob": 0.588
         },
         {
           "id": "127065",
-          "x": 17.003562927246094,
-          "y": 2.315422773361206,
+          "x": 18.234235763549805,
+          "y": -0.20104502141475677,
           "prob": 1.0
         },
         {
+          "id": "127195",
+          "x": 18.598155975341797,
+          "y": 0.7407066822052002,
+          "prob": 1.0
+        },
+        {
+          "id": "127963",
+          "x": 18.090482711791992,
+          "y": 1.2505362033843994,
+          "prob": 0.7998
+        },
+        {
           "id": "128256",
-          "x": 17.35516357421875,
-          "y": 2.3711466789245605,
+          "x": 18.375648498535156,
+          "y": -0.2712557315826416,
           "prob": 1.0
         },
         {
           "id": "127755",
-          "x": 17.085418701171875,
-          "y": 2.201472282409668,
+          "x": 18.436386108398438,
+          "y": -0.12101918458938599,
           "prob": 1.0
+        },
+        {
+          "id": "133082",
+          "x": 17.590259552001953,
+          "y": 0.44922876358032227,
+          "prob": 0.8171
         }
       ],
-      "titulo": "Erro ao Baixar OS TOTVS RA",
-      "descricao": "Usuários relatam falha ao concluir a baixa da OS de carregamento no TOTVS RA, recebendo a mensagem 'erro ao calcular o período'. O problema bloqueia a liberação de veículos e atrasa operações de entreposto, impactando o fluxo logístico de saída/entrada e o fechamento de ordens de serviço.",
+      "titulo": "Erro Ao Baixar OS Totvs RA",
+      "descricao": "Usuários relatam que, ao tentar realizar a baixa da OS no módulo Logística do Totvs RA, aparece a mensagem 'erro ao calcular o período' e a operação não é concluída, impedindo a liberação de veículos e o fechamento de cargas/entreposto. O problema é recorrente, conforme histórico de chamados, e impacta o fluxo de liberações de cargas, gerando atrasos nas entregas e no processamento de operações logísticas.",
       "tags": [
         "ERRO SISTÊMICO",
-        "PROCESSAMENTO MANUAL DE ARQUIVOS",
         "LOGISTICA",
+        "OS",
+        "BAIXA",
         "TOTVS RA",
-        "BAIXA DE OS"
+        "PERIODO"
       ],
-      "analise_racional": "Dominante: falha na baixa da OS TOTVS RA ocorrendo repetidamente (mensagem 'erro ao calcular o período'), com observância em SARA/LOGISTICA. Outras ocorrências são variações de serviço (ERRO SISTÊMICO, PROCESSAMENTO MANUAL DE ARQUIVOS), mas o padrão dominante é a baixa da OS com erro no TOTVS RA."
+      "analise_racional": "A partir das amostras, o tema dominante é falha ao realizar a baixa de Ordens de Serviço (OS) no Totvs RA, com a mensagem 'erro ao calcular o período'. Isso ocorre repetidamente na área de Logística e impacta a liberação de veículos/entreposto, sugerindo um problema de cálculo de período durante a baixa (ERRO SISTÊMICO). Os termos recorrentes (erro, baixa, periodo, OS, Totvs RA) confirmam o padrão."
     },
     {
       "cluster_id": -1,
       "metricas": {
-        "volume": 22,
+        "volume": 20,
         "top_servicos": {
-          "CADASTRO": 5,
-          "PROCESSAMENTO MANUAL DE ARQUIVOS": 5,
-          "ERRO SISTÊMICO": 4,
-          "ADUANEIRO": 3,
-          "TRATATIVA INTERNA": 2
+          "CADASTRO": 4,
+          "PROCESSAMENTO MANUAL DE ARQUIVOS": 4,
+          "TRATATIVA INTERNA": 3,
+          "ERRO SISTÊMICO": 2,
+          "LENTIDÃO SISTÊMICA": 2
         },
         "top_subareas": {
-          "LOGISTICA": 22
+          "LOGISTICA": 20
         },
         "top_solicitantes": {
-          "Marcia Viviane do Nascimento Silva Guedes": 7,
-          "Wemelly Barros de Souza": 6,
-          "Maycon Luis Miranda": 3,
-          "Thiago Valdemir": 2,
-          "Adriely Loureiro de Oliveira": 1
+          "Wemelly Barros de Souza": 8,
+          "Marcia Viviane do Nascimento Silva Guedes": 5,
+          "Thiago Valdemir": 1,
+          "Esther Stephane da Silva Franca": 1,
+          "Lays Santana Malta": 1
         },
         "top_status": {
-          "Não Informado": 21,
+          "Não Informado": 19,
           "Finalizado": 1
         },
         "timeline": [
           {
             "mes": "2025-08",
-            "qtd": 1
+            "qtd": 3
           },
           {
             "mes": "2025-09",
-            "qtd": 6
+            "qtd": 4
           },
           {
             "mes": "2025-10",
@@ -2983,25 +2799,21 @@
           },
           {
             "mes": "2025-12",
-            "qtd": 4
+            "qtd": 5
           },
           {
             "mes": "2026-01",
-            "qtd": 3
-          },
-          {
-            "mes": "2026-02",
             "qtd": 1
           }
         ],
         "sazonalidade": [
           {
             "dia": "Seg",
-            "qtd": 3
+            "qtd": 2
           },
           {
             "dia": "Ter",
-            "qtd": 2
+            "qtd": 3
           },
           {
             "dia": "Qua",
@@ -3009,213 +2821,195 @@
           },
           {
             "dia": "Qui",
-            "qtd": 5
-          },
-          {
-            "dia": "Sex",
             "qtd": 7
           },
           {
-            "dia": "Sab",
-            "qtd": 1
+            "dia": "Sex",
+            "qtd": 4
           }
         ],
         "tendencia": {
-          "tipo": "Decrescente",
-          "variacao_pct": -50.0,
+          "tipo": "Estável",
+          "variacao_pct": 0.0,
           "alerta": false,
-          "detalhe": "Volume decrescente de 2 para 1 na última semana."
+          "detalhe": "Volume estável de 1 para 1 na última semana."
         },
         "concentracao": {
           "tipo": "Normal",
-          "ratio": 0.36,
-          "usuarios_unicos": 8
+          "ratio": 0.45,
+          "usuarios_unicos": 9
         }
       },
       "amostras_texto": [
         "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: SALDO SISTEMICO APOS SAÍDA DA CARGA - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Notamos que o lote abaixo ainda possui saldo sistêmico mesmo após a saída da carga. Se trata de um processo entrepostado, mas que não houve desova, os 04 containers saíram cheios. Foram 04 OS de carregamento, conforme imagem anexada, mas apenas 03 delas mostra o saldo liberado (zerado). A quarta OS foi realizada a baixa, mas ao consultá-la não possui volumes e serviços vinculados. Ficando assim o saldo que seria dela, ainda presente. Normalmente o sistema não permite fechar a OS sem a inclusão de quantidade de carga, e tambem sinaliza caso esteja sem nenhum serviço lançado. Favor verificar o que pode ter acontecido, será necessário tratativa para zerar o estoque. Obs: Os containers do lote tambem permaneceram no inventario. (caminho inventario: modulo relatorio - operacional - inventario - filtro: container, beneficiário) OS: 57847 Lote: 202500002333 Cliente: MCZ",
+        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: LOCALIZAÇÃO BLOQUEADA - OS DE CARREGAMENTO - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Para registro e análise da situação, Durante o processo de coleta das etiquetas para carregamento (via coletor), ocorreu um bloqueio de localização, conforme imagem anexada. Consequentemente não conseguimos seguir com a bipagem das demais etiquetas para a baixa da OS. Locação: Armazém 02 / Quadra 02 / Rua 23 e 26 LOTE: 202500004269 OS: 63207",
         "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: AJUSTE DE SALDO SISTEMICO - TOTVS RA . DESCRIÇÃO DETALHADA: Boa tarde, prezados! Solicitamos auxilio para ajuste de saldo sistêmico. Na opção de estoque atual consta quantidade negativa e volumes multiplicados. Já na opção de informações de saída consta o saldo correto coletada, conforme arquivo anexado. Lote: 20250004797 Item 08",
         "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: AJUSTE DE SALDO SISTEMICO - TOTVS RA . DESCRIÇÃO DETALHADA: Boa tarde, prezados! Solicitamos auxilio para ajuste de saldo sistêmico. Na opção de estoque atual consta quantidade negativa e volumes multiplicados. Já na opção de informações de saída consta o saldo correto (quantidade total do lote já carregada), conforme arquivo anexado. Lote: 20250002364 OS 61838",
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: BAIXA - OS DE CARREGAMENTO . DESCRIÇÃO DETALHADA: Boa tarde, prezados! Ao tentarmos realizar a baixa do serviço do carregamento, é apresentado a mensagem anexada. A quantidade apontada para coleta está sendo a mesma liberada em sistema/ tela consulta. (parte do item 04 - carga de entreposto) Lote: 202500002549 OS 65954",
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: NÃO ESTAMOS CONSEGUINDO AVERBAR E REALIZAR SAIDA DA CARGA.. DESCRIÇÃO DETALHADA: Boa tarde! Notar que não estamos conseguindo realizar a averbação e carregamento do lote: 202500005915 Em anexo print das telas",
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: SALDO EM ESTOQUE EM LOTE JÁ FINALIZADO. DESCRIÇÃO DETALHADA: Bom dia! Os itens correspondentes aos carregamentos seria o 4 e 5 (containers ovados), mas por o lote ter sido de entreposto esses itens estão \"inativos\". Como o sistema ainda não entende a expedição como container cheio, acredito que será necessário refazer alguns serviços. Favor analisar. Não temos mais saldo neste lote, precisamos realizar o faturamento e não é possível devido ainda ter saldo em estoque.",
-        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: FINALIZAÇÃO DE OS DE VEICULO BI-TREM. DESCRIÇÃO DETALHADA: BOM DIA! SOLICITO AJUDA NA FINALIZAÇÃO DA OS 62645, O SISTEMA SO ESTÁ PERMITINDO A BAIXA DE UMA DAS UNIDADES, A UNIDADE ABAIXO NÃO MOSTRA O ESTOQUE, POIS O SISTEMA NÃO ESTÁ FINALIZANDO. LOTE:202500004679 CONTAINER:MSDU4754204",
-        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: LOCALIZAÇÃO BLOQUEADA - OS DE CARREGAMENTO - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Para registro e análise da situação, Durante o processo de coleta das etiquetas para carregamento (via coletor), ocorreu um bloqueio de localização, conforme imagem anexada. Consequentemente não conseguimos seguir com a bipagem das demais etiquetas para a baixa da OS. Locação: Armazém 02 / Quadra 02 / Rua 23 e 26 LOTE: 202500004269 OS: 63207",
-        "SISTEMA: SARA | SERVIÇO: PROCESSAMENTO MANUAL DE ARQUIVOS | SUB-ÁREA: LOGISTICA | TÍTULO: ERRO NA BAIXA DE OS - 64996. DESCRIÇÃO DETALHADA: Não estamos conseguindo realizar a baixa na OS (64996), o status das etiquetas consta como impresso. LOTE:202500004717",
-        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: TOTVS RA - PROBLEMA AO ENCERRAR OS NO COLETOR. DESCRIÇÃO DETALHADA: Bom dia! Erro Coletor mensagem Integridade de LACRE Erro Coletor mensagem Lacres Verificados Ausência de Lacres manifestados Estamos com problema para encerrar as OS de recebimento e descarga dos container que vieram no BI-TREM."
+        "SISTEMA: SARA | SERVIÇO: LENTIDÃO SISTÊMICA | SUB-ÁREA: LOGISTICA | TÍTULO: TOTVS RA - DIFICULDADE NA BAIXA DE DI EM ENTREPOSTO. DESCRIÇÃO DETALHADA: Conforme contato com Wilson Pereira, estamos com dificuldade na baixa de DI's com grandes quantidades, o sistema não reconheçe o ítem por haver diversas linhas com a mesma descrição, precisamos de urgencia nesse processo, pois temos a principio 6 processos que teremos que realizar até segunda feria 13/10, saliento que quando estamos realizando a baixa e caso perdermos a conexão com a internet, temos que iniciar tudo novamente, esse processo da forma que estamos realizando hoje, procurando manualmente ítem a ítem está durando um turno inteiro, ou seja mais de 8 horas.",
+        "SISTEMA: SARA | SERVIÇO: LENTIDÃO SISTÊMICA | SUB-ÁREA: LOGISTICA | TÍTULO: BAIXA NA OS DE CARREGAMENTO - TOTVS RA. DESCRIÇÃO DETALHADA: Bom dia, prezados! Devido o grande volume de etiquetas e itens contidos na OS de carregamento, o processo está apresentando lentidão. Consequentemente impossibilitando a realização do serviço no coletor ( tambem ficamos um tempo com o processo carregando no coletor web, mas ele volta para a tela anterior). Obs: Trata-se de carga de entreposto. Segue em anexo registro da situação atual e exemplo de outro processo em que é possível realizar normalmente. Lote: 202500004399 OS: 66073",
+        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: DESCONSOLIDAÇÃO - NOVOS COLETORES (TOVS RA). DESCRIÇÃO DETALHADA: Boa tarde, prezados! Informamos que ainda não estamos conseguindo realizar o serviço de Desconsolidação pelos novos coletores (cargas LCL). A OS é exibida, mas não está possível seguir com a tela até a conclusão. Segue em anexo registro, favor análise. Obs: Conforme pontuado presencialmente, no processo é gerado a OS de desova (master), após finalizada é disponibilizado os houses (filhotes), na OS de desconsolidação.",
+        "SISTEMA: SARA | SERVIÇO: CADASTRO | SUB-ÁREA: LOGISTICA | TÍTULO: TOTVS RA - PROBLEMA AO ENCERRAR OS NO COLETOR. DESCRIÇÃO DETALHADA: Bom dia! CESV não Gerou OS de Descarga do CNT (CESV 22214) Estamos com problema para encerrar as OS de recebimento e descarga dos container que vieram no BI-TREM.",
+        "SISTEMA: SARA | SERVIÇO: TRATATIVA INTERNA | SUB-ÁREA: LOGISTICA | TÍTULO: SERVIÇO DE DDC PELO COLETOR. DESCRIÇÃO DETALHADA: Boa tarde, prezados! Informamos que ainda não estamos conseguindo realizar o serviço de DDC (em sistema desova pós desembaraço), pelos novos coletores. Segue em anexo mensagem apresentada ao tentamos executar, favor verificar.",
+        "SISTEMA: SARA | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: LOGISTICA | TÍTULO: SALDO EM ESTOQUE EM LOTE JÁ FINALIZADO. DESCRIÇÃO DETALHADA: Bom dia! Os itens correspondentes aos carregamentos seria o 4 e 5 (containers ovados), mas por o lote ter sido de entreposto esses itens estão \"inativos\". Como o sistema ainda não entende a expedição como container cheio, acredito que será necessário refazer alguns serviços. Favor analisar. Não temos mais saldo neste lote, precisamos realizar o faturamento e não é possível devido ainda ter saldo em estoque."
       ],
       "top_keywords": [
         "sara",
         "sub",
         "área",
         "logistica",
+        "saldo",
         "não",
         "lote",
-        "erro",
-        "saldo",
-        "estoque",
-        "sistêmico",
-        "baixa",
-        "boa",
-        "duimp",
-        "carga",
-        "totvs"
+        "totvs",
+        "prezados",
+        "estamos",
+        "processo",
+        "coletor",
+        "saída",
+        "conforme",
+        "estoque"
       ],
       "ids_chamados": [
         "119378",
         "120956",
-        "121129",
         "121601",
         "121746",
         "121742",
         "122775",
         "122774",
-        "122706",
-        "123110",
-        "123831",
-        "124090",
+        "118033",
+        "123330",
+        "123920",
+        "124516",
         "128026",
-        "127963",
+        "127630",
+        "129157",
         "129767",
         "130499",
         "129881",
-        "130972",
+        "130894",
         "132088",
-        "133469",
-        "133526",
-        "133920"
+        "118197"
       ],
       "chamados_viz": [
         {
           "id": "119378",
-          "x": 16.441232681274414,
-          "y": 3.1214637756347656,
+          "x": 16.97195816040039,
+          "y": 0.49690011143684387,
           "prob": 0.0
         },
         {
           "id": "120956",
-          "x": 15.146437644958496,
-          "y": 4.873924732208252,
-          "prob": 0.0
-        },
-        {
-          "id": "121129",
-          "x": 16.317476272583008,
-          "y": 2.790776252746582,
+          "x": 17.372018814086914,
+          "y": 2.980673313140869,
           "prob": 0.0
         },
         {
           "id": "121601",
-          "x": 17.681432723999023,
-          "y": 3.6582119464874268,
+          "x": 17.418746948242188,
+          "y": 1.59209144115448,
           "prob": 0.0
         },
         {
           "id": "121746",
-          "x": 17.720075607299805,
-          "y": 3.951190948486328,
+          "x": 15.898983001708984,
+          "y": 0.011599292047321796,
           "prob": 0.0
         },
         {
           "id": "121742",
-          "x": 17.7988224029541,
-          "y": 3.812605381011963,
+          "x": 15.720142364501953,
+          "y": -0.03828229755163193,
           "prob": 0.0
         },
         {
           "id": "122775",
-          "x": 15.871135711669922,
-          "y": 3.243112087249756,
+          "x": 17.05763816833496,
+          "y": 1.1052380800247192,
           "prob": 0.0
         },
         {
           "id": "122774",
-          "x": 15.906458854675293,
-          "y": 3.7143990993499756,
+          "x": 17.283447265625,
+          "y": 1.5639464855194092,
           "prob": 0.0
         },
         {
-          "id": "122706",
-          "x": 16.334392547607422,
-          "y": 3.4052906036376953,
+          "id": "118033",
+          "x": 16.347890853881836,
+          "y": 1.8729206323623657,
           "prob": 0.0
         },
         {
-          "id": "123110",
-          "x": 17.176820755004883,
-          "y": 3.3141496181488037,
+          "id": "123330",
+          "x": 15.5134916305542,
+          "y": 0.30678921937942505,
           "prob": 0.0
         },
         {
-          "id": "123831",
-          "x": 16.47206687927246,
-          "y": 3.673492908477783,
+          "id": "123920",
+          "x": 17.959823608398438,
+          "y": 1.0902817249298096,
           "prob": 0.0
         },
         {
-          "id": "124090",
-          "x": 16.888425827026367,
-          "y": 3.2672195434570312,
+          "id": "124516",
+          "x": 17.80547523498535,
+          "y": 1.2744842767715454,
           "prob": 0.0
         },
         {
           "id": "128026",
-          "x": 14.51110553741455,
-          "y": 3.3682470321655273,
+          "x": 16.286376953125,
+          "y": 2.36177659034729,
           "prob": 0.0
         },
         {
-          "id": "127963",
-          "x": 16.397071838378906,
-          "y": 4.137342929840088,
+          "id": "127630",
+          "x": 18.69715118408203,
+          "y": 1.78458833694458,
+          "prob": 0.0
+        },
+        {
+          "id": "129157",
+          "x": 16.819141387939453,
+          "y": 2.832764148712158,
           "prob": 0.0
         },
         {
           "id": "129767",
-          "x": 16.218883514404297,
-          "y": 4.317865371704102,
+          "x": 15.197336196899414,
+          "y": 0.5175660848617554,
           "prob": 0.0
         },
         {
           "id": "130499",
-          "x": 16.790681838989258,
-          "y": 3.5068531036376953,
+          "x": 17.16313934326172,
+          "y": 0.5143900513648987,
           "prob": 0.0
         },
         {
           "id": "129881",
-          "x": 17.239694595336914,
-          "y": 3.80757999420166,
+          "x": 17.102710723876953,
+          "y": 0.6020744442939758,
           "prob": 0.0
         },
         {
-          "id": "130972",
-          "x": 15.511214256286621,
-          "y": 4.159614562988281,
+          "id": "130894",
+          "x": 15.371078491210938,
+          "y": 2.64359188079834,
           "prob": 0.0
         },
         {
           "id": "132088",
-          "x": 14.835721969604492,
-          "y": 5.042685508728027,
+          "x": 17.057113647460938,
+          "y": 3.2411839962005615,
           "prob": 0.0
         },
         {
-          "id": "133469",
-          "x": 15.15950870513916,
-          "y": 3.928990602493286,
-          "prob": 0.0
-        },
-        {
-          "id": "133526",
-          "x": 14.746923446655273,
-          "y": 3.5629780292510986,
-          "prob": 0.0
-        },
-        {
-          "id": "133920",
-          "x": 14.758345603942871,
-          "y": 3.884500026702881,
+          "id": "118197",
+          "x": 16.515499114990234,
+          "y": 1.4505540132522583,
           "prob": 0.0
         }
       ],
@@ -3224,7 +3018,8 @@
       "tags": [
         "Variados",
         "Sem Padrão"
-      ]
+      ],
+      "analise_racional": "Este grupo contém incidentes heterogêneos que não atingiram a densidade mínima para formar um cluster coeso (Ruído Estatístico). Não refletem um problema sistêmico único."
     }
   ]
 }

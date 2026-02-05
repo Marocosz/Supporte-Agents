@@ -181,6 +181,7 @@ async def gerar_analise_macro_async(dados_filhos: list[dict]) -> dict:
         "- Ex: ['Financeiro', 'Acesso', 'Crítico']\n\n"
         "### FORMATO JSON:\n"
         "{\n"
+        '  "analise_racional": "Explique por que agrupou estes itens (raciocínio sintético).",\n'
         '  "titulo": "...",\n'
         '  "descricao": "...",\n'
         '  "tags": ["...", "..."]\n'
@@ -225,6 +226,7 @@ def gerar_analise_macro(dados_filhos: list[dict]) -> dict:
         "- Ex: ['Financeiro', 'Acesso', 'Crítico']\n\n"
         "### FORMATO JSON:\n"
         "{\n"
+        '  "analise_racional": "Explique por que agrupou estes itens (raciocínio sintético).",\n'
         '  "titulo": "...",\n'
         '  "descricao": "...",\n'
         '  "tags": ["...", "..."]\n'
@@ -255,7 +257,8 @@ def _chamar_openai(system_prompt: str, user_content: str) -> dict:
         # Fallback gracioso
         return {
             "titulo": "Erro na Análise Automática",
-            "descricao": "Não foi possível gerar a descrição devido a uma falha na IA (Verifique Logs)."
+            "descricao": "Não foi possível gerar a descrição devido a uma falha na IA (Verifique Logs).",
+            "analise_racional": "Falha Técnica: O modelo não retornou uma resposta válida ou ocorreu erro na chamada."
         }
 
 async def _chamar_openai_async(system_prompt: str, user_content: str) -> dict:
@@ -277,7 +280,8 @@ async def _chamar_openai_async(system_prompt: str, user_content: str) -> dict:
         logger.exception(f"Erro CRÍTICO na chamada OpenAI (Async): {e}")
         return {
             "titulo": "Erro na Análise Automática",
-            "descricao": "Não foi possível gerar a descrição devido a uma falha na IA."
+            "descricao": "Não foi possível gerar a descrição devido a uma falha na IA.",
+            "analise_racional": "Falha Técnica: O modelo não retornou uma resposta válida ou ocorreu erro na chamada."
         }
 
 

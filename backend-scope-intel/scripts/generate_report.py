@@ -365,9 +365,9 @@ def create_pdf(json_file_path):
         
         if examples:
             for txt in examples:
-                # Truncate seguro
-                MAX_LEN = 350
-                if len(txt) > MAX_LEN: txt = txt[:MAX_LEN] + "..."
+                # Truncate removido a pedido do user (Exibir texto completo)
+                # MAX_LEN = 350
+                # if len(txt) > MAX_LEN: txt = txt[:MAX_LEN] + "..."
                 
                 tbl_ex = Table([[p(txt, style_small)]], colWidths=[18*cm])
                 tbl_ex.setStyle(TableStyle([
@@ -379,6 +379,26 @@ def create_pdf(json_file_path):
                 story.append(Spacer(1, 0.15*cm))
         else:
              story.append(p("Não foi possível carregar exemplos detalhados.", style_small))
+
+        story.append(Spacer(1, 0.4*cm))
+
+        # --- LISTA COMPLETA DE CHAMADOS (IDs) ---
+        all_ids = cluster.get('ids_chamados', [])
+        # Fallback para subclusters se vazio
+        if not all_ids:
+            sub = cluster.get('sub_clusters', [])
+            for s in sub:
+                all_ids.extend(s.get('ids_chamados', []))
+        
+        if all_ids:
+            # Remove duplicatas e ordena
+            all_ids = sorted(list(set(all_ids)))
+            ids_str = ", ".join(all_ids)
+            
+            story.append(p("Lista Completa de Chamados neste Cluster:", style_section_label))
+            story.append(Spacer(1, 0.1*cm))
+            story.append(p(ids_str, ParagraphStyle('IDsConfig', parent=styles['Normal'], fontSize=7, textColor=colors.HexColor("#6b7280"))))
+            story.append(Spacer(1, 0.5*cm))
 
         story.append(PageBreak())
 
