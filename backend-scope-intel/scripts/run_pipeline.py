@@ -86,8 +86,8 @@ async def main(sistema: str, dias: int):
         logger.info(">>> ETAPA 2: Gerando/Recuperando Vetores...")
         vectorizer.process_and_vectorize(records)
         
-        logger.info(">>> ETAPA 3: Preparando dados...")
-        all_vectors_qdrant = vector_db.get_all_vectors()
+        logger.info(f">>> ETAPA 3: Recuperando Vetores do Qdrant (Filtro: {sistema})...")
+        all_vectors_qdrant = vector_db.get_vectors_by_system(sistema)
         vector_map = {point.id: point.vector for point in all_vectors_qdrant}
         
         vectors_ordered = []

@@ -124,6 +124,40 @@ class VectorStore:
                 
         return all_points
 
+    def get_vectors_by_system(self, system_name: str):
+        """
+        Busca apenas os vetores de um sistema específico usando Filtros de Payload.
+        OTIMIZAÇÃO: O Qdrant filtra no servidor e retorna apenas o necessário.
+        """
+        all_points = []
+        offset = None
+        
+        # Filtro: payload.sistema == system_name
+        query_filter = models.Filter(
+            must=[
+                models.FieldCondition(
+                    key="sistema",
+                    match=models.MatchValue(value=system_name)
+                )
+            ]
+        )
+        
+        while True:
+            records, offset = self.client.scroll(
+                collection_name=self.collection_name,
+                scroll_filter=query_filter, 
+                limit=1000,
+                with_payload=True,
+                with_vectors=True,
+                offset=offset
+            )
+            all_points.extend(records)
+            
+            if offset is None: 
+                break
+                
+        return all_points
+
 # Instância Singleton
 # Permite importar 'vector_db' diretamente em qualquer arquivo sem re-instanciar a classe
 vector_db = VectorStore()
