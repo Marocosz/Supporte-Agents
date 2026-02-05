@@ -33,6 +33,7 @@ SISTEMAS_PARA_PROCESSAR = [
     "SARA"
 ]
 
+
 # Quantos dias de histórico analisar
 DIAS_ANALISE = 180
 

@@ -5,10 +5,16 @@
 #   Gerenciar a conexão com o Banco de Dados Relacional (MySQL/PostgreSQL).
 #   Fornece a sessão (Session) que será usada pelos Services para executar queries.
 #
+# PARTE DO SISTEMA:
+#   Backend / Infraestrutura (Persistência Relacional)
+#
 # RESPONSABILIDADES:
 #   - Criar o Engine do SQLAlchemy (Pool de conexões)
 #   - Configurar a fábrica de sessões (SessionLocal)
 #   - Fornecer injeção de dependência para uso seguro (abrir/fechar conexões)
+#
+# COMUNICAÇÃO:
+#   Usado por: data_fetcher.py, run_pipeline.py, routes.py, scripts auxiliares
 # ==============================================================================
 
 from sqlalchemy import create_engine

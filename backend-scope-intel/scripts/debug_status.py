@@ -1,4 +1,20 @@
 
+# ==============================================================================
+# ARQUIVO: scripts/debug_status.py
+#
+# OBJETIVO:
+#   Script auxiliar paara investigar o conteúdo real de colunas no banco de dados.
+#   Útil quando uma coluna parece vazia ou com formato inesperado.
+#
+# PARTE DO SISTEMA:
+#   Scripts / Diagnóstico
+#
+# RESPONSABILIDADES:
+#   - Consultar registros brutos via data_fetcher
+#   - Exibir tipos de dados e valores únicos (Cardinalidade)
+#   - Ajudar a entender por que um campo (ex: status) não está aparecendo nos relatórios
+# ==============================================================================
+
 import sys
 import os
 import logging

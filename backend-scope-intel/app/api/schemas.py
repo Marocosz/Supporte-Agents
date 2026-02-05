@@ -1,3 +1,22 @@
+# ==============================================================================
+# ARQUIVO: app/api/schemas.py
+#
+# OBJETIVO:
+#   Definir os modelos de dados (Pydantic) para validação e tipagem da API.
+#   Garante que as respostas JSON sigam um contrato estrito.
+#
+# PARTE DO SISTEMA:
+#   Backend / Definição de Tipos
+#
+# RESPONSABILIDADES:
+#   - Mapear a estrutura do JSON de Análise (ClusterResult, Metrics)
+#   - Mapear Payloads de Requisição (BatchTicketRequest)
+#   - Mapear Respostas de Listagem (AnalysisFileSummary)
+#
+# COMUNICAÇÃO:
+#   Usado por: routes.py, frontend (como referência de contrato)
+# ==============================================================================
+
 from pydantic import BaseModel
 from typing import List, Dict, Any, Optional
 
@@ -11,6 +30,17 @@ class SazonalidadeItem(BaseModel):
     dia: str
     qtd: int
 
+class TendenciaAnalise(BaseModel):
+    tipo: str
+    variacao_pct: float
+    alerta: bool
+    detalhe: Optional[str] = ""
+
+class ConcentracaoAnalise(BaseModel):
+    tipo: str
+    ratio: float
+    usuarios_unicos: Optional[int] = 0
+
 class ClusterMetrics(BaseModel):
     volume: int
     top_servicos: Dict[str, int]
@@ -19,6 +49,8 @@ class ClusterMetrics(BaseModel):
     top_status: Dict[str, int] = {}
     timeline: List[TimelineItem] = []
     sazonalidade: List[SazonalidadeItem] = []
+    tendencia: Optional[TendenciaAnalise] = None
+    concentracao: Optional[ConcentracaoAnalise] = None
 
 class ClusterResult(BaseModel):
     cluster_id: int

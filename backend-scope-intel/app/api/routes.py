@@ -1,3 +1,23 @@
+# ==============================================================================
+# ARQUIVO: app/api/routes.py
+#
+# OBJETIVO:
+#   Definir os endpoints HTTP da API REST.
+#   Permite que o Frontend liste análises disponíveis e carregue detalhes.
+#
+# PARTE DO SISTEMA:
+#   Backend / Interface HTTP
+#
+# RESPONSABILIDADES:
+#   - Listar arquivos JSON gerados pelo pipeline
+#   - Servir o conteúdo do JSON para o dashboard
+#   - Endpoint de "Lazy Loading": Buscar detalhes de chamados no banco sob demanda
+#
+# COMUNICAÇÃO:
+#   Recebe: Requisições HTTP (GET/POST)
+#   Chama: data_fetcher (para buscar tickets), os (sistema de arquivos)
+# ==============================================================================
+
 import os
 import json
 from fastapi import APIRouter, HTTPException

@@ -1,3 +1,23 @@
+# ==============================================================================
+# ARQUIVO: app/main.py
+#
+# OBJETIVO:
+#   Ponto de entrada da aplicação FastAPI.
+#   Configura o servidor web, middlewares (CORS) e registra as rotas.
+#
+# PARTE DO SISTEMA:
+#   Backend / API Gateway
+#
+# RESPONSABILIDADES:
+#   - Inicializar a aplicação FastAPI
+#   - Configurar CORS para permitir chamadas do Frontend
+#   - Importar e deleger rotas para o módulo 'api.routes'
+#   - Health Check básico
+#
+# COMUNICAÇÃO:
+#   Expõe: Porta HTTP (padrão 8000)
+# ==============================================================================
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings

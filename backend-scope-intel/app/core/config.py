@@ -1,3 +1,22 @@
+# ==============================================================================
+# ARQUIVO: app/core/config.py
+#
+# OBJETIVO:
+#   Centralizar as variáveis de ambiente e configurações globais do sistema.
+#   Usa Pydantic BaseSettings para carregar do arquivo .env com validação.
+#
+# PARTE DO SISTEMA:
+#   Backend / Configuração
+#
+# RESPONSABILIDADES:
+#   - Mapear chaves de API (OpenAI)
+#   - Mapear credenciais de Banco de Dados
+#   - Definir constantes do sistema (Modelos, Tabelas, Pastas)
+#
+# COMUNICAÇÃO:
+#   Importado por: Quase todos os módulos do sistema.
+# ==============================================================================
+
 import os
 from pydantic_settings import BaseSettings
 from functools import lru_cache

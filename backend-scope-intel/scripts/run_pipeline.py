@@ -3,11 +3,20 @@
 #
 # OBJETIVO:
 #   Script principal (Entrypoint) para rodar a análise de chamados em modo BATCH.
-#   Orquestra: SQL -> Vetor -> Clustering Hierárquico -> Naming IA (Pai/Filho) -> JSON.
+#   Orquestra todo o fluxo: SQL -> Vetor -> Clustering Hierárquico -> Naming IA (Pai/Filho) -> JSON.
 #
-#   HISTÓRICO:
-#   - Refatorado para ASYNC/AWAIT para rodar chamadas OpenAI em paralelo.
-#   - Adicionado tratamento para cluster de RUÍDO (-1).
+# PARTE DO SISTEMA:
+#   Scripts / Pipeline de Dados (Orquestrador)
+#
+# RESPONSABILIDADES:
+#   - Controlar o fluxo de execução passo-a-passo (ETL -> ML -> IA)
+#   - Gerenciar o estado assíncrono para chamadas paralelas à OpenAI (Performance)
+#   - Estruturar o objeto JSON final com a árvore hierárquica (Pais e Filhos)
+#   - Calcular métricas finais agregadas do Pai
+#
+# COMUNICAÇÃO:
+#   Chama: data_fetcher, vectorizer, cluster_engine, aggregator, llm_agent
+#   Gera: Arquivo JSON na pasta data_output/
 # ==============================================================================
 
 import sys
@@ -40,17 +49,20 @@ async def process_micro_cluster(child_id, child_obj):
     try:
         analise_micro = await llm_agent.gerar_analise_micro_async(
             child_obj['amostras_texto'], 
-            child_obj['metricas'].get('top_servicos')
+            child_obj['metricas'].get('top_servicos'),
+            child_obj.get('top_keywords') # Passando os metadados novos
         )
         
         child_obj['titulo'] = analise_micro['titulo']
         child_obj['descricao'] = analise_micro['descricao']
         child_obj['tags'] = analise_micro.get('tags', []) # NOVO: Tags da IA
+        child_obj['analise_racional'] = analise_micro.get('analise_racional', "") # NOVO: Raciocinio da IA
         
         # Remove o campo pesado de amostras do filho final
         # Mas guardamos num campo temporário se o Pai precisar (embora no macro usemos título+descrição)
         # Por segurança, limpamos aqui para o JSON final, e o Pai usa o que já tem.
-        child_obj.pop('amostras_texto', None)
+        # child_obj.pop('amostras_texto', None)   <-- MANTENDO para Frontend
+        # child_obj.pop('top_keywords', None)     <-- MANTENDO para Frontend
         
         return child_id, child_obj
     except Exception as e:
@@ -91,13 +103,24 @@ async def main(sistema: str, dias: int):
 
         # 2. Clustering Hierárquico
         logger.info(">>> ETAPA 4: Executando Clustering Hierárquico (Macro -> Micro)...")
-        micro_labels, hierarchy_map = cluster_engine.perform_clustering(vectors_ordered)
+        micro_labels, hierarchy_map, params_used, coords_2d, final_probs = cluster_engine.perform_clustering(vectors_ordered)
         
+        # Preparar metadados visuais para o aggregator
+        extra_meta = {}
+        for i in range(len(vectors_ordered)):
+            # coords_2d é dict {index: [x,y]}
+            c = coords_2d.get(i, [0.0, 0.0])
+            extra_meta[i] = {
+                "x": c[0],
+                "y": c[1],
+                "prob": final_probs[i]
+            }
+
         # 3. Consolidar Dados dos FILHOS (Micro-Clusters)
         logger.info(">>> ETAPA 5: Consolidando Estatísticas dos Micro-Clusters...")
         
         # O aggregator gera stats para todos os micros encontrados nos labels
-        clusters_raw_list = aggregator.consolidate_clusters(valid_records, micro_labels)
+        clusters_raw_list = aggregator.consolidate_clusters(valid_records, micro_labels, extra_meta_map=extra_meta)
         
         # Separar quem é cluster válido e quem é ruído (-1)
         micro_clusters_data = {}
@@ -177,12 +200,14 @@ async def main(sistema: str, dias: int):
             agg_subareas = {} 
             agg_timeline_map = {}
             agg_sazonalidade_map = {}
+            agg_keywords = [] # Vamos agregar keywords tb
 
             volume_total = 0
 
             for child in lista_filhos_objs:
                 volume_total += child['metricas']['volume']
                 all_ids_filhos.extend(child.get('ids_chamados', []))
+                agg_keywords.extend(child.get('top_keywords', []))
                 
                 for srv, qtd in child['metricas'].get('top_servicos', {}).items():
                     agg_servicos[srv] = agg_servicos.get(srv, 0) + qtd
@@ -224,6 +249,10 @@ async def main(sistema: str, dias: int):
             top_status_pai = dict(sorted(agg_status.items(), key=lambda x: x[1], reverse=True)[:5])
             top_subareas_pai = dict(sorted(agg_subareas.items(), key=lambda x: x[1], reverse=True)[:5])
             
+            # Keywords Pai (Top 10 frequentes entre os filhos)
+            from collections import Counter
+            top_keywords_pai = [k for k, v in Counter(agg_keywords).most_common(15)]
+            
             timeline_pai = [
                 {"mes": m, "qtd": q} 
                 for m, q in sorted(agg_timeline_map.items())
@@ -243,6 +272,7 @@ async def main(sistema: str, dias: int):
                 "titulo": analise_pai['titulo'], 
                 "descricao": analise_pai['descricao'],
                 "tags": analise_pai.get('tags', []), 
+                "top_keywords": top_keywords_pai, # Salvando também no pai
                 "metricas": {
                     "volume": volume_total,
                     "top_servicos": top_servicos_pai,
@@ -266,7 +296,7 @@ async def main(sistema: str, dias: int):
             noise_cluster_data['titulo'] = "Outros / Dispersos"
             noise_cluster_data['descricao'] = "Chamados que não apresentaram padrão claro de agrupamento com os demais."
             noise_cluster_data['tags'] = ["Variados", "Sem Padrão"]
-            noise_cluster_data.pop('amostras_texto', None) # Limpa texto pesado
+            # noise_cluster_data.pop('amostras_texto', None) # MANTER AMOSTRAS (Pedido do user)
             
             # Adiciona ao final da lista
             final_clusters_tree.append(noise_cluster_data)
@@ -289,7 +319,8 @@ async def main(sistema: str, dias: int):
                 "periodo_dias": dias,
                 "total_chamados": len(valid_records),
                 "total_grupos": len(final_clusters_tree), 
-                "taxa_ruido": float(f"{noise_ratio:.4f}")
+                "taxa_ruido": float(f"{noise_ratio:.4f}"),
+                "clustering_params": params_used # SALVANDO OS PARÂMETROS
             },
             "clusters": final_clusters_tree
         }

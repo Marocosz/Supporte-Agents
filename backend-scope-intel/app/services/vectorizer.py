@@ -3,17 +3,20 @@
 #
 # OBJETIVO:
 #   Converter textos de negócios em vetores matemáticos (Embeddings) e armazená-los.
-#   Este é o "cérebro" da indexação semântica.
+#   Este é o "cérebro" da indexação semântica, permitindo buscas por significado.
+#
+# PARTE DO SISTEMA:
+#   Backend / Integração IA (Embeddings)
 #
 # RESPONSABILIDADES:
 #   - Gerar IDs determinísticos para os chamados
-#   - Chamar a API da OpenAI para calcular embeddings
+#   - Chamar a API da OpenAI para calcular embeddings (text-embedding-3-small/large)
 #   - Montar o payload (metadados) para o banco vetorial
-#   - Salvar os dados no Qdrant
+#   - Salvar os dados no Qdrant de forma eficiente (Batch)
 #
-# DEPENDÊNCIAS:
-#   - OpenAI API (text-embedding-3-small)
-#   - Qdrant Client (Banco Vetorial)
+# COMUNICAÇÃO:
+#   Chamado por: run_pipeline.py
+#   Serviços Externos: OpenAI API (Embeddings), Qdrant (Vector DB)
 # ==============================================================================
 
 import uuid

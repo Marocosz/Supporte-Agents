@@ -10,3 +10,5 @@ pandas
 scikit-learn
 hdbscan
 beautifulsoup4
+reportlab
+matplotlib

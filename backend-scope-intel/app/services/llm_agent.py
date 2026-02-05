@@ -3,7 +3,20 @@
 #
 # OBJETIVO:
 #   Módulo responsável pela interação com a Inteligência Artificial Generativa (OpenAI/GPT).
-#   Agora possui duas estratégias distintas: Análise Micro (Técnica) e Análise Macro (Executiva).
+#   Realiza a análise semântica dos clusters (Micro e Macro) para gerar títulos e descrições humanas.
+#
+# PARTE DO SISTEMA:
+#   Backend / IA Generativa
+#
+# RESPONSABILIDADES:
+#   - Dialogar com a API da OpenAI (GPT-4o/Mini)
+#   - Gerar análises "Micro" (Técnicas) olhando para chamados individuais
+#   - Gerar análises "Macro" (Executivas) olhando para sub-grupos já analisados
+#   - Implementar estratégias de Prompt Engineering (Chain-of-Thought, Evidence Based)
+#
+# COMUNICAÇÃO:
+#   Recebe dados de: run_pipeline.py (textos ou metadados dos clusters)
+#   Envia dados para: run_pipeline.py (JSON com Título, Descrição, Tags)
 # ==============================================================================
 
 import logging
@@ -17,111 +30,125 @@ logger = logging.getLogger(__name__)
 client = OpenAI(api_key=settings.OPENAI_API_KEY)
 aclient = AsyncOpenAI(api_key=settings.OPENAI_API_KEY)
 
-async def gerar_analise_micro_async(amostra_textos: list[str], top_servicos: dict = None) -> dict:
+async def gerar_analise_micro_async(amostra_textos: list[str], top_servicos: dict = None, top_keywords: list[str] = None) -> dict:
     """
     Versão ASSÍNCRONA de gerar_analise_micro.
+    Agora aceita top_keywords para ancorar a IA.
     """
-    # Formata os Top Serviços para o Prompt (Contexto Extra)
-    contexto_servicos = ""
+    # Contexto Extra: Serviços
+    contexto_extra = []
     if top_servicos:
         lista_servicos = ", ".join([f"{k} ({v})" for k, v in top_servicos.items()])
-        contexto_servicos = f"SERVIÇOS MAIS AFETADOS: {lista_servicos}\n"
+        contexto_extra.append(f"SERVIÇOS FREQUENTES: {lista_servicos}")
+    
+    # Contexto Extra: Palavras-chave Estatísticas (A âncora contra alucinação)
+    if top_keywords:
+        lista_keywords = ", ".join(top_keywords[:10])
+        contexto_extra.append(f"TERMOS MAIS RECORRENTES NO CLUSTER (EVIDÊNCIA ESTATÍSTICA): {lista_keywords}")
+        
+    str_contexto = "\n".join(contexto_extra)
 
-    # Preparação das amostras (texto completo)
+    # Preparação das amostras
     formatted_texts = []
     for i, t in enumerate(amostra_textos, 1):
-        formatted_texts.append(f"--- CHAMADO {i} ---\n{t}")
+        formatted_texts.append(f"--- AMOSTRA {i} ---\n{t}")
     examples_block = "\n".join(formatted_texts)
 
     user_content = (
-        f"{contexto_servicos}\n"
+        f"{str_contexto}\n\n"
         f"AMOSTRAS DE CHAMADOS:\n{examples_block}"
     )
 
-    # PROMPT MICRO (Mesmo do síncrono - ATUALIZADO)
+    # PROMPT MICRO (Engenharia Avançada: Chain-of-Thought + Evidence Based)
     system_prompt = (
-        "Você é um Líder Técnico de Suporte (N3). Sua meta é triagem rápida.\n"
-        "Analise os logs/chamados abaixo e identifique o PADRÃO TÉCNICO COMUM.\n\n"
-        "### REGRAS CRÍTICAS (LEIA COM ATENÇÃO):\n"
-        "1. GENERALIZE, NÃO ESPECIFIQUE PESSOAS: Nunca use nomes próprios (ex: 'Mario') no Título/Descrição. Use 'Usuário'.\n"
-        "2. SOBRE ESPECIFICIDADE EXCESSIVA (LOGS/IDS): Se o cluster for composto apenas por Logs de Erro com muitos números/IDs (ex: 'Error 0x005...', 'Transaction 9882...'), NÃO coloque os números no título. Classifique como padrão técnico: 'Logs de Erro de Sistema', 'Falhas de Processamento em Lote', 'Tracebacks de Aplicação'.\n"
-        "3. SOBRE CLUSTERS 'CINZAS' (VAGOS): Se as amostras forem muito genéricas (ex: 'Erro', 'Ajuda', 'Não funciona') sem menção clara a serviços, NÃO ALUCINE um serviço. Use títulos honestos como: 'Solicitações de Suporte Genéricas', 'Dúvidas e Relatos Variados' ou 'Triagem Inicial Pendente'.\n"
-        "4. ENCONTRE O TEMA COMUM: Se houver variação, encontre o denominador (ex: Acesso + Instalação = 'Solicitações de Acesso e Configuração').\n\n"
+        "Você é um Especialista Sênior em Classificação de Incidentes de TI.\n"
+        "Sua missão é analisar um cluster de chamados e gerar um título e descrição que representem o PADRÃO DOMINANTE.\n\n"
+        "### INSTRUÇÃO DE RACIOCÍNIO (Chain-of-Thought):\n"
+        "1. Analise os 'TERMOS RECORRENTES' e 'SERVIÇOS'. Eles são a verdade estatística do cluster.\n"
+        "2. Se as amostras de texto parecerem confusas ou variadas, confie nos Termos Recorrentes para desempatar.\n"
+        "3. Ignore outliers (ex: 4 chamados sobre 'Senha' e 1 sobre 'Impressora' -> O tema é Senha).\n\n"
         "### REGRAS PARA O TÍTULO:\n"
-        "- Use linguagem natural e profissional.\n"
-        "- Foco na AÇÃO REQUERIDA (Solicitação) ou ERRO (Incidente).\n"
-        "- Ex: 'Liberação de Acesso ao Logix', 'Erro de Timeout na API'.\n"
+        "- Seja ESPECÍFICO mas PROFISSIONAL.\n"
+        "- EVITE IDs/Logs Crus: Não ponha 'Error 0x8004' no título. Use 'Logs de Erro de Sistema' ou 'Falha Crítica de Aplicação'.\n"
+        "- EVITE GENÉRICOS: 'Erro no Sistema' é ruim. 'Erro de Login no Protheus' é bom.\n"
         "- Máx 8 palavras. Init Caps.\n\n"
         "### REGRAS PARA A DESCRIÇÃO:\n"
-        "- Resuma o problema de forma impessoal.\n"
-        "- Se for técnico demais, explique o impacto ('Falha massiva de integração') em vez do erro técnico puro.\n"
-        "- Máx 2 frases.\n\n"
-        "### TAGS:\n"
-        "- 3 a 5 palavras-chave (Sistemas, Erros, Ações).\n"
-        "- Ex: ['Acesso', 'Logix', 'Permissão']\n\n"
-        "### FORMATO JSON:\n"
+        "- Explique o impacto funcional para o usuário.\n"
+        "- Ex: 'Usuários reportam lentidão e timeout ao tentar acessar o módulo financeiro.'\n\n"
+        "### FORMATO JSON (Obrigatório):\n"
         "{\n"
+        '  "analise_racional": "Breve explicação de como você chegou à conclusão (será descartado, use para pensar).",\n'
         '  "titulo": "...",\n'
         '  "descricao": "...",\n'
         '  "tags": ["...", "..."]\n'
         "}"
     )
 
-    return await _chamar_openai_async(system_prompt, user_content)
+    result = await _chamar_openai_async(system_prompt, user_content)
+    
+    # Limpeza: Remove o campo de raciocínio interno para não sujar o frontend
+    # Mantemos a analise_racional para debug e transparencia no frontend
+    # if 'analise_racional' in result:
+    #     del result['analise_racional']
+        
+    return result
 
-def gerar_analise_micro(amostra_textos: list[str], top_servicos: dict = None) -> dict:
+def gerar_analise_micro(amostra_textos: list[str], top_servicos: dict = None, top_keywords: list[str] = None) -> dict:
     """
-    Foco: TÉCNICO E ESPECÍFICO.
-    Usado para os FILHOS (Micro-Clusters).
-    Analisa os logs brutos para identificar a falha técnica raiz.
+    Versão Síncrona. Mesma lógica da Async.
     """
-    # Formata os Top Serviços para o Prompt (Contexto Extra)
-    contexto_servicos = ""
+    contexto_extra = []
     if top_servicos:
         lista_servicos = ", ".join([f"{k} ({v})" for k, v in top_servicos.items()])
-        contexto_servicos = f"SERVIÇOS MAIS AFETADOS: {lista_servicos}\n"
+        contexto_extra.append(f"SERVIÇOS FREQUENTES: {lista_servicos}")
+    
+    if top_keywords:
+        lista_keywords = ", ".join(top_keywords[:10])
+        contexto_extra.append(f"TERMOS MAIS RECORRENTES NO CLUSTER (EVIDÊNCIA ESTATÍSTICA): {lista_keywords}")
+        
+    str_contexto = "\n".join(contexto_extra)
 
-    # Preparação das amostras (texto completo)
     formatted_texts = []
     for i, t in enumerate(amostra_textos, 1):
-        formatted_texts.append(f"--- CHAMADO {i} ---\n{t}")
+        formatted_texts.append(f"--- AMOSTRA {i} ---\n{t}")
     examples_block = "\n".join(formatted_texts)
 
     user_content = (
-        f"{contexto_servicos}\n"
+        f"{str_contexto}\n\n"
         f"AMOSTRAS DE CHAMADOS:\n{examples_block}"
     )
 
-    # PROMPT MICRO (OTIMIZADO PARA CONCISÃO, GENERALIZAÇÃO E TRATAMENTO DE RUÍDO)
     system_prompt = (
-        "Você é um Líder Técnico de Suporte (N3). Sua meta é triagem rápida.\n"
-        "Analise os logs/chamados abaixo e identifique o PADRÃO TÉCNICO COMUM.\n\n"
-        "### REGRAS CRÍTICAS (LEIA COM ATENÇÃO):\n"
-        "1. GENERALIZE, NÃO ESPECIFIQUE PESSOAS: Nunca use nomes próprios (ex: 'Mario') no Título/Descrição. Use 'Usuário'.\n"
-        "2. SOBRE ESPECIFICIDADE EXCESSIVA (LOGS/IDS): Se o cluster for composto apenas por Logs de Erro com muitos números/IDs (ex: 'Error 0x005...', 'Transaction 9882...'), NÃO coloque os números no título. Classifique como padrão técnico: 'Logs de Erro de Sistema', 'Falhas de Processamento em Lote', 'Tracebacks de Aplicação'.\n"
-        "3. SOBRE CLUSTERS 'CINZAS' (VAGOS): Se as amostras forem muito genéricas (ex: 'Erro', 'Ajuda', 'Não funciona') sem menção clara a serviços, NÃO ALUCINE um serviço. Use títulos honestos como: 'Solicitações de Suporte Genéricas', 'Dúvidas e Relatos Variados' ou 'Triagem Inicial Pendente'.\n"
-        "4. ENCONTRE O TEMA COMUM: Se houver variação, encontre o denominador (ex: Acesso + Instalação = 'Solicitações de Acesso e Configuração').\n\n"
+        "Você é um Especialista Sênior em Classificação de Incidentes de TI.\n"
+        "Sua missão é analisar um cluster de chamados e gerar um título e descrição que representem o PADRÃO DOMINANTE.\n\n"
+        "### INSTRUÇÃO DE RACIOCÍNIO (Chain-of-Thought):\n"
+        "1. Analise os 'TERMOS RECORRENTES' e 'SERVIÇOS'. Eles são a verdade estatística do cluster.\n"
+        "2. Se as amostras de texto parecerem confusas ou variadas, confie nos Termos Recorrentes para desempatar.\n"
+        "3. Ignore outliers (ex: 4 chamados sobre 'Senha' e 1 sobre 'Impressora' -> O tema é Senha).\n\n"
         "### REGRAS PARA O TÍTULO:\n"
-        "- Use linguagem natural e profissional.\n"
-        "- Foco na AÇÃO REQUERIDA (Solicitação) ou ERRO (Incidente).\n"
-        "- Ex: 'Liberação de Acesso ao Logix', 'Erro de Timeout na API'.\n"
+        "- Seja ESPECÍFICO mas PROFISSIONAL.\n"
+        "- EVITE IDs/Logs Crus: Não ponha 'Error 0x8004' no título. Use 'Logs de Erro de Sistema' ou 'Falha Crítica de Aplicação'.\n"
+        "- EVITE GENÉRICOS: 'Erro no Sistema' é ruim. 'Erro de Login no Protheus' é bom.\n"
         "- Máx 8 palavras. Init Caps.\n\n"
         "### REGRAS PARA A DESCRIÇÃO:\n"
-        "- Resuma o problema de forma impessoal.\n"
-        "- Se for técnico demais, explique o impacto ('Falha massiva de integração') em vez do erro técnico puro.\n"
-        "- Máx 2 frases.\n\n"
-        "### TAGS:\n"
-        "- 3 a 5 palavras-chave (Sistemas, Erros, Ações).\n"
-        "- Ex: ['Acesso', 'Logix', 'Permissão']\n\n"
-        "### FORMATO JSON:\n"
+        "- Explique o impacto funcional para o usuário.\n"
+        "- Ex: 'Usuários reportam lentidão e timeout ao tentar acessar o módulo financeiro.'\n\n"
+        "### FORMATO JSON (Obrigatório):\n"
         "{\n"
+        '  "analise_racional": "Breve explicação de como você chegou à conclusão (será descartado, use para pensar).",\n'
         '  "titulo": "...",\n'
         '  "descricao": "...",\n'
         '  "tags": ["...", "..."]\n'
         "}"
     )
 
-    return _chamar_openai(system_prompt, user_content)
+    result = _chamar_openai(system_prompt, user_content)
+    
+    # Mantemos a analise_racional para debug e transparencia no frontend
+    # if 'analise_racional' in result:
+    #     del result['analise_racional']
+        
+    return result
 
 
 async def gerar_analise_macro_async(dados_filhos: list[dict]) -> dict:

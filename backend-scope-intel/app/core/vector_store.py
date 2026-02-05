@@ -5,11 +5,18 @@
 #   Abstração para comunicação com o Banco de Dados Vetorial (Qdrant).
 #   Centraliza todas as operações de busca semântica, inserção e configuração.
 #
+# PARTE DO SISTEMA:
+#   Backend / Infraestrutura (Persistência Vetorial)
+#
 # RESPONSABILIDADES:
 #   - Conectar ao cluster Qdrant (local ou nuvem)
 #   - Garantir que a coleção (tabela) existe com a configuração correta (Distância do Cosseno)
 #   - Fazer upload de vetores em massa (Batch Upsert)
 #   - Recuperar vetores via Scroll ou Busca por Similaridade
+#
+# COMUNICAÇÃO:
+#   Chama: Qdrant Server (via HTTP/gRPC)
+#   Usado por: vectorizer.py, cluster_engine.py
 # ==============================================================================
 
 from qdrant_client import QdrantClient

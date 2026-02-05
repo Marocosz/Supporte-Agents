@@ -1,0 +1,3187 @@
+{
+  "metadata": {
+    "sistema": "NEW TRACKING",
+    "data_analise": "2026-02-05T09:29:25.418948",
+    "periodo_dias": 180,
+    "total_chamados": 166,
+    "total_grupos": 18,
+    "taxa_ruido": 0.1084,
+    "clustering_params": {
+      "macro_min_size": 4,
+      "max_cluster_size": 20,
+      "micro_min_size": 3,
+      "n_neighbors_macro": 15
+    }
+  },
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 5
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 5
+        },
+        "top_solicitantes": {
+          "Alana Aranalde Gomes Fukes": 2,
+          "Tulio Candido de Oliveira": 1,
+          "Guilherme Fernandes de Araujo": 1,
+          "Mércia Silva Ciqueira": 1
+        },
+        "top_status": {
+          "Não Informado": 5
+        },
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Ter",
+            "qtd": 1
+          },
+          {
+            "dia": "Qua",
+            "qtd": 3
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          }
+        ],
+        "tendencia": {
+          "tipo": "Estável",
+          "variacao_pct": 0.0,
+          "alerta": false,
+          "detalhe": "Volume estável de 1 para 1 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.8,
+          "usuarios_unicos": 4
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: AO ESTORNAR AS NF'S  DO NEW TRACKING, ELAS NÃO ESTÃO VOLTANDO DO NEW TRACKING NA ABA TRANSITO, ESTÁ VOLTANDO NA ABA ENTREGUE. DESCRIÇÃO DETALHADA: AO ESTORNAR AS NF'S DO NEW TRACKING, ELAS NÃO ESTÃO VOLTANDO DO NEW TRACKING NA ABA TRANSITO, ESTÁ VOLTANDO NA ABA ENTREGUE: NF'S: 41601 41625 41581",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ESTORNO DE NOTA FISCAL  JÁ ENTREGUE . DESCRIÇÃO DETALHADA: FAVOR VALIDAR SOBRE AS NOTAS ABAIXO, AS MESMAS ESTÃO VOLTANDO PARA NOTAS EM TRANSITO MESMO JÁ ESTANDO ENTREGUE, CASO TENHA SIDO ESTORNADA, FAVOR INFORMAR O LOGIN QUE REALIZOU O ESTORNO. 249789 250042 40788 40789",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO SISTEMICO. DESCRIÇÃO DETALHADA: NÃO ESTOU CONSEGUINDO REALIZAR O ESTORNO DE UM NF. EU SOLICITO E NÃO VOLTA PARA A ABA EM TRANSITO.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO AO FINALIZAR NF. DESCRIÇÃO DETALHADA: Estou tentando incluir o numero do fluig 126055 com a opção 7 - devolução total e não está deixando. Da erro no protheus",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: BAIXA INDEVIDA NÃO ESTÁ ESTORNANDO. DESCRIÇÃO DETALHADA: Estou desde o dia 02/12 as 14h tentando estorna a baixa da NF 299126 porém não está estornando meus colegas tentaram e não estorna. Pedi apoio ao Sergio havia me informado que tb não conseguiu e pediu abertura do chamado."
+      ],
+      "top_keywords": [
+        "new",
+        "tracking",
+        "não",
+        "erro",
+        "sistêmico",
+        "sub",
+        "área",
+        "inovação",
+        "voltando",
+        "aba",
+        "está",
+        "transito",
+        "entregue",
+        "estão",
+        "estorno"
+      ],
+      "ids_chamados": [
+        "125687",
+        "126256",
+        "126200",
+        "129024",
+        "133455"
+      ],
+      "chamados_viz": [
+        {
+          "id": "125687",
+          "x": -1.7327656745910645,
+          "y": 0.7895165681838989,
+          "prob": 1.0
+        },
+        {
+          "id": "126256",
+          "x": -1.914533257484436,
+          "y": 0.9714537858963013,
+          "prob": 1.0
+        },
+        {
+          "id": "126200",
+          "x": -1.8923946619033813,
+          "y": 0.6206772327423096,
+          "prob": 0.7115
+        },
+        {
+          "id": "129024",
+          "x": -1.7960013151168823,
+          "y": 0.8681987524032593,
+          "prob": 1.0
+        },
+        {
+          "id": "133455",
+          "x": -1.6369885206222534,
+          "y": 0.798318088054657,
+          "prob": 1.0
+        }
+      ],
+      "titulo": "Erro Sistêmico ao Estornar NF no New Tracking",
+      "descricao": "Usuários não conseguem concluir o estorno de Notas Fiscais no módulo New Tracking; as notas ficam com status incorreto (voltando para Transito ou indo para Entregue), dificultando devoluções/baixas, gerando retrabalho, atrasos no fechamento financeiro e inconsistência no controle de estoque.",
+      "tags": [
+        "ERRO SISTÊMICO",
+        "New Tracking",
+        "Notas Fiscais",
+        "Estorno",
+        "Inovação"
+      ],
+      "analise_racional": "Análise dos termos recorrentes aponta foco único: falha sistêmica no fluxo de estorno de Notas Fiscais no módulo New Tracking (sub-área Inovação). As amostras descrevem notas retornando a status incorreto (Transito vs Entregue) após tentativa de estorno, sugerindo erro de roteamento/atualização de status no processo. Dado o peso de termos como 'new', 'tracking', 'erro', 'sistêmico', o padrão dominante é Erro Sistêmico ao Estornar NF no New Tracking."
+    },
+    {
+      "cluster_id": 1,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "ANALISE DE CASOS": 2,
+          "ERRO SISTÊMICO": 2,
+          "ANALISE DE CASO": 1
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 5
+        },
+        "top_solicitantes": {
+          "Camila Sá de Oliveira": 2,
+          "Tulio Candido de Oliveira": 1,
+          "Thais Carmo": 1,
+          "Victor Machado Martins": 1
+        },
+        "top_status": {
+          "Não Informado": 5
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 1
+          },
+          {
+            "dia": "Qua",
+            "qtd": 1
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          }
+        ],
+        "tendencia": {
+          "tipo": "Estável",
+          "variacao_pct": 0.0,
+          "alerta": false,
+          "detalhe": "Volume estável de 1 para 1 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.8,
+          "usuarios_unicos": 4
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: CARTEIRA VIP. DESCRIÇÃO DETALHADA: A CARTEIRA DE CLIENTES VIPS NÃO ESTÁ ASSOCIANDO CNPJS QUE JÁ FORAM ASSOCIADOS ANTERIORMENTE PARA ELA. SEGUE CNPJ EVIDENCIA: Cliente Destino: ESTRELA DISTRIBUICAO EIRELI CNPJ Destino: 08.691.096/0001-93",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: CARTEIRA DO TOMADOR TRIUMPH ESTAVA CAINDO NA ATRIBUIÇÃO DOS ANALISTAS E NÃO PARA A ANALISTA CORRETO. DESCRIÇÃO DETALHADA: CARTEIRA DO TOMADOR TRIUMPH ESTAVA CAINDO NA ATRIBUIÇÃO DOS ANALISTAS E NÃO PARA A ANALISTA CORRETO BEATRIZ",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASO | SUB-ÁREA: INOVAÇÃO | TÍTULO: CARTEIRA SEM ASSOCIAÇÃO . DESCRIÇÃO DETALHADA: FAVOR VERIFICAR POIS ASSOCIAMOS AS NFS DA CARTEIRA SEM ASSOCIAÇÃO POREM NÃO FOI DIRECIONADA AOS ANALISTAS",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: Associação de notas fiscais as carteira de transportador . DESCRIÇÃO DETALHADA: Os ctes quando são faturado estão indo para carteira, sem associação, gerando uma carga de trabalho manual de associação diário de todas as notas faturadas no dia. A associação quando já temos atrelado o transportador, já deveria ir para carteira do transportador já cadastrado.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: Atualização de Carteira NT. DESCRIÇÃO DETALHADA: Boa tarde, Peço que realizem a associação das NF´s para as carteiras corretas, estamos com 314 NF´s sem associação."
+      ],
+      "top_keywords": [
+        "carteira",
+        "associação",
+        "new",
+        "tracking",
+        "sub",
+        "área",
+        "inovação",
+        "não",
+        "analise",
+        "analistas",
+        "transportador",
+        "casos",
+        "cnpj",
+        "destino",
+        "tomador"
+      ],
+      "ids_chamados": [
+        "120456",
+        "124591",
+        "125836",
+        "128608",
+        "133988"
+      ],
+      "chamados_viz": [
+        {
+          "id": "120456",
+          "x": -1.8481526374816895,
+          "y": 1.5657931566238403,
+          "prob": 1.0
+        },
+        {
+          "id": "124591",
+          "x": -1.5638189315795898,
+          "y": 2.035722017288208,
+          "prob": 0.8974
+        },
+        {
+          "id": "125836",
+          "x": -1.216165542602539,
+          "y": 1.8762303590774536,
+          "prob": 1.0
+        },
+        {
+          "id": "128608",
+          "x": -0.9939102530479431,
+          "y": 1.6386117935180664,
+          "prob": 1.0
+        },
+        {
+          "id": "133988",
+          "x": -1.4863715171813965,
+          "y": 1.8145947456359863,
+          "prob": 1.0
+        }
+      ],
+      "titulo": "Associação de Notas Fiscais às Carteiras com Falha",
+      "descricao": "Usuários relatam que notas fiscais não são automaticamente associadas às carteiras corretas no módulo New Tracking. O impacto é aumento de trabalho manual diário, atrasos no faturamento e riscos de inconsistência de dados devido à atribuição incorreta de NF às carteiras e analistas.",
+      "tags": [
+        "carteira",
+        "associação",
+        "notas fiscais",
+        "new tracking",
+        "erro sistêmico",
+        "analise de casos"
+      ],
+      "analise_racional": "Análise dos termos recorrentes aponta que o tema dominante é a falha de associação entre notas fiscais (NF) e carteiras no sistema New Tracking. Serviços com maior frequência são Analise de Casos e Erro Sistêmico, ambos com foco em inovação, reforçando a necessidade de correção de fluxo de associação. Outliers sobre autenticação/senha foram ignorados para manter o foco no problema de NF/Carteira."
+    },
+    {
+      "cluster_id": 2,
+      "metricas": {
+        "volume": 6,
+        "top_servicos": {
+          "MELHORIAS": 4,
+          "ALTERAÇÃO DE TABELAS": 1,
+          "CONFIGURAÇÃO DE PERFIL DE USUARIO": 1
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 6
+        },
+        "top_solicitantes": {
+          "Hiago Pereira Silva": 5,
+          "Thais Carmo": 1
+        },
+        "top_status": {
+          "Não Informado": 4,
+          "Finalizado": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 2
+          },
+          {
+            "dia": "Ter",
+            "qtd": 1
+          },
+          {
+            "dia": "Qua",
+            "qtd": 2
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          }
+        ],
+        "tendencia": {
+          "tipo": "Estável",
+          "variacao_pct": 0.0,
+          "alerta": false,
+          "detalhe": "Volume estável de 1 para 1 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.33,
+          "usuarios_unicos": 2
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: ALTERAÇÕES CARTEIRAS \"ATRIBUIÇÃO TRANSPORTADOR\". DESCRIÇÃO DETALHADA: BOM DIA FAVOR ATUALIZAR CARTEIRAS NO NT CONFORME PLANILHA ANEXADA.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: ALTERAÇÕES CARTEIRAS \"ATRIBUIÇÃO TRANSPORTADOR\". DESCRIÇÃO DETALHADA: BOA TARDE FAVOR ATUALIZAR CARTEIRAS NO NT CONFORME PLANILHA ANEXADA (MUDANÇAS DESTACADAS EM LARANJA)",
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: ALTERAÇÕES CARTEIRAS \"ATRIBUIÇÃO TRANSPORTADOR\" . DESCRIÇÃO DETALHADA: BOM DIA FAVOR ATUALIZAR AS CARTEIRAS NO NT . SEGUE PLANILHA COM AS NOVAS ATRIBUIÇÕES DOS PARCEIROS X ANALISTAS",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ALTERAÇÃO DE TABELAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: ALTERAÇÕES CARTEIRAS \"ATRIBUIÇÃO TRANSPORTADOR\". DESCRIÇÃO DETALHADA: FAVOR ATUALIZAR CARTEIRAS NO NT CONFORME PLANILHA ANEXADA (MUDANÇAS DESTACADAS EM VERMELHO - KR / SOLUÇÃO / TRD)",
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: ALTERAÇÕES CARTEIRAS \"ATRIBUIÇÃO TRANSPORTADOR\" . DESCRIÇÃO DETALHADA: BOA TARDE! COLOCAR O PARCEIRO BHT COM O USUÁRIO THALITA.ALBINO, E COLOCAR O PARCEIRO CW3 COM O USUÁRIO GUILHERME.ARAUJO",
+        "SISTEMA: NEW TRACKING | SERVIÇO: CONFIGURAÇÃO DE PERFIL DE USUARIO | SUB-ÁREA: INOVAÇÃO | TÍTULO: Alteração de carteira. DESCRIÇÃO DETALHADA: BOa tarde, Preciso que seja executado a alteração abaixo de carteiras com urgencia. Ana Claudia - Vai ficar 100% da carteira com o Bruno Eduardo Bruno Eduardo- Vai ficar 100% da carteira com a Ana Claudia Parceiro Tecmar- Carteira da colaboradora Bianca Mendes Santos Parceiros RS e ESmeralda- Carteira da colaborada Alana Fukes"
+      ],
+      "top_keywords": [
+        "carteiras",
+        "new",
+        "tracking",
+        "sub",
+        "área",
+        "inovação",
+        "alterações",
+        "atribuição",
+        "transportador",
+        "carteira",
+        "melhorias",
+        "favor",
+        "atualizar",
+        "planilha",
+        "conforme"
+      ],
+      "ids_chamados": [
+        "118367",
+        "119360",
+        "121470",
+        "122301",
+        "129355",
+        "132726"
+      ],
+      "chamados_viz": [
+        {
+          "id": "118367",
+          "x": -0.17836154997348785,
+          "y": 3.602041721343994,
+          "prob": 1.0
+        },
+        {
+          "id": "119360",
+          "x": -0.20105741918087006,
+          "y": 3.4086508750915527,
+          "prob": 1.0
+        },
+        {
+          "id": "121470",
+          "x": -0.10801267623901367,
+          "y": 3.215658187866211,
+          "prob": 1.0
+        },
+        {
+          "id": "122301",
+          "x": -0.06508315354585648,
+          "y": 3.5244338512420654,
+          "prob": 1.0
+        },
+        {
+          "id": "129355",
+          "x": -0.3133198916912079,
+          "y": 3.444209575653076,
+          "prob": 1.0
+        },
+        {
+          "id": "132726",
+          "x": 0.04981895163655281,
+          "y": 3.4701449871063232,
+          "prob": 1.0
+        }
+      ],
+      "titulo": "Alterações de Carteiras e Atribuição de Transportador",
+      "descricao": "Impacto funcional: atualiza as carteiras e a atribuição de transportadores no módulo New Tracking. Usuários dependem da planilha anexada para aplicar as mudanças; até a conclusão, pode haver alterações que afetem o fluxo de rastreamento de encomendas, a distribuição de tarefas entre analistas e a visibilidade de parcerias.",
+      "tags": [
+        "carteiras",
+        "new tracking",
+        "atribuicao transportador",
+        "melhorias",
+        "configuracao de perfil"
+      ],
+      "analise_racional": "Análise: Os termos recorrentes apontam para alterações de carteiras e atribuição de transportadores dentro do módulo New Tracking, com o serviço predominante sendo melhorias; a amostra indica aplicação via planilha anexada."
+    },
+    {
+      "cluster_id": 3,
+      "metricas": {
+        "volume": 11,
+        "top_servicos": {
+          "ANALISE DE CASOS": 11
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 11
+        },
+        "top_solicitantes": {
+          "Mirielle Santos de Oliveira": 8,
+          "Rebeca Braga Faria": 1,
+          "Laihara Araújo Ferreira Castro": 1,
+          "Vitor Hugo Rodrigues Souza": 1
+        },
+        "top_status": {
+          "Não Informado": 11
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 6
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 2
+          },
+          {
+            "dia": "Ter",
+            "qtd": 3
+          },
+          {
+            "dia": "Qua",
+            "qtd": 4
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 1
+          }
+        ],
+        "tendencia": {
+          "tipo": "Estável",
+          "variacao_pct": 0.0,
+          "alerta": false,
+          "detalhe": "Volume estável de 1 para 1 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.36,
+          "usuarios_unicos": 4
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: INTEGRAÇÃO NF 2764 PIONEER X NEW TRACKING. DESCRIÇÃO DETALHADA: Gentileza, validar por qual motivo NF 2764 não consta disponível via NT. Motivo: NF está consolidada juntamente com 2765, no entanto, não consta em NFS em transito. Segue anexo, evidencia de viagem a qual possui NF inclusa. Aguardo seu breve retorno, obrigada!",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: INTEGRAÇÃO NF 250091/ 250093 COPAG X NEW TRACKING. DESCRIÇÃO DETALHADA: Gentileza, validar por qual motivo NFS 250091/ 250093 não consta disponível via NT. Segue anexo, evidencia de viagem a qual possui NF inclusa. Aguardo seu breve retorno, obrigada!",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: INTEGRAÇÃO NF 26207 / 26208 COPAG  X VIAGEM PROTHEUS. DESCRIÇÃO DETALHADA: Gentileza, validar por qual motivo NFS 26207 / 26208 não consta disponível via NT. Segue anexo, evidencia de viagem a qual possui NFS inclusa. Aguardo seu breve retorno, obrigada!",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: INTEGRAÇÃO NF 84111 PIONEER X NEW TRACKING. DESCRIÇÃO DETALHADA: Gentileza, validar por qual motivo NFS 84111 não consta disponível via NT. Segue anexo, evidencia de viagem a qual possui NFS inclusa. Aguardo seu breve retorno, obrigada!",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: INTEGRAÇÃO NF 3214/3215/3216/3217/3218/3219/3220/3221/3223/3224 PIONEER X NEW TRACKING. DESCRIÇÃO DETALHADA: Gentileza, validar por qual motivo NFS 3214/3215/3216/3217/3218/3219/3220/3221/3223/3224 não consta disponível via NT. Segue anexo, evidencia de viagem a qual possui NFS inclusa. Aguardo seu breve retorno, obrigada!",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: INTEGRAÇÃO NF 2970 PIONEER X NEW TRACKING. DESCRIÇÃO DETALHADA: Gentileza, validar por qual motivo NF 2970 não consta disponível via NT. Segue anexo, evidencia de viagem a qual possui NF inclusa. Aguardo seu breve retorno, obrigada!",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: INTEGRAÇÃO NF 10620 ARMOR X NEW TRACKING. DESCRIÇÃO DETALHADA: Gentileza, validar por qual motivo NF 10620 - Serie 6 não consta disponível via NT. Segue anexo, evidencia de viagem a qual possui NF inclusa. Aguardo seu breve retorno, obrigada!",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: INTEGRAÇÃO NF 42299 -COPAG. DESCRIÇÃO DETALHADA: Boa tarde! Gentileza, validar por qual motivo a NF 42299 serie: 6, tomador Copag, não consta disponível via New Tracking. Segue em anexo evidencia de viagem gerada via protheus.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: CORREÇÃO LEAD TIME NOTAS ARMOR. DESCRIÇÃO DETALHADA: Prezados, bom dia! Informo que, após analise identificamos que possui algumas NFS as quais lead time está divergente contrato cliente ARMOR. Obs.: Direcionamos p/ time de cadastro, e notificaram que, via Protheus calculo fora realizado correto estão correto, portanto, há possibilidade de divergência em integração NT. Segue anexo, planilha consolidada com NFS em transito para ajuste. Gentileza, poderiam validar e nos retornar por meio deste? Aguardo seu breve retorno, obrigada!",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: ANALISE DE CASO - COMPROVANTE NT. DESCRIÇÃO DETALHADA: BOM DIA, VALIDAR MOTIVO QUE NF 299156 NÃO SUBIU JUNTAMENTE COM A OCORRENCIA 1 NO NT. ATT."
+      ],
+      "top_keywords": [
+        "new",
+        "tracking",
+        "qual",
+        "nfs",
+        "analise",
+        "não",
+        "casos",
+        "sub",
+        "área",
+        "inovação",
+        "validar",
+        "motivo",
+        "via",
+        "integração",
+        "gentileza"
+      ],
+      "ids_chamados": [
+        "121034",
+        "121219",
+        "122173",
+        "122716",
+        "122717",
+        "122715",
+        "124336",
+        "125744",
+        "127198",
+        "126311",
+        "127509"
+      ],
+      "chamados_viz": [
+        {
+          "id": "121034",
+          "x": -2.9608712196350098,
+          "y": 2.0211586952209473,
+          "prob": 1.0
+        },
+        {
+          "id": "121219",
+          "x": -2.7929794788360596,
+          "y": 1.8914588689804077,
+          "prob": 0.9786
+        },
+        {
+          "id": "122173",
+          "x": -2.8383584022521973,
+          "y": 1.7190048694610596,
+          "prob": 1.0
+        },
+        {
+          "id": "122716",
+          "x": -2.8453986644744873,
+          "y": 1.7707335948944092,
+          "prob": 1.0
+        },
+        {
+          "id": "122717",
+          "x": -2.8148038387298584,
+          "y": 2.221264600753784,
+          "prob": 0.9786
+        },
+        {
+          "id": "122715",
+          "x": -2.6693358421325684,
+          "y": 2.1509997844696045,
+          "prob": 0.9786
+        },
+        {
+          "id": "124336",
+          "x": -3.116584062576294,
+          "y": 1.9640588760375977,
+          "prob": 0.8045
+        },
+        {
+          "id": "125744",
+          "x": -3.010913372039795,
+          "y": 1.569186806678772,
+          "prob": 1.0
+        },
+        {
+          "id": "127198",
+          "x": -1.7315009832382202,
+          "y": 0.24800536036491394,
+          "prob": 0.428
+        },
+        {
+          "id": "126311",
+          "x": -2.1921682357788086,
+          "y": 1.856492280960083,
+          "prob": 0.428
+        },
+        {
+          "id": "127509",
+          "x": -2.1801750659942627,
+          "y": 1.4899139404296875,
+          "prob": 0.448
+        }
+      ],
+      "titulo": "Integração NF Com New Tracking",
+      "descricao": "Usuários reportam que notas fiscais (NFS) não aparecem ou não ficam disponíveis via New Tracking, dificultando a conferência de recebimento e o faturamento. Impacta o controle de inventário, prazos de validação e o fechamento financeiro, gerando atrasos e retrabalho para equipes de operações e cadastros.",
+      "tags": [
+        "New Tracking",
+        "Integração NF",
+        "Análise de Casos",
+        "Inovação"
+      ],
+      "analise_racional": "Termos recorrentes apontam foco principal em Integração NF com New Tracking; as amostras repetem NF não consta disponível via NT, sugerindo um padrão dominante de falha de integração entre NF e NT."
+    },
+    {
+      "cluster_id": 4,
+      "metricas": {
+        "volume": 11,
+        "top_servicos": {
+          "MELHORIAS": 7,
+          "CRIAÇÃO DE VIEW": 1,
+          "MELHORIA": 1,
+          "DESENVOLVIMENTO": 1,
+          "ANALISE DE CASOS": 1
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 11
+        },
+        "top_solicitantes": {
+          "Tulio Candido de Oliveira": 4,
+          "Victor Machado Martins": 4,
+          "Administrador Fluig": 1,
+          "Vitor Hugo Rodrigues Souza": 1,
+          "Ligia Zago Brezolim Feitoza": 1
+        },
+        "top_status": {
+          "Não Informado": 11
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 1
+          },
+          {
+            "dia": "Ter",
+            "qtd": 7
+          },
+          {
+            "dia": "Qua",
+            "qtd": 2
+          },
+          {
+            "dia": "Sex",
+            "qtd": 1
+          }
+        ],
+        "tendencia": {
+          "tipo": "Crescente",
+          "variacao_pct": 100.0,
+          "alerta": true,
+          "detalhe": "Volume crescente de 1 para 2 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.45,
+          "usuarios_unicos": 5
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: MELHORIA NA TELA DE NOTAS EM TRANSITO. DESCRIÇÃO DETALHADA: BOM DIA PRECISO QUE SEJA FEITO UMA ALTERAÇÃO NO FRONT NA TELA DE NOTAS EM TRANSITO. REALIZANDO A SEGUINTE CONSULTA NO FRONT PARA TRAZER AS NOTAS QUE NÃO FORAM ATUALIZADAS E NÃO FORAM ABERTAS AS OCORRENCIAS 89, 90 E 91. O INTUITO PARA ESSA MELHORIA É Evidenciar para o analista CRM/Tracking as notas que terão necessidade de atualizar com codigos OTIF (89, 90 e 91) SELECT CodOcorrenciaIncidente, NotaFiscal, * FROM dbo.tk_NF_EM_ABERTO where AnaliseData = 'ATRASO' and StatusAtualizacao = 'Desatualiz.' and CodOcorrenciaInicidente <> 89 || CodOcorrenciaIncidente <> 90 || CodOcorrenciaIncidente <> 91 || CodOcorrenciaIncidente = NULL",
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: MELHORIA NA TELA DE NOTAS EM TRANSITO. DESCRIÇÃO DETALHADA: BOM DIA PRECISO QUE SEJA FEITO UMA ALTERAÇÃO NO FRONT NA TELA DE NOTAS EM TRANSITO. REALIZANDO A SEGUINTE CONSULTA NO FRONT PARA TRAZER AS NOTAS QUE NÃO FORAM ATUALIZADAS E NÃO FORAM ABERTAS AS OCORRENCIAS 89, 90 E 91. O INTUITO PARA ESSA MELHORIA É Evidenciar para o analista CRM/Tracking as notas que terão necessidade de atualizar com codigos OTIF (89, 90 e 91) SELECT CodOcorrenciaIncidente, NotaFiscal, * FROM dbo.tk_NF_EM_ABERTO where AnaliseData = 'ATRASO' and StatusAtualizacao = 'Desatualiz.' and CodOcorrenciaInicidente <> 89 || CodOcorrenciaIncidente <> 90 || CodOcorrenciaIncidente <> 91 || CodOcorrenciaIncidente = NULL",
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIA | SUB-ÁREA: INOVAÇÃO | TÍTULO: AJUSTAR O SITE DE CONSULTA DE NOTAS COM O REDESIGN ATUAL, COLOCANDO A LOGO ATUAL SUPPORTE. DESCRIÇÃO DETALHADA: AJUSTAR O SITE DE CONSULTA DE NOTAS COM O REDESIGN ATUAL, COLOCANDO A LOGO ATUAL SUPPORTE: https://cliente.supportefullcommerce.net/auth/login",
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: DISPONIBILIZAR A TELA DE NOTAS RETIDAS PARA TODOS OS TOMADORES. DESCRIÇÃO DETALHADA: DISPONIBILIZAR A TELA DE NOTAS RETIDAS PARA QUE TODOS OS TOMADORES POSSAM VER SOMENTE SUAS NOTAS QUE ESTÃO RETIDAS",
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: Adicionar coluna no NT com a informação de frete FOB ou CIF nas abas EM TRÂNSITO ou ENTREGUES. DESCRIÇÃO DETALHADA: Adicionar coluna no NT como frete FOB ou CIF nas abas EM TRÂNSITO ou ENTREGUES",
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: Adicionar colunas Situação e Tipo de frete em abrir incidientes e abrir registro de problema. DESCRIÇÃO DETALHADA: Adicionar colunas Situação e Tipo de frete em abrir incidientes e abrir registro de problema",
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: Adicionar o Número das NFs no campo Observação do uMove. DESCRIÇÃO DETALHADA: Bom dia! Favor avaliar a possibilidade de envio do número da NF no campo Observação do uMove.me ao enviar a viagem para o app via NT. A inclusão no campo observação permite que o motorista veja qual a NF será entregue na viagem na tela do APP, conforme orientação da equipe uMove basta a inclusão da informação no campo.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: Criação de novas views LAST MILE. DESCRIÇÃO DETALHADA: VW_LOGS_RECEBIMENTOS_API_NOVO Adicionar essas colunas FilDocto SerieDocto Tomador",
+        "SISTEMA: NEW TRACKING | SERVIÇO: DESENVOLVIMENTO | SUB-ÁREA: INOVAÇÃO | TÍTULO: Visão Cliente NT. DESCRIÇÃO DETALHADA: Disponibilizar filtros para visão cliente no nt e o status de apoio para o cliente poder ver qual a tratativa da nota o que está em atraso e o que es tá pendente de tratativa. Na imagem 1 Temos a visão do cliente Atual Na imagem 2 o que precisamos incluir ( hoje está só na visão Supporte)",
+        "SISTEMA: NEW TRACKING | SERVIÇO: CRIAÇÃO DE VIEW | SUB-ÁREA: INOVAÇÃO | TÍTULO: View Last mile . DESCRIÇÃO DETALHADA: Nas views utilizadas no indicador de last mile, estamos com muitos críterios feitos diretos na view Favor gerar um view sem esses cálculos, trazer uma view \"crua\" onde vamos analisar os dados via BI."
+      ],
+      "top_keywords": [
+        "tracking",
+        "new",
+        "notas",
+        "sub",
+        "área",
+        "inovação",
+        "codocorrenciaincidente",
+        "melhorias",
+        "tela",
+        "adicionar",
+        "view",
+        "melhoria",
+        "atual",
+        "cliente",
+        "frete"
+      ],
+      "ids_chamados": [
+        "118619",
+        "121715",
+        "121234",
+        "121992",
+        "126958",
+        "129471",
+        "129473",
+        "131540",
+        "132723",
+        "133220",
+        "133336"
+      ],
+      "chamados_viz": [
+        {
+          "id": "118619",
+          "x": -0.782085120677948,
+          "y": 2.686957836151123,
+          "prob": 0.8174
+        },
+        {
+          "id": "121715",
+          "x": -0.25677409768104553,
+          "y": 2.7884082794189453,
+          "prob": 0.5441
+        },
+        {
+          "id": "121234",
+          "x": -0.14833688735961914,
+          "y": 2.3481979370117188,
+          "prob": 0.5441
+        },
+        {
+          "id": "121992",
+          "x": -0.6699894666671753,
+          "y": 3.053675413131714,
+          "prob": 0.6731
+        },
+        {
+          "id": "126958",
+          "x": -0.6017694473266602,
+          "y": 3.0867886543273926,
+          "prob": 0.6731
+        },
+        {
+          "id": "129471",
+          "x": -0.9166775345802307,
+          "y": 2.7870168685913086,
+          "prob": 1.0
+        },
+        {
+          "id": "129473",
+          "x": -0.9964999556541443,
+          "y": 3.0959970951080322,
+          "prob": 1.0
+        },
+        {
+          "id": "131540",
+          "x": -1.267667293548584,
+          "y": 2.968010902404785,
+          "prob": 0.6731
+        },
+        {
+          "id": "132723",
+          "x": -0.8947465419769287,
+          "y": 3.3862967491149902,
+          "prob": 1.0
+        },
+        {
+          "id": "133220",
+          "x": -1.0770610570907593,
+          "y": 3.3841230869293213,
+          "prob": 1.0
+        },
+        {
+          "id": "133336",
+          "x": -0.45711395144462585,
+          "y": 2.6444661617279053,
+          "prob": 0.5524
+        }
+      ],
+      "titulo": "Melhorias na Tela de Notas em Trânsito",
+      "descricao": "Impacto: analistas CRM/Tracking não possuem visão clara das notas em trânsito que requerem atualização com códigos OTIF (89, 90 e 91). Isso impede o rastreamento efetivo de ocorrências e pode atrasar tratativas e fechamento de notas, impactando prazos e compliance.",
+      "tags": [
+        "Notas em Trânsito",
+        "Tela de Notas",
+        "Melhorias",
+        "Inovação",
+        "OTIF"
+      ],
+      "analise_racional": "Análise baseada nos termos recorrentes: foco dominante em melhorias na tela de notas em trânsito e na necessidade de evidenciar notas pendentes para atualização OTIF."
+    },
+    {
+      "cluster_id": 5,
+      "metricas": {
+        "volume": 7,
+        "top_servicos": {
+          "MELHORIAS": 3,
+          "CRIAÇÃO": 2,
+          "DESENVOLVIMENTO": 1,
+          "ATUALIZAÇÕES E CORREÇÕES": 1
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 7
+        },
+        "top_solicitantes": {
+          "Laihara Araújo Ferreira Castro": 3,
+          "Amanda Freitas Costa Segala": 1,
+          "Ligia Zago Brezolim Feitoza": 1,
+          "Vitor Hugo Rodrigues Souza": 1,
+          "Denes Marques Gualberto": 1
+        },
+        "top_status": {
+          "Não Informado": 7
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 3
+          },
+          {
+            "dia": "Ter",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 3
+          }
+        ],
+        "tendencia": {
+          "tipo": "Crescente",
+          "variacao_pct": 100.0,
+          "alerta": true,
+          "detalhe": "Volume crescente de 1 para 2 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.71,
+          "usuarios_unicos": 5
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: BANCO DE DADOS PARTICULARIDADES NEW TRACKING - BASE ÚNICA E PADRONIZADA. DESCRIÇÃO DETALHADA: Boa tarde, segue solicitação para padronizar o banco de dados de Particularidades dos destinatários finais de modo a facilitar análises de custos extras, limitar erros e ter uma informação única, clara, com log de atualização, incluindo informações essenciais para o serviço de entrega (colunas no show e recebimento noturno). Todas as alterações e inclusões serão exclusivamente realizadas na PÁGINA DE PARTICULARIDADES, portanto, todas as melhorias aqui solicitadas refere-se a essa página. Segue requisito e a base com os campos sugeridos e detalhes/formato de preenchimento ideal para cada campo que deverá ser ajustado no formulário já existente hoje no NT e segue também a base com o banco de dados para subirmos via banco, pois foi totalmente editada e padronizada para aderir ao formato sugerido. PEÇO POR FAVOR QUE NÃO EXCLUA A BASE DE PARTICULARIDADES EXISTENTE HOJE NO NT SEM ANTES REUNIRMOS E DEFINIRMOS A DATA PARA ESSA VIRADA, POIS PRECISO COMUNICAR TODOS ENVOLVIDOS NO PROCESSO. Vou agendar uma reuniao para falarmos melhor dessa melhoria.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: CRIAÇÃO | SUB-ÁREA: INOVAÇÃO | TÍTULO:  BANCO DE DADOS PARTICULARIDADES NEW TRACKING - BASE ÚNICA E PADRONIZADA. DESCRIÇÃO DETALHADA: Boa tarde, segue solicitação para padronizar o banco de dados de Particularidades dos destinatários finais de modo a facilitar análises de custos extras, limitar erros e ter uma informação única, clara, com log de atualização, incluindo informações essenciais para o serviço de entrega (colunas no show e recebimento noturno). Todas as alterações e inclusões serão exclusivamente realizadas na PÁGINA DE PARTICULARIDADES, porém, como esse banco de particularidades aumentará, haverão mais colunas, será necessário abrir mais campos de consulta onde aparecem informações de particularidades nas abas CONSULTAR NOTAS, NOTAS EM TRANSITO, NOTAS ENTREGUES. Segue requisito e a base com os campos sugeridos e detalhes/formato de preenchimento ideal para cada campo que deverá ser ajustado no formulário já existente hoje no NT e segue também a base com o banco de dados para subirmos via banco, pois foi totalmente editada e padronizada para aderir ao formato sugerido. SEGUE LINK DA BASE PARA SUBIRMOS COM O NOVO FORMATO E NOVOS CAMPOS: https://supportelogistica2-my.sharepoint.com/:x:/g/personal/laihara_castro_supplog_com/IQAcqEm4fseHTYpbN63_L6EYAQRucXP07NGsA-brp4xt270?e=GVptlQ PEÇO POR FAVOR QUE NÃO EXCLUA A BASE DE PARTICULARIDADES EXISTENTE HOJE NO NT SEM SALVÁ-LA ANTES EM UM 'COFRE' DA TI. E FAVOR SUBIR EM AMBIENTE DE HOMOLOGAÇÃO PRIMEIRO.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: CRIAÇÃO | SUB-ÁREA: INOVAÇÃO | TÍTULO: LOG DE REGISTRO DE USUARIO A ALTERAR PARTICULARIDADES. DESCRIÇÃO DETALHADA: Boa tarde, conforme conversamos favor incluir no desenvolvimento na aba PARTICULARIDADES um campo em que registre o USUARIO responsável pela ultima ALTERAÇÃO OU CRIAÇÃO de PARTICULARIDADES em qualquer um dos campos da base total e garantir registro em banco de dados com essas alterações. Conforme falamos, seria de DATA (já existente, porém apresenta falhas de registros) com o NOME USUÁRIO (criação).",
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: MELHORIA NA ABA VIAGENS - UNIFICAR CAMPO DATA DE ENTREGA. DESCRIÇÃO DETALHADA: Boa tarde! Favor realizar melhoria no campo data de entrega, para que quando for informar a data seja possível preencher somente 1x o campo e não linha a linha.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: Padronização formato comprovante. DESCRIÇÃO DETALHADA: Sergio, conforme falado com Matheus.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: DESENVOLVIMENTO | SUB-ÁREA: INOVAÇÃO | TÍTULO: IMPORTAÇÃO DOCCOB - NT. DESCRIÇÃO DETALHADA: BOM DIA SEGUE DOCUMENTO DE REQUISITOS PARA DESENVOLVIMENTO DE UMA TELA DE IMPORTAÇÃO DE DOCCOB PARA HOMOLOGAÇÃO DE PARCEIROS NO NEW TRACKING. CONSISTE EM CRIAR UM FRONT DE IMPORTAÇÃO DE ARQUIVO DOCCOB E NO BACK RODAR O ROBO DO AIRTON E TRAZER A RESPOSTA PARA O FRONT. ATT",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ATUALIZAÇÕES E CORREÇÕES | SUB-ÁREA: INOVAÇÃO | TÍTULO: Rastreamento de Token UMOV. DESCRIÇÃO DETALHADA: Bom dia, ao fazer a integração de baixa no sistema UMOV, o aplicativo envia um TOKEN, no qual necessito usar como chave para criar uma regra no power BI LAST MILE V5. SERGIO PEREIRA esta ciente da demanda e necessito que seja feito em conjunto com o THIAGO MARTINS. (Não tenho imagem de como deve ser feito, pois nao conheço o processo que o time utiliza)"
+      ],
+      "top_keywords": [
+        "particularidades",
+        "new",
+        "tracking",
+        "banco",
+        "base",
+        "segue",
+        "sub",
+        "área",
+        "inovação",
+        "dados",
+        "formato",
+        "campo",
+        "campos",
+        "existente",
+        "favor"
+      ],
+      "ids_chamados": [
+        "121080",
+        "122550",
+        "132160",
+        "129338",
+        "133594",
+        "133596",
+        "131241"
+      ],
+      "chamados_viz": [
+        {
+          "id": "121080",
+          "x": 0.34142792224884033,
+          "y": 2.7785897254943848,
+          "prob": 1.0
+        },
+        {
+          "id": "122550",
+          "x": 0.5587590932846069,
+          "y": 2.912179708480835,
+          "prob": 0.787
+        },
+        {
+          "id": "132160",
+          "x": 0.08093826472759247,
+          "y": 2.7355940341949463,
+          "prob": 1.0
+        },
+        {
+          "id": "129338",
+          "x": 0.7695930600166321,
+          "y": 2.583406448364258,
+          "prob": 0.676
+        },
+        {
+          "id": "133594",
+          "x": 0.30818283557891846,
+          "y": 2.927290916442871,
+          "prob": 1.0
+        },
+        {
+          "id": "133596",
+          "x": 0.0650053545832634,
+          "y": 2.7372610569000244,
+          "prob": 1.0
+        },
+        {
+          "id": "131241",
+          "x": 0.6380742192268372,
+          "y": 2.968210458755493,
+          "prob": 0.787
+        }
+      ],
+      "titulo": "Padronização Da Base De Particularidades No New Tracking",
+      "descricao": "Usuários enfrentam inconsistências nas particularidades, impactando análises de custos extras e confiabilidade de logs. Proposta: criar uma base única e padronizada de particularidades no New Tracking, com log de atualização e campos adicionais para consultas. A implantação envolve alterações na página de Particularidades, mantendo a base existente até a virada, com homologação em ambiente separado e validação de integração com abas de consulta/notas. Objetivo: reduzir erros, ampliar a consistência de dados e melhorar a qualidade das entregas.",
+      "tags": [
+        "Particularidades",
+        "New Tracking",
+        "Padronização",
+        "Banco de Dados",
+        "Inovação"
+      ],
+      "analise_racional": "Termos recorrentes indicam foco em padronização e unificação do banco de dados de particularidades no módulo New Tracking. Amostras 1–3 reforçam a criação/padronização da base com logs e novos campos; operações de melhoria/criação visam reduzir erros e facilitar análises, fortalecendo a consistência de dados."
+    },
+    {
+      "cluster_id": 6,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "ERRO OPERACIONAL": 2,
+          "INDISPONIBILIDADE": 1,
+          "ANALISE DE CASOS": 1,
+          "ERRO SISTÊMICO": 1
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 5
+        },
+        "top_solicitantes": {
+          "Camila Sá de Oliveira": 2,
+          "Tulio Candido de Oliveira": 1,
+          "Wilker Gabriel Cezario da Silva": 1,
+          "Larayne Lua Pereira Araújo": 1
+        },
+        "top_status": {
+          "Não Informado": 4,
+          "Finalizado": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Ter",
+            "qtd": 3
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 1
+          }
+        ],
+        "tendencia": {
+          "tipo": "Estável",
+          "variacao_pct": 0.0,
+          "alerta": false,
+          "detalhe": "Volume estável de 1 para 1 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.8,
+          "usuarios_unicos": 4
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: INDISPONIBILIDADE | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF 21230/18 NÃO SUBIU NO NEW TRACKING, MESMO COM VIAGEM CRIADA NO PROTHEUS. DESCRIÇÃO DETALHADA: NF 21230/18 NÃO SUBIU NO NEW TRACKING, MESMO COM VIAGEM CRIADA NO PROTHEUS CONFORME ANEXO",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO NO ENVIO DO LINK DO UMOVE PARA O NT. DESCRIÇÃO DETALHADA: QUANDO O MOTORISTA INICIA VIAGEM O LINK DO UMOVE NÃO ESTA ENVIANDO O LINK PARA O NT. SEGUE EXEMPLO: 301640 - 301641 - 301636 - 301675 - 301693",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF NÃO SUBIU PARA O NEW TRACKING - VIAGEM 244796. DESCRIÇÃO DETALHADA: Boa tarde, Informo que a NF 1166 TODAYTEC SERIE 5 - CTE 0604 7 000186469 não subiu para o NT, poderia validar ? Eu realizei o envio forçado no NT, mas não adiantou, print anexo.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO NO ENVIO DE VIAGENS DO NT PARA O UMOVE  : NF 42819 - J SLEIMAN. DESCRIÇÃO DETALHADA: Na tentativa de enviar a nf abaixo para o umove via NT na aba viagens não tivemos sucesso: NF 42819 - J SLEIMAN Protheus: 245743 ID: 915716 Último envio: 26/12/2025 11:48",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF'S NÃO SUBIRAM PARA O NT. DESCRIÇÃO DETALHADA: Bom dia, Por gentileza verificar porque as NF's 8540, 8541 e 8562 não subiram para o NT. Elas estão vinculadas a viagem junto ao parceiro BM2."
+      ],
+      "top_keywords": [
+        "não",
+        "new",
+        "tracking",
+        "sub",
+        "área",
+        "inovação",
+        "viagem",
+        "erro",
+        "subiu",
+        "envio",
+        "umove",
+        "protheus",
+        "link",
+        "criada",
+        "anexo"
+      ],
+      "ids_chamados": [
+        "117887",
+        "128542",
+        "128845",
+        "130829",
+        "132686"
+      ],
+      "chamados_viz": [
+        {
+          "id": "117887",
+          "x": -1.8913867473602295,
+          "y": -0.09343399852514267,
+          "prob": 1.0
+        },
+        {
+          "id": "128542",
+          "x": -2.0506248474121094,
+          "y": 0.16916640102863312,
+          "prob": 1.0
+        },
+        {
+          "id": "128845",
+          "x": -2.263122081756592,
+          "y": 0.0773971751332283,
+          "prob": 0.9572
+        },
+        {
+          "id": "130829",
+          "x": -1.9977924823760986,
+          "y": -0.21493656933307648,
+          "prob": 1.0
+        },
+        {
+          "id": "132686",
+          "x": -1.6937649250030518,
+          "y": -0.3840498626232147,
+          "prob": 1.0
+        }
+      ],
+      "titulo": "Falha no Envio de NFs para New Tracking",
+      "descricao": "Usuários não conseguem subir NF para o New Tracking, impactando a atualização de viagens vinculadas, atrasando o faturamento e o fechamento de viagens. Em alguns casos, o envio automático/forçado não funciona, gerando inconsistência entre Protheus e NT e necessidade de reprocessamento manual.",
+      "tags": [
+        "New Tracking",
+        "Envio de NF",
+        "Indisponibilidade de Serviço",
+        "Erro Operacional",
+        "Inovação"
+      ],
+      "analise_racional": "Ao observar as amostras, o tema dominante é falha no envio/subida de NFs para o módulo New Tracking, com variações entre erro operacional e erro sistêmico. Termos recorrentes no cluster (new, tracking, envio, viagem, sub) indicam uma quebra de integração entre Protheus e o New Tracking ao lidar com notas fiscais vinculadas a viagens. Outras amostras mencionam envio de links/viagens, mas o padrão principal é a NF não subir para o NT, sugerindo um padrão de indisponibilidade/erro na subida de dados."
+    },
+    {
+      "cluster_id": 7,
+      "metricas": {
+        "volume": 10,
+        "top_servicos": {
+          "INDISPONIBILIDADE": 4,
+          "ANALISE DE CASOS": 3,
+          "ERRO SISTÊMICO": 2,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 9,
+          "BACKOFFICE": 1
+        },
+        "top_solicitantes": {
+          "Tulio Candido de Oliveira": 7,
+          "Larayne Lua Pereira Araújo": 1,
+          "Ligia Zago Brezolim Feitoza": 1,
+          "Laihara Araújo Ferreira Castro": 1
+        },
+        "top_status": {
+          "Não Informado": 8,
+          "Finalizado": 2
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 3
+          },
+          {
+            "dia": "Ter",
+            "qtd": 4
+          },
+          {
+            "dia": "Qua",
+            "qtd": 1
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 1
+          }
+        ],
+        "tendencia": {
+          "tipo": "Estável",
+          "variacao_pct": 0.0,
+          "alerta": false,
+          "detalhe": "Volume estável de 1 para 1 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.4,
+          "usuarios_unicos": 4
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: INDISPONIBILIDADE | SUB-ÁREA: INOVAÇÃO | TÍTULO: NOTAS FISCAIS COM,CTE'S E VIAGENS EMITIDAS NÃO SUBIRAM NO NEW TRACKING. DESCRIÇÃO DETALHADA: NOTA SR DATA_EMISSAO_NFE CODIGO CLIENTE 295690 17 18/08/2025 199632 ESTRELA DISTRIBUICAO EIRELI 295696 17 18/08/2025 823039 JR DISTRIBUICAO DE ALIMENTOS LTDA 295698 17 18/08/2025 701977 DVL DISTRIBUIDORA VIA LACTEA LTDA 295700 17 18/08/2025 203754 JORGE BATISTA CIA LTDA 295704 17 18/08/2025 795417 RMC COMERCIO DE ALIMENTOS LTDA 295709 17 18/08/2025 269209 PLAYVENDER DO BRASIL S A 295711 17 18/08/2025 799067 REDE BIZ SERVI E DISTR DE PRODUTOS LTDA 295712 17 18/08/2025 576207 ELIZEU MARTINS SUPERMERCADOS LTDA 295713 17 18/08/2025 221200 SDB COMERCIO DE ALIMENTOS LTDA 295716 17 18/08/2025 487825 DMA DISTRIBUIDORA SA 295719 17 18/08/2025 601550 DROGARIAS PACHECO SA 295721 17 18/08/2025 204449 DISTRIBUIDORA CURIT DE PAPEI E LIVROS SA 295722 17 18/08/2025 231460 DROGARIA ARAUJO S A 295723 17 18/08/2025 231460 DROGARIA ARAUJO S A 295739 17 18/08/2025 886463 KIZAG MAIS PAPELARIA LTDA 295745 17 18/08/2025 799753 ATACADAO SA",
+        "SISTEMA: NEW TRACKING | SERVIÇO: INDISPONIBILIDADE | SUB-ÁREA: BACKOFFICE | TÍTULO: Notas fiscais não subiram no New Tracking. DESCRIÇÃO DETALHADA: Notas fiscais não subiram no New Tracking: NOTA SR DATA_EMISSAO_NFE CODIGO CLIENTE UF CT-e 295955 17 25/08/2025 772448 CASTRO E CASTRO COM E IMPORTACAO LTDA RJ 70369 295956 17 25/08/2025 891429 ZANTARA UTILIDA DOMESTI E PRESENTES LTDA PR 70370 295957 17 25/08/2025 891430 CE CP COMERC DE UTILID E PRESENTES LTDA ES 70395 295965 17 25/08/2025 205537 CONDOR SUPER CENTER LTDA PR 70374 295968 17 25/08/2025 229930 MEGAPEL COMERCIAL LTDA SP 70375 295970 17 25/08/2025 201582 IRMAOS MUFFATO SA PR 70377 295972 17 25/08/2025 206266 RP COME E DIST DE PROD DE TABACARIA LTDA SP 70379 295973 17 25/08/2025 131048 COMPANHIA SULAMERICANA DE DISTRIBUICAO PR 70380 295974 17 25/08/2025 131048 COMPANHIA SULAMERICANA DE DISTRIBUICAO PR 70380 295978 17 25/08/2025 247975 BIGNARDI IN E CO DE PA E ARTEFATOS LTDA SP 70382 295979 17 25/08/2025 230171 BIGNARDI IN E CO DE PA E ARTEFATOS LTDA SP 70383 295988 17 25/08/2025 205537 CONDOR SUPER CENTER LTDA PR 70374",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NOTAS NÃO ESTÃO SUBINDO NO NEW TRACKING:. DESCRIÇÃO DETALHADA: NOTAS FISCAIS BIC SÉRIE 17 NÃO ESTÃO SUBINDO NO NEW TRACKING, TODAS COM VIAGEM CRIADAS NO PROTHEUS NOTA SR DATA_EMISSAO_NFE 296130 17 01/09/2025 296131 17 01/09/2025 296132 17 01/09/2025 296133 17 01/09/2025 296134 17 01/09/2025 296135 17 01/09/2025 296136 17 01/09/2025 296137 17 01/09/2025 296138 17 01/09/2025 296139 17 01/09/2025 296140 17 01/09/2025 296141 17 01/09/2025 296142 17 01/09/2025 296143 17 01/09/2025 296144 17 01/09/2025 296145 17 01/09/2025 296146 17 01/09/2025 296147 17 01/09/2025 296148 17 01/09/2025 296149 17 01/09/2025 296150 17 01/09/2025 296151 17 01/09/2025 296152 17 01/09/2025 296153 17 01/09/2025 296154 17 01/09/2025 296155 17 01/09/2025 296156 17 01/09/2025 296157 17 01/09/2025 296158 17 01/09/2025 296159 17 01/09/2025 296160 17 01/09/2025 296161 17 01/09/2025 296162 17 01/09/2025 296163 17 01/09/2025 296164 17 01/09/2025 296165 17 01/09/2025 296167 17 01/09/2025 296168 17 01/09/2025 296169 17 01/09/2025 296170 17 01/09/2025 296171 17 01/09/2025 296172 17 01/09/2025 296173 17 01/09/2025 296174 17 01/09/2025 296175 17 01/09/2025 296176 17 01/09/2025 296177 17 01/09/2025 296178 17 01/09/2025 296179 17 01/09/2025 296180 17 01/09/2025 296181 17 01/09/2025 296182 17 01/09/2025 296184 17 01/09/2025 296187 17 01/09/2025 296188 17 01/09/2025 296190 17 01/09/2025 296191 17 01/09/2025 296192 17 01/09/2025 296193 17 01/09/2025 296194 17 01/09/2025 296195 17 01/09/2025 296196 17 01/09/2025 296197 17 01/09/2025 296200 17 01/09/2025 296201 17 01/09/2025 296202 17 01/09/2025 296203 17 01/09/2025 296204 17 01/09/2025 296205 17 01/09/2025 296206 17 01/09/2025 296207 17 01/09/2025 296208 17 01/09/2025 296209 17 01/09/2025 296210 17 01/09/2025 296211 17 01/09/2025 296212 17 01/09/2025 296213 17 01/09/2025 296214 17 01/09/2025 296215 17 01/09/2025 296216 17 01/09/2025 296217 17 01/09/2025 296218 17 01/09/2025 296219 17 01/09/2025 296220 17 01/09/2025 296221 17 01/09/2025 296222 17 01/09/2025 296223 17 01/09/2025 296224 17 01/09/2025 296225 17 01/09/2025 296226 17 01/09/2025 296227 17 01/09/2025 296228 17 01/09/2025 296229 17 01/09/2025 296230 17 01/09/2025 296234 17 01/09/2025 296235 17 01/09/2025 296238 17 01/09/2025 296239 17 01/09/2025 296240 17 01/09/2025 296241 17 01/09/2025 296243 17 01/09/2025 296244 17 01/09/2025 296245 17 01/09/2025 296248 17 01/09/2025 296249 17 01/09/2025 296250 17 01/09/2025 296251 17 01/09/2025 296252 17 01/09/2025 296253 17 01/09/2025 296254 17 01/09/2025 296255 17 01/09/2025 296256 17 01/09/2025 296257 17 01/09/2025 296258 17 01/09/2025 296259 17 01/09/2025 296260 17 01/09/2025 296261 17 01/09/2025 296262 17 01/09/2025 296263 17 01/09/2025 296264 17 01/09/2025 296265 17 01/09/2025 296266 17 01/09/2025 296267 17 01/09/2025 296268 17 01/09/2025 296269 17 01/09/2025 296270 17 01/09/2025 296271 17 01/09/2025 296272 17 01/09/2025 296273 17 01/09/2025 296274 17 01/09/2025 296275 17 01/09/2025 296278 17 01/09/2025 296279 17 01/09/2025 296280 17 01/09/2025 296281 17 01/09/2025 296282 17 01/09/2025 296283 17 01/09/2025 296284 17 01/09/2025 296285 17 01/09/2025 296286 17 01/09/2025 296287 17 01/09/2025 296288 17 01/09/2025 296289 17 01/09/2025 296290 17 01/09/2025 296291 17 01/09/2025 296292 17 01/09/2025 296293 17 01/09/2025 296294 17 01/09/2025 296295 17 01/09/2025 296296 17 01/09/2025 296297 17 01/09/2025 296298 17 01/09/2025 296299 17 01/09/2025 296300 17 01/09/2025 296301 17 01/09/2025 296302 17 01/09/2025 296303 17 01/09/2025 296304 17 01/09/2025 296305 17 01/09/2025 296306 17 01/09/2025 296307 17 01/09/2025 296308 17 01/09/2025 296309 17 01/09/2025 296310 17 01/09/2025 296311 17 01/09/2025 296312 17 01/09/2025 296313 17 01/09/2025 296314 17 01/09/2025 296315 17 01/09/2025 296316 17 01/09/2025 296317 17 01/09/2025 296318 17 01/09/2025 296319 17 01/09/2025 296321 17 01/09/2025",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: NOTAS NÃO SUBIRAM NO NT MESMO FORÇANDO A ROTINA DE SUBIR. DESCRIÇÃO DETALHADA: NOTAS NÃO SUBIRAM NO NT MESMO FORÇANDO A ROTINA DE SUBIR: NOTA SR DATA_EMISSAO_NFE CODIGO CLIENTE UF 21629 18 02/09/2025 813461 LEITURA BOUL BELE LIVR E PAPELARIA LTDA PA 21630 18 02/09/2025 652654 MERCANTIL NOVA ERA LTDA AM 21635 18 02/09/2025 771697 AMERICANAS S A PA 296372 17 02/09/2025 641868 MART MINAS DISTRIBUICAO LTDA MG 296384 17 02/09/2025 785052 CASTRO NAV COM E SER DE DISTRIBUICAO SA MG 296393 17 02/09/2025 247975 BIGNARDI IN E CO DE PA E ARTEFATOS LTDA SP 296410 17 02/09/2025 738334 AMERICANAS S A MG",
+        "SISTEMA: NEW TRACKING | SERVIÇO: INDISPONIBILIDADE | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF'S SÉRIE 17 (ORIGEM UDI) NÃO SUBIRAM PRO NEW TRACKING. DESCRIÇÃO DETALHADA: NF'S NÃO SUBIRAM PRO NEW TRACKING: NOTA SR DATA_EMISSAO_NFE 296071 17 27/08/2025 296072 17 27/08/2025 296073 17 27/08/2025 296074 17 27/08/2025 296075 17 27/08/2025 296077 17 27/08/2025 296078 17 27/08/2025 296079 17 27/08/2025 296080 17 27/08/2025 296083 17 27/08/2025 296084 17 27/08/2025 296085 17 27/08/2025 296088 17 27/08/2025 296090 17 27/08/2025",
+        "SISTEMA: NEW TRACKING | SERVIÇO: INDISPONIBILIDADE | SUB-ÁREA: INOVAÇÃO | TÍTULO: NOTAS NÃO ESTÃO SUBINDO NO NEW TRACKING. DESCRIÇÃO DETALHADA: NOTAS NÃO ESTÃO SUBINDO NO NEW TRACKING: NF CTE VIAGEM ? 66739 2897 29/08/2025 07:56 66735 2892 27/08/2025 22:10 66736 2903 29/08/2025 10:28 66728 2897 29/08/2025 07:56 66673 54793 22/08/2025 07:12 66672 54793 22/08/2025 07:12",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF'S SÉRIE 17 (ORIGEM UDI) NÃO SUBIRAM PRO NEW TRACKING. DESCRIÇÃO DETALHADA: NF'S SÉRIE 17 (ORIGEM UDI) NÃO SUBIRAM PRO NEW TRACKING: NOTA SR 296543 17 296544 17 296553 17 296554 17 296557 17 296558 17 296559 17 296560 17 296561 17 296562 17 296563 17 296565 17 296566 17 296567 17 296568 17 296569 17 296570 17 296571 17 296572 17 296573 17 296574 17 296575 17 296576 17 296577 17 296578 17 296579 17 296581 17 296582 17 296583 17 296584 17 296585 17 296586 17 296587 17 296588 17 296589 17 296590 17 296591 17 296592 17 296593 17 296594 17 296595 17 296596 17 296597 17",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF'S QUE NÃO SUBIRAM PARA O NT. DESCRIÇÃO DETALHADA: Prezados, Por favor verificar, as NF's abaixo não subiram para o NT: (série 1) tomador WALFF NF - Expedição 8540 - 02/07/2025 8541 - 03/07/2025 8562 - 07/07/2025 8692 - 21/08/2025",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF'S NÃO SUBIRAM PARA O NT. DESCRIÇÃO DETALHADA: Bom dia! Sergio, conforme conversado, segue chamado para registro do atendimento dos chamados da Larayne Lua. (série 1) tomador WALFF NF - Expedição 8540 - 02/07/2025 8541 - 03/07/2025 8562 - 07/07/2025 8692 - 21/08/2025",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: CTES SEM SUBIR PARA O NT, MAS OK NO PROTHEUS . DESCRIÇÃO DETALHADA: Boa tarde, os CTes abaixo não constam no NT, mas estão OK no PROTHEUS, podem validar por favor? CTe: 43944, 43945, 44214, 44288 NF Data Saída Cód. Cliente Codigo Item Vin CTE 108968 14/11/2025 D172408 TG1 CL8770 000043944 108973 14/11/2025 D172408 TG1 CL8782 000043944 108974 14/11/2025 D172408 TG1 CL8793 000043945 108978 14/11/2025 D172408 TG1 CL8795 000043945 108979 14/11/2025 D172408 TG1 CL8824 000043944 108980 14/11/2025 D172408 TG1 CL8837 000043944 108981 14/11/2025 D172408 TG1 CL8838 000043944 109142 14/11/2025 D172408 PWD 000043944 109224 17/11/2025 D172408 PWD 000043944 109294 17/11/2025 D172301 TG1 CL8916 000044214 109535 18/11/2025 D173401 DT4 CL1630 000044288 109549 18/11/2025 D173401 HJ8 CK1548 000044288 109741 19/11/2025 D173401 TG1 CL9089 000044288 109795 19/11/2025 D173401 TG1 CL9049 000044288 109796 19/11/2025 D173401 TG1 CL9051 000044288"
+      ],
+      "top_keywords": [
+        "new",
+        "tracking",
+        "ltda",
+        "não",
+        "subiram",
+        "sub",
+        "área",
+        "notas",
+        "inovação",
+        "nota",
+        "distribuicao",
+        "série",
+        "estão",
+        "indisponibilidade",
+        "fiscais"
+      ],
+      "ids_chamados": [
+        "119252",
+        "119670",
+        "119465",
+        "118624",
+        "119925",
+        "120051",
+        "120348",
+        "129425",
+        "130158",
+        "131314"
+      ],
+      "chamados_viz": [
+        {
+          "id": "119252",
+          "x": -2.397188663482666,
+          "y": -0.7674441337585449,
+          "prob": 1.0
+        },
+        {
+          "id": "119670",
+          "x": -2.0895802974700928,
+          "y": -0.7010583281517029,
+          "prob": 0.6899
+        },
+        {
+          "id": "119465",
+          "x": -2.6007652282714844,
+          "y": -0.816857635974884,
+          "prob": 0.9135
+        },
+        {
+          "id": "118624",
+          "x": -2.6507060527801514,
+          "y": -1.1588226556777954,
+          "prob": 1.0
+        },
+        {
+          "id": "119925",
+          "x": -2.730921506881714,
+          "y": -0.8649379014968872,
+          "prob": 0.9135
+        },
+        {
+          "id": "120051",
+          "x": -2.232430934906006,
+          "y": -1.002375841140747,
+          "prob": 1.0
+        },
+        {
+          "id": "120348",
+          "x": -2.810467004776001,
+          "y": -0.6290817260742188,
+          "prob": 0.9135
+        },
+        {
+          "id": "129425",
+          "x": -2.562886953353882,
+          "y": -0.3447197377681732,
+          "prob": 0.5869
+        },
+        {
+          "id": "130158",
+          "x": -2.4963133335113525,
+          "y": -0.10974851250648499,
+          "prob": 0.5869
+        },
+        {
+          "id": "131314",
+          "x": -2.762598752975464,
+          "y": -0.945726752281189,
+          "prob": 1.0
+        }
+      ],
+      "titulo": "Notas Fiscais Não Subiram no New Tracking",
+      "descricao": "Impacto: Usuários não conseguem subir ou visualizar NF/CT-e no módulo New Tracking, comprometendo a rastreabilidade de entregas, validação fiscal e fechamento contábil.",
+      "tags": [
+        "New Tracking",
+        "Notas Fiscais",
+        "Indisponibilidade",
+        "Inovação"
+      ],
+      "analise_racional": "Análise dos termos recorrentes indica padrão claro: notas fiscais não sobem no módulo New Tracking, com foco em indisponibilidade de upload/integração. As amostras evidenciam falha de subida de NF/CT-e ao NT, reforçado pelo domínio de 'INDISPONIBILIDADE' como serviço. Outras solicitações como 'analise de casos' aparecem, mas não alteram o tema dominante."
+    },
+    {
+      "cluster_id": 8,
+      "metricas": {
+        "volume": 16,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 12,
+          "ANALISE DE CASOS": 2,
+          "INTEGRAÇÕES": 1,
+          "ANALISE DE CASO": 1
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 16
+        },
+        "top_solicitantes": {
+          "Tulio Candido de Oliveira": 8,
+          "Mércia Silva Ciqueira": 2,
+          "Celia Regina Pereira da Silva": 2,
+          "Hiago Pereira Silva": 1,
+          "Laura Almeida Silva": 1
+        },
+        "top_status": {
+          "Não Informado": 16
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 7
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 6
+          },
+          {
+            "dia": "Ter",
+            "qtd": 3
+          },
+          {
+            "dia": "Qua",
+            "qtd": 4
+          },
+          {
+            "dia": "Qui",
+            "qtd": 3
+          }
+        ],
+        "tendencia": {
+          "tipo": "Decrescente",
+          "variacao_pct": -50.0,
+          "alerta": false,
+          "detalhe": "Volume decrescente de 2 para 1 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.44,
+          "usuarios_unicos": 7
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: E-MAIL DE INCIDENTE SENDO DISPARADO VÁRIAS VEZES PRO CLIENTE BIC. DESCRIÇÃO DETALHADA: Ao realizar um incidente e enviar para o e-mail da BIC, foram enviadas 7 vezes o e-mail para BIC com a mesma informação, poderia por favor verificar se há algo relacionado ao New tracking ? Pois está \"enchendo\" a caixa do cliente, desnecessariamente. NF 70667 - 7 E-MAIL ENVIADOS NF 68798 - 2 E-MAIL ENVIADOS NF 42603 - 2 E-MAIL ENVIADOS",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: AO ABRIR O REGISTRO DE PROBLEMA NA ENTREGA, E INCIDENTE, NÃO APARECE O E-MAIL DE OCORRÊNCIAS DA BIC. DESCRIÇÃO DETALHADA: AO ABRIR O REGISTRO DE PROBLEMA NA ENTREGA, E INCIDENTE, QUANDO SELECIONA UMA NF BIC, NÃO APARECE O E-MAIL DE OCORRÊNCIAS DA BIC (ocorrencias.bic@bicworld.com) INCLUIR TAMBÉM NA LISTA, O E-MAIL cs.bic@supplog.com",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NOTAS FISCAIS COM CALCULOS DOS PRAZOS INCORRETOS. DESCRIÇÃO DETALHADA: FAVOR VERIFICAR AS NOTAS QUE SUBIRAM PARA O NEW TRACKING SEM A PREVISÃO CALCULADA, ESTÁ COM A MESMA DATA DA EXPEDIÇÃO",
+        "SISTEMA: NEW TRACKING | SERVIÇO: INTEGRAÇÕES | SUB-ÁREA: INOVAÇÃO | TÍTULO: E-MAIL DE REGISTRO DE PROBLEMA NA ENTREGA E DE INCIDENTES NÃO ESTÃO SENDO ENVIADOS PARA BIC. DESCRIÇÃO DETALHADA: E-MAIL DE OCORRÊNCIAS DE REGISTRO DE PROBLEMA NA ENTREGA E DE INCIDENTES NÃO ESTÃO SENDO ENVIADOS PARA BIC",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: CALCULO DE LEAD TIME ESTÁ INCORRETO EM ALGUMAS NOTAS NO NEW TRACKING, SEGUE ANEXO A AMOSTRAGEM (TOMADOR BIC). DESCRIÇÃO DETALHADA: CALCULO DE LEAD TIME ESTÁ INCORRETO EM ALGUMAS NOTAS NO NEW TRACKING, SEGUE ANEXO A AMOSTRAGEM (TOMADOR BIC)",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO NO TRACKING. DESCRIÇÃO DETALHADA: O período no tracking não está funcionando corretamente. Anteriormente, era possível consultar as notas do ano inteiro sem a necessidade de ajustar o período. Atualmente, a pesquisa está limitada a um intervalo de 30 dias. Além disso, ao inserir uma nota, o período retorna automaticamente para o mês 12. Com isso, não estou conseguindo subir os comprovantes, pois o sistema não localiza as NFs, considerando que realizo o lançamento de comprovantes referentes a todo o ano.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO NA ABERTURA DE PROBLEMA E INCIDENTE. DESCRIÇÃO DETALHADA: AO ABRIR INCIDENTE OU PROBLEMA NÃO ESTAMOS RECEBENDO POR E-MAIL AS INFORMAÇÕES.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: EMAILS CLIENTE BIC NÃO APARECEM PARA O MEU USUARIO. DESCRIÇÃO DETALHADA: OS EMAILS DO CLIENTE BIC NAO ESTAO APARECENDO NO MEU NT QUANDO VOU ABRIR UM INCIDENTE - FOTO ANEXA JA ATUALIZEI O SITE, SAI, REINICIEI A MAQUINA E AINDA NÃO APARECE",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO ENVIO DE E-MAIL . DESCRIÇÃO DETALHADA: ESTA SENDO ENVIADO DIARIAMENTE, REPETIDAMENTE, O MESMO E-MAIL DE AGENDAMENTO PARA A TECMAR.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: AGENDA SENDO ENVIADAS AO PARCEIROS SEM A DATA DE AGENDAMENTO. DESCRIÇÃO DETALHADA: AGENDA SENDO ENVIADAS PELO NEW TRACKING AOS PARCEIROS SEM A DATA DE AGENDAMENTO. SEGUE EXEMPLO ENVIO INCORRETO: NF 42597/20 SEGUE EXEMPLO ENVIO INCORRETO: NF 300565/17"
+      ],
+      "top_keywords": [
+        "tracking",
+        "new",
+        "mail",
+        "erro",
+        "sub",
+        "área",
+        "inovação",
+        "bic",
+        "sistêmico",
+        "não",
+        "está",
+        "data",
+        "notas",
+        "problema",
+        "sendo"
+      ],
+      "ids_chamados": [
+        "120058",
+        "122196",
+        "122621",
+        "122915",
+        "126501",
+        "128811",
+        "128440",
+        "128766",
+        "130013",
+        "130021",
+        "130179",
+        "130610",
+        "130344",
+        "132000",
+        "132532",
+        "132344"
+      ],
+      "chamados_viz": [
+        {
+          "id": "120058",
+          "x": -0.3580268621444702,
+          "y": 0.6663808226585388,
+          "prob": 0.6672
+        },
+        {
+          "id": "122196",
+          "x": 1.0390570163726807,
+          "y": -0.44357049465179443,
+          "prob": 0.8327
+        },
+        {
+          "id": "122621",
+          "x": 1.2402147054672241,
+          "y": -0.34966954588890076,
+          "prob": 0.8327
+        },
+        {
+          "id": "122915",
+          "x": 0.49293848872184753,
+          "y": -0.7135015726089478,
+          "prob": 1.0
+        },
+        {
+          "id": "126501",
+          "x": -0.2524851858615875,
+          "y": 0.8660104274749756,
+          "prob": 0.6684
+        },
+        {
+          "id": "128811",
+          "x": -0.026693684980273247,
+          "y": 0.43545201420783997,
+          "prob": 0.6442
+        },
+        {
+          "id": "128440",
+          "x": 0.7671108841896057,
+          "y": -0.4650772213935852,
+          "prob": 1.0
+        },
+        {
+          "id": "128766",
+          "x": 0.1845230609178543,
+          "y": -0.9501965045928955,
+          "prob": 0.8433
+        },
+        {
+          "id": "130013",
+          "x": -0.06347793340682983,
+          "y": 0.6120424866676331,
+          "prob": 0.6178
+        },
+        {
+          "id": "130021",
+          "x": 0.8270888924598694,
+          "y": -0.8261892795562744,
+          "prob": 1.0
+        },
+        {
+          "id": "130179",
+          "x": 0.10632961243391037,
+          "y": -0.9974979758262634,
+          "prob": 0.7226
+        },
+        {
+          "id": "130610",
+          "x": 1.147812843322754,
+          "y": -0.770919144153595,
+          "prob": 1.0
+        },
+        {
+          "id": "130344",
+          "x": 0.7230123281478882,
+          "y": -0.8910178542137146,
+          "prob": 1.0
+        },
+        {
+          "id": "132000",
+          "x": -0.3988598585128784,
+          "y": 0.04259848967194557,
+          "prob": 0.6684
+        },
+        {
+          "id": "132532",
+          "x": 0.8256350159645081,
+          "y": -0.2409643828868866,
+          "prob": 0.6194
+        },
+        {
+          "id": "132344",
+          "x": 1.0815373659133911,
+          "y": -0.4455053508281708,
+          "prob": 0.8327
+        }
+      ],
+      "titulo": "Erro Sistêmico No New Tracking: E-mails Duplicados",
+      "descricao": "Usuários relatam envio duplicado de notificações por e-mail para clientes BIC, congestionando caixas de entrada. Também há falhas na exibição de ocorrências/incidentes (e-mails ausentes) ao abrir registros, dificultando a confirmação de problemas e a comunicação com parceiros, o que pode atrasar a resolução de entregas.",
+      "tags": [
+        "ERRO SISTÊMICO",
+        "NEW TRACKING",
+        "INOVAÇÃO",
+        "EMAILS",
+        "NOTIFICAÇÕES",
+        "BIC",
+        "ENTREGAS"
+      ],
+      "analise_racional": "Análise: os registros predominam de ERRO SISTÊMICO no NEW TRACKING com foco em notificações por e-mail. Termos recorrentes (tracking, mail, erro, inovação, bic) indicam falhas de envio/recepção de e-mails de incidentes e ocorrências, incluindo duplicação de mensagens e ausências de notificações para clientes BIC, sugerindo um problema sistêmico de notificações."
+    },
+    {
+      "cluster_id": 9,
+      "metricas": {
+        "volume": 9,
+        "top_servicos": {
+          "ANALISE DE CASOS": 4,
+          "ERRO SISTÊMICO": 4,
+          "INTEGRAÇÃO PARCEIRO": 1
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 9
+        },
+        "top_solicitantes": {
+          "Amanda Freitas Costa Segala": 7,
+          "Victor Machado Martins": 2
+        },
+        "top_status": {
+          "Não Informado": 9
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 1
+          },
+          {
+            "dia": "Ter",
+            "qtd": 2
+          },
+          {
+            "dia": "Qua",
+            "qtd": 1
+          },
+          {
+            "dia": "Qui",
+            "qtd": 3
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          }
+        ],
+        "tendencia": {
+          "tipo": "Crescente",
+          "variacao_pct": 100.0,
+          "alerta": true,
+          "detalhe": "Volume crescente de 1 para 2 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.22,
+          "usuarios_unicos": 2
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: OCR. DESCRIÇÃO DETALHADA: COMPROVANTE SUBIU NO NT, PORÉM, A OCR NÃO ESTÁ IDENTIFICANDO O COMPROVANTE, APARECENDO COMO \"NÃO\" NO BI. SEGUE EM ANEXO, NFS COMO EXEMPLO. NFS 67413 SERIE 40, 296832 SERIE 17, 296862 SERIE 17, 251287 SERIE 10, 251288 SERIE 10, 10205 SERIE 6. POR FAVOR, ANALISAR O MOTIVO DOS COMPROVANTES NÃO SEREM RECONHECIDOS NO NT.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO NA IMAGEM DE COMPROVANTES NO TRACKING. DESCRIÇÃO DETALHADA: NO DIA 27/11 NA SUBIDA DE COMPROVANTES VIA ROBO, O NT APRESENTOU UM ERRO NA IMAGEM. APARECE A OCR VERDE COMO COMPROVANTE OK, E QUANDO ABRIMOS A ABA DE COMPROVANTES A IMAGEM ESTÁ DANIFICADA E NÃO APARECE. SEGUE EXEMPLO EM ANEXO. EXEMPLOS DE ALGUMAS NFS QUE FORAM ENVIADAS: 9961_28 251052_10 251054_10 251055_10",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: OCR NÃO ESTÁ LENDO O COMPROVANTE. DESCRIÇÃO DETALHADA: OCR NÃO ESTÁ LENDO O COMPROVANTE, COMPROVANTE ESTÁ INSERIDO NO NT E APARECE COMO 'NÃO' NO NOSSO BI. ESTÁ IMPACTANDO NO NOSSO NUMERO E GERANDO UM RETRABALHO, PQ ESTAMOS TENDO QUE SUBIR O COMPROVANTE VARIAS VEZES E AINDA ESTÁ APARECENDO COMO NÃO. SEGUE PRINT EM ANEXO.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: OCR NÃO ESTÁ LENDO O COMPROVANTE. DESCRIÇÃO DETALHADA: COMPROVANTE ESTÁ LEGIVEL E ANEXADO NO NT, PORÉM, CONSTA COMO COMPROVANTE NÃO E A OCR NAO ESTÁ RECONHECENDO O COMPROVANTE COMO LEGÍVEL. NFS: 15762/15761/15760/15759/15755.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO NO OCR - COMPROVANTE COMO 'NÃO'. DESCRIÇÃO DETALHADA: nf aparece como \"NÃO\" no BI, comprovante está no nt e aparece esse símbolo no OCR. SEGUE PRINT EM ANEXO.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: COMPROVANTES NÃO ESTÃO SENDO LIDOS PELA OCR DE PRIMEIRA . DESCRIÇÃO DETALHADA: comprovantes subidos de forma manual não estão subindo de primeira, tem que subir, apagar e subir novamente, ele aparece na aba de comprovantes, mas só reconhece se apagar e subir na segunda vez.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: OCR. DESCRIÇÃO DETALHADA: OCR ESTÁ INDICANDO COMO NÃO LEGÍVEL, PORÉM, O COMPROVANTE ESTÁ TOTALMENTE LEGÍVEL. NF: 41634, 41630, 41635, 41636, 41637, 41638, 41639, 41640.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: INTEGRAÇÃO PARCEIRO | SUB-ÁREA: INOVAÇÃO | TÍTULO: 9631 - Nota fiscal com comprovante ok e OCR está como NOK . DESCRIÇÃO DETALHADA: 9631 - Nota fiscal com comprovante ok e OCR está como NOK",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: OCR para visualização dos clientes.. DESCRIÇÃO DETALHADA: Bom dia, As visualizações de OCR de validação, não aparecem para os clientes, favor liberar acesso."
+      ],
+      "top_keywords": [
+        "comprovante",
+        "ocr",
+        "não",
+        "está",
+        "tracking",
+        "new",
+        "sub",
+        "área",
+        "inovação",
+        "comprovantes",
+        "erro",
+        "serie",
+        "aparece",
+        "analise",
+        "casos"
+      ],
+      "ids_chamados": [
+        "121434",
+        "122294",
+        "124077",
+        "124145",
+        "126396",
+        "128860",
+        "128618",
+        "132290",
+        "132425"
+      ],
+      "chamados_viz": [
+        {
+          "id": "121434",
+          "x": 2.1963844299316406,
+          "y": 1.5432984828948975,
+          "prob": 1.0
+        },
+        {
+          "id": "122294",
+          "x": 2.0815203189849854,
+          "y": 1.669277548789978,
+          "prob": 0.9025
+        },
+        {
+          "id": "124077",
+          "x": 2.040560007095337,
+          "y": 1.5311833620071411,
+          "prob": 1.0
+        },
+        {
+          "id": "124145",
+          "x": 2.1325063705444336,
+          "y": 1.5986233949661255,
+          "prob": 1.0
+        },
+        {
+          "id": "126396",
+          "x": 1.4767552614212036,
+          "y": 1.757846474647522,
+          "prob": 0.5591
+        },
+        {
+          "id": "128860",
+          "x": 1.833135724067688,
+          "y": 1.2321949005126953,
+          "prob": 0.7194
+        },
+        {
+          "id": "128618",
+          "x": 1.4977338314056396,
+          "y": 1.3607252836227417,
+          "prob": 0.6372
+        },
+        {
+          "id": "132290",
+          "x": 2.0265767574310303,
+          "y": 1.342928171157837,
+          "prob": 1.0
+        },
+        {
+          "id": "132425",
+          "x": 1.7424370050430298,
+          "y": 1.5905166864395142,
+          "prob": 0.8044
+        }
+      ],
+      "titulo": "OCR Não Lê Comprovantes no New Tracking",
+      "descricao": "Impacto funcional: usuários não conseguem validar comprovantes de NF via OCR no New Tracking; comprovantes aparecem como não legíveis ou NOK no BI, exigindo reenvio/retentativa de upload, gerando retrabalho, atrasos no processamento de casos de inovação e inconsistência de dados.",
+      "tags": [
+        "OCR",
+        "Comprovantes",
+        "New Tracking",
+        "Inovação",
+        "Analise de Casos",
+        "Erro Sistêmico"
+      ],
+      "analise_racional": "Análise dos termos recorrentes (comprovante, OCR, não, está, tracking, new, inovação) e das amostras mostra que o tema dominante é a falha de OCR ao ler comprovantes no novo módulo New Tracking, especialmente na subárea Inovação e nos serviços Analise de Casos / Erro Sistêmico. Outras ocorrências (Integração Parceiro) aparecem como outliers. Logo, o padrão predominante é OCR não reconhecendo comprovantes."
+    },
+    {
+      "cluster_id": 10,
+      "metricas": {
+        "volume": 7,
+        "top_servicos": {
+          "ANALISE DE CASOS": 3,
+          "ERRO SISTÊMICO": 2,
+          "ROBO": 1,
+          "MELHORIAS": 1
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 5,
+          "BACKOFFICE": 1,
+          "": 1
+        },
+        "top_solicitantes": {
+          "Amanda Freitas Costa Segala": 4,
+          "Vinícius Fernandes de Paulo": 1,
+          "Lorenzo do Prado Prieto": 1,
+          "Victor Machado Martins": 1
+        },
+        "top_status": {
+          "Não Informado": 6,
+          "Finalizado": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 1
+          },
+          {
+            "dia": "Ter",
+            "qtd": 4
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 1
+          }
+        ],
+        "tendencia": {
+          "tipo": "Estável",
+          "variacao_pct": 0.0,
+          "alerta": false,
+          "detalhe": "Volume estável de 1 para 1 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.57,
+          "usuarios_unicos": 4
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: BI NÃO ESTÁ CONTABILIZANDO CONTAGEM CORRETA. DESCRIÇÃO DETALHADA: Sérgio, conforme falamos, o Bi não está contabilizando a quantidade correta de comprovantes importados no NT. Na sexta subimos 203 comprovantes e contabilizou apenas 27, ontem subimos 117 comprovantes e contabilizou apenas 7. Precisamos entender se a falha está no robô ou no BI. Vale lembrar que na sexta não subi comprovante manualmente no nt, apenas pelo robô.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA:  | TÍTULO: ERRO COMPROVANTE NT. DESCRIÇÃO DETALHADA: BOM DIA, ESTAMOS COM PROBLEMA REFERENTE AO SUBIR COMPROVANTE NO NEW TRACKING ONDE APARECE UM X VERMELHO APÓS SOLICITAR O UPLOAD E NÃO CARREGA A IMAGEM",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: PROBLEMAS AO SUBIR IMAGENS. DESCRIÇÃO DETALHADA: ESTOU COM PROBLEMAS PARA SUBIR IMAGENS NO NEW TRACKING - ABA COMPROVANTES. A IMAGEM FAZ O UPLOAD E NÃO CARREGA.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO NA SUBIDA DE COMPROVANTES. DESCRIÇÃO DETALHADA: COMPROVANTES SUBIDOS PELO ROBÔ DO SSW NÃO SUBIRAM NA SUA TOTALIDADE, ALÉM DISSO, O TRACKING ESTÁ COM ERRO NOVAMENTE NA SUBIDA DE IMAGEM, A OCR ESTÁ COM FALHA E OS COMPROVANTES NÃO ESTÃO SUBINDO.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: BACKOFFICE | TÍTULO: COMPROVANTES NFL E PELA FE . DESCRIÇÃO DETALHADA: Bom dia , parceiros NFL e PELA FE com erro nos arquivos de imagem dentro do NT , Acionando parceiros , acusam que não tiveram mudança no processo ( Erro começou 1 de agosto ) . Estou anexando imagem do resultado e arquivos que parceiros enviaram",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ROBO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ROBO DE COMPROVANTES - VIA E-MAIL. DESCRIÇÃO DETALHADA: Sérgio, conforme falamos, não está subindo no NT os comprovantes enviados via e-mail. Segue nfs como evidência. 66266, 41656, 17316. Vale lembrar que não são todas que não estão subindo, o que pode ter acontecido?",
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: NOTFIS disponibilizado no New tracking. DESCRIÇÃO DETALHADA: O arquivo notfis disponibilizado no new tracking não é compatível para emissão dos parceiros. O arquivo do NT vem com outra configuração, que não é possível fazer a impressão. o notfis anexo no nt, precisa ser do mesmo formato enviado por email. Arquivo anexo é o arquivo correto."
+      ],
+      "top_keywords": [
+        "não",
+        "tracking",
+        "new",
+        "comprovantes",
+        "erro",
+        "sub",
+        "área",
+        "está",
+        "imagem",
+        "inovação",
+        "parceiros",
+        "arquivo",
+        "analise",
+        "casos",
+        "comprovante"
+      ],
+      "ids_chamados": [
+        "117880",
+        "119892",
+        "121078",
+        "123344",
+        "122654",
+        "125394",
+        "129803"
+      ],
+      "chamados_viz": [
+        {
+          "id": "117880",
+          "x": 1.1890275478363037,
+          "y": 1.2159558534622192,
+          "prob": 0.8694
+        },
+        {
+          "id": "119892",
+          "x": 1.4749302864074707,
+          "y": 0.9715052247047424,
+          "prob": 1.0
+        },
+        {
+          "id": "121078",
+          "x": 1.441481351852417,
+          "y": 0.8152550458908081,
+          "prob": 1.0
+        },
+        {
+          "id": "123344",
+          "x": 1.3493086099624634,
+          "y": 1.7735806703567505,
+          "prob": 1.0
+        },
+        {
+          "id": "122654",
+          "x": 1.809199571609497,
+          "y": 1.9115324020385742,
+          "prob": 1.0
+        },
+        {
+          "id": "125394",
+          "x": 1.2480392456054688,
+          "y": 1.2484108209609985,
+          "prob": 0.8658
+        },
+        {
+          "id": "129803",
+          "x": 1.477060079574585,
+          "y": 1.4499084949493408,
+          "prob": 1.0
+        }
+      ],
+      "titulo": "Erro no Upload de Comprovantes no New Tracking",
+      "descricao": "Impacto: usuários não conseguem subir comprovantes/imagens no New Tracking; imagens exibem erro (X vermelho) ou não carregam, com OCR falhando. Em alguns casos, o robô de envio também não transmite os comprovantes. Isso atrasa a validação de despesas, gera retrabalho de suporte e afeta contabilidade e parcerias.",
+      "tags": [
+        "New Tracking",
+        "Upload de Comprovantes",
+        "OCR Falha",
+        "Robo",
+        "Analise de Casos",
+        "Erro Sistêmico"
+      ],
+      "analise_racional": "Convergência entre Analise de Casos e Erro Sistêmico com foco no New Tracking. As amostras são centradas em falhas na subida de comprovantes/imagens, OCR com falha e inconsistência entre envio pelo robô e processamento. O tema dominante é Erro no Upload de Comprovantes no New Tracking, impactando validação de despesas e prazos operacionais."
+    },
+    {
+      "cluster_id": 11,
+      "metricas": {
+        "volume": 15,
+        "top_servicos": {
+          "ANALISE DE CASOS": 6,
+          "ERRO SISTÊMICO": 5,
+          "ERRO OPERACIONAL": 2,
+          "ANALISE DE CASO": 2
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 15
+        },
+        "top_solicitantes": {
+          "Tulio Candido de Oliveira": 5,
+          "Victor Machado Martins": 3,
+          "Laura Almeida Silva": 2,
+          "Celia Regina Pereira da Silva": 2,
+          "Hiago Pereira Silva": 1
+        },
+        "top_status": {
+          "Não Informado": 14,
+          "Finalizado": 1
+        },
+        "timeline": [
+          {
+            "mes": "2025-08",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-09",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 5
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 1
+          },
+          {
+            "dia": "Ter",
+            "qtd": 3
+          },
+          {
+            "dia": "Qua",
+            "qtd": 3
+          },
+          {
+            "dia": "Qui",
+            "qtd": 3
+          },
+          {
+            "dia": "Sex",
+            "qtd": 5
+          }
+        ],
+        "tendencia": {
+          "tipo": "Crescente",
+          "variacao_pct": 200.0,
+          "alerta": true,
+          "detalhe": "Volume crescente de 1 para 3 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.47,
+          "usuarios_unicos": 7
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO ATUALIZAÇÃO . DESCRIÇÃO DETALHADA: ESTAMOS ATUALIZANDO A NOTA 21230 (BIC) E NÃO CONSTA HISTORICO DA ATUALIZAÇÃO. JÁ FIZEMOS VÁRIAS TENTATIVAS E NADA RESOLVE",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NOTAS FATURADAS FORA DO NT. DESCRIÇÃO DETALHADA: Estes ctes estão faturados e não estão no nt, parceiros estão com a mercadoria.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: SÉRIE DAS NOTAS FISCAIS ESTÃO DIVERGENTES. DESCRIÇÃO DETALHADA: SÉRIE DAS NOTAS FISCAIS ESTÃO DIVERGENTES, CONFORME ANEXO",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO NOTAS BIC. DESCRIÇÃO DETALHADA: NOTAS DO CLIENTE BIC REFERENTE AO FATURAMENTO DO DIA 04/11 NÃO ESTAO DISPONIVEIS NO NT POR FAVOR VALIDAR URGENTE ANEXO PLANILHA PARA CONFERENCIA",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: NOTAS NA MINHA CARTEIRA QUE NÃO SÃO DE MINHA RESPONSABILIDADE. DESCRIÇÃO DETALHADA: Boa tarde! Nas nfs do NT, estão aparecendo notas que não são da minha carteira e nem parceiros que eu cuido.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: Exclusão do BackOffice sem . DESCRIÇÃO DETALHADA: Durante o processo de classificação do Nível de Serviço das Notas Fiscais no New Tracking – Aba Nível de Serviço, identificamos 34 notas fiscais com entregas previstas até 30/11/2025 que não constam na visão do parceiro. Essa divergência está gerando acúmulo indevido de backoffice, impactando a gestão das pendências. Diante disso, solicitamos a exclusão dessas notas da relação, a fim de viabilizar a regularização das pendências em aberto e garantir a correta classificação do Nível de Serviço.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: Nota fora do filtro do parceiro. DESCRIÇÃO DETALHADA: nota 70789 - BIC - TECMAR - nota está no filtro da Supporte porém não aparece para o parceiro",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: A NF 40141 da Tecmar, não esta aparecendo no NT, ela estava na aba NOTAS ENTREGUES, estornada no início da semana, e agora apareceu do NT. DESCRIÇÃO DETALHADA: A NF 40141 da Tecmar, não esta aparecendo no NT, ela estava na aba NOTAS ENTREGUES, estornada no início da semana, e agora apareceu do NT",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NOTAS FISCAIS NÃO CONSTAM NO NEW TRACKING. DESCRIÇÃO DETALHADA: NOTAS FISCAIS NÃO CONSTAM NO NEW TRACKING NF 21825 SR18 NF 291910 SR17",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ANALISE DE CASOS | SUB-ÁREA: INOVAÇÃO | TÍTULO: NOTAS BIC NAO ESTAO NO NEW TACK. DESCRIÇÃO DETALHADA: EMAIL ENVIADO JUNTO AS NOTAS QUE NAO ESTAO DISPONIVEIS"
+      ],
+      "top_keywords": [
+        "new",
+        "tracking",
+        "notas",
+        "sub",
+        "área",
+        "inovação",
+        "não",
+        "erro",
+        "nota",
+        "fiscais",
+        "analise",
+        "estão",
+        "casos",
+        "sistêmico",
+        "bic"
+      ],
+      "ids_chamados": [
+        "117891",
+        "120296",
+        "122019",
+        "124593",
+        "125542",
+        "125248",
+        "126301",
+        "126793",
+        "127404",
+        "129159",
+        "132215",
+        "132950",
+        "133306",
+        "133420",
+        "133516"
+      ],
+      "chamados_viz": [
+        {
+          "id": "117891",
+          "x": -0.05860430747270584,
+          "y": 1.0590248107910156,
+          "prob": 0.7377
+        },
+        {
+          "id": "120296",
+          "x": -0.5981786251068115,
+          "y": 0.2553684413433075,
+          "prob": 1.0
+        },
+        {
+          "id": "122019",
+          "x": -0.7467427849769592,
+          "y": 0.4066547453403473,
+          "prob": 0.7563
+        },
+        {
+          "id": "124593",
+          "x": -2.0209434032440186,
+          "y": 0.6429929137229919,
+          "prob": 0.7286
+        },
+        {
+          "id": "125542",
+          "x": -0.8608525991439819,
+          "y": 0.8831338882446289,
+          "prob": 1.0
+        },
+        {
+          "id": "125248",
+          "x": -0.6145331859588623,
+          "y": 0.5902633666992188,
+          "prob": 1.0
+        },
+        {
+          "id": "126301",
+          "x": -0.4417538344860077,
+          "y": 0.718904972076416,
+          "prob": 1.0
+        },
+        {
+          "id": "126793",
+          "x": -1.2879761457443237,
+          "y": 0.4998120665550232,
+          "prob": 0.8396
+        },
+        {
+          "id": "127404",
+          "x": -1.2357407808303833,
+          "y": 1.0563912391662598,
+          "prob": 0.8222
+        },
+        {
+          "id": "129159",
+          "x": 0.02778126671910286,
+          "y": 1.1498392820358276,
+          "prob": 0.8468
+        },
+        {
+          "id": "132215",
+          "x": -0.9061962366104126,
+          "y": 0.5791465044021606,
+          "prob": 0.9192
+        },
+        {
+          "id": "132950",
+          "x": -1.0354235172271729,
+          "y": 1.1263691186904907,
+          "prob": 0.7422
+        },
+        {
+          "id": "133306",
+          "x": -1.2756820917129517,
+          "y": 0.7201501131057739,
+          "prob": 0.9136
+        },
+        {
+          "id": "133420",
+          "x": -0.4576582908630371,
+          "y": 1.2626681327819824,
+          "prob": 0.8468
+        },
+        {
+          "id": "133516",
+          "x": -0.1340821385383606,
+          "y": 1.4659476280212402,
+          "prob": 0.7588
+        }
+      ],
+      "titulo": "Notas Fiscais Não Aparecem No New Tracking",
+      "descricao": "Usuários não conseguem ver notas fiscais no New Tracking, prejudicando a conferência de faturamento, gerando divergências entre NF e NT e aumentando o backlog de pendências no backoffice.",
+      "tags": [
+        "Notas Fiscais",
+        "New Tracking",
+        "Erro Sistêmico",
+        "Inovação",
+        "Conciliação Fiscal"
+      ],
+      "analise_racional": "Termos recorrentes apontam Notas Fiscais e o sistema New Tracking como eixo do problema, com ênfase em ERRO SISTÊMICO na área de INOVAÇÃO. As amostras descrevem NF não aparecendo/constando no NT, divergências e necessidade de conferência manual, o que indica falha de exibição/integração que impacta faturamento e o backlog no backoffice."
+    },
+    {
+      "cluster_id": 12,
+      "metricas": {
+        "volume": 9,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 5,
+          "ERRO OPERACIONAL": 2,
+          "LENTIDÃO SISTÊMICA": 2
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 9
+        },
+        "top_solicitantes": {
+          "Hiago Pereira Silva": 3,
+          "Camila Sá de Oliveira": 1,
+          "Tulio Candido de Oliveira": 1,
+          "Alana Aranalde Gomes Fukes": 1,
+          "Beatriz  Santana Santos Ribeiro": 1
+        },
+        "top_status": {
+          "Não Informado": 9
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 5
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 2
+          },
+          {
+            "dia": "Ter",
+            "qtd": 1
+          },
+          {
+            "dia": "Qua",
+            "qtd": 3
+          },
+          {
+            "dia": "Qui",
+            "qtd": 2
+          },
+          {
+            "dia": "Sex",
+            "qtd": 1
+          }
+        ],
+        "tendencia": {
+          "tipo": "Decrescente",
+          "variacao_pct": -50.0,
+          "alerta": false,
+          "detalhe": "Volume decrescente de 2 para 1 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.78,
+          "usuarios_unicos": 7
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ATUALIZAÇÃO AUTOMÁTICA DO STATUS DO NEW TRACKING ESTÁ PUXANDO DADOS DE MEIA EM MEIA HORA . DESCRIÇÃO DETALHADA: ATUALIZAÇÃO AUTOMÁTICA DO STATUS DO NEW TRACKING ESTÁ PUXANDO DADOS DE MEIA EM MEIA HORA CONFORME ANEXO: NOTAS VISUALIZADAS ATÉ O MOMENTO: 67187 296733 296728",
+        "SISTEMA: NEW TRACKING | SERVIÇO: LENTIDÃO SISTÊMICA | SUB-ÁREA: INOVAÇÃO | TÍTULO: NS FORA DO AR - . DESCRIÇÃO DETALHADA: Boa tarde Não está carregando as notas em transito e nivel de serviço, tela está branca",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO NA VISUALIZAÇÃO DE DADOS DO NEW TRACKING . DESCRIÇÃO DETALHADA: CHECAR O MOTIVO DOS DADOS NÃO ESTAR APARECENDO (DAILY / KIPS)",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NIVEL DE SERVIÇO. DESCRIÇÃO DETALHADA: Boa tarde! a aba no NT de nivel de serviço nao esta abrindo",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO DE ATUALIZAÇÃO . DESCRIÇÃO DETALHADA: BOA TARDE! FAVOR VERIGAR O BUG NO SISTEMA , REALIZAMOS A ATUALIZAÇÃO , ELA SOBE PARA A ABA DE ATUALIZADO , PASSO UM POUCO RETORNA PARA A ABA DE DESATUALIZADO, ISSO TEM ACONTECIDO COM FREQUENCIA. SEGUE EVIDENCIAS EM ANEXO",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO BI NEW TRACKING. DESCRIÇÃO DETALHADA: VERIFICAR OS BI (DAILY / KPIS) DO NEW TRACKING QUE NÃO ESTÃO ABRINDO (PRINT ANEXADO)",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO NT . DESCRIÇÃO DETALHADA: SISTEMA NEW TRACKING APRESENTA LENTIDÃO E DEMORA PARA ATUALIZAR A INFORMAÇÕES, FAVOR NOS APOIAR CAMILA",
+        "SISTEMA: NEW TRACKING | SERVIÇO: LENTIDÃO SISTÊMICA | SUB-ÁREA: INOVAÇÃO | TÍTULO: LENTIDÃO NEW TRACKING. DESCRIÇÃO DETALHADA: VERIFICAR O SISTEMA COM URGÊNCIA, POIS O NEW TRACKING ESTÁ COM ENORME LENTIDÃO, DIFICULTANDO ATÉ MESMO NAS ATUALIZAÇÕES",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NT sem virar a data de funcionamento. DESCRIÇÃO DETALHADA: NT sem virar a data de funcionamento"
+      ],
+      "top_keywords": [
+        "new",
+        "tracking",
+        "erro",
+        "sub",
+        "área",
+        "inovação",
+        "sistêmico",
+        "lentidão",
+        "está",
+        "dados",
+        "atualização",
+        "meia",
+        "não",
+        "boa",
+        "nivel"
+      ],
+      "ids_chamados": [
+        "119812",
+        "120620",
+        "121490",
+        "127849",
+        "127913",
+        "127800",
+        "128140",
+        "128501",
+        "132280"
+      ],
+      "chamados_viz": [
+        {
+          "id": "119812",
+          "x": 0.7384850978851318,
+          "y": 0.26030462980270386,
+          "prob": 1.0
+        },
+        {
+          "id": "120620",
+          "x": 0.322430282831192,
+          "y": 0.5672023296356201,
+          "prob": 1.0
+        },
+        {
+          "id": "121490",
+          "x": 0.4149053692817688,
+          "y": 0.8440839648246765,
+          "prob": 1.0
+        },
+        {
+          "id": "127849",
+          "x": 0.008292886428534985,
+          "y": 0.03723708167672157,
+          "prob": 0.7926
+        },
+        {
+          "id": "127913",
+          "x": 0.25838717818260193,
+          "y": 0.3919498026371002,
+          "prob": 1.0
+        },
+        {
+          "id": "127800",
+          "x": 0.5340490937232971,
+          "y": 0.8327890038490295,
+          "prob": 0.7882
+        },
+        {
+          "id": "128140",
+          "x": 0.42227503657341003,
+          "y": 0.04821145907044411,
+          "prob": 0.7926
+        },
+        {
+          "id": "128501",
+          "x": 0.8473280072212219,
+          "y": 0.5273301005363464,
+          "prob": 1.0
+        },
+        {
+          "id": "132280",
+          "x": 0.21323788166046143,
+          "y": 0.3639768362045288,
+          "prob": 0.8375
+        }
+      ],
+      "titulo": "Erro Sistêmico no New Tracking",
+      "descricao": "Impacto funcional: usuários enfrentam lentidão, atualizações de status não sincronizam e dados não aparecem (Daily/KPIs) no New Tracking. Em várias amostras, há tela branca ou abas de funcionalidades não carregando, dificultando a visualização de notas em trânsito, KPIs e níveis de serviço, comprometendo decisões operacionais e fluxos de trabalho.",
+      "tags": [
+        "New Tracking",
+        "Erro Sistêmico",
+        "Lentidão Sistêmica",
+        "Inovação",
+        "Dados"
+      ],
+      "analise_racional": "Os termos recorrentes indicam foco no sistema New Tracking com falhas sistêmicas frequentes, incluindo lentidão, falhas na visualização de dados e atualização de status. Erros sistêmicos aparecem com maior frequência (5 casos), seguidos por lentidão sistêmica e erros operacionais. Outras ocorrências como ‘dados’ e ‘novas notas’ reforçam a prevalência de problemas de carregamento/atualização de dados no módulo, justificando classificar como Erro Sistêmico dominante."
+    },
+    {
+      "cluster_id": 13,
+      "metricas": {
+        "volume": 8,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 6,
+          "RESET DE SENHA": 1,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 8
+        },
+        "top_solicitantes": {
+          "Giovanna Mendes Martins": 5,
+          "Bianca Mendes e Santos": 2,
+          "Janikele Simoes Rodrigues": 1
+        },
+        "top_status": {
+          "Não Informado": 8
+        },
+        "timeline": [
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 4
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 3
+          },
+          {
+            "dia": "Ter",
+            "qtd": 3
+          },
+          {
+            "dia": "Qui",
+            "qtd": 2
+          }
+        ],
+        "tendencia": {
+          "tipo": "Crescente",
+          "variacao_pct": 200.0,
+          "alerta": true,
+          "detalhe": "Volume crescente de 1 para 3 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.38,
+          "usuarios_unicos": 3
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: Nota não aparece no new tracking . DESCRIÇÃO DETALHADA: Boa tarde! Preciso gerar uma senha para a nota 249919, porem, a senha não aparece na pesquisa, poderiam auxiliar por gentileza?",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: Nota não aparece no NT. DESCRIÇÃO DETALHADA: Bom dia! Preciso gerar uma senha de custo extra para a nf 296079, porém, ela não está aparecendo quando pesquiso ela para gerar. Poderiam auxiliar por gentileza?",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: INOVAÇÃO | TÍTULO: Nota não aparece no new tracking para o parceiro . DESCRIÇÃO DETALHADA: Boa tarde! Parceiro Pela fé precisa solicitar uma senha ,porém, no sistema aparece que a entrega foi realizada por SUPPLOG ARMAZENS, impedindo a criação da senha. Poderiam auxiliar por gentileza? Print em ANEXO.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: Notas não aparecem para parceiro gerar senhas.. DESCRIÇÃO DETALHADA: Boa tarde, as notas do parceiro Pássaro não está aparecendo no \"gerar senha\" deles para que sejam solicitados os custos. No meu sistema de gestor aparece normalmente. Login do parceiro: posvenda.ssa@passarotransportes.com.br Supp@2026",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: Erro geração de senha reentrega. DESCRIÇÃO DETALHADA: Boa tarde, Ao gerar a senha de reentrega, a senha não aparece no sistema para nós como antes. Foi solicitado verificar no e-mail a senha gerada, porém, ao gerar hoje verifiquei e ainda apresenta erro, senha não consta no e-mail. Segue anexo evidencia, senha deveria constar na parte superior de cor laranja.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ABERTURA DE SENHA. DESCRIÇÃO DETALHADA: BOA TARDE, NÃO ESTAMOS CONSEGUINDO GERAR SENHAS NO SISTEMA, REFERENTE A REENTREGA, PERNOITE E ETC. SISTEMA NÃO CONSEGUE LOCALIZAR/PUXAR AS NOTAS.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ABA DE  APROVAÇÃO DE SENHAS NÃO CARREGA . DESCRIÇÃO DETALHADA: Boa tarde, tudo bem? Quando vou abrir a aba do New Tracking para analisar as senhas não carrega.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: RESET DE SENHA | SUB-ÁREA: INOVAÇÃO | TÍTULO: Desbloqueio de usuário no NEW TRACKING. DESCRIÇÃO DETALHADA: Por gentileza me apoiar com o desbloqueio do meu usuário no NEW TRACKING, pois troquei de máquina e esqueci a senha."
+      ],
+      "top_keywords": [
+        "senha",
+        "new",
+        "tracking",
+        "não",
+        "erro",
+        "sub",
+        "área",
+        "inovação",
+        "gerar",
+        "aparece",
+        "sistêmico",
+        "boa",
+        "parceiro",
+        "gentileza",
+        "nota"
+      ],
+      "ids_chamados": [
+        "126204",
+        "129776",
+        "130048",
+        "131059",
+        "132544",
+        "133130",
+        "133228",
+        "133493"
+      ],
+      "chamados_viz": [
+        {
+          "id": "126204",
+          "x": -0.38576409220695496,
+          "y": -0.6479283571243286,
+          "prob": 1.0
+        },
+        {
+          "id": "129776",
+          "x": -1.1772727966308594,
+          "y": -0.5439816117286682,
+          "prob": 0.9296
+        },
+        {
+          "id": "130048",
+          "x": -1.0603777170181274,
+          "y": -0.895469069480896,
+          "prob": 0.9558
+        },
+        {
+          "id": "131059",
+          "x": -0.8085167407989502,
+          "y": -0.7264965772628784,
+          "prob": 0.9558
+        },
+        {
+          "id": "132544",
+          "x": -0.8992745876312256,
+          "y": -0.504922091960907,
+          "prob": 0.9558
+        },
+        {
+          "id": "133130",
+          "x": 0.09278012067079544,
+          "y": -0.38706040382385254,
+          "prob": 1.0
+        },
+        {
+          "id": "133228",
+          "x": -0.2552822530269623,
+          "y": -0.4270188808441162,
+          "prob": 1.0
+        },
+        {
+          "id": "133493",
+          "x": -0.305305540561676,
+          "y": -0.725489616394043,
+          "prob": 1.0
+        }
+      ],
+      "titulo": "Erro Sistêmico: Geração de Senha no New Tracking",
+      "descricao": "Usuários não conseguem gerar ou visualizar senhas no New Tracking, bloqueando notas, reentregas e custos, causando atrasos na entrega.",
+      "tags": [
+        "Senha",
+        "New Tracking",
+        "Erro Sistêmico",
+        "Inovação",
+        "Notas"
+      ],
+      "analise_racional": "Termos recorrentes indicam falha de geração/visualização de senhas no New Tracking, predominante sob ERRO SISTÊMICO. A repetição de 'senha', 'gerar', 'aparece' com 'New Tracking' consolida o padrão dominante: dificuldade na senha para notas/reentregas."
+    },
+    {
+      "cluster_id": 14,
+      "metricas": {
+        "volume": 4,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 3,
+          "ERRO OPERACIONAL": 1
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 4
+        },
+        "top_solicitantes": {
+          "Guilherme Augusto Siqueira Vecchi Pinto": 1,
+          "Laura Almeida Silva": 1,
+          "Beatriz  Santana Santos Ribeiro": 1,
+          "Celia Regina Pereira da Silva": 1
+        },
+        "top_status": {
+          "Não Informado": 4
+        },
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 2
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 2
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Qua",
+            "qtd": 2
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 1
+          }
+        ],
+        "tendencia": {
+          "tipo": "Estável",
+          "variacao_pct": 0.0,
+          "alerta": false,
+          "detalhe": "Volume estável de 1 para 1 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Massivo (Generalizado)",
+          "ratio": 1.0,
+          "usuarios_unicos": 4
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF 278823 NAO APARECE NO NT . DESCRIÇÃO DETALHADA: Bom dia!!! @Sergio Pereira NF que falamos via teams, apenas para formalização... NF 278823 bic SÉRIE 17 é de 2024 e não está aparecendo no nosso sistema NEW TRACKING Por favor, peço seu apoio para identificar qual o erro",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF NÃO CONSTA NO NEW TRACKING. DESCRIÇÃO DETALHADA: DIRECIONAR PARA O SERGIO GENTILEZA VERIFICAR A NF 105705 - 1 JÁ CONSTA EM VIAGEM PORÉM NÃO APARECE NO NT FICO NO AGUARDO",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF NÃO ESTA APARECENDO. DESCRIÇÃO DETALHADA: Boa tarde! NF 70321 BIC - PARCEIRO LKC, não localizo nas nfs entregues e nem nas nfs em aberto, poderiam verificar, por favor",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF NAO SE ENCONTRA NO TRACKING. DESCRIÇÃO DETALHADA: Bom dia, a NF 41783 serie 0 do tomador RAIN BIRD nao está visivel no NT, favor veirifcar."
+      ],
+      "top_keywords": [
+        "tracking",
+        "new",
+        "erro",
+        "não",
+        "sub",
+        "área",
+        "inovação",
+        "sistêmico",
+        "favor",
+        "está",
+        "aparece",
+        "sergio",
+        "bic",
+        "aparecendo",
+        "consta"
+      ],
+      "ids_chamados": [
+        "122903",
+        "125023",
+        "129718",
+        "130536"
+      ],
+      "chamados_viz": [
+        {
+          "id": "122903",
+          "x": -2.6495730876922607,
+          "y": 0.36925414204597473,
+          "prob": 1.0
+        },
+        {
+          "id": "125023",
+          "x": -2.315365791320801,
+          "y": 0.438288152217865,
+          "prob": 1.0
+        },
+        {
+          "id": "129718",
+          "x": -2.3681094646453857,
+          "y": 0.6592060923576355,
+          "prob": 1.0
+        },
+        {
+          "id": "130536",
+          "x": -2.6569302082061768,
+          "y": 0.3615415692329407,
+          "prob": 1.0
+        }
+      ],
+      "titulo": "NF Não Aparece No New Tracking",
+      "descricao": "Usuários não conseguem localizar NFs no módulo New Tracking. A ausência da NF impede o rastreamento de entregas, a confirmação de recebimentos e o fechamento de viagens, gerando retrabalho, atrasos e impacto na eficiência da área de Inovação.",
+      "tags": [
+        "New Tracking",
+        "Erro Sistêmico",
+        "Inovação",
+        "NF Não Aparece"
+      ],
+      "analise_racional": "Termos recorrentes: tracking, new, erro, não, sistêmico; amostras indicam NF não aparece no módulo New Tracking. O cluster é dominado por Erro Sistêmico com foco na área de Inovação, sugerindo falha de visibilidade de NFs no NT."
+    },
+    {
+      "cluster_id": 15,
+      "metricas": {
+        "volume": 15,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 11,
+          "ERRO OPERACIONAL": 2,
+          "MELHORIAS": 1,
+          "ANALISE DE CASO": 1
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 15
+        },
+        "top_solicitantes": {
+          "Beatriz  Santana Santos Ribeiro": 13,
+          "Victor Machado Martins": 1,
+          "Camila Sá de Oliveira": 1
+        },
+        "top_status": {
+          "Não Informado": 15
+        },
+        "timeline": [
+          {
+            "mes": "2025-10",
+            "qtd": 3
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 5
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 6
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 1
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 5
+          },
+          {
+            "dia": "Ter",
+            "qtd": 2
+          },
+          {
+            "dia": "Qua",
+            "qtd": 3
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 4
+          }
+        ],
+        "tendencia": {
+          "tipo": "Estável",
+          "variacao_pct": 0.0,
+          "alerta": false,
+          "detalhe": "Volume estável de 1 para 1 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.2,
+          "usuarios_unicos": 3
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF NÃO CONSTA NO NEW TRACKING. DESCRIÇÃO DETALHADA: SERGIO BOM DIA FAVOR VERIFICAR AS NOTAS DA TRIUMPH QUE NÃO APARECE NO NEW TRACKING. OBSERVAÇÃO , ESTAVA NO SISTEMA PORÉM SUMIU. NF - SERIE 1 110065 110066 110067 110068 110069 110070 110071 110072 110073 110074 110075 110076 110077 110078 110079 110080 110081 110097 110098 110099 110100 110101 110102",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF NÃO APARECE NO NEW TRACKING. DESCRIÇÃO DETALHADA: bom dia! favor verificar as notas abaixo, de acordo com o faturamento já consta viagem no protheus porém não aparece no NEW TRACKING Cliente TRIUMPH NF - SERIE 7 17375 17376 17370 17380 17377 17379 17373 17372",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF NÃO CONSTA NO NEW TRACKING. DESCRIÇÃO DETALHADA: SERGIO, BOA TARDE! FAVOR VERIFICAR AS NOTA QUE JÁ CONSTA VIAGEM PORÉM NÃO APARECE NO NEW TRACKING SERIE 1 - TRIUMPH 97NY1BJT6TMCL1934 108.796 97NY1BJT6TMCL1819 108.797 97NY1BJT9TMCL1796 108.798 97NY1BJT9TMCL1765 108.799 97NY1BJT2TMCL5172 108.800 97NY1BJT7TMCL5135 108.801 97NY1BJT1TMCL5079 108.802 97NY1BJT6TMCL5076 108.803 97NY1BJT6TMCL5028 108.804 97NY1BJT3SMCH0393 108.806 97NY1BJT1SMCH0375 108.811 97NY1BJTXSMCD4880 108.812 97NY1BJT7SMCD4979 108.813 97NY1BJT7SMCE3472 108.814 97NY1BJTXSMCE3501 108.815 97NY1BJTXSMCH0374 108.816 97NY1BJT1SMCE3502 108.818 97NY2BJT8SMCJ8713 108.549 97NY2BJT8TMCL3228 108.584 97NY2BJT6TMCL3146 108.591 97NY1BJT5TMCL1939 108.830",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF NÃO CONSTA NO NEW TRACKING. DESCRIÇÃO DETALHADA: SERGIO, FAVOR VALIDAR AS NOTAS ABAIXO NÃO CONSTA NO NT, JÁ ESTÃO EM VIAGEM. SERIE 1 - TRIUMPH 109548 109716",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF NÃO CONSTA NO NEW TRACKING. DESCRIÇÃO DETALHADA: DIRECIONAR PARA O SERGIO - boa noite, gentileza verificar porque as notas abaixo não aparecem no NEW TRACKING TRIUMPH - Serie 1 109548 109716 105705",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF NÃO CONSTA NO NEW TRACKING. DESCRIÇÃO DETALHADA: BOM DIA, SERGIO. GENTILEZA VERIFICAR AS NOTAS ABAIXO DA TRIUMPH, NÃO APARECE NO NEW TRACKING Serie de todas notas \"1\" 107218 107196 107200 107129 107130 107134 107191 107192 107193 107194 107195 107197 107131 107132 107136 107133 107135 107215 107216 107217 107221 107227 107222 107226 107223 107225 107224",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF NÃO CONSTA NO NEW TRACKING. DESCRIÇÃO DETALHADA: FAVOR VERIFICAR AS NOTAS ABAIXO NÃO CONSTA NO NEW TRACKING - CLIENTE TRIUMPH NF SERIE 103787 1 103788 1 103789 1 103803 1 104293 1 104294 1 104295 1 104296 1 104297 1 104298 1 104299 1",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF NÃO CONSTA NO NEW TRACKING. DESCRIÇÃO DETALHADA: BOA TARDE SERGIO, GENTILEZA VERIFICAR NF QUE JÁ CONSTA EM VIAGEM E NÃO APARECEM NO NEW TRACKING NF - TRIUMPH SERIE 1 101690 101691 101692 101693 101694 101695 101700 101701 101706 101707 101712 101713",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF NÃO CONSTA NO NEW TRACKING. DESCRIÇÃO DETALHADA: BOA TARDE SERGIO, GENTILEZA VERIFICAR NF QUE JÁ CONSTA EM VIAGEM E NÃO APARECEM NO NEW TRACKING NF - TRIUMPH SERIE 1 NF 104293 104294 104295 104296 104297 104298 104299 106631 106655 106677 106683 108140",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NF NÃO CONSTA NO NEW TRACKING. DESCRIÇÃO DETALHADA: boa noite, gentileza verificar porque as notas abaixo não aparecem no NEW TRACKING TRIUMPH - Serie 1 NF 107573 107588 107517 107518 107519 107651 107704 107680 107823 107824 107825 107826 107828 107827 107829 107881 107884 107955 108000 17390 - 7 108269 108264 108265"
+      ],
+      "top_keywords": [
+        "new",
+        "tracking",
+        "não",
+        "consta",
+        "triumph",
+        "sub",
+        "área",
+        "inovação",
+        "erro",
+        "verificar",
+        "sistêmico",
+        "serie",
+        "favor",
+        "notas",
+        "sergio"
+      ],
+      "ids_chamados": [
+        "122959",
+        "125419",
+        "125527",
+        "126297",
+        "127407",
+        "128098",
+        "128101",
+        "128304",
+        "129074",
+        "129290",
+        "130079",
+        "129948",
+        "130483",
+        "130616",
+        "133972"
+      ],
+      "chamados_viz": [
+        {
+          "id": "122959",
+          "x": -3.2049078941345215,
+          "y": 0.4713667333126068,
+          "prob": 1.0
+        },
+        {
+          "id": "125419",
+          "x": -3.0009267330169678,
+          "y": 0.39335718750953674,
+          "prob": 1.0
+        },
+        {
+          "id": "125527",
+          "x": -3.367032051086426,
+          "y": 0.619278609752655,
+          "prob": 1.0
+        },
+        {
+          "id": "126297",
+          "x": -3.748744487762451,
+          "y": 0.01750653237104416,
+          "prob": 1.0
+        },
+        {
+          "id": "127407",
+          "x": -3.728241443634033,
+          "y": 0.36191526055336,
+          "prob": 1.0
+        },
+        {
+          "id": "128098",
+          "x": -3.1547374725341797,
+          "y": -0.06339056044816971,
+          "prob": 1.0
+        },
+        {
+          "id": "128101",
+          "x": -3.4717414379119873,
+          "y": -0.10703829675912857,
+          "prob": 1.0
+        },
+        {
+          "id": "128304",
+          "x": -3.2974061965942383,
+          "y": 0.08651132881641388,
+          "prob": 1.0
+        },
+        {
+          "id": "129074",
+          "x": -3.4510624408721924,
+          "y": -0.23912876844406128,
+          "prob": 0.9378
+        },
+        {
+          "id": "129290",
+          "x": -3.5874903202056885,
+          "y": 0.1749548465013504,
+          "prob": 1.0
+        },
+        {
+          "id": "130079",
+          "x": -3.156585931777954,
+          "y": 0.13932782411575317,
+          "prob": 1.0
+        },
+        {
+          "id": "129948",
+          "x": -3.6604931354522705,
+          "y": 0.5070173144340515,
+          "prob": 1.0
+        },
+        {
+          "id": "130483",
+          "x": -3.8201425075531006,
+          "y": 0.04784097895026207,
+          "prob": 1.0
+        },
+        {
+          "id": "130616",
+          "x": -4.070231914520264,
+          "y": 0.5977571606636047,
+          "prob": 1.0
+        },
+        {
+          "id": "133972",
+          "x": -2.9892830848693848,
+          "y": 0.8147481083869934,
+          "prob": 0.9473
+        }
+      ],
+      "titulo": "Nota Fiscal Não Consta No New Tracking Triumph",
+      "descricao": "Impacto funcional: usuários não conseguem visualizar as Notas Fiscais da Triumph no módulo New Tracking, dificultando o rastreio de viagens e o fechamento de faturamento. Notas que já constam em viagem no ERP não aparecem no New Tracking, gerando discrepâncias de visibilidade, retrabalho e atrasos no faturamento.",
+      "tags": [
+        "Nota Fiscal",
+        "New Tracking",
+        "Triumph",
+        "Erro Sistêmico",
+        "Erro Operacional",
+        "Inovação"
+      ],
+      "analise_racional": "Termos recorrentes: 'new', 'tracking', 'consta', 'erro' e 'verificar' indicam falha de integração entre o New Tracking e o ERP Triumph. A amostra é majoritariamente classificada como ERRO SISTÊMICO, com alguns casos de ERRO OPERACIONAL, confirmando o padrão: notas não aparecem no New Tracking embora já constem/estejam em viagem no ERP."
+    },
+    {
+      "cluster_id": 16,
+      "metricas": {
+        "volume": 5,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 5
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 5
+        },
+        "top_solicitantes": {
+          "Everson Machado Cardoso": 5
+        },
+        "top_status": {
+          "Não Informado": 5
+        },
+        "timeline": [
+          {
+            "mes": "2025-12",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 2
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Ter",
+            "qtd": 1
+          },
+          {
+            "dia": "Qui",
+            "qtd": 1
+          },
+          {
+            "dia": "Sex",
+            "qtd": 3
+          }
+        ],
+        "tendencia": {
+          "tipo": "Estável",
+          "variacao_pct": 0.0,
+          "alerta": false,
+          "detalhe": "Volume estável de 1 para 1 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.2,
+          "usuarios_unicos": 1
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NOTA NÃO ESTÁ VINCULADA A PLACA. DESCRIÇÃO DETALHADA: GENTILEZA VALIDAR, POIS A NOTA 22129 - BIC NÃO ESTÁ VINCULADA A PLACA RBD-0I32 DENTRO DO NEW TRACKING, CONFORME CONFIRMAÇÃO DO SETOR DE FATURAMENTO (ANEXO)",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NOTA NÃO CONSTA NO TRACKING. DESCRIÇÃO DETALHADA: Gentileza validar, pois a nota 217 - ARMOR não consta no tracking, e conforme e-mail (anexo) do setor de faturamento a mesmo consta como viagem 246200 criada. * Não finalizar o chamado antes da validação, por favor.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ERRO DE TRANSPORTADORA. DESCRIÇÃO DETALHADA: Gentileza validar, pois na nota 22283-18 – BIC o correto seria a transportadora Transcol, porém consta Rodovitor. A placa correta é OGY-7I29, porém consta JVH6I76. Seguem em anexo os documentos e a confirmação de faturamento.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: CORREÇÃO. DESCRIÇÃO DETALHADA: GENTILEZA VALIDAR, POIS AS NOTAS NÃO ESTÃO VINCULADAS A PLACA STK-1A99 NO TRACKING E DE ACORDO COM O FATURAMENTO O PROCESSO ESTÁ COMPLETO. NOTAS 109839 110066 110068 110074 110079 110099 110101 109861 109862 109863 109864 109865 109866 109867 109914 109916 109917 110073 110075 110076 110078 110081 110098 OBS: Não finalizar o chamado antes da conferencia..",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: CORREÇÃO. DESCRIÇÃO DETALHADA: GENTILEZA VALIDAR, POIS AS NOTAS NÃO ESTÃO VINCULADAS A PLACA RBC-7A29 NO TRACKING E DE ACORDO COM O FATURAMENTO O PROCESSO ESTÁ COMPLETO . NOTAS: 108968 108973 108979 108980 108981 109142 109224 OBS: Não finalizar o chamado antes da conferencia."
+      ],
+      "top_keywords": [
+        "tracking",
+        "não",
+        "new",
+        "erro",
+        "sistêmico",
+        "sub",
+        "área",
+        "inovação",
+        "nota",
+        "placa",
+        "gentileza",
+        "validar",
+        "pois",
+        "faturamento",
+        "consta"
+      ],
+      "ids_chamados": [
+        "128929",
+        "129980",
+        "129977",
+        "132434",
+        "132891"
+      ],
+      "chamados_viz": [
+        {
+          "id": "128929",
+          "x": -3.7970168590545654,
+          "y": 1.169378399848938,
+          "prob": 1.0
+        },
+        {
+          "id": "129980",
+          "x": -3.5942723751068115,
+          "y": 0.7887389063835144,
+          "prob": 1.0
+        },
+        {
+          "id": "129977",
+          "x": -3.7479593753814697,
+          "y": 1.1124242544174194,
+          "prob": 1.0
+        },
+        {
+          "id": "132434",
+          "x": -3.421367645263672,
+          "y": 1.3710564374923706,
+          "prob": 0.917
+        },
+        {
+          "id": "132891",
+          "x": -3.55621337890625,
+          "y": 1.3055447340011597,
+          "prob": 1.0
+        }
+      ],
+      "titulo": "Erro Sistêmico no New Tracking: Notas Não Vinculadas",
+      "descricao": "Impacto funcional: usuários não conseguem ver ou associar notas às placas no tracking, o que atrasa o faturamento e o fechamento de viagens, exigindo validação manual e retrabalho até a resolução.",
+      "tags": [
+        "New Tracking",
+        "Erro Sistêmico",
+        "Inovação",
+        "Notas Não Vinculadas",
+        "Placas",
+        "Faturamento"
+      ],
+      "analise_racional": "Os chamados são concentrados no serviço 'ERRO SISTÊMICO' dentro do sistema 'NEW TRACKING', com evidência estatística fortemente ligada a termos 'nota', 'placa' e 'tracking'. O tema dominante é notas que não aparecem ou não ficam vinculadas a placas no tracking, gerando inconsistência entre tracking e faturamento."
+    },
+    {
+      "cluster_id": -1,
+      "metricas": {
+        "volume": 18,
+        "top_servicos": {
+          "ERRO SISTÊMICO": 9,
+          "MELHORIAS": 3,
+          "ERRO OPERACIONAL": 2,
+          "ANALISE DE CASO": 2,
+          "ANALISE DE CASOS": 1
+        },
+        "top_subareas": {
+          "INOVAÇÃO": 18
+        },
+        "top_solicitantes": {
+          "Tulio Candido de Oliveira": 6,
+          "Camila Sá de Oliveira": 2,
+          "Amanda Freitas Costa Segala": 2,
+          "Rebeca Braga Faria": 2,
+          "Vitor Hugo Rodrigues Souza": 1
+        },
+        "top_status": {
+          "Não Informado": 18
+        },
+        "timeline": [
+          {
+            "mes": "2025-09",
+            "qtd": 4
+          },
+          {
+            "mes": "2025-10",
+            "qtd": 7
+          },
+          {
+            "mes": "2025-11",
+            "qtd": 1
+          },
+          {
+            "mes": "2025-12",
+            "qtd": 1
+          },
+          {
+            "mes": "2026-01",
+            "qtd": 3
+          },
+          {
+            "mes": "2026-02",
+            "qtd": 2
+          }
+        ],
+        "sazonalidade": [
+          {
+            "dia": "Seg",
+            "qtd": 5
+          },
+          {
+            "dia": "Ter",
+            "qtd": 6
+          },
+          {
+            "dia": "Qua",
+            "qtd": 2
+          },
+          {
+            "dia": "Qui",
+            "qtd": 2
+          },
+          {
+            "dia": "Sex",
+            "qtd": 2
+          },
+          {
+            "dia": "Sab",
+            "qtd": 1
+          }
+        ],
+        "tendencia": {
+          "tipo": "Estável",
+          "variacao_pct": 0.0,
+          "alerta": false,
+          "detalhe": "Volume estável de 2 para 2 na última semana."
+        },
+        "concentracao": {
+          "tipo": "Normal",
+          "ratio": 0.56,
+          "usuarios_unicos": 10
+        }
+      },
+      "amostras_texto": [
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: CRIAR UMA TRAVA DE ABERTURA DE INCIDENTES PARA NÃO PERMITIR ABRIR REGISTRO/INCIDENTE FOB. DESCRIÇÃO DETALHADA: CRIAR UMA TRAVA DE ABERTURA DE REGISTRO DE PROBLEMA NA ENTREGA E INCIDENTES PARA NÃO PERMITIR ABERTURA DE NOTAS COM FRETE FOB E DO TOMADOR BIC",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: ARQUIVOS DE CONTA E ORDEM NÃO ESTÃO SENDO BAIXADOS DO NEW TRACKING. DESCRIÇÃO DETALHADA: ARQUIVOS DE CONTA E ORDEM NÃO ESTÃO SENDO BAIXADOS DO NEW TRACKING: EXEMPLO ANEXO: NF 297931",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO OPERACIONAL | SUB-ÁREA: INOVAÇÃO | TÍTULO: Problema API - Abertura de Ocorrências. DESCRIÇÃO DETALHADA: Foi identificado um erro na API de abertura de ocorrências no New Tracking. ao analisar a tabela de ocorrências foram identificado as ocorrências geradas pela uMuv.me, porém não aparece no front. Preciso que seja corrijido. Att.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: SUBIDA DE COMPROVANTES VIA EDI. DESCRIÇÃO DETALHADA: SÉRGIO, TEMOS DOIS PARCEIROS (BHT E ALLI) QUE ALEGAM QUE ESTÃO SUBINDO COMPROVANTES VIA EDI, PORÉM, NO NT NÃO SOBE PRA NÓS, TE ENVIEI UM E-MAIL FORMALIZANDO.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NFS 250142 / 250156 NÃO APARECE NO TRACKING - COPAG . DESCRIÇÃO DETALHADA: Boa tarde! As notas 250142 / 250156 não constam no Tracking. Por favor, verificar o que houve.",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NOTAS COPAG DO FATURAMENTO DE SEXTA NÃO CONSTAM NO NT. DESCRIÇÃO DETALHADA: Boa tarde! Segue abaixo as notas da Copag referentes ao faturamento de sexta-feira, 23/10, que ainda não constam no NT. As referidas notas já se encontram liberadas na planilha do Logix. Solicito por gentileza, verificar o ocorrido. Obrigada! NF SERIE 257975 10 257976 10 257977 10 257979 10 257985 10 257986 10 257987 10 10016 28 10018 28 10021 28 10022 28 10023 28 10024 28 257988 10 257989 10 257991 10 257992 10 257993 10 257995 10 257996 10 257997 10 257998 10 257999 10 258000 10 258001 10 258002 10 258003 10 258004 10 258005 10 258006 10 258007 10 258008 10 258010 10 258011 10 258012 10 258013 10 258014 10 258015 10 258016 10 258017 10 258018 10 258019 10 258020 10 258021 10 258022 10 258023 10 258024 10 258025 10 258026 10 258027 10 258028 10 258029 10 258030 10 258031 10 258033 10 258036 10 258037 10 258038 10 258039 10 258040 10 258041 10 258042 10 258043 10 258044 10 258045 10 258046 10 258047 10 258048 10 258051 10 258052 10 258053 10 258054 10 258055 10 258056 10 258057 10 258058 10 258059 10 258060 10 258061 10 258062 10 258063 10 258064 10 258065 10 258066 10 258067 10 258068 10 258069 10 258070 10 258071 10 258072 10 258073 10 258075 10 258076 10 258078 10 258079 10 258080 10 258082 10 258083 10 258084 10 258085 10 258086 10",
+        "SISTEMA: NEW TRACKING | SERVIÇO: MELHORIAS | SUB-ÁREA: INOVAÇÃO | TÍTULO: TRAVAR ABERTURA DE REGISTRO INCIDENTE FOB PARA SOMENTE PERFIL \"AGENDAMENTO\". DESCRIÇÃO DETALHADA: ANTERIORMENTE FOI SOLICITADO PARA RETIRAR A ABERTURA DE REGISTRO DE PROBLEMA DE ENTREGA/INCIDENTE PARA OS FRETES FOB (TOMADOR BIC).. SERIA POSSÍVEL ALTERAR PARA SOMENTE O PERFIL \"AGENDAMENTO\" REALIZAR A ABERTURA DE REGISTRO DE PROBLEMA NA ENTREGA/INCIDENTE ? O TIME TRACKING NÃO PODE ABRIR, MAS O TIME DE DEVOLUÇÃO NECESSITA DE ABRIR (CASO HAJA ALGUMA DEVOLUÇÃO)",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: NOTA SEM VISUALIZAÇÃO. DESCRIÇÃO DETALHADA: GENTILEZA VALIDAR A NOTA 948 - COPAG, POIS A MESMA ESTÁ EM VIAGEM COM O PARCEIRO DSD E NÃO APARECE NO TRACKING, CONFORME E-MAIL (ANEXO) CONSTA VIAGEM........",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: Mudança nas particularidades sem alteração de resultados.. DESCRIÇÃO DETALHADA: Temos particularidades de CNPJ's que foram alteradas para agenda, porém o time está informando que não fez a alteração. a correção manual ocorreu no dia 21/10/2025, portanto a alteração foi feita antes dessa data. poderiam identificar toda alteração dos últimos 18 meses das particularidades desses cnpj em anexo. 23.439.441/0035-39",
+        "SISTEMA: NEW TRACKING | SERVIÇO: ERRO SISTÊMICO | SUB-ÁREA: INOVAÇÃO | TÍTULO: Erro New  tracking. DESCRIÇÃO DETALHADA: Boa tarde ! Conforme anexo , tinhamos videos de treinamentos salvos dentro do New Tracking disponíveis na visão \"Parceiro\" que compõem o processo de homologação e reciclagem dos parceiros na operação. Parceiro nos acionou informando que os vídeos nao constam na pasta sinalizada e verificamos que não é apenas um caso isolado, mas sim para todos os parceiros. Anexo o print ."
+      ],
+      "top_keywords": [
+        "tracking",
+        "new",
+        "não",
+        "sub",
+        "área",
+        "inovação",
+        "erro",
+        "sistêmico",
+        "abertura",
+        "registro",
+        "entrega",
+        "notas",
+        "anexo",
+        "ocorrências",
+        "estão"
+      ],
+      "ids_chamados": [
+        "120587",
+        "121048",
+        "122000",
+        "122652",
+        "122803",
+        "123253",
+        "123388",
+        "125438",
+        "124048",
+        "124704",
+        "124880",
+        "126391",
+        "128933",
+        "132340",
+        "133127",
+        "133595",
+        "133861",
+        "133977"
+      ],
+      "chamados_viz": [
+        {
+          "id": "120587",
+          "x": 0.5886169672012329,
+          "y": 0.17376400530338287,
+          "prob": 0.0
+        },
+        {
+          "id": "121048",
+          "x": -0.36028316617012024,
+          "y": 1.7084109783172607,
+          "prob": 0.0
+        },
+        {
+          "id": "122000",
+          "x": 0.7389861941337585,
+          "y": 1.7055710554122925,
+          "prob": 0.0
+        },
+        {
+          "id": "122652",
+          "x": -1.391143560409546,
+          "y": 0.06977111846208572,
+          "prob": 0.0
+        },
+        {
+          "id": "122803",
+          "x": 1.0791411399841309,
+          "y": 2.2200491428375244,
+          "prob": 0.0
+        },
+        {
+          "id": "123253",
+          "x": -0.8603001236915588,
+          "y": 2.4294121265411377,
+          "prob": 0.0
+        },
+        {
+          "id": "123388",
+          "x": -3.163114547729492,
+          "y": 0.8690428733825684,
+          "prob": 0.0
+        },
+        {
+          "id": "125438",
+          "x": -3.2085516452789307,
+          "y": -0.5098486542701721,
+          "prob": 0.0
+        },
+        {
+          "id": "124048",
+          "x": -0.9708307981491089,
+          "y": 2.52514386177063,
+          "prob": 0.0
+        },
+        {
+          "id": "124704",
+          "x": -2.9424359798431396,
+          "y": 1.2585828304290771,
+          "prob": 0.0
+        },
+        {
+          "id": "124880",
+          "x": 0.874312162399292,
+          "y": 0.9532662034034729,
+          "prob": 0.0
+        },
+        {
+          "id": "126391",
+          "x": 0.15583880245685577,
+          "y": 1.8637311458587646,
+          "prob": 0.0
+        },
+        {
+          "id": "128933",
+          "x": 1.02346670627594,
+          "y": 0.5775666832923889,
+          "prob": 0.0
+        },
+        {
+          "id": "132340",
+          "x": -1.2875391244888306,
+          "y": -0.13985508680343628,
+          "prob": 0.0
+        },
+        {
+          "id": "133127",
+          "x": 0.5221889615058899,
+          "y": 1.3375357389450073,
+          "prob": 0.0
+        },
+        {
+          "id": "133595",
+          "x": 0.09088144451379776,
+          "y": 2.058530569076538,
+          "prob": 0.0
+        },
+        {
+          "id": "133861",
+          "x": -1.0676325559616089,
+          "y": 2.22269344329834,
+          "prob": 0.0
+        },
+        {
+          "id": "133977",
+          "x": -2.6790270805358887,
+          "y": 0.9095008373260498,
+          "prob": 0.0
+        }
+      ],
+      "titulo": "Outros / Dispersos",
+      "descricao": "Chamados que não apresentaram padrão claro de agrupamento com os demais.",
+      "tags": [
+        "Variados",
+        "Sem Padrão"
+      ]
+    }
+  ]
+}

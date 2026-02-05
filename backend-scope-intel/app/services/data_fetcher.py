@@ -5,16 +5,18 @@
 #   Consultar dados brutos do Fluig (MySQL) para alimentar o pipeline de IA.
 #   Esta é a "boca de entrada" do sistema que extrai informações de negócio.
 #
+# PARTE DO SISTEMA:
+#   Backend / Integração de Dados (ETL)
+#
 # RESPONSABILIDADES:
 #   - Conectar no banco SQL via SQLAlchemy
 #   - Executar query otimizada para buscar chamados de um sistema específico
 #   - Limpar HTML sujo (tags, &nbsp;) dos campos de texto rico do Fluig
 #   - Preparar o texto concatenado ("Documento Virtual") que será vetorizado
 #
-# DEPENDÊNCIAS:
-#   - SQLAlchemy (Banco de Dados)
-#   - Pandas (Manipulação tabular)
-#   - BeautifulSoup (Limpeza de HTML)
+# COMUNICAÇÃO:
+#   Entrada: Conecta ao Banco MySQL (Tabela Fluig)
+#   Saída: Retorna lista de dicionários para run_pipeline.py e API (Lazy Loading)
 # ==============================================================================
 
 import pandas as pd

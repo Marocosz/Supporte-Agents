@@ -1,3 +1,21 @@
+# ==============================================================================
+# ARQUIVO: test_db.py
+#
+# OBJETIVO:
+#   Validar a conectividade com o Banco de Dados SQL.
+#   Executa um "Ping" (SELECT 1) e uma contagem rápida na tabela alvo para garantir acesso.
+#
+# PARTE DO SISTEMA:
+#   Scripts / Diagnóstico
+#
+# RESPONSABILIDADES:
+#   - Testar conexão TCP/IP com o banco
+#   - Testar credenciais e permissões na tabela do Fluig
+#
+# COMUNICAÇÃO:
+#   Conecta ao MySQL definido no .env
+# ==============================================================================
+
 import sys
 import os
 

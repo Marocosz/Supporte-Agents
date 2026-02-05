@@ -248,6 +248,48 @@ const ScopeIntelPage: React.FC = () => {
         }
     };
 
+    // Função para carregar mais chamados (Pagination)
+    const handleLoadMoreTickets = async () => {
+        if (!selectedCluster || !selectedCluster.ids_chamados) return;
+
+        const currentLoaded = ticketsCache[selectedCluster.cluster_id]?.length || 0;
+        const total = selectedCluster.ids_chamados.length;
+
+        if (currentLoaded >= total) return;
+
+        // Pega os próximos 5 ID
+        const nextIds = selectedCluster.ids_chamados.slice(currentLoaded, currentLoaded + 5);
+
+        if (nextIds.length === 0) return;
+
+        setLoadingTickets(true);
+        try {
+            const response = await fetch('http://localhost:8001/api/tickets/batch', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ids: nextIds })
+            });
+
+            if (!response.ok) throw new Error('Falha ao buscar mais chamados');
+
+            const newTickets: TicketDetail[] = await response.json();
+
+            // Adiciona ao cache (append)
+            setTicketsCache(prev => ({
+                ...prev,
+                [selectedCluster.cluster_id]: [
+                    ...(prev[selectedCluster.cluster_id] || []),
+                    ...newTickets
+                ]
+            }));
+
+        } catch (err) {
+            console.error("Erro ao carregar mais tickets", err);
+        } finally {
+            setLoadingTickets(false);
+        }
+    };
+
     // Helper para obter config visual do sistema
     const getSystemConfig = (sistemaName: string) => {
         const key = Object.keys(SYSTEM_CONFIG).find(k => sistemaName.toUpperCase().includes(k));
@@ -580,26 +622,55 @@ const ScopeIntelPage: React.FC = () => {
 
                                         <div className="intel-section full-width" style={{ marginTop: '20px' }}>
                                             <h3>Exemplos Recentes</h3>
-                                            {loadingTickets && !ticketsCache[selectedCluster.cluster_id] ? (
-                                                <p className="intel-loading-text">Carregando exemplos...</p>
-                                            ) : (
-                                                <div className="intel-tickets-list">
-                                                    {ticketsCache[selectedCluster.cluster_id]?.map(ticket => (
-                                                        <div key={ticket.id_chamado} className="intel-ticket-item">
-                                                            <div className="ticket-header">
-                                                                <strong>{ticket.id_chamado}</strong>
-                                                                <span className="ticket-date">{new Date(ticket.data_abertura).toLocaleDateString()}</span>
-                                                            </div>
-                                                            <p className="ticket-title">{ticket.titulo}</p>
-                                                            <p className="ticket-desc-preview">{ticket.descricao_limpa}</p>
-                                                            <span className="ticket-badge">{ticket.status}</span>
+
+                                            <div className="intel-tickets-list">
+                                                {ticketsCache[selectedCluster.cluster_id]?.map(ticket => (
+                                                    <div key={ticket.id_chamado} className="intel-ticket-item">
+                                                        <div className="ticket-header">
+                                                            <strong>{ticket.id_chamado}</strong>
+                                                            <span className="ticket-date">{new Date(ticket.data_abertura).toLocaleDateString()}</span>
                                                         </div>
-                                                    ))}
-                                                    {(!ticketsCache[selectedCluster.cluster_id] || ticketsCache[selectedCluster.cluster_id].length === 0) && (
-                                                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Nenhum detalhe disponível para exibição.</p>
-                                                    )}
-                                                </div>
-                                            )}
+                                                        <p className="ticket-title">{ticket.titulo}</p>
+                                                        <p className="ticket-desc-preview">{ticket.descricao_limpa}</p>
+                                                        <span className="ticket-badge">{ticket.status}</span>
+                                                    </div>
+                                                ))}
+                                                {loadingTickets && (
+                                                    <p className="intel-loading-text">Carregando mais...</p>
+                                                )}
+
+                                                {(!ticketsCache[selectedCluster.cluster_id] || ticketsCache[selectedCluster.cluster_id].length === 0) && !loadingTickets && (
+                                                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Nenhum detalhe disponível para exibição.</p>
+                                                )}
+                                            </div>
+
+                                            {/* Botão Ver Mais */}
+                                            {selectedCluster.ids_chamados &&
+                                                ticketsCache[selectedCluster.cluster_id] &&
+                                                ticketsCache[selectedCluster.cluster_id].length < selectedCluster.ids_chamados.length && (
+                                                    <button
+                                                        onClick={handleLoadMoreTickets}
+                                                        disabled={loadingTickets}
+                                                        style={{
+                                                            marginTop: '15px',
+                                                            width: '100%',
+                                                            padding: '10px',
+                                                            background: 'var(--bg-secondary)',
+                                                            border: '1px solid var(--border-color)',
+                                                            color: 'var(--text-primary)',
+                                                            borderRadius: '6px',
+                                                            cursor: loadingTickets ? 'not-allowed' : 'pointer',
+                                                            fontSize: '0.9rem',
+                                                            fontWeight: 500,
+                                                            display: 'flex',
+                                                            alignItems: 'center',
+                                                            justifyContent: 'center',
+                                                            gap: '8px'
+                                                        }}
+                                                    >
+                                                        {loadingTickets ? 'Buscando...' : `Carregar mais (+5 chamados)`}
+                                                    </button>
+                                                )}
                                         </div>
                                     </>
                                 )}
